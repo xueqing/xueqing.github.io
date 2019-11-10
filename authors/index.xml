@@ -5,12 +5,20 @@
     <link>https://xueqing.github.io/authors/</link>
       <atom:link href="https://xueqing.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language><lastBuildDate>Sun, 10 Nov 2019 16:22:30 +0800</lastBuildDate>
     <image>
       <url>https://xueqing.github.io/img/icon-192.png</url>
       <title>Authors</title>
       <link>https://xueqing.github.io/authors/</link>
     </image>
+    
+    <item>
+      <title>kiki</title>
+      <link>https://xueqing.github.io/authors/kiki/</link>
+      <pubDate>Sun, 10 Nov 2019 16:22:30 +0800</pubDate>
+      <guid>https://xueqing.github.io/authors/kiki/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title></title>
