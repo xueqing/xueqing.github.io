@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangpkg/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/wiki/readme/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/authors/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
@@ -18,12 +38,17 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/authors/kiki/</loc>
+    <lastmod>2019-11-10T16:22:30+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/authors/kiki/</loc>
+    <loc>https://xueqing.github.io/tags/markdown/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
@@ -33,12 +58,12 @@
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/tags/md/</loc>
+    <loc>https://xueqing.github.io/tags/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/tags/</loc>
+    <loc>https://xueqing.github.io/translation/go-doc/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
@@ -52,7 +77,175 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/equivalent_binary_trees/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/errors/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/fibonacci_closure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangpkg/fmt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/bug/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/build/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/clean/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/doc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/env/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/fix/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/fmt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/generate/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/get/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/list/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/mod/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/run/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/test_package/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/blog/examples/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/go-blog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/go-command/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/go-doc-wiki/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/go-tour/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/golang-doc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/golang-pkg/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/gopath_and_module/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/gopath_env_var/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/images/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangpkg/iotest/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/loops_and_functions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/maps/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/publication_types/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangpkg/quick/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/reader/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/rot_reader/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/slices/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/stringer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangpkg/testing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/categories/translation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/gotour/web_crawler/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/gdb/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/blog/subtest/</loc>
   </url>
   
   <url>
@@ -60,7 +253,91 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/articles/go_command/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/blog/cover/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/code/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/wiki/learn_testing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/asm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/articles/race_detector/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/wiki/articles/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/show_doc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/test_func/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/test_flag/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/articles/wiki/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/wiki/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangdoc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/golangpkg/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/wiki/table_driven_tests/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/wiki/set_gopath/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/reading/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/go-doc/command/remote_import_path/</loc>
   </url>
   
 </urlset>

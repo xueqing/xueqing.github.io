@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>翻译 golang.org/pkg/* 文章 | kiki</title>
+    <link>https://xueqing.github.io/translation/go-doc/golangpkg/</link>
+      <atom:link href="https://xueqing.github.io/translation/go-doc/golangpkg/index.xml" rel="self" type="application/rss+xml" />
+    <description>翻译 golang.org/pkg/* 文章</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>翻译 golang.org/pkg/* 文章</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangpkg/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangpkg/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangpkg/readme/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a0%87%e5%87%86%e5%ba%93&#34;&gt;标准库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%b6%e4%bb%96%e5%8c%85&#34;&gt;其他包&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ad%90%e4%bb%93%e5%ba%93&#34;&gt;子仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%a4%be%e5%8c%ba&#34;&gt;社区&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/pkg/&#34; target=&#34;_blank&#34;&gt;Golang 官网文档&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;h2 id=&#34;标准库&#34;&gt;标准库&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名字&lt;/th&gt;
+&lt;th&gt;概述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;testing.md&#34; target=&#34;_blank&#34;&gt;testing&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;支持对 Go 包的自动测试&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;——&lt;a href=&#34;iotest.md&#34; target=&#34;_blank&#34;&gt;iotest&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;实现了主要用于 testing 的 Reader 和 Writer&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;——&lt;a href=&#34;quick.md&#34; target=&#34;_blank&#34;&gt;quick&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;实现了帮助黑盒测试的工具函数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;其他包&#34;&gt;其他包&lt;/h2&gt;
+
+&lt;h3 id=&#34;子仓库&#34;&gt;子仓库&lt;/h3&gt;
+
+&lt;h3 id=&#34;社区&#34;&gt;社区&lt;/h3&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>fmt 包</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangpkg/fmt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangpkg/fmt/</guid>
+      <description>
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/pkg/fmt/&#34; target=&#34;_blank&#34;&gt;Golang 官网文档&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;p&gt;导入语句：&lt;code&gt;import &amp;quot;fmt&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;fmt 包用类似于 C 的 printf 和 scanf 的函数实现了格式化的 I/O。格式 “verbs” 衍生自 C 但是更简单。&lt;/p&gt;
+
+&lt;h3 id=&#34;打印&#34;&gt;打印&lt;/h3&gt;
+
+&lt;p&gt;verbs 包括：&lt;/p&gt;
+
+&lt;p&gt;通用的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;%v  默认格式的值
+    当打印结构体时，增加标识 (%+v) 会增加域名。
+%#v 值的一个 Go 语法显示
+%T  值类型的一个 Go 语法显示
+%%  一个字面百分比符号；不消费任何值
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;布尔型：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;%t  单词是 true 还是 false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;整型：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;%b  base 2
+%c  the character represented by the corresponding Unicode code point
+%d  base 10
+%o  base 8
+%O  base 8 with 0o prefix
+%q  a single-quoted character literal safely escaped with Go syntax.
+%x  base 16, with lower-case letters for a-f
+%X  base 16, with upper-case letters for A-F
+%U  Unicode format: U+1234; same as &amp;quot;U+%04X&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/fmt/#pkg-index&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/fmt/#pkg-examples&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>iotest 包</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangpkg/iotest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangpkg/iotest/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34;&gt;概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b4%a2%e5%bc%95&#34;&gt;索引&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/pkg/testing/iotest/&#34; target=&#34;_blank&#34;&gt;Golang 官网文档&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;p&gt;导入语句：&lt;code&gt;import &amp;quot;testing/iotest&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;iotest 包实现了主要用于 testing 的 Reader 和 Writer。&lt;/p&gt;
+
+&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/testing/iotest/#pkg-index&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>quick 包</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangpkg/quick/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangpkg/quick/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34;&gt;概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b4%a2%e5%bc%95&#34;&gt;索引&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/pkg/testing/quick/&#34; target=&#34;_blank&#34;&gt;Golang 官网文档&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;p&gt;导入语句：&lt;code&gt;import &amp;quot;testing/quick&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;quick 包实现了帮辅助黑盒测试的工具函数。&lt;/p&gt;
+
+&lt;p&gt;testing/quick 包被冻结，且不再接受新特性。&lt;/p&gt;
+
+&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/testing/quick/#pkg-index&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>testing 包</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangpkg/testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangpkg/testing/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34;&gt;概述&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95&#34;&gt;基准测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%a4%ba%e4%be%8b%e5%87%bd%e6%95%b0&#34;&gt;示例函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%b7%b3%e8%bf%87%e6%b5%8b%e8%af%95&#34;&gt;跳过测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ad%90%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%e5%92%8c%e5%ad%90%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95&#34;&gt;子测试项目和子基准测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#main&#34;&gt;Main&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b4%a2%e5%bc%95&#34;&gt;索引&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%be%8b%e5%ad%90&#34;&gt;例子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ad%90%e7%9b%ae%e5%bd%95&#34;&gt;子目录&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/pkg/testing/&#34; target=&#34;_blank&#34;&gt;Golang 官网文档&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;p&gt;导入语句：&lt;code&gt;import &amp;quot;testing&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;testing 包提供对 Go 包的自动测试。它适用于和 &lt;code&gt;go test&lt;/code&gt; 命令协作，自动执行下面格式的函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestXxx(*testing.T)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，Xxx 不是小写字母开头。这个函数名用于识别测试代码。&lt;/p&gt;
+
+&lt;p&gt;在这些函数中，使用 Error、Fail 或相关的方法来标记失败。&lt;/p&gt;
+
+&lt;p&gt;要写一个新的测试集，新建一个文件以 _test.go 结尾，其中包含上述的 TestXxx 函数。将此文件放在将要测试的同一包中。正常的包编译不会包含此文件，但是运行 &lt;code&gt;go test&lt;/code&gt; 命令时会包含。查看更多细节，运行 &lt;code&gt;go help test&lt;/code&gt; 和 &lt;code&gt;go help testflag&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;一个简单的功能测试函数看起来像这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestAbs(t testing.T) {
+  got := Abs(-1)
+  if got != 1 {
+    t.Errorf(&amp;quot;Abs(-1) = %d; want 1&amp;quot;, got)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;基准测试&#34;&gt;基准测试&lt;/h3&gt;
+
+&lt;p&gt;下面格式的函数被当做基准测试，并且当 &lt;code&gt;go test&lt;/code&gt; 命令提供 -bench 标记时会执行此函数。基准测试是顺序执行的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func BenchmarkXxxx(*testing.B)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对 testing 标记的描述，查看 &lt;a href=&#34;../command/test_flag.md&#34;&gt;Testing flags&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;一个简单的基准测试函数看起来像这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func BenchmarkHello(b *testing.B) {
+    for i := 0; i &amp;lt; b.N; i++ {
+        fmt.Sprintf(&amp;quot;hello&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;基准测试函数必须运行目标代码 b.N 次。在执行基准测试期间，会调整 b.N 直到基准测试函数持续时间足够长，认为是时间可靠的。输出 &lt;code&gt;BenchmarkHello    10000000    282 ns/op&lt;/code&gt; 意味着这个循环以每次循环 282 纳秒的速度运行了 10000000 次。&lt;/p&gt;
+
+&lt;p&gt;如果一个基准测试在运行之前需要一些耗时的设置，可重置定时器：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func BenchmarkBigLen(b *testing.B) {
+    big := NewBig()
+    b.ResetTimer()
+    for i := 0; i &amp;lt; b.N; i++ {
+        big.Len()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果一个基准测试需要并行测试性能，可以使用 RunParallel 辅助函数；这样的基准测试适用于和 go test -cpu 标识一起使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func BenchmarkTemplateParallel(b *testing.B) {
+    templ := template.Must(template.New(&amp;quot;test&amp;quot;).Parse(&amp;quot;Hello, {{.}}!&amp;quot;))
+    b.RunParallel(func(pb *testing.PB) {
+        var buf bytes.Buffer
+        for pb.Next() {
+            buf.Reset()
+            templ.Execute(&amp;amp;buf, &amp;quot;World&amp;quot;)
+        }
+    })
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;示例函数&#34;&gt;示例函数&lt;/h3&gt;
+
+&lt;p&gt;testing 包也会运行和验证示例代码。示例函数可以包含一个总结性的行注释，以 “Output:” 开头，并且运行测试的是和这个函数的标准输出比较。(这个比较忽视开始和末尾的空格)。下面是一个示例代码的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func ExampleHello() {
+    fmt.Println(&amp;quot;hello&amp;quot;)
+    // Output: hello
+}
+
+func ExampleSalutations() {
+    fmt.Println(&amp;quot;hello, and&amp;quot;)
+    fmt.Println(&amp;quot;goodbye&amp;quot;)
+    // Output:
+    // hello, and
+    // goodbye
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注释前缀 “Unordered output:” 类似于 “Output:”，但是匹配任意的行顺序：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func ExamplePerm() {
+    for _, value := range Perm(4) {
+        fmt.Println(value)
+    }
+    // Unordered output: 4
+    // 2
+    // 1
+    // 3
+    // 0
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;没有输出注释的示例函数被编译但是不会被执行。&lt;/p&gt;
+
+&lt;p&gt;声明包、函数 F、类型 T 和作用于类型 T 的方法 M 的示例函数的命名如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Example() { ... }
+func ExampleF() { ... }
+func ExampleT() { ... }
+func ExampleT_M() { ... }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可通过增加一个不同的后缀到函数名字后面以支持对于一个包/类型/函数/方法的多个示例函数。后缀必须以小写字母开始。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func Example_suffix() { ... }
+func ExampleF_suffix() { ... }
+func ExampleT_suffix() { ... }
+func ExampleT_M_suffix() { ... }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当文件包含一个单独的示例函数，及至少一个其他的函数、类型、变量或常数声明，且没有功能测试函数或者基准测试函数时，整个测试文件作为例子显示。&lt;/p&gt;
+
+&lt;h3 id=&#34;跳过测试&#34;&gt;跳过测试&lt;/h3&gt;
+
+&lt;p&gt;可在运行时调用 *T 或 *B 的 Skip 方法跳过功能测试或基准测试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestTimeConsuming(t *testing.T) {
+    if testing.Short() {
+        t.Skip(&amp;quot;skipping test in short mode.&amp;quot;)
+    }
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;子测试项目和子基准测试&#34;&gt;子测试项目和子基准测试&lt;/h3&gt;
+
+&lt;p&gt;T 和 B 的 Run 方法允许定义子测试项目和子基准测试，而不需要为每个子测试项目和子基准测试定义另外的函数。这使能使用类似表驱动的基准测试和创建分级测试。它也提供了一种方式来共享共用的设置和终止代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestFoo(t *testing.T) {
+    // &amp;lt;setup code&amp;gt;
+    t.Run(&amp;quot;A=1&amp;quot;, func(t *testing.T) { ... })
+    t.Run(&amp;quot;A=2&amp;quot;, func(t *testing.T) { ... })
+    t.Run(&amp;quot;B=1&amp;quot;, func(t *testing.T) { ... })
+    // &amp;lt;tear-down code&amp;gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;每个子测试项目和子基准测试有一个唯一的名字：结合顶层测试的名字以及传递给 Run 的名字的顺序，由斜线分隔，以及一个可选的尾随的序号以消除歧义。&lt;/p&gt;
+
+&lt;p&gt;传递给 -run 和 -bench 命令行标识符的参数是一个不固定的正则表达式，匹配了测试的名字。参数是多个斜线分隔的元素时，比如子测试，参数是自身(斜线分隔)；表达式匹配每个名字元素。因为是不固定的，一个空的表达式匹配任意字符串。比如，使用 “matching” 表达 “谁的名字包含”：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go test -run &#39;&#39;      # Run all tests.
+go test -run Foo     # Run top-level tests matching &amp;quot;Foo&amp;quot;, such as &amp;quot;TestFooBar&amp;quot;.
+go test -run Foo/A=  # For top-level tests matching &amp;quot;Foo&amp;quot;, run subtests matching &amp;quot;A=&amp;quot;.
+go test -run /A=1    # For all top-level tests, run subtests matching &amp;quot;A=1&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;子测试也可用于控制并行度。一个父测试只有在其子测试完成时才会完成。在这个例子中，所有测试去其他测试并行运行，且只与其他测试并行，而与可能定义的其他顶层测试无关。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestGroupedParallel(t *testing.T) {
+    for _, tc := range tests {
+        tc := tc // capture range variable
+        t.Run(tc.Name, func(t *testing.T) {
+            t.Parallel()
+            // ...
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当程序超过 8192 个并行 goroutine 时，竞争检测器会杀掉程序，因此当运行并行测试且设置了 -race 标识时需要注意。&lt;/p&gt;
+
+&lt;p&gt;Run 只有在并行子测试结束才会返回，为一组并行测试之后的资源清理提供了一种方式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestTeardownParallel(t *testing.T) {
+    // This Run will not return until the parallel tests finish.
+    t.Run(&amp;quot;group&amp;quot;, func(t *testing.T) {
+        t.Run(&amp;quot;Test1&amp;quot;, parallelTest1)
+        t.Run(&amp;quot;Test2&amp;quot;, parallelTest2)
+        t.Run(&amp;quot;Test3&amp;quot;, parallelTest3)
+    })
+    // &amp;lt;tear-down code&amp;gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;main&#34;&gt;Main&lt;/h3&gt;
+
+&lt;p&gt;测试程序有时需要在测试之前或之后做一些额外的设置和清理。并且，测试程序有时需要控制哪些代码运行在主线程。为了满足这些需求和其他的场景，一个测试文件可以包含一个函数：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestMain(m *testing.M)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，生成的测试会调用 TestMain(m) 而不是直接运行测试。TestMain 在主的 goroutine 运行，且可以做调用 m.Run 前后所需的所有设置和清理。然后，它应该使用 m.Run 的结果调用 OS.Exit。当调用 TestMain 时，flag.Parse 还没有运行。如果 TestMain(包括这些测试包) 依赖命令行标识，应该显式调用 flag.Parse。&lt;/p&gt;
+
+&lt;p&gt;一个简单的 TestMain 的实现：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestMain(m *testing.M) {
+    // call flag.Parse() here if TestMain uses flags
+    os.Exit(m.Run())
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/testing/#pkg-index&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/testing/#pkg-examples&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;子目录&#34;&gt;子目录&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名字&lt;/th&gt;
+&lt;th&gt;概述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;iotest.md&#34; target=&#34;_blank&#34;&gt;iotest&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;实现了主要用于 testing 的 Reader 和 Writer&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;quick.md&#34; target=&#34;_blank&#34;&gt;quick&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;实现了帮助黑盒测试的工具函数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

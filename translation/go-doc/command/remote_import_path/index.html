@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="一些导入路径也描述了如何使用版本控制系统获取包的源码。 一些常见的代码托管网站有一些特殊的语法： Bitbucket (Git, Mercurial) import &quot;bitbucket.org/user/project&quot; import &quot;bitbucket.org/user/project/sub/directory&quot; GitHub (Git) import &quot;github.com/user/project&quot; import &quot;github.com/user/project/sub/directory&quot; Launchpad (Bazaar) import &quot;launchpad.net/project&quot; import &quot;launchpad.net/project/series&quot; import &quot;launchpad.net/project/series/sub/directory&quot; import &quot;launchpad.net/~user/project/branch&quot;">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/translation/go-doc/command/remote_import_path/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/translation/go-doc/command/remote_import_path/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/translation/go-doc/command/remote_import_path/">
+  <meta property="og:title" content="远程导入路径 | kiki">
+  <meta property="og:description" content="一些导入路径也描述了如何使用版本控制系统获取包的源码。 一些常见的代码托管网站有一些特殊的语法： Bitbucket (Git, Mercurial) import &quot;bitbucket.org/user/project&quot; import &quot;bitbucket.org/user/project/sub/directory&quot; GitHub (Git) import &quot;github.com/user/project&quot; import &quot;github.com/user/project/sub/directory&quot; Launchpad (Bazaar) import &quot;launchpad.net/project&quot; import &quot;launchpad.net/project/series&quot; import &quot;launchpad.net/project/series/sub/directory&quot; import &quot;launchpad.net/~user/project/branch&quot;"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>远程导入路径 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>远程导入路径</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/translation/">translation</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>一些导入路径也描述了如何使用版本控制系统获取包的源码。</p>
+
+<p>一些常见的代码托管网站有一些特殊的语法：</p>
+
+<pre><code class="language-txt">Bitbucket (Git, Mercurial)
+
+  import &quot;bitbucket.org/user/project&quot;
+  import &quot;bitbucket.org/user/project/sub/directory&quot;
+
+GitHub (Git)
+
+  import &quot;github.com/user/project&quot;
+  import &quot;github.com/user/project/sub/directory&quot;
+
+Launchpad (Bazaar)
+
+  import &quot;launchpad.net/project&quot;
+  import &quot;launchpad.net/project/series&quot;
+  import &quot;launchpad.net/project/series/sub/directory&quot;
+
+  import &quot;launchpad.net/~user/project/branch&quot;
+  import &quot;launchpad.net/~user/project/branch/sub/directory&quot;
+
+IBM DevOps Services (Git)
+
+  import &quot;hub.jazz.net/git/user/project&quot;
+  import &quot;hub.jazz.net/git/user/project/sub/directory&quot;
+</code></pre>
+
+<p>对于托管在其他服务商的代码，导入路径或者具备版本控制类型，或者 go 工具可以通过 https/http 动态拉取导入路径，然后从 HTML 的 <code>&lt;meta&gt;</code> 标签代码位置。</p>
+
+<p>为了声明代码位置，具有形式 <code>repository.vcs/path</code> 的导入路径指定了给定的仓库(使用或不使用 .vcs 后缀，使用命名的版本控制系统)和该仓库内的路径。支持的版本控制系统是：</p>
+
+<pre><code class="language-txt">Bazaar      .bzr
+Fossil      .fossil
+Git         .git
+Mercurial   .hg
+Subversion  .svn
+</code></pre>
+
+<p>比如，<code>import &quot;example.org/user/foo.hg&quot;</code> 表示根目录在 Mercurial 仓库的 example.org/user/foo 或 foo.hg，且 <code>import &quot;example.org/repo.git/foo/bar&quot;</code> 表示 Git 仓库的 foo/bar 目录在 example.org/repo 或 repo.git。</p>
+
+<p>当一个版本控制系统支持多个协议时，下载时轮流尝试每个协议。比如，一个 Git 下载尝试 <code>https://</code>，然后是 <code>git+ssh://</code>。</p>
+
+<p>默认的，下载受限于已知的安全协议(比如，https 和 ssh)。要覆盖 Git 下载的这个设置，可以设置 GIT_ALLOW_PROTOCOL 环境变量(查看 <code>go help environment</code> 获取更多信息)。</p>
+
+<p>如果导入路径不是已知的代码托管网站，且缺少版本控制限定符，go 工具尝试通过 https/http 查找 HTML  <code>&lt;head&gt;</code> 的 <code>&lt;meta&gt;</code> 标签来拉取导入。</p>
+
+<p>meta 标签有这样的形式 <code>&lt;meta name=&quot;go-import&quot; content=&quot;import-prefix vcs repo-root&quot;&gt;</code>。</p>
+
+<p>import-prefix 是对应 repo-root 的导入路径。它必须是一个前缀，或者是借助 <code>go get</code> 拉取包的一个精确匹配。如果不是一个精确匹配，生成另外一个 http 请求来验证 meta 标签。</p>
+
+<p>meta 标签应该尽早出现在文件中。特别地，它应该出现在任何原始的 JavaScript 或 CSS 之前，避免使 go 命令受限的解释器不能理解。</p>
+
+<p>vcs 是 bzr/fossil/git/hg/svn 中的一个。</p>
+
+<p>repo-root 是版本控制系统的根，包含了一个体系，但是不包含 .vcs 限定符。</p>
+
+<p>比如，<code>import &quot;example.org/pkg/foo&quot;</code> 会导致下面的请求</p>
+
+<pre><code class="language-sh">https://example.org/pkg/foo?go-get=1 (preferred)
+http://example.org/pkg/foo?go-get=1  (fallback, only with -insecure)
+</code></pre>
+
+<p>如果页面包含 meta 标签 <code>&lt;meta name=&quot;go-import&quot; content=&quot;example.org git https://code.org/r/p/exproj&quot;&gt;</code>，那么 go 工具会验证 <code>https://example.org/pkg/foo?go-get=1</code> 包含相同的 meta 标签，然后使用 <code>git clone https://code.org/r/p/exproj</code> 克隆源码到 <code>GOPATH/src/example.org</code>。</p>
+
+<p>当使用 GOPATH 时，下载的包被写到 GOPATH 环境变量列举的第一个目录。(查看 <code>go help gopath-get</code> 和 <code>go help gopath</code>。)</p>
+
+<p>当使用模块时，下载的包存储在模块缓存。(查看 <code>go help module-get</code> 和 <code>go help goproxy</code>。)</p>
+
+<p>当使用模块时，go-import meta 标签的额外的变量被识别且更倾向于通过这些列举的版本控制系统。比如，在 <code>&lt;meta name=&quot;go-import&quot; content=&quot;example.org mod https://code.org/moduleproxy&quot;&gt;</code> 中，该变量使用 “mod” 作为 vcs 内容的值。</p>
+
+<p>这个标签意味着使用以 example.org 开始的路径从 <code>https://code.org/moduleproxy</code> 可用的模块代理拉取模块。查看 <code>go help goproxy</code> 获取更多关于代理的信息。</p>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/go-command/">go-command</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/translation/go-doc/command/remote_import_path/&amp;text=%e8%bf%9c%e7%a8%8b%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/translation/go-doc/command/remote_import_path/&amp;t=%e8%bf%9c%e7%a8%8b%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e8%bf%9c%e7%a8%8b%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84&amp;body=https://xueqing.github.io/translation/go-doc/command/remote_import_path/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/translation/go-doc/command/remote_import_path/&amp;title=%e8%bf%9c%e7%a8%8b%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e8%bf%9c%e7%a8%8b%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84%20https://xueqing.github.io/translation/go-doc/command/remote_import_path/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/translation/go-doc/command/remote_import_path/&amp;title=%e8%bf%9c%e7%a8%8b%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/translation/go-doc/command/gopath_and_module/">GOPATH 和模块</a></li>
+      
+      <li><a href="/translation/go-doc/command/gopath_env_var/">GOPATH 环境变量</a></li>
+      
+      <li><a href="/translation/go-doc/command/bug/">go bug</a></li>
+      
+      <li><a href="/translation/go-doc/command/build/">go build</a></li>
+      
+      <li><a href="/translation/go-doc/command/clean/">go clean</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="用法 -f -m 用法 列举命名包，每行一个。不带参数时判断一个包是否存在工作空间，存在则输出包的导入路径 命令 go list [-f format] [-json] [-m] [list flags] [build flags] [packages] 常用的参数是 -f 和 -j">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/translation/go-doc/command/list/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/translation/go-doc/command/list/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/translation/go-doc/command/list/">
+  <meta property="og:title" content="go list | kiki">
+  <meta property="og:description" content="用法 -f -m 用法 列举命名包，每行一个。不带参数时判断一个包是否存在工作空间，存在则输出包的导入路径 命令 go list [-f format] [-json] [-m] [list flags] [build flags] [packages] 常用的参数是 -f 和 -j"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>go list | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>go list</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/translation/">translation</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e7%94%a8%e6%b3%95">用法</a></li>
+<li><a href="#f">-f</a></li>
+<li><a href="#m">-m</a></li>
+</ul>
+
+<h2 id="用法">用法</h2>
+
+<ul>
+<li>列举命名包，每行一个。不带参数时判断一个包是否存在工作空间，存在则输出包的导入路径</li>
+<li>命令 <code>go list [-f format] [-json] [-m] [list flags] [build flags] [packages]</code>
+
+<ul>
+<li>常用的参数是 <code>-f</code> 和 <code>-json</code>，用于控制输出格式</li>
+</ul></li>
+<li><code>go list cnet hash</code></li>
+<li><code>...</code> 通配符用于匹配包的导入路径中的任意子串
+
+<ul>
+<li><code>go list ...</code> 枚举工作空间的所有包</li>
+<li><code>go list ch3/...</code> 指定子树中的所有包</li>
+<li><code>go list ...xml..</code> 指定具体主题</li>
+</ul></li>
+<li><code>go list</code> 获取每个包的完整元数据，提供各种用于对用户或其他工具可访问的格式</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>-e</td>
+<td>以容错模式加载和分析指定的代码包，这样讲不会打印错误信息</td>
+</tr>
+
+<tr>
+<td>-json</td>
+<td>把代码包的结构实体用 JSON 样式打印，所有值为对应类型的空值的字段会被忽略</td>
+</tr>
+
+<tr>
+<td>-compiled</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>-deps</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>-export</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>-find</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>-test</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>-m</td>
+<td>列举模块而不是包。使用 -f 指定的是模块模板</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="f">-f</h2>
+
+<ul>
+<li>使用包模板语法指定可选格式。默认输出等价于 <code>-f '{{ImportPath}}'</code>。<code>-f</code> 的值需要满足 <code>text/template</code> 中定义的语法
+
+<ul>
+<li><code>{{.S}}</code> 代表根结构体的 <code>S</code> 字段的值。<code>go list</code> 对应的跟结构体就是指定的代码包所对应的的结构体</li>
+<li><code>go list -f {{.GoFiles}} cnet/ctcp</code></li>
+<li><code>go list -e -f {{.Error.Err}} cnet</code></li>
+<li><code>go list -e -f 'The package {{.ImportPath}} is {{if .Incomplete}}incomplete!{{else}}complete.{{end}}' cnet</code></li>
+</ul></li>
+
+<li><p>模板结构如下</p>
+
+<pre><code class="language-go">type Package struct {
+  Dir           string   // directory containing package sources
+  ImportPath    string   // import path of package in dir
+  ImportComment string   // path in import comment on package statement
+  Name          string   // package name
+  Doc           string   // package documentation string
+  Target        string   // install path
+  Shlib         string   // the shared library that contains this package (only set when -linkshared)
+  Goroot        bool     // is this package in the Go root?
+  Standard      bool     // is this package part of the standard Go library?
+  Stale         bool     // would 'go install' do anything for this package?
+  StaleReason   string   // explanation for Stale==true
+  Root          string   // Go root or Go path dir containing this package
+  ConflictDir   string   // this directory shadows Dir in $GOPATH
+  BinaryOnly    bool     // binary-only package (no longer supported)
+  ForTest       string   // package is only for use in named test
+  Export        string   // file containing export data (when using -export)
+  Module        *Module  // info about package's containing module, if any (can be nil)
+  Match         []string // command-line patterns matching this package
+  DepOnly       bool     // package is only a dependency, not explicitly listed
+
+  // Source files
+  GoFiles         []string // .go source files (excluding CgoFiles, TestGoFiles, XTestGoFiles)
+  CgoFiles        []string // .go source files that import &quot;C&quot;
+  CompiledGoFiles []string // .go files presented to compiler (when using -compiled)
+  IgnoredGoFiles  []string // .go source files ignored due to build constraints
+  CFiles          []string // .c source files
+  CXXFiles        []string // .cc, .cxx and .cpp source files
+  MFiles          []string // .m source files
+  HFiles          []string // .h, .hh, .hpp and .hxx source files
+  FFiles          []string // .f, .F, .for and .f90 Fortran source files
+  SFiles          []string // .s source files
+  SwigFiles       []string // .swig files
+  SwigCXXFiles    []string // .swigcxx files
+  SysoFiles       []string // .syso object files to add to archive
+  TestGoFiles     []string // _test.go files in package
+  XTestGoFiles    []string // _test.go files outside package
+
+  // Cgo directives
+  CgoCFLAGS    []string // cgo: flags for C compiler
+  CgoCPPFLAGS  []string // cgo: flags for C preprocessor
+  CgoCXXFLAGS  []string // cgo: flags for C++ compiler
+  CgoFFLAGS    []string // cgo: flags for Fortran compiler
+  CgoLDFLAGS   []string // cgo: flags for linker
+  CgoPkgConfig []string // cgo: pkg-config names
+
+  // Dependency information
+  Imports      []string          // import paths used by this package
+  ImportMap    map[string]string // map from source import to ImportPath (identity entries omitted)
+  Deps         []string          // all (recursively) imported dependencies
+  TestImports  []string          // imports from TestGoFiles
+  XTestImports []string          // imports from XTestGoFiles
+
+  // Error information
+  Incomplete bool            // this package or a dependency has an error
+  Error      *PackageError   // error loading package
+  DepsErrors []*PackageError // errors loading dependencies
+}
+
+type PackageError struct {
+  ImportStack   []string // shortest path from package named on command line to this one
+  Pos           string   // position of error (if present, file:line:col)
+  Err           string   // the error itself
+}
+</code></pre></li>
+
+<li><p>模板函数 <code>join</code> 调用 <code>strings.Join</code></p>
+
+<ul>
+<li><code>go list -f '{{join .Deps &quot; &quot;}}' strconv</code> 输出 strconv 包的依赖过渡关系记录，空格分隔</li>
+<li><code>go list -f '{{.ImportPath}} -&gt; {{join .Imports &quot; &quot;}}' compress/...</code> 输出标准库的 compress 子树中每个包的直接导入记录</li>
+</ul></li>
+
+<li><p>模板函数 <code>context</code> 返回构建上下文，定义如下</p>
+
+<pre><code class="language-go">type Context struct {
+  GOARCH        string   // target architecture
+  GOOS          string   // target operating system
+  GOROOT        string   // Go root
+  GOPATH        string   // Go path
+  CgoEnabled    bool     // whether cgo can be used
+  UseAllFiles   bool     // use files regardless of +build lines, file names
+  Compiler      string   // compiler to assume when computing target paths
+  BuildTags     []string // build constraints to match in +build lines
+  ReleaseTags   []string // releases the current release is compatible with
+  InstallSuffix string   // suffix to use in the name of the install dir
+}
+</code></pre></li>
+</ul>
+
+<h2 id="m">-m</h2>
+
+<ul>
+<li>默认输出模块路径、版本信息，如果有替换，输出替换信息
+
+<ul>
+<li>如果有替换，即 <code>Replace</code> 不为 nil 时，下面的 <code>Dir</code> 设置的是 <code>Replace.Dir</code></li>
+</ul></li>
+<li>主模块是包含当前目录的模块。活动模块是主模块及其依赖模块。默认显示主模块
+
+<ul>
+<li><code>all</code> 指定所有活动模块</li>
+</ul></li>
+<li>和 <code>-f</code> 一起使用，指定模块模板</li>
+
+<li><p>结构体 Module 有一个 String 方法，用于格式化输出行，因此默认输出等价于 <code>-f {{.String}}</code></p>
+
+<pre><code class="language-go">type Module struct {
+  Path      string       // module path
+  Version   string       // module version
+  Versions  []string     // available module versions (with -versions)
+  Replace   *Module      // replaced by this module
+  Time      *time.Time   // time version was created
+  Update    *Module      // available update, if any (with -u)
+  Main      bool         // is this the main module?
+  Indirect  bool         // is this module only an indirect dependency of main module?
+  Dir       string       // directory holding files for this module, if any
+  GoMod     string       // path to go.mod file for this module, if any
+  GoVersion string       // go version used in module
+  Error     *ModuleError // error loading module
+}
+
+type ModuleError struct {
+  Err string // the error itself
+}
+</code></pre></li>
+
+<li><p><code>-u</code> 增加了关于可以升级的信息：<code>go list -m -u -json all</code></p></li>
+
+<li><p><code>-version</code> 设置 <code>Module.Version</code> 域为模块已知的版本</p></li>
+
+<li><p>模板函数 <code>module</code> 接收一个字符串参数(必须是一个模块路径或查询)，返回指定的模块对应的 Module 结构体</p></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/go-command/">go-command</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/translation/go-doc/command/list/&amp;text=go%20list" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/translation/go-doc/command/list/&amp;t=go%20list" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=go%20list&amp;body=https://xueqing.github.io/translation/go-doc/command/list/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/translation/go-doc/command/list/&amp;title=go%20list" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=go%20list%20https://xueqing.github.io/translation/go-doc/command/list/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/translation/go-doc/command/list/&amp;title=go%20list" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/translation/go-doc/command/gopath_and_module/">GOPATH 和模块</a></li>
+      
+      <li><a href="/translation/go-doc/command/gopath_env_var/">GOPATH 环境变量</a></li>
+      
+      <li><a href="/translation/go-doc/command/bug/">go bug</a></li>
+      
+      <li><a href="/translation/go-doc/command/build/">go build</a></li>
+      
+      <li><a href="/translation/go-doc/command/clean/">go clean</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

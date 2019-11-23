@@ -1,0 +1,1854 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习 go 命令 | kiki</title>
+    <link>https://xueqing.github.io/translation/go-doc/command/</link>
+      <atom:link href="https://xueqing.github.io/translation/go-doc/command/index.xml" rel="self" type="application/rss+xml" />
+    <description>学习 go 命令</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>学习 go 命令</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/readme/</guid>
+      <description>
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/cmd/go/&#34; target=&#34;_blank&#34;&gt;Go 命令官网&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;h2 id=&#34;用法&#34;&gt;用法&lt;/h2&gt;
+
+&lt;p&gt;Go 是一个用于管理 Go 源码的工具。&lt;/p&gt;
+
+&lt;p&gt;用法：&lt;code&gt;go &amp;lt;command&amp;gt; [arguments]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;命令有:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;bug.md&#34; target=&#34;_blank&#34;&gt;bug&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;开启一个缺陷报告&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;build.md&#34; target=&#34;_blank&#34;&gt;build&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;编译包及其依赖&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;clean.md&#34; target=&#34;_blank&#34;&gt;clean&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;删除目标文件和缓存文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;doc.md&#34; target=&#34;_blank&#34;&gt;doc&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;查看包或者符号的文档&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;env.md&#34; target=&#34;_blank&#34;&gt;env&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;打印 Go 环境变量信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;fix.md&#34; target=&#34;_blank&#34;&gt;fix&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;更新包以使用新的 API&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;fmt.md&#34; target=&#34;_blank&#34;&gt;fmt&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;gofmt(reformat) 包的源文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;generate.md&#34; target=&#34;_blank&#34;&gt;generate&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;通过处理源生成 Go 文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;get.md&#34; target=&#34;_blank&#34;&gt;get&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;为当前模块添加依赖并且安装依赖&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;install.md&#34; target=&#34;_blank&#34;&gt;install&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;编译和安装包及其依赖&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;list.md&#34; target=&#34;_blank&#34;&gt;list&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;列举包或模块&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;mod.md&#34; target=&#34;_blank&#34;&gt;mod&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;模块维护&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;run.md&#34; target=&#34;_blank&#34;&gt;run&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;编译和运行 Go 程序&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;test_package.md&#34; target=&#34;_blank&#34;&gt;test&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;测试包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;tool&lt;/td&gt;
+&lt;td&gt;运行指定的 go 工具&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;version&lt;/td&gt;
+&lt;td&gt;打印 Go 版本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;vet&lt;/td&gt;
+&lt;td&gt;打印包中可能的错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;使用 &lt;code&gt;go help &amp;lt;command&amp;gt;&lt;/code&gt; 查看命令的更多信息。&lt;/p&gt;
+
+&lt;p&gt;其他的帮助话题：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;帮助&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;buildmode&lt;/td&gt;
+&lt;td&gt;编译模式&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;c&lt;/td&gt;
+&lt;td&gt;在 Go 和 C 直接调用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;cache&lt;/td&gt;
+&lt;td&gt;编译和测试缓存&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;environment&lt;/td&gt;
+&lt;td&gt;环境变量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;filetype&lt;/td&gt;
+&lt;td&gt;文件类型&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;go.mod&lt;/td&gt;
+&lt;td&gt;go.mod 文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;gopath&lt;/td&gt;
+&lt;td&gt;GOPATH 环境变量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;gopath-get&lt;/td&gt;
+&lt;td&gt;传统 GOPATH 的 go get&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;goproxy&lt;/td&gt;
+&lt;td&gt;模块 proxy 协议&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;importpath&lt;/td&gt;
+&lt;td&gt;模块路径语法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;modules&lt;/td&gt;
+&lt;td&gt;模块，模块版本等&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;module-get&lt;/td&gt;
+&lt;td&gt;明白模块的 go get&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;module-auth&lt;/td&gt;
+&lt;td&gt;使用 go.sum 的模块认证&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;module-private&lt;/td&gt;
+&lt;td&gt;对于非公共模块的模块配置&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;packages&lt;/td&gt;
+&lt;td&gt;包列表和模式&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;testflag&lt;/td&gt;
+&lt;td&gt;测试标识&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;testfunc&lt;/td&gt;
+&lt;td&gt;测试函数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;使用 &lt;code&gt;go help &amp;lt;topic&amp;gt;&lt;/code&gt; 查看话题的更多信息。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go bug</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/bug/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/bug/</guid>
+      <description>&lt;p&gt;用法：&lt;code&gt;go bug&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;命令打开默认浏览器，并开启一个新的缺陷报告。报告包含有用的系统信息。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go build</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/build/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%ba%90%e7%a0%81%e6%96%87%e4%bb%b6&#34;&gt;源码文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bc%96%e8%af%91%e5%a4%9a%e4%b8%aa-go-%e6%ba%90%e7%a0%81%e6%96%87%e4%bb%b6&#34;&gt;编译多个 Go 源码文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-build-%e7%9a%84%e5%8f%82%e6%95%b0&#34;&gt;go build 的参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%be%9d%e8%b5%96%e5%8c%85&#34;&gt;依赖包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9e%84%e5%bb%ba%e6%a0%87%e7%ad%be&#34;&gt;构建标签&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go build [-o output] [-i] [build flags] [packages]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt; 命令用于编译我们指定的源码文件或代码包以及它们的依赖包&lt;/li&gt;
+&lt;li&gt;如果在执行 &lt;code&gt;go build&lt;/code&gt; 命令时不后跟任何代码包，那么命令将试图编译当前目录所对应的代码包&lt;/li&gt;
+&lt;li&gt;编译码包 &lt;code&gt;cnet/ctcp&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;GOPATH/src/cnet/ctcp&lt;/code&gt; 执行 &lt;code&gt;go build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;GOPATH/src/cnet/&lt;/code&gt; 执行 &lt;code&gt;go build ctcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在任意目录下执行 &lt;code&gt;go build cnet/ctcp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt; 会忽略目录下以 “_” 或 “.” 开头的 go 文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-o&lt;/code&gt; 强制将生成的可执行文件或目标文件写到指定的输出文件或文件夹。如果指定的输出是存在的文件夹，生成的可执行文件会写到文件夹&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-i&lt;/code&gt; 安装依赖包&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;源码文件&#34;&gt;源码文件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go 语言的源码文件有三大类，即：命令源码文件、库源码文件和测试源码文件
+
+&lt;ul&gt;
+&lt;li&gt;命令源码文件：总是作为可执行的程序的入口&lt;/li&gt;
+&lt;li&gt;库源码文件：一般用于集中放置各种待被使用的程序实体（全局常量、全局变量、接口、结构体、函数等等）&lt;/li&gt;
+&lt;li&gt;测试源码文件：主要用于对前两种源码文件中的程序实体的功能和性能进行测试。另外也可以用于展现命令源码文件和库源码文件中程序的使用方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果是库源码文件，执行 &lt;code&gt;go build&lt;/code&gt; 之后，不会产生任何文件。如果需要在 &lt;code&gt;$GOPATH/pkg&lt;/code&gt; 下生成相应的文件，那就得执行 &lt;code&gt;go install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果是命令源码文件(main 包)，执行 &lt;code&gt;go build&lt;/code&gt; 之后，它就会调用链接器在当前目录下生成一个可执行文件，可执行程序的名字取自包的导入路径的最后一段。如果需要在 &lt;code&gt;$GOPATH/bin&lt;/code&gt; 下生成相应的文件，需要执行 &lt;code&gt;go install&lt;/code&gt;，或者使用 &lt;code&gt;go build -o 可执行文件&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;编译多个-go-源码文件&#34;&gt;编译多个 Go 源码文件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt; 默认会编译当前目录下的所有 go 文件
+
+&lt;ul&gt;
+&lt;li&gt;构建所有需要的包及其依赖，然后丢弃除了可执行程序之外的所有编译的代码&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;可以同时编译多个 Go 源码文件，在 &lt;code&gt;go build&lt;/code&gt; 后跟要编译的文件名，用空格分隔
+
+&lt;ul&gt;
+&lt;li&gt;限制：作为参数的多个 Go 源码文件必须在同一个目录中&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt; 命令在编译只包含库源码文件的代码包（或者同时编译多个代码包）时，只会做检查性的编译，而不会输出任何结果文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt; 命令既不能编译包含多个命令源码文件的代码包，也不能同时编译多个命令源码文件。因为，如果把多个命令源码文件作为一个整体看待，那么每个文件中的 main 函数就属于重名函数，在编译时会抛出重复定义错误&lt;/li&gt;
+&lt;li&gt;如果编译的多个属于 main 包的源码文件中没有 main 函数的声明，那么就会使编译器立即报出“未定义 main 函数声明”的错误并中止编译&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;总结：&lt;/strong&gt;同时编译多个 main 包的源码文件时，要保证其中有且仅有一个 main 函数声明，否则编译是无法成功的&lt;/li&gt;
+&lt;li&gt;如果有多个声明为属于 main 包的源码文件，且其中只有一个文件声明了 main 函数的话，那么是可以使用 &lt;code&gt;go build&lt;/code&gt; 命令同时编译它们的。在这种情况下，不包含 main 函数声明的那几个源码文件会被视为库源码文件。如此编译之后的可执行文件的名称来自指定的编译目标中最左边的那个源码文件的主文件名相同&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go-build-的参数&#34;&gt;go build 的参数&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下面的编译标志被 &lt;code&gt;build/clean/get/install/list/run/test&lt;/code&gt; 共享&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;标志&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-a&lt;/td&gt;
+&lt;td&gt;强行重新构建包，即使它们已经是最新的了，但是对标准包不适用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-n&lt;/td&gt;
+&lt;td&gt;打印将要执行的命令，但是不执行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-p n&lt;/td&gt;
+&lt;td&gt;指定执行命令的并行程序数量。默认等于可用的 CPU 逻辑数。在 darwin/arm (iPhone 和 iPad) 平台，默认是1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-race&lt;/td&gt;
+&lt;td&gt;开启竞态条件检测。仅在 linux/amd64、freebsd/amd64、darwin/amd64和windows/amd64 平台支持&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-v&lt;/td&gt;
+&lt;td&gt;打印被编译的包名&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-work&lt;/td&gt;
+&lt;td&gt;打印临时工作目录名称，且如果存在不会在执行命令后删除。默认结束命令时会删除该目录&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-x&lt;/td&gt;
+&lt;td&gt;打印命令。注意它与 &lt;code&gt;-n&lt;/code&gt; 标记的区别&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;其他参数
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-mod&lt;/code&gt; 控制对 &lt;code&gt;go.mod&lt;/code&gt; 的更新和使用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-mod=readonly&lt;/code&gt; 不能隐式自动更新 &lt;code&gt;go.mod&lt;/code&gt;。当需要修改 &lt;code&gt;go.mod&lt;/code&gt; 时会失败。用于检查 &lt;code&gt;go.mod&lt;/code&gt; 不需要任何更新，比如在持续集成和测试系统
+
+&lt;ul&gt;
+&lt;li&gt;这个参数对 &lt;code&gt;go get&lt;/code&gt; 不生效，即命令仍然可以更新 &lt;code&gt;go.mod&lt;/code&gt; 文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-mod=vendor&lt;/code&gt;: 使用模块的顶层的 &lt;code&gt;vendor&lt;/code&gt; 目录来编译以满足依赖(不使用通常的网络源码和本地缓存)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;依赖包&#34;&gt;依赖包&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt; 命令在执行时，编译程序会先查找目标代码包的所有依赖包，以及这些依赖包的依赖包，直至找到最深层的依赖包为止。在此过程中，如果发现有循环依赖的情况，编译程序就会输出错误信息并立即退出。此过程完成之后，所有的依赖关系也就形成了一棵含有重复元素的依赖树。对于依赖树中的一个节点（代码包）来说，它的直接分支节点（前者的依赖包），是按照代码包导入路径的字典序从左到右排列的。最左边的分支节点会最先被编译。编译程序会依此设定每个代码包的编译优先级&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;go build&lt;/code&gt; 命令的计算机如果拥有多个逻辑 CPU 核心，那么编译代码包的顺序可能会存在一些不确定性。但是，它一定会满足这样的约束条件：&lt;code&gt;依赖代码包 -&amp;gt; 当前代码包 -&amp;gt; 触发代码包&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在执行 &lt;code&gt;go build&lt;/code&gt; 命令时加入标记 &lt;code&gt;-p 1&lt;/code&gt;，那么就可以保证代码包编译顺序严格按照预先设定好的优先级进行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;构建标签&#34;&gt;构建标签&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;构建标签：&lt;code&gt;go build&lt;/code&gt; 只会在构建指定规格的目标文件的时候才进行编译，叫做构建标签的特殊注释，提供更细力度的控制。&lt;/li&gt;
+&lt;li&gt;注释需要加在包的声明之前，这是文档注释。如 &lt;code&gt;// +build linux darwin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;// +build ignore&lt;/code&gt; 指出任何时候都不要编译这个文件&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go clean</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/clean/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/clean/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-clean-%e7%9a%84%e5%8f%82%e6%95%b0&#34;&gt;go clean 的参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go clean&lt;/code&gt; 命令会删除掉执行其它命令时产生的一些文件和目录，包括
+
+&lt;ul&gt;
+&lt;li&gt;有一些目录和文件是在编译 Go 或 C 源码文件时留在相应目录中的&lt;/li&gt;
+&lt;li&gt;目录 &lt;code&gt;_obj/&lt;/code&gt;：旧的 object 目录，由 Makefiles 遗留&lt;/li&gt;
+&lt;li&gt;目录 &lt;code&gt;_test/&lt;/code&gt;：旧的 test 目录，由 Makefiles 遗留&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;_testmain.go&lt;/code&gt;：旧的 gotest 文件，由 Makefiles 遗留&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;test.out&lt;/code&gt;：旧的 test 记录，由 Makefiles 遗留&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;build.out&lt;/code&gt;：旧的 test 记录，由 Makefiles 遗留&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;a.out&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;DIR(.exe)&lt;/code&gt;： 由 &lt;code&gt;go build&lt;/code&gt; 在当前代码包下生成的与包名同名或者与 Go 源码文件同名的可执行文件(Windows 带有 &lt;code&gt;.exe&lt;/code&gt; 后缀)&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;DIR.test(.exe)&lt;/code&gt;： 由 &lt;code&gt;go test -c&lt;/code&gt; 在当前代码包下生成(Windows 带有 &lt;code&gt;.test.exe&lt;/code&gt; 后缀)&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;MAINFILE(.exe)&lt;/code&gt;： 由 &lt;code&gt;go build MAINFILE.go&lt;/code&gt; 产生&lt;/li&gt;
+&lt;li&gt;文件 &lt;code&gt;*.so&lt;/code&gt;：由 SWIG 遗留&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;go clean&lt;/code&gt; 命令时带有标记 &lt;code&gt;-i&lt;/code&gt;，则会同时删除安装当前代码包时所产生的结果文件。如果当前代码包中只包含库源码文件，则结果文件指的就是在工作区的 pkg 目录的相应目录下的归档文件。如果当前代码包中只包含一个命令源码文件，则结果文件指的就是在工作区的 bin 目录下的可执行文件。这些目录和文件是在执行 &lt;code&gt;go build&lt;/code&gt; 命令时生成在临时目录中的。临时目录的名称以 go-build 为前缀&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;go clean&lt;/code&gt; 命令时带有标记 &lt;code&gt;-r&lt;/code&gt;，则还包括当前代码包的所有依赖包的上述目录和文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go-clean-的参数&#34;&gt;go clean 的参数&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-i&lt;/td&gt;
+&lt;td&gt;清除关联的安装的包和可运行文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-n&lt;/td&gt;
+&lt;td&gt;打印执行命令期间所用到的其它命令，但是并不真正执行它们&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-r&lt;/td&gt;
+&lt;td&gt;循环的清除在 import 中引入的包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-x&lt;/td&gt;
+&lt;td&gt;打印执行命令期间所用到的其它命令。注意它与 &lt;code&gt;-n&lt;/code&gt; 标记的区别&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go doc</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/doc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/doc/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-%e8%af%ad%e8%a8%80%e7%a8%8b%e5%ba%8f%e5%ae%9e%e4%bd%93&#34;&gt;Go 语言程序实体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-doc-%e7%9a%84%e5%8f%82%e6%95%b0&#34;&gt;go doc 的参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#godoc&#34;&gt;godoc&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4%e8%a1%8c%e6%a8%a1%e5%bc%8f&#34;&gt;命令行模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#web-%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%a8%a1%e5%bc%8f&#34;&gt;Web 服务器模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go doc&lt;/code&gt; 命令可以打印附于 Go 语言程序实体上的文档。可以通过把程序实体的标识符作为该命令的参数来达到查看其文档的目的&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go doc&lt;/code&gt; 可以接受一个参数，指定包/包成员/方法：&lt;code&gt;go doc http.Request&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go doc&lt;/code&gt; 命令根据参数查找代码包或程序实体的顺序：Go 语言根目录（GOROOT 环境变量指定的目录）-&amp;gt; 工作区目录（GOPATH 环境变量包含的目录）。在内部遵循字典序&lt;/li&gt;
+&lt;li&gt;如果某个工作区目录中的代码包与标准库中的包重名了，那么它是无法被打印出来的。&lt;code&gt;go doc&lt;/code&gt; 命令只会打印出第一个匹配的代码包或程序实体的文档&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go doc&lt;/code&gt; 也可以接受两个参数：&lt;code&gt;go doc net/http Request&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这是一种更加精细的指定代码包或程序实体的方式&lt;/li&gt;
+&lt;li&gt;第一个参数的代码包名称必须是完整的导入路径&lt;/li&gt;
+&lt;li&gt;在给定两个参数时，&lt;code&gt;go doc&lt;/code&gt; 会打印出所有匹配的文档，而不是像给定一个参数时那样只打印出第一个匹配的文档。这对于查找只有大小写不同的多个方法（如 New、new）的文档来说非常有用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go-语言程序实体&#34;&gt;Go 语言程序实体&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go 语言的程序实体，是指变量、常量、函数、结构体以及接口&lt;/li&gt;
+&lt;li&gt;程序实体的标识符即是代表它们的名称。标识符又分非限定标识符和限定标识符
+
+&lt;ul&gt;
+&lt;li&gt;限定标识符一般用于表示某个代码包中的程序实体或者某个结构体类型中的方法或字段&lt;/li&gt;
+&lt;li&gt;如：标准库代码包 io 中的名为 EOF 的变量用限定标识符表示即 io.EOF&lt;/li&gt;
+&lt;li&gt;如：如果有一个 sync.WaitGroup 类型的变量 wg 并且想调用它的 Add 方法，那么可以这样写 wg.Add()。其中，wg.Add 就是一个限定标识符，而后面的 () 则代表了调用操作。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go-doc-的参数&#34;&gt;go doc 的参数&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-c&lt;/td&gt;
+&lt;td&gt;区分参数中字母的大小写。默认情况下，命令是大小写不敏感的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-cmd&lt;/td&gt;
+&lt;td&gt;打印出 main 包中的可导出的程序实体（其名称的首字母大写）的文档。默认情况下，这部分文档是不会被打印出来的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-u&lt;/td&gt;
+&lt;td&gt;打印出不可导出的程序实体（其名称的首字母小写）的文档。默认情况下，这部分文档是不会被打印出来的&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;godoc&#34;&gt;godoc&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 Go1.2 版本之前还支持 &lt;code&gt;go doc&lt;/code&gt; 命令，但是之后全部移到了 &lt;code&gt;godoc&lt;/code&gt; 这个命令下，需要这样安装 &lt;code&gt;go get golang.org/x/tools/cmd/godoc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在 Go1.5 版本中，&lt;code&gt;go doc&lt;/code&gt; 是一个内置的标准命令&lt;/li&gt;
+&lt;li&gt;命令有两种模式可供选择&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;命令行模式&#34;&gt;命令行模式&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不加入 &lt;code&gt;-http&lt;/code&gt; 标记：以命令行模式运行。在打印纯文本格式的文档到标准输出后，命令执行就结束了。如 &lt;code&gt;godoc fmt Printf&lt;/code&gt;，&lt;code&gt;godoc fmt Printf Println&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;加 &lt;code&gt;-src&lt;/code&gt; 标记：不但可以在文档中查看可导出的程序实体的声明，还可以看到源码。如 &lt;code&gt;godoc -src fmt Printf&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;godoc&lt;/code&gt; 命令只能把代码包和程序实体的标识符拆成两个参数。也就是说，&lt;code&gt;godoc&lt;/code&gt; 命令不支持前文所述的 &lt;code&gt;go doc&lt;/code&gt; 命令的单参数用法&lt;/li&gt;
+&lt;li&gt;在实际的环境中，可能会遇到一个命令源码文件所产生的可执行文件与代码包重名的情况。比如，标准命令 go 和官方代码包 go。们要明确的告诉 &lt;code&gt;godoc&lt;/code&gt; 命令要查看可执行文件 go 的文档，需要在名称前加入 &lt;code&gt;cmd/&lt;/code&gt; 前缀 &lt;code&gt;godoc cmd/go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看 HTML 格式的文档，就需要加入标记 &lt;code&gt;-html&lt;/code&gt;，可以在其中找到一些相应源码的链接地址&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;web-服务器模式&#34;&gt;Web 服务器模式&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;加上 &lt;code&gt;-http&lt;/code&gt; 标记：以 Web 服务器模式运行。以 Web 页面的形式提供 Go 语言文档&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;godoc -http=:6060&lt;/code&gt; 标记 &lt;code&gt;-http&lt;/code&gt; 的值 &lt;code&gt;:6060&lt;/code&gt; 表示启动的 Web 服务器使用本机的 6060 端口。之后，可通过在浏览器中输入 &lt;code&gt;http://localhost:6060&lt;/code&gt; 查看以网页方式展现的 Go 文档&lt;/li&gt;
+&lt;li&gt;这使得在不方便访问 Go 语言官方站点的情况下也可以查看 Go 语言文档。并且通过本机的 Go 文档 Web 服务，还可以查看所有本机工作区下的代码的文档&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;godoc -http=:9090 -index&lt;/code&gt; 使用 &lt;code&gt;-index&lt;/code&gt; 标记开启搜索索引。这个索引会在服务器启动时创建并维护。如果不加入此标记，那么无论在 Web 页面还是命令行终端中都无法进行查询操作&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go env</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/env/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-env-%e5%91%bd%e4%bb%a4%e5%8f%af%e6%89%93%e5%8d%b0%e5%87%ba%e7%9a%84-go-%e8%af%ad%e8%a8%80%e9%80%9a%e7%94%a8%e7%8e%af%e5%a2%83%e4%bf%a1%e6%81%af&#34;&gt;go env 命令可打印出的 Go 语言通用环境信息&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-env-%e7%9a%84%e5%8f%82%e6%95%b0&#34;&gt;go env 的参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go env&lt;/code&gt; 用于打印 Go 语言的环境信息：&lt;code&gt;go env GOARCH&lt;/code&gt; 或 &lt;code&gt;go env GOARCH GOCHAR&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go env -w&lt;/code&gt; 重写 Go 语言的环境信息：&lt;code&gt;go env -w GOPRIVATE=&amp;quot;*.bmi&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go-env-命令可打印出的-go-语言通用环境信息&#34;&gt;go env 命令可打印出的 Go 语言通用环境信息&lt;/h2&gt;
+
+&lt;p&gt;| 名称 | 描述 |
+| CGO_ENABLED | 指明 cgo 工具是否可用的标识 |
+| GOARCH | 程序构建环境的目标计算架构 |
+| GOBIN | 存放可执行文件的目录的绝对路径 |
+| GOCHAR | 程序构建环境的目标计算架构的单字符标识 |
+| GOEXE | 可执行文件的后缀 |
+| GOHOSTARCH | 程序运行环境的目标计算架构 |
+| GOOS | 程序构建环境的目标操作系统 |
+| GOHOSTOS | 程序运行环境的目标操作系统 |
+| GOPATH | 工作区目录的绝对路径 |
+| GORACE | 用于数据竞争检测的相关选项 |
+| GOROOT | Go 语言的安装目录的绝对路径 |
+| GOTOOLDIR | Go 工具目录的绝对路径 |&lt;/p&gt;
+
+&lt;h2 id=&#34;go-env-的参数&#34;&gt;go env 的参数&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go fix</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/fix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/fix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go fmt</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/fmt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/fmt/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gofmt-%e7%9a%84%e5%8f%82%e6%95%b0&#34;&gt;gofmt 的参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go 代码有标准的风格。&lt;code&gt;go fmt file_name.go&lt;/code&gt; 命令可以格式化写好的代码文件&lt;/li&gt;
+&lt;li&gt;开发工具里面一般都带了保存时候自动格式化功能，这个功能其实在底层就是调用了 &lt;code&gt;go fmt&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;go fmt&lt;/code&gt; 命令，其实是调用了 &lt;code&gt;gofmt&lt;/code&gt;，而且需要参数 &lt;code&gt;-w&lt;/code&gt;，否则格式化结果不会写入文件。&lt;code&gt;gofmt -w -l src&lt;/code&gt; 可以格式化整个项目&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;gofmt-的参数&#34;&gt;gofmt 的参数&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-l&lt;/td&gt;
+&lt;td&gt;显示需要格式化的文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-w&lt;/td&gt;
+&lt;td&gt;把改写后的内容直接写入到文件中，而不是作为结果打印到标准输出&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-r&lt;/td&gt;
+&lt;td&gt;添加形如 “a[b:len(a)] -&amp;gt; a[b:]” 的重写规则，方便做批量替换&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-s&lt;/td&gt;
+&lt;td&gt;简化文件中的代码&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-d&lt;/td&gt;
+&lt;td&gt;显示格式化前后的 diff 而不是写入文件，默认是 false&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-e&lt;/td&gt;
+&lt;td&gt;打印所有的语法错误到标准输出。如果不使用此标记，则只会打印不同行的前10个错误&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-cpuprofile&lt;/td&gt;
+&lt;td&gt;支持调试模式，写入相应的 cpufile 到指定的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go generate</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/generate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/generate/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go generate&lt;/code&gt; 用于在编译前自动化生成某类代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go generate&lt;/code&gt; 通过分析源码中特殊的注释，然后执行相应的命令。注意
+
+&lt;ul&gt;
+&lt;li&gt;此特殊注释必须在 &lt;code&gt;.go&lt;/code&gt; 源码文件&lt;/li&gt;
+&lt;li&gt;每个源码文件可包含多个 generate 注释&lt;/li&gt;
+&lt;li&gt;显示运行 &lt;code&gt;go generate&lt;/code&gt; 命令时，才会执行特殊注释后面的命令&lt;/li&gt;
+&lt;li&gt;命令串执行时，如果出错则终止后面的执行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;//go:generate go tool yacc -o gopher.go -p parser gopher.y&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;//go:generate&lt;/code&gt; 没有空格，这是一个固定的格式，在扫描源码文件的时候是根据这个来判断的&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;yacc&lt;/code&gt; 来生成代码：&lt;code&gt;-o&lt;/code&gt; 指定输出文件名，&lt;code&gt;-p&lt;/code&gt; 指定 package 名称&lt;/li&gt;
+&lt;li&gt;这是一个单独的命令。如果想让 &lt;code&gt;go generate&lt;/code&gt; 来触发这个命令，那么就可以在当然目录的任意一个 xxx.go 文件里面的任意位置增加此注释&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go get</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/get/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/get/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-get-%e5%91%bd%e4%bb%a4%e6%94%af%e6%8c%81%e7%9a%84-vcs&#34;&gt;go get 命令支持的 VCS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-get-%e7%9a%84%e5%8f%82%e6%95%b0&#34;&gt;go get 的参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go get&lt;/code&gt; 命令用来动态获取远程代码包，从代码版本控制系统的远程仓库中检出/更新代码包并对其进行编译和安装&lt;/li&gt;
+&lt;li&gt;在内部实际上分成了两步操作：第一步是下载源码包第一个工作区的 src 目录下，第二步是执行 &lt;code&gt;go install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;目前支持的有 BitBucket、GitHub、Google Code 和 Launchpad。下载源码包的 go 工具会自动根据不同的域名调用不同的源码工具，对应关系如下
+
+&lt;ul&gt;
+&lt;li&gt;BitBucket (Mercurial Git)&lt;/li&gt;
+&lt;li&gt;GitHub (Git)&lt;/li&gt;
+&lt;li&gt;Google Code Project Hosting (Git, Mercurial, Subversion)&lt;/li&gt;
+&lt;li&gt;Launchpad (Bazaar)&lt;/li&gt;
+&lt;li&gt;这些网站的项目包路径有一个共同标准：远程包路径格式是 &lt;code&gt;网站域名/作者或机构/项目名&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如 &lt;code&gt;go get github.com/hyper-carrot/go_lib/logging&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get&lt;/code&gt; 支持自定义域名的功能，具体参见 &lt;code&gt;go help remote&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;除非要求强行更新代码包，否则 &lt;code&gt;go get&lt;/code&gt; 命令不会进行重复下载&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go-get-命令支持的-vcs&#34;&gt;go get 命令支持的 VCS&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;代码版本控制系统（Version Control System，VCS）&lt;/li&gt;
+&lt;li&gt;这几个版本控制系统都有一个共同点，那就是会在检出的项目目录中存放一个元数据目录，名称为 “.” 前缀加其主命令名&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;主命令&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Mercurial&lt;/td&gt;
+&lt;td&gt;hg&lt;/td&gt;
+&lt;td&gt;Mercurial 是一种轻量级分布式版本控制系统，采用 Python 语言实现，易于学习和使用，扩展性强&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Git&lt;/td&gt;
+&lt;td&gt;git&lt;/td&gt;
+&lt;td&gt;Git 最开始是 Linux Torvalds 为了帮助管理 Linux 内核开发而开发的一个开源的分布式版本控制软件。但现在已被广泛使用。它是被用来进行有效、高速的各种规模项目的版本管理&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Subversion&lt;/td&gt;
+&lt;td&gt;svn&lt;/td&gt;
+&lt;td&gt;Subversion 是一个版本控制系统，也是第一个将分支概念和功能纳入到版本控制模型的系统。但相对于 Git 和 Mercurial 而言，它只算是传统版本控制系统的一员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Bazaar&lt;/td&gt;
+&lt;td&gt;bzr&lt;/td&gt;
+&lt;td&gt;Bazaar 是一个开源的分布式版本控制系统。但相比而言，用它来作为 VCS 的项目并不多&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;对于不知名的网站，需要指出导入路径使用哪种版本控制协议&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;位置由诸如 googlesource.com 或 github.com 之类通用服务托管，包可以在其导入路径中使用自定义域名。其 HTML 网页下包含元数据重定向 go 工具到实际托管地址的服务仓库&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;go-get-的参数&#34;&gt;go get 的参数&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go get&lt;/code&gt; 命令可以接受所有可用于 &lt;code&gt;go build&lt;/code&gt; 命令和 &lt;code&gt;go install&lt;/code&gt; 命令的参数。这是因为 &lt;code&gt;go get&lt;/code&gt; 命令的内部步骤中完全包含了编译和安装这两个动作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get&lt;/code&gt; 命令还有一些特有的参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-d&lt;/td&gt;
+&lt;td&gt;只下载不安装&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-f&lt;/td&gt;
+&lt;td&gt;只有在包含 -u 参数时才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-fix&lt;/td&gt;
+&lt;td&gt;在获取源码之后先运行 fix，而后再进行编译和安装&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-insecure&lt;/td&gt;
+&lt;td&gt;允许使用非安全的 scheme（如HTTP）去下载指定的代码包。如果代码仓库（如公司内部的Gitlab）没有 HTTPS 支持，可以添加此标记。请在确定安全的情况下使用它&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-t&lt;/td&gt;
+&lt;td&gt;下载并安装指定的代码包中的测试源码文件中依赖的代码包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-u&lt;/td&gt;
+&lt;td&gt;强制使用网络更新已有代码包及其依赖包。默认情况该命令只会从网络上下载本地不存在的代码包，而不会更新已有的代码包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-v&lt;/td&gt;
+&lt;td&gt;显示执行的命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go install</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/install/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%85%e4%bb%a3%e7%a0%81%e5%8c%85&#34;&gt;安装代码包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%85%e5%91%bd%e4%bb%a4%e6%ba%90%e7%a0%81%e6%96%87%e4%bb%b6&#34;&gt;安装命令源码文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#go-install-%e7%9a%84%e5%8f%82%e6%95%b0&#34;&gt;go install 的参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go install&lt;/code&gt; 用于编译并安装指定的代码包及它们的依赖包&lt;/li&gt;
+&lt;li&gt;这个命令在内部实际上分成了两步操作：第一步是生成结果文件(可执行文件或 &lt;code&gt;.a&lt;/code&gt; 包)，第二步会把编译好的结果移到指定目录(&lt;code&gt;$GOPATH/bin&lt;/code&gt; 或 &lt;code&gt;$GOPATH/pkg&lt;/code&gt;)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go install&lt;/code&gt; 命令只比 &lt;code&gt;go build&lt;/code&gt; 命令多做了一件事，即安装编译后的结果文件到指定目录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go install&lt;/code&gt; 命令可以接受所有可用于 &lt;code&gt;go build&lt;/code&gt; 命令的参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;安装代码包&#34;&gt;安装代码包&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go install&lt;/code&gt; 命令会把编译后的可执行文件保存在源码文件所在工作区的 bin 目录下，包保存在 pkg 目录&lt;/li&gt;
+&lt;li&gt;如果 &lt;code&gt;go install&lt;/code&gt; 命令后跟的代码包中仅包含库源码文件，那么 &lt;code&gt;go install&lt;/code&gt; 命令会把编译后的结果文件保存在源码文件所在工作区的 pkg 目录下。结果文件是对应的代码包归档文件（也叫静态链接库文件，名称以 .a 结尾）
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt; 命令对仅包含库源码文件的代码包进行编译时，不会在当前工作区的 src 以及 pkg 目录下产生任何结果文件。结果文件会出于编译目的被生成在临时目录，但并不会使当前工作区目录产生任何变化。只会留下可执行文件。&lt;code&gt;go build -i&lt;/code&gt; 可将包安装在独立于构建目标的地方&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go install&lt;/code&gt; 命令时不后跟任何代码包参数，那么命令将试图编译当前目录所对应的代码包&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;安装命令源码文件&#34;&gt;安装命令源码文件&lt;/h2&gt;
+
+&lt;h2 id=&#34;go-install-的参数&#34;&gt;go install 的参数&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-d&lt;/td&gt;
+&lt;td&gt;只下载不安装&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-f&lt;/td&gt;
+&lt;td&gt;只有在包含 -u 参数时才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-fix&lt;/td&gt;
+&lt;td&gt;在获取源码之后先运行 fix，而后再进行编译和安装&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-insecure&lt;/td&gt;
+&lt;td&gt;允许使用非安全的 scheme（如HTTP）去下载指定的代码包。如果代码仓库（如公司内部的Gitlab）没有 HTTPS 支持，可以添加此标记。请在确定安全的情况下使用它&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-t&lt;/td&gt;
+&lt;td&gt;下载并安装指定的代码包中的测试源码文件中依赖的代码包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-u&lt;/td&gt;
+&lt;td&gt;强制使用网络更新已有代码包及其依赖包。默认情况该命令只会从网络上下载本地不存在的代码包，而不会更新已有的代码包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-v&lt;/td&gt;
+&lt;td&gt;显示执行的命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go list</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/list/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%94%a8%e6%b3%95&#34;&gt;用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#f&#34;&gt;-f&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#m&#34;&gt;-m&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;用法&#34;&gt;用法&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;列举命名包，每行一个。不带参数时判断一个包是否存在工作空间，存在则输出包的导入路径&lt;/li&gt;
+&lt;li&gt;命令 &lt;code&gt;go list [-f format] [-json] [-m] [list flags] [build flags] [packages]&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;常用的参数是 &lt;code&gt;-f&lt;/code&gt; 和 &lt;code&gt;-json&lt;/code&gt;，用于控制输出格式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list cnet hash&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;...&lt;/code&gt; 通配符用于匹配包的导入路径中的任意子串
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go list ...&lt;/code&gt; 枚举工作空间的所有包&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list ch3/...&lt;/code&gt; 指定子树中的所有包&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list ...xml..&lt;/code&gt; 指定具体主题&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list&lt;/code&gt; 获取每个包的完整元数据，提供各种用于对用户或其他工具可访问的格式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;标志&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-e&lt;/td&gt;
+&lt;td&gt;以容错模式加载和分析指定的代码包，这样讲不会打印错误信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-json&lt;/td&gt;
+&lt;td&gt;把代码包的结构实体用 JSON 样式打印，所有值为对应类型的空值的字段会被忽略&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-compiled&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-deps&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-export&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-find&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-test&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-m&lt;/td&gt;
+&lt;td&gt;列举模块而不是包。使用 -f 指定的是模块模板&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;f&#34;&gt;-f&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用包模板语法指定可选格式。默认输出等价于 &lt;code&gt;-f &#39;{{ImportPath}}&#39;&lt;/code&gt;。&lt;code&gt;-f&lt;/code&gt; 的值需要满足 &lt;code&gt;text/template&lt;/code&gt; 中定义的语法
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{{.S}}&lt;/code&gt; 代表根结构体的 &lt;code&gt;S&lt;/code&gt; 字段的值。&lt;code&gt;go list&lt;/code&gt; 对应的跟结构体就是指定的代码包所对应的的结构体&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -f {{.GoFiles}} cnet/ctcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -e -f {{.Error.Err}} cnet&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -e -f &#39;The package {{.ImportPath}} is {{if .Incomplete}}incomplete!{{else}}complete.{{end}}&#39; cnet&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模板结构如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Package struct {
+  Dir           string   // directory containing package sources
+  ImportPath    string   // import path of package in dir
+  ImportComment string   // path in import comment on package statement
+  Name          string   // package name
+  Doc           string   // package documentation string
+  Target        string   // install path
+  Shlib         string   // the shared library that contains this package (only set when -linkshared)
+  Goroot        bool     // is this package in the Go root?
+  Standard      bool     // is this package part of the standard Go library?
+  Stale         bool     // would &#39;go install&#39; do anything for this package?
+  StaleReason   string   // explanation for Stale==true
+  Root          string   // Go root or Go path dir containing this package
+  ConflictDir   string   // this directory shadows Dir in $GOPATH
+  BinaryOnly    bool     // binary-only package (no longer supported)
+  ForTest       string   // package is only for use in named test
+  Export        string   // file containing export data (when using -export)
+  Module        *Module  // info about package&#39;s containing module, if any (can be nil)
+  Match         []string // command-line patterns matching this package
+  DepOnly       bool     // package is only a dependency, not explicitly listed
+
+  // Source files
+  GoFiles         []string // .go source files (excluding CgoFiles, TestGoFiles, XTestGoFiles)
+  CgoFiles        []string // .go source files that import &amp;quot;C&amp;quot;
+  CompiledGoFiles []string // .go files presented to compiler (when using -compiled)
+  IgnoredGoFiles  []string // .go source files ignored due to build constraints
+  CFiles          []string // .c source files
+  CXXFiles        []string // .cc, .cxx and .cpp source files
+  MFiles          []string // .m source files
+  HFiles          []string // .h, .hh, .hpp and .hxx source files
+  FFiles          []string // .f, .F, .for and .f90 Fortran source files
+  SFiles          []string // .s source files
+  SwigFiles       []string // .swig files
+  SwigCXXFiles    []string // .swigcxx files
+  SysoFiles       []string // .syso object files to add to archive
+  TestGoFiles     []string // _test.go files in package
+  XTestGoFiles    []string // _test.go files outside package
+
+  // Cgo directives
+  CgoCFLAGS    []string // cgo: flags for C compiler
+  CgoCPPFLAGS  []string // cgo: flags for C preprocessor
+  CgoCXXFLAGS  []string // cgo: flags for C++ compiler
+  CgoFFLAGS    []string // cgo: flags for Fortran compiler
+  CgoLDFLAGS   []string // cgo: flags for linker
+  CgoPkgConfig []string // cgo: pkg-config names
+
+  // Dependency information
+  Imports      []string          // import paths used by this package
+  ImportMap    map[string]string // map from source import to ImportPath (identity entries omitted)
+  Deps         []string          // all (recursively) imported dependencies
+  TestImports  []string          // imports from TestGoFiles
+  XTestImports []string          // imports from XTestGoFiles
+
+  // Error information
+  Incomplete bool            // this package or a dependency has an error
+  Error      *PackageError   // error loading package
+  DepsErrors []*PackageError // errors loading dependencies
+}
+
+type PackageError struct {
+  ImportStack   []string // shortest path from package named on command line to this one
+  Pos           string   // position of error (if present, file:line:col)
+  Err           string   // the error itself
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模板函数 &lt;code&gt;join&lt;/code&gt; 调用 &lt;code&gt;strings.Join&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go list -f &#39;{{join .Deps &amp;quot; &amp;quot;}}&#39; strconv&lt;/code&gt; 输出 strconv 包的依赖过渡关系记录，空格分隔&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -f &#39;{{.ImportPath}} -&amp;gt; {{join .Imports &amp;quot; &amp;quot;}}&#39; compress/...&lt;/code&gt; 输出标准库的 compress 子树中每个包的直接导入记录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模板函数 &lt;code&gt;context&lt;/code&gt; 返回构建上下文，定义如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Context struct {
+  GOARCH        string   // target architecture
+  GOOS          string   // target operating system
+  GOROOT        string   // Go root
+  GOPATH        string   // Go path
+  CgoEnabled    bool     // whether cgo can be used
+  UseAllFiles   bool     // use files regardless of +build lines, file names
+  Compiler      string   // compiler to assume when computing target paths
+  BuildTags     []string // build constraints to match in +build lines
+  ReleaseTags   []string // releases the current release is compatible with
+  InstallSuffix string   // suffix to use in the name of the install dir
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;m&#34;&gt;-m&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;默认输出模块路径、版本信息，如果有替换，输出替换信息
+
+&lt;ul&gt;
+&lt;li&gt;如果有替换，即 &lt;code&gt;Replace&lt;/code&gt; 不为 nil 时，下面的 &lt;code&gt;Dir&lt;/code&gt; 设置的是 &lt;code&gt;Replace.Dir&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;主模块是包含当前目录的模块。活动模块是主模块及其依赖模块。默认显示主模块
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;all&lt;/code&gt; 指定所有活动模块&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;和 &lt;code&gt;-f&lt;/code&gt; 一起使用，指定模块模板&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;结构体 Module 有一个 String 方法，用于格式化输出行，因此默认输出等价于 &lt;code&gt;-f {{.String}}&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Module struct {
+  Path      string       // module path
+  Version   string       // module version
+  Versions  []string     // available module versions (with -versions)
+  Replace   *Module      // replaced by this module
+  Time      *time.Time   // time version was created
+  Update    *Module      // available update, if any (with -u)
+  Main      bool         // is this the main module?
+  Indirect  bool         // is this module only an indirect dependency of main module?
+  Dir       string       // directory holding files for this module, if any
+  GoMod     string       // path to go.mod file for this module, if any
+  GoVersion string       // go version used in module
+  Error     *ModuleError // error loading module
+}
+
+type ModuleError struct {
+  Err string // the error itself
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-u&lt;/code&gt; 增加了关于可以升级的信息：&lt;code&gt;go list -m -u -json all&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-version&lt;/code&gt; 设置 &lt;code&gt;Module.Version&lt;/code&gt; 域为模块已知的版本&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模板函数 &lt;code&gt;module&lt;/code&gt; 接收一个字符串参数(必须是一个模块路径或查询)，返回指定的模块对应的 Module 结构体&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go mod</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/mod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/mod/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%94%a8%e6%b3%95&#34;&gt;用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#download&#34;&gt;download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#edit&#34;&gt;edit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#graph&#34;&gt;graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#init&#34;&gt;init&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tidy&#34;&gt;tidy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vendor&#34;&gt;vendor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#verify&#34;&gt;verify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why&#34;&gt;why&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;用法&#34;&gt;用法&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用于操作模块。&lt;strong&gt;注意：所有的 go 命令支持模块&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod &amp;lt;command&amp;gt; [arguments]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;download&lt;/td&gt;
+&lt;td&gt;下载模块到本地缓存&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;edit&lt;/td&gt;
+&lt;td&gt;使用工具或脚本更新 go.mod&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;graph&lt;/td&gt;
+&lt;td&gt;打印模块需求图&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;init&lt;/td&gt;
+&lt;td&gt;在当前目录初始化一个新模块&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;tidy&lt;/td&gt;
+&lt;td&gt;添加缺失模块，删除无用模块&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;vendor&lt;/td&gt;
+&lt;td&gt;创建依赖的 vendor 拷贝&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;verify&lt;/td&gt;
+&lt;td&gt;验证依赖拥有预期的内容&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;why&lt;/td&gt;
+&lt;td&gt;解释为什么需要一个包或者模块&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;download&#34;&gt;download&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法： &lt;code&gt;go mod download [-json] [modules]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;不带模块参数时，默认下载主模块的所有依赖&lt;/li&gt;
+&lt;li&gt;其他 go 命令会自动下载所需模块，&lt;code&gt;go mod download&lt;/code&gt; 主要用于预先填充本地缓存或用户计算 Go 模块代理&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;默认将错误发生给标准错误。&lt;code&gt;-json&lt;/code&gt; 会打印 JSON 对象到标准输出，描述每个下载的模块(或失败)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Module struct {
+  Path     string // module path
+  Version  string // module version
+  Error    string // error loading module
+  Info     string // absolute path to cached .info file
+  GoMod    string // absolute path to cached .mod file
+  Zip      string // absolute path to cached .zip file
+  Dir      string // absolute path to cached source root directory
+  Sum      string // checksum for path, version (as in go.sum)
+  GoModSum string // checksum for go.mod (as in go.sum)
+  Latest   bool   // would @latest resolve to this version?
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;edit&#34;&gt;edit&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod edit [edit flags] [go.mod]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;命令只会读写主模块 &lt;code&gt;go.mod&lt;/code&gt; 文件，可在编辑参数指定另外需要编辑的文件&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;编辑标识包括&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-fmt&lt;/code&gt;: 只格式化文件。其他参数默认会格式化。只有在没有其他编辑参数时需要指定 &lt;code&gt;-fmt&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-module&lt;/code&gt;: 修改模块路径(&lt;code&gt;module&lt;/code&gt; 行)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-require=path@version&lt;/code&gt;/&lt;code&gt;-droprequire=path&lt;/code&gt;:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-exclude=path@version&lt;/code&gt;/&lt;code&gt;-dropexclude=path@version&lt;/code&gt;:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-replace=old[@v]=new[@v]&lt;/code&gt;/&lt;code&gt;-dropreplace=old[@v]&lt;/code&gt;:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-go=version&lt;/code&gt;:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-print&lt;/code&gt;:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-json&lt;/code&gt;: 以 JSON 格式打印最终的 &lt;code&gt;go.mod&lt;/code&gt; 而不是写到 &lt;code&gt;go.mod&lt;/code&gt;。JSON 输出符合下面的 Go 类型&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;命令只会描述 &lt;code&gt;go.mod&lt;/code&gt; 文件，间接引用的模块不会包含。需要查看编译所需的所有模块使用 &lt;code&gt;go list -m -json all&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Module struct {
+Path string
+Version string
+}
+
+type GoMod struct {
+Module  Module
+Go      string
+Require []Require
+Exclude []Module
+Replace []Replace
+}
+
+type Require struct {
+Path string
+Version string
+Indirect bool
+}
+
+type Replace struct {
+Old Module
+New Module
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;工具可以通过解析 &lt;code&gt;go mod edit -json&lt;/code&gt; 的输出获取 &lt;code&gt;go.mod&lt;/code&gt; 数据结构，然后通过 &lt;code&gt;go mod edit&lt;/code&gt; 修改&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;graph&#34;&gt;graph&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;功能：以文本格式打印模块需求图(使用 replaced 模块)。每一行输出包含模块及其一个依赖&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;init&#34;&gt;init&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod init [module]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;功能：在当前目录初始化并写一个新的 &lt;code&gt;go.mod&lt;/code&gt;，实际上是以当前目录为根创建一个新模块。&lt;code&gt;go.mod&lt;/code&gt; 一定不能已经存在。可能的话，命令会从导入注释或版本控制配置(git 等)猜测模块路径。要 覆盖猜测，可以提供模块路径参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tidy&#34;&gt;tidy&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod tidy [-v]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;功能：确保 &lt;code&gt;go.mod&lt;/code&gt; 和模块的源码匹配。拉取需要的缺失模块，删除无用模块。同时修改 &lt;code&gt;go.sum&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 会输出删除模块信息到标准错误&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;vendor&#34;&gt;vendor&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod vendor [-v]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;功能：重置主模块的 &lt;code&gt;vendor&lt;/code&gt; 目录一包含编译和测试主模块所有包所需的包。目录不包含 vendored 包的测试代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 打印 vendored 模块和包的名称到标准错误&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;verify&#34;&gt;verify&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod verify&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;功能：检查当前模块的依赖在下载之后不曾被修改，该依赖存储在一个本地下载的源码缓存。如果所有模块未被修改，输出 &lt;code&gt;all modules verified.&lt;/code&gt;。否则打印被修改的模块，并导致 &lt;code&gt;go mod&lt;/code&gt; 以非 0 状态码返回&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;why&#34;&gt;why&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用法：&lt;code&gt;go mod why [-m] [-vendor] packages...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;功能：显示主模块到每个列举包的最短导入路径&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-m&lt;/code&gt; 将参数视为一系列模块，并为模块的每个包找到一个路径&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go run</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/run/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/run/</guid>
+      <description>
+
+&lt;h2 id=&#34;构建并运行程序&#34;&gt;构建并运行程序&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于简单的程序，可以使用 &lt;code&gt;go run program.go&lt;/code&gt; 直接构建并允许程序&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go run&lt;/code&gt; 不会再运行目录生成任何文件，可执行文件被放在临时文件中执行，工作目录被设置为当前目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go run&lt;/code&gt; 可以跟参数，第一个不是以 &lt;code&gt;.go&lt;/code&gt; 结尾的参数会作为可执行程序的参数列表的开始&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go test</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/test_package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/test_package/</guid>
+      <description>&lt;p&gt;用法：&lt;code&gt;go test [build/test flags] [packages] [build/test flags &amp;amp; test binary flags]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go test&lt;/code&gt; 自动测试通过导入路径命名的包。命令按下面的格式打印测试结果的概要：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;ok   archive/tar   0.011s
+FAIL archive/zip   0.022s
+ok   compress/gzip 0.033s
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之后是每个失败的包的详细输出。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go test&lt;/code&gt; 重新编译每个包以及所有名字匹配 “*_test.go” 的文件。这些额外的文件可以包含测试函数，基准测试函数和示例函数。查看 &lt;code&gt;go help testfunc&lt;/code&gt; 获取更多信息。每个列举的包执行一个单独的二进制测试。忽视以 “_” (包括 “_test.go”) 或 “.” 开始的文件。&lt;/p&gt;
+
+&lt;p&gt;声明了后缀为 “_test” 的包的测试文件会作为一个单独的包被编译，然后被主二进制测试链接和运行。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go tool&lt;/code&gt; 会忽视 “testdata” 命名的目录，使得可以包含测试所需的辅助数据。&lt;/p&gt;
+
+&lt;p&gt;作为编译一个二进制测试的一部分，&lt;code&gt;go test&lt;/code&gt; 在包及其测试源文件上运行 &lt;code&gt;go vet&lt;/code&gt; 以识别显著的问题。如果 &lt;code&gt;go vet&lt;/code&gt; 发现任何问题，&lt;code&gt;go test&lt;/code&gt; 报告这些问题并且不再运行二进制测试。只使用了默认 &lt;code&gt;go vet&lt;/code&gt; 检查的高可信度的子集。这些子集包括：atomic、bool、buildtags、nilfunc 和 printf。你可以通过 &lt;code&gt;go doc cmd/vet&lt;/code&gt; 查看他们的文档以及其他的 vet 测试。使用 -vet=off 标识禁用 &lt;code&gt;go vet&lt;/code&gt; 的运行。&lt;/p&gt;
+
+&lt;p&gt;即使测试打印输出到它自己的标准错误，所有的测试输出和总结行会被打印到 go 命令的标准输出。(保留 go 命令的标准错误用于打印编译这些测试的错误。)&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go test&lt;/code&gt; 运行包括两种模式：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;叫做本地目录模式。当调用 &lt;code&gt;go test&lt;/code&gt; 不带包参数时发生(如 &lt;code&gt;go test&lt;/code&gt; 或 &lt;code&gt;go test -v&lt;/code&gt;)。在这种模式，&lt;code&gt;go test&lt;/code&gt; 在当前目录找到的包源文件和测试文件，然后运行生成的二进制测试。在这种模式，禁用缓存(后面会讨论)。包测试结束之后，&lt;code&gt;go test&lt;/code&gt; 打印一个总结行显示测试状态(“ok” 或 “FAIL”)、包名和用时。&lt;/li&gt;
+&lt;li&gt;叫做包列表模式。当调用 &lt;code&gt;go test&lt;/code&gt; 携带显式的包参数时发送(如 &lt;code&gt;go test math&lt;/code&gt;、&lt;code&gt;go test ./...&lt;/code&gt; 甚至 &lt;code&gt;go test ..&lt;/code&gt;)。在这种模式，&lt;code&gt;go test&lt;/code&gt; 编译和测试命令行列举的每个包。如果一个包测试通过，&lt;code&gt;go test&lt;/code&gt; 只打印最后的 “ok” 总结行。如果一个包测试失败，&lt;code&gt;go test&lt;/code&gt; 打印完整的测试输出。如果调用时携带 -bench 或 -v 标识，&lt;code&gt;go test&lt;/code&gt; 也会为通过测试包打印完整的输出，以显示请求的基准测试结果或错误日志。当所有列举的包测试结束且打印了他们的输出之后，如果任何一个包测试失败，&lt;code&gt;go test&lt;/code&gt; 打印一个最终的 “FAIL” 状态。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;只有在包列表模式，&lt;code&gt;go test&lt;/code&gt; 会缓存成功的包测试结果以避免不必要的重复运行测试。当一个测试的结果可从缓存中恢复时，&lt;code&gt;go test&lt;/code&gt; 会再次显示之前的输出而不是再次运行二进制测试。这时，&lt;code&gt;go test&lt;/code&gt; 打印 “(cached)” 取代总结行中的用时。&lt;/p&gt;
+
+&lt;p&gt;缓存匹配的规则是 go 命令调用相同的二进制测试，且命令行标识完全来自受限的可缓存的测试标识集合，被定义为 -cpu、-list、-parallel、-run、-short 和 -v。如果允许一次 &lt;code&gt;go test&lt;/code&gt; 包含任何这个集合之外的测试标识或非测试标识，结果都是不可缓存的。要禁用测试缓存，使用除了可缓存的标识以外的任意的测试标识或参数。惯用的显式禁用测试缓存的方法是使用 -count=1。打开在包的源根(通常是 $GOPATH)或者查询环境变量的测试只有在这些文件和环境变量不改变时才会与之后的运行匹配。一个缓存的测试结果被视为立刻执行，因此无论如何设置 -timeout，一个成功的包测试结果会被缓存且重用。&lt;/p&gt;
+
+&lt;p&gt;除了编译标志，&lt;code&gt;go test&lt;/code&gt; 专属的标识包括：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;args：传递命令行的剩余部分(-args 之后的所有)给二进制测试，不解释且不修改。因为这个标识使用了命令行的剩余部分，包列表(如果有)必须出现在这个标识之前。&lt;/li&gt;
+&lt;li&gt;-c：编译二进制测试为 pkg.test 但不要运行(pkg 是包导入路径的最后一个元素)。文件名可以使用 -o 标识修改。&lt;/li&gt;
+&lt;li&gt;-exec xprog：使用 xprog 运行二进制测试。这个行为和 &lt;code&gt;go run&lt;/code&gt; 相同。查看 &lt;code&gt;go run&lt;/code&gt; 获取更多信息。&lt;/li&gt;
+&lt;li&gt;-i：安装测试的依赖包。不要运行测试。&lt;/li&gt;
+&lt;li&gt;-json：将测试输出转化为 JSON 用于自动处理。查看 &lt;code&gt;go doc test2json&lt;/code&gt; 获取编码信息。&lt;/li&gt;
+&lt;li&gt;-o file：编译二进制测试到指定名称的文件。测试仍然运行(除非指定 -c 或 -i)。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;二进制测试也接收控制测试执行的标识；这些标识也可被 &lt;code&gt;go test&lt;/code&gt; 访问。查看 &lt;code&gt;go help testflag&lt;/code&gt; 获取更多信息。&lt;/p&gt;
+
+&lt;p&gt;需要更多关于编译标识，查看 &lt;code&gt;go help build&lt;/code&gt;。需要更多关于指定包的，查看 &lt;code&gt;go help package&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;查看其他：&lt;code&gt;go build&lt;/code&gt;、&lt;code&gt;go vet&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GOPATH 和模块</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/gopath_and_module/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/gopath_and_module/</guid>
+      <description>&lt;p&gt;当使用模块时，不再使用 GOPATH 来解决导入。但是，它仍被用于存储下载的源码(在 GOPATH/pkg/mod)和编译好的命令(在 GOPATH/bin)。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GOPATH 环境变量</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/gopath_env_var/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/gopath_env_var/</guid>
+      <description>&lt;p&gt;Go 路径用于解决导入语句，它通过 go/build 包实现，并记录在 go/build 包。&lt;/p&gt;
+
+&lt;p&gt;GOPATH 环境变量列举了寻找 Go 代码的位置。在 Unix 上，其值是一个冒号分隔的字符串。在 Windows 上，其值是一个分号分隔的字符串。在 Plan 9 上，其值是一个列表。&lt;/p&gt;
+
+&lt;p&gt;如果环境变量未被设置，GOPATH 默认是用户主目录下的一个 “go” 子目录(Unix 下是 &lt;code&gt;$HOME/go&lt;/code&gt;，Windows 下是 &lt;code&gt;%USERPROFILE%\go&lt;/code&gt;)，除非那个目录存在一个 Go 发行版本。运行 &lt;code&gt;go env GOPATH&lt;/code&gt; 查看当前的 GOPATH。&lt;/p&gt;
+
+&lt;p&gt;查看 &lt;a href=&#34;../wiki/set_gopath.md&#34;&gt;SettingGOPATH&lt;/a&gt; 设置一个自定义的 GOPATH。&lt;/p&gt;
+
+&lt;p&gt;GOPATH 下的每个目录必须有一个规定的结构：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;src 目录持有源码。src 下的目录确定了导入路径或可执行文件名字。&lt;/li&gt;
+&lt;li&gt;pkg 目录持有安装的包对象。在 Go 树中，每个目标操作系统和架构对有其自己的包的子目录(pkg/GOOS_ARCH).&lt;/li&gt;
+&lt;li&gt;如果 DIR 是GOPATH 下的一个目录，包的源码在 DIR/src/foo/bar，那么包可以导出为 “foo/bar”，且将其编译文件安装到 “DIR/pkg/GOOS_GOARCH/foo/bar.a”。&lt;/li&gt;
+&lt;li&gt;bin 目录持有编译的命令。每个命令命名为它的源码目录，但是只有最后一个元素，而不是整个路径。也就是说，一个命令的源码在 DIR/src/foo/quux，那么它被安装到 DIR/bin/quux。这个 “foo/” 前缀被除去以便你可以增加 DIR/bin 到你的 PATH 来获取安装的命令。如果设置了 GOBIN 环境变量，命令被安装到 GOBIN 命名的目录而不是 DIR/bin。GOBIN 必须是一个绝对路径。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这里是一个目录格式示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;GOPATH=/home/user/go
+
+/home/user/go/
+    src/
+        foo/
+            bar/               (包 bar 中的 go 代码)
+                x.go
+            quux/              (包 main 中的 go 代码)
+                y.go
+    bin/
+        quux                   (安装的命令)
+    pkg/
+        linux_amd64/
+            foo/
+                bar.a          (安装的包对象)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Go 搜索 GOPATH 列举的每个目录来查找源码，但是新包总是下载到列表中的第一个目录。&lt;/p&gt;
+
+&lt;p&gt;查看&lt;a href=&#34;../golangdoc/code.md&#34;&gt;如何编写 Go 代码&lt;/a&gt;的例子。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>显示包或符号的文档</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/show_doc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/show_doc/</guid>
+      <description>&lt;p&gt;[](&lt;a href=&#34;https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol&#34; target=&#34;_blank&#34;&gt;https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>测试函数</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/test_func/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/test_func/</guid>
+      <description>&lt;p&gt;&lt;code&gt;go test&lt;/code&gt; 命令预期查找对应测试包的 “*_test.go” 文件中的测试函数、基准测试函数和示例函数。&lt;/p&gt;
+
+&lt;p&gt;测试函数命名为 TestXxx(Xxx 不以小写字母开始)，且应当有签名&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TestXxx(t *testing.T) { ... }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一个基准测试函数命名为 BenchmarkXxx，且应该有签名&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func BenchmarkXxx(b *testing.B) { ... }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一个示例函数，类似于测试函数，但不使用 *testing.T 报告成功或失败，而是打印输出到 os.Stdout。如果函数内最后的注释以 “Output:” 开头，那么输出与注释精确比较(看下面的例子)。如果最后的注释以 “Unordered output:” 开始，那么输出和注释做比较，但是忽视行的顺序。一个不带这样的注释的示例被编译但是不执行。一个在 “Output:” 之后没有文本的示例会被编译、执行并预期不会生成输出。&lt;/p&gt;
+
+&lt;p&gt;Godoc 显示 ExampleXxx 的消息体来演示函数、常量或变量 Xxx 的使用。一个接收类型是 T 或 *T 的方法 M 的示例函数命名为 ExampleT_M。对于一个给定的函数、常数或变量可能有多个示例，通过后缀 _xxx 区分，xxx 是一个不以大写字母开始的后缀。&lt;/p&gt;
+
+&lt;p&gt;有一个示例函数的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func ExamplePrintln() {
+  Println(&amp;quot;The output of\nthis example.&amp;quot;)
+  // Output: The output of
+  // this example.
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;另外一个忽视输出顺序的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func ExamplePerm() {
+  for _, value := range Perm(4) {
+    fmt.Println(value)
+  }
+
+  // Unordered output: 4
+  // 2
+  // 1
+  // 3
+  // 0
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当文件包含一个单独的示例函数，及至少一个其他的函数、类型、变量或常数声明，且没有测试函数或者基准测试函数时，整个测试文件作为例子显示。&lt;/p&gt;
+
+&lt;p&gt;查看 &lt;a href=&#34;../wiki/golangpkg/testing.md&#34;&gt;testing 包的文档&lt;/a&gt;查看更多信息。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>测试标识</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/test_flag/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/test_flag/</guid>
+      <description>&lt;p&gt;&lt;code&gt;go test&lt;/code&gt; 命令使用只适用于 &lt;code&gt;go test&lt;/code&gt; 的标识以及适用于生成二进制测试的标识。&lt;/p&gt;
+
+&lt;p&gt;一些标识控制概要并且写适用于 &lt;code&gt;go tool pprof&lt;/code&gt; 的执行概要；运行 &lt;code&gt;go tool pprof -h&lt;/code&gt; 查看更多信息。pprof 的 &amp;ndash;alloc_space、&amp;ndash;alloc_objects 和 &amp;ndash;show_bytes 选项控制如何显示这些信息。&lt;/p&gt;
+
+&lt;p&gt;下面的标识被 &lt;code&gt;go test&lt;/code&gt; 命令识别，并且控制测试的执行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;-bench regexp
+    Run only those benchmarks matching a regular expression.
+    By default, no benchmarks are run.
+    To run all benchmarks, use &#39;-bench .&#39; or &#39;-bench=.&#39;.
+    The regular expression is split by unbracketed slash (/)
+    characters into a sequence of regular expressions, and each
+    part of a benchmark&#39;s identifier must match the corresponding
+    element in the sequence, if any. Possible parents of matches
+    are run with b.N=1 to identify sub-benchmarks. For example,
+    given -bench=X/Y, top-level benchmarks matching X are run
+    with b.N=1 to find any sub-benchmarks matching Y, which are
+    then run in full.
+
+-benchtime t
+    Run enough iterations of each benchmark to take t, specified
+    as a time.Duration (for example, -benchtime 1h30s).
+    The default is 1 second (1s).
+    The special syntax Nx means to run the benchmark N times
+    (for example, -benchtime 100x).
+
+-count n
+    Run each test and benchmark n times (default 1).
+    If -cpu is set, run n times for each GOMAXPROCS value.
+    Examples are always run once.
+
+-cover
+    Enable coverage analysis.
+    Note that because coverage works by annotating the source
+    code before compilation, compilation and test failures with
+    coverage enabled may report line numbers that don&#39;t correspond
+    to the original sources.
+
+-covermode set,count,atomic
+    Set the mode for coverage analysis for the package[s]
+    being tested. The default is &amp;quot;set&amp;quot; unless -race is enabled,
+    in which case it is &amp;quot;atomic&amp;quot;.
+    The values:
+  set: bool: does this statement run?
+  count: int: how many times does this statement run?
+  atomic: int: count, but correct in multithreaded tests;
+    significantly more expensive.
+    Sets -cover.
+
+-coverpkg pattern1,pattern2,pattern3
+    Apply coverage analysis in each test to packages matching the patterns.
+    The default is for each test to analyze only the package being tested.
+    See &#39;go help packages&#39; for a description of package patterns.
+    Sets -cover.
+
+-cpu 1,2,4
+    Specify a list of GOMAXPROCS values for which the tests or
+    benchmarks should be executed. The default is the current value
+    of GOMAXPROCS.
+
+-failfast
+    Do not start new tests after the first test failure.
+
+-list regexp
+    List tests, benchmarks, or examples matching the regular expression.
+    No tests, benchmarks or examples will be run. This will only
+    list top-level tests. No subtest or subbenchmarks will be shown.
+
+-parallel n
+    Allow parallel execution of test functions that call t.Parallel.
+    The value of this flag is the maximum number of tests to run
+    simultaneously; by default, it is set to the value of GOMAXPROCS.
+    Note that -parallel only applies within a single test binary.
+    The &#39;go test&#39; command may run tests for different packages
+    in parallel as well, according to the setting of the -p flag
+    (see &#39;go help build&#39;).
+
+-run regexp
+    Run only those tests and examples matching the regular expression.
+    For tests, the regular expression is split by unbracketed slash (/)
+    characters into a sequence of regular expressions, and each part
+    of a test&#39;s identifier must match the corresponding element in
+    the sequence, if any. Note that possible parents of matches are
+    run too, so that -run=X/Y matches and runs and reports the result
+    of all tests matching X, even those without sub-tests matching Y,
+    because it must run them to look for those sub-tests.
+
+-short
+    Tell long-running tests to shorten their run time.
+    It is off by default but set during all.bash so that installing
+    the Go tree can run a sanity check but not spend time running
+    exhaustive tests.
+
+-timeout d
+    If a test binary runs longer than duration d, panic.
+    If d is 0, the timeout is disabled.
+    The default is 10 minutes (10m).
+
+-v
+    Verbose output: log all tests as they are run. Also print all
+    text from Log and Logf calls even if the test succeeds.
+
+-vet list
+    Configure the invocation of &amp;quot;go vet&amp;quot; during &amp;quot;go test&amp;quot;
+    to use the comma-separated list of vet checks.
+    If list is empty, &amp;quot;go test&amp;quot; runs &amp;quot;go vet&amp;quot; with a curated list of
+    checks believed to be always worth addressing.
+    If list is &amp;quot;off&amp;quot;, &amp;quot;go test&amp;quot; does not run &amp;quot;go vet&amp;quot; at all.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面的标识被 &lt;code&gt;go test&lt;/code&gt; 命令识别，且可用于概述执行期间的测试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;-benchmem
+    Print memory allocation statistics for benchmarks.
+
+-blockprofile block.out
+    Write a goroutine blocking profile to the specified file
+    when all tests are complete.
+    Writes test binary as -c would.
+
+-blockprofilerate n
+    Control the detail provided in goroutine blocking profiles by
+    calling runtime.SetBlockProfileRate with n.
+    See &#39;go doc runtime.SetBlockProfileRate&#39;.
+    The profiler aims to sample, on average, one blocking event every
+    n nanoseconds the program spends blocked. By default,
+    if -test.blockprofile is set without this flag, all blocking events
+    are recorded, equivalent to -test.blockprofilerate=1.
+
+-coverprofile cover.out
+    Write a coverage profile to the file after all tests have passed.
+    Sets -cover.
+
+-cpuprofile cpu.out
+    Write a CPU profile to the specified file before exiting.
+    Writes test binary as -c would.
+
+-memprofile mem.out
+    Write an allocation profile to the file after all tests have passed.
+    Writes test binary as -c would.
+
+-memprofilerate n
+    Enable more precise (and expensive) memory allocation profiles by
+    setting runtime.MemProfileRate. See &#39;go doc runtime.MemProfileRate&#39;.
+    To profile all memory allocations, use -test.memprofilerate=1.
+
+-mutexprofile mutex.out
+    Write a mutex contention profile to the specified file
+    when all tests are complete.
+    Writes test binary as -c would.
+
+-mutexprofilefraction n
+    Sample 1 in n stack traces of goroutines holding a
+    contended mutex.
+
+-outputdir directory
+    Place output files from profiling in the specified directory,
+    by default the directory in which &amp;quot;go test&amp;quot; is running.
+
+-trace trace.out
+    Write an execution trace to the specified file before exiting.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;所有这些标识也有一个可选的 “test.” 前缀被识别(如 -test.v)。但是当直接调用生成的二进制测试时(&lt;code&gt;go test -c&lt;/code&gt; 生成)，这个前缀是强制的。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go test&lt;/code&gt; 命令在调用二进制测试之前，适当地重写或移除在可选的包列表之前或之后识别的标识。&lt;/p&gt;
+
+&lt;p&gt;比如，命令 &lt;code&gt;go test -v -myflag testdata -cpuprofile=prof.out -x&lt;/code&gt; 将会编译二进制测试然后运行 &lt;code&gt;pkg.test -test.v -myflag testdata -test.cpuprofile=prof.out&lt;/code&gt;。(-x 标识被移除，因为它只适用于go 命令的执行，而不是&lt;code&gt;go test&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;生成概述(除了用于覆盖)的测试标识也会将二进制测试留在 pkg.test 以便用于分析概述。&lt;/p&gt;
+
+&lt;p&gt;当 &lt;code&gt;go test&lt;/code&gt; 运行一个二进制测试时，它从对应包源码目录内部运行。视测试而定，可能需要在直接调用一个生成的二进制测试时也这样做。&lt;/p&gt;
+
+&lt;p&gt;命令行的包列表，如果有的话，必须出现在所有 &lt;code&gt;go test&lt;/code&gt; 命令不知道的标识之前。继续上面的例子，包列表需要出现在 -myflag 之前，但是可以出现在 -v 两侧。&lt;/p&gt;
+
+&lt;p&gt;当 &lt;code&gt;go test&lt;/code&gt; 在列表模式运行时，&lt;code&gt;go test&lt;/code&gt; 缓存成功的包测试结果以避免不必要的重复运行测试。要禁用测试缓存，使用除了可缓存的标识以外的任意的测试标识或参数。惯用的显式禁用测试缓存的方法是使用 -count=1。&lt;/p&gt;
+
+&lt;p&gt;要保持二进制测试的一个参数不被翻译成一个已知的标识或者包名，使用 -args (查看 &lt;code&gt;got help test&lt;/code&gt;) 换地命令行的剩余部分给二进制测试，该部分不会被解释或修改。&lt;/p&gt;
+
+&lt;p&gt;例如，命令 &lt;code&gt;go test -v -args -x -v&lt;/code&gt; 会编译二进制测试然后运行 &lt;code&gt;pkg.test -test.v -x -v&lt;/code&gt;。类似的，&lt;code&gt;go test -args math&lt;/code&gt; 会编译二进制测试然后运行 &lt;code&gt;pkg.test math&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;在第一个例子中，-x 和第二个 -v 被传递给二进制测试且未被修改，且对 go 命令本身没有影响。在第二个例子中，参数 math 被传递给二进制测试，而不是解释成包列表。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>远程导入路径</title>
+      <link>https://xueqing.github.io/translation/go-doc/command/remote_import_path/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/command/remote_import_path/</guid>
+      <description>&lt;p&gt;一些导入路径也描述了如何使用版本控制系统获取包的源码。&lt;/p&gt;
+
+&lt;p&gt;一些常见的代码托管网站有一些特殊的语法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Bitbucket (Git, Mercurial)
+
+  import &amp;quot;bitbucket.org/user/project&amp;quot;
+  import &amp;quot;bitbucket.org/user/project/sub/directory&amp;quot;
+
+GitHub (Git)
+
+  import &amp;quot;github.com/user/project&amp;quot;
+  import &amp;quot;github.com/user/project/sub/directory&amp;quot;
+
+Launchpad (Bazaar)
+
+  import &amp;quot;launchpad.net/project&amp;quot;
+  import &amp;quot;launchpad.net/project/series&amp;quot;
+  import &amp;quot;launchpad.net/project/series/sub/directory&amp;quot;
+
+  import &amp;quot;launchpad.net/~user/project/branch&amp;quot;
+  import &amp;quot;launchpad.net/~user/project/branch/sub/directory&amp;quot;
+
+IBM DevOps Services (Git)
+
+  import &amp;quot;hub.jazz.net/git/user/project&amp;quot;
+  import &amp;quot;hub.jazz.net/git/user/project/sub/directory&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于托管在其他服务商的代码，导入路径或者具备版本控制类型，或者 go 工具可以通过 https/http 动态拉取导入路径，然后从 HTML 的 &lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt; 标签代码位置。&lt;/p&gt;
+
+&lt;p&gt;为了声明代码位置，具有形式 &lt;code&gt;repository.vcs/path&lt;/code&gt; 的导入路径指定了给定的仓库(使用或不使用 .vcs 后缀，使用命名的版本控制系统)和该仓库内的路径。支持的版本控制系统是：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Bazaar      .bzr
+Fossil      .fossil
+Git         .git
+Mercurial   .hg
+Subversion  .svn
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比如，&lt;code&gt;import &amp;quot;example.org/user/foo.hg&amp;quot;&lt;/code&gt; 表示根目录在 Mercurial 仓库的 example.org/user/foo 或 foo.hg，且 &lt;code&gt;import &amp;quot;example.org/repo.git/foo/bar&amp;quot;&lt;/code&gt; 表示 Git 仓库的 foo/bar 目录在 example.org/repo 或 repo.git。&lt;/p&gt;
+
+&lt;p&gt;当一个版本控制系统支持多个协议时，下载时轮流尝试每个协议。比如，一个 Git 下载尝试 &lt;code&gt;https://&lt;/code&gt;，然后是 &lt;code&gt;git+ssh://&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;默认的，下载受限于已知的安全协议(比如，https 和 ssh)。要覆盖 Git 下载的这个设置，可以设置 GIT_ALLOW_PROTOCOL 环境变量(查看 &lt;code&gt;go help environment&lt;/code&gt; 获取更多信息)。&lt;/p&gt;
+
+&lt;p&gt;如果导入路径不是已知的代码托管网站，且缺少版本控制限定符，go 工具尝试通过 https/http 查找 HTML  &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 的 &lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt; 标签来拉取导入。&lt;/p&gt;
+
+&lt;p&gt;meta 标签有这样的形式 &lt;code&gt;&amp;lt;meta name=&amp;quot;go-import&amp;quot; content=&amp;quot;import-prefix vcs repo-root&amp;quot;&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;import-prefix 是对应 repo-root 的导入路径。它必须是一个前缀，或者是借助 &lt;code&gt;go get&lt;/code&gt; 拉取包的一个精确匹配。如果不是一个精确匹配，生成另外一个 http 请求来验证 meta 标签。&lt;/p&gt;
+
+&lt;p&gt;meta 标签应该尽早出现在文件中。特别地，它应该出现在任何原始的 JavaScript 或 CSS 之前，避免使 go 命令受限的解释器不能理解。&lt;/p&gt;
+
+&lt;p&gt;vcs 是 bzr/fossil/git/hg/svn 中的一个。&lt;/p&gt;
+
+&lt;p&gt;repo-root 是版本控制系统的根，包含了一个体系，但是不包含 .vcs 限定符。&lt;/p&gt;
+
+&lt;p&gt;比如，&lt;code&gt;import &amp;quot;example.org/pkg/foo&amp;quot;&lt;/code&gt; 会导致下面的请求&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;https://example.org/pkg/foo?go-get=1 (preferred)
+http://example.org/pkg/foo?go-get=1  (fallback, only with -insecure)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果页面包含 meta 标签 &lt;code&gt;&amp;lt;meta name=&amp;quot;go-import&amp;quot; content=&amp;quot;example.org git https://code.org/r/p/exproj&amp;quot;&amp;gt;&lt;/code&gt;，那么 go 工具会验证 &lt;code&gt;https://example.org/pkg/foo?go-get=1&lt;/code&gt; 包含相同的 meta 标签，然后使用 &lt;code&gt;git clone https://code.org/r/p/exproj&lt;/code&gt; 克隆源码到 &lt;code&gt;GOPATH/src/example.org&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;当使用 GOPATH 时，下载的包被写到 GOPATH 环境变量列举的第一个目录。(查看 &lt;code&gt;go help gopath-get&lt;/code&gt; 和 &lt;code&gt;go help gopath&lt;/code&gt;。)&lt;/p&gt;
+
+&lt;p&gt;当使用模块时，下载的包存储在模块缓存。(查看 &lt;code&gt;go help module-get&lt;/code&gt; 和 &lt;code&gt;go help goproxy&lt;/code&gt;。)&lt;/p&gt;
+
+&lt;p&gt;当使用模块时，go-import meta 标签的额外的变量被识别且更倾向于通过这些列举的版本控制系统。比如，在 &lt;code&gt;&amp;lt;meta name=&amp;quot;go-import&amp;quot; content=&amp;quot;example.org mod https://code.org/moduleproxy&amp;quot;&amp;gt;&lt;/code&gt; 中，该变量使用 “mod” 作为 vcs 内容的值。&lt;/p&gt;
+
+&lt;p&gt;这个标签意味着使用以 example.org 开始的路径从 &lt;code&gt;https://code.org/moduleproxy&lt;/code&gt; 可用的模块代理拉取模块。查看 &lt;code&gt;go help goproxy&lt;/code&gt; 获取更多关于代理的信息。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

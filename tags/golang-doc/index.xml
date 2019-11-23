@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang-doc | kiki</title>
+    <link>https://xueqing.github.io/tags/golang-doc/</link>
+      <atom:link href="https://xueqing.github.io/tags/golang-doc/index.xml" rel="self" type="application/rss+xml" />
+    <description>golang-doc</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>golang-doc</title>
+      <link>https://xueqing.github.io/tags/golang-doc/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/readme/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%85-go&#34;&gt;安装 Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ad%a6%e4%b9%a0-go&#34;&gt;学习 Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%87%e7%ab%a0&#34;&gt;文章&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%9d%9e%e8%8b%b1%e6%96%87%e6%96%87%e7%ab%a0&#34;&gt;非英文文章&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/&#34; target=&#34;_blank&#34;&gt;Golang 官网文档&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;h2 id=&#34;安装-go&#34;&gt;安装 Go&lt;/h2&gt;
+
+&lt;h2 id=&#34;学习-go&#34;&gt;学习 Go&lt;/h2&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;代码漫步：Go 程序的指导之旅。
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;https://golang.org/doc/codewalk/functions&#34; target=&#34;_blank&#34;&gt;Go 的一级函数&lt;/a&gt;&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;https://golang.org/doc/codewalk/markov&#34; target=&#34;_blank&#34;&gt;生成任意文本：一个 Markov 链算法&lt;/a&gt;&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;https://golang.org/doc/codewalk/sharemem&#34; target=&#34;_blank&#34;&gt;通过共享内存&lt;/a&gt;&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;articles/wiki.md&#34; target=&#34;_blank&#34;&gt;编写 Web 应用&lt;/a&gt;——构建一个简单的 web 应用。&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;工具
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;articles/go_command.md&#34; target=&#34;_blank&#34;&gt;关于 Go 命令&lt;/a&gt;——为什么我们编写它？它是什么？它不是什么？如何使用它？&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;gdb.md&#34; target=&#34;_blank&#34;&gt;使用 GDB 调试 Go 代码&lt;/a&gt;&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;articles/race_detector.md&#34; target=&#34;_blank&#34;&gt;数据竞争检测器&lt;/a&gt;——关于数据竞争检测器的手册&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &lt;a href=&#34;asm.md&#34; target=&#34;_blank&#34;&gt;快速入门 Go 的汇编器&lt;/a&gt;——介绍了 Go 使用的汇编器&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;更多
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; 查看&lt;a href=&#34;../README.md&#34;&gt;维基&lt;/a&gt;的&lt;a href=&#34;../wiki/articles.md&#34;&gt;文章&lt;/a&gt;页面获取更多 Go 的文章&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;非英文文章&#34;&gt;非英文文章&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用 GDB 调试 Go 代码</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/gdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/gdb/</guid>
+      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/gdb&#34; target=&#34;_blank&#34;&gt;Go 官方文档——使用 GDB 调试 Go 代码&lt;/a&gt;学习。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>关于 Go 命令</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/articles/go_command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/articles/go_command/</guid>
+      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/articles/go_command.html&#34; target=&#34;_blank&#34;&gt;Go 官方文档——关于 Go 命令&lt;/a&gt; 学习。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>如何编写 Go 代码</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/code/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/code/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%8b%e7%bb%8d&#34;&gt;介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%a3%e7%a0%81%e7%bb%84%e7%bb%87&#34;&gt;代码组织&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e8%a7%88&#34;&gt;概览&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b7%a5%e4%bd%9c%e5%8c%ba&#34;&gt;工作区&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gopath-%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f&#34;&gt;GOPATH 环境变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84&#34;&gt;导入路径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ac%ac%e4%b8%80%e4%b8%aa%e7%a8%8b%e5%ba%8f&#34;&gt;第一个程序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ac%ac%e4%b8%80%e4%b8%aa%e5%ba%93&#34;&gt;第一个库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8c%85%e5%90%8d&#34;&gt;包名&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%b5%8b%e8%af%95&#34;&gt;测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%bf%9c%e7%a8%8b%e5%8c%85&#34;&gt;远程包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%8b%e4%b8%80%e6%ad%a5&#34;&gt;下一步&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%8e%b7%e5%8f%96%e5%b8%ae%e5%8a%a9&#34;&gt;获取帮助&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/code.html&#34; target=&#34;_blank&#34;&gt;Golang 官网文档&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+
+&lt;p&gt;此文档演示一个简单的 Go 包的发展，并介绍 &lt;a href=&#34;../command/README.md&#34;&gt;&lt;code&gt;go 工具&lt;/code&gt;&lt;/a&gt;。go 工具是拉取、编译和安装 Go 包和目录的标准方式。&lt;/p&gt;
+
+&lt;p&gt;go 工具要求你按照指定方式组织你的代码。请仔细阅读此文档。它解释了使用 Go 安装组织和运行的最简单的方式。&lt;/p&gt;
+
+&lt;p&gt;一个类似的解释可参考&lt;a href=&#34;https://www.youtube.com/watch?v=XCsL89YtqCs&#34; target=&#34;_blank&#34;&gt;编写、编译、安装和测试 Go 代码&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;代码组织&#34;&gt;代码组织&lt;/h2&gt;
+
+&lt;h3 id=&#34;概览&#34;&gt;概览&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go 开发人员通常保存他们所有的 Go 代码在一个单一的工作区。&lt;/li&gt;
+&lt;li&gt;一个工作区包含很多版本控制仓库(比如使用 Git 管理)。&lt;/li&gt;
+&lt;li&gt;每个仓库包含一个或多个包。&lt;/li&gt;
+&lt;li&gt;每个包由同一目录的一个或多个 Go 源文件组成。&lt;/li&gt;
+&lt;li&gt;包目录的路径确定了导入路径。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注意这个其他编程环境不同。其他编程环境的每个工程有一个单独的工作区，且工作区和版本控制仓库紧密相关。&lt;/p&gt;
+
+&lt;h3 id=&#34;工作区&#34;&gt;工作区&lt;/h3&gt;
+
+&lt;p&gt;一个工作区是一个目录层次架构，在其根有两个目录：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;src 包含 Go 源文件，且&lt;/li&gt;
+&lt;li&gt;bin 包含可执行命令。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;go 工具编译和安装二进制到 bin 目录。&lt;/p&gt;
+
+&lt;p&gt;src 子目录通常包含多个版本控制仓库(比如 Git 或 Mercurial)，跟踪了一个或多个源包的发展。&lt;/p&gt;
+
+&lt;p&gt;为了让你理解一个工作区实际上的组织，这里有一个例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;bin/
+  hello                      # command executable
+  outyet                     # command executable
+src/
+  github.com/golang/example/
+    .git/                    # Git repository metadata
+    hello/
+      hello.go               # command source
+    outyet/
+      main.go                # command source
+      main_test.go           # test source
+    stringutil/
+      reverse.go             # package source
+      reverse_test.go        # test source
+  golang.org/x/image/
+    .git/                    # Git repository metadata
+    bmp/
+      reader.go              # package source
+      writer.go              # package source
+  ... (many more repositories and packages omitted) ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上述树显示一个工作区有两个仓库(example 和 image)。example 仓库包含两个命令(hello 和 outyet)和一个库(stringutil)。image 仓库包含 bmp 包和&lt;a href=&#34;https://godoc.org/golang.org/x/image&#34; target=&#34;_blank&#34;&gt;其他的包&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;一个普通的工作区包含许多源仓库，这些仓库包含一些包和命令。大多数 Go 开发人员保存他们所有的 Go 源代码和依赖在一个单一的工作区。&lt;/p&gt;
+
+&lt;p&gt;注意不应使用符号链接链接文件或目录到你的工作区。&lt;/p&gt;
+
+&lt;p&gt;命令和库由不同的源包编译。我们之后会讨论&lt;a href=&#34;#包名&#34;&gt;区别&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;gopath-环境变量&#34;&gt;GOPATH 环境变量&lt;/h3&gt;
+
+&lt;p&gt;GOPATH 环境变量指定你的工作区位置。默认是你的主目录下名字为 go 的目录，因此在 Unix 上是 $HOME/go，Plan9 上是 $home/go，Windows 上是 %USERPROFILE%\go (通常是 C:\Users\YourName\go)。&lt;/p&gt;
+
+&lt;p&gt;如果你想要在不同的位置工作，你需要&lt;a href=&#34;../wiki/set_gopath.md&#34;&gt;设置 GOPATH&lt;/a&gt; 到那个目录。(另外一个常用的设置是设置 GOPATH=$HOME)。注意 GOPATH 一定不能和你的 Go 安装路径相同。&lt;/p&gt;
+
+&lt;p&gt;命令 &lt;code&gt;go env GOPATH&lt;/code&gt; 打印当前实际的 GOPATH；如果该环境变量没有设置，它会打印默认的位置。&lt;/p&gt;
+
+&lt;p&gt;方便起见，增加工作区的 bin 子目录到你的 PATH：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;export PATH=$PATH:$(go env GOPATH)/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;简洁起见，这个脚本在文档的其他部分使用 $GOPATH 而不是 $(go env GOPATH)。如果你还未设置 GOPATH，为了使得所写的脚本可运行，可以使用 $HOME/go 替换这些命令或者运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;export GOPATH=$(go env GOPATH)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;要了解更多关于 GOPATH 环境变量，参考 &lt;a href=&#34;../command/gopath_env_var.md&#34;&gt;&lt;code&gt;go help gopath&lt;/code&gt;&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;要使用自定义的工作区位置，&lt;a href=&#34;../wiki/set_gopath.md&#34;&gt;设置 GOPATH 环境变量&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;导入路径&#34;&gt;导入路径&lt;/h3&gt;
+
+&lt;p&gt;导入路径是一个唯一的标识一个包的字符串。一个包的导入路径对应它在工作区或远程仓库内的位置(下面会解释)。&lt;/p&gt;
+
+&lt;p&gt;标准库的包使用短的导入路径类似 “fmt” 和 “net/http”。对于你自己的包，你必须选择一个基础路径，该路径不太可能与将来增加的标准库或其他外部库冲突。&lt;/p&gt;
+
+&lt;p&gt;如果你将代码保存在其他地方的源仓库，那么你应该使用该源码库的根作为你的基础路径。比如，如果你有一个 Github 账户位于 github.com/user，那么 github.com/user 应该是你的基础路径。&lt;/p&gt;
+
+&lt;p&gt;注意在你可以编译代码之前，你不需要发布你的代码到一个远程仓库。这只是一个组织代码的好习惯以便某天你会发布它。实际上你可以选择任意的路径名字，只要它对于标准库和更大的 Go 生态系统是唯一的。&lt;/p&gt;
+
+&lt;p&gt;我们将会使用 github.com/user 作为我们的基础路径。在你的工作区内新建一个目录来保存源码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mkdir -p $GOPATH/src/github.com/user
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;第一个程序&#34;&gt;第一个程序&lt;/h3&gt;
+
+&lt;p&gt;为了编译和运行一个简单的程序，首先选择一个包路径(我们将会使用 github.com/user/hello)，并且在你的工作区内创建一个对应的包目录：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mkdir $GOPATH/src/github.com/user/hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来，在目录内部创建一个名为 hello.go 的文件，包含下面的 Go 代码。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+  fmt.Println(&amp;quot;Hello, world.&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在你可以使用 go 工具编译和安装这个程序：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go install github.com/user/hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意你可以在你的系统任何地方运行这个命令。go 工具通过在 GOPATH 指定的工作区内查找 github.com/user/hello 包找到源码。&lt;/p&gt;
+
+&lt;p&gt;如果你从包目录运行 &lt;code&gt;go install&lt;/code&gt;，你也可以忽视包路径：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd $GOPATH/src/github.com/user/hello
+go install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个命令编译 hello 命令，生成可执行的二进制文件。它接着安装该二进制文件到工作区的 bin 目录，安装的文件名字是 hello(或者在 Windows 上是 hello.exe)。在我们的例子中，该文件将会是 $GOPATH/bin/hello，也就是 $HOME/go/bin/hello。&lt;/p&gt;
+
+&lt;p&gt;发生错误时，go 工具只会打印输出。因此如果这些命令没有生成输出，那么这些命令已经被正确执行。&lt;/p&gt;
+
+&lt;p&gt;你现在可以通过在命令行输入程序的完整路径来运行它：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ $GOPATH/bin/hello
+Hello, world.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者，因为你已经添加 $GOPATH/bin 到你的 PATH，只需要输入二进制文件的名字：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hello
+Hello, world.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果你在使用一个源码控制系统，现在将是一个好的时机来初始化一个仓库，增加这些文件，并提交你的第一次修改。重申一次，这一步是可选的：你不必使用源码控制来写 Go 代码。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd $GOPATH/src/github.com/user/hello
+git init
+git add hello.go
+git commit -m &amp;quot;initial commit&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;推送代码到远程仓库留作读者的一个练习。&lt;/p&gt;
+
+&lt;h3 id=&#34;第一个库&#34;&gt;第一个库&lt;/h3&gt;
+
+&lt;p&gt;让我们编写一个库，并在 hello 程序使用它。&lt;/p&gt;
+
+&lt;p&gt;重申一次，第一步是选择一个包路径(我们将会使用 github.com/user/stringutil)并创建一个包目录：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mkdir $GOPATH/src/github.com/user/stringutil
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来，在该目录创建一个名为 reverse.go 的文件，包含下面的内容。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// Package stringutil contains utility functions for working with strings.
+package stringutil
+
+// Reverse returns its argument string reversed rune-wise left to right.
+func Reverse(s string) string {
+  r := []rune(s)
+  for i, j := 0, len(r)-1; i &amp;lt; len(r)/2; i, j = i+1, j-1 {
+    r[i], r[j] = r[j], r[i]
+  }
+  return string(r)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在，使用 &lt;code&gt;go build&lt;/code&gt; 编译测试这个包：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go build github.com/user/stringutil
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者，如果你正在包的源目录，只需要：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这不会生成一个输出文件。反之，它将编译的包保存在本地的编译缓存。&lt;/p&gt;
+
+&lt;p&gt;在确认编译 stringutil 包之后，修改你原始的 hello.go(在 $GOPATH/src/github.com/user/hello)，使用下面的内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+
+  &amp;quot;github.com/user/stringutil&amp;quot;
+)
+
+func main() {
+  fmt.Println(stringutil.Reverse(&amp;quot;!oG ,olleH&amp;quot;))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装 hello 程序：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go install github.com/user/hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行这个程序的新版本，你应该看到一个新的、翻转的消息：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hello
+Hello, Go!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上述步骤之后，你的工作区应该看起来是下面的结构：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;bin/
+  hello                 # command executable
+src/
+  github.com/user/
+    hello/
+      hello.go      # command source
+    stringutil/
+      reverse.go    # package source
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;包名&#34;&gt;包名&lt;/h3&gt;
+
+&lt;p&gt;Go 源文件的第一个语句必须是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，name 是用于导入包的默认名字。(包内的所有文件必须使用这个名字。)&lt;/p&gt;
+
+&lt;p&gt;Go 的管理是包名是导入路径的最后一个元素：按照 “crypto/rot13” 导入的包名应该命名为 rot13。&lt;/p&gt;
+
+&lt;p&gt;可执行的命令必须总使用 &lt;code&gt;package main&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;不需要包名在链接所有包成一个单一的二进制文件时是唯一的，只要它的导入路径(完整的文件名)是唯一的。&lt;/p&gt;
+
+&lt;p&gt;查看&lt;a href=&#34;effective_go.md#名字&#34; target=&#34;_blank&#34;&gt;实效 Go 编程&lt;/a&gt;了解更多关于 Go 的命名惯例。&lt;/p&gt;
+
+&lt;h2 id=&#34;测试&#34;&gt;测试&lt;/h2&gt;
+
+&lt;p&gt;Go 有一个轻量级的测试框架，由 &lt;code&gt;go test&lt;/code&gt; 命令和 testing 包组成。&lt;/p&gt;
+
+&lt;p&gt;你可以通过新建一个以 _test.go 结尾的文件编写测试，文件包含名字为 TestXXX，签名为 &lt;code&gt;func (t *testing.T)&lt;/code&gt; 的函数。测试框架运行每个像这样的函数；如果函数调用一个失败函数，如 t.Error 或 t.Fail，认为该测试失败。&lt;/p&gt;
+
+&lt;p&gt;向 stringutil 包增加一个测试，新建文件 $GOPATH/src/github.com/user/stringutil/reverse_test.go，包含下面的代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package stringutil
+
+import &amp;quot;testing&amp;quot;
+
+func TestReverse(t *testing.T) {
+  cases := []struct {
+    in, want string
+  }{
+    {&amp;quot;Hello, world&amp;quot;, &amp;quot;dlrow ,olleH&amp;quot;},
+    {&amp;quot;Hello, 世界&amp;quot;, &amp;quot;界世 ,olleH&amp;quot;},
+    {&amp;quot;&amp;quot;, &amp;quot;&amp;quot;},
+  }
+  for _, c := range cases {
+    got := Reverse(c.in)
+    if got != c.want {
+      t.Errorf(&amp;quot;Reverse(%q) == %q, want %q&amp;quot;, c.in, got, c.want)
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后使用 &lt;code&gt;go test&lt;/code&gt; 运行测试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ go test github.com/user/stringutil
+ok    github.com/user/stringutil 0.165s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;和平时一样，如果你在包目录运行 go 工具，可以忽视包路径&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ go test
+ok    github.com/user/stringutil 0.165s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行 &lt;a href=&#34;../command/test_package.md&#34;&gt;&lt;code&gt;go help test&lt;/code&gt;&lt;/a&gt; 并查看 &lt;a href=&#34;../golangpkg/testing.md&#34;&gt;testing 包文档&lt;/a&gt; 获取更多信息。&lt;/p&gt;
+
+&lt;h2 id=&#34;远程包&#34;&gt;远程包&lt;/h2&gt;
+
+&lt;p&gt;导入路径可以描述如何使用版本控制系统(如 Git 或 Mercurial)获取包源码。go 工具使用这个属性从远程仓库自动拉取代码。比如，文档中描述的例子也保存在 &lt;a href=&#34;https://github.com/golang/example&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; 托管的 Git 仓库。如果你在包的导入路径包含这个仓库的 URL，&lt;code&gt;go get&lt;/code&gt; 会自动拉取、编译和运行它：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go get github.com/golang/example/hello
+$GOPATH/bin/hello
+# 输出 Hello, Go examples!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果指定的包没有出现在工作区，&lt;code&gt;go get&lt;/code&gt; 会放置在 GOPATH 指定的第一个工作区。(如果包以及存在，&lt;code&gt;go get&lt;/code&gt; 会跳过远程拉取，行为类似于 &lt;code&gt;go install&lt;/code&gt;。)&lt;/p&gt;
+
+&lt;p&gt;在执行上述 &lt;code&gt;go get&lt;/code&gt; 命令只会，工作区目录树应该看起来是下面的结构：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;bin/
+    hello                     # command executable
+src/
+  github.com/golang/example/
+    .git/                     # Git repository metadata
+    hello/
+      hello.go                # command source
+    stringutil/
+      reverse.go              # package source
+      reverse_test.go         # test source
+  github.com/user/
+    hello/
+      hello.go                # command source
+    stringutil/
+      reverse.go              # package source
+      reverse_test.go         # test source
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Github 托管的 hello 命令依赖相同仓库的 stringutil 包。hello.go 文件中的导入使用相同的导入路径惯例，因此 &lt;code&gt;go get&lt;/code&gt; 命令也可以定位和安装依赖依赖包。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import &amp;quot;github.com/golang/example/stringutil&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此惯例是使得你的 Go 包被其他人可用的最简单的方式。&lt;a href=&#34;https://github.com/golang/go/wiki/Projects&#34; target=&#34;_blank&#34;&gt;Go 维基&lt;/a&gt; 和 &lt;a href=&#34;https://godoc.org/&#34; target=&#34;_blank&#34;&gt;go 官方文档&lt;/a&gt; 提供了外部 Go 过程的列表。&lt;/p&gt;
+
+&lt;p&gt;要获取更多关于借助 go 工具使用远程仓库的信息，查看&lt;a href=&#34;../command/remote_import_path.md&#34;&gt;远程导入路径&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;下一步&#34;&gt;下一步&lt;/h2&gt;
+
+&lt;p&gt;订阅 &lt;a href=&#34;https://groups.google.com/group/golang-announce&#34; target=&#34;_blank&#34;&gt;golang 宣传&lt;/a&gt; 邮件列表，接受发行新的稳定版本 Go 的通知。&lt;/p&gt;
+
+&lt;p&gt;查看&lt;a href=&#34;effective_go.md&#34; target=&#34;_blank&#34;&gt;实效 Go 编程&lt;/a&gt;了解更多关于编写清楚、惯用的 Go 代码的建议。&lt;/p&gt;
+
+&lt;p&gt;访问 &lt;a href=&#34;https://tour.golang.org/&#34; target=&#34;_blank&#34;&gt;Go 语言之旅&lt;/a&gt; 学习语言规则。&lt;/p&gt;
+
+&lt;p&gt;访问&lt;a href=&#34;README.md#文章&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;查看关于 Go 语言及其库和工具的全面深入的文章。&lt;/p&gt;
+
+&lt;h2 id=&#34;获取帮助&#34;&gt;获取帮助&lt;/h2&gt;
+
+&lt;p&gt;需要实时帮助，询问有帮助的 gopher ，它位于 &lt;a href=&#34;https://freenode.net/&#34; target=&#34;_blank&#34;&gt;FreeNode&lt;/a&gt; IRC 服务的 #go-nuts。&lt;/p&gt;
+
+&lt;p&gt;关于 Go 语言讨论的官方邮件列表在 &lt;a href=&#34;https://groups.google.com/group/golang-nuts&#34; target=&#34;_blank&#34;&gt;Go Nuts&lt;/a&gt; 群组。&lt;/p&gt;
+
+&lt;p&gt;使用 &lt;a href=&#34;https://github.com/golang/go/issues&#34; target=&#34;_blank&#34;&gt;Go issue 跟踪&lt;/a&gt;报告错误。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>实效 Go 编程</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%8b%e7%bb%8d&#34;&gt;介绍&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%be%8b%e5%ad%90&#34;&gt;例子&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a0%bc%e5%bc%8f%e5%8c%96&#34;&gt;格式化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%b3%a8%e9%87%8a&#34;&gt;注释&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%90%8d%e5%ad%97&#34;&gt;名字&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8c%85%e5%90%8d&#34;&gt;包名&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getter&#34;&gt;getter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a5%e5%8f%a3%e5%90%8d&#34;&gt;接口名&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%a9%bc%e5%b3%b0&#34;&gt;驼峰&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%86%e5%8f%b7&#34;&gt;分号&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a7%e5%88%b6%e7%bb%93%e6%9e%84&#34;&gt;控制结构&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#if&#34;&gt;if&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%87%8d%e6%96%b0%e5%a3%b0%e6%98%8e%e5%92%8c%e9%87%8d%e6%96%b0%e8%b5%8b%e5%80%bc&#34;&gt;重新声明和重新赋值&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%87%bd%e6%95%b0&#34;&gt;函数&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a4%9a%e8%bf%94%e5%9b%9e%e5%80%bc&#34;&gt;多返回值&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e5%90%8d%e7%bb%93%e6%9e%9c%e5%8f%82%e6%95%b0&#34;&gt;命名结果参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#defer&#34;&gt;defer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e6%8d%ae&#34;&gt;数据&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-new-%e5%88%86%e9%85%8d&#34;&gt;使用 new 分配&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e5%92%8c%e5%a4%8d%e5%90%88%e5%ad%97%e9%9d%a2%e9%87%8f&#34;&gt;构造函数和复合字面量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-make-%e5%88%86%e9%85%8d&#34;&gt;使用 make 分配&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e7%bb%84&#34;&gt;数组&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%87%e7%89%87&#34;&gt;切片&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%ba%8c%e7%bb%b4%e5%88%87%e7%89%87&#34;&gt;二维切片&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%98%a0%e5%b0%84&#34;&gt;映射&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%89%93%e5%8d%b0&#34;&gt;打印&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%bf%bd%e5%8a%a0&#34;&gt;追加&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%9d%e5%a7%8b%e5%8c%96&#34;&gt;初始化&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b8%b8%e6%95%b0&#34;&gt;常数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/effective_go.html&#34; target=&#34;_blank&#34;&gt;Golang 官网文档——Effective Go&lt;/a&gt; 学习。&lt;/p&gt;
+
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+
+&lt;p&gt;Go 是一门新语言。虽然它从现有语言借鉴了想法，但是它有独特的属性使得实效的 Go 程序和使用其他语言编写的程序特点不同。直接将一个 C++ 或 Java 程序翻译成 Go 不太可能生成令人满意的结果——Java 程序是用 Java 写的，而不是 Go。另一方面，从 Go 的角度思考一个问题可能产生一个成功的但是完全不同的程序。换句话说，要写好 Go，理解它的特性和惯用语是很重要的。而且，了解用 Go 编程已有的惯例，比如命名、格式化、程序结构等等也很重要，以便你编写的程序容易被其他 Go 开发人员理解。&lt;/p&gt;
+
+&lt;p&gt;此文档给出关于编写清晰、惯用的 Go 代码的建议。它增补了&lt;a href=&#34;https://golang.org/ref/spec&#34; target=&#34;_blank&#34;&gt;语言规范&lt;/a&gt;、&lt;a href=&#34;https://tour.golang.org/&#34; target=&#34;_blank&#34;&gt;Go 语言之旅&lt;/a&gt;以及&lt;a href=&#34;code.md&#34; target=&#34;_blank&#34;&gt;如何编写 Go 代码&lt;/a&gt;，所有这些你应该先阅读。&lt;/p&gt;
+
+&lt;h3 id=&#34;例子&#34;&gt;例子&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/src/&#34; target=&#34;_blank&#34;&gt;Go 包源码&lt;/a&gt;用于作为和核心库，也作为如何使用语言的例子。此外，很多包包含可工作的、自包含的可执行例子，你可以直接从 &lt;a href=&#34;https://golang.org/&#34; target=&#34;_blank&#34;&gt;golang.org&lt;/a&gt; 网站运行，比如&lt;a href=&#34;https://golang.org/pkg/strings/#example_Map&#34; target=&#34;_blank&#34;&gt;这个网站&lt;/a&gt;(如果需要，点击单词 “Example” 打开它)。如果你对于如何处理一个问题或一些东西是如何实现的有疑问，这个库中的文档、代码和例子可以给出答案、思想和背景。&lt;/p&gt;
+
+&lt;h2 id=&#34;格式化&#34;&gt;格式化&lt;/h2&gt;
+
+&lt;p&gt;格式化问题是最有争议却最不重要的。人们可以选择不同的格式风格，但是如果每个人遵循相同的风格，那么人们不需要且可以花费更少的时间在这个问题上是更好的。问题是如何在没有一个长长的风格规范指南的情况下实现这个想法。&lt;/p&gt;
+
+&lt;p&gt;对于 Go，我们使用了一种特别的方法且交由机器注意大多数格式化问题。gofmt 程序(也可以通过 &lt;code&gt;go fmt&lt;/code&gt; 使用，它作用于包级别而不是源文件级别)读入一个 Go 程序并且以标准的风格缩进、垂直对齐、保持或者需要的话重新格式化注释，然后发出源文件。如果你想要知道如何处理一些新的格式场景，运行 gofmt；如果答案看起来不正确，重新组织你的程序(或提出一个 gofmt 的错误)，不要绕过这个问题。&lt;/p&gt;
+
+&lt;p&gt;作为一个例子，不必花时间对结构体的域做注释对齐。gofmt 将会为你做这些。给出一个声明&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type T struct {
+    name string // 对象的名字
+    value int // 对象的值
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;gofmt 会列对齐：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type T struct {
+    name    string // 对象的名字
+    value   int    // 对象的值
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;标准库中所有的 Go 代码都已经使用 gofmt 格式化过。&lt;/p&gt;
+
+&lt;p&gt;还有一些格式化细节。非常简洁：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;缩进
+  我们使用 tab 键缩进，且 gofmt 默认使用 tab 键。只在必要的时候使用空格。
+行长度
+  Go 没有行长度限制。不要担心溢出穿孔卡片。如果感觉一行太长，包裹它并使用额外的 tab 键缩进
+括号
+  Go 比 C 和 Java 需要更少的括号：控制结构 (if/for/switch) 的语法没有括号。同时，操作符优先级层次更短更清晰。
+  因此不像其他语言， `x&amp;lt;&amp;lt;8 + y&amp;lt;&amp;lt;16` 就是空格暗示的含义。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
+
+&lt;p&gt;Go 提供 C-风格的块注释 /**/ 和 C++-风格的行注释 //。行注释是常态；块注释大多出现在包注释，但是在一个表达式内部或禁用大段代码是有用的。&lt;/p&gt;
+
+&lt;p&gt;godoc 程序，也是 web 服务器，处理 Go 源文件以提取关于包内容的文档。在顶层声明之前出现的注释，中间没有新行，和声明一起提取作为该元素的解释文本。这些注释的本性和风格决定了 godoc 生成的文档的质量。&lt;/p&gt;
+
+&lt;p&gt;每个包应该有一个包注释，即 package 语句之前的一个块注释。对于多文件的包，包注释只需要出现在一个文件，且每个文件都可以看到。包注释应该介绍包并提供和包有关的信息作为一个整体。它会先出现在 godoc 页面，并且应该设置后面的详细文档。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+包 regexp 实现了正则表达式的一个简单库。
+
+接收正则表达式的语法是:
+
+    正则表达式:
+        连接 { &#39;|&#39; 连接 }
+    连接:
+        { 闭包 }
+    闭包:
+        项 [ &#39;*&#39; | &#39;+&#39; | &#39;?&#39; ]
+    项:
+        &#39;^&#39;
+        &#39;$&#39;
+        &#39;.&#39;
+        字符
+        &#39;[&#39; [ &#39;^&#39; ] 字符范围 &#39;]&#39;
+        &#39;(&#39; 正则表达式 &#39;)&#39;
+*/
+package regexp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是一个简单包，包注释可以是简洁的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// 包 path 实现了功能代码，用于操作斜线分隔的文件名路径。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注释不需要额外的格式比如一行星号。生成的输出可能不能显式为固定宽度的字体，因此不要依赖空格对齐——godoc 像 gofmt 一样，会注意对齐问题。注释是无解释的普通文本，因此 HTML 和其他的注解，比如 _this_，会逐字重复，不应该使用。godoc 会做的一个调整是按固定宽度的字体显示缩进文本，适用于代码片段。&lt;a href=&#34;../golangpkg/fmt.md&#34;&gt;fmt 包&lt;/a&gt;对包注释的使用恰到好处。&lt;/p&gt;
+
+&lt;p&gt;视上下文而定，godoc 甚至可能不会重新格式化注释，因此确保他们直接看起来是格式好的：使用正确的拼写、标点符号和句子结构，折叠长行等等。&lt;/p&gt;
+
+&lt;p&gt;在包内部，任何紧紧出现在顶层声明之前的注释作为该声明的一个文档注释。程序中每个导出的(大写开头的)名字应该有一个文档注释。&lt;/p&gt;
+
+&lt;p&gt;文档注释最好是完整的句子，允许不同的自动化显示。第一个句子应该是一个总结句，以声明的名字开头。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// Compile 解析一个正则表达式，且成功时返回一个可用于匹配文本的 Regexp 对象。
+func Compile(str string) (*Regexp, error) {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果每个文档注释以描述的元素名字开头，你可以使用 &lt;a href=&#34;../command/README.md&#34;&gt;go&lt;/a&gt; 工具的 &lt;a href=&#34;../command/show_doc.md&#34;&gt;doc&lt;/a&gt; 子命令并通过 grep 运行输出。设想你不能急的 “Compile” 名字但是正在查找正则表达式的解析函数，因此你运行命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go doc -all regexp | grep -i parse
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果包内所有的文档注释以“这个函数……”开头，grep 不会帮助你记得那个名字。但是因为包的每个文档注释以名字开始，你会看到类似下面的内容，这会回忆起你正在寻找的单词。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;$ go doc -all regexp | grep -i parse
+    Compile parses a regular expression and returns, if successful, a Regexp
+    MustCompile is like Compile but panics if the expression cannot be parsed.
+    parsed. It simplifies safe initialization of global variables holding
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Go 的声明语法允许分组声明。一个单一的文档注释可以介绍一组相关的常量或变量。因为显示了整个声明，这样的注释通常是敷衍了事的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// 解析表达式失败时返回的错误代码。
+var (
+    ErrInternal      = errors.New(&amp;quot;regexp: internal error&amp;quot;)
+    ErrUnmatchedLpar = errors.New(&amp;quot;regexp: unmatched &#39;(&#39;&amp;quot;)
+    ErrUnmatchedRpar = errors.New(&amp;quot;regexp: unmatched &#39;)&#39;&amp;quot;)
+    ...
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;分组也可以指示元素之间的关系，比如被一个所保护的变量集合的事实。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var (
+    countLock   sync.Mutex
+    inputCount  uint32
+    outputCount uint32
+    errorCount  uint32
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;名字&#34;&gt;名字&lt;/h2&gt;
+
+&lt;p&gt;Go 中的名字和其他语言中的一样重要。它们甚至有语义影响：一个名字在包外的可见性取决于它的第一个字母是否是大写。因此值得花费一些时间讨论 Go 编程中的命名惯例。&lt;/p&gt;
+
+&lt;h3 id=&#34;包名&#34;&gt;包名&lt;/h3&gt;
+
+&lt;p&gt;当导入一个包时，包名成为这些内容的一个访问器。在 &lt;code&gt;import &amp;quot;bytes&amp;quot;&lt;/code&gt; 之后，导入包可以讨论 &lt;code&gt;bytes.buffer&lt;/code&gt;。每个使用该包的人可以使用相同的名字来引用包内容是有帮助的，这意味着包名应该是好的：短、简明、引起共鸣的。按照惯例，包使用小写的、单一单词的名字；不应该需要使用下划线或驼峰。Err 就是简洁的，因为每个人使用你的包都会输入那个名字。并且不予担心与先前的冲突。包名只是导入的默认名字；它不需要在所有源码范围内唯一，并且在极少冲突的情况下，导入包可选择一个不同的名字在局部使用。无论如何，混淆是稀少的，因为这个导入的文件名只决定正在使用的包。&lt;/p&gt;
+
+&lt;p&gt;另外一个惯例是包名是源路径的基础名；在 src/encoding/base64 中的包作为 “encoding/base64” 导入，但名字是 base64，而不是 encoding_base64 或者 encodingBase64。&lt;/p&gt;
+
+&lt;p&gt;包的导入者将会使用包名来引用它的内容，因此包中导出的名字可使用这个事实来避免停顿。(不要使用 &lt;code&gt;import .&lt;/code&gt; 符号，这可以简化必须在被测试包之外的测试，但应该被避免。)比如， bufio 包中的带缓冲的 reader 类型叫做 Reader，而不是 BufReader，因为使用者看到的是 bufio.Reader，这是一个更加清晰简洁的名字。此外，因为导入的实体总是用包名处理，bufio.Reader 和 io.Reader 不会冲突。类似的，生成 ring.Ring 实例的函数——这是 Go 中构造函数的定义——通常会使用 NewRing 调用，但是因为 Ring 是这个包导出的唯一类型，且这个包叫做 ring，这个函数只用 New 调用，这个包的使用者看到的是 ring.New。使用包结构来帮助你选择好名字。&lt;/p&gt;
+
+&lt;p&gt;另外一个简单的例子是 once.Do；once.Do(setup) 读着不错，并且不会被写做 once.DoOrWaitUntilDone(setup) 而有改善。长名字不会自动使得东西更易读。一个有用的文档注释通常比一个特别长的名字更有价值。&lt;/p&gt;
+
+&lt;h3 id=&#34;getter&#34;&gt;getter&lt;/h3&gt;
+
+&lt;p&gt;Go 不提供对 getter 和 setter 的自动支持。自己提供 getter 和 setter 是没有问题的，且通常这样做事合适的。但是将 Get 放在 getter 名字中既不是惯例也非必要的。如果你有一个域叫 owner(小写的，不导出)，它的 getter 方法应叫做 Owner(大写，导出的)，而不是 GetOwner。使用大写名字导出可以区分域名和方法名。如果有必要，一个 setter 方法可能叫做 SetOwner。两个名字实际上也是易读的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;owner := obj.Owner()
+if owner != user {
+  obj.SetOwner(user)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;接口名&#34;&gt;接口名&lt;/h3&gt;
+
+&lt;p&gt;按照惯例，一个方法的接口用方法名和一个 -er 后缀或类似的修改器命名，用以构造一个代理名词：Reader，Writer，Formatter，CloseNotifier 等。&lt;/p&gt;
+
+&lt;p&gt;有许多类似的名字，且尊重这些名字及其捕获的函数名是富有成效的，Read，Write，Close，Flush，String 等等有规范的签名和含义。为了避免混淆，除非方法具有相同的签名和含义，不要使用上述这些名字给方法命名。相反地，如果你的类型实现的方法与一个熟悉的类型的方法有相同的含义，使用这个相同的名字和签名；将你的字符串转换方法命名为 String 而不是 ToString。&lt;/p&gt;
+
+&lt;h3 id=&#34;驼峰&#34;&gt;驼峰&lt;/h3&gt;
+
+&lt;p&gt;最后，Go 的惯例是使用 MixedCaps 或 mixedCaps 而不是下划线来写多单词的名字。&lt;/p&gt;
+
+&lt;h2 id=&#34;分号&#34;&gt;分号&lt;/h2&gt;
+
+&lt;p&gt;类似 C，Go 规范的语法使用分号来终止一个语句，但是和 C 不同的是，这些分号不会出现在源文件。反之，词法分析器使用一个简单的规则在扫描时自动插入分号，因此输入文本可免除大部分分号。&lt;/p&gt;
+
+&lt;p&gt;规则如下。如果新行之前的最后一个符号是一个标识符(包括像 int 和 float64 的单词)，一个基本字面量，比如一个数字、字符串常量，或者下面的一个符号&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;break continue fallthrough return ++ -- ) }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;词法分析器总是在这个符号之后插入一个分号。这可以概括为，“如果在一个可以结束一句话的符号之后有一个新行，插入一个分号”。&lt;/p&gt;
+
+&lt;p&gt;紧挨着在一个右大括号之前出现的分号也可以忽略，因此一个类似下面的语句不需要分号：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;go func() {for { dts &amp;lt;- &amp;lt;- src }} ()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;习惯上，Go 程序只在类似于 for 循环子句中有分号，用于分隔初始化、条件和连续元素。如果你在一行中写多个语句，也需要分号来分隔语句。&lt;/p&gt;
+
+&lt;p&gt;插入分号规则的一个结果是你不能将一个控制结构(if/for/switch/select)的左大括号放在下一行。如果你这样做，会在一个大括号之前插入分号，这会导致不想出现的影响。像这样编写代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;if i &amp;lt; f() {
+    g()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不要像这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;if i &amp;lt; f()  // 错误!
+{           // 错误!
+    g()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;控制结构&#34;&gt;控制结构&lt;/h2&gt;
+
+&lt;p&gt;Go 的控制结构和 C 的控制结构相关，但是很不相同。Go 没有 do 或 while 循环，只有一个稍微普遍的 for；switch 更加灵活；if 和 switch 接受一个可选的类似 for 中的初始化语句；break 和 continue 语句使用一个可选的标签来识别从哪里跳出或继续循环；Go 也有新的控制结构，包括 type switch 和多向通讯复用器 select。语法也有一点不同：Go 没有小括号，且控制结构体必须使用大括号分隔。&lt;/p&gt;
+
+&lt;h3 id=&#34;if&#34;&gt;if&lt;/h3&gt;
+
+&lt;p&gt;在 Go 中，一个简单的 if 看起来像这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;if x &amp;gt; 0 {
+    return y
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;强制的大括号鼓励将一个简单的 if 语句分为多行。无论如何，这样编写是一个好的风格，尤其是当代码体包含一个控制语句，比如 return 或 break。&lt;/p&gt;
+
+&lt;p&gt;因为 if 和 switch 接受一个初始化语句，常见的是用于设置一个局部变量：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;if err := file.Chmod(0664); err != nil {
+    log.Print(err)
+    return err
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在 Go 的库中，你会发现当一个 if 没有流入下一句——即代码体以 break、continue、goto 或 return 结束——会忽略不需要的 else。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;f, err := os.Open(name)
+if err != nil {
+    return err
+}
+codeUsing(f)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这是一个常见情形的例子，即代码必须防止一系列错误条件。如果成功的控制流沿着页面向下，而错误出现的时候消除它们时，代码阅读体验更好。因为错误情况倾向于以 return 语句结束，生成的diamante不需要 else 语句。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;f, err := os.Open(name)
+if err != nil {
+    return err
+}
+d, err := f.Stat()
+if err != nil {
+    f.Close()
+    return err
+}
+codeUsing(f, d)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;重新声明和重新赋值&#34;&gt;重新声明和重新赋值&lt;/h3&gt;
+
+&lt;h2 id=&#34;函数&#34;&gt;函数&lt;/h2&gt;
+
+&lt;h3 id=&#34;多返回值&#34;&gt;多返回值&lt;/h3&gt;
+
+&lt;p&gt;Go 其中一个非凡的特性时函数和方法可以返回多个值。这个性质可用于改善 C 程序中的一些笨拙的写法：in-band 错误返回类似 -1 的值表示错误码并修改通过地址传递的参数。&lt;/p&gt;
+
+&lt;p&gt;在 C 语言，使用一个负的计数器标记一个写入错误，且错误码隐藏在一个不固定位置。在 Go 语言，&lt;code&gt;Write&lt;/code&gt; 可以返回一个计数器和一个错误：“是的，你写了一部分但非全部的字节，因为你已经填满了设备”。&lt;code&gt;os&lt;/code&gt; 包中作用于文件的 &lt;code&gt;Write&lt;/code&gt; 方法签名：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (file *File) Write(b []byte) (n int, err error)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;且如文档所说，当 n 不等于 b 时这个方法返回写入的字节数和一个非空的错误。这是常见的风格；查看错误处理部分获得更多例子。&lt;/p&gt;
+
+&lt;p&gt;一个类似的方法不需要传递一个指针给返回值来模拟一个引用参数。下面是一个简单的函数，从一个字节切片的某个位置起捕获一个数字，返回该数字和下一个位置。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func nextInt(b []byte, i int) (int, int) {
+    for ; i &amp;lt; len(b) &amp;amp;&amp;amp; !isDigit(b[i]); i++ {
+    }
+    x := 0
+    for ; i &amp;lt; len(b) &amp;amp;&amp;amp; isDigit(b[i]); i++ {
+        x = x*10 + int(b[i]) - &#39;0&#39;
+    }
+    return x, i
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你可以使用这个方法像下面这样来扫描一个输入切片 &lt;code&gt;b&lt;/code&gt; 的数字：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;for i := 0; i &amp;lt; len(b); {
+    x, i = nextInt(b, i)
+    fmt.Println(x)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;命名结果参数&#34;&gt;命名结果参数&lt;/h3&gt;
+
+&lt;p&gt;Go 函数的返回或结果“参数”可以指定名字并作为普通变量使用，就像使用传入参数。当函数开始时，命名的参数被初始化对应类型的零值；如果函数执行一个不带参数的 &lt;code&gt;return&lt;/code&gt; 语句，返回参数的当前值被作为返回值。&lt;/p&gt;
+
+&lt;p&gt;名字不是必须的，但是名字可以使得代码更加简短清晰：名字即是文档。如果我们将 &lt;code&gt;nextInt&lt;/code&gt; 的结果命名，很显然返回的 &lt;code&gt;int&lt;/code&gt; 含义。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func nextInt(b []byte, pos int) (value, nextPos int) {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因为命名的结果会被初始化且绑定在一个简单的 &lt;code&gt;return&lt;/code&gt;，它们可以既简单又清晰。下面是 &lt;code&gt;oi.ReadFull&lt;/code&gt; 使用命名结果良好的版本：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func ReadFull(r Reader, buf []byte) (n int, err error) {
+    for len(buf) &amp;gt; 0 &amp;amp;&amp;amp; err == nil {
+        var nr int
+        nr, err = r.Read(buf)
+        n += nr
+        buf = buf[nr:]
+    }
+    return
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;defer&#34;&gt;defer&lt;/h3&gt;
+
+&lt;p&gt;Go 的 &lt;code&gt;defer&lt;/code&gt; 语句安排执行 &lt;code&gt;defer&lt;/code&gt; 的函数返回之前立即运行一个函数调用(即推迟的函数)。这是一个处理一些场景特别而高效的方式，比如无论函数使用哪条路径返回都必须释放的资源。经典的例子是解锁一个互斥锁或关闭一个文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// Contents 将文件内容作为字符串返回。
+func Contents(filename string) (string, error) {
+    f, err := os.Open(filename)
+    if err != nil {
+        return &amp;quot;&amp;quot;, err
+    }
+    defer f.Close()  // 函数结束时会运行 f.Close。
+
+    var result []byte
+    buf := make([]byte, 100)
+    for {
+        n, err := f.Read(buf[0:])
+        result = append(result, buf[0:n]...) // 后面会讨论 append。
+        if err != nil {
+            if err == io.EOF {
+                break
+            }
+            return &amp;quot;&amp;quot;, err  // 如果在这里返回，会关闭 f。
+        }
+    }
+    return string(result), nil // 如果在这里返回，会关闭 f。
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;推迟一个类似于 &lt;code&gt;Close&lt;/code&gt; 的函数调用有两个优点。其一，它保证你永远不会忘记关闭一个文件，如果你之后编辑这个函数增加一个新的返回路径，这是很容易犯的一个错误。其二，它意味着关闭挨着打开操作，这比放在函数末尾更加清晰。&lt;/p&gt;
+
+&lt;p&gt;推迟的函数参数(当函数是一个方法时还包括接收者)在执行 &lt;code&gt;defer&lt;/code&gt; 时计算值，而不是执行调用时计算。除了避免担心在函数执行时修改变量值，这还意味着一个单一的推迟调用可以推迟多个函数执行。这里有一个丑陋的示例。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;for i := 0; i &amp;lt; 5; i++ {
+    defer fmt.Printf(&amp;quot;%d &amp;quot;, i)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;推迟的函数按照 LIFO (后进先出)的顺序执行，因此上述代码函数返回时，会打印“ 4 3 2 1 0”。一个更加合乎情理的例子是使用一个简单的方式来跟踪程序的函数执行。我们可以写一些像这样的简单的跟踪代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func trace(s string)   { fmt.Println(&amp;quot;entering:&amp;quot;, s) }
+func untrace(s string) { fmt.Println(&amp;quot;leaving:&amp;quot;, s) }
+
+// 像这样使用它们:
+func a() {
+    trace(&amp;quot;a&amp;quot;)
+    defer untrace(&amp;quot;a&amp;quot;)
+    // 做一些事情....
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们可以利用延迟函数的参数在执行 &lt;code&gt;defer&lt;/code&gt; 时计算这一事实做的更好。跟踪代码可以设置不跟踪代码的参数。下面的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func trace(s string) string {
+    fmt.Println(&amp;quot;entering:&amp;quot;, s)
+    return s
+}
+
+func un(s string) {
+    fmt.Println(&amp;quot;leaving:&amp;quot;, s)
+}
+
+func a() {
+    defer un(trace(&amp;quot;a&amp;quot;))
+    fmt.Println(&amp;quot;in a&amp;quot;)
+}
+
+func b() {
+    defer un(trace(&amp;quot;b&amp;quot;))
+    fmt.Println(&amp;quot;in b&amp;quot;)
+    a()
+}
+
+func main() {
+    b()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;打印&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;entering: b
+in b
+entering: a
+in a
+leaving: a
+leaving: b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于习惯块级别资源管理的其他语言的编程人员，&lt;code&gt;defer&lt;/code&gt; 可能看起来怪异的，但是它最有趣且强大的应用正来自它不是块级别而是函数级别的事实。在 &lt;code&gt;panic&lt;/code&gt; 和 &lt;code&gt;recover&lt;/code&gt; 部分，我们会看到另一个可能使用 &lt;code&gt;defer&lt;/code&gt; 的例子。&lt;/p&gt;
+
+&lt;h2 id=&#34;数据&#34;&gt;数据&lt;/h2&gt;
+
+&lt;h3 id=&#34;使用-new-分配&#34;&gt;使用 new 分配&lt;/h3&gt;
+
+&lt;p&gt;Go 有两种分配原语，即内置函数 &lt;code&gt;new&lt;/code&gt; 和 &lt;code&gt;make&lt;/code&gt;。它们做了不同的事情且适用于不同类型，这可能有点难以理解，但是规则很简单。我们首先讨论 &lt;code&gt;new&lt;/code&gt;。它是一个分配内存的内置函数，但是和一些其他语言的同名函数不同，它不会初始化内存，它只是将内存置零。也就是说，&lt;code&gt;new(T)&lt;/code&gt; 为类型 T 的新条目分配置零的存储，并返回存储地址(值为类型 T*)。在 Go 的术语中， 它返回一个指针指向一个新分配的类型 T 的零值。&lt;/p&gt;
+
+&lt;p&gt;因为 &lt;code&gt;new&lt;/code&gt; 返回的内存是置零的，当将你的数据结构设计为每个类型的零值都可以直接使用不需要进一步初始化，在安排的时候是很有用的。这意味着数据结构的使用者可以使用 &lt;code&gt;new&lt;/code&gt; 创建一个对象并正常工作。比如，&lt;code&gt;bytes.Buffer&lt;/code&gt; 的文档声明“ Buffer 的零值是一个就绪的空缓冲”。类似的，&lt;code&gt;sync.Mutex&lt;/code&gt; 没有一个显式的构造函数或 &lt;code&gt;Init&lt;/code&gt; 方法。反之，&lt;code&gt;sync.Mutex&lt;/code&gt; 的零值被定义为一个未上锁的互斥锁。&lt;/p&gt;
+
+&lt;p&gt;“零值是有用的”这一属性可以传递。考虑这个类型声明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type SyncedBuffer struct {
+    lock    sync.Mutex
+    buffer  bytes.Buffer
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;SyncedBuffer&lt;/code&gt; 类型的值也是分配或声明时就绪的。在下一个片段中，&lt;code&gt;p&lt;/code&gt; 和 &lt;code&gt;v&lt;/code&gt; 都可以正确工作而不用进一步安排。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;p := new(SyncedBuffer)  // *SyncedBuffer 类型
+var v SyncedBuffer      // SyncedBuffer 类型
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;构造函数和复合字面量&#34;&gt;构造函数和复合字面量&lt;/h3&gt;
+
+&lt;p&gt;有时候零值不够好，且需要一个初始化构造函数，正如下面从 &lt;code&gt;os&lt;/code&gt; 包衍生的一个例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func NewFile(fd int, name string) *File {
+    if fd &amp;lt; 0 {
+        return nil
+    }
+    f := new(File)
+    f.fd = fd
+    f.name = name
+    f.dirinfo = nil
+    f.nepipe = 0
+    return f
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里有很多模板式代码。我们可以使用一个“复合字面量”来简化代码。“复合字面量”是一个表达式，它在每次求值时创建一个新的实例。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func NewFile(fd int, name string) *File {
+    if fd &amp;lt; 0 {
+        return nil
+    }
+    f := File{fd, name, nil, 0}
+    return &amp;amp;f
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意，和 C 不同，返回一个局部变量的地址是完全可以的；和变量相关的存储在函数返回时仍存在。事实上，使用复合字面量的地址在每次求值时分配一个新的实例，因此我们可以合并后面两行代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;return &amp;amp;File{fd, name, nil, 0}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;复合字面量的域按顺序放置且必须都要出现。然而，通过显式给域打像 &lt;code&gt;field:value&lt;/code&gt; 的标签，初始化列表可以按任何顺序出现，且缺失的域会分别使用对应的零值。因此我们可以写&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;return &amp;amp;File{fd: fd, name: name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;作为一个限制性场景，如果一个复合字面量不包含任何域，它会为类型创建零值。表达式 &lt;code&gt;new(File)&lt;/code&gt; 和 &lt;code&gt;&amp;amp;File{}&lt;/code&gt; 是等价的。&lt;/p&gt;
+
+&lt;p&gt;复合字面量也可用于创建数组、切片和映射，使用索引或合适的键给域打标签，在这些例子中，无论 &lt;code&gt;Enone&lt;/code&gt;、&lt;code&gt;Eio&lt;/code&gt; 和 &lt;code&gt;Einval&lt;/code&gt; 的值是什么，只要它们是唯一的，初始化器都可以工作。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;a := [...]string   {Enone: &amp;quot;no error&amp;quot;, Eio: &amp;quot;Eio&amp;quot;, Einval: &amp;quot;invalid argument&amp;quot;}
+s := []string      {Enone: &amp;quot;no error&amp;quot;, Eio: &amp;quot;Eio&amp;quot;, Einval: &amp;quot;invalid argument&amp;quot;}
+m := map[int]string{Enone: &amp;quot;no error&amp;quot;, Eio: &amp;quot;Eio&amp;quot;, Einval: &amp;quot;invalid argument&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用-make-分配&#34;&gt;使用 make 分配&lt;/h3&gt;
+
+&lt;h3 id=&#34;数组&#34;&gt;数组&lt;/h3&gt;
+
+&lt;h3 id=&#34;切片&#34;&gt;切片&lt;/h3&gt;
+
+&lt;h3 id=&#34;二维切片&#34;&gt;二维切片&lt;/h3&gt;
+
+&lt;h3 id=&#34;映射&#34;&gt;映射&lt;/h3&gt;
+
+&lt;h3 id=&#34;打印&#34;&gt;打印&lt;/h3&gt;
+
+&lt;h3 id=&#34;追加&#34;&gt;追加&lt;/h3&gt;
+
+&lt;h2 id=&#34;初始化&#34;&gt;初始化&lt;/h2&gt;
+
+&lt;h3 id=&#34;常数&#34;&gt;常数&lt;/h3&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>常见问题解答</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/faq/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%b5%b7%e6%ba%90&#34;&gt;起源&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%94%a8%e6%b3%95&#34;&gt;用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%ae%be%e8%ae%a1&#34;&gt;设计&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%ba%e4%bb%80%e4%b9%88-go-%e6%b2%a1%e6%9c%89%e6%96%ad%e8%a8%80&#34;&gt;为什么 Go 没有断言&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b1%bb%e5%9e%8b&#34;&gt;类型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%80%bc&#34;&gt;值&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bc%96%e5%86%99%e4%bb%a3%e7%a0%81&#34;&gt;编写代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8c%87%e9%92%88%e5%92%8c%e5%88%86%e9%85%8d&#34;&gt;指针和分配&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b9%b6%e5%8f%91&#34;&gt;并发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%87%bd%e6%95%b0%e5%92%8c%e6%96%b9%e6%b3%95&#34;&gt;函数和方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a7%e5%88%b6%e6%b5%81&#34;&gt;控制流&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8c%85%e5%92%8c%e6%b5%8b%e8%af%95&#34;&gt;包和测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%9e%e7%8e%b0&#34;&gt;实现&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%88%91%e6%9c%80%e5%96%9c%e6%ac%a2%e7%9a%84%e6%b5%8b%e8%af%95%e8%be%85%e5%8a%a9%e5%87%bd%e6%95%b0%e5%9c%a8%e5%93%aa%e9%87%8c&#34;&gt;我最喜欢的测试辅助函数在哪里&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%80%a7%e8%83%bd&#34;&gt;性能&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%8e-c-%e7%9a%84%e6%94%b9%e5%8f%98&#34;&gt;从 C 的改变&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/faq#assertions&#34; target=&#34;_blank&#34;&gt;Go 官方文档——常见问题解答&lt;/a&gt;学习。&lt;/p&gt;
+
+&lt;h2 id=&#34;起源&#34;&gt;起源&lt;/h2&gt;
+
+&lt;h2 id=&#34;用法&#34;&gt;用法&lt;/h2&gt;
+
+&lt;h2 id=&#34;设计&#34;&gt;设计&lt;/h2&gt;
+
+&lt;h3 id=&#34;为什么-go-没有断言&#34;&gt;为什么 Go 没有断言&lt;/h3&gt;
+
+&lt;p&gt;Go 不提供断言。他们无疑是方便的，但是我们已有的经验是开发人员依赖断言避免思考合适的错误处理和报告。合适的错误处理意味着服务在一个非严重的错误之后继续操作而不是崩溃。合适的错误处理意味着错误是直接的、扼要的，使开发人员免于解释大量的崩溃跟踪。当看到错误的开发人员不熟悉代码，错误的准确尤为重要。&lt;/p&gt;
+
+&lt;p&gt;我们明白这是一个争论点。Go 语言和库有很多不同于现代实践的地方，只是因为我们感觉有时候值得尝试一个不同的方法。&lt;/p&gt;
+
+&lt;h2 id=&#34;类型&#34;&gt;类型&lt;/h2&gt;
+
+&lt;h2 id=&#34;值&#34;&gt;值&lt;/h2&gt;
+
+&lt;h2 id=&#34;编写代码&#34;&gt;编写代码&lt;/h2&gt;
+
+&lt;h2 id=&#34;指针和分配&#34;&gt;指针和分配&lt;/h2&gt;
+
+&lt;h2 id=&#34;并发&#34;&gt;并发&lt;/h2&gt;
+
+&lt;h2 id=&#34;函数和方法&#34;&gt;函数和方法&lt;/h2&gt;
+
+&lt;h2 id=&#34;控制流&#34;&gt;控制流&lt;/h2&gt;
+
+&lt;h2 id=&#34;包和测试&#34;&gt;包和测试&lt;/h2&gt;
+
+&lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
+
+&lt;h3 id=&#34;我最喜欢的测试辅助函数在哪里&#34;&gt;我最喜欢的测试辅助函数在哪里&lt;/h3&gt;
+
+&lt;p&gt;Go 的标准 &lt;a href=&#34;../golangpkg/testing.md&#34;&gt;testing&lt;/a&gt; 包使得易于编写单元测试，但是它缺少其他语言测试框架提供的一些特性，比如断言函数。此文档&lt;a href=&#34;#为什么-Go-没有断言&#34;&gt;前面的部分&lt;/a&gt;解释了为什么 Go 没有断言，以及在测试中使用断言的相同论点。合适的错误处理意味着使得其他测试在一个测试失败时继续运行，以便调试错误的人员可以得到一个错误的完整信息。对于一个测试来说，比起报告 isPrime 对于 2 的答案是错误的并因此不再运行更多测试，报告 isPrime 对 2、3、5、7 (或 2、4、8、16) 给出错误的答案是更加有用的。触发测试错误的开发人员可能不熟悉失败的代码。在测试失败时，花费时间编写一个好的错误消息是值得的。&lt;/p&gt;
+
+&lt;p&gt;相关的一点是测试框架趋向于发展成为他们自己的微语言，包括条件、控制和打印机制，但是 Go 已经有所有这些功能了；为什么要创建他们？我们更愿意用 Go 编写测试；它是一门学习更少的语言，而且这个方法保持测试是直截了当易于理解的。&lt;/p&gt;
+
+&lt;p&gt;如果编写好的错误所需的额外代码数量看起来是重复的、巨大的，那么表驱动测试可能效果更好。表驱动是迭代遍历定义在一个数据结构(Go 对于数据结构字面量有极好的支持)的输入和输出列表。编写一个好的测试和错误信息的工作在测试拥挤很多时将会被分摊。标准的 Go 库有许多说明示例，比如 &lt;a href=&#34;https://golang.org/src/fmt/fmt_test.go&#34; target=&#34;_blank&#34;&gt;fmt 包的格式化测试&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;性能&#34;&gt;性能&lt;/h2&gt;
+
+&lt;h2 id=&#34;从-c-的改变&#34;&gt;从 C 的改变&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>快速入门 Go 的汇编器</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/asm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/asm/</guid>
+      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/asm&#34; target=&#34;_blank&#34;&gt;Go 官方文档——快速入门 Go 的汇编器&lt;/a&gt; 学习。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>数据竞争检测器</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/articles/race_detector/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/articles/race_detector/</guid>
+      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/articles/race_detector.html&#34; target=&#34;_blank&#34;&gt;Go 官方文档——数据竞争检测器&lt;/a&gt; 学习。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>编写 Web 应用</title>
+      <link>https://xueqing.github.io/translation/go-doc/golangdoc/articles/wiki/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/articles/wiki/</guid>
+      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/articles/wiki/&#34; target=&#34;_blank&#34;&gt;Go 官方文档——编写 Web 应用&lt;/a&gt; 学习。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

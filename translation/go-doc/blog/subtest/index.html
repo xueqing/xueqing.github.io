@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="介绍 表驱动测试基础 表驱动的基准测试 使用子测试的表驱动测试 运行指定的测试或基准测试 设置和清理 并行控制 并行运行一组测试 一组并行测试之后的清理 结论">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/translation/go-doc/blog/subtest/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/translation/go-doc/blog/subtest/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/translation/go-doc/blog/subtest/">
+  <meta property="og:title" content="使用子测试和子基准测试 | kiki">
+  <meta property="og:description" content="介绍 表驱动测试基础 表驱动的基准测试 使用子测试的表驱动测试 运行指定的测试或基准测试 设置和清理 并行控制 并行运行一组测试 一组并行测试之后的清理 结论"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>使用子测试和子基准测试 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>使用子测试和子基准测试</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/translation/">translation</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e4%bb%8b%e7%bb%8d">介绍</a></li>
+<li><a href="#%e8%a1%a8%e9%a9%b1%e5%8a%a8%e6%b5%8b%e8%af%95%e5%9f%ba%e7%a1%80">表驱动测试基础</a></li>
+<li><a href="#%e8%a1%a8%e9%a9%b1%e5%8a%a8%e7%9a%84%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">表驱动的基准测试</a></li>
+<li><a href="#%e4%bd%bf%e7%94%a8%e5%ad%90%e6%b5%8b%e8%af%95%e7%9a%84%e8%a1%a8%e9%a9%b1%e5%8a%a8%e6%b5%8b%e8%af%95">使用子测试的表驱动测试</a></li>
+<li><a href="#%e8%bf%90%e8%a1%8c%e6%8c%87%e5%ae%9a%e7%9a%84%e6%b5%8b%e8%af%95%e6%88%96%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">运行指定的测试或基准测试</a></li>
+<li><a href="#%e8%ae%be%e7%bd%ae%e5%92%8c%e6%b8%85%e7%90%86">设置和清理</a></li>
+<li><a href="#%e5%b9%b6%e8%a1%8c%e6%8e%a7%e5%88%b6">并行控制</a></li>
+<li><a href="#%e5%b9%b6%e8%a1%8c%e8%bf%90%e8%a1%8c%e4%b8%80%e7%bb%84%e6%b5%8b%e8%af%95">并行运行一组测试</a></li>
+<li><a href="#%e4%b8%80%e7%bb%84%e5%b9%b6%e8%a1%8c%e6%b5%8b%e8%af%95%e4%b9%8b%e5%90%8e%e7%9a%84%e6%b8%85%e7%90%86">一组并行测试之后的清理</a></li>
+<li><a href="#%e7%bb%93%e8%ae%ba">结论</a></li>
+<li><a href="#%e7%9b%b8%e5%85%b3%e6%96%87%e7%ab%a0">相关文章</a></li>
+</ul>
+
+<p>参考 <a href="https://blog.golang.org/subtests" target="_blank">Go 博客——使用子测试和子基准测试</a>学习。</p>
+
+<pre><code class="language-txt">  作者：Marcel van Lohuizen
+  日期：2016/10/3
+</code></pre>
+
+<h2 id="介绍">介绍</h2>
+
+<p>在 Go1.7，testing 包引入了一个 Run 方法，作用于 <a href="https://golang.org/pkg/testing/#T.Run" target="_blank">T</a> 和 <a href="https://golang.org/pkg/testing/#B.Run" target="_blank">B</a> 类型，允许创建子测试和子基准测试。子测试和子基准测试的引入使得支持更好的失败处理，从命令行对运行哪个测试的细粒度控制，并行控制，并且经常生成更简单和可维护的代码。</p>
+
+<h2 id="表驱动测试基础">表驱动测试基础</h2>
+
+<p>在深入细节之前，让我们先讨论用 Go 编写测试的常用方式。可以通过对一个测试用例切片的循环实现一系列相关的检查：</p>
+
+<pre><code class="language-go">func TestTime(t *testing.T) {
+    testCases := []struct {
+        gmt  string
+        loc  string
+        want string
+    }{
+        {&quot;12:31&quot;, &quot;Europe/Zuri&quot;, &quot;13:31&quot;},     // incorrect location name
+        {&quot;12:31&quot;, &quot;America/New_York&quot;, &quot;7:31&quot;}, // should be 07:31
+        {&quot;08:08&quot;, &quot;Australia/Sydney&quot;, &quot;18:08&quot;},
+    }
+    for _, tc := range testCases {
+        loc, err := time.LoadLocation(tc.loc)
+        if err != nil {
+            t.Fatalf(&quot;could not load location %q&quot;, tc.loc)
+        }
+        gmt, _ := time.Parse(&quot;15:04&quot;, tc.gmt)
+        if got := gmt.In(loc).Format(&quot;15:04&quot;); got != tc.want {
+            t.Errorf(&quot;In(%s, %s) = %s; want %s&quot;, tc.gmt, tc.loc, got, tc.want)
+        }
+    }
+}
+</code></pre>
+
+<p>这个方法常备表驱动测试提及。且相比为每个测试重复相同的代码，此方法减少了大量的重复代码，且使得增加测试用例更加直接。</p>
+
+<h2 id="表驱动的基准测试">表驱动的基准测试</h2>
+
+<p>在 Go1.7 之前，不能为基准测试使用相同的表驱动方法。一个基准测试测试整个函数的性能，因此遍历基准测试只是将它们作为一个整体测试。</p>
+
+<p>一个常用的变通方案是定义单独的顶层基准测试，每个基准测试使用不同参数调用一个公共的函数。比如，在 1.7 之前，strconv 包地狱塔 AppendFloat 的基准测试看起来像这样：</p>
+
+<pre><code class="language-go">func benchmarkAppendFloat(b *testing.B, f float64, fmt byte, prec, bitSize int) {
+    dst := make([]byte, 30)
+    b.ResetTimer() // Overkill here, but for illustrative purposes.
+    for i := 0; i &lt; b.N; i++ {
+        AppendFloat(dst[:0], f, fmt, prec, bitSize)
+    }
+}
+
+func BenchmarkAppendFloatDecimal(b *testing.B) { benchmarkAppendFloat(b, 33909, 'g', -1, 64) }
+func BenchmarkAppendFloat(b *testing.B)        { benchmarkAppendFloat(b, 339.7784, 'g', -1, 64) }
+func BenchmarkAppendFloatExp(b *testing.B)     { benchmarkAppendFloat(b, -5.09e75, 'g', -1, 64) }
+func BenchmarkAppendFloatNegExp(b *testing.B)  { benchmarkAppendFloat(b, -5.11e-95, 'g', -1, 64) }
+func BenchmarkAppendFloatBig(b *testing.B)     { benchmarkAppendFloat(b, 123456789123456789123456789, 'g', -1, 64) }
+...
+</code></pre>
+
+<p>Go1.7 可使用 Run 方法，相同的基准测试现在可以表示为一个顶层的基准测试：</p>
+
+<pre><code class="language-go">func BenchmarkAppendFloat(b *testing.B) {
+    benchmarks := []struct{
+        name    string
+        float   float64
+        fmt     byte
+        prec    int
+        bitSize int
+    }{
+        {&quot;Decimal&quot;, 33909, 'g', -1, 64},
+        {&quot;Float&quot;, 339.7784, 'g', -1, 64},
+        {&quot;Exp&quot;, -5.09e75, 'g', -1, 64},
+        {&quot;NegExp&quot;, -5.11e-95, 'g', -1, 64},
+        {&quot;Big&quot;, 123456789123456789123456789, 'g', -1, 64},
+        ...
+    }
+    dst := make([]byte, 30)
+    for _, bm := range benchmarks {
+        b.Run(bm.name, func(b *testing.B) {
+            for i := 0; i &lt; b.N; i++ {
+                AppendFloat(dst[:0], bm.float, bm.fmt, bm.prec, bm.bitSize)
+            }
+        })
+    }
+}
+</code></pre>
+
+<p>每次调用 Run 方法创建一个单独的基准测试。调用 Run 方法的闭包的基准测试函数只允许一次且不被测量。</p>
+
+<p>新代码行数更多，但是更易维护，更易读，且与测试常用的表驱动方法是一致的。此外，现在可以在运行时共享设置代码，同时不再需要重置计时器。</p>
+
+<h2 id="使用子测试的表驱动测试">使用子测试的表驱动测试</h2>
+
+<p>Go1.7 也引入了用于创建子测试的 Run 方法。这个测试是使用子测试对之前的例子重新的版本：</p>
+
+<pre><code class="language-go">func TestTime(t *testing.T) {
+    testCases := []struct {
+        gmt  string
+        loc  string
+        want string
+    }{
+        {&quot;12:31&quot;, &quot;Europe/Zuri&quot;, &quot;13:31&quot;},
+        {&quot;12:31&quot;, &quot;America/New_York&quot;, &quot;7:31&quot;},
+        {&quot;08:08&quot;, &quot;Australia/Sydney&quot;, &quot;18:08&quot;},
+    }
+    for _, tc := range testCases {
+        t.Run(fmt.Sprintf(&quot;%s in %s&quot;, tc.gmt, tc.loc), func(t *testing.T) {
+            loc, err := time.LoadLocation(tc.loc)
+            if err != nil {
+                t.Fatal(&quot;could not load location&quot;)
+            }
+            gmt, _ := time.Parse(&quot;15:04&quot;, tc.gmt)
+            if got := gmt.In(loc).Format(&quot;15:04&quot;); got != tc.want {
+                t.Errorf(&quot;got %s; want %s&quot;, got, tc.want)
+            }
+        })
+    }
+}
+</code></pre>
+
+<p>第一件要注意的事情是两个实现的输出不同。原本的实现打印：</p>
+
+<pre><code class="language-go">--- FAIL: TestTime (0.00s)
+    time_test.go:62: could not load location &quot;Europe/Zuri&quot;
+</code></pre>
+
+<p>即使有两个错误，测试执行终止在对 Fatalf 的调用，且第二个测试永远不会运行。</p>
+
+<p>使用 Run 的实现打印两个错误：</p>
+
+<pre><code class="language-go">--- FAIL: TestTime (0.00s)
+    --- FAIL: TestTime/12:31_in_Europe/Zuri (0.00s)
+        time_test.go:84: could not load location
+    --- FAIL: TestTime/12:31_in_America/New_York (0.00s)
+        time_test.go:88: got 07:31; want 7:31
+</code></pre>
+
+<p>Fatal 及其同属函数导致子测试被跳过，但是不会跳过父测试或后续的子测试。</p>
+
+<p>另外一件要注意的事情是新版本中的错误信息更短。因为子测试的名字唯一标识了一个子测试，因此不再需要在错误信息内部识别该测试。</p>
+
+<p>使用子测试或子基准测试还有其他的益处，下面的部分会阐明。</p>
+
+<h2 id="运行指定的测试或基准测试">运行指定的测试或基准测试</h2>
+
+<p>子测试和子基准测试可以在命令行使用 <a href="../command/test_flag.md"><code>-run 或 -bench 标识</code></a>选择。两个标识都接收一个斜线分隔的正则表达式列表，匹配了子测试或子基准测试的完整名字的对应部分。</p>
+
+<p>子测试或子基准测试的完整名字是一个斜线分隔的列表，包括自身的名字以及所有父测试的名字，从顶层测试开始。名字是顶层测试和基准测试对应的名字，且第一个参数必须是 Run。为了避免显示和解析问题，名字使用下划线替换空格，且忽视不可打印字符。相同的处理适用于传递给 -run 或 -bench 表示的正则表达式。</p>
+
+<p>一些例子：</p>
+
+<p>使用欧洲时区运行测试：</p>
+
+<pre><code class="language-sh">$ go test -run=TestTime/&quot;in Europe&quot;
+--- FAIL: TestTime (0.00s)
+    --- FAIL: TestTime/12:31_in_Europe/Zuri (0.00s)
+        time_test.go:85: could not load location
+</code></pre>
+
+<p>只运行时间在午后的测试：</p>
+
+<pre><code class="language-go">$ go test -run=Time/12:[0-9] -v
+=== RUN   TestTime
+=== RUN   TestTime/12:31_in_Europe/Zuri
+=== RUN   TestTime/12:31_in_America/New_York
+--- FAIL: TestTime (0.00s)
+    --- FAIL: TestTime/12:31_in_Europe/Zuri (0.00s)
+        time_test.go:85: could not load location
+    --- FAIL: TestTime/12:31_in_America/New_York (0.00s)
+        time_test.go:89: got 07:31; want 7:31
+</code></pre>
+
+<p>可能有点奇怪，使用 -run=TestTime/NewYork 没有匹配任何测试。这是因为出现在位置名字的斜线被当做一个分割符。反之使用：</p>
+
+<pre><code class="language-go">$ go test -run=TestTime//New_York
+--- FAIL: TestTime (0.00s)
+    --- FAIL: TestTime/12:31_in_America/New_York (0.00s)
+        time_test.go:88: got 07:31; want 7:31
+</code></pre>
+
+<p>注意传递给 -run 的字符串中的 //。时区名字 America/New_York 中的 / 被当做是来自子测试的一个分隔符处理。第一个正则表达式模式 (TestTime) 匹配顶层测试。第二个正则表达式(空字符串)匹配所有，这种情况匹配时间和位置的大洲部。第三部分正则表达式(New_york)匹配位置的城市部分。</p>
+
+<p>把名字中的斜线当做分隔符允许用户重构测试的层次结构，而不用修改名字。它也简化了避免规则。如果这暴露一个问题的话，用户应该避免名字中的斜线，比如使用下划线替代。</p>
+
+<p>一个唯一的序列号被增加到不唯一的测试名字末尾。因此如果子测试没有明显的名字结构，可以只传递一个空字符串给 Run，且子测试可以简单地通过序列号识别。</p>
+
+<h2 id="设置和清理">设置和清理</h2>
+
+<p>子测试和自己准测试可用于管理公共的设置和清理代码：</p>
+
+<pre><code class="language-go">func TestFoo(t *testing.T) {
+    // &lt;setup code&gt;
+    t.Run(&quot;A=1&quot;, func(t *testing.T) { ... })
+    t.Run(&quot;A=2&quot;, func(t *testing.T) { ... })
+    t.Run(&quot;B=1&quot;, func(t *testing.T) {
+        if !test(foo{B:1}) {
+            t.Fail()
+        }
+    })
+    // &lt;tear-down code&gt;
+}
+</code></pre>
+
+<p>如果任一闭包的子测试运行，设置和清理代码会被允许且最多只运行一次。即使任何子测试调用 Skip、FAIL 或 Fatal 也适用。</p>
+
+<h2 id="并行控制">并行控制</h2>
+
+<p>子测试支持细粒度控制并行，为了理解如何用这种方式使用子测试，理解并行测试的语法是重要的。</p>
+
+<p>每个子测试和一个测试函数相关。如果一个测试的测试函数在其 testing.T 实例中调用 Parallel 方法，那么这个测试被称为并行测试。一个并行测试不会和一个顺序测试并发运行，且并行测试的执行被中止直到调用它的测试方法，即父测试返回。-parallel 标识定义了可以并行运行的并行测试的最大数目。</p>
+
+<p>一个测试会阻塞直到它的测试函数返回且它所有的子测试结束。这意味着顺序测试运行的并行测试会在任何其他一连串的顺序测试运行之前完成。</p>
+
+<p>这种行为对使用 Run 创建的测试和顶层测试是一样的。事实上，在底层，顶层测试被实现为一个隐藏的主测试的子测试。</p>
+
+<h2 id="并行运行一组测试">并行运行一组测试</h2>
+
+<p>上述语义支持并行运行一组测试，这组测试内部是并行的，但不与其他并行测试并行：</p>
+
+<pre><code class="language-go">func TestGroupedParallel(t *testing.T) {
+    for _, tc := range testCases {
+        tc := tc // capture range variable
+        t.Run(tc.Name, func(t *testing.T) {
+            t.Parallel()
+            if got := foo(tc.in); got != tc.out {
+                t.Errorf(&quot;got %v; want %v&quot;, got, tc.out)
+            }
+            ...
+        })
+    }
+}
+</code></pre>
+
+<p>外部测试一直到所有通过 Run 启动的并行测试完成之后才会结束。因此，不会有其他并行测试可以和这些并行测试并行运行。</p>
+
+<p>注意我们需要捕获 range 变量以确保 tc 与正确的实例绑定。</p>
+
+<h2 id="一组并行测试之后的清理">一组并行测试之后的清理</h2>
+
+<p>在上述例子中，我们在开始其他测试之前使用语义等待一组并行测试结束。相同的技术可用于在一组共享公共资源的并行测试之后清理：</p>
+
+<pre><code class="language-go">func TestTeardownParallel(t *testing.T) {
+    // &lt;setup code&gt;
+    // This Run will not return until its parallel subtests complete.
+    t.Run(&quot;group&quot;, func(t *testing.T) {
+        t.Run(&quot;Test1&quot;, parallelTest1)
+        t.Run(&quot;Test2&quot;, parallelTest2)
+        t.Run(&quot;Test3&quot;, parallelTest3)
+    })
+    // &lt;tear-down code&gt;
+}
+</code></pre>
+
+<p>等待一组并行测试的行为和之前的例子是相同的。</p>
+
+<h2 id="结论">结论</h2>
+
+<p>Go1.7 对子测试和子基准测试的增加允许你用正常的方式编写结构化的测试和基准测试，可以优雅的融入现有的工具。一种思考方式是 testing 包之前的版本有 1 层结构：包级别的测试被组织为一个单独的测试和基准测试的集合。现在这种组织可以递归扩展到这些单独的测试和基准测试。事实上，在实现中，顶层测试和基准测试被作为一个隐藏的主测试和基准测试的子测试和基准测试：这种处理在每一层都是相同的。</p>
+
+<p>对于测试来说，定义这种结构的能力使能细粒度执行指定的测试用例、共享设置和清理，以及更好地控制测试并行。我们很高兴看到人们发现其他用途。享受它！</p>
+
+<h2 id="相关文章">相关文章</h2>
+
+<ul>
+<li><a href="examples.md" target="_blank">Go 可测试的示例函数</a></li>
+<li><a href="cover.md" target="_blank">关于覆盖的故事</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/go-blog/">go-blog</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/translation/go-doc/blog/subtest/&amp;text=%e4%bd%bf%e7%94%a8%e5%ad%90%e6%b5%8b%e8%af%95%e5%92%8c%e5%ad%90%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/translation/go-doc/blog/subtest/&amp;t=%e4%bd%bf%e7%94%a8%e5%ad%90%e6%b5%8b%e8%af%95%e5%92%8c%e5%ad%90%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e4%bd%bf%e7%94%a8%e5%ad%90%e6%b5%8b%e8%af%95%e5%92%8c%e5%ad%90%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95&amp;body=https://xueqing.github.io/translation/go-doc/blog/subtest/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/translation/go-doc/blog/subtest/&amp;title=%e4%bd%bf%e7%94%a8%e5%ad%90%e6%b5%8b%e8%af%95%e5%92%8c%e5%ad%90%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e4%bd%bf%e7%94%a8%e5%ad%90%e6%b5%8b%e8%af%95%e5%92%8c%e5%ad%90%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95%20https://xueqing.github.io/translation/go-doc/blog/subtest/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/translation/go-doc/blog/subtest/&amp;title=%e4%bd%bf%e7%94%a8%e5%ad%90%e6%b5%8b%e8%af%95%e5%92%8c%e5%ad%90%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/translation/go-doc/blog/examples/">Go 可测试的示例函数</a></li>
+      
+      <li><a href="/translation/go-doc/blog/cover/">关于覆盖的故事</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

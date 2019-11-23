@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tour.golang.org 的练习 | kiki</title>
+    <link>https://xueqing.github.io/translation/go-doc/gotour/</link>
+      <atom:link href="https://xueqing.github.io/translation/go-doc/gotour/index.xml" rel="self" type="application/rss+xml" />
+    <description>tour.golang.org 的练习</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>tour.golang.org 的练习</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/readme/</guid>
+      <description>&lt;p&gt;关于 &lt;a href=&#34;http://tour.golang.org/&#34; target=&#34;_blank&#34;&gt;Go 语言之旅&lt;/a&gt; 的练习题&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Equivalent Binary Trees</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/equivalent_binary_trees/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/equivalent_binary_trees/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+Exercise: Equivalent Binary Trees
+1. Implement the Walk function.
+
+2. Test the Walk function.
+
+The function tree.New(k) constructs a randomly-structured (but always sorted) binary tree holding the values k, 2k, 3k, ..., 10k.
+
+Create a new channel ch and kick off the walker:
+
+go Walk(tree.New(1), ch)
+Then read and print 10 values from the channel. It should be the numbers 1, 2, 3, ..., 10.
+
+3. Implement the Same function using Walk to determine whether t1 and t2 store the same values.
+
+4. Test the Same function.
+
+Same(tree.New(1), tree.New(1)) should return true, and Same(tree.New(1), tree.New(2)) should return false.
+
+The documentation for Tree can be found here.
+*/
+
+package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+
+  &amp;quot;golang.org/x/tour/tree&amp;quot;
+)
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+func Walk(t *tree.Tree, ch chan int) {
+  if t.Left != nil {
+    Walk(t.Left, ch)
+  }
+  ch &amp;lt;- t.Value
+  if (t.Right) != nil {
+    Walk(t.Right, ch)
+  }
+}
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool {
+  ch1 := make(chan int)
+  ch2 := make(chan int)
+  go Walk(t1, ch1)
+  go Walk(t2, ch2)
+  for i := 1; i &amp;lt;= 10; i++ {
+    v1, v2 := &amp;lt;-ch1, &amp;lt;-ch2
+    fmt.Println(&amp;quot;Walk two tree: &amp;quot;, v1, v2)
+    if v1 != v2 {
+      return false
+    }
+  }
+  return true
+}
+
+func main() {
+  ch := make(chan int)
+  go Walk(tree.New(1), ch)
+  for i := 1; i &amp;lt;= 10; i++ {
+    v := &amp;lt;-ch
+    fmt.Println(&amp;quot;Walk tree: &amp;quot;, v)
+    if i != v {
+      fmt.Println(&amp;quot;Test Walk failure&amp;quot;)
+      return
+    }
+  }
+  fmt.Println(&amp;quot;Test Walk success&amp;quot;)
+
+  if Same(tree.New(1), tree.New(1)) &amp;amp;&amp;amp; !Same(tree.New(1), tree.New(2)) {
+    fmt.Println(&amp;quot;Test Same success&amp;quot;)
+  } else {
+    fmt.Println(&amp;quot;Test Same failure&amp;quot;)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Errors</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/errors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/errors/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+Exercise: Errors
+Copy your Sqrt function from the earlier exercise and modify it to return an error value.
+
+Sqrt should return a non-nil error value when given a negative number, as it doesn&#39;t support complex numbers.
+
+Create a new type
+
+type ErrNegativeSqrt float64
+and make it an error by giving it a
+
+func (e ErrNegativeSqrt) Error() string
+method such that ErrNegativeSqrt(-2).Error() returns &amp;quot;cannot Sqrt negative number: -2&amp;quot;.
+
+Note: A call to fmt.Sprint(e) inside the Error method will send the program into an infinite loop. You can avoid this by converting e first: fmt.Sprint(float64(e)). Why?
+
+Change your Sqrt function to return an ErrNegativeSqrt value when given a negative number.
+*/
+
+package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+  &amp;quot;math&amp;quot;
+)
+
+type errNegativeSqrt float64
+
+func (e errNegativeSqrt) Error() string {
+  // 因为e变量是一个通过实现Error()的接口函数成为了error类型，那么在fmt.Sprint(e)时就会调用e.Error()来输出错误的字符串信息
+  return fmt.Sprint(&amp;quot;cannot Sqrt negative number: &amp;quot;, float64(e))
+}
+
+func mySqrt(x float64) (float64, error) {
+  if x &amp;lt; 0 {
+    return -1, errNegativeSqrt(x)
+  }
+  z := x / 2
+  tmp := 0.0
+  for math.Abs(z-tmp) &amp;gt;= 0.000000000001 {
+    tmp = z
+    z -= (z*z - x) / (2 * z)
+  }
+  return z, nil
+}
+
+func main() {
+  fmt.Println(mySqrt(2))
+  fmt.Println(mySqrt(-2))
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fibonacci closure</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/fibonacci_closure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/fibonacci_closure/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+Exercise: Fibonacci closure
+Let&#39;s have some fun with functions.
+
+Implement a fibonacci function that returns a function (a closure) that returns successive fibonacci numbers (0, 1, 1, 2, 3, 5, ...).
+*/
+
+package main
+
+import &amp;quot;fmt&amp;quot;
+
+func fibonacci() func() int {
+  before, val := 0, 1
+  return func() int {
+    ret := before
+    before, val = val, before + val
+    return ret
+  }
+}
+
+func main() {
+  f := fibonacci()
+  for i := 0; i &amp;lt; 10; i++ {
+    fmt.Println(f())
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Images</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/images/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/images/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+Exercise: Images
+Remember the picture generator you wrote earlier? Let&#39;s write another one, but this time it will return an implementation of image.Image instead of a slice of data.
+
+Define your own Image type, implement the necessary methods, and call pic.ShowImage.
+
+Bounds should return a image.Rectangle, like image.Rect(0, 0, w, h).
+
+ColorModel should return color.RGBAModel.
+
+At should return a color; the value v in the last picture generator corresponds to color.RGBA{v, v, 255, 255} in this one.
+*/
+
+package main
+
+import (
+  &amp;quot;image&amp;quot;
+  &amp;quot;image/color&amp;quot;
+  &amp;quot;math&amp;quot;
+
+  &amp;quot;golang.org/x/tour/pic&amp;quot;
+)
+
+/*
+type Image interface {
+  // ColorModel returns the Image&#39;s color model.
+  ColorModel() color.Model
+  // Bounds returns the domain for which At can return non-zero color.
+  // The bounds do not necessarily contain the point (0, 0).
+  Bounds() Rectangle
+  // At returns the color of the pixel at (x, y).
+  // At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
+  // At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
+  At(x, y int) color.Color
+}
+*/
+
+type myImage struct{}
+
+func (img myImage) ColorModel() color.Model {
+  return color.NRGBAModel
+}
+
+func (img myImage) Bounds() image.Rectangle {
+  return image.Rect(0, 0, 100, 100)
+}
+
+func (img myImage) At(x, y int) color.Color {
+  val := float64(x ^ y)
+  v := uint8(math.Abs(val))
+  return color.RGBA{v, v, 255, 255}
+}
+
+func main() {
+  m := myImage{}
+  pic.ShowImage(m)
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Loops and Functions</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/loops_and_functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/loops_and_functions/</guid>
+      <description>&lt;p&gt;```go
+/*
+Exercise: Loops and Functions
+As a way to play with functions and loops, let&amp;rsquo;s implement a square root function: given a number x, we want to find the number z for which z² is most nearly x.&lt;/p&gt;
+
+&lt;p&gt;Computers typically compute the square root of x using a loop. Starting with some guess z, we can adjust z based on how close z² is to x, producing a better guess:&lt;/p&gt;
+
+&lt;p&gt;z -= (z*z - x) / (2*z)
+Repeating this adjustment makes the guess better and better until we reach an answer that is as close to the actual square root as can be.&lt;/p&gt;
+
+&lt;p&gt;Implement this in the func Sqrt provided. A decent starting guess for z is 1, no matter what the input. To begin with, repeat the calculation 10 times and print each z along the way. See how close you get to the answer for various values of x (1, 2, 3, &amp;hellip;) and how quickly the guess improves.&lt;/p&gt;
+
+&lt;p&gt;Hint: To declare and initialize a floating point value, give it floating point syntax or use a conversion:&lt;/p&gt;
+
+&lt;p&gt;z := 1.0
+z := float64(1)
+Next, change the loop condition to stop once the value has stopped changing (or only changes by a very small amount). See if that&amp;rsquo;s more or fewer than 10 iterations. Try other initial guesses for z, like x, or x/2. How close are your function&amp;rsquo;s results to the math.Sqrt in the standard library?&lt;/p&gt;
+
+&lt;p&gt;(Note: If you are interested in the details of the algorithm, the z² − x above is how far away z² is from where it needs to be (x), and the division by 2z is the derivative of z², to scale how much we adjust z by how quickly z² is changing. This general approach is called Newton&amp;rsquo;s method. It works well for many functions but especially well for square root.)
+*/&lt;/p&gt;
+
+&lt;p&gt;package main&lt;/p&gt;
+
+&lt;p&gt;import (
+    &amp;ldquo;fmt&amp;rdquo;
+    &amp;ldquo;math&amp;rdquo;
+)&lt;/p&gt;
+
+&lt;p&gt;func mySqrt(x float64) float64 {
+    // z := x / 2
+    z := x
+    tmp := 0.0
+    for math.Abs(z-tmp) &amp;gt;= 0.000000000001 {
+        tmp = z
+        z -= (z*z - x) / (2 * z)
+        fmt.Println(z)
+    }
+    return z
+}&lt;/p&gt;
+
+&lt;p&gt;func main() {
+    fmt.Println(mySqrt(2))
+    fmt.Println(math.Sqrt(2))
+}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maps</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/maps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/maps/</guid>
+      <description>&lt;p&gt;```go
+/*
+Exercise: Maps
+Implement WordCount. It should return a map of the counts of each “word” in the string s. The wc.Test function runs a test suite against the provided function and prints success or failure.&lt;/p&gt;
+
+&lt;p&gt;You might find strings.Fields helpful.
+*/&lt;/p&gt;
+
+&lt;p&gt;package main&lt;/p&gt;
+
+&lt;p&gt;import (
+    &amp;ldquo;strings&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;golang.org/x/tour/wc&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;)&lt;/p&gt;
+
+&lt;p&gt;func wordCount(s string) map[string]int {
+    m := make(map[string]int)
+    var ss []string
+    ss = strings.Fields(s)
+    for i := 0; i &amp;lt; len(ss); i++ {
+        m[ss[i]]++
+    }&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;func main() {
+    wc.Test(wordCount)
+}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Readers</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/reader/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/reader/</guid>
+      <description>&lt;p&gt;```go
+/*
+Exercise: Readers
+Implement a Reader type that emits an infinite stream of the ASCII character &amp;lsquo;A&amp;rsquo;.
+*/&lt;/p&gt;
+
+&lt;p&gt;package main&lt;/p&gt;
+
+&lt;p&gt;import &amp;ldquo;golang.org/x/tour/reader&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;type myReader struct{}&lt;/p&gt;
+
+&lt;p&gt;func (r myReader) Read(c []byte) (int, error) {
+    i := 0
+    for ; i &amp;lt; len&amp;copy;; i++ {
+        c[i] = &amp;lsquo;A&amp;rsquo;
+    }
+    for ; i &amp;lt; cap&amp;copy;; i++ {
+        c = append(c, &amp;lsquo;A&amp;rsquo;)
+    }&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return cap(c), nil
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;func main() {
+    reader.Validate(myReader{})
+}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>rot13Reader</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/rot_reader/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/rot_reader/</guid>
+      <description>&lt;p&gt;```go
+/*
+Exercise: rot13Reader
+A common pattern is an io.Reader that wraps another io.Reader, modifying the stream in some way.&lt;/p&gt;
+
+&lt;p&gt;For example, the gzip.NewReader function takes an io.Reader (a stream of compressed data) and returns a *gzip.Reader that also implements io.Reader (a stream of the decompressed data).&lt;/p&gt;
+
+&lt;p&gt;Implement a rot13Reader that implements io.Reader and reads from an io.Reader, modifying the stream by applying the rot13 substitution cipher to all alphabetical characters.&lt;/p&gt;
+
+&lt;p&gt;The rot13Reader type is provided for you. Make it an io.Reader by implementing its Read method.
+*/&lt;/p&gt;
+
+&lt;p&gt;package main&lt;/p&gt;
+
+&lt;p&gt;import (
+    &amp;ldquo;io&amp;rdquo;
+    &amp;ldquo;os&amp;rdquo;
+    &amp;ldquo;strings&amp;rdquo;
+)&lt;/p&gt;
+
+&lt;p&gt;type rot13Reader struct {
+    r io.Reader
+}&lt;/p&gt;
+
+&lt;p&gt;func rot13(b byte) byte {
+    if b &amp;gt;= &amp;lsquo;a&amp;rsquo; &amp;amp;&amp;amp; b &amp;lt;= &amp;rsquo;m&amp;rsquo; {
+        return b + 13
+    }
+    if b &amp;gt;= &amp;lsquo;n&amp;rsquo; &amp;amp;&amp;amp; b &amp;lt;= &amp;lsquo;z&amp;rsquo; {
+        return b - &amp;lsquo;n&amp;rsquo; + &amp;lsquo;a&amp;rsquo;
+    }
+    if b &amp;gt;= &amp;lsquo;A&amp;rsquo; &amp;amp;&amp;amp; b &amp;lt;= &amp;rsquo;M&amp;rsquo; {
+        return b + 13
+    }
+    if b &amp;gt;= &amp;lsquo;N&amp;rsquo; &amp;amp;&amp;amp; b &amp;lt;= &amp;lsquo;Z&amp;rsquo; {
+        return b - &amp;lsquo;N&amp;rsquo; + &amp;lsquo;A&amp;rsquo;
+    }
+    return b
+}&lt;/p&gt;
+
+&lt;p&gt;var rot13Map = make(map[byte]byte)&lt;/p&gt;
+
+&lt;p&gt;func initializeRot13Map() {
+    s1 := &amp;ldquo;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&amp;rdquo;
+    s2 := &amp;ldquo;NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm&amp;rdquo;
+    for i := 0; i &amp;lt; len(s1); i++ {
+        rot13Map[s1[i]] = s2[i]
+    }
+}&lt;/p&gt;
+
+&lt;p&gt;func rot13ByMap(b byte) byte {
+    val, ok := rot13Map[b]
+    if ok {
+        return val
+    }
+    return b
+}&lt;/p&gt;
+
+&lt;p&gt;func (rot rot13Reader) Read(c []byte) (int, error) {
+    b := make([]byte, 8)
+    n, err := rot.r.Read(b)
+    initializeRot13Map()
+    for i := 0; i &amp;lt; n; i++ {
+        // b[i] = rot13(b[i])
+        b[i] = rot13ByMap(b[i])
+    }
+    if err == io.EOF {
+        return n, err
+    }
+    copy(c, b)
+    return n, nil
+}&lt;/p&gt;
+
+&lt;p&gt;func main() {
+    s := strings.NewReader(&amp;ldquo;Lbh penpxrq gur pbqr!&amp;rdquo;)
+    r := rot13Reader{s}
+    io.Copy(os.Stdout, &amp;amp;r)
+}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Slices</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/slices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/slices/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+Exercise: Slices
+Implement Pic. It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers. When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values.
+
+The choice of image is up to you. Interesting functions include (x+y)/2, x*y, and x^y.
+
+(You need to use a loop to allocate each []uint8 inside the [][]uint8.)
+
+(Use uint8(intValue) to convert between types.)
+*/
+
+package main
+
+import &amp;quot;golang.org/x/tour/pic&amp;quot;
+
+func myPic(dx, dy int) [][]uint8 {
+  pic := make([][]uint8, dx)
+  for i := 0; i &amp;lt; dx; i++ {
+    pic[i] = make([]uint8, dy)
+  }
+  for i := 0; i &amp;lt; dx; i++ {
+    for j := 0; j &amp;lt; dy; j++ {
+      pic[i][j] = uint8((i ^ j))
+    }
+  }
+  return pic
+}
+
+func main() {
+  pic.Show(myPic)
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Stringers</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/stringer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/stringer/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+Exercise: Stringers
+Make the IPAddr type implement fmt.Stringer to print the address as a dotted quad.
+
+For instance, IPAddr{1, 2, 3, 4} should print as &amp;quot;1.2.3.4&amp;quot;.
+*/
+
+package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+  &amp;quot;strconv&amp;quot;
+  &amp;quot;strings&amp;quot;
+)
+
+type iPAddr [4]byte
+
+func (ip iPAddr) String() string {
+  arr := []string{&amp;quot;0&amp;quot;, &amp;quot;.&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;.&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;.&amp;quot;, &amp;quot;0&amp;quot;}
+  for i := 0; i &amp;lt; 4; i++ {
+    arr[i&amp;lt;&amp;lt;1] = strconv.Itoa(int(ip[i]))
+  }
+  sip := strings.Join(arr, &amp;quot;&amp;quot;)
+  return sip
+}
+
+func main() {
+  hosts := map[string]iPAddr{
+    &amp;quot;loopback&amp;quot;:  {127, 0, 0, 1},
+    &amp;quot;googleDNS&amp;quot;: {8, 8, 8, 8},
+  }
+  for name, ip := range hosts {
+    fmt.Printf(&amp;quot;%v: %v\n&amp;quot;, name, ip)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web Crawler</title>
+      <link>https://xueqing.github.io/translation/go-doc/gotour/web_crawler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/go-doc/gotour/web_crawler/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+Exercise: Web Crawler
+In this exercise you&#39;ll use Go&#39;s concurrency features to parallelize a web crawler.
+
+Modify the Crawl function to fetch URLs in parallel without fetching the same URL twice.
+
+Hint: you can keep a cache of the URLs that have been fetched on a map, but maps alone are not safe for concurrent use!
+*/
+
+package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+)
+
+type Fetcher interface {
+  // Fetch returns the body of URL and
+  // a slice of URLs found on that page.
+  Fetch(url string) (body string, urls []string, err error)
+}
+
+// Crawl uses fetcher to recursively crawl
+// pages starting with url, to a maximum of depth.
+func Crawl(url string, depth int, fetcher Fetcher) {
+  // TODO: Fetch URLs in parallel.
+  // TODO: Don&#39;t fetch the same URL twice.
+  // This implementation doesn&#39;t do either:
+  if depth &amp;lt;= 0 {
+    return
+  }
+  body, urls, err := fetcher.Fetch(url)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Printf(&amp;quot;found: %s %q\n&amp;quot;, url, body)
+  for _, u := range urls {
+    Crawl(u, depth-1, fetcher)
+  }
+  return
+}
+
+func main() {
+  Crawl(&amp;quot;https://golang.org/&amp;quot;, 4, fetcher)
+}
+
+// fakeFetcher is Fetcher that returns canned results.
+type fakeFetcher map[string]*fakeResult
+
+type fakeResult struct {
+  body string
+  urls []string
+}
+
+func (f fakeFetcher) Fetch(url string) (string, []string, error) {
+  if res, ok := f[url]; ok {
+    return res.body, res.urls, nil
+  }
+  return &amp;quot;&amp;quot;, nil, fmt.Errorf(&amp;quot;not found: %s&amp;quot;, url)
+}
+
+// fetcher is a populated fakeFetcher.
+var fetcher = fakeFetcher{
+  &amp;quot;https://golang.org/&amp;quot;: &amp;amp;fakeResult{
+    &amp;quot;The Go Programming Language&amp;quot;,
+    []string{
+      &amp;quot;https://golang.org/pkg/&amp;quot;,
+      &amp;quot;https://golang.org/cmd/&amp;quot;,
+    },
+  },
+  &amp;quot;https://golang.org/pkg/&amp;quot;: &amp;amp;fakeResult{
+    &amp;quot;Packages&amp;quot;,
+    []string{
+      &amp;quot;https://golang.org/&amp;quot;,
+      &amp;quot;https://golang.org/cmd/&amp;quot;,
+      &amp;quot;https://golang.org/pkg/fmt/&amp;quot;,
+      &amp;quot;https://golang.org/pkg/os/&amp;quot;,
+    },
+  },
+  &amp;quot;https://golang.org/pkg/fmt/&amp;quot;: &amp;amp;fakeResult{
+    &amp;quot;Package fmt&amp;quot;,
+    []string{
+      &amp;quot;https://golang.org/&amp;quot;,
+      &amp;quot;https://golang.org/pkg/&amp;quot;,
+    },
+  },
+  &amp;quot;https://golang.org/pkg/os/&amp;quot;: &amp;amp;fakeResult{
+    &amp;quot;Package os&amp;quot;,
+    []string{
+      &amp;quot;https://golang.org/&amp;quot;,
+      &amp;quot;https://golang.org/pkg/&amp;quot;,
+    },
+  },
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

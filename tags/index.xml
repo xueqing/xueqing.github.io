@@ -13,10 +13,58 @@
     </image>
     
     <item>
-      <title>md</title>
-      <link>https://xueqing.github.io/tags/md/</link>
+      <title>markdown</title>
+      <link>https://xueqing.github.io/tags/markdown/</link>
       <pubDate>Sun, 10 Nov 2019 16:22:30 +0800</pubDate>
-      <guid>https://xueqing.github.io/tags/md/</guid>
+      <guid>https://xueqing.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go-blog</title>
+      <link>https://xueqing.github.io/tags/go-blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/go-blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go-command</title>
+      <link>https://xueqing.github.io/tags/go-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/go-command/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go-doc-wiki</title>
+      <link>https://xueqing.github.io/tags/go-doc-wiki/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/go-doc-wiki/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go-tour</title>
+      <link>https://xueqing.github.io/tags/go-tour/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/go-tour/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang-doc</title>
+      <link>https://xueqing.github.io/tags/golang-doc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/golang-doc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang-pkg</title>
+      <link>https://xueqing.github.io/tags/golang-pkg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/golang-pkg/</guid>
       <description></description>
     </item>
     

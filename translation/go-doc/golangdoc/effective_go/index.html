@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="介绍 例子 格式化 注释 名字 包名 getter 接口名 驼峰 分号 控制结构 if 重新声明和重新赋值 函数 多返回值 命名结果参数 defer 数据 使用 new 分配 构造函数和复合字面量 使用 make 分配">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/">
+  <meta property="og:title" content="实效 Go 编程 | kiki">
+  <meta property="og:description" content="介绍 例子 格式化 注释 名字 包名 getter 接口名 驼峰 分号 控制结构 if 重新声明和重新赋值 函数 多返回值 命名结果参数 defer 数据 使用 new 分配 构造函数和复合字面量 使用 make 分配"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>实效 Go 编程 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>实效 Go 编程</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/translation/">translation</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e4%bb%8b%e7%bb%8d">介绍</a>
+
+<ul>
+<li><a href="#%e4%be%8b%e5%ad%90">例子</a></li>
+</ul></li>
+<li><a href="#%e6%a0%bc%e5%bc%8f%e5%8c%96">格式化</a></li>
+<li><a href="#%e6%b3%a8%e9%87%8a">注释</a></li>
+<li><a href="#%e5%90%8d%e5%ad%97">名字</a>
+
+<ul>
+<li><a href="#%e5%8c%85%e5%90%8d">包名</a></li>
+<li><a href="#getter">getter</a></li>
+<li><a href="#%e6%8e%a5%e5%8f%a3%e5%90%8d">接口名</a></li>
+<li><a href="#%e9%a9%bc%e5%b3%b0">驼峰</a></li>
+</ul></li>
+<li><a href="#%e5%88%86%e5%8f%b7">分号</a></li>
+<li><a href="#%e6%8e%a7%e5%88%b6%e7%bb%93%e6%9e%84">控制结构</a>
+
+<ul>
+<li><a href="#if">if</a></li>
+<li><a href="#%e9%87%8d%e6%96%b0%e5%a3%b0%e6%98%8e%e5%92%8c%e9%87%8d%e6%96%b0%e8%b5%8b%e5%80%bc">重新声明和重新赋值</a></li>
+</ul></li>
+<li><a href="#%e5%87%bd%e6%95%b0">函数</a>
+
+<ul>
+<li><a href="#%e5%a4%9a%e8%bf%94%e5%9b%9e%e5%80%bc">多返回值</a></li>
+<li><a href="#%e5%91%bd%e5%90%8d%e7%bb%93%e6%9e%9c%e5%8f%82%e6%95%b0">命名结果参数</a></li>
+<li><a href="#defer">defer</a></li>
+</ul></li>
+<li><a href="#%e6%95%b0%e6%8d%ae">数据</a>
+
+<ul>
+<li><a href="#%e4%bd%bf%e7%94%a8-new-%e5%88%86%e9%85%8d">使用 new 分配</a></li>
+<li><a href="#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e5%92%8c%e5%a4%8d%e5%90%88%e5%ad%97%e9%9d%a2%e9%87%8f">构造函数和复合字面量</a></li>
+<li><a href="#%e4%bd%bf%e7%94%a8-make-%e5%88%86%e9%85%8d">使用 make 分配</a></li>
+<li><a href="#%e6%95%b0%e7%bb%84">数组</a></li>
+<li><a href="#%e5%88%87%e7%89%87">切片</a></li>
+<li><a href="#%e4%ba%8c%e7%bb%b4%e5%88%87%e7%89%87">二维切片</a></li>
+<li><a href="#%e6%98%a0%e5%b0%84">映射</a></li>
+<li><a href="#%e6%89%93%e5%8d%b0">打印</a></li>
+<li><a href="#%e8%bf%bd%e5%8a%a0">追加</a></li>
+</ul></li>
+<li><a href="#%e5%88%9d%e5%a7%8b%e5%8c%96">初始化</a>
+
+<ul>
+<li><a href="#%e5%b8%b8%e6%95%b0">常数</a></li>
+</ul></li>
+</ul>
+
+<p>参考 <a href="https://golang.org/doc/effective_go.html" target="_blank">Golang 官网文档——Effective Go</a> 学习。</p>
+
+<h2 id="介绍">介绍</h2>
+
+<p>Go 是一门新语言。虽然它从现有语言借鉴了想法，但是它有独特的属性使得实效的 Go 程序和使用其他语言编写的程序特点不同。直接将一个 C++ 或 Java 程序翻译成 Go 不太可能生成令人满意的结果——Java 程序是用 Java 写的，而不是 Go。另一方面，从 Go 的角度思考一个问题可能产生一个成功的但是完全不同的程序。换句话说，要写好 Go，理解它的特性和惯用语是很重要的。而且，了解用 Go 编程已有的惯例，比如命名、格式化、程序结构等等也很重要，以便你编写的程序容易被其他 Go 开发人员理解。</p>
+
+<p>此文档给出关于编写清晰、惯用的 Go 代码的建议。它增补了<a href="https://golang.org/ref/spec" target="_blank">语言规范</a>、<a href="https://tour.golang.org/" target="_blank">Go 语言之旅</a>以及<a href="code.md" target="_blank">如何编写 Go 代码</a>，所有这些你应该先阅读。</p>
+
+<h3 id="例子">例子</h3>
+
+<p><a href="https://golang.org/src/" target="_blank">Go 包源码</a>用于作为和核心库，也作为如何使用语言的例子。此外，很多包包含可工作的、自包含的可执行例子，你可以直接从 <a href="https://golang.org/" target="_blank">golang.org</a> 网站运行，比如<a href="https://golang.org/pkg/strings/#example_Map" target="_blank">这个网站</a>(如果需要，点击单词 “Example” 打开它)。如果你对于如何处理一个问题或一些东西是如何实现的有疑问，这个库中的文档、代码和例子可以给出答案、思想和背景。</p>
+
+<h2 id="格式化">格式化</h2>
+
+<p>格式化问题是最有争议却最不重要的。人们可以选择不同的格式风格，但是如果每个人遵循相同的风格，那么人们不需要且可以花费更少的时间在这个问题上是更好的。问题是如何在没有一个长长的风格规范指南的情况下实现这个想法。</p>
+
+<p>对于 Go，我们使用了一种特别的方法且交由机器注意大多数格式化问题。gofmt 程序(也可以通过 <code>go fmt</code> 使用，它作用于包级别而不是源文件级别)读入一个 Go 程序并且以标准的风格缩进、垂直对齐、保持或者需要的话重新格式化注释，然后发出源文件。如果你想要知道如何处理一些新的格式场景，运行 gofmt；如果答案看起来不正确，重新组织你的程序(或提出一个 gofmt 的错误)，不要绕过这个问题。</p>
+
+<p>作为一个例子，不必花时间对结构体的域做注释对齐。gofmt 将会为你做这些。给出一个声明</p>
+
+<pre><code class="language-go">type T struct {
+    name string // 对象的名字
+    value int // 对象的值
+}
+</code></pre>
+
+<p>gofmt 会列对齐：</p>
+
+<pre><code class="language-go">type T struct {
+    name    string // 对象的名字
+    value   int    // 对象的值
+}
+</code></pre>
+
+<p>标准库中所有的 Go 代码都已经使用 gofmt 格式化过。</p>
+
+<p>还有一些格式化细节。非常简洁：</p>
+
+<pre><code class="language-txt">缩进
+  我们使用 tab 键缩进，且 gofmt 默认使用 tab 键。只在必要的时候使用空格。
+行长度
+  Go 没有行长度限制。不要担心溢出穿孔卡片。如果感觉一行太长，包裹它并使用额外的 tab 键缩进
+括号
+  Go 比 C 和 Java 需要更少的括号：控制结构 (if/for/switch) 的语法没有括号。同时，操作符优先级层次更短更清晰。
+  因此不像其他语言， `x&lt;&lt;8 + y&lt;&lt;16` 就是空格暗示的含义。
+</code></pre>
+
+<h2 id="注释">注释</h2>
+
+<p>Go 提供 C-风格的块注释 /**/ 和 C++-风格的行注释 //。行注释是常态；块注释大多出现在包注释，但是在一个表达式内部或禁用大段代码是有用的。</p>
+
+<p>godoc 程序，也是 web 服务器，处理 Go 源文件以提取关于包内容的文档。在顶层声明之前出现的注释，中间没有新行，和声明一起提取作为该元素的解释文本。这些注释的本性和风格决定了 godoc 生成的文档的质量。</p>
+
+<p>每个包应该有一个包注释，即 package 语句之前的一个块注释。对于多文件的包，包注释只需要出现在一个文件，且每个文件都可以看到。包注释应该介绍包并提供和包有关的信息作为一个整体。它会先出现在 godoc 页面，并且应该设置后面的详细文档。</p>
+
+<pre><code class="language-go">/*
+包 regexp 实现了正则表达式的一个简单库。
+
+接收正则表达式的语法是:
+
+    正则表达式:
+        连接 { '|' 连接 }
+    连接:
+        { 闭包 }
+    闭包:
+        项 [ '*' | '+' | '?' ]
+    项:
+        '^'
+        '$'
+        '.'
+        字符
+        '[' [ '^' ] 字符范围 ']'
+        '(' 正则表达式 ')'
+*/
+package regexp
+</code></pre>
+
+<p>如果是一个简单包，包注释可以是简洁的。</p>
+
+<pre><code class="language-go">// 包 path 实现了功能代码，用于操作斜线分隔的文件名路径。
+</code></pre>
+
+<p>注释不需要额外的格式比如一行星号。生成的输出可能不能显式为固定宽度的字体，因此不要依赖空格对齐——godoc 像 gofmt 一样，会注意对齐问题。注释是无解释的普通文本，因此 HTML 和其他的注解，比如 _this_，会逐字重复，不应该使用。godoc 会做的一个调整是按固定宽度的字体显示缩进文本，适用于代码片段。<a href="../golangpkg/fmt.md">fmt 包</a>对包注释的使用恰到好处。</p>
+
+<p>视上下文而定，godoc 甚至可能不会重新格式化注释，因此确保他们直接看起来是格式好的：使用正确的拼写、标点符号和句子结构，折叠长行等等。</p>
+
+<p>在包内部，任何紧紧出现在顶层声明之前的注释作为该声明的一个文档注释。程序中每个导出的(大写开头的)名字应该有一个文档注释。</p>
+
+<p>文档注释最好是完整的句子，允许不同的自动化显示。第一个句子应该是一个总结句，以声明的名字开头。</p>
+
+<pre><code class="language-go">// Compile 解析一个正则表达式，且成功时返回一个可用于匹配文本的 Regexp 对象。
+func Compile(str string) (*Regexp, error) {
+</code></pre>
+
+<p>如果每个文档注释以描述的元素名字开头，你可以使用 <a href="../command/README.md">go</a> 工具的 <a href="../command/show_doc.md">doc</a> 子命令并通过 grep 运行输出。设想你不能急的 “Compile” 名字但是正在查找正则表达式的解析函数，因此你运行命令：</p>
+
+<pre><code class="language-sh">go doc -all regexp | grep -i parse
+</code></pre>
+
+<p>如果包内所有的文档注释以“这个函数……”开头，grep 不会帮助你记得那个名字。但是因为包的每个文档注释以名字开始，你会看到类似下面的内容，这会回忆起你正在寻找的单词。</p>
+
+<pre><code class="language-go">$ go doc -all regexp | grep -i parse
+    Compile parses a regular expression and returns, if successful, a Regexp
+    MustCompile is like Compile but panics if the expression cannot be parsed.
+    parsed. It simplifies safe initialization of global variables holding
+</code></pre>
+
+<p>Go 的声明语法允许分组声明。一个单一的文档注释可以介绍一组相关的常量或变量。因为显示了整个声明，这样的注释通常是敷衍了事的。</p>
+
+<pre><code class="language-go">// 解析表达式失败时返回的错误代码。
+var (
+    ErrInternal      = errors.New(&quot;regexp: internal error&quot;)
+    ErrUnmatchedLpar = errors.New(&quot;regexp: unmatched '('&quot;)
+    ErrUnmatchedRpar = errors.New(&quot;regexp: unmatched ')'&quot;)
+    ...
+)
+</code></pre>
+
+<p>分组也可以指示元素之间的关系，比如被一个所保护的变量集合的事实。</p>
+
+<pre><code class="language-go">var (
+    countLock   sync.Mutex
+    inputCount  uint32
+    outputCount uint32
+    errorCount  uint32
+)
+</code></pre>
+
+<h2 id="名字">名字</h2>
+
+<p>Go 中的名字和其他语言中的一样重要。它们甚至有语义影响：一个名字在包外的可见性取决于它的第一个字母是否是大写。因此值得花费一些时间讨论 Go 编程中的命名惯例。</p>
+
+<h3 id="包名">包名</h3>
+
+<p>当导入一个包时，包名成为这些内容的一个访问器。在 <code>import &quot;bytes&quot;</code> 之后，导入包可以讨论 <code>bytes.buffer</code>。每个使用该包的人可以使用相同的名字来引用包内容是有帮助的，这意味着包名应该是好的：短、简明、引起共鸣的。按照惯例，包使用小写的、单一单词的名字；不应该需要使用下划线或驼峰。Err 就是简洁的，因为每个人使用你的包都会输入那个名字。并且不予担心与先前的冲突。包名只是导入的默认名字；它不需要在所有源码范围内唯一，并且在极少冲突的情况下，导入包可选择一个不同的名字在局部使用。无论如何，混淆是稀少的，因为这个导入的文件名只决定正在使用的包。</p>
+
+<p>另外一个惯例是包名是源路径的基础名；在 src/encoding/base64 中的包作为 “encoding/base64” 导入，但名字是 base64，而不是 encoding_base64 或者 encodingBase64。</p>
+
+<p>包的导入者将会使用包名来引用它的内容，因此包中导出的名字可使用这个事实来避免停顿。(不要使用 <code>import .</code> 符号，这可以简化必须在被测试包之外的测试，但应该被避免。)比如， bufio 包中的带缓冲的 reader 类型叫做 Reader，而不是 BufReader，因为使用者看到的是 bufio.Reader，这是一个更加清晰简洁的名字。此外，因为导入的实体总是用包名处理，bufio.Reader 和 io.Reader 不会冲突。类似的，生成 ring.Ring 实例的函数——这是 Go 中构造函数的定义——通常会使用 NewRing 调用，但是因为 Ring 是这个包导出的唯一类型，且这个包叫做 ring，这个函数只用 New 调用，这个包的使用者看到的是 ring.New。使用包结构来帮助你选择好名字。</p>
+
+<p>另外一个简单的例子是 once.Do；once.Do(setup) 读着不错，并且不会被写做 once.DoOrWaitUntilDone(setup) 而有改善。长名字不会自动使得东西更易读。一个有用的文档注释通常比一个特别长的名字更有价值。</p>
+
+<h3 id="getter">getter</h3>
+
+<p>Go 不提供对 getter 和 setter 的自动支持。自己提供 getter 和 setter 是没有问题的，且通常这样做事合适的。但是将 Get 放在 getter 名字中既不是惯例也非必要的。如果你有一个域叫 owner(小写的，不导出)，它的 getter 方法应叫做 Owner(大写，导出的)，而不是 GetOwner。使用大写名字导出可以区分域名和方法名。如果有必要，一个 setter 方法可能叫做 SetOwner。两个名字实际上也是易读的：</p>
+
+<pre><code class="language-go">owner := obj.Owner()
+if owner != user {
+  obj.SetOwner(user)
+}
+</code></pre>
+
+<h3 id="接口名">接口名</h3>
+
+<p>按照惯例，一个方法的接口用方法名和一个 -er 后缀或类似的修改器命名，用以构造一个代理名词：Reader，Writer，Formatter，CloseNotifier 等。</p>
+
+<p>有许多类似的名字，且尊重这些名字及其捕获的函数名是富有成效的，Read，Write，Close，Flush，String 等等有规范的签名和含义。为了避免混淆，除非方法具有相同的签名和含义，不要使用上述这些名字给方法命名。相反地，如果你的类型实现的方法与一个熟悉的类型的方法有相同的含义，使用这个相同的名字和签名；将你的字符串转换方法命名为 String 而不是 ToString。</p>
+
+<h3 id="驼峰">驼峰</h3>
+
+<p>最后，Go 的惯例是使用 MixedCaps 或 mixedCaps 而不是下划线来写多单词的名字。</p>
+
+<h2 id="分号">分号</h2>
+
+<p>类似 C，Go 规范的语法使用分号来终止一个语句，但是和 C 不同的是，这些分号不会出现在源文件。反之，词法分析器使用一个简单的规则在扫描时自动插入分号，因此输入文本可免除大部分分号。</p>
+
+<p>规则如下。如果新行之前的最后一个符号是一个标识符(包括像 int 和 float64 的单词)，一个基本字面量，比如一个数字、字符串常量，或者下面的一个符号</p>
+
+<pre><code class="language-txt">break continue fallthrough return ++ -- ) }
+</code></pre>
+
+<p>词法分析器总是在这个符号之后插入一个分号。这可以概括为，“如果在一个可以结束一句话的符号之后有一个新行，插入一个分号”。</p>
+
+<p>紧挨着在一个右大括号之前出现的分号也可以忽略，因此一个类似下面的语句不需要分号：</p>
+
+<pre><code class="language-go">go func() {for { dts &lt;- &lt;- src }} ()
+</code></pre>
+
+<p>习惯上，Go 程序只在类似于 for 循环子句中有分号，用于分隔初始化、条件和连续元素。如果你在一行中写多个语句，也需要分号来分隔语句。</p>
+
+<p>插入分号规则的一个结果是你不能将一个控制结构(if/for/switch/select)的左大括号放在下一行。如果你这样做，会在一个大括号之前插入分号，这会导致不想出现的影响。像这样编写代码：</p>
+
+<pre><code class="language-go">if i &lt; f() {
+    g()
+}
+</code></pre>
+
+<p>不要像这样：</p>
+
+<pre><code class="language-go">if i &lt; f()  // 错误!
+{           // 错误!
+    g()
+}
+</code></pre>
+
+<h2 id="控制结构">控制结构</h2>
+
+<p>Go 的控制结构和 C 的控制结构相关，但是很不相同。Go 没有 do 或 while 循环，只有一个稍微普遍的 for；switch 更加灵活；if 和 switch 接受一个可选的类似 for 中的初始化语句；break 和 continue 语句使用一个可选的标签来识别从哪里跳出或继续循环；Go 也有新的控制结构，包括 type switch 和多向通讯复用器 select。语法也有一点不同：Go 没有小括号，且控制结构体必须使用大括号分隔。</p>
+
+<h3 id="if">if</h3>
+
+<p>在 Go 中，一个简单的 if 看起来像这样：</p>
+
+<pre><code class="language-go">if x &gt; 0 {
+    return y
+}
+</code></pre>
+
+<p>强制的大括号鼓励将一个简单的 if 语句分为多行。无论如何，这样编写是一个好的风格，尤其是当代码体包含一个控制语句，比如 return 或 break。</p>
+
+<p>因为 if 和 switch 接受一个初始化语句，常见的是用于设置一个局部变量：</p>
+
+<pre><code class="language-go">if err := file.Chmod(0664); err != nil {
+    log.Print(err)
+    return err
+}
+</code></pre>
+
+<p>在 Go 的库中，你会发现当一个 if 没有流入下一句——即代码体以 break、continue、goto 或 return 结束——会忽略不需要的 else。</p>
+
+<pre><code class="language-go">f, err := os.Open(name)
+if err != nil {
+    return err
+}
+codeUsing(f)
+</code></pre>
+
+<p>这是一个常见情形的例子，即代码必须防止一系列错误条件。如果成功的控制流沿着页面向下，而错误出现的时候消除它们时，代码阅读体验更好。因为错误情况倾向于以 return 语句结束，生成的diamante不需要 else 语句。</p>
+
+<pre><code class="language-go">f, err := os.Open(name)
+if err != nil {
+    return err
+}
+d, err := f.Stat()
+if err != nil {
+    f.Close()
+    return err
+}
+codeUsing(f, d)
+</code></pre>
+
+<h3 id="重新声明和重新赋值">重新声明和重新赋值</h3>
+
+<h2 id="函数">函数</h2>
+
+<h3 id="多返回值">多返回值</h3>
+
+<p>Go 其中一个非凡的特性时函数和方法可以返回多个值。这个性质可用于改善 C 程序中的一些笨拙的写法：in-band 错误返回类似 -1 的值表示错误码并修改通过地址传递的参数。</p>
+
+<p>在 C 语言，使用一个负的计数器标记一个写入错误，且错误码隐藏在一个不固定位置。在 Go 语言，<code>Write</code> 可以返回一个计数器和一个错误：“是的，你写了一部分但非全部的字节，因为你已经填满了设备”。<code>os</code> 包中作用于文件的 <code>Write</code> 方法签名：</p>
+
+<pre><code class="language-go">func (file *File) Write(b []byte) (n int, err error)
+</code></pre>
+
+<p>且如文档所说，当 n 不等于 b 时这个方法返回写入的字节数和一个非空的错误。这是常见的风格；查看错误处理部分获得更多例子。</p>
+
+<p>一个类似的方法不需要传递一个指针给返回值来模拟一个引用参数。下面是一个简单的函数，从一个字节切片的某个位置起捕获一个数字，返回该数字和下一个位置。</p>
+
+<pre><code class="language-go">func nextInt(b []byte, i int) (int, int) {
+    for ; i &lt; len(b) &amp;&amp; !isDigit(b[i]); i++ {
+    }
+    x := 0
+    for ; i &lt; len(b) &amp;&amp; isDigit(b[i]); i++ {
+        x = x*10 + int(b[i]) - '0'
+    }
+    return x, i
+}
+</code></pre>
+
+<p>你可以使用这个方法像下面这样来扫描一个输入切片 <code>b</code> 的数字：</p>
+
+<pre><code class="language-go">for i := 0; i &lt; len(b); {
+    x, i = nextInt(b, i)
+    fmt.Println(x)
+}
+</code></pre>
+
+<h3 id="命名结果参数">命名结果参数</h3>
+
+<p>Go 函数的返回或结果“参数”可以指定名字并作为普通变量使用，就像使用传入参数。当函数开始时，命名的参数被初始化对应类型的零值；如果函数执行一个不带参数的 <code>return</code> 语句，返回参数的当前值被作为返回值。</p>
+
+<p>名字不是必须的，但是名字可以使得代码更加简短清晰：名字即是文档。如果我们将 <code>nextInt</code> 的结果命名，很显然返回的 <code>int</code> 含义。</p>
+
+<pre><code class="language-go">func nextInt(b []byte, pos int) (value, nextPos int) {
+</code></pre>
+
+<p>因为命名的结果会被初始化且绑定在一个简单的 <code>return</code>，它们可以既简单又清晰。下面是 <code>oi.ReadFull</code> 使用命名结果良好的版本：</p>
+
+<pre><code class="language-go">func ReadFull(r Reader, buf []byte) (n int, err error) {
+    for len(buf) &gt; 0 &amp;&amp; err == nil {
+        var nr int
+        nr, err = r.Read(buf)
+        n += nr
+        buf = buf[nr:]
+    }
+    return
+}
+</code></pre>
+
+<h3 id="defer">defer</h3>
+
+<p>Go 的 <code>defer</code> 语句安排执行 <code>defer</code> 的函数返回之前立即运行一个函数调用(即推迟的函数)。这是一个处理一些场景特别而高效的方式，比如无论函数使用哪条路径返回都必须释放的资源。经典的例子是解锁一个互斥锁或关闭一个文件。</p>
+
+<pre><code class="language-go">// Contents 将文件内容作为字符串返回。
+func Contents(filename string) (string, error) {
+    f, err := os.Open(filename)
+    if err != nil {
+        return &quot;&quot;, err
+    }
+    defer f.Close()  // 函数结束时会运行 f.Close。
+
+    var result []byte
+    buf := make([]byte, 100)
+    for {
+        n, err := f.Read(buf[0:])
+        result = append(result, buf[0:n]...) // 后面会讨论 append。
+        if err != nil {
+            if err == io.EOF {
+                break
+            }
+            return &quot;&quot;, err  // 如果在这里返回，会关闭 f。
+        }
+    }
+    return string(result), nil // 如果在这里返回，会关闭 f。
+}
+</code></pre>
+
+<p>推迟一个类似于 <code>Close</code> 的函数调用有两个优点。其一，它保证你永远不会忘记关闭一个文件，如果你之后编辑这个函数增加一个新的返回路径，这是很容易犯的一个错误。其二，它意味着关闭挨着打开操作，这比放在函数末尾更加清晰。</p>
+
+<p>推迟的函数参数(当函数是一个方法时还包括接收者)在执行 <code>defer</code> 时计算值，而不是执行调用时计算。除了避免担心在函数执行时修改变量值，这还意味着一个单一的推迟调用可以推迟多个函数执行。这里有一个丑陋的示例。</p>
+
+<pre><code class="language-go">for i := 0; i &lt; 5; i++ {
+    defer fmt.Printf(&quot;%d &quot;, i)
+}
+</code></pre>
+
+<p>推迟的函数按照 LIFO (后进先出)的顺序执行，因此上述代码函数返回时，会打印“ 4 3 2 1 0”。一个更加合乎情理的例子是使用一个简单的方式来跟踪程序的函数执行。我们可以写一些像这样的简单的跟踪代码：</p>
+
+<pre><code class="language-go">func trace(s string)   { fmt.Println(&quot;entering:&quot;, s) }
+func untrace(s string) { fmt.Println(&quot;leaving:&quot;, s) }
+
+// 像这样使用它们:
+func a() {
+    trace(&quot;a&quot;)
+    defer untrace(&quot;a&quot;)
+    // 做一些事情....
+}
+</code></pre>
+
+<p>我们可以利用延迟函数的参数在执行 <code>defer</code> 时计算这一事实做的更好。跟踪代码可以设置不跟踪代码的参数。下面的例子</p>
+
+<pre><code class="language-go">func trace(s string) string {
+    fmt.Println(&quot;entering:&quot;, s)
+    return s
+}
+
+func un(s string) {
+    fmt.Println(&quot;leaving:&quot;, s)
+}
+
+func a() {
+    defer un(trace(&quot;a&quot;))
+    fmt.Println(&quot;in a&quot;)
+}
+
+func b() {
+    defer un(trace(&quot;b&quot;))
+    fmt.Println(&quot;in b&quot;)
+    a()
+}
+
+func main() {
+    b()
+}
+</code></pre>
+
+<p>打印</p>
+
+<pre><code class="language-text">entering: b
+in b
+entering: a
+in a
+leaving: a
+leaving: b
+</code></pre>
+
+<p>对于习惯块级别资源管理的其他语言的编程人员，<code>defer</code> 可能看起来怪异的，但是它最有趣且强大的应用正来自它不是块级别而是函数级别的事实。在 <code>panic</code> 和 <code>recover</code> 部分，我们会看到另一个可能使用 <code>defer</code> 的例子。</p>
+
+<h2 id="数据">数据</h2>
+
+<h3 id="使用-new-分配">使用 new 分配</h3>
+
+<p>Go 有两种分配原语，即内置函数 <code>new</code> 和 <code>make</code>。它们做了不同的事情且适用于不同类型，这可能有点难以理解，但是规则很简单。我们首先讨论 <code>new</code>。它是一个分配内存的内置函数，但是和一些其他语言的同名函数不同，它不会初始化内存，它只是将内存置零。也就是说，<code>new(T)</code> 为类型 T 的新条目分配置零的存储，并返回存储地址(值为类型 T*)。在 Go 的术语中， 它返回一个指针指向一个新分配的类型 T 的零值。</p>
+
+<p>因为 <code>new</code> 返回的内存是置零的，当将你的数据结构设计为每个类型的零值都可以直接使用不需要进一步初始化，在安排的时候是很有用的。这意味着数据结构的使用者可以使用 <code>new</code> 创建一个对象并正常工作。比如，<code>bytes.Buffer</code> 的文档声明“ Buffer 的零值是一个就绪的空缓冲”。类似的，<code>sync.Mutex</code> 没有一个显式的构造函数或 <code>Init</code> 方法。反之，<code>sync.Mutex</code> 的零值被定义为一个未上锁的互斥锁。</p>
+
+<p>“零值是有用的”这一属性可以传递。考虑这个类型声明：</p>
+
+<pre><code class="language-go">type SyncedBuffer struct {
+    lock    sync.Mutex
+    buffer  bytes.Buffer
+}
+</code></pre>
+
+<p><code>SyncedBuffer</code> 类型的值也是分配或声明时就绪的。在下一个片段中，<code>p</code> 和 <code>v</code> 都可以正确工作而不用进一步安排。</p>
+
+<pre><code class="language-go">p := new(SyncedBuffer)  // *SyncedBuffer 类型
+var v SyncedBuffer      // SyncedBuffer 类型
+</code></pre>
+
+<h3 id="构造函数和复合字面量">构造函数和复合字面量</h3>
+
+<p>有时候零值不够好，且需要一个初始化构造函数，正如下面从 <code>os</code> 包衍生的一个例子：</p>
+
+<pre><code class="language-go">func NewFile(fd int, name string) *File {
+    if fd &lt; 0 {
+        return nil
+    }
+    f := new(File)
+    f.fd = fd
+    f.name = name
+    f.dirinfo = nil
+    f.nepipe = 0
+    return f
+}
+</code></pre>
+
+<p>这里有很多模板式代码。我们可以使用一个“复合字面量”来简化代码。“复合字面量”是一个表达式，它在每次求值时创建一个新的实例。</p>
+
+<pre><code class="language-go">func NewFile(fd int, name string) *File {
+    if fd &lt; 0 {
+        return nil
+    }
+    f := File{fd, name, nil, 0}
+    return &amp;f
+}
+</code></pre>
+
+<p>注意，和 C 不同，返回一个局部变量的地址是完全可以的；和变量相关的存储在函数返回时仍存在。事实上，使用复合字面量的地址在每次求值时分配一个新的实例，因此我们可以合并后面两行代码：</p>
+
+<pre><code class="language-go">return &amp;File{fd, name, nil, 0}
+</code></pre>
+
+<p>复合字面量的域按顺序放置且必须都要出现。然而，通过显式给域打像 <code>field:value</code> 的标签，初始化列表可以按任何顺序出现，且缺失的域会分别使用对应的零值。因此我们可以写</p>
+
+<pre><code class="language-go">return &amp;File{fd: fd, name: name}
+</code></pre>
+
+<p>作为一个限制性场景，如果一个复合字面量不包含任何域，它会为类型创建零值。表达式 <code>new(File)</code> 和 <code>&amp;File{}</code> 是等价的。</p>
+
+<p>复合字面量也可用于创建数组、切片和映射，使用索引或合适的键给域打标签，在这些例子中，无论 <code>Enone</code>、<code>Eio</code> 和 <code>Einval</code> 的值是什么，只要它们是唯一的，初始化器都可以工作。</p>
+
+<pre><code class="language-go">a := [...]string   {Enone: &quot;no error&quot;, Eio: &quot;Eio&quot;, Einval: &quot;invalid argument&quot;}
+s := []string      {Enone: &quot;no error&quot;, Eio: &quot;Eio&quot;, Einval: &quot;invalid argument&quot;}
+m := map[int]string{Enone: &quot;no error&quot;, Eio: &quot;Eio&quot;, Einval: &quot;invalid argument&quot;}
+</code></pre>
+
+<h3 id="使用-make-分配">使用 make 分配</h3>
+
+<h3 id="数组">数组</h3>
+
+<h3 id="切片">切片</h3>
+
+<h3 id="二维切片">二维切片</h3>
+
+<h3 id="映射">映射</h3>
+
+<h3 id="打印">打印</h3>
+
+<h3 id="追加">追加</h3>
+
+<h2 id="初始化">初始化</h2>
+
+<h3 id="常数">常数</h3>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/golang-doc/">golang-doc</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/&amp;text=%e5%ae%9e%e6%95%88%20Go%20%e7%bc%96%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/&amp;t=%e5%ae%9e%e6%95%88%20Go%20%e7%bc%96%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%ae%9e%e6%95%88%20Go%20%e7%bc%96%e7%a8%8b&amp;body=https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/&amp;title=%e5%ae%9e%e6%95%88%20Go%20%e7%bc%96%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e5%ae%9e%e6%95%88%20Go%20%e7%bc%96%e7%a8%8b%20https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/&amp;title=%e5%ae%9e%e6%95%88%20Go%20%e7%bc%96%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/translation/go-doc/golangdoc/gdb/">使用 GDB 调试 Go 代码</a></li>
+      
+      <li><a href="/translation/go-doc/golangdoc/articles/go_command/">关于 Go 命令</a></li>
+      
+      <li><a href="/translation/go-doc/golangdoc/readme/">前言</a></li>
+      
+      <li><a href="/translation/go-doc/golangdoc/code/">如何编写 Go 代码</a></li>
+      
+      <li><a href="/translation/go-doc/golangdoc/faq/">常见问题解答</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown | kiki</title>
+    <link>https://xueqing.github.io/tags/markdown/</link>
+      <atom:link href="https://xueqing.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <description>markdown</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language><lastBuildDate>Sun, 10 Nov 2019 16:22:30 +0800</lastBuildDate>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>markdown</title>
+      <link>https://xueqing.github.io/tags/markdown/</link>
+    </image>
+    
+    <item>
+      <title>Markdown 规范</title>
+      <link>https://xueqing.github.io/blog/markdown_%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Sun, 10 Nov 2019 16:22:30 +0800</pubDate>
+      <guid>https://xueqing.github.io/blog/markdown_%E8%A7%84%E8%8C%83/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bc%96%e8%be%91%e5%99%a8&#34;&gt;编辑器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%9f%ba%e6%9c%ac%e6%8a%80%e5%b7%a7&#34;&gt;基本技巧&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a0%87%e9%a2%98&#34;&gt;标题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%a3%e7%a0%81&#34;&gt;代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b2%97%e6%96%9c%e4%bd%93&#34;&gt;粗斜体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8d%a2%e8%a1%8c&#34;&gt;换行&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%93%be%e6%8e%a5&#34;&gt;链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%97%e8%a1%a8&#34;&gt;列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%99%ae%e9%80%9a%e6%97%a0%e5%ba%8f%e5%88%97%e8%a1%a8&#34;&gt;普通无序列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%99%ae%e9%80%9a%e6%9c%89%e5%ba%8f%e5%88%97%e8%a1%a8&#34;&gt;普通有序列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%97%e8%a1%a8%e5%b5%8c%e5%a5%97&#34;&gt;列表嵌套&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%a1%a8%e6%a0%bc&#34;&gt;表格&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%bc%95%e7%94%a8&#34;&gt;引用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%99%ae%e9%80%9a%e5%bc%95%e7%94%a8&#34;&gt;普通引用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%bc%95%e7%94%a8%e5%b5%8c%e5%a5%97%e5%bc%95%e7%94%a8&#34;&gt;引用嵌套引用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%bc%95%e7%94%a8%e5%b5%8c%e5%a5%97%e5%88%97%e8%a1%a8&#34;&gt;引用嵌套列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%bc%95%e7%94%a8%e5%b5%8c%e5%a5%97%e4%bb%a3%e7%a0%81%e5%9d%97&#34;&gt;引用嵌套代码块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%9b%be%e7%89%87&#34;&gt;图片&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%86%e9%9a%94%e7%ac%a6&#34;&gt;分隔符&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%ab%98%e7%ba%a7%e6%8a%80%e5%b7%a7&#34;&gt;高级技巧&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%a1%8c%e5%86%85-html-%e5%85%83%e7%b4%a0&#34;&gt;行内 HTML 元素&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ac%a6%e5%8f%b7%e8%bd%ac%e4%b9%89&#34;&gt;符号转义&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%ac%e5%bc%8f&#34;&gt;公式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%84%9a%e6%b3%a8&#34;&gt;脚注&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%87%e6%a1%a3%e8%a7%84%e8%8c%83&#34;&gt;文档规范&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;编辑器&#34;&gt;编辑器&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mac
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://25.io/mou/&#34; target=&#34;_blank&#34;&gt;Mou&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Windows
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.markdownpad.com/&#34; target=&#34;_blank&#34;&gt;MarkdownPad&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code52.org/MarkPadRT/&#34; target=&#34;_blank&#34;&gt;MarkPad&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Linux
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/retext-project/retext&#34; target=&#34;_blank&#34;&gt;ReText&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Vim+&lt;a href=&#34;http://xbeta.info/vimwiki.htm&#34; target=&#34;_blank&#34;&gt;Vimwiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;在线编辑器
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://markable.in/&#34; target=&#34;_blank&#34;&gt;markable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dillinger.io/&#34; target=&#34;_blank&#34;&gt;dillinger&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;浏览器插件
+
+&lt;ul&gt;
+&lt;li&gt;MaDe(chrome)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://maxiang.io/&#34; target=&#34;_blank&#34;&gt;马克飞象&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;高级应用
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.sublimetext.com/2&#34; target=&#34;_blank&#34;&gt;Sublime Text 2&lt;/a&gt; + &lt;a href=&#34;http://ttscoff.github.io/MarkdownEditing/&#34; target=&#34;_blank&#34;&gt;MarkdownEditing&lt;/a&gt; / &lt;a href=&#34;https://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/&#34; target=&#34;_blank&#34;&gt;教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;基本技巧&#34;&gt;基本技巧&lt;/h2&gt;
+
+&lt;h3 id=&#34;标题&#34;&gt;标题&lt;/h3&gt;
+
+&lt;p&gt;Markdown 支持两种标题的语法，类 &lt;a href=&#34;http://docutils.sourceforge.net/mirror/setext.html&#34; target=&#34;_blank&#34;&gt;Setext&lt;/a&gt; 和类 &lt;a href=&#34;http://www.aaronsw.com/2002/atx/&#34; target=&#34;_blank&#34;&gt;atx&lt;/a&gt; 形式&lt;br /&gt;
+类 atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶(可以在行尾加上 #)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;# 一级标题 #
+## 二级标题 ##
+### 三级标题 ###
+#### 四级标题 ####
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;类 Setext 形式是用底线的形式，利用 = (最高阶标题)和 - (第二阶标题)(任何数量的 = 和 - 都可以有效果)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;一级标题
+============
+二级标题
+------------
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;代码&#34;&gt;代码&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;行内代码：用反引号标记行内代码，如
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;function_name()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;包含反引号`的代码&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;代码段，通常编辑器根据代码片段适配合适的高亮方法&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以用[三个`]包裹一段代码，并指定一种语言&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int test()
+{
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;也可以使用 4 空格或是 1 个制表符缩进，再贴上代码，实现相同的的效果&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;int test()
+{
+  return 0;
+}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;如果不需要代码高亮，可以用下面的语法禁用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-nohighlight&#34;&gt;int test()
+{
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;粗斜体&#34;&gt;粗斜体&lt;/h3&gt;
+
+&lt;p&gt;Markdown 使用星号和底线作为标记强调字词的符号&lt;br /&gt;
+&lt;em&gt;斜体&lt;/em&gt;  &lt;em&gt;斜体&lt;/em&gt;&lt;br /&gt;
+&lt;strong&gt;粗体&lt;/strong&gt;  &lt;strong&gt;粗体&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;粗斜体&lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;粗斜体&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;换行&#34;&gt;换行&lt;/h3&gt;
+
+&lt;p&gt;另起一行，只需要在当前结尾加2个空格&lt;br /&gt;
+这样就会另起一行&lt;/p&gt;
+
+&lt;p&gt;空出一行，即可新起一个段落&lt;/p&gt;
+
+&lt;p&gt;行尾加斜线，&lt;br /&gt;
+也可实现换行&lt;/p&gt;
+
+&lt;h3 id=&#34;链接&#34;&gt;链接&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;行内式链接
+
+&lt;ul&gt;
+&lt;li&gt;文字链接：方括号(链接名称)+圆括号(链接地址) &lt;a href=&#34;http://链接地址&#34; target=&#34;_blank&#34;&gt;链接名称&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://translate.google.com/&#34; target=&#34;_blank&#34;&gt;google&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mail.google.com/mail/u/0/&#34; target=&#34;_blank&#34;&gt;gmail&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;自动链接：Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，尖括号+(链接地址)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://translate.google.com/&#34; target=&#34;_blank&#34;&gt;https://translate.google.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mail.google.com/mail/u/0/&#34; target=&#34;_blank&#34;&gt;https://mail.google.com/mail/u/0/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;参考式链接：在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记，然后在文件的任意处为标记变量赋值(网址)
+
+&lt;ul&gt;
+&lt;li&gt;隐式链接标记：可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字&lt;/li&gt;
+&lt;li&gt;这个链接用 Google 作为网址变量 &lt;a href=&#34;http://www.google.com/&#34; title=&#34;Hi, Google&#34; target=&#34;_blank&#34;&gt;Google&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;这个链接用 yahoo 作为网址变量 &lt;a href=&#34;http://www.yahoo.com/&#34; title=&#34;Hi, Yahoo&#34; target=&#34;_blank&#34;&gt;Yahoo!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;链接标记的内容定义的形式为：&lt;/li&gt;
+&lt;li&gt;方括号(前面可以选择性地加上至多三个空格来缩进)，里面输入链接文字&lt;/li&gt;
+&lt;li&gt;接着一个冒号&lt;/li&gt;
+&lt;li&gt;接着一个以上的空格或制表符&lt;/li&gt;
+&lt;li&gt;接着链接的网址(链接网址也可以用尖括号包起来)&lt;/li&gt;
+&lt;li&gt;选择性地接着 title 内容，可以用单引号、双引号或是括弧包着&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;列表&#34;&gt;列表&lt;/h3&gt;
+
+&lt;h4 id=&#34;普通无序列表&#34;&gt;普通无序列表&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;- 无序列表，文本前使用[减号+空格]
++ 无序列表，文本前使用[加号+空格]
+* 无序列表，文本前使用[星号+空格]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;普通有序列表&#34;&gt;普通有序列表&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;列表前使用[数字+英文句点+空格]&lt;/li&gt;
+&lt;li&gt;可以自动添加数字&lt;/li&gt;
+&lt;li&gt;数字不对显示的时候回自动调整&lt;/li&gt;
+&lt;li&gt;文档开始如果出现‘1986. blabla’要写成‘1986. blabla’&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;5) 列表前使用[数字+)+空格]
+6) 可以自动添加数字
+7) 数字不对显示的时候回自动调整
+8) 文档开始如果出现‘1986. blabla’要写成‘1986. blabla’&lt;/p&gt;
+
+&lt;h4 id=&#34;列表嵌套&#34;&gt;列表嵌套&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;列出所有元素：
+
+&lt;ul&gt;
+&lt;li&gt;无序列表元素 A
+
+&lt;ol&gt;
+&lt;li&gt;元素 A 的有序子列表&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;前面加 4 个空格或 1 个制表符&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;列表里的多段换行：&lt;br /&gt;
+前面必须加 4 个空格或 1 个制表符，&lt;br /&gt;
+这样换行，整体的格式不会乱&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;列表里引用：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;前面空一行&lt;br /&gt;
+仍然需要在 &amp;gt; 前面加 4 个空格或 1 个制表符&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;列表里代码段：&lt;/p&gt;
+
+&lt;p&gt;前面 4 个空格或 1 个制表符，之后按三个`代码语法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;或者直接空 8 个空格或 2 个制表符，
+引入代码块
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;表格&#34;&gt;表格&lt;/h3&gt;
+
+&lt;p&gt;默认：左对齐(col1)&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;col1&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;col2&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;col3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;col1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;col2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;col3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;col1,col1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;col2,col2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;col3,col3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;col1,col1,col1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;col2,col2,col2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;col3,col3,col3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;引用&#34;&gt;引用&lt;/h3&gt;
+
+&lt;h4 id=&#34;普通引用&#34;&gt;普通引用&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;引用前使用[大于号+空格]&lt;br /&gt;
+换行可以不加&lt;/p&gt;
+
+&lt;p&gt;空行和新起一行需要加上&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;引用嵌套引用&#34;&gt;引用嵌套引用&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;最外层引用
+&amp;gt; 多一个[大于号+空格]嵌套一层引用
+&amp;gt; &amp;gt; 可以嵌套很多层&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;引用嵌套列表&#34;&gt;引用嵌套列表&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;这是引用里嵌套的一个列表&lt;/li&gt;
+&lt;li&gt;还可以有子列表
+
+&lt;ul&gt;
+&lt;li&gt;子列表需要从[减号、加号、星号]之后延后 4 个空格或 1 个制表符开始&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;引用嵌套代码块&#34;&gt;引用嵌套代码块&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;同样的，在前面加 4 个空格或 1 个制表符形成代码块
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-code&#34;&gt;或者使用三个`形成代码块
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;图片&#34;&gt;图片&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;跟链接的方法区别在于前面加了个感叹号。行内式的图片语法 感叹号+方括号(图片名称)+圆括号(图片链接地址/图片相对路径)：&lt;br /&gt;
+&lt;img src=&#34;http://media.52poke.com/wiki/0/0d/025Pikachu.png&#34; alt=&#34;图片名称&#34; title=&#34;皮卡丘__1&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;natsume.jpg&#34; alt=&#34;皮卡丘__2&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;natsume.jpg&#34; alt=&#34;皮卡丘__2&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;分隔符&#34;&gt;分隔符&lt;/h3&gt;
+
+&lt;p&gt;在新起一行输入三个减号、星号、底线，即可实现分割线。当前后都有段落时，请空出一行。&lt;/p&gt;
+
+&lt;p&gt;段落1&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;段落2&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;段落3&lt;/p&gt;
+
+&lt;h2 id=&#34;高级技巧&#34;&gt;高级技巧&lt;/h2&gt;
+
+&lt;h3 id=&#34;行内-html-元素&#34;&gt;行内 HTML 元素&lt;/h3&gt;
+
+&lt;p&gt;目前只支持段内 HTML 元素效果，包括 kbd/b/i/em/sup/sub/br 等。现不建议使用 HTML 元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;键位显示： 使用 &lt;code&gt;&amp;lt;kbd&amp;gt;Ctrl&amp;lt;/kbd&amp;gt;+&amp;lt;kbd&amp;gt;Alt&amp;lt;/kbd&amp;gt;+&amp;lt;kbd&amp;gt;Del&amp;lt;/kbd&amp;gt;&lt;/code&gt; 重启电脑&lt;/li&gt;
+&lt;li&gt;代码块：使用 pre/code 标签&lt;/li&gt;
+&lt;li&gt;粗斜体：&lt;code&gt;&amp;lt;b&amp;gt;粗体&amp;lt;/b&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;符号转义&#34;&gt;符号转义&lt;/h3&gt;
+
+&lt;p&gt;在符号前加反斜杠可以避免被转义。如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\_不想这里的文本变斜体\_  
+\*\*不想这里的文本被加粗\*\*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：&lt;/p&gt;
+
+&lt;p&gt;\   反斜线&lt;br /&gt;
+`   反引号&lt;br /&gt;
+*   星号&lt;br /&gt;
+_   底线&lt;br /&gt;
+{}  花括号&lt;br /&gt;
+[]  方括号&lt;br /&gt;
+()  括弧&lt;br /&gt;
+#   井字号&lt;br /&gt;
++   加号&lt;br /&gt;
+-   减号&lt;br /&gt;
+.   英文句点&lt;br /&gt;
+!   惊叹号&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;公式&#34;&gt;公式&lt;/h3&gt;
+
+&lt;p&gt;当需要在编辑器中插入数学公式时，可以使用两个美元符包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：&lt;/p&gt;
+
+&lt;p&gt;$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. $$&lt;/p&gt;
+
+&lt;p&gt;$$ x \href{why-equal.html}{=} y^2 + 1 $$&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;脚注&#34;&gt;脚注&lt;/h3&gt;
+
+&lt;p&gt;Markdown 官网&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:markdown&#34;&gt;&lt;a href=&#34;#fn:markdown&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;文档规范&#34;&gt;文档规范&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;标题用#，右边的#可不加&lt;/li&gt;
+&lt;li&gt;行内代码
+
+&lt;ul&gt;
+&lt;li&gt;三个反引号&lt;/li&gt;
+&lt;li&gt;制表符&lt;/li&gt;
+&lt;li&gt;code 标签&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;代码段
+
+&lt;ul&gt;
+&lt;li&gt;三个反引号&lt;/li&gt;
+&lt;li&gt;制表符&lt;/li&gt;
+&lt;li&gt;pre/code 标签&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:markdown&#34;&gt;&lt;a href=&#34;https://daringfireball.net/projects/markdown/&#34; target=&#34;_blank&#34;&gt;https://daringfireball.net/projects/markdown/&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:markdown&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
