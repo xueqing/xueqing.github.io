@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>course | kiki</title>
+    <link>https://xueqing.github.io/tags/course/</link>
+      <atom:link href="https://xueqing.github.io/tags/course/index.xml" rel="self" type="application/rss+xml" />
+    <description>course</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>course</title>
+      <link>https://xueqing.github.io/tags/course/</link>
+    </image>
+    
+    <item>
+      <title>感兴趣的链接</title>
+      <link>https://xueqing.github.io/blog/course/interesting_links/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/course/interesting_links/</guid>
+      <description>
+
+&lt;h2 id=&#34;课程链接&#34;&gt;课程链接&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://css.csail.mit.edu/6.824/2014/index.html&#34; target=&#34;_blank&#34;&gt;Distributed Systems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;教程链接&#34;&gt;教程链接&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc&#34; target=&#34;_blank&#34;&gt;Code your own blockchain with golang&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

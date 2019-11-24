@@ -1,0 +1,1337 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>STL | kiki</title>
+    <link>https://xueqing.github.io/tags/stl/</link>
+      <atom:link href="https://xueqing.github.io/tags/stl/index.xml" rel="self" type="application/rss+xml" />
+    <description>STL</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>STL</title>
+      <link>https://xueqing.github.io/tags/stl/</link>
+    </image>
+    
+    <item>
+      <title>hash map</title>
+      <link>https://xueqing.github.io/blog/cplusplus/hash_map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/cplusplus/hash_map/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class hash_map {
+  hash_map() {set_load(); v.reserve(max_load*b.size());}
+  // 表“太满”(如 75% 满)时性能会恶化
+  void set_load(float m=0.7, float g=1.6) {max_load=m; grow=g;}
+
+  // 查找
+  mapped_type&amp;amp; operator[] (const key_type&amp;amp; k) {
+    // 先计算散列值，查找表索引
+    size_type i = hash(k) % b.size();
+    // 找到之后遍历散列链匹配
+    for(Entry* p=b[i]; p; p=p-&amp;gt;next) {
+      if(eq(k, p-&amp;gt;key)) { // 找到则插入表
+        if(p-&amp;gt;erased) {
+          p-&amp;gt;erased = false;
+          no_of_erased--;
+          return p-&amp;gt;val = default_value;
+        }
+        return p-&amp;gt;val;
+      }
+    }
+    // 找不到则插入散列表
+    // 若表已经“满”了，增大存储
+    if(size_tye(b.size() * max_load) &amp;lt;= v.size()) {
+      resize(b.size() * grow);
+      return operator[](k);
+    }
+    // 插入元素
+    v.push_back(Entry(k, default_value, b[i]));
+    b[i] = &amp;amp;v.back();
+    return b[i]-&amp;gt;val;
+  }
+
+  // 调整散列表大小
+  void resize(size_type s) {
+    // 计算 erased 元素数目，同时从存储中删除对应元素
+    size_type i = v.size()
+    while(no_of_erased) {
+      if(v[--i].erased) {
+        v.erase(&amp;amp;v[i]);
+        --no_of_erased;
+      }
+    }
+    // 如果 b.size() &amp;gt;= s，返回
+    if(s &amp;lt;= b.size()) return;
+    // 如果 b.size() &amp;lt; s，增大 b，b 全部清 0，重新计算
+    b.resize(s);
+    fill(b.begin(), b.end(), 0);
+    // 重新分配底层存储
+    v.reserve(s * max_load);
+    // 重新计算元素散列值
+    for(size_type i=0; i&amp;lt;v.size(); i++) {
+      size_type ii = hash(v[i].key) % b.size();
+      v[i].next = b[ii];
+      b[ii] = &amp;amp;v[i];
+    }
+  }
+
+private:
+  struct Entry {
+    key_type key;
+    mapped_type val;
+    bool erased;
+    Entry* next;          // 散列链
+  };
+  vector&amp;lt;Entry&amp;gt; v;        // 实际存储
+  vector&amp;lt;Entry*&amp;gt; b;       // 散列表，保存实际存储的指针
+
+  float max_load;         // 保持 v.size() &amp;lt;= b.size()*max_load
+  float grow;             // 接近太满时自动改变大小 resize(bucket_count() * grow)
+  size_type no_of_erased; // erased 元素项的数目
+  Hasher hash;            // 散列函数
+  key_equal eq;           // 相等判断
+
+  const T default_value;  // entry 默认值
+};
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>STL</title>
+      <link>https://xueqing.github.io/blog/cplusplus/stl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/cplusplus/stl/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%8b%e7%bb%8d&#34;&gt;介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ae%97%e6%b3%95&#34;&gt;算法&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a4%b4%e6%96%87%e4%bb%b6-algorithm&#34;&gt;头文件 algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%92%e5%ba%8f&#34;&gt;排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%90%9c%e7%b4%a2&#34;&gt;搜索&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%87%8d%e8%a6%81%e7%9a%84-stl-%e7%ae%97%e6%b3%95&#34;&gt;重要的 STL 算法&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9c%aa%e5%8a%a0%e5%b7%a5%e7%ae%97%e6%b3%95&#34;&gt;未加工算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8a%a0%e5%b7%a5%e7%ae%97%e6%b3%95&#34;&gt;加工算法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9c%89%e7%94%a8%e7%9a%84-array-%e7%ae%97%e6%b3%95&#34;&gt;有用的 Array 算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%92%e5%88%86%e6%93%8d%e4%bd%9c&#34;&gt;划分操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a4%b4%e6%96%87%e4%bb%b6-valarray&#34;&gt;头文件 valarray&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%b9%e5%99%a8&#34;&gt;容器&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%a1%ba%e5%ba%8f%e5%ae%b9%e5%99%a8&#34;&gt;顺序容器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#array&#34;&gt;array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vector&#34;&gt;vector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#deque&#34;&gt;deque&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#forwardlist&#34;&gt;forward_list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#list&#34;&gt;list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%b9%e5%99%a8%e9%80%82%e9%85%8d%e5%99%a8&#34;&gt;容器适配器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stack&#34;&gt;stack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#queue&#34;&gt;queue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#priorityqueue&#34;&gt;priority_queue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%b3%e8%81%94%e5%ae%b9%e5%99%a8&#34;&gt;关联容器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#set&#34;&gt;set&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#multiset&#34;&gt;multiset&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#map&#34;&gt;map&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#multimap&#34;&gt;multimap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%97%a0%e5%ba%8f%e5%85%b3%e8%81%94%e5%ae%b9%e5%99%a8&#34;&gt;无序关联容器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unorderedset&#34;&gt;unordered_set&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unorderedmultiset&#34;&gt;unordered_multiset&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unorderedmap&#34;&gt;unordered_map&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unorderedmultimap&#34;&gt;unordered_multimap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%bf%e5%87%bd%e6%95%b0&#34;&gt;仿函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%bf%ad%e4%bb%a3%e5%99%a8&#34;&gt;迭代器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;STL(Standard Template Library，标准模板库)是 C++ 模板类集合，提供了统一的编程书籍结构和函数。&lt;/li&gt;
+&lt;li&gt;STL 是容器类、算法和迭代器的库，是一个通用的库，组件都是参数化的。&lt;/li&gt;
+&lt;li&gt;STL 有 4 个组件：算法、容器、函数和迭代器。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;算法&#34;&gt;算法&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;定义了 STL 的基础性的算法(均为函数模板)，用于给定范围的元素。 C++98 中有 70 个算法模板函数，C++11 增加了 20 个算法模板函数，其中有 5 个定义在 &lt;code&gt;numeric&lt;/code&gt; 头文件，其他定义在 &lt;code&gt;algorithm&lt;/code&gt; 中&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;numeric&lt;/code&gt; 头文件包含的算法模板函数
+
+&lt;ul&gt;
+&lt;li&gt;accumulate：累加序列值&lt;/li&gt;
+&lt;li&gt;adjacent_difference：计算相邻两项的差值&lt;/li&gt;
+&lt;li&gt;inner_product：计算输入序列的内积&lt;/li&gt;
+&lt;li&gt;partial_sum：计算序列的部分累加值&lt;/li&gt;
+&lt;li&gt;iota：保存增加的连续值序列&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;头文件-algorithm&#34;&gt;头文件 algorithm&lt;/h3&gt;
+
+&lt;h4 id=&#34;排序&#34;&gt;排序&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;函数原型：
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class RandomAccessIterator&amp;gt;  void sort (RandomAccessIterator first, RandomAccessIterator last);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class RandomAccessIterator, class Compare&amp;gt;  void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;底层使用快排实现。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;算法复杂度： O(N*lgN)。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+
+using namespace std;
+
+void show(int a[])
+{
+for(int i=0; i&amp;lt;10; ++i)
+    cout &amp;lt;&amp;lt; a[i] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;
+cout &amp;lt;&amp;lt; endl;
+}
+
+int main()
+{
+int a[10]={1, 5, 8, 9, 6, 7, 3, 4, 2, 0};
+
+cout &amp;lt;&amp;lt; &amp;quot;\n The array before sorting is : &amp;quot;;
+show(a);
+
+sort(a,a+10);
+
+cout &amp;lt;&amp;lt; &amp;quot;\n The array after sorting is : &amp;quot;;
+show(a);
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;搜索&#34;&gt;搜索&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;广泛使用的搜索算法是二分搜索，前提是数组已经排好序。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;函数原型：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T&amp;gt;  bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp;amp; val);&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T, class Compare&amp;gt; bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp;amp; val, Compare comp);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+void show(int a[], int arraysize)
+{
+for(int i=0; i&amp;lt;arraysize; ++i)
+cout &amp;lt;&amp;lt; a[i] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;
+cout &amp;lt;&amp;lt; endl;
+}
+
+int main()
+{
+int a[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+int asize = sizeof(a) / sizeof(a[0]);
+cout &amp;lt;&amp;lt; &amp;quot;The array is : &amp;quot;;
+show(a, asize);
+
+cout &amp;lt;&amp;lt; &amp;quot;Let&#39;s say we want to search for 2 in the array&amp;quot; &amp;lt;&amp;lt; endl;
+cout &amp;lt;&amp;lt; &amp;quot;So, we first sort the array&amp;quot; &amp;lt;&amp;lt; endl;
+sort(a, a + asize);
+cout &amp;lt;&amp;lt; &amp;quot;The array after sorting is : &amp;quot;;
+show(a, asize);
+
+cout &amp;lt;&amp;lt; &amp;quot;Now, we do the binary search for 2&amp;quot; &amp;lt;&amp;lt; endl;
+if(binary_search(a, a + 10, 2))
+cout &amp;lt;&amp;lt; &amp;quot;Element found in the array&amp;quot; &amp;lt;&amp;lt; endl;
+else
+cout &amp;lt;&amp;lt; &amp;quot;Element not found in the array&amp;quot; &amp;lt;&amp;lt; endl;
+
+cout &amp;lt;&amp;lt; &amp;quot;Now, say we want to search for 10&amp;quot; &amp;lt;&amp;lt; endl;
+if(binary_search(a, a + 10, 10))
+cout &amp;lt;&amp;lt; &amp;quot;Element found in the array&amp;quot; &amp;lt;&amp;lt; endl;
+else
+cout &amp;lt;&amp;lt; &amp;quot;Element not found in the array&amp;quot; &amp;lt;&amp;lt; endl;
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;重要的-stl-算法&#34;&gt;重要的 STL 算法&lt;/h4&gt;
+
+&lt;h5 id=&#34;未加工算法&#34;&gt;未加工算法&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;排序
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class RandomAccessIterator&amp;gt; void sort (RandomAccessIterator first, RandomAccessIterator last);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class RandomAccessIterator, class Compare&amp;gt; void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;逆序
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class BidirectionalIterator&amp;gt; void reverse (BidirectionalIterator first, BidirectionalIterator last);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;返回序列中最大值的迭代器
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator&amp;gt; ForwardIterator max_element (ForwardIterator first, ForwardIterator last);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class Compare&amp;gt; ForwardIterator max_element (ForwardIterator first, ForwardIterator last, Compare comp);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;返回序列中最小值的迭代器
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator&amp;gt; ForwardIterator min_element (ForwardIterator first, ForwardIterator last);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class Compare&amp;gt; ForwardIterator min_element (ForwardIterator first, ForwardIterator last, Compare comp);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;计算序列元素的累加值&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class InputIterator, class T&amp;gt; T accumulate (InputIterator first, InputIterator last, T init);&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class InputIterator, class T, class BinaryOperation&amp;gt; T accumulate (InputIterator first, InputIterator last, T init, BinaryOperation binary_op);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;numeric&amp;gt; //For accumulate operation
+
+using namespace std;
+
+int main()
+{
+int arr[] = {10, 20, 5, 23 ,42 , 15};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&amp;lt;int&amp;gt; vect(arr, arr+n);
+cout &amp;lt;&amp;lt; &amp;quot;Vector is: &amp;quot;;
+for(int i=0; i&amp;lt;n; i++) cout &amp;lt;&amp;lt; vect[i] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;
+
+sort(vect.begin(), vect.end());
+cout &amp;lt;&amp;lt; &amp;quot;\nVector after sorting is: &amp;quot;;
+for(int i=0; i&amp;lt;n; i++) cout &amp;lt;&amp;lt; vect[i] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;
+
+reverse(vect.begin(), vect.end());
+cout &amp;lt;&amp;lt; &amp;quot;\nVector after reversing is: &amp;quot;;
+for(int i=0; i&amp;lt;6; i++) cout &amp;lt;&amp;lt; vect[i] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;
+
+cout &amp;lt;&amp;lt; &amp;quot;\nMaximum element of vector is: &amp;quot;;
+cout &amp;lt;&amp;lt; *max_element(vect.begin(), vect.end());
+
+cout &amp;lt;&amp;lt; &amp;quot;\nMinimum element of vector is: &amp;quot;;
+cout &amp;lt;&amp;lt; *min_element(vect.begin(), vect.end());
+
+cout &amp;lt;&amp;lt; &amp;quot;\nThe summation of vector elements is: &amp;quot;;
+cout &amp;lt;&amp;lt; accumulate(vect.begin(), vect.end(), 0);
+cout&amp;lt;&amp;lt; endl;
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;计算给定元素出现的次数&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class InputIterator, class T&amp;gt; typename iterator_traits&amp;lt;InputIterator&amp;gt;::difference_type count (InputIterator first, InputIterator last, const T&amp;amp; val);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;返回指向第一个等于给定元素的指针&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class InputIterator, class T&amp;gt; InputIterator find (InputIterator first, InputIterator last, const T&amp;amp; val);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {10, 20, 5, 23 ,42, 20, 15};
+int n = sizeof(arr)/sizeof(arr[0]);
+vector&amp;lt;int&amp;gt; vect(arr, arr+n);
+
+cout &amp;lt;&amp;lt; &amp;quot;Occurrences of 20 in vector : &amp;quot;;
+cout &amp;lt;&amp;lt; count(vect.begin(), vect.end(), 20) &amp;lt;&amp;lt; endl;
+
+find(vect.begin(), vect.end(), 5) != vect.end()?
+cout &amp;lt;&amp;lt; &amp;quot;Element 5 found\n&amp;quot; : cout &amp;lt;&amp;lt; &amp;quot;Element 5 not found\n&amp;quot;;
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;二分查找指定元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T&amp;gt; bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp;amp; val);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T, class Compare&amp;gt; bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp;amp; val, Compare comp);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;返回指向第一个不小于指定元素的迭代器(序列有序)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T&amp;gt; ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T&amp;amp; val);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T, class Compare&amp;gt; ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T&amp;amp; val, Compare comp);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;返回指向第一个大于指定元素的迭代器(序列有序)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T&amp;gt; ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T&amp;amp; val);&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T, class Compare&amp;gt; ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T&amp;amp; val, Compare comp);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&amp;lt;int&amp;gt; vect(arr, arr+n);
+sort(vect.begin(), vect.end());
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; endl;
+
+auto q = lower_bound(vect.begin(), vect.end(), 20);
+cout &amp;lt;&amp;lt; &amp;quot;The lower bound for 20 is at position: &amp;quot;;
+cout &amp;lt;&amp;lt; q-vect.begin() &amp;lt;&amp;lt; endl;
+
+auto p = upper_bound(vect.begin(), vect.end(), 20);
+cout &amp;lt;&amp;lt; &amp;quot;The upper bound for 20 is at position: &amp;quot;;
+cout &amp;lt;&amp;lt; p-vect.begin() &amp;lt;&amp;lt; endl;
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;加工算法&#34;&gt;加工算法&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;过滤连续相等的元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator&amp;gt; ForwardIterator unique (ForwardIterator first, ForwardIterator last);&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class BinaryPredicate&amp;gt; ForwardIterator unique (ForwardIterator first, ForwardIterator last, BinaryPredicate pred);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&amp;lt;int&amp;gt; vect(arr, arr+n);
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+vect.erase(vect.begin()+1);
+cout &amp;lt;&amp;lt; &amp;quot;\nVector after erasing the second element: &amp;quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+sort(vect.begin(), vect.end());
+
+cout &amp;lt;&amp;lt; &amp;quot;\nVector before removing duplicate occurrences: &amp;quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+vect.erase(unique(vect.begin(),vect.end()),vect.end());
+cout &amp;lt;&amp;lt; &amp;quot;\nVector after deleting duplicates: &amp;quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;返回下一个置换&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class BidirectionalIterator&amp;gt; bool next_permutation (BidirectionalIterator first, BidirectionalIterator last);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class BidirectionalIterator, class Compare&amp;gt; bool next_permutation (BidirectionalIterator first, BidirectionalIterator last, Compare comp);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;返回前一个置换&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class BidirectionalIterator&amp;gt; bool prev_permutation (BidirectionalIterator first, BidirectionalIterator last );&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class BidirectionalIterator, class Compare&amp;gt; bool prev_permutation (BidirectionalIterator first, BidirectionalIterator last, Compare comp);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&amp;lt;int&amp;gt; vect(arr, arr+n);
+cout &amp;lt;&amp;lt; &amp;quot;Given Vector is: &amp;quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+next_permutation(vect.begin(), vect.end());
+cout &amp;lt;&amp;lt; &amp;quot;\nVector after performing next permutation: &amp;quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+prev_permutation(vect.begin(), vect.end());
+cout &amp;lt;&amp;lt; &amp;quot;\nVector after performing prev permutation: &amp;quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;计算迭代器之间的距离。用于查找下标&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;包含在头文件 &lt;code&gt;iterator&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template&amp;lt;class InputIterator&amp;gt; typename iterator_traits&amp;lt;InputIterator&amp;gt;::difference_type distance (InputIterator first, InputIterator last);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+vector&amp;lt;int&amp;gt; vect(arr, arr+n);
+
+cout &amp;lt;&amp;lt; &amp;quot;Given Vector is: &amp;quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; &amp;quot;\nDistance between first to max element: &amp;quot; &amp;lt;&amp;lt; distance(vect.begin(), max_element(vect.begin(), vect.end())) &amp;lt;&amp;lt; endl;
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;有用的-array-算法&#34;&gt;有用的 Array 算法&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;以下算法在 C++11 开始支持&lt;/li&gt;
+&lt;li&gt;测试序列是否都满足某个条件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class InputIterator, class UnaryPredicate&amp;gt; bool all_of (InputIterator first, InputIterator last, UnaryPredicate pred);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;测试序列是否存在一个元素满足某个条件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class InputIterator, class UnaryPredicate&amp;gt; bool any_of (InputIterator first, InputIterator last, UnaryPredicate pred);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;测试序列是否都不满足某个条件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class InputIterator, class UnaryPredicate&amp;gt; bool none_of (InputIterator first, InputIterator last, UnaryPredicate pred);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;拷贝序列元素
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class InputIterator, class Size, class OutputIterator&amp;gt; OutputIterator copy_n (InputIterator first, Size n, OutputIterator result);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;存储增加的序列&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class T&amp;gt; void iota (ForwardIterator first, ForwardIterator last, T val);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;numeric&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+int main()
+{
+int arr1[] = {1, 2, 3, 4, 5, -6};
+all_of(arr1, arr1+6, [](int x) {return x&amp;gt;0;}) ?
+        cout &amp;lt;&amp;lt; &amp;quot;All are positive elments\n&amp;quot; : cout &amp;lt;&amp;lt; &amp;quot;Not all are positive elments\n&amp;quot;;
+any_of(arr1, arr1+6, [](int x) {return x&amp;lt;0;}) ?
+        cout &amp;lt;&amp;lt; &amp;quot;There exists a negative element\n&amp;quot; : cout &amp;lt;&amp;lt; &amp;quot;All are positive elments\n&amp;quot;;
+
+int arr2[] = {1, 2, 3, 4, 5, 6};
+none_of(arr2, arr2+6, [](int x) {return x&amp;lt;0;}) ?
+        cout &amp;lt;&amp;lt; &amp;quot;No negative elements\n&amp;quot; : cout &amp;lt;&amp;lt; &amp;quot;There exists a negative element\n&amp;quot;;
+
+int arrc[6];
+copy_n(arr2, 6, arrc);
+cout &amp;lt;&amp;lt; &amp;quot;Copyed array: &amp;quot;;
+for_each(arrc, arrc+6, [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; endl;
+
+int arr3[6] = {0};
+iota(arr3, arr3+6, 20);
+cout &amp;lt;&amp;lt; &amp;quot;Assigned array: &amp;quot;;
+for_each(arr3, arr3+6, [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; endl;
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;划分操作&#34;&gt;划分操作&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;根据条件重排序列，返回第一个不满足条件的迭代器
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class UnaryPredicate&amp;gt; ForwardIterator partition (ForwardIterator first, ForwardIterator last, UnaryPredicate pred);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;根据条件重排序列，且两组元素内部的相对顺序保持不变。一般是用临时缓冲区实现
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class BidirectionalIterator, class UnaryPredicate&amp;gt; BidirectionalIterator stable_partition (BidirectionalIterator first, BidirectionalIterator last, UnaryPredicate pred);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;判断序列是否是根据条件划分的
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class InputIterator, class UnaryPredicate&amp;gt; bool is_partitioned (InputIterator first, InputIterator last, UnaryPredicate pred);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;输入队列已经是分割过的，二分查找分界点
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template &amp;lt;class ForwardIterator, class UnaryPredicate&amp;gt; ForwardIterator partition_point (ForwardIterator first, ForwardIterator last, UnaryPredicate pred);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;输入序列中满足条件和不满足条件的分别拷贝到两个序列中&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;template &amp;lt;class InputIterator, class OutputIterator1, class OutputIterator2, class UnaryPredicate pred&amp;gt; pair&amp;lt;OutputIterator1,OutputIterator2&amp;gt; partition_copy (InputIterator first, InputIterator last, OutputIterator1 result_true, OutputIterator2 result_false, UnaryPredicate pred);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+int main()
+{
+vector&amp;lt;int&amp;gt; vect1 = { 2, 1, 5, 6, 8, 7 };
+
+cout &amp;lt;&amp;lt; &amp;quot;The vector is: &amp;quot;;
+for_each(vect1.begin(), vect1.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+is_partitioned(vect1.begin(), vect1.end(), [](int i) {return i%2==0;}) ?
+        cout &amp;lt;&amp;lt; &amp;quot;\nVector is partitioned&amp;quot; : cout &amp;lt;&amp;lt; &amp;quot;\nVector is not partitioned&amp;quot;;
+
+partition(vect1.begin(), vect1.end(), [](int i){return i%2==0;});
+cout &amp;lt;&amp;lt; &amp;quot;\nThe partitioned vector is: &amp;quot;;
+for_each(vect1.begin(), vect1.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+is_partitioned(vect1.begin(), vect1.end(), [](int i) {return i%2==0;}) ?
+        cout &amp;lt;&amp;lt; &amp;quot;\nNow, vector is partitioned after partition operation&amp;quot;:
+                cout &amp;lt;&amp;lt; &amp;quot;\nVector is still not partitioned after partition operation&amp;quot;;
+
+vector&amp;lt;int&amp;gt; vect2 = { 2, 1, 5, 6, 8, 7 };
+cout &amp;lt;&amp;lt; &amp;quot;\n\nThe vector is: &amp;quot;;
+for_each(vect2.begin(), vect2.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+stable_partition(vect2.begin(), vect2.end(), [](int i) {return i%2==0;});
+cout &amp;lt;&amp;lt; &amp;quot;\nThe stable partitioned vector is: &amp;quot;;
+for_each(vect2.begin(), vect2.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+auto it = partition_point(vect2.begin(), vect2.end(), [](int i) {return i%2==0;});
+cout &amp;lt;&amp;lt; &amp;quot;\nBefore the partition point: &amp;quot;;
+for_each(vect2.begin(), it, [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; &amp;quot;\nAfter the partition point: &amp;quot;;
+for_each(it, vect2.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+vector&amp;lt;int&amp;gt; vect3 = { 2, 1, 5, 6, 8, 7 };
+cout &amp;lt;&amp;lt; &amp;quot;\n\nThe vector is: &amp;quot;;
+for_each(vect3.begin(), vect3.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+vector&amp;lt;int&amp;gt; vecteven, vectodd;
+int n = count_if(vect3.begin(), vect3.end(), [](int i) {return i%2==0;});
+vecteven.resize(n);
+vectodd.resize(vect3.size()-n);
+
+partition_copy(vect3.begin(), vect3.end(), vecteven.begin(),
+           vectodd.begin(), [](int i) {return i%2==0;});
+
+cout &amp;lt;&amp;lt; &amp;quot;\nThe elements that return true for condition are : &amp;quot;;
+for_each(vecteven.begin(), vecteven.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; &amp;quot;\nThe elements that return false for condition are : &amp;quot;;
+for_each(vectodd.begin(), vectodd.end(), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; endl;
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;头文件-valarray&#34;&gt;头文件 valarray&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;valarray 类：C++98 引入的特殊容器，用于保存和提供对 array 的高效算术操作&lt;/li&gt;
+&lt;li&gt;应用操作到所有的元素，返回一个新的 valarray
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;valarray apply (T func(T)) const;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;valarray apply (T func(const T&amp;amp;)) const;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;返回所有元素的和
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;T sum() const;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;返回元素的最小值
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;T min() const;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;返回元素的最大值
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;T max() const;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;将 valarray 的元素移位，返回新的 valarray。如果参数为正数，左移；否则右移
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;valarray shift (int n) const;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;将 valarray 的元素循环移位，返回新的 valarray。如果参数为正数，循环左移；否则循环右移
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;valarray cshift (int n) const;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;和另外一个 valarray 交换&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;void swap (valarray&amp;amp; x) noexcept;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;valarray&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+int main()
+{
+valarray&amp;lt;int&amp;gt; varr1 = { 10, 2, 20, 1, 30 };
+cout &amp;lt;&amp;lt; &amp;quot;The varr1 is: &amp;quot;;
+for_each(begin(varr1), end(varr1), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+cout &amp;lt;&amp;lt; &amp;quot;\nThe sum of varr1 is: &amp;quot; &amp;lt;&amp;lt; varr1.sum();
+cout &amp;lt;&amp;lt; &amp;quot;\nThe max of varr1 is: &amp;quot; &amp;lt;&amp;lt; varr1.max();
+cout &amp;lt;&amp;lt; &amp;quot;\nThe min of varr1 is: &amp;quot; &amp;lt;&amp;lt; varr1.min();
+
+valarray&amp;lt;int&amp;gt; varr2;
+varr2 = varr1.apply([](int i){return i=i+5;});
+cout &amp;lt;&amp;lt; &amp;quot;\nThe varr2 (varr1 add 5 for each element) is: &amp;quot;;
+for_each(begin(varr2), end(varr2), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+valarray&amp;lt;int&amp;gt; varr3;
+varr3 = varr1.shift(2);
+cout &amp;lt;&amp;lt; &amp;quot;\nThe varr3 (varr1 shift 2) is: &amp;quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+varr3 = varr1.shift(-2);
+cout &amp;lt;&amp;lt; &amp;quot;\nThe varr3 (varr1 shift -2) is: &amp;quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+varr3 = varr1.cshift(2);
+cout &amp;lt;&amp;lt; &amp;quot;\nThe varr3 (varr1 cshift 2) is: &amp;quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+varr3 = varr1.cshift(-2);
+cout &amp;lt;&amp;lt; &amp;quot;\nThe varr3 (varr1 cshift -2) is: &amp;quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+valarray&amp;lt;int&amp;gt; varr4 = {2, 4, 6, 8};
+cout &amp;lt;&amp;lt; &amp;quot;\nThe varr4 is: &amp;quot;;
+for_each(begin(varr4), end(varr4), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+varr1.swap(varr4);
+cout &amp;lt;&amp;lt; &amp;quot;\nThe varr4 after swap with varr1 is: &amp;quot;;
+for_each(begin(varr4), end(varr4), [](int i) {cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;quot; &amp;quot;;});
+
+cout &amp;lt;&amp;lt; &amp;quot;\n&amp;quot;;
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;容器&#34;&gt;容器&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;容器是一个对象，保存了其他对象或对象元素的集合&lt;/li&gt;
+&lt;li&gt;容器自己管理元素的存储空间，并且提供成员函数来访问元素，直接访问或通过迭代器访问&lt;/li&gt;
+&lt;li&gt;容器类模板：包括顺序容器、容器适配器、关联容器和无序关联容器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;顺序容器&#34;&gt;顺序容器&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;实现的数据结构可以按顺序访问&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;array&#34;&gt;array&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;C++11 引入，替换 C 风格数组。相比 C 风格数组的优点包括
+
+&lt;ul&gt;
+&lt;li&gt;array 知道自己的大小，因此传递参数时不需要单独传递 array 的大小&lt;/li&gt;
+&lt;li&gt;C 风格的数组会有退化成指针的风险，但是 array 不会&lt;/li&gt;
+&lt;li&gt;相比 C 风格数组，array 更加高效、轻量和可靠&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;方法
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;at&lt;/code&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get&lt;/code&gt;：不是 array 的类成员函数，而是重载 tuple 类的函数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[]&lt;/code&gt;: 类似于 C 风格的数组访问&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;front/back&lt;/code&gt;：返回第一个/最后一个元素&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;size/max_size&lt;/code&gt;：返回 array 的元素数目/可以承载的最大元素数目。二者返回值相同&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;swap&lt;/code&gt;：和另外一个 array 交换元素&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;empty&lt;/code&gt;：array 的大小是否是 0&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fill&lt;/code&gt;：使用指定值填充正哥 array&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;固定大小数组，顺序连续存储，可使用偏移量访问&lt;/li&gt;
+&lt;li&gt;大小为 0 是有效的，但是不能间接引用，比如 front，back，data&lt;/li&gt;
+&lt;li&gt;交换是按顺序交换每个元素，效率低&lt;/li&gt;
+&lt;li&gt;可以当做 tuple（可以存储不同类型的元素的集合），重载了 get 接口等&lt;/li&gt;
+&lt;li&gt;访问快，可使用偏移量访问，常数时间&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;vector&#34;&gt;vector&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大小可变数组，顺序连续存储，可使用偏移量访问&lt;/li&gt;
+&lt;li&gt;一开始分配额外的存储空间，容量一般不等于实际大小&lt;/li&gt;
+&lt;li&gt;使用动态分配数组存储元素，插入元素时可能需要重新分配数组，将所有元素移到新的数组，效率低&lt;/li&gt;
+&lt;li&gt;访问快，和 array 一样，在尾部插入和删除也快。删除元素是常数时间，不会重新调整大小&lt;/li&gt;
+&lt;li&gt;在其他位置插入和删除低效，需要线性时间。没有随机访问迭代器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;deque&#34;&gt;deque&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;双端队列，顺序存储，可在两端增加或减小大小&lt;/li&gt;
+&lt;li&gt;可用随机访问迭代器直接访问单个元素&lt;/li&gt;
+&lt;li&gt;vs vector
+
+&lt;ul&gt;
+&lt;li&gt;存储可以是不连续的块，在容器增加或减小时内存分配效率更高&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;forward-list&#34;&gt;forward_list&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;C++11 引入&lt;/li&gt;
+&lt;li&gt;顺序存储，在任意位置插入和删除都是常数时间&lt;/li&gt;
+&lt;li&gt;单向链表，存储位置可以是不同的没有关系的&lt;/li&gt;
+&lt;li&gt;vs array/vector/deque
+
+&lt;ul&gt;
+&lt;li&gt;list 和 forward_list 的插入、删除更有效，对于排序算法也更快（交换更快）&lt;/li&gt;
+&lt;li&gt;list 和 forward_list 没有根据位置直接访问元素的方法，同时每个节点需要额外的存储存储链接的相关信息&lt;/li&gt;
+&lt;li&gt;list 和 forward_list 遍历较慢&lt;/li&gt;
+&lt;li&gt;list 和 forward_list 没有 size 方法，因为很耗时，可以使用 distance 算法（包含在头文件&lt;code&gt;&amp;lt;iterator&amp;gt;&lt;/code&gt;）计算 begin 和 end 之间的距离，消耗时间是线性的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;list&#34;&gt;list&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;双向链表&lt;/li&gt;
+&lt;li&gt;forward_list vs list： 前者只存储一个指向后面对象的链接，后者存储两个链接分别指向前一个和后一个对象，因此两个方向的迭代都比较搞笑，但同时每个节点需要额外的存储，且插入和删除也有额外的时间负载&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;容器适配器&#34;&gt;容器适配器&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不完全是容器类，而是依赖某一个容器类提供特定的接口，封装之后提供不同于顺序容器的接口&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;stack&#34;&gt;stack&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;后进先出（LIFO），使用标准的容器（vector/deque/list）类模板实现接口，如果初始化未指定容器类，则使用 deque 实现相关接口&lt;/li&gt;
+&lt;li&gt;如&lt;code&gt;std::stack&amp;lt;int, std::vector&amp;lt;int&amp;gt; &amp;gt; mystack&lt;/code&gt;使用 vector 实现的空的 stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;queue&#34;&gt;queue&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;先进先出（FIFO）队列，使用标准的容器（deque/list）类模板实现接口，默认使用 deque&lt;/li&gt;
+&lt;li&gt;如&lt;code&gt;std::queue&amp;lt;int, std::list&amp;lt;int&amp;gt; &amp;gt; myqueue&lt;/code&gt;使用 list 实现的空的 queue&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;priority-queue&#34;&gt;priority_queue&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;依据严格的弱排序（strict weak ordering）标准第一个元素总是最大的元素，所有元素是非增序的&lt;/li&gt;
+&lt;li&gt;使用标准的容器（vector/deque）类模板实现接口，，默认是 vector&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C++ 默认为 priority_queue 创建最大堆&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+
+using namespace std;
+
+void showpq(priority_queue&amp;lt;int&amp;gt; &amp;amp;gq)
+{
+priority_queue&amp;lt;int&amp;gt; g = gq;
+while (!g.empty())
+{
+    cout &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; g.top();
+    g.pop();
+}
+cout &amp;lt;&amp;lt; endl;
+}
+
+int main ()
+{
+priority_queue&amp;lt;int&amp;gt; gquiz;
+gquiz.push(10);
+gquiz.push(30);
+gquiz.push(20);
+gquiz.push(5);
+gquiz.push(1);
+
+cout &amp;lt;&amp;lt; &amp;quot;The priority queue gquiz is: &amp;quot;;
+showpq(gquiz);
+
+cout &amp;lt;&amp;lt; &amp;quot;gquiz.size(): &amp;quot; &amp;lt;&amp;lt; gquiz.size() &amp;lt;&amp;lt; endl;
+cout &amp;lt;&amp;lt; &amp;quot;gquiz.top(): &amp;quot; &amp;lt;&amp;lt; gquiz.top() &amp;lt;&amp;lt; endl;
+
+gquiz.pop();
+cout &amp;lt;&amp;lt; &amp;quot;after gquiz.pop(): &amp;quot;;
+showpq(gquiz);
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为 priority_queue 创建最小堆 &lt;code&gt;priority_queue&amp;lt;int, vector&amp;lt;int&amp;gt;, greater&amp;lt;int&amp;gt;&amp;gt; g=gq;&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下面的语法难记，因此对于数字的值，可以给每个元素乘以 -1，然后使用最大值堆达到最小值堆的效果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+
+using namespace std;
+
+void showpq(priority_queue&amp;lt;int, vector&amp;lt;int&amp;gt;, greater&amp;lt;int&amp;gt;&amp;gt; &amp;amp;gq)
+{
+priority_queue&amp;lt;int, vector&amp;lt;int&amp;gt;, greater&amp;lt;int&amp;gt;&amp;gt; g = gq;
+while(!g.empty())
+{
+cout &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; g.top();
+g.pop();
+}
+cout &amp;lt;&amp;lt; endl;
+}
+
+int main ()
+{
+priority_queue&amp;lt;int, vector&amp;lt;int&amp;gt;, greater&amp;lt;int&amp;gt;&amp;gt; gquiz;
+gquiz.push(10);
+gquiz.push(30);
+gquiz.push(20);
+gquiz.push(5);
+gquiz.push(1);
+
+cout &amp;lt;&amp;lt; &amp;quot;The priority queue gquiz is: &amp;quot;;
+showpq(gquiz);
+
+cout &amp;lt;&amp;lt; &amp;quot;gquiz.size(): &amp;quot; &amp;lt;&amp;lt; gquiz.size() &amp;lt;&amp;lt; endl;
+cout &amp;lt;&amp;lt; &amp;quot;gquiz.top(): &amp;quot; &amp;lt;&amp;lt; gquiz.top() &amp;lt;&amp;lt; endl;
+
+gquiz.pop();
+cout &amp;lt;&amp;lt; &amp;quot;after gquiz.pop(): &amp;quot;;
+showpq(gquiz);
+
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;关联容器&#34;&gt;关联容器&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;实现排好序的数据结构，可以达到快速查询的时间复杂度 O(logn)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;set&#34;&gt;set&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;保存的值都是唯一的，不能修改，只能插入或删除，key 和 value 相同&lt;/li&gt;
+&lt;li&gt;存储的元素总是依照严格的弱排序标准排序，通过内部的比较对象&lt;/li&gt;
+&lt;li&gt;在通过 key 访问单个元素的时候通常比 unordered_set 慢，但是可以访问有序集合的一个子集&lt;/li&gt;
+&lt;li&gt;通常实现为二分搜索树&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;multiset&#34;&gt;multiset&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以存储相同值的元素&lt;/li&gt;
+&lt;li&gt;在通过 key 访问的那个元素的时候比 unordered_multiset 慢&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;map&#34;&gt;map&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;关联容器，存储的对象包括一个 key 和映射的 value&lt;/li&gt;
+&lt;li&gt;通过 key 排序和标记唯一元素，存储的元素总是依照严格的弱排序标准排序，通过内部的比较对象&lt;/li&gt;
+&lt;li&gt;在通过 key 访问单个元素的时候通常比 unordered_map 慢，但是可以访问有序集合的一个子集&lt;/li&gt;
+&lt;li&gt;通常实现为二分搜索树&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;multimap&#34;&gt;multimap&lt;/h4&gt;
+
+&lt;h3 id=&#34;无序关联容器&#34;&gt;无序关联容器&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;实现无序数据结构，可以快速查询&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;unordered-set&#34;&gt;unordered_set&lt;/h4&gt;
+
+&lt;h4 id=&#34;unordered-multiset&#34;&gt;unordered_multiset&lt;/h4&gt;
+
+&lt;h4 id=&#34;unordered-map&#34;&gt;unordered_map&lt;/h4&gt;
+
+&lt;h4 id=&#34;unordered-multimap&#34;&gt;unordered_multimap&lt;/h4&gt;
+
+&lt;h2 id=&#34;仿函数&#34;&gt;仿函数&lt;/h2&gt;
+
+&lt;h2 id=&#34;迭代器&#34;&gt;迭代器&lt;/h2&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/cpp-stl-tutorial/&#34; target=&#34;_blank&#34;&gt;C++ STL Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/the-c-standard-template-library-stl/&#34; target=&#34;_blank&#34;&gt;The C++ Standard Template Library (STL)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikibooks.org/wiki/C%2B%2B/STL/Algorithm&#34; target=&#34;_blank&#34;&gt;C++/STL/Algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikibooks.org/wiki/C%2B%2B/Numeric&#34; target=&#34;_blank&#34;&gt;C++/Numeric&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>STL 的 push 和 emplace</title>
+      <link>https://xueqing.github.io/blog/cplusplus/stl_push_emplace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/cplusplus/stl_push_emplace/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%89%8d%e8%a8%80&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stdqueueemplace&#34;&gt;std::queue::emplace&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#stddequeemplaceback&#34;&gt;std::deque::emplace_back&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stdallocatortraitsconstruct&#34;&gt;std::allocator_traits::construct&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stdallocator&#34;&gt;std::allocator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stddequeallocator&#34;&gt;std::deque::allocator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stdqueuepush&#34;&gt;std::queue::push&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#stddequepushback&#34;&gt;std::deque::push_back&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stdvector-%e7%9a%84-emplaceback-%e5%92%8c-pushback&#34;&gt;std::vector 的 emplace_back 和 push_back&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%ba%a7%e7%94%9f%e6%97%b6%e9%97%b4&#34;&gt;产生时间&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e4%b8%8d%e6%ad%a2-1-%e4%b8%aa&#34;&gt;类型的构造函数不止 1 个&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%88%e7%8e%87&#34;&gt;效率&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stdmap-%e7%9a%84-emplace-%e5%92%8c-insert&#34;&gt;std::map 的 emplace 和 insert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%b6%e4%bb%96%e5%8f%82%e8%80%83&#34;&gt;其他参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下面的说明以 STL 的 queue 为实例，其他 STL 还有 push_back/emplace_back 等，各自的影响不尽相同
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/deque/deque/&#34; target=&#34;_blank&#34;&gt;deque&lt;/a&gt;: emplace/emplace_back/emplace_front/insert/push_back/push_front&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/forward_list/forward_list/&#34; target=&#34;_blank&#34;&gt;forward_list&lt;/a&gt;: emplace_after/emplace_front/insert_after/push_front&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/list/list/&#34; target=&#34;_blank&#34;&gt;list&lt;/a&gt;: emplace/emplace_back/emplace_front/insert/push_back/push_front&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/map/map/&#34; target=&#34;_blank&#34;&gt;map&lt;/a&gt;: emplace/emplace_hint/insert&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/queue/queue/&#34; target=&#34;_blank&#34;&gt;queue&lt;/a&gt;: emplace/push&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/set/set/&#34; target=&#34;_blank&#34;&gt;set&lt;/a&gt;: emplace/emplace_hint/insert&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/stack/stack/&#34; target=&#34;_blank&#34;&gt;stack&lt;/a&gt;: emplace/push&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cplusplus.com/reference/vector/vector/&#34; target=&#34;_blank&#34;&gt;vector&lt;/a&gt;: emplace/emplace_back/insert/push_back&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;std-queue-emplace&#34;&gt;std::queue::emplace&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考 &lt;a href=&#34;http://www.cplusplus.com/reference/queue/queue/emplace/&#34; target=&#34;_blank&#34;&gt;std::queue::emplace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;： &lt;code&gt;template &amp;lt;class... Args&amp;gt; void emplace (Args&amp;amp;&amp;amp;... args);&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;args：被传递作为新元素构造函数的参数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：构造并插入一个元素。增加新元素到 queue 的末尾，即当前最后一个元素之后。将传入的参数作为新元素的构造函数的参数。&lt;/li&gt;
+&lt;li&gt;底层容器对象调用 &lt;a href=&#34;http://www.cplusplus.com/reference/deque/deque/emplace_back/&#34; target=&#34;_blank&#34;&gt;emplace_back&lt;/a&gt;，并传递参数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;std-deque-emplace-back&#34;&gt;std::deque::emplace_back&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考 &lt;a href=&#34;http://www.cplusplus.com/reference/deque/deque/emplace_back/&#34; target=&#34;_blank&#34;&gt;std::deque::emplace_back&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;template &amp;lt;class... Args&amp;gt; void emplace_back (Args&amp;amp;&amp;amp;... args);&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;args：被传递作为新元素构造函数的参数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：构造并在末尾插入一个元素。增加新元素到 deque 的末尾，即当前最后一个元素之后。将传入的参数作为新元素的构造函数的参数。&lt;/li&gt;
+&lt;li&gt;这个操作将容器大小高效增加 1&lt;/li&gt;
+&lt;li&gt;元素通过调用 &lt;a href=&#34;http://www.cplusplus.com/reference/memory/allocator_traits/construct/&#34; target=&#34;_blank&#34;&gt;std::allocator_traits::construct&lt;/a&gt; 和参数构造。
+
+&lt;ul&gt;
+&lt;li&gt;新元素的存储通过 &lt;code&gt;allocator_traits&amp;lt;allocator_type&amp;gt;::construct()&lt;/code&gt; 分配，失败时可能会抛异常(对于默认的 &lt;a href=&#34;http://www.cplusplus.com/reference/memory/allocator/&#34; target=&#34;_blank&#34;&gt;std::allocator&lt;/a&gt;，分配失败会抛 bad_alloc 异常)。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;迭代器有效性&lt;/strong&gt;：容器相关的所有迭代器无效，但是指针和引用是有效的，和调用函数之前指向的元素相同。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异常安全性&lt;/strong&gt;：强保证。如果抛出异常，则容器没有改变。如果 &lt;code&gt;std::allocator_traits::construct&lt;/code&gt; 对于传递的参数不支持，会导致未定义的行为。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;std-allocator-traits-construct&#34;&gt;std::allocator_traits::construct&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考 &lt;a href=&#34;http://www.cplusplus.com/reference/memory/allocator_traits/construct/&#34; target=&#34;_blank&#34;&gt;std::allocator_traits::construct&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;静态成员函数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;template &amp;lt;class T, class... Args&amp;gt; static void construct (allocator_type alloc, T* p, Args&amp;amp;&amp;amp;... args );&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：构造一个元素。在指针 p 指向的位置传递参数给构造函数构造一个元素对象。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：对象被 in-place 构造，而不用为元素分配存储。如果不可行，则调用 &lt;code&gt;::new (static_cast&amp;lt;void*&amp;gt;(p)) T (forward&amp;lt;Args&amp;gt;(args)...)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;std-allocator&#34;&gt;std::allocator&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考 &lt;a href=&#34;http://www.cplusplus.com/reference/memory/allocator/&#34; target=&#34;_blank&#34;&gt;std::allocator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;template &amp;lt;class T&amp;gt; class allocator;&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;T：对象分配的元素类型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：默认分配器。
+
+&lt;ul&gt;
+&lt;li&gt;分配器：定义内存模型的类，被标准库的一些部分使用，大多数情况是被 STL 容器使用。&lt;/li&gt;
+&lt;li&gt;allocator 是默认分配器模板，这是所有标准容器未指定最后一个(可选的)模板参数时会使用的分配器，也是标准库中唯一一个预定义的分配器。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;std-deque-allocator&#34;&gt;std::deque::allocator&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考&lt;a href=&#34;http://www.cplusplus.com/reference/deque/deque/get_allocator/&#34; target=&#34;_blank&#34;&gt;std::deque::get_allocator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;allocator_type get_allocator() const noexcept;&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;allocator_type：是容器使用的分配器的类型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：返回和 deque 对象相关的分配器对象的拷贝。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异常安全性&lt;/strong&gt;：保证没有异常。拷贝默认分配器的任何实例也保存不会抛异常&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;std-queue-push&#34;&gt;std::queue::push&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考 &lt;a href=&#34;http://www.cplusplus.com/reference/queue/queue/push/&#34; target=&#34;_blank&#34;&gt;std::queue::push&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;void push (const value_type&amp;amp; val);&lt;/code&gt;或&lt;code&gt;void push (value_type&amp;amp;&amp;amp; val);&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;val：经过初始化的新插入元素的值&lt;/li&gt;
+&lt;li&gt;value_type：是容器元素的类型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：插入一个新元素到 queue 末尾，即当前最后一个元素之后。新元素的内容被初始化为 &lt;code&gt;val&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;底层容器对象调用 &lt;a href=&#34;http://www.cplusplus.com/reference/deque/deque/push_back/&#34; target=&#34;_blank&#34;&gt;push_back&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;std-deque-push-back&#34;&gt;std::deque::push_back&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考 &lt;a href=&#34;http://www.cplusplus.com/reference/deque/deque/push_back/&#34; target=&#34;_blank&#34;&gt;std::deque::push_back&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;void push_back (const value_type&amp;amp; val);&lt;/code&gt;或&lt;code&gt;void push_back (value_type&amp;amp;&amp;amp; val);&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;val：将要拷贝或移动给新对象的值&lt;/li&gt;
+&lt;li&gt;value_type：是容器元素的类型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;新元素的存储通过容器的 &lt;a href=&#34;http://www.cplusplus.com/reference/deque/deque/get_allocator/&#34; target=&#34;_blank&#34;&gt;allocator&lt;/a&gt; 分配，失败时可能会抛异常(对于默认的&lt;a href=&#34;http://www.cplusplus.com/reference/memory/allocator/&#34; target=&#34;_blank&#34;&gt;std::allocator&lt;/a&gt;，分配失败会抛 bad_alloc 异常)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;迭代器有效性&lt;/strong&gt;：容器相关的所有迭代器无效，但是指针和引用是有效的，和调用函数之前指向的元素相同。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异常安全性&lt;/strong&gt;：强保证。如果抛出异常，则容器没有改变。如果 &lt;code&gt;std::allocator_traits::construct&lt;/code&gt; 对于传递的参数不支持，会导致未定义的行为。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;std-vector-的-emplace-back-和-push-back&#34;&gt;std::vector 的 emplace_back 和 push_back&lt;/h2&gt;
+
+&lt;h3 id=&#34;产生时间&#34;&gt;产生时间&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;push_back 是标准 C++ 创建之初就有的；emplace_back 是在 C++11 特性前提下增加的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;类型的构造函数不止-1-个&#34;&gt;类型的构造函数不止 1 个&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当类型的构造函数不止 1 个时：push_back 只接收类型的对象，emplace_back 接收类型构造函数的参数&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C++ 11 支持从参数构造对象，因此当类型的构造函数参数只有一个时，push_back 可以传入构造函数参数，C++ 11 会构造对象，并传递对象给容器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class OneParam
+{
+int m_i;
+public:
+OneParam(int ii) : m_i(ii) { cout &amp;lt;&amp;lt; &amp;quot;OneParam::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+OneParam(const OneParam &amp;amp;copy) : m_i(copy.m_i) { cout &amp;lt;&amp;lt; &amp;quot;OneParam::copy::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+~OneParam( ) { cout &amp;lt;&amp;lt; &amp;quot;~OneParam::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+
+int get() const { return m_i; }
+};
+
+class MoreThanOneParam
+{
+int m_i;
+string m_s;
+public:
+MoreThanOneParam(int ii, string s) : m_i(ii), m_s(s) { cout &amp;lt;&amp;lt; &amp;quot;MoreThanOneParam::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+MoreThanOneParam(const MoreThanOneParam &amp;amp;copy) : m_i(copy.m_i), m_s(copy.m_s) { cout &amp;lt;&amp;lt; &amp;quot;MoreThanOneParam::copy::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+~MoreThanOneParam( ) { cout &amp;lt;&amp;lt; &amp;quot;~MoreThanOneParam::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+
+int getInt() const { return m_i; }
+string getString() const { return m_s; }
+};
+
+int main( )
+{
+vector&amp;lt;OneParam&amp;gt; vec1={ 21 , 45 }; //对于每个元素，构造一次，拷贝一次，析构一次
+vec1.push_back( OneParam(34) ); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+vec1.push_back( 901 ); //构造一次，拷贝一次，析构一次
+vec1.emplace_back( OneParam(7889) ); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+vec1.emplace_back( 4156 ); //构造一次
+//21; 45; 34; 901; 7889; 4156;
+for( auto &amp;amp;elem:vec1 ) { cout &amp;lt;&amp;lt; elem.get() &amp;lt;&amp;lt; &amp;quot;; &amp;quot;; } //21; 45; 34; 901; 7889; 4156;
+cout &amp;lt;&amp;lt; endl;
+
+vector&amp;lt;MoreThanOneParam&amp;gt; vec2={ {21,&amp;quot;String&amp;quot;} , MoreThanOneParam{45 , &amp;quot;tinger&amp;quot;} }; //对于每个元素，构造一次，拷贝一次，析构一次
+vec2.push_back( MoreThanOneParam(34 , &amp;quot;Happy&amp;quot; ) ); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+//    vec2.push_back( 901 , &amp;quot;Doer&amp;quot; ); //Error!!
+vec2.emplace_back( MoreThanOneParam(78 , &amp;quot;Gomu gomu&amp;quot; )); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+vec2.emplace_back( 41 , &amp;quot;Shanks&amp;quot; ); //构造一次
+//21 String; 45 tinger; 34 Happy; 78 Gomu gomu; 41 Shanks;
+for( auto &amp;amp;elem:vec2 ) { cout &amp;lt;&amp;lt; elem.getInt( ) &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; elem.getString( ) &amp;lt;&amp;lt; &amp;quot;; &amp;quot;; }
+cout &amp;lt;&amp;lt; endl;
+
+cin.get( );
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;效率&#34;&gt;效率&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这里的效率指的是：代码工作更快，生成的负载更小&lt;/li&gt;
+&lt;li&gt;当 vector 的类型是内置类型时，push_back 和 emplace_back 没有区别&lt;/li&gt;
+&lt;li&gt;当 vector 的类型是用户自定义类型时，emplace_back 比 push_back 更高效
+
+&lt;ul&gt;
+&lt;li&gt;当尝试直接添加对象 (在对象被创建之前) 到 vector，使用 push_back 的流程是&lt;/li&gt;
+&lt;li&gt;调用构造函数创建临时对象&lt;/li&gt;
+&lt;li&gt;在 vector 中创建临时对象的拷贝&lt;/li&gt;
+&lt;li&gt;拷贝对象完成之后，调用析构函数销毁临时对象&lt;/li&gt;
+&lt;li&gt;使用 emplace_back 将不会创建临时对象，而是直接在 vector 中创建对象。因此提高了性能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;std-map-的-emplace-和-insert&#34;&gt;std::map 的 emplace 和 insert&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;insert 需要先创建临时对象，然后拷贝到 &lt;code&gt;std::pair&amp;lt;key, val&amp;gt;&lt;/code&gt; 中，再将 pair 拷贝到 map 中&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class Complicated
+{
+int m_i;
+double m_d;
+string m_s;
+public:
+Complicated(int i, double d, string s) : m_i(i), m_d(d), m_s(s) { cout &amp;lt;&amp;lt; &amp;quot;Complicated::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+Complicated(const Complicated &amp;amp;copy) : m_i(copy.m_i), m_d(copy.m_d), m_s(copy.m_s) { cout &amp;lt;&amp;lt; &amp;quot;Complicated::copy::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+~Complicated() { cout &amp;lt;&amp;lt; &amp;quot;~Complicated::&amp;quot; &amp;lt;&amp;lt; m_i &amp;lt;&amp;lt; endl; }
+};
+
+int main()
+{
+map&amp;lt;int, Complicated&amp;gt; m;
+
+m.insert( make_pair(4, Complicated(4, 4.0, &amp;quot;C++4&amp;quot;)) ); //构造一次，拷贝两次，析构两次
+m.insert( 5, {5, 5.0, &amp;quot;C++5&amp;quot;} ); //构造一次，拷贝两次，析构两次
+m.insert( pair&amp;lt;int, Complicated&amp;gt;(7, {7, 7.0, &amp;quot;C++7&amp;quot;}) ); //构造一次，拷贝两次，析构两次
+m.emplace( piecewise_construct, forward_as_tuple(6), forward_as_tuple(6, 6.0, &amp;quot;C++6&amp;quot;) ); //构造一次
+
+//4; 5; 6; 7;
+for( auto &amp;amp;elem:m )  cout &amp;lt;&amp;lt; elem.first &amp;lt;&amp;lt; &amp;quot;; &amp;quot;;
+cout &amp;lt;&amp;lt; endl;
+
+cin.get();
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;其他参考&#34;&gt;其他参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function&#34; target=&#34;_blank&#34;&gt;C++ difference between emplace_back and push_back function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/4303513/push-back-vs-emplace-back&#34; target=&#34;_blank&#34;&gt;https://stackoverflow.com/questions/4303513/push-back-vs-emplace-back&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -622,14 +622,6 @@
     </item>
     
     <item>
-      <title>go fix</title>
-      <link>https://xueqing.github.io/translation/go-doc/command/fix/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://xueqing.github.io/translation/go-doc/command/fix/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>go fmt</title>
       <link>https://xueqing.github.io/translation/go-doc/command/fmt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1516,15 +1508,6 @@ ok   compress/gzip 0.033s
 &lt;p&gt;Go 搜索 GOPATH 列举的每个目录来查找源码，但是新包总是下载到列表中的第一个目录。&lt;/p&gt;
 
 &lt;p&gt;查看&lt;a href=&#34;../golangdoc/code.md&#34;&gt;如何编写 Go 代码&lt;/a&gt;的例子。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>显示包或符号的文档</title>
-      <link>https://xueqing.github.io/translation/go-doc/command/show_doc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://xueqing.github.io/translation/go-doc/command/show_doc/</guid>
-      <description>&lt;p&gt;[](&lt;a href=&#34;https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol&#34; target=&#34;_blank&#34;&gt;https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol&lt;/a&gt;)&lt;/p&gt;
 </description>
     </item>
     

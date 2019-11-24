@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="sizeof strlen 总结 参考 sizeof sizeof 是编译时一元运算符，可用于计算运算元的大小 sizeof 作用于 unsigned int 时，结果一般表示为 size_t sizeof 可用于任何数据类型，包括基本类型(比如整型、浮点">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/cplusplus/sizeof_strlen/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/cplusplus/sizeof_strlen/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/cplusplus/sizeof_strlen/">
+  <meta property="og:title" content="sizeof vs strlen | kiki">
+  <meta property="og:description" content="sizeof strlen 总结 参考 sizeof sizeof 是编译时一元运算符，可用于计算运算元的大小 sizeof 作用于 unsigned int 时，结果一般表示为 size_t sizeof 可用于任何数据类型，包括基本类型(比如整型、浮点"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>sizeof vs strlen | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>sizeof vs strlen</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#sizeof">sizeof</a></li>
+<li><a href="#strlen">strlen</a></li>
+<li><a href="#%e6%80%bb%e7%bb%93">总结</a></li>
+<li><a href="#%e5%8f%82%e8%80%83">参考</a></li>
+</ul>
+
+<h2 id="sizeof">sizeof</h2>
+
+<ul>
+<li>sizeof 是编译时一元运算符，可用于计算运算元的大小</li>
+<li>sizeof 作用于 unsigned int 时，结果一般表示为 size_t</li>
+<li>sizeof 可用于任何数据类型，包括基本类型(比如整型、浮点型、指针类型)或符合数据类型(比如结构体、联合体等)</li>
+
+<li><p>sizeof 计算结构体的大小时，并不一定等于结构体每个成员 sizeof 计算结果之和</p>
+
+<ul>
+<li>原因：编译器因为对齐问题会给结构体增加填充。不同编译器的对齐约束可能不同，所以填充大小也不确定。当结构体的一个成员之和有一个更大的成员，或者在结构体最后时，前者可能会被填充</li>
+
+<li><p>C 编译器不允许编译器重排结构体的成员来减小填充。为了最下滑填充，结构体的成员必须按照从大到小的顺序排列</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+struct A {
+int x;      //sizeof(int)=4, Padding of 4 bytes
+double z;   //sizeof(double)=8
+short int y;//sizeof(short int)=2, Padding of 6 bytes
+};
+printf(&quot;Size of struct: %d&quot;, sizeof(struct A));//24
+
+struct B {
+double z;   //sizeof(double)=8
+int x;      //sizeof(int)=4
+short int y;//sizeof(short int)=2, Padding of 2 bytes
+};
+printf(&quot;Size of struct: %d&quot;, sizeof(struct B));//16
+
+struct C {
+double z;   //sizeof(double)=8
+short int y;//sizeof(short int)=2, Padding of 2 bytes
+int x;      //sizeof(int)=4
+};
+printf(&quot;Size of struct: %d&quot;, sizeof(struct C));//16
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="strlen">strlen</h2>
+
+<ul>
+<li>strlen 是 C 语言预定义的函数，包含在头文件 <code>string.h</code> 中</li>
+<li>strlen 接受指向数组的指针作为参数，并在运行时从该地址开始遍历查找 <code>NULL</code> 字符，然后计算在找到 <code>NULL</code> 字符钱经过的内存大小</li>
+
+<li><p>strlen 的主要用于计算一个数组或字符串的长度</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+  
+int main()
+{
+char ch[]={'g', 'e', 'e', 'k', 's', '\0'};
+printf(&quot;Length of string is: %d&quot;, strlen(ch));//5
+
+char str[]= &quot;geeks&quot;;
+printf(&quot;Length of string is: %d&quot;, strlen(str));//5
+
+char *str1 = &quot;geeks&quot;;
+printf(&quot;Length of string is: %d&quot;, strlen(str1));//5
+  
+return 0;
+}
+</code></pre></li>
+</ul>
+
+<h2 id="总结">总结</h2>
+
+<table>
+<thead>
+<tr>
+<th>差异</th>
+<th>sizeof</th>
+<th>strlen</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>原型</td>
+<td>-</td>
+<td><code>size_t strlen(const char * str);</code></td>
+</tr>
+
+<tr>
+<td>类型</td>
+<td>一元运算符</td>
+<td>C 预定义的函数</td>
+</tr>
+
+<tr>
+<td>支持的数据类型</td>
+<td>返回任何数据(分配的)的实际大小，单位是 Byte，包含 null 值</td>
+<td>返回字符串或字符数组的长度</td>
+</tr>
+
+<tr>
+<td>计算大小</td>
+<td>sizeof 是编译时表达式，返回一个类型或变量的大小，并不关心变量的值</td>
+<td>strlen 是运行时计算，返回一个 C 风格的以 NULL 结尾的字符串的长度</td>
+</tr>
+
+<tr>
+<td>C++ 中</td>
+<td>sizeof 常用作 <code>malloc/memcpy/memset</code> 的参数，C++ 可用 <code>new/std::copy/std::fill</code> 或构造函数替换</td>
+<td>C 风格的字符串使用 <code>char_traits::length</code> 获取长度，也可用 <code>std::string</code> 类型保存计算</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char str[] = &quot;November&quot;;
+    printf(&quot;Length of String is %d\n&quot;, strlen(str));//8
+    printf(&quot;Size of String is %d\n&quot;, sizeof(str));//9
+}
+
+// 字符串以 NULL 字符，即 '\0' 结束，strlen 计算找到 NULL 字符经过的内存大小，不会计算 NULL。而 sizeof 返回为运算元实际分配的内存，也会计算 NULL
+</code></pre>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+using namespace std;
+  
+int main()
+{
+    char a[] = {&quot;Geeks for&quot;};
+    char b[] = {'G','e','e','k','s',' ','f','o','r'};
+    cout &lt;&lt; &quot;sizeof(a) = &quot; &lt;&lt; sizeof(a);//10
+    cout &lt;&lt; &quot;\nstrlen(a) = &quot;&lt;&lt; strlen(a);//9
+    cout&lt;&lt;  &quot;\nsizeof(b) = &quot; &lt;&lt; sizeof(b);//9
+    cout&lt;&lt;  &quot;\nstrlen(b) = &quot; &lt;&lt; strlen(b);//18，不确定
+
+    return 0;
+}
+// strlen 找不到 NULL 字符，返回结果是不确定的
+</code></pre>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="https://www.geeksforgeeks.org/difference-strlen-sizeof-string-c-reviewed/" target="_blank">Difference between strlen() and sizeof() for string in C</a></li>
+<li><a href="https://stackoverflow.com/questions/9937181/sizeof-vs-strlen" target="_blank">Sizeof vs Strlen</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/cplusplus/sizeof_strlen/&amp;text=sizeof%20vs%20strlen" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/cplusplus/sizeof_strlen/&amp;t=sizeof%20vs%20strlen" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=sizeof%20vs%20strlen&amp;body=https://xueqing.github.io/blog/cplusplus/sizeof_strlen/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/cplusplus/sizeof_strlen/&amp;title=sizeof%20vs%20strlen" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=sizeof%20vs%20strlen%20https://xueqing.github.io/blog/cplusplus/sizeof_strlen/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/cplusplus/sizeof_strlen/&amp;title=sizeof%20vs%20strlen" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_string_case_convert/">C&#43;&#43; string 转换大小写</a></li>
+      
+      <li><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></li>
+      
+      <li><a href="/blog/cplusplus/effectivec&#43;&#43;_3/">Effective C&#43;&#43;, 3rd</a></li>
+      
+      <li><a href="/blog/cplusplus/raii/">RAII 资源获取即初始化</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

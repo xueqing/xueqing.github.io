@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="介绍 算法 头文件 algorithm 排序 搜索 重要的 STL 算法 未加工算法 加工算法 有用的 Array 算法 划分操作 头文件 valarray 容器 顺序容器 array vector deque forward_list list 容器适配器 stack queue priority_queue 关联容器 set multiset map multimap 无序">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/cplusplus/stl/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/cplusplus/stl/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/cplusplus/stl/">
+  <meta property="og:title" content="STL | kiki">
+  <meta property="og:description" content="介绍 算法 头文件 algorithm 排序 搜索 重要的 STL 算法 未加工算法 加工算法 有用的 Array 算法 划分操作 头文件 valarray 容器 顺序容器 array vector deque forward_list list 容器适配器 stack queue priority_queue 关联容器 set multiset map multimap 无序"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>STL | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>STL</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e4%bb%8b%e7%bb%8d">介绍</a></li>
+<li><a href="#%e7%ae%97%e6%b3%95">算法</a>
+
+<ul>
+<li><a href="#%e5%a4%b4%e6%96%87%e4%bb%b6-algorithm">头文件 algorithm</a></li>
+<li><a href="#%e6%8e%92%e5%ba%8f">排序</a></li>
+<li><a href="#%e6%90%9c%e7%b4%a2">搜索</a></li>
+<li><a href="#%e9%87%8d%e8%a6%81%e7%9a%84-stl-%e7%ae%97%e6%b3%95">重要的 STL 算法</a>
+
+<ul>
+<li><a href="#%e6%9c%aa%e5%8a%a0%e5%b7%a5%e7%ae%97%e6%b3%95">未加工算法</a></li>
+<li><a href="#%e5%8a%a0%e5%b7%a5%e7%ae%97%e6%b3%95">加工算法</a></li>
+</ul></li>
+<li><a href="#%e6%9c%89%e7%94%a8%e7%9a%84-array-%e7%ae%97%e6%b3%95">有用的 Array 算法</a></li>
+<li><a href="#%e5%88%92%e5%88%86%e6%93%8d%e4%bd%9c">划分操作</a></li>
+<li><a href="#%e5%a4%b4%e6%96%87%e4%bb%b6-valarray">头文件 valarray</a></li>
+</ul></li>
+<li><a href="#%e5%ae%b9%e5%99%a8">容器</a>
+
+<ul>
+<li><a href="#%e9%a1%ba%e5%ba%8f%e5%ae%b9%e5%99%a8">顺序容器</a></li>
+<li><a href="#array">array</a></li>
+<li><a href="#vector">vector</a></li>
+<li><a href="#deque">deque</a></li>
+<li><a href="#forwardlist">forward_list</a></li>
+<li><a href="#list">list</a></li>
+<li><a href="#%e5%ae%b9%e5%99%a8%e9%80%82%e9%85%8d%e5%99%a8">容器适配器</a></li>
+<li><a href="#stack">stack</a></li>
+<li><a href="#queue">queue</a></li>
+<li><a href="#priorityqueue">priority_queue</a></li>
+<li><a href="#%e5%85%b3%e8%81%94%e5%ae%b9%e5%99%a8">关联容器</a></li>
+<li><a href="#set">set</a></li>
+<li><a href="#multiset">multiset</a></li>
+<li><a href="#map">map</a></li>
+<li><a href="#multimap">multimap</a></li>
+<li><a href="#%e6%97%a0%e5%ba%8f%e5%85%b3%e8%81%94%e5%ae%b9%e5%99%a8">无序关联容器</a></li>
+<li><a href="#unorderedset">unordered_set</a></li>
+<li><a href="#unorderedmultiset">unordered_multiset</a></li>
+<li><a href="#unorderedmap">unordered_map</a></li>
+<li><a href="#unorderedmultimap">unordered_multimap</a></li>
+</ul></li>
+<li><a href="#%e4%bb%bf%e5%87%bd%e6%95%b0">仿函数</a></li>
+<li><a href="#%e8%bf%ad%e4%bb%a3%e5%99%a8">迭代器</a></li>
+<li><a href="#%e5%8f%82%e8%80%83">参考</a></li>
+</ul>
+
+<h2 id="介绍">介绍</h2>
+
+<ul>
+<li>STL(Standard Template Library，标准模板库)是 C++ 模板类集合，提供了统一的编程书籍结构和函数。</li>
+<li>STL 是容器类、算法和迭代器的库，是一个通用的库，组件都是参数化的。</li>
+<li>STL 有 4 个组件：算法、容器、函数和迭代器。</li>
+</ul>
+
+<h2 id="算法">算法</h2>
+
+<ul>
+<li>定义了 STL 的基础性的算法(均为函数模板)，用于给定范围的元素。 C++98 中有 70 个算法模板函数，C++11 增加了 20 个算法模板函数，其中有 5 个定义在 <code>numeric</code> 头文件，其他定义在 <code>algorithm</code> 中</li>
+<li><code>numeric</code> 头文件包含的算法模板函数
+
+<ul>
+<li>accumulate：累加序列值</li>
+<li>adjacent_difference：计算相邻两项的差值</li>
+<li>inner_product：计算输入序列的内积</li>
+<li>partial_sum：计算序列的部分累加值</li>
+<li>iota：保存增加的连续值序列</li>
+</ul></li>
+</ul>
+
+<h3 id="头文件-algorithm">头文件 algorithm</h3>
+
+<h4 id="排序">排序</h4>
+
+<ul>
+<li>函数原型：
+
+<ul>
+<li><code>template &lt;class RandomAccessIterator&gt;  void sort (RandomAccessIterator first, RandomAccessIterator last);</code></li>
+<li><code>template &lt;class RandomAccessIterator, class Compare&gt;  void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);</code></li>
+</ul></li>
+<li>底层使用快排实现。</li>
+
+<li><p>算法复杂度： O(N*lgN)。</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+void show(int a[])
+{
+for(int i=0; i&lt;10; ++i)
+    cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+cout &lt;&lt; endl;
+}
+
+int main()
+{
+int a[10]={1, 5, 8, 9, 6, 7, 3, 4, 2, 0};
+
+cout &lt;&lt; &quot;\n The array before sorting is : &quot;;
+show(a);
+
+sort(a,a+10);
+
+cout &lt;&lt; &quot;\n The array after sorting is : &quot;;
+show(a);
+
+return 0;
+}
+</code></pre></li>
+</ul>
+
+<h4 id="搜索">搜索</h4>
+
+<ul>
+<li>广泛使用的搜索算法是二分搜索，前提是数组已经排好序。</li>
+
+<li><p>函数原型：</p>
+
+<ul>
+<li><code>template &lt;class ForwardIterator, class T&gt;  bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp; val);</code></li>
+
+<li><p><code>template &lt;class ForwardIterator, class T, class Compare&gt; bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp; val, Compare comp);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+void show(int a[], int arraysize)
+{
+for(int i=0; i&lt;arraysize; ++i)
+cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+cout &lt;&lt; endl;
+}
+
+int main()
+{
+int a[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+int asize = sizeof(a) / sizeof(a[0]);
+cout &lt;&lt; &quot;The array is : &quot;;
+show(a, asize);
+
+cout &lt;&lt; &quot;Let's say we want to search for 2 in the array&quot; &lt;&lt; endl;
+cout &lt;&lt; &quot;So, we first sort the array&quot; &lt;&lt; endl;
+sort(a, a + asize);
+cout &lt;&lt; &quot;The array after sorting is : &quot;;
+show(a, asize);
+
+cout &lt;&lt; &quot;Now, we do the binary search for 2&quot; &lt;&lt; endl;
+if(binary_search(a, a + 10, 2))
+cout &lt;&lt; &quot;Element found in the array&quot; &lt;&lt; endl;
+else
+cout &lt;&lt; &quot;Element not found in the array&quot; &lt;&lt; endl;
+
+cout &lt;&lt; &quot;Now, say we want to search for 10&quot; &lt;&lt; endl;
+if(binary_search(a, a + 10, 10))
+cout &lt;&lt; &quot;Element found in the array&quot; &lt;&lt; endl;
+else
+cout &lt;&lt; &quot;Element not found in the array&quot; &lt;&lt; endl;
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h4 id="重要的-stl-算法">重要的 STL 算法</h4>
+
+<h5 id="未加工算法">未加工算法</h5>
+
+<ul>
+<li>排序
+
+<ul>
+<li><code>template &lt;class RandomAccessIterator&gt; void sort (RandomAccessIterator first, RandomAccessIterator last);</code></li>
+<li><code>template &lt;class RandomAccessIterator, class Compare&gt; void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);</code></li>
+</ul></li>
+<li>逆序
+
+<ul>
+<li><code>template &lt;class BidirectionalIterator&gt; void reverse (BidirectionalIterator first, BidirectionalIterator last);</code></li>
+</ul></li>
+<li>返回序列中最大值的迭代器
+
+<ul>
+<li><code>template &lt;class ForwardIterator&gt; ForwardIterator max_element (ForwardIterator first, ForwardIterator last);</code></li>
+<li><code>template &lt;class ForwardIterator, class Compare&gt; ForwardIterator max_element (ForwardIterator first, ForwardIterator last, Compare comp);</code></li>
+</ul></li>
+<li>返回序列中最小值的迭代器
+
+<ul>
+<li><code>template &lt;class ForwardIterator&gt; ForwardIterator min_element (ForwardIterator first, ForwardIterator last);</code></li>
+<li><code>template &lt;class ForwardIterator, class Compare&gt; ForwardIterator min_element (ForwardIterator first, ForwardIterator last, Compare comp);</code></li>
+</ul></li>
+
+<li><p>计算序列元素的累加值</p>
+
+<ul>
+<li><code>template &lt;class InputIterator, class T&gt; T accumulate (InputIterator first, InputIterator last, T init);</code></li>
+
+<li><p><code>template &lt;class InputIterator, class T, class BinaryOperation&gt; T accumulate (InputIterator first, InputIterator last, T init, BinaryOperation binary_op);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;numeric&gt; //For accumulate operation
+
+using namespace std;
+
+int main()
+{
+int arr[] = {10, 20, 5, 23 ,42 , 15};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&lt;int&gt; vect(arr, arr+n);
+cout &lt;&lt; &quot;Vector is: &quot;;
+for(int i=0; i&lt;n; i++) cout &lt;&lt; vect[i] &lt;&lt; &quot; &quot;;
+
+sort(vect.begin(), vect.end());
+cout &lt;&lt; &quot;\nVector after sorting is: &quot;;
+for(int i=0; i&lt;n; i++) cout &lt;&lt; vect[i] &lt;&lt; &quot; &quot;;
+
+reverse(vect.begin(), vect.end());
+cout &lt;&lt; &quot;\nVector after reversing is: &quot;;
+for(int i=0; i&lt;6; i++) cout &lt;&lt; vect[i] &lt;&lt; &quot; &quot;;
+
+cout &lt;&lt; &quot;\nMaximum element of vector is: &quot;;
+cout &lt;&lt; *max_element(vect.begin(), vect.end());
+
+cout &lt;&lt; &quot;\nMinimum element of vector is: &quot;;
+cout &lt;&lt; *min_element(vect.begin(), vect.end());
+
+cout &lt;&lt; &quot;\nThe summation of vector elements is: &quot;;
+cout &lt;&lt; accumulate(vect.begin(), vect.end(), 0);
+cout&lt;&lt; endl;
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+
+<li><p>计算给定元素出现的次数</p>
+
+<ul>
+<li><code>template &lt;class InputIterator, class T&gt; typename iterator_traits&lt;InputIterator&gt;::difference_type count (InputIterator first, InputIterator last, const T&amp; val);</code></li>
+</ul></li>
+
+<li><p>返回指向第一个等于给定元素的指针</p>
+
+<ul>
+<li><p><code>template &lt;class InputIterator, class T&gt; InputIterator find (InputIterator first, InputIterator last, const T&amp; val);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {10, 20, 5, 23 ,42, 20, 15};
+int n = sizeof(arr)/sizeof(arr[0]);
+vector&lt;int&gt; vect(arr, arr+n);
+
+cout &lt;&lt; &quot;Occurrences of 20 in vector : &quot;;
+cout &lt;&lt; count(vect.begin(), vect.end(), 20) &lt;&lt; endl;
+
+find(vect.begin(), vect.end(), 5) != vect.end()?
+cout &lt;&lt; &quot;Element 5 found\n&quot; : cout &lt;&lt; &quot;Element 5 not found\n&quot;;
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+
+<li><p>二分查找指定元素</p>
+
+<ul>
+<li><code>template &lt;class ForwardIterator, class T&gt; bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp; val);</code></li>
+<li><code>template &lt;class ForwardIterator, class T, class Compare&gt; bool binary_search (ForwardIterator first, ForwardIterator last, const T&amp; val, Compare comp);</code></li>
+</ul></li>
+
+<li><p>返回指向第一个不小于指定元素的迭代器(序列有序)</p>
+
+<ul>
+<li><code>template &lt;class ForwardIterator, class T&gt; ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T&amp; val);</code></li>
+<li><code>template &lt;class ForwardIterator, class T, class Compare&gt; ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T&amp; val, Compare comp);</code></li>
+</ul></li>
+
+<li><p>返回指向第一个大于指定元素的迭代器(序列有序)</p>
+
+<ul>
+<li><code>template &lt;class ForwardIterator, class T&gt; ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T&amp; val);</code></li>
+
+<li><p><code>template &lt;class ForwardIterator, class T, class Compare&gt; ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T&amp; val, Compare comp);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&lt;int&gt; vect(arr, arr+n);
+sort(vect.begin(), vect.end());
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; endl;
+
+auto q = lower_bound(vect.begin(), vect.end(), 20);
+cout &lt;&lt; &quot;The lower bound for 20 is at position: &quot;;
+cout &lt;&lt; q-vect.begin() &lt;&lt; endl;
+
+auto p = upper_bound(vect.begin(), vect.end(), 20);
+cout &lt;&lt; &quot;The upper bound for 20 is at position: &quot;;
+cout &lt;&lt; p-vect.begin() &lt;&lt; endl;
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h5 id="加工算法">加工算法</h5>
+
+<ul>
+<li><p>过滤连续相等的元素</p>
+
+<ul>
+<li><code>template &lt;class ForwardIterator&gt; ForwardIterator unique (ForwardIterator first, ForwardIterator last);</code></li>
+
+<li><p><code>template &lt;class ForwardIterator, class BinaryPredicate&gt; ForwardIterator unique (ForwardIterator first, ForwardIterator last, BinaryPredicate pred);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&lt;int&gt; vect(arr, arr+n);
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+vect.erase(vect.begin()+1);
+cout &lt;&lt; &quot;\nVector after erasing the second element: &quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+sort(vect.begin(), vect.end());
+
+cout &lt;&lt; &quot;\nVector before removing duplicate occurrences: &quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+vect.erase(unique(vect.begin(),vect.end()),vect.end());
+cout &lt;&lt; &quot;\nVector after deleting duplicates: &quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+
+<li><p>返回下一个置换</p>
+
+<ul>
+<li><code>template &lt;class BidirectionalIterator&gt; bool next_permutation (BidirectionalIterator first, BidirectionalIterator last);</code></li>
+<li><code>template &lt;class BidirectionalIterator, class Compare&gt; bool next_permutation (BidirectionalIterator first, BidirectionalIterator last, Compare comp);</code></li>
+</ul></li>
+
+<li><p>返回前一个置换</p>
+
+<ul>
+<li><code>template &lt;class BidirectionalIterator&gt; bool prev_permutation (BidirectionalIterator first, BidirectionalIterator last );</code></li>
+
+<li><p><code>template &lt;class BidirectionalIterator, class Compare&gt; bool prev_permutation (BidirectionalIterator first, BidirectionalIterator last, Compare comp);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+vector&lt;int&gt; vect(arr, arr+n);
+cout &lt;&lt; &quot;Given Vector is: &quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+next_permutation(vect.begin(), vect.end());
+cout &lt;&lt; &quot;\nVector after performing next permutation: &quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+prev_permutation(vect.begin(), vect.end());
+cout &lt;&lt; &quot;\nVector after performing prev permutation: &quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+
+<li><p>计算迭代器之间的距离。用于查找下标</p>
+
+<ul>
+<li>包含在头文件 <code>iterator</code></li>
+
+<li><p><code>template&lt;class InputIterator&gt; typename iterator_traits&lt;InputIterator&gt;::difference_type distance (InputIterator first, InputIterator last);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int main()
+{
+int arr[] = {5, 10, 15, 20, 20, 23, 42, 45};
+int n = sizeof(arr)/sizeof(arr[0]);
+vector&lt;int&gt; vect(arr, arr+n);
+
+cout &lt;&lt; &quot;Given Vector is: &quot;;
+for_each(vect.begin(), vect.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; &quot;\nDistance between first to max element: &quot; &lt;&lt; distance(vect.begin(), max_element(vect.begin(), vect.end())) &lt;&lt; endl;
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h4 id="有用的-array-算法">有用的 Array 算法</h4>
+
+<ul>
+<li>以下算法在 C++11 开始支持</li>
+<li>测试序列是否都满足某个条件
+
+<ul>
+<li><code>template &lt;class InputIterator, class UnaryPredicate&gt; bool all_of (InputIterator first, InputIterator last, UnaryPredicate pred);</code></li>
+</ul></li>
+<li>测试序列是否存在一个元素满足某个条件
+
+<ul>
+<li><code>template &lt;class InputIterator, class UnaryPredicate&gt; bool any_of (InputIterator first, InputIterator last, UnaryPredicate pred);</code></li>
+</ul></li>
+<li>测试序列是否都不满足某个条件
+
+<ul>
+<li><code>template &lt;class InputIterator, class UnaryPredicate&gt; bool none_of (InputIterator first, InputIterator last, UnaryPredicate pred);</code></li>
+</ul></li>
+<li>拷贝序列元素
+
+<ul>
+<li><code>template &lt;class InputIterator, class Size, class OutputIterator&gt; OutputIterator copy_n (InputIterator first, Size n, OutputIterator result);</code></li>
+</ul></li>
+
+<li><p>存储增加的序列</p>
+
+<ul>
+<li><p><code>template &lt;class ForwardIterator, class T&gt; void iota (ForwardIterator first, ForwardIterator last, T val);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+int arr1[] = {1, 2, 3, 4, 5, -6};
+all_of(arr1, arr1+6, [](int x) {return x&gt;0;}) ?
+        cout &lt;&lt; &quot;All are positive elments\n&quot; : cout &lt;&lt; &quot;Not all are positive elments\n&quot;;
+any_of(arr1, arr1+6, [](int x) {return x&lt;0;}) ?
+        cout &lt;&lt; &quot;There exists a negative element\n&quot; : cout &lt;&lt; &quot;All are positive elments\n&quot;;
+
+int arr2[] = {1, 2, 3, 4, 5, 6};
+none_of(arr2, arr2+6, [](int x) {return x&lt;0;}) ?
+        cout &lt;&lt; &quot;No negative elements\n&quot; : cout &lt;&lt; &quot;There exists a negative element\n&quot;;
+
+int arrc[6];
+copy_n(arr2, 6, arrc);
+cout &lt;&lt; &quot;Copyed array: &quot;;
+for_each(arrc, arrc+6, [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; endl;
+
+int arr3[6] = {0};
+iota(arr3, arr3+6, 20);
+cout &lt;&lt; &quot;Assigned array: &quot;;
+for_each(arr3, arr3+6, [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; endl;
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h4 id="划分操作">划分操作</h4>
+
+<ul>
+<li>根据条件重排序列，返回第一个不满足条件的迭代器
+
+<ul>
+<li><code>template &lt;class ForwardIterator, class UnaryPredicate&gt; ForwardIterator partition (ForwardIterator first, ForwardIterator last, UnaryPredicate pred);</code></li>
+</ul></li>
+<li>根据条件重排序列，且两组元素内部的相对顺序保持不变。一般是用临时缓冲区实现
+
+<ul>
+<li><code>template &lt;class BidirectionalIterator, class UnaryPredicate&gt; BidirectionalIterator stable_partition (BidirectionalIterator first, BidirectionalIterator last, UnaryPredicate pred);</code></li>
+</ul></li>
+<li>判断序列是否是根据条件划分的
+
+<ul>
+<li><code>template &lt;class InputIterator, class UnaryPredicate&gt; bool is_partitioned (InputIterator first, InputIterator last, UnaryPredicate pred);</code></li>
+</ul></li>
+<li>输入队列已经是分割过的，二分查找分界点
+
+<ul>
+<li><code>template &lt;class ForwardIterator, class UnaryPredicate&gt; ForwardIterator partition_point (ForwardIterator first, ForwardIterator last, UnaryPredicate pred);</code></li>
+</ul></li>
+
+<li><p>输入序列中满足条件和不满足条件的分别拷贝到两个序列中</p>
+
+<ul>
+<li><p><code>template &lt;class InputIterator, class OutputIterator1, class OutputIterator2, class UnaryPredicate pred&gt; pair&lt;OutputIterator1,OutputIterator2&gt; partition_copy (InputIterator first, InputIterator last, OutputIterator1 result_true, OutputIterator2 result_false, UnaryPredicate pred);</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+vector&lt;int&gt; vect1 = { 2, 1, 5, 6, 8, 7 };
+
+cout &lt;&lt; &quot;The vector is: &quot;;
+for_each(vect1.begin(), vect1.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+is_partitioned(vect1.begin(), vect1.end(), [](int i) {return i%2==0;}) ?
+        cout &lt;&lt; &quot;\nVector is partitioned&quot; : cout &lt;&lt; &quot;\nVector is not partitioned&quot;;
+
+partition(vect1.begin(), vect1.end(), [](int i){return i%2==0;});
+cout &lt;&lt; &quot;\nThe partitioned vector is: &quot;;
+for_each(vect1.begin(), vect1.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+is_partitioned(vect1.begin(), vect1.end(), [](int i) {return i%2==0;}) ?
+        cout &lt;&lt; &quot;\nNow, vector is partitioned after partition operation&quot;:
+                cout &lt;&lt; &quot;\nVector is still not partitioned after partition operation&quot;;
+
+vector&lt;int&gt; vect2 = { 2, 1, 5, 6, 8, 7 };
+cout &lt;&lt; &quot;\n\nThe vector is: &quot;;
+for_each(vect2.begin(), vect2.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+stable_partition(vect2.begin(), vect2.end(), [](int i) {return i%2==0;});
+cout &lt;&lt; &quot;\nThe stable partitioned vector is: &quot;;
+for_each(vect2.begin(), vect2.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+auto it = partition_point(vect2.begin(), vect2.end(), [](int i) {return i%2==0;});
+cout &lt;&lt; &quot;\nBefore the partition point: &quot;;
+for_each(vect2.begin(), it, [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; &quot;\nAfter the partition point: &quot;;
+for_each(it, vect2.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+vector&lt;int&gt; vect3 = { 2, 1, 5, 6, 8, 7 };
+cout &lt;&lt; &quot;\n\nThe vector is: &quot;;
+for_each(vect3.begin(), vect3.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+vector&lt;int&gt; vecteven, vectodd;
+int n = count_if(vect3.begin(), vect3.end(), [](int i) {return i%2==0;});
+vecteven.resize(n);
+vectodd.resize(vect3.size()-n);
+
+partition_copy(vect3.begin(), vect3.end(), vecteven.begin(),
+           vectodd.begin(), [](int i) {return i%2==0;});
+
+cout &lt;&lt; &quot;\nThe elements that return true for condition are : &quot;;
+for_each(vecteven.begin(), vecteven.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; &quot;\nThe elements that return false for condition are : &quot;;
+for_each(vectodd.begin(), vectodd.end(), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; endl;
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="头文件-valarray">头文件 valarray</h3>
+
+<ul>
+<li>valarray 类：C++98 引入的特殊容器，用于保存和提供对 array 的高效算术操作</li>
+<li>应用操作到所有的元素，返回一个新的 valarray
+
+<ul>
+<li><code>valarray apply (T func(T)) const;</code></li>
+<li><code>valarray apply (T func(const T&amp;)) const;</code></li>
+</ul></li>
+<li>返回所有元素的和
+
+<ul>
+<li><code>T sum() const;</code></li>
+</ul></li>
+<li>返回元素的最小值
+
+<ul>
+<li><code>T min() const;</code></li>
+</ul></li>
+<li>返回元素的最大值
+
+<ul>
+<li><code>T max() const;</code></li>
+</ul></li>
+<li>将 valarray 的元素移位，返回新的 valarray。如果参数为正数，左移；否则右移
+
+<ul>
+<li><code>valarray shift (int n) const;</code></li>
+</ul></li>
+<li>将 valarray 的元素循环移位，返回新的 valarray。如果参数为正数，循环左移；否则循环右移
+
+<ul>
+<li><code>valarray cshift (int n) const;</code></li>
+</ul></li>
+
+<li><p>和另外一个 valarray 交换</p>
+
+<ul>
+<li><p><code>void swap (valarray&amp; x) noexcept;</code></p>
+
+<pre><code class="language-cpp">#include &lt;valarray&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+valarray&lt;int&gt; varr1 = { 10, 2, 20, 1, 30 };
+cout &lt;&lt; &quot;The varr1 is: &quot;;
+for_each(begin(varr1), end(varr1), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+cout &lt;&lt; &quot;\nThe sum of varr1 is: &quot; &lt;&lt; varr1.sum();
+cout &lt;&lt; &quot;\nThe max of varr1 is: &quot; &lt;&lt; varr1.max();
+cout &lt;&lt; &quot;\nThe min of varr1 is: &quot; &lt;&lt; varr1.min();
+
+valarray&lt;int&gt; varr2;
+varr2 = varr1.apply([](int i){return i=i+5;});
+cout &lt;&lt; &quot;\nThe varr2 (varr1 add 5 for each element) is: &quot;;
+for_each(begin(varr2), end(varr2), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+valarray&lt;int&gt; varr3;
+varr3 = varr1.shift(2);
+cout &lt;&lt; &quot;\nThe varr3 (varr1 shift 2) is: &quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+varr3 = varr1.shift(-2);
+cout &lt;&lt; &quot;\nThe varr3 (varr1 shift -2) is: &quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+varr3 = varr1.cshift(2);
+cout &lt;&lt; &quot;\nThe varr3 (varr1 cshift 2) is: &quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+varr3 = varr1.cshift(-2);
+cout &lt;&lt; &quot;\nThe varr3 (varr1 cshift -2) is: &quot;;
+for_each(begin(varr3), end(varr3), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+valarray&lt;int&gt; varr4 = {2, 4, 6, 8};
+cout &lt;&lt; &quot;\nThe varr4 is: &quot;;
+for_each(begin(varr4), end(varr4), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+varr1.swap(varr4);
+cout &lt;&lt; &quot;\nThe varr4 after swap with varr1 is: &quot;;
+for_each(begin(varr4), end(varr4), [](int i) {cout &lt;&lt; i &lt;&lt; &quot; &quot;;});
+
+cout &lt;&lt; &quot;\n&quot;;
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="容器">容器</h2>
+
+<ul>
+<li>容器是一个对象，保存了其他对象或对象元素的集合</li>
+<li>容器自己管理元素的存储空间，并且提供成员函数来访问元素，直接访问或通过迭代器访问</li>
+<li>容器类模板：包括顺序容器、容器适配器、关联容器和无序关联容器</li>
+</ul>
+
+<h3 id="顺序容器">顺序容器</h3>
+
+<ul>
+<li>实现的数据结构可以按顺序访问</li>
+</ul>
+
+<h4 id="array">array</h4>
+
+<ul>
+<li>C++11 引入，替换 C 风格数组。相比 C 风格数组的优点包括
+
+<ul>
+<li>array 知道自己的大小，因此传递参数时不需要单独传递 array 的大小</li>
+<li>C 风格的数组会有退化成指针的风险，但是 array 不会</li>
+<li>相比 C 风格数组，array 更加高效、轻量和可靠</li>
+</ul></li>
+<li>方法
+
+<ul>
+<li><code>at</code>：</li>
+<li><code>get</code>：不是 array 的类成员函数，而是重载 tuple 类的函数</li>
+<li><code>[]</code>: 类似于 C 风格的数组访问</li>
+<li><code>front/back</code>：返回第一个/最后一个元素</li>
+<li><code>size/max_size</code>：返回 array 的元素数目/可以承载的最大元素数目。二者返回值相同</li>
+<li><code>swap</code>：和另外一个 array 交换元素</li>
+<li><code>empty</code>：array 的大小是否是 0</li>
+<li><code>fill</code>：使用指定值填充正哥 array</li>
+</ul></li>
+<li>固定大小数组，顺序连续存储，可使用偏移量访问</li>
+<li>大小为 0 是有效的，但是不能间接引用，比如 front，back，data</li>
+<li>交换是按顺序交换每个元素，效率低</li>
+<li>可以当做 tuple（可以存储不同类型的元素的集合），重载了 get 接口等</li>
+<li>访问快，可使用偏移量访问，常数时间</li>
+</ul>
+
+<h4 id="vector">vector</h4>
+
+<ul>
+<li>大小可变数组，顺序连续存储，可使用偏移量访问</li>
+<li>一开始分配额外的存储空间，容量一般不等于实际大小</li>
+<li>使用动态分配数组存储元素，插入元素时可能需要重新分配数组，将所有元素移到新的数组，效率低</li>
+<li>访问快，和 array 一样，在尾部插入和删除也快。删除元素是常数时间，不会重新调整大小</li>
+<li>在其他位置插入和删除低效，需要线性时间。没有随机访问迭代器</li>
+</ul>
+
+<h4 id="deque">deque</h4>
+
+<ul>
+<li>双端队列，顺序存储，可在两端增加或减小大小</li>
+<li>可用随机访问迭代器直接访问单个元素</li>
+<li>vs vector
+
+<ul>
+<li>存储可以是不连续的块，在容器增加或减小时内存分配效率更高</li>
+</ul></li>
+</ul>
+
+<h4 id="forward-list">forward_list</h4>
+
+<ul>
+<li>C++11 引入</li>
+<li>顺序存储，在任意位置插入和删除都是常数时间</li>
+<li>单向链表，存储位置可以是不同的没有关系的</li>
+<li>vs array/vector/deque
+
+<ul>
+<li>list 和 forward_list 的插入、删除更有效，对于排序算法也更快（交换更快）</li>
+<li>list 和 forward_list 没有根据位置直接访问元素的方法，同时每个节点需要额外的存储存储链接的相关信息</li>
+<li>list 和 forward_list 遍历较慢</li>
+<li>list 和 forward_list 没有 size 方法，因为很耗时，可以使用 distance 算法（包含在头文件<code>&lt;iterator&gt;</code>）计算 begin 和 end 之间的距离，消耗时间是线性的</li>
+</ul></li>
+</ul>
+
+<h4 id="list">list</h4>
+
+<ul>
+<li>双向链表</li>
+<li>forward_list vs list： 前者只存储一个指向后面对象的链接，后者存储两个链接分别指向前一个和后一个对象，因此两个方向的迭代都比较搞笑，但同时每个节点需要额外的存储，且插入和删除也有额外的时间负载</li>
+</ul>
+
+<h3 id="容器适配器">容器适配器</h3>
+
+<ul>
+<li>不完全是容器类，而是依赖某一个容器类提供特定的接口，封装之后提供不同于顺序容器的接口</li>
+</ul>
+
+<h4 id="stack">stack</h4>
+
+<ul>
+<li>后进先出（LIFO），使用标准的容器（vector/deque/list）类模板实现接口，如果初始化未指定容器类，则使用 deque 实现相关接口</li>
+<li>如<code>std::stack&lt;int, std::vector&lt;int&gt; &gt; mystack</code>使用 vector 实现的空的 stack</li>
+</ul>
+
+<h4 id="queue">queue</h4>
+
+<ul>
+<li>先进先出（FIFO）队列，使用标准的容器（deque/list）类模板实现接口，默认使用 deque</li>
+<li>如<code>std::queue&lt;int, std::list&lt;int&gt; &gt; myqueue</code>使用 list 实现的空的 queue</li>
+</ul>
+
+<h4 id="priority-queue">priority_queue</h4>
+
+<ul>
+<li>依据严格的弱排序（strict weak ordering）标准第一个元素总是最大的元素，所有元素是非增序的</li>
+<li>使用标准的容器（vector/deque）类模板实现接口，，默认是 vector</li>
+
+<li><p>C++ 默认为 priority_queue 创建最大堆</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+void showpq(priority_queue&lt;int&gt; &amp;gq)
+{
+priority_queue&lt;int&gt; g = gq;
+while (!g.empty())
+{
+    cout &lt;&lt; &quot; &quot; &lt;&lt; g.top();
+    g.pop();
+}
+cout &lt;&lt; endl;
+}
+
+int main ()
+{
+priority_queue&lt;int&gt; gquiz;
+gquiz.push(10);
+gquiz.push(30);
+gquiz.push(20);
+gquiz.push(5);
+gquiz.push(1);
+
+cout &lt;&lt; &quot;The priority queue gquiz is: &quot;;
+showpq(gquiz);
+
+cout &lt;&lt; &quot;gquiz.size(): &quot; &lt;&lt; gquiz.size() &lt;&lt; endl;
+cout &lt;&lt; &quot;gquiz.top(): &quot; &lt;&lt; gquiz.top() &lt;&lt; endl;
+
+gquiz.pop();
+cout &lt;&lt; &quot;after gquiz.pop(): &quot;;
+showpq(gquiz);
+
+return 0;
+}
+</code></pre></li>
+
+<li><p>为 priority_queue 创建最小堆 <code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; g=gq;</code></p>
+
+<ul>
+<li><p>下面的语法难记，因此对于数字的值，可以给每个元素乘以 -1，然后使用最大值堆达到最小值堆的效果</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+void showpq(priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; &amp;gq)
+{
+priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; g = gq;
+while(!g.empty())
+{
+cout &lt;&lt; &quot; &quot; &lt;&lt; g.top();
+g.pop();
+}
+cout &lt;&lt; endl;
+}
+
+int main ()
+{
+priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; gquiz;
+gquiz.push(10);
+gquiz.push(30);
+gquiz.push(20);
+gquiz.push(5);
+gquiz.push(1);
+
+cout &lt;&lt; &quot;The priority queue gquiz is: &quot;;
+showpq(gquiz);
+
+cout &lt;&lt; &quot;gquiz.size(): &quot; &lt;&lt; gquiz.size() &lt;&lt; endl;
+cout &lt;&lt; &quot;gquiz.top(): &quot; &lt;&lt; gquiz.top() &lt;&lt; endl;
+
+gquiz.pop();
+cout &lt;&lt; &quot;after gquiz.pop(): &quot;;
+showpq(gquiz);
+
+return 0;
+}
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="关联容器">关联容器</h3>
+
+<ul>
+<li>实现排好序的数据结构，可以达到快速查询的时间复杂度 O(logn)</li>
+</ul>
+
+<h4 id="set">set</h4>
+
+<ul>
+<li>保存的值都是唯一的，不能修改，只能插入或删除，key 和 value 相同</li>
+<li>存储的元素总是依照严格的弱排序标准排序，通过内部的比较对象</li>
+<li>在通过 key 访问单个元素的时候通常比 unordered_set 慢，但是可以访问有序集合的一个子集</li>
+<li>通常实现为二分搜索树</li>
+</ul>
+
+<h4 id="multiset">multiset</h4>
+
+<ul>
+<li>可以存储相同值的元素</li>
+<li>在通过 key 访问的那个元素的时候比 unordered_multiset 慢</li>
+</ul>
+
+<h4 id="map">map</h4>
+
+<ul>
+<li>关联容器，存储的对象包括一个 key 和映射的 value</li>
+<li>通过 key 排序和标记唯一元素，存储的元素总是依照严格的弱排序标准排序，通过内部的比较对象</li>
+<li>在通过 key 访问单个元素的时候通常比 unordered_map 慢，但是可以访问有序集合的一个子集</li>
+<li>通常实现为二分搜索树</li>
+</ul>
+
+<h4 id="multimap">multimap</h4>
+
+<h3 id="无序关联容器">无序关联容器</h3>
+
+<ul>
+<li>实现无序数据结构，可以快速查询</li>
+</ul>
+
+<h4 id="unordered-set">unordered_set</h4>
+
+<h4 id="unordered-multiset">unordered_multiset</h4>
+
+<h4 id="unordered-map">unordered_map</h4>
+
+<h4 id="unordered-multimap">unordered_multimap</h4>
+
+<h2 id="仿函数">仿函数</h2>
+
+<h2 id="迭代器">迭代器</h2>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="https://www.geeksforgeeks.org/cpp-stl-tutorial/" target="_blank">C++ STL Tutorial</a></li>
+<li><a href="https://www.geeksforgeeks.org/the-c-standard-template-library-stl/" target="_blank">The C++ Standard Template Library (STL)</a></li>
+<li><a href="https://zh.wikibooks.org/wiki/C%2B%2B/STL/Algorithm" target="_blank">C++/STL/Algorithm</a></li>
+<li><a href="https://zh.wikibooks.org/wiki/C%2B%2B/Numeric" target="_blank">C++/Numeric</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+  
+  <a class="badge badge-light" href="/tags/stl/">STL</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/cplusplus/stl/&amp;text=STL" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/cplusplus/stl/&amp;t=STL" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=STL&amp;body=https://xueqing.github.io/blog/cplusplus/stl/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/cplusplus/stl/&amp;title=STL" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=STL%20https://xueqing.github.io/blog/cplusplus/stl/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/cplusplus/stl/&amp;title=STL" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/cplusplus/stl_push_emplace/">STL 的 push 和 emplace</a></li>
+      
+      <li><a href="/blog/cplusplus/hash_map/">hash map</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_string_case_convert/">C&#43;&#43; string 转换大小写</a></li>
+      
+      <li><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>敏捷方法教程 | kiki</title>
+    <link>https://xueqing.github.io/translation/agile/tutorial/</link>
+      <atom:link href="https://xueqing.github.io/translation/agile/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <description>敏捷方法教程</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>敏捷方法教程</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/readme/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;敏捷：一种用于增量创建软件的软件开发方法，使用 1-4 周的短期迭代以保证开发和一直改变的业务需求一致&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./1-primer.md&#34;&gt;1 入门&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./1-primer.md#1.1-敏捷中的角色&#34;&gt;1.1 敏捷中的角色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./1-primer.md#1.2-跨职能团队&#34;&gt;1.2 跨职能团队&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./1-primer.md#1.3-敏捷团队如何计划工作&#34;&gt;1.3 敏捷团队如何计划工作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./1-primer.md#1.4-用户故事-user-story&#34;&gt;1.4 用户故事 user story&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./1-primer.md#1.5-故事何时完成&#34;&gt;1.5 故事何时完成&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./2-manifesto.md&#34;&gt;2 宣言&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./2-manifesto.md#2.1-软件开发价值观&#34;&gt;2.1 软件开发价值观&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./2-manifesto.md#2.2-敏捷宣言的-12-个原则&#34;&gt;2.2 敏捷宣言的 12 个原则&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./3-characteristics.md&#34;&gt;3 特点&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./3-characteristics.md#3.1-迭代/增量和准备进化&#34;&gt;3.1 迭代/增量和准备进化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./3-characteristics.md#3.2-面对面沟通&#34;&gt;3.2 面对面沟通&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./3-characteristics.md#3.3-反馈回路&#34;&gt;3.3 反馈回路&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./4-daily-standup.md&#34;&gt;4 每日站会&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./4-daily-standup.md#4.1-每日站会的概念&#34;&gt;4.1 每日站会的概念&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./4-daily-standup.md#4.2-每日站会的重要性&#34;&gt;4.2 每日站会的重要性&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./4-daily-standup.md#4.3-每日站会的参与人&#34;&gt;4.3 每日站会的参与人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./4-daily-standup.md#4.4-物理分散的团队&#34;&gt;4.4 物理分散的团队&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./5-definition-of-done.md&#34;&gt;5 完成标准&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./5-definition-of-done.md#5.1-用户故事&#34;&gt;5.1 用户故事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./5-definition-of-done.md#5.2-迭代&#34;&gt;5.2 迭代&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./5-definition-of-done.md#5.3-发布&#34;&gt;5.3 发布&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./6-release-planning.md&#34;&gt;6 发布计划&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./6-release-planning.md#6.1-参与者&#34;&gt;6.1 参与者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./6-release-planning.md#6.2-计划的先决条件&#34;&gt;6.2 计划的先决条件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./6-release-planning.md#6.3-需要的材料&#34;&gt;6.3 需要的材料&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./6-release-planning.md#6.4-计划数据&#34;&gt;6.4 计划数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./6-release-planning.md#6.5-输出&#34;&gt;6.5 输出&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./6-release-planning.md#6.6-日程&#34;&gt;6.6 日程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./7-iteration-planning.md&#34;&gt;7 迭代计划&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./7-iteration-planning.md#7.1-参与者&#34;&gt;7.1 参与者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./7-iteration-planning.md#7.2-计划的先决条件&#34;&gt;7.2 计划的先决条件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./7-iteration-planning.md#7.3-计划流程&#34;&gt;7.3 计划流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./7-iteration-planning.md#7.4-速度计算&#34;&gt;7.4 速度计算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./7-iteration-planning.md#7.5-任务容量&#34;&gt;7.5 任务容量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./7-iteration-planning.md#7.6-计划步骤&#34;&gt;7.6 计划步骤&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./8-product-backlog.md&#34;&gt;8 产品需求列表&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./8-product-backlog.md#8.1-产品需求列表的重要性&#34;&gt;8.1 产品需求列表的重要性&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./8-product-backlog.md#8.2-产品需求列表的特点&#34;&gt;8.2 产品需求列表的特点&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;./9-useful-terms.md&#34;&gt;9 有用的术语&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;有用的书&#34;&gt;有用的书&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Scrum-Breathtakingly-Brief-Agile-Introduction/dp/193796504X/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Scrum: a Breathtakingly Brief and Agile Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Learning-Agile-Understanding-Scrum-Kanban/dp/1449331920/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Learning Agile: Understanding Scrum, XP, Lean, and Kanban&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Agile-Project-Management-Dummies-Layton/dp/1118026241/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Agile Project Management For Dummies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Agile-Project-Management-QuickStart-Guide/dp/1502393468/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Agile Project Management QuickStart Guide: A Simplified Beginners Guide To Agile Project Management&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Agile-Half-Assed-Creating-Anything-Scratch-ebook/dp/B00R0QHV3G/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Agile!: The Half-Assed Guide To Creating Anything You Want From Scratch. No Experts Required!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Understanding-Agile-Manifesto-Brief-Guide-ebook/dp/B00GR31ZDU/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Understanding the Agile Manifesto: A Brief &amp;amp; Bold Guide to Agile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1 入门</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/1-primer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/1-primer/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-%e6%95%8f%e6%8d%b7%e4%b8%ad%e7%9a%84%e8%a7%92%e8%89%b2&#34;&gt;1.1 敏捷中的角色&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#111-scrum-master-%e6%b5%81%e7%a8%8b%e7%ae%a1%e7%90%86%e5%91%98&#34;&gt;1.1.1 Scrum Master 流程管理员&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#112-product-owner-%e4%ba%a7%e5%93%81%e8%b4%9f%e8%b4%a3%e4%ba%ba&#34;&gt;1.1.2 Product Owner 产品负责人&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e8%b7%a8%e8%81%8c%e8%83%bd%e5%9b%a2%e9%98%9f&#34;&gt;1.2 跨职能团队&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-%e6%95%8f%e6%8d%b7%e5%9b%a2%e9%98%9f%e5%a6%82%e4%bd%95%e8%ae%a1%e5%88%92%e5%b7%a5%e4%bd%9c&#34;&gt;1.3 敏捷团队如何计划工作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-%e7%94%a8%e6%88%b7%e6%95%85%e4%ba%8b-user-story&#34;&gt;1.4 用户故事 user story&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#141-%e7%94%a8%e6%88%b7%e6%95%85%e4%ba%8b%e5%92%8c%e4%bb%bb%e5%8a%a1%e7%9a%84%e5%85%b3%e7%b3%bb&#34;&gt;1.4.1 用户故事和任务的关系&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-%e6%95%85%e4%ba%8b%e4%bd%95%e6%97%b6%e5%ae%8c%e6%88%90&#34;&gt;1.5 故事何时完成&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#151-%e9%aa%8c%e6%94%b6%e6%a0%87%e5%87%86acceptance-criteria&#34;&gt;1.5.1 验收标准(acceptance criteria)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#152-%e5%a6%82%e4%bd%95%e5%ae%9a%e4%b9%89%e9%9c%80%e6%b1%82&#34;&gt;1.5.2 如何定义需求&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-1-敏捷中的角色&#34;&gt;1.1 敏捷中的角色&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-1-1-scrum-master-流程管理员&#34;&gt;1.1.1 Scrum Master 流程管理员&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程管理员是团队领导，帮助团队成员实现敏捷计划。责任包括
+
+&lt;ul&gt;
+&lt;li&gt;保证所有角色和机能之间的紧密合作&lt;/li&gt;
+&lt;li&gt;移除阻碍&lt;/li&gt;
+&lt;li&gt;保护团队免受打扰&lt;/li&gt;
+&lt;li&gt;和组织一起跟踪公司的进度和流程&lt;/li&gt;
+&lt;li&gt;保证敏捷的检查与调整&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-1-2-product-owner-产品负责人&#34;&gt;1.1.2 Product Owner 产品负责人&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;从业务角度推动产品。责任包括
+
+&lt;ul&gt;
+&lt;li&gt;定义需求，评估需求的优先级&lt;/li&gt;
+&lt;li&gt;确定发布的实际和内容&lt;/li&gt;
+&lt;li&gt;在迭代计划和发布计划会议中承担积极的角色&lt;/li&gt;
+&lt;li&gt;确保团队致力于最有价值的需求&lt;/li&gt;
+&lt;li&gt;接受满足完成标准和定义好的验收标准(acceptance criteria)用户故事(user story)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-2-跨职能团队&#34;&gt;1.2 跨职能团队&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个敏捷团队应当是一个自满足的团队，成员是 5-9 人，平均经验是 6-10 年&lt;/li&gt;
+&lt;li&gt;典型的敏捷团队包括 3-4 位开发者，1 位测试，1 位技术领导， 1 位产品负责人和 1 位流程管理员
+
+&lt;ul&gt;
+&lt;li&gt;产品负责人和流程管理员作为团队接口，其他成员是技术接口&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-3-敏捷团队如何计划工作&#34;&gt;1.3 敏捷团队如何计划工作&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;迭代实现用户故事，每个迭代周期是 10-15 天&lt;/li&gt;
+&lt;li&gt;point 点：定义一个团队可以提交完成。一般是 8 个小时。每个故事用点评估&lt;/li&gt;
+&lt;li&gt;capacity 能力：定义一个人可以提交完成。用小时评估&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-4-用户故事-user-story&#34;&gt;1.4 用户故事 user story&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个用户故事是一个需求，定义用户所需作为功能
+
+&lt;ul&gt;
+&lt;li&gt;在发布计划中，使用相对范围的点数粗略的评估一个用户故事&lt;/li&gt;
+&lt;li&gt;在迭代计划中，将用户故事分解成任务(task)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-4-1-用户故事和任务的关系&#34;&gt;1.4.1 用户故事和任务的关系&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户故事描述要完成什么，定义了用户所需；任务描述如何完成它，定义了要实现的功能&lt;/li&gt;
+&lt;li&gt;故事是通过任务实现，每个故事是任务的一个集合&lt;/li&gt;
+&lt;li&gt;当把用户固执放在当前迭代计划时，用户故事被分解成任务&lt;/li&gt;
+&lt;li&gt;任务用小时评估，一般是 2-12 个小时&lt;/li&gt;
+&lt;li&gt;故事通过验收测试进行验证&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-5-故事何时完成&#34;&gt;1.5 故事何时完成&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;团队定义完成的含义。标准可能是
+
+&lt;ul&gt;
+&lt;li&gt;所有的任务(开发和测试)被完成&lt;/li&gt;
+&lt;li&gt;所有的验收测试在运行并通过&lt;/li&gt;
+&lt;li&gt;没有开放的缺陷(defect)&lt;/li&gt;
+&lt;li&gt;产品负责人已经接受了故事&lt;/li&gt;
+&lt;li&gt;可交付给终端用户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-5-1-验收标准-acceptance-criteria&#34;&gt;1.5.1  验收标准(acceptance criteria)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;标准定义一个特性需要的功能、行为和性能，以便产品负责人可以接受&lt;/li&gt;
+&lt;li&gt;它定义了要完成什么以便开发者知道一个用户故事何时完成&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-5-2-如何定义需求&#34;&gt;1.5.2 如何定义需求&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需求可以定义为
+
+&lt;ul&gt;
+&lt;li&gt;一个用户故事&lt;/li&gt;
+&lt;li&gt;包含验收标准&lt;/li&gt;
+&lt;li&gt;包含完成这个故事的任务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2 宣言</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/2-manifesto/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/2-manifesto/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e4%bb%b7%e5%80%bc%e8%a7%82&#34;&gt;2.1 软件开发价值观&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e6%95%8f%e6%8d%b7%e5%ae%a3%e8%a8%80%e7%9a%84-12-%e4%b8%aa%e5%8e%9f%e5%88%99&#34;&gt;2.2 敏捷宣言的 12 个原则&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-软件开发价值观&#34;&gt;2.1 软件开发价值观&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;个体和互动：高于流程和工具&lt;/li&gt;
+&lt;li&gt;可工作的软件：高于详尽的文档&lt;/li&gt;
+&lt;li&gt;客户合作：高于合同谈判&lt;/li&gt;
+&lt;li&gt;响应变化：高于遵循计划&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-2-敏捷宣言的-12-个原则&#34;&gt;2.2 敏捷宣言的 12 个原则&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;满足客户需求：最重要的是通过尽早和不断交付有价值的软件满足客户需求&lt;/li&gt;
+&lt;li&gt;欢迎变化：软件开发过程中变化不可避免。应该欢迎需求的变化，即使在开发后期。敏捷过程应保持客户的竞争优势&lt;/li&gt;
+&lt;li&gt;交付可工作软件：经常交付可以工作的软件，从几周到几个月，时间尺度越短越好&lt;/li&gt;
+&lt;li&gt;合作：业务人员和开发者在整个项目过程中必须在一起工作&lt;/li&gt;
+&lt;li&gt;动力：应该围绕斗志高昂的人进行软件开发。给开发者提供环境，相信他们一边使他们感觉对完成工作负责&lt;/li&gt;
+&lt;li&gt;面对面对话：面对面对话是在开发小组中最有效率也最有效果的信息传达方式&lt;/li&gt;
+&lt;li&gt;按照可工作的软件度量进度：可工作的软件是关键，它应当是进度的主要度量标准&lt;/li&gt;
+&lt;li&gt;维持不变的节奏：敏捷过程提倡可持续开发。业务、开发人员和用户应能维持项目不变的节奏&lt;/li&gt;
+&lt;li&gt;监察：定期关注技术的完美型和好的设计来提高敏捷性&lt;/li&gt;
+&lt;li&gt;简单性：保持事情简单，使用简单的术语来度量未完成的工作&lt;/li&gt;
+&lt;li&gt;自我组织的团队：一个敏捷团队应该是自我组织的，不应严重依赖其他团队，因为最好的架构、需求和设计源自自我组织的团队&lt;/li&gt;
+&lt;li&gt;定期评审工作：每隔一段时间评审工作，以便团队可以离开如何变得更有效率，并相应地调整自己的行为&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3 特点</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/3-characteristics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/3-characteristics/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-%e8%bf%ad%e4%bb%a3%e5%a2%9e%e9%87%8f%e5%92%8c%e5%87%86%e5%a4%87%e8%bf%9b%e5%8c%96&#34;&gt;3.1 迭代/增量和准备进化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-%e9%9d%a2%e5%af%b9%e9%9d%a2%e6%b2%9f%e9%80%9a&#34;&gt;3.2 面对面沟通&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#33-%e5%8f%8d%e9%a6%88%e5%9b%9e%e8%b7%af&#34;&gt;3.3 反馈回路&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-1-迭代-增量和准备进化&#34;&gt;3.1 迭代/增量和准备进化&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大多数敏捷开发方法将一个问题分解成小任务。对于所有的需求没有直接长期的计划。通常，迭代是短时间的规划，例如一到四周。&lt;/li&gt;
+&lt;li&gt;每个迭代都有一个跨职能的团队，工作内容包含软件开发的所有功能，包括规划、需求分析、设计、编码、单元测试和验收测试&lt;/li&gt;
+&lt;li&gt;迭代结束的产物是一个可工作的产品，并在迭代结束后向利益相关者展示&lt;/li&gt;
+&lt;li&gt;演示之后，采纳评审意见，并根据需求计划包含进可工作的软件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-2-面对面沟通&#34;&gt;3.2 面对面沟通&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个敏捷团队应该有一个客户代表(类似Scrum 中的产品负责人)。这个代表被授权代表利益相关者，且能够回答开发者在迭代中的问题&lt;/li&gt;
+&lt;li&gt;通常会在办公室的显著位置放一个消息辐射体(实体显示器)，以便路人可以看到敏捷团队的进度。消息辐射体展示了最新的项目状态总结&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-3-反馈回路&#34;&gt;3.3 反馈回路&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每日站会是所有敏捷开发的一个共同文化，也称为日常 Scrum。它是一个简短的会议，每个团队成员相互报告自己已经完成的、接下来要做的以及面对的所有问题状态&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4 每日站会</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/4-daily-standup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/4-daily-standup/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e6%af%8f%e6%97%a5%e7%ab%99%e4%bc%9a%e7%9a%84%e6%a6%82%e5%bf%b5&#34;&gt;4.1 每日站会的概念&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e6%af%8f%e6%97%a5%e7%ab%99%e4%bc%9a%e7%9a%84%e9%87%8d%e8%a6%81%e6%80%a7&#34;&gt;4.2 每日站会的重要性&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e6%af%8f%e6%97%a5%e7%ab%99%e4%bc%9a%e7%9a%84%e5%8f%82%e4%b8%8e%e4%ba%ba&#34;&gt;4.3 每日站会的参与人&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#44-%e7%89%a9%e7%90%86%e5%88%86%e6%95%a3%e7%9a%84%e5%9b%a2%e9%98%9f&#34;&gt;4.4 物理分散的团队&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每日站会，顾名思义，是敏捷团队所有成员媒体的状态会议。它不仅为定期的更新提供论坛，也将团队成员的问题作为关注点以便可以被快速处理&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每日站会是一个必须的实践，不管一个敏捷团队建立的办公室位置&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-1-每日站会的概念&#34;&gt;4.1 每日站会的概念&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每日站会是所有成员间的一个每日状态会议，大概举行 15 分钟&lt;/li&gt;
+&lt;li&gt;每个成员必须回答三个重要的问题
+
+&lt;ul&gt;
+&lt;li&gt;昨天做了什么&lt;/li&gt;
+&lt;li&gt;今天要做什么&lt;/li&gt;
+&lt;li&gt;正面临的问题或阻碍&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;每日站会用于更新状态，而不是讨论。讨论的成员应当安排其他时间&lt;/li&gt;
+&lt;li&gt;参与者应当站着而不是坐着以便快速结束&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-2-每日站会的重要性&#34;&gt;4.2 每日站会的重要性&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每日站会在敏捷中的益处
+
+&lt;ul&gt;
+&lt;li&gt;团队可以评估每日进度，查看每个迭代计划是否可以交付&lt;/li&gt;
+&lt;li&gt;每个团队成员通知自己每天的完成量&lt;/li&gt;
+&lt;li&gt;为团队的所有延期和障碍提供可视化性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-3-每日站会的参与人&#34;&gt;4.3 每日站会的参与人&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程管理员、产品负责人和交付团队应当参与每日站会&lt;/li&gt;
+&lt;li&gt;利益相关者和客户鼓励出席会议，并可以作为观察者，但是不应该参与站会&lt;/li&gt;
+&lt;li&gt;流程管理员应该记录每个团队成员的疑问和面临的问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-4-物理分散的团队&#34;&gt;4.4 物理分散的团队&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;站会可以有多种方式，以便敏捷团队的成员分布在不同的时区
+
+&lt;ul&gt;
+&lt;li&gt;轮流选择一名成员，可以出席不同时区的站会&lt;/li&gt;
+&lt;li&gt;每个团队有单独的站会，在一个工具(如 Rally，SharePoint，Wikis等)更新站会的状态&lt;/li&gt;
+&lt;li&gt;准备多种沟通工具(如电话会议、视频会议、即时通讯工具或其他第三方认可的知识共享工具)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>5 完成标准</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/5-definition-of-done/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/5-definition-of-done/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#51-%e7%94%a8%e6%88%b7%e6%95%85%e4%ba%8b&#34;&gt;5.1 用户故事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#52-%e8%bf%ad%e4%bb%a3&#34;&gt;5.2 迭代&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#53-%e5%8f%91%e5%b8%83&#34;&gt;5.3 发布&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-1-用户故事&#34;&gt;5.1 用户故事&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个用户故事是由用户几句日常语言表叔的需求，应该在一个迭代中完成&lt;/li&gt;
+&lt;li&gt;用户故事完成时
+
+&lt;ul&gt;
+&lt;li&gt;检查了所有相关代码&lt;/li&gt;
+&lt;li&gt;通过所有单元测试 case&lt;/li&gt;
+&lt;li&gt;通过所有验收测试 case&lt;/li&gt;
+&lt;li&gt;写了帮助文档&lt;/li&gt;
+&lt;li&gt;产品负责人已经验收了这个故事&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-2-迭代&#34;&gt;5.2 迭代&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个迭代发布一个产品，来验收解决的用户故事或故障&lt;/li&gt;
+&lt;li&gt;迭代在迭代计划会议中定义，通过一个迭代演示和评审会议完成&lt;/li&gt;
+&lt;li&gt;一个迭代也叫一个冲刺(sprint)&lt;/li&gt;
+&lt;li&gt;一个迭代完成时
+
+&lt;ul&gt;
+&lt;li&gt;产品需求列表已完成&lt;/li&gt;
+&lt;li&gt;测试了性能&lt;/li&gt;
+&lt;li&gt;用户故事被验收或移动到下次迭代&lt;/li&gt;
+&lt;li&gt;故障被解决或推迟到下次迭代&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-3-发布&#34;&gt;5.3 发布&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个发布是一个主要的里程碑，代表内部或外部工作的交付，是产品或系统的测试版本&lt;/li&gt;
+&lt;li&gt;一个发布完成时
+
+&lt;ul&gt;
+&lt;li&gt;测试了系统压力&lt;/li&gt;
+&lt;li&gt;调整了性能&lt;/li&gt;
+&lt;li&gt;执行了安全验证&lt;/li&gt;
+&lt;li&gt;测试了灾难恢复计划&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>6 发布计划</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/6-release-planning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/6-release-planning/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#61-%e5%8f%82%e4%b8%8e%e8%80%85&#34;&gt;6.1 参与者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#62-%e8%ae%a1%e5%88%92%e7%9a%84%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6&#34;&gt;6.2 计划的先决条件-&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#63-%e9%9c%80%e8%a6%81%e7%9a%84%e6%9d%90%e6%96%99&#34;&gt;6.3 需要的材料&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#64-%e8%ae%a1%e5%88%92%e6%95%b0%e6%8d%ae&#34;&gt;6.4 计划数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#65-%e8%be%93%e5%87%ba&#34;&gt;6.5 输出&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#66-%e6%97%a5%e7%a8%8b&#34;&gt;6.6 日程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;发布计划的目的是创建一个计划，来增量交付产品。每 2~3 个月做一次。&lt;/p&gt;
+
+&lt;h2 id=&#34;6-1-参与者&#34;&gt;6.1 参与者&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程管理员：敏捷交付团队的引导者&lt;/li&gt;
+&lt;li&gt;产品负责人：代表产品需求列表的一般观点&lt;/li&gt;
+&lt;li&gt;敏捷团队：提出技术可行性和任何依赖的观点&lt;/li&gt;
+&lt;li&gt;利益相关者：当发布会议作出决定时，利益相关者比如客户、程序管理者、主体专家提出建议&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-2-计划的先决条件&#34;&gt;6.2 计划的先决条件-&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;排好序的产品需求列表：由产品负责人管理。一般考虑 5~10 个特性，由产品负责人考虑可被纳入一个发布&lt;/li&gt;
+&lt;li&gt;团队能力的输入、已知的速度或任何关于技术的挑战&lt;/li&gt;
+&lt;li&gt;高等级的愿景&lt;/li&gt;
+&lt;li&gt;市场和业务目标&lt;/li&gt;
+&lt;li&gt;确认新产品的需求列表项是否需要&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-3-需要的材料&#34;&gt;6.3 需要的材料&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;贴出的日常，目的&lt;/li&gt;
+&lt;li&gt;挂图，白板，记号笔&lt;/li&gt;
+&lt;li&gt;投影仪，用于共享计划会议中所需数据或工具的电脑&lt;/li&gt;
+&lt;li&gt;计划数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-4-计划数据&#34;&gt;6.4 计划数据&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上次迭代或发布计划的结果&lt;/li&gt;
+&lt;li&gt;不同的利益相关者对于产品、市场条件和截止日期的反馈&lt;/li&gt;
+&lt;li&gt;上次发布或迭代的行动计划&lt;/li&gt;
+&lt;li&gt;需要考虑的特性或故障&lt;/li&gt;
+&lt;li&gt;上次发布或预估的速度&lt;/li&gt;
+&lt;li&gt;组织和个人的日程表&lt;/li&gt;
+&lt;li&gt;其他团队和主体专家管理依赖性的输入&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-5-输出&#34;&gt;6.5 输出&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;发布计划&lt;/li&gt;
+&lt;li&gt;承诺&lt;/li&gt;
+&lt;li&gt;要监察的问题、关注点、依赖性和假设&lt;/li&gt;
+&lt;li&gt;改进未来发布计划的建议&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-6-日程&#34;&gt;6.6 日程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;开场仪式：欢迎消息，评审目的和提成，组织工具，介绍业务赞助者&lt;/li&gt;
+&lt;li&gt;产品愿景，蓝图：展示产品的大图&lt;/li&gt;
+&lt;li&gt;评审之前的发布：太累可能影响这次计划的条目&lt;/li&gt;
+&lt;li&gt;发布名字或主题：检查蓝图主题的当前状态，做出所需的调整&lt;/li&gt;
+&lt;li&gt;速度：代表当前发布和之前发布的速度&lt;/li&gt;
+&lt;li&gt;发布安排：评审发布中关键的里程碑和决定&lt;/li&gt;
+&lt;li&gt;问题和关注点：检查并记录所有的关注点或问题&lt;/li&gt;
+&lt;li&gt;评审和更新完成标准：评审完成标准，基于上次迭代或发布之后的技术、技巧或团队成员的改变做出合适的改变&lt;/li&gt;
+&lt;li&gt;需要考虑的故事和条目：展示来自产品需求列表需要考虑的用户故事和特点，用于当前发布的安排&lt;/li&gt;
+&lt;li&gt;确定分级值：如果速度未知，计划发布计划中药使用的分级值&lt;/li&gt;
+&lt;li&gt;粗粒度划分故事：交付团队考虑之后确定故事的合适大小，且当故事比较大时，将故事划分成多个迭代。产品负责人和主体专家澄清疑问，详细制作验收标准，并做出合适的故事划分。流程管理者促进合作&lt;/li&gt;
+&lt;li&gt;将故事映射到迭代：交付团队和产品负责人基于大小和速度将故事或故障移到迭代。流程管理者促进合作&lt;/li&gt;
+&lt;li&gt;新的关注点或问题：基于之前的计划检查新问题，记录相同的问题&lt;/li&gt;
+&lt;li&gt;依赖性和假设：价差发布计划中的任何依赖性或假设&lt;/li&gt;
+&lt;li&gt;承诺：流程管理者好找计划。交付团队和产品负责人视其为最好的计划，并承诺开展下个级别的计划，即迭代计划&lt;/li&gt;
+&lt;li&gt;沟通和后勤计划：为发布评审或更新沟通和后勤计划&lt;/li&gt;
+&lt;li&gt;停车场：所有条目应该被解决或作为行动条目&lt;/li&gt;
+&lt;li&gt;分发行动条目和行动计划：分发负责人的行动条目，处理行动计划&lt;/li&gt;
+&lt;li&gt;回顾：征求参与者的反馈使会议成功&lt;/li&gt;
+&lt;li&gt;结束：庆祝成功&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>7 迭代计划</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/7-iteration-planning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/7-iteration-planning/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#71-%e5%8f%82%e4%b8%8e%e8%80%85&#34;&gt;7.1 参与者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#72-%e8%ae%a1%e5%88%92%e7%9a%84%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6&#34;&gt;7.2 计划的先决条件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#73-%e8%ae%a1%e5%88%92%e6%b5%81%e7%a8%8b&#34;&gt;7.3 计划流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#74-%e9%80%9f%e5%ba%a6%e8%ae%a1%e7%ae%97&#34;&gt;7.4 速度计算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#75-%e4%bb%bb%e5%8a%a1%e5%ae%b9%e9%87%8f&#34;&gt;7.5 任务容量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#76-%e8%ae%a1%e5%88%92%e6%ad%a5%e9%aa%a4&#34;&gt;7.6 计划步骤&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;迭代计划的目的是为了完成优先级高的产品需求列表项。承诺是基于迭代时间和团队速度的时间盒&lt;/p&gt;
+
+&lt;h2 id=&#34;7-1-参与者&#34;&gt;7.1 参与者&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程管理者：敏捷交付团队的引导者&lt;/li&gt;
+&lt;li&gt;产品负责人：处理产品需求列表及其验收标准的详细的看法&lt;/li&gt;
+&lt;li&gt;敏捷团队：敏捷交付定义他们的任务，并设置完成承诺所需的努力评估&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-2-计划的先决条件&#34;&gt;7.2 计划的先决条件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;产品需求列表项有大小，且指定了相关的故事点&lt;/li&gt;
+&lt;li&gt;产品负责人条目集合排好序&lt;/li&gt;
+&lt;li&gt;每个条目有清晰描述的验收标准&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-3-计划流程&#34;&gt;7.3 计划流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;确定一个迭代包含的故事&lt;/li&gt;
+&lt;li&gt;划分这些故事成任务，并分配每个任务给对应的负责人&lt;/li&gt;
+&lt;li&gt;每个任务按小时评估&lt;/li&gt;
+&lt;li&gt;这些评估帮助团队成员检查每个成员对于这此迭代的任务时&lt;/li&gt;
+&lt;li&gt;根据团队成员的速度分配任务，以便他们不会负担过重&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-4-速度计算&#34;&gt;7.4 速度计算&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;敏捷团队基于过去的迭代计算速度&lt;/li&gt;
+&lt;li&gt;速度是迭代中所需的平均数字单位以便完成用户故事
+
+&lt;ul&gt;
+&lt;li&gt;比如，一个团队在过去的三个迭代中分别用12，14，10个故事点，这个团队下次迭代的速度是 12&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;计划的速度高速团队可以在当前迭代完成多少用户故事。如果团队快速完成分配的任务，那么可以加入更多的用户故事。否则，可在下次迭代移除一些故事&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-5-任务容量&#34;&gt;7.5 任务容量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个团队的容量从下面三个因素考量
+
+&lt;ul&gt;
+&lt;li&gt;每天理想的工作小时&lt;/li&gt;
+&lt;li&gt;这次迭代中成员可用的天数&lt;/li&gt;
+&lt;li&gt;一个成员在此团队中不可用的时间百分比&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;假设一个团队 5 个成员，承诺为一个项目满时工作(每天 8 小时)，且没有人在迭代中离开，那么一个两周迭代的任务容量是 5*8*10=400 小时&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-6-计划步骤&#34;&gt;7.6 计划步骤&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;产品负责人描述产品需求列表排序最高的条目&lt;/li&gt;
+&lt;li&gt;团队描述完成条目需要的任务&lt;/li&gt;
+&lt;li&gt;团队成员负责任务&lt;/li&gt;
+&lt;li&gt;团队成员估计完成每个任务的时间&lt;/li&gt;
+&lt;li&gt;在迭代中重复上述步骤&lt;/li&gt;
+&lt;li&gt;如果有人任务过多，将任务分给其他团队成员&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>8 产品需求列表</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/8-product-backlog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/8-product-backlog/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#81-%e4%ba%a7%e5%93%81%e9%9c%80%e6%b1%82%e5%88%97%e8%a1%a8%e7%9a%84%e9%87%8d%e8%a6%81%e6%80%a7&#34;&gt;8.1 产品需求列表的重要性&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#82-%e4%ba%a7%e5%93%81%e9%9c%80%e6%b1%82%e5%88%97%e8%a1%a8%e7%9a%84%e7%89%b9%e7%82%b9&#34;&gt;8.2 产品需求列表的特点&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;一个产品需求列表是将要做的条目的列表。条目具有特性描述，被排好序&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在理想的场景中，条目应划分成用户故事&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;8-1-产品需求列表的重要性&#34;&gt;8.1 产品需求列表的重要性&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;准备好产品需求列表，以便可以评估每个特性&lt;/li&gt;
+&lt;li&gt;帮助计划产品蓝图&lt;/li&gt;
+&lt;li&gt;帮助对特性重排序，以便产品具有更多价值&lt;/li&gt;
+&lt;li&gt;帮助确定需要优先处理的事情。团队对条目排序并建立值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;8-2-产品需求列表的特点&#34;&gt;8.2 产品需求列表的特点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个产品应该有一个产品需求列表，具有很多大的特性&lt;/li&gt;
+&lt;li&gt;多个团队可以为一个产品需求列表工作&lt;/li&gt;
+&lt;li&gt;特性排序基于业务价值、技术值、风险管理或策略调整排序&lt;/li&gt;
+&lt;li&gt;在发布计划中将优先级高的条目分解成小的故事，以便可以在未来的迭代中完成它们&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>9 有用的术语</title>
+      <link>https://xueqing.github.io/translation/agile/tutorial/9-useful-terms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/agile/tutorial/9-useful-terms/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;验收标准 Acceptance Criteria：由产品负责人或客户设置的条件，为了验收一个特性时有效的且和他们的需求一致&lt;/li&gt;
+&lt;li&gt;列表修整 Backlog Grooming：一个持续的过程，是产品管理者或客户通过从敏捷团队获取反馈管理产品需求列表。包含条目项的排序、分解条目项成更小的条目、规划未来的迭代、创建新的故事、更小验收标准和消息描述验收标准&lt;/li&gt;
+&lt;li&gt;容量 Capacity：一个迭代中团队可以完成的工作&lt;/li&gt;
+&lt;li&gt;特性 Feature：对于产品的一个改进，或对利益相关者价值的兼容，在一个发布中开发&lt;/li&gt;
+&lt;li&gt;迭代 Iteration：基于主题的工作项可在一个时间盒完成，并在产品的一个迭代中验收。迭代工作由迭代计划定义，结果是一个 demo 和评审会议。也叫做 Sprint&lt;/li&gt;
+&lt;li&gt;增量 Increment：一个增量是逐渐开发的产品变化的状态。通常展示为里程碑或固定的迭代数&lt;/li&gt;
+&lt;li&gt;产品负责人 Product Owner：敏捷交付团队的一名成员，负责收集和排序产品需求列表中的业务需求。一个产品负责人沟通一个发布或迭代中要做的工作。产品负责人设置成活，并负责保护团队在一个迭代中需求不被改变&lt;/li&gt;
+&lt;li&gt;产品需求列表 Product Backlog：功能性和非功能性的产品需求的集合&lt;/li&gt;
+&lt;li&gt;产品需求列表项 Product Backlog Items：可以是用户故事、故障、特性，由敏捷团队开发&lt;/li&gt;
+&lt;li&gt;点 Points：一个通用单位，用以设置用户故事、特性或其他条目的相对大小&lt;/li&gt;
+&lt;li&gt;发布 Release：在一个时间箱中，完成工作以支持一个软件的可测试的增量交付。在一个 Scrum 中，一个发布由多个迭代组成&lt;/li&gt;
+&lt;li&gt;需求 Requirement：软件产品的规格说明，用于满足规定的合同或功能。用户故事和条目项是需求类型&lt;/li&gt;
+&lt;li&gt;故事点 Story Points：敏捷团队用于评估用户故事和特性的相对大小的单位&lt;/li&gt;
+&lt;li&gt;冲刺 Sprint：同迭代&lt;/li&gt;
+&lt;li&gt;时间箱 Timebox：一个固定的持续时间，在这期间开发出一个可交付产品。通常，伴随固定的开始和结束时间，资源的数目也是固定的&lt;/li&gt;
+&lt;li&gt;任务 Task：在迭代中，对于一个用户故事有共享的工作的单位。用户故事被分解成多个任务，且每个任务被分给团队成员作为任务负责人。团队成员可为每个任务负责，更新评估，记录已完成和要做的工作日志&lt;/li&gt;
+&lt;li&gt;用户故事 User Story：一个列举的验收标准用于实现用户的一些需求。通常从一个终端用户的角度写&lt;/li&gt;
+&lt;li&gt;速度 Velocity：度量迭代或时间箱的验收工作。通常是迭代中验收的故事点的总和&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

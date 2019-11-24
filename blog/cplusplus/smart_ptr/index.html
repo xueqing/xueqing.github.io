@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="auto_ptr unique_ptr shared_ptr weak_ptr reference auto_ptr C&#43;&#43;11 已经弃用。unique_ptr是新的具有相似功能的智能指针，但是安全性更高。 auto_ptr是管理对象的指针，通过new的操作">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/cplusplus/smart_ptr/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/cplusplus/smart_ptr/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/cplusplus/smart_ptr/">
+  <meta property="og:title" content="auto_ptr, unique_ptr, shared_ptr and weak_ptr | kiki">
+  <meta property="og:description" content="auto_ptr unique_ptr shared_ptr weak_ptr reference auto_ptr C&#43;&#43;11 已经弃用。unique_ptr是新的具有相似功能的智能指针，但是安全性更高。 auto_ptr是管理对象的指针，通过new的操作"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>auto_ptr, unique_ptr, shared_ptr and weak_ptr | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>auto_ptr, unique_ptr, shared_ptr and weak_ptr</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#autoptr">auto_ptr</a></li>
+<li><a href="#uniqueptr">unique_ptr</a></li>
+<li><a href="#sharedptr">shared_ptr</a></li>
+<li><a href="#weakptr">weak_ptr</a></li>
+<li><a href="#reference">reference</a></li>
+</ul>
+
+<h2 id="auto-ptr">auto_ptr</h2>
+
+<ul>
+<li>C++11 已经弃用。<code>unique_ptr</code>是新的具有相似功能的智能指针，但是安全性更高。</li>
+<li><code>auto_ptr</code>是管理对象的指针，通过<code>new</code>的操作创建，当<code>auto_ptr</code>销毁的时候会删除该对象。</li>
+<li>一个用<code>auto_ptr</code>存储了一个指针指向一个被分配的对象，确保当代码运行到指针的范围之外时，指针指向的对象会自动销毁。</li>
+<li><code>auto_ptr</code>基于独有的所有权模型(exclusive ownership model)，也就是说，两个相同类型的指针不能同时指向同一个资源。复制或者赋值给指针会改变所有权，即源指针会把所有权移交给目的指针。</li>
+
+<li><p>下面的代码可以看出复制指针的时候所有权的转移</p>
+
+<pre><code class="language-c++">// C++ program to illustrate the use of auto_ptr
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+using namespace std;
+
+class A
+{
+public:
+    void show() { cout &lt;&lt; &quot;A::show()&quot; &lt;&lt; endl; }
+};
+
+int main()
+{
+    // p1 is an auto_ptr of type A
+    auto_ptr&lt;A&gt; p1(new A);
+    p1-&gt;show();
+
+    // returns the memory address of p1
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+
+    // copy constructor called, this makes p1 empty.
+    auto_ptr &lt;A&gt; p2(p1);
+    p2-&gt;show();
+
+    // p1 is empty now
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+
+    // p1 gets copied in p2
+    cout&lt;&lt; p2.get() &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre></li>
+
+<li><p>输出结果如下</p>
+
+<pre><code class="language-txt">A::show()
+0x1b42c20
+A::show()
+0           // NULL
+0x1b42c20
+</code></pre></li>
+
+<li><p><code>auto_ptr</code>的拷贝构造函数和赋值运算符实际上不会拷贝存储的指针，而是转移指针，从而使得源指针为空。<code>auto_ptr</code>实现了严格的所有权管理，使得同一时刻只有一个<code>auto_ptr</code>对象可以拥有该指针。</p></li>
+
+<li><p>丢弃<code>auto_ptr</code>的原因：<code>auto_ptr</code>的赋值运算转移所有权，并且重置右值的<code>auto_ptr</code>为空指针。因此，<code>auto_ptr</code>不能用于 STL 容器。</p></li>
+</ul>
+
+<h2 id="unique-ptr">unique_ptr</h2>
+
+<ul>
+<li><code>unique_ptr</code>是 C++11 开发用于替换<code>std::auto_ptr</code>的。</li>
+<li><code>unique_ptr</code>具有更好的安全性(没有“虚假”的拷贝赋值)，增加了特性(删除器)，支持数组。它是一个保存原始指针的容器。<code>unique_ptr</code>显式地避免持有的指针拷贝赋值，它只允许指针有一个持有者。所以对于一个资源，至多只有一个<code>unique_ptr</code>指向，当<code>unique_ptr</code>销毁时，资源会自动释放。</li>
+
+<li><p>对<code>unique_ptr</code>拷贝赋值会导致编译错误。比如下面的代码：</p>
+
+<pre><code class="language-c++">unique_ptr&lt;A&gt; ptr1 (new A);
+unique_ptr&lt;A&gt; ptr2 = ptr1; // Error: can't copy unique_ptr
+</code></pre></li>
+
+<li><p>可以使用<code>std::move()</code>语法转移持有指针的所有权给另外一个<code>unique_ptr</code>。<code>unique_ptr&lt;A&gt; ptr2 = move(ptr1);</code></p></li>
+
+<li><p>下面的代码阐述了<code>unique_ptr</code>的使用</p>
+
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+using namespace std;
+
+class A
+{
+public:
+    void show() { cout &lt;&lt; &quot;A::show()&quot; &lt;&lt; endl; }
+};
+
+int main()
+{
+    unique_ptr&lt;A&gt; p1(new A);
+    p1-&gt;show();
+
+    // returns the memory address of p1
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+
+    // transfers ownership to p2
+    unique_ptr&lt;A&gt; p2 = move(p1);
+    p2-&gt;show();
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+    cout &lt;&lt; p2.get() &lt;&lt; endl;
+
+    // transfers ownership to p3
+    unique_ptr&lt;A&gt; p3 = move (p2);
+    p3-&gt;show();
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+    cout &lt;&lt; p2.get() &lt;&lt; endl;
+    cout &lt;&lt; p3.get() &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+
+<ul>
+<li><p>输出结果如下：</p>
+
+<pre><code class="language-txt">A::show()
+0x1c4ac20
+A::show()
+0          // NULL
+0x1c4ac20
+A::show()
+0          // NULL
+0          // NULL
+0x1c4ac20
+</code></pre></li>
+</ul></li>
+
+<li><p>下面的代码返回一个资源，如果我们不显式的接收返回值，资源会被清理。反之，我们会得到对该资源的唯一所有权。因此，可以认为<code>unique_ptr</code>比<code>auto_ptr</code>更安全。</p>
+
+<pre><code class="language-c++">unique_ptr&lt;A&gt; fun()
+{
+    unique_ptr&lt;A&gt; ptr(new A);
+    // do something
+    return ptr;
+}
+</code></pre></li>
+</ul>
+
+<h2 id="shared-ptr">shared_ptr</h2>
+
+<ul>
+<li><code>shared_ptr</code>是一个保存原始指针的容器。它是引用计数所有权模型(<code>reference counting ownership model</code>)。<code>shared_ptr</code>维护了持有指针的引用计数以及所有对<code>shared_ptr</code>的拷贝。因此，当一个新的指针指向资源的时候计数增加，当指针析构的时候计数减少。</li>
+<li>引用计数(<code>reference counting</code>)：是一种存储对于一个资源(比如对象，内存块，磁盘空间或者其他资源)的引用、指针或者句柄的数目的技术。</li>
+<li>当代码执行到指向资源的所有<code>shared_ptr</code>的范围之外，资源才会销毁释放。</li>
+
+<li><p>下面的代码阐述了<code>shared_ptr</code>的使用</p>
+
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;memory&gt;
+using namespace std;  
+class A
+{
+public:
+    void show() { cout &lt;&lt; &quot;A::show()&quot; &lt;&lt; endl; }
+};
+
+int main()
+{
+    shared_ptr&lt;A&gt; p1(new A);
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+    p1-&gt;show();
+    shared_ptr&lt;A&gt; p2(p1);
+    p2-&gt;show();
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+    cout &lt;&lt; p2.get() &lt;&lt; endl;
+
+    // Returns the number of shared_ptr objects referring to the same managed object.
+    cout &lt;&lt; p1.use_count() &lt;&lt; endl;
+    cout &lt;&lt; p2.use_count() &lt;&lt; endl;
+
+    // Relinquishes ownership of p1 on the object and pointer becomes NULL
+    p1.reset();
+    cout &lt;&lt; p1.get() &lt;&lt; endl;
+    cout &lt;&lt; p2.use_count() &lt;&lt; endl;
+    cout &lt;&lt; p2.get() &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+
+<ul>
+<li><p>输出结果如下：</p>
+
+<pre><code class="language-txt">0x1c41c20
+A::show()
+A::show()
+0x1c41c20
+0x1c41c20
+2
+2
+0          // NULL
+1
+0x1c41c20
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="weak-ptr">weak_ptr</h2>
+
+<ul>
+<li><code>weak_ptr</code>是<code>shared_ptr</code>的拷贝。它可以访问被一个或多个<code>shared_ptr</code>实例持有的对象，但是不参与引用计数。<code>weak_ptr</code>的存在或销毁对<code>shared_ptr</code>及其拷贝没有影响。<code>weak_ptr</code>对于打破<code>shared_ptr</code>实例之间的循环引用必不可少。</li>
+<li>相互依赖(<code>Cyclic Dependency</code>,<code>shared_ptr</code>存在的问题)：考虑一个场景，类 A 和类 B，二者都有指针指向另外一个类。因此，如果有两个<code>shared_ptr</code>的指针<code>ptr_A</code>和<code>ptr_B</code>分别指向 A 和 B的某个对象，总是<code>ptr_A</code>持有 B 的对象而且<code>ptr_B</code>持有 A 的对象。A 和 B 的对象引用计数一直不会变成 0，A 和 B 的对象都不会被删除。</li>
+<li>现在把<code>ptr_A</code>换成<code>weak_ptr</code>，<code>ptr_A</code>可以访问 B 的对象但是不会持有该对象。B 对象的引用计数就是 0，可以先释放，之后 A 对象的引用计数变成 0 就可以释放内存。</li>
+<li>使用<code>ptr_A</code>之前需要检查 B 对象的有效性，因为 B 对象可能销毁。</li>
+<li>什么时候需要用<code>weak_ptr</code>？当希望从不同的地方访问对象，且不关心这些引用的删除。但是尝试间接引用该对象的时候需要注意检查对象的有效性。</li>
+</ul>
+
+<h2 id="reference">reference</h2>
+
+<ul>
+<li><a href="https://www.geeksforgeeks.org/auto_ptr-unique_ptr-shared_ptr-weak_ptr-2/" target="_blank">auto_ptr, unique_ptr, shared_ptr and weak_ptr</a></li>
+<li><a href="https://stackoverflow.com/questions/3451099/stdauto-ptr-to-stdunique-ptr" target="_blank">std::auto_ptr to std::unique_ptr</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/cplusplus/smart_ptr/&amp;text=auto_ptr,%20unique_ptr,%20shared_ptr%20and%20weak_ptr" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/cplusplus/smart_ptr/&amp;t=auto_ptr,%20unique_ptr,%20shared_ptr%20and%20weak_ptr" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=auto_ptr,%20unique_ptr,%20shared_ptr%20and%20weak_ptr&amp;body=https://xueqing.github.io/blog/cplusplus/smart_ptr/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/cplusplus/smart_ptr/&amp;title=auto_ptr,%20unique_ptr,%20shared_ptr%20and%20weak_ptr" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=auto_ptr,%20unique_ptr,%20shared_ptr%20and%20weak_ptr%20https://xueqing.github.io/blog/cplusplus/smart_ptr/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/cplusplus/smart_ptr/&amp;title=auto_ptr,%20unique_ptr,%20shared_ptr%20and%20weak_ptr" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_string_case_convert/">C&#43;&#43; string 转换大小写</a></li>
+      
+      <li><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></li>
+      
+      <li><a href="/blog/cplusplus/effectivec&#43;&#43;_3/">Effective C&#43;&#43;, 3rd</a></li>
+      
+      <li><a href="/blog/cplusplus/raii/">RAII 资源获取即初始化</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

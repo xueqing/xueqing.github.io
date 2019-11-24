@@ -353,97 +353,91 @@
   
   
   <div>
+    <h2><a href="/translation/go-doc/command/build/">go build</a></h2>
+    <div class="article-style">
+      
+      命令 源码文件 编译多个 Go 源码文件 go build 的参数 依赖包 构建标签 命令 go build [-o output] [-i] [build flags] [packages] go build 命令用于编译我们指定的源码文件或代码包以及它们的依赖包 如果在执
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/clean/">go clean</a></h2>
+    <div class="article-style">
+      
+      命令 go clean 的参数 命令 go clean 命令会删除掉执行其它命令时产生的一些文件和目录，包括 有一些目录和文件是在编译 Go 或 C 源码文件时留在相应目录中的 目录 _ob
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/doc/">go doc</a></h2>
+    <div class="article-style">
+      
+      命令 Go 语言程序实体 go doc 的参数 godoc 命令行模式 Web 服务器模式 命令 go doc 命令可以打印附于 Go 语言程序实体上的文档。可以通过把程序实体的标识符作为该命令的参
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/env/">go env</a></h2>
+    <div class="article-style">
+      
+      命令 go env 命令可打印出的 Go 语言通用环境信息 go env 的参数 命令 go env 用于打印 Go 语言的环境信息：go env GOARCH 或 go env GOARCH GOCHAR go env -w 重写 Go 语言的环境信息：go env -w GOPRIVATE=&quot;*.bmi&quot;
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/fmt/">go fmt</a></h2>
+    <div class="article-style">
+      
+      命令 gofmt 的参数 命令 go 代码有标准的风格。go fmt file_name.go 命令可以格式化写好的代码文件 开发工具里面一般都带了保存时候自动格式化功能，这个功能其实在底层就是
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/generate/">go generate</a></h2>
+    <div class="article-style">
+      
+      命令 命令 go generate 用于在编译前自动化生成某类代码 go generate 通过分析源码中特殊的注释，然后执行相应的命令。注意 此特殊注释必须在 .go 源码文件 每个源码文件可包含
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/get/">go get</a></h2>
+    <div class="article-style">
+      
+      命令 go get 命令支持的 VCS go get 的参数 命令 go get 命令用来动态获取远程代码包，从代码版本控制系统的远程仓库中检出/更新代码包并对其进行编译和安装 在内部实
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/install/">go install</a></h2>
+    <div class="article-style">
+      
+      命令 安装代码包 安装命令源码文件 go install 的参数 命令 go install 用于编译并安装指定的代码包及它们的依赖包 这个命令在内部实际上分成了两步操作：第一步是生成结果
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/list/">go list</a></h2>
+    <div class="article-style">
+      
+      用法 -f -m 用法 列举命名包，每行一个。不带参数时判断一个包是否存在工作空间，存在则输出包的导入路径 命令 go list [-f format] [-json] [-m] [list flags] [build flags] [packages] 常用的参数是 -f 和 -j
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/translation/go-doc/command/mod/">go mod</a></h2>
     <div class="article-style">
       
       用法 download edit graph init tidy vendor verify why 用法 用于操作模块。注意：所有的 go 命令支持模块 用法：go mod &lt;command&gt; [arguments] 命令 功能 download 下载模块到本地缓存 edit 使用工具或脚本更新 go.mod graph 打印模块
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/command/run/">go run</a></h2>
-    <div class="article-style">
-      
-      构建并运行程序 对于简单的程序，可以使用 go run program.go 直接构建并允许程序 go run 不会再运行目录生成任何文件，可执行文件被放在临时文件中执行，工作目录被设置
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/command/test_package/">go test</a></h2>
-    <div class="article-style">
-      
-      用法：go test [build/test flags] [packages] [build/test flags &amp; test binary flags] go test 自动测试通过导入路径命名的包。命令按下面的格式打印测试结果的概要： ok archive/tar 0.011s FAIL archive/zip 0.022s ok compress/gzip 0.033s ... 之后是每个失败的包的
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/blog/examples/">Go 可测试的示例函数</a></h2>
-    <div class="article-style">
-      
-      参考 Go 博客——Go 可测试的示例函数学习。 作者：Andrew Gerrand 日期：2015/5/7
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/command/gopath_and_module/">GOPATH 和模块</a></h2>
-    <div class="article-style">
-      
-      当使用模块时，不再使用 GOPATH 来解决导入。但是，它仍被用于存储下载的源码(在 GOPATH/pkg/mod)和编译好的命令(在 GOPATH/bin)
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/command/gopath_env_var/">GOPATH 环境变量</a></h2>
-    <div class="article-style">
-      
-      Go 路径用于解决导入语句，它通过 go/build 包实现，并记录在 go/build 包。 GOPATH 环境变量列举了寻找 Go 代码的位置。在 Unix 上，其值是一个冒号分隔的字符串。在 Windows 上，其值是一
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/images/">Images</a></h2>
-    <div class="article-style">
-      
-      /* Exercise: Images Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of image.Image instead of a slice of data. Define your own Image type, implement the necessary methods, and call pic.ShowImage. Bounds should return a image.Rectangle, like image.Rect(0, 0, w, h). ColorModel should return color.RGBAModel. At should return a color; the value v in the last picture generator corresponds to color.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/golangpkg/iotest/">iotest 包</a></h2>
-    <div class="article-style">
-      
-      概述 索引 参考 Golang 官网文档 学习。 导入语句：import &quot;testing/iotest&quot; 概述 iotest 包实现了主要用于 testing 的 Reader 和 Writer。 索引 参考
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/loops_and_functions/">Loops and Functions</a></h2>
-    <div class="article-style">
-      
-      ```go /* Exercise: Loops and Functions As a way to play with functions and loops, let&rsquo;s implement a square root function: given a number x, we want to find the number z for which z² is most nearly x.
-Computers typically compute the square root of x using a loop. Starting with some guess z, we can adjust z based on how close z² is to x, producing a better guess:
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/maps/">Maps</a></h2>
-    <div class="article-style">
-      
-      ```go /* Exercise: Maps Implement WordCount. It should return a map of the counts of each “word” in the string s. The wc.Test function runs a test suite against the provided function and prints success or failure.
-You might find strings.Fields helpful. */
-package main
-import ( &ldquo;strings&rdquo;
-&quot;golang.org/x/tour/wc&quot;  )
-func wordCount(s string) map[string]int { m := make(map[string]int) var ss []string ss = strings.Fields(s) for i := 0; i &lt; len(ss); i++ { m[ss[i]]++ }
       
     </div>
   </div>

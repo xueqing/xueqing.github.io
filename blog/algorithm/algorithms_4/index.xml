@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms 4 | kiki</title>
+    <link>https://xueqing.github.io/blog/algorithm/algorithms_4/</link>
+      <atom:link href="https://xueqing.github.io/blog/algorithm/algorithms_4/index.xml" rel="self" type="application/rss+xml" />
+    <description>Algorithms 4</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>Algorithms 4</title>
+      <link>https://xueqing.github.io/blog/algorithm/algorithms_4/</link>
+    </image>
+    
+  </channel>
+</rss>

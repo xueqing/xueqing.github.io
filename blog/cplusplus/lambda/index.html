@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="问题 解决方法 返回类型 &ldquo;捕获&rdquo;变量 使用 lambda 作为变量 参考 问题 C&#43;&#43; 包含一些有用的通用函数，比如 std::for_each 和 std::transform">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/cplusplus/lambda/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/cplusplus/lambda/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/cplusplus/lambda/">
+  <meta property="og:title" content="lambda 表达式 | kiki">
+  <meta property="og:description" content="问题 解决方法 返回类型 &ldquo;捕获&rdquo;变量 使用 lambda 作为变量 参考 问题 C&#43;&#43; 包含一些有用的通用函数，比如 std::for_each 和 std::transform"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>lambda 表达式 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>lambda 表达式</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e9%97%ae%e9%a2%98">问题</a></li>
+<li><a href="#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95">解决方法</a></li>
+<li><a href="#%e8%bf%94%e5%9b%9e%e7%b1%bb%e5%9e%8b">返回类型</a></li>
+<li><a href="#%22%e6%8d%95%e8%8e%b7%22%e5%8f%98%e9%87%8f">&ldquo;捕获&rdquo;变量</a></li>
+<li><a href="#%e4%bd%bf%e7%94%a8-lambda-%e4%bd%9c%e4%b8%ba%e5%8f%98%e9%87%8f">使用 lambda 作为变量</a></li>
+<li><a href="#%e5%8f%82%e8%80%83">参考</a></li>
+</ul>
+
+<h2 id="问题">问题</h2>
+
+<ul>
+<li><p>C++ 包含一些有用的通用函数，比如 <code>std::for_each</code> 和 <code>std::transform</code>，用起来很方便。但是使用比较复杂，尤其是使用的仿函数(functor)是唯一的。</p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+namespace {
+struct f {
+    void operator()(int i) {
+        std::cout &lt;&lt; i &lt;&lt; std::endl;
+    }
+};
+}
+
+void func(std::vector&lt;int&gt;&amp; v) {
+f f;
+std::for_each(v.begin(), v.end(), f);
+}
+
+int main()
+{
+int arr[] = {1,10,9};
+std::vector&lt;int&gt; v(arr,arr+3);
+func(v);
+return 0;
+}
+</code></pre></li>
+
+<li><p>如果只使用上述 <code>f</code> 一次，看起来写一个完整的类来完成一些微小的事情是过犹不及的。</p></li>
+</ul>
+
+<h2 id="解决方法">解决方法</h2>
+
+<ul>
+<li>C++11 介绍了 lambda，支持写一个内联、匿名仿函数来替换 <code>struct f</code>。对于简单的例子代码会更易读，且易于维护</li>
+
+<li><p>形式定义 <code>[]() {}</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+void func(std::vector&lt;int&gt;&amp; v) {
+std::for_each(v.begin(), v.end(), [](int i) {std::cout &lt;&lt; i &lt;&lt; std::endl;});
+}
+
+int main()
+{
+int arr[] = {1,10,9};
+std::vector&lt;int&gt; v(arr,arr+3);
+func(v);
+return 0;
+}
+</code></pre></li>
+</ul>
+
+<h2 id="返回类型">返回类型</h2>
+
+<ul>
+<li><p>简单的例子中，lambda 的返回类型是编译器推断出来的</p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+void func(std::vector&lt;double&gt; &amp;v) {
+std::transform(v.begin(), v.end(), v.begin(),
+               [](double d) {return d &lt; 0.00001 ? 0 : d;}
+);
+std::for_each(v.begin(), v.end(), [](double d) {std::cout &lt;&lt; d &lt;&lt; std::endl;});
+}
+
+int main()
+{
+double arr[] = {0.000001,1.0,0.000009};
+std::vector&lt;double&gt; v(arr,arr+3);
+func(v);
+return 0;
+}
+</code></pre></li>
+
+<li><p>但是当实现更加复杂的 lambda 时，会遇到一些情况，编译器不能推断返回类型。此时可以显式地指明lambda 函数的返回值，使用 <code>-&gt; T</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+void func(std::vector&lt;double&gt; &amp;v) {
+std::transform(v.begin(), v.end(), v.begin(),
+               [](double d) -&gt; double {
+                    if(d &lt; 0.00001)
+                        return 0;
+                    else
+                        return d;
+                }
+);
+std::for_each(v.begin(), v.end(), [](double d) {std::cout &lt;&lt; d &lt;&lt; std::endl;});
+}
+
+int main()
+{
+double arr[] = {0.000001,1.0,0.000009};
+std::vector&lt;double&gt; v(arr,arr+3);
+func(v);
+return 0;
+}
+</code></pre></li>
+</ul>
+
+<h2 id="捕获-变量">&ldquo;捕获&rdquo;变量</h2>
+
+<ul>
+<li><p>也可以使用 lambda 内部的变量。如果想要是有其他变量可以使用捕获语句 <code>[]</code></p>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+void func(std::vector&lt;double&gt; &amp;v, const double &amp;val) {
+std::transform(v.begin(), v.end(), v.begin(),
+               [val](double d) -&gt; double {
+                    if(d &lt; val)
+                        return 0;
+                    else
+                        return d;
+                }
+);
+std::for_each(v.begin(), v.end(), [](double d) {std::cout &lt;&lt; d &lt;&lt; std::endl;});
+}
+
+int main()
+{
+double arr[] = {0.000001,1.0,0.000009};
+std::vector&lt;double&gt; v(arr,arr+3);
+double val = 0.000005;
+func(v, val);
+return 0;
+}
+</code></pre></li>
+
+<li><p>可以捕获引用和值，分别使用 <code>&amp;</code> 和 <code>=</code></p>
+
+<ul>
+<li><code>[&amp;val]</code> 捕获引用</li>
+<li><code>[&amp;]</code> 捕获当前范围使用的所有变量的引用</li>
+<li><code>[=]</code> 捕获当前范围使用的所有变量的值</li>
+<li><code>[&amp;, val]</code> 类似于 <code>[&amp;]</code>，但是 val 捕获值</li>
+<li><code>[=, &amp;val]</code> 类似于 <code>[=]</code>，但是 val 捕获引用</li>
+</ul></li>
+
+<li><p>生成的操作符 <code>()</code> 默认是 <code>const</code>，捕获默认也是 <code>const</code>，使得每次相同的输入产生相同的结果</p>
+
+<ul>
+<li>使用 <code>[]() mutable -&gt; T {}</code>，允许改变以值捕获的值</li>
+</ul></li>
+</ul>
+
+<h2 id="使用-lambda-作为变量">使用 lambda 作为变量</h2>
+
+<ul>
+<li>可以使用 <code>functional</code> 头文件
+
+<ul>
+<li><code>std::function&lt;double(int, bool)&gt; f = [](int a, bool b) -&gt; double {//...}</code></li>
+<li>通常可让编译器推断类型 <code>auto f = [](int a, bool b) -&gt; double {//...}</code></li>
+</ul></li>
+</ul>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11" target="_blank">What is a lambda expression in C++11?</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/cplusplus/lambda/&amp;text=lambda%20%e8%a1%a8%e8%be%be%e5%bc%8f" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/cplusplus/lambda/&amp;t=lambda%20%e8%a1%a8%e8%be%be%e5%bc%8f" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=lambda%20%e8%a1%a8%e8%be%be%e5%bc%8f&amp;body=https://xueqing.github.io/blog/cplusplus/lambda/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/cplusplus/lambda/&amp;title=lambda%20%e8%a1%a8%e8%be%be%e5%bc%8f" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=lambda%20%e8%a1%a8%e8%be%be%e5%bc%8f%20https://xueqing.github.io/blog/cplusplus/lambda/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/cplusplus/lambda/&amp;title=lambda%20%e8%a1%a8%e8%be%be%e5%bc%8f" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_string_case_convert/">C&#43;&#43; string 转换大小写</a></li>
+      
+      <li><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></li>
+      
+      <li><a href="/blog/cplusplus/effectivec&#43;&#43;_3/">Effective C&#43;&#43;, 3rd</a></li>
+      
+      <li><a href="/blog/cplusplus/raii/">RAII 资源获取即初始化</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

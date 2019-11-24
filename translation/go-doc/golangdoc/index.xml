@@ -66,24 +66,6 @@
     </item>
     
     <item>
-      <title>使用 GDB 调试 Go 代码</title>
-      <link>https://xueqing.github.io/translation/go-doc/golangdoc/gdb/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/gdb/</guid>
-      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/gdb&#34; target=&#34;_blank&#34;&gt;Go 官方文档——使用 GDB 调试 Go 代码&lt;/a&gt;学习。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>关于 Go 命令</title>
-      <link>https://xueqing.github.io/translation/go-doc/golangdoc/articles/go_command/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/articles/go_command/</guid>
-      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/articles/go_command.html&#34; target=&#34;_blank&#34;&gt;Go 官方文档——关于 Go 命令&lt;/a&gt; 学习。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>如何编写 Go 代码</title>
       <link>https://xueqing.github.io/translation/go-doc/golangdoc/code/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1075,33 +1057,6 @@ m := map[int]string{Enone: &amp;quot;no error&amp;quot;, Eio: &amp;quot;Eio&amp;
 &lt;h2 id=&#34;性能&#34;&gt;性能&lt;/h2&gt;
 
 &lt;h2 id=&#34;从-c-的改变&#34;&gt;从 C 的改变&lt;/h2&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>快速入门 Go 的汇编器</title>
-      <link>https://xueqing.github.io/translation/go-doc/golangdoc/asm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/asm/</guid>
-      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/asm&#34; target=&#34;_blank&#34;&gt;Go 官方文档——快速入门 Go 的汇编器&lt;/a&gt; 学习。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>数据竞争检测器</title>
-      <link>https://xueqing.github.io/translation/go-doc/golangdoc/articles/race_detector/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/articles/race_detector/</guid>
-      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/articles/race_detector.html&#34; target=&#34;_blank&#34;&gt;Go 官方文档——数据竞争检测器&lt;/a&gt; 学习。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>编写 Web 应用</title>
-      <link>https://xueqing.github.io/translation/go-doc/golangdoc/articles/wiki/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://xueqing.github.io/translation/go-doc/golangdoc/articles/wiki/</guid>
-      <description>&lt;p&gt;参考 &lt;a href=&#34;https://golang.org/doc/articles/wiki/&#34; target=&#34;_blank&#34;&gt;Go 官方文档——编写 Web 应用&lt;/a&gt; 学习。&lt;/p&gt;
 </description>
     </item>
     

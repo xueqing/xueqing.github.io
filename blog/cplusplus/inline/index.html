@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="描述 术语和定义 编译单元 单定义规则 内联声明 非成员函数 成员函数 不适合内联替换的用法 C/C&#43;&#43; static/extern &#43; inline C89/90 inline C99 inline C&#43;&#43; inline GCC 编译选项 内联函数对安全性和速度的取舍 inline vs">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/cplusplus/inline/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/cplusplus/inline/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/cplusplus/inline/">
+  <meta property="og:title" content="内联 | kiki">
+  <meta property="og:description" content="描述 术语和定义 编译单元 单定义规则 内联声明 非成员函数 成员函数 不适合内联替换的用法 C/C&#43;&#43; static/extern &#43; inline C89/90 inline C99 inline C&#43;&#43; inline GCC 编译选项 内联函数对安全性和速度的取舍 inline vs"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>内联 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>内联</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e6%8f%8f%e8%bf%b0">描述</a></li>
+<li><a href="#%e6%9c%af%e8%af%ad%e5%92%8c%e5%ae%9a%e4%b9%89">术语和定义</a>
+
+<ul>
+<li><a href="#%e7%bc%96%e8%af%91%e5%8d%95%e5%85%83">编译单元</a></li>
+<li><a href="#%e5%8d%95%e5%ae%9a%e4%b9%89%e8%a7%84%e5%88%99">单定义规则</a></li>
+</ul></li>
+<li><a href="#%e5%86%85%e8%81%94%e5%a3%b0%e6%98%8e">内联声明</a>
+
+<ul>
+<li><a href="#%e9%9d%9e%e6%88%90%e5%91%98%e5%87%bd%e6%95%b0">非成员函数</a></li>
+<li><a href="#%e6%88%90%e5%91%98%e5%87%bd%e6%95%b0">成员函数</a></li>
+</ul></li>
+<li><a href="#%e4%b8%8d%e9%80%82%e5%90%88%e5%86%85%e8%81%94%e6%9b%bf%e6%8d%a2%e7%9a%84%e7%94%a8%e6%b3%95">不适合内联替换的用法</a></li>
+<li><a href="#cc-staticextern--inline">C/C++ static/extern + inline</a>
+
+<ul>
+<li><a href="#c8990-inline">C89/90 inline</a></li>
+<li><a href="#c99-inline">C99 inline</a></li>
+<li><a href="#c-inline">C++ inline</a></li>
+</ul></li>
+<li><a href="#gcc-%e7%bc%96%e8%af%91%e9%80%89%e9%a1%b9">GCC 编译选项</a></li>
+<li><a href="#%e5%86%85%e8%81%94%e5%87%bd%e6%95%b0%e5%af%b9%e5%ae%89%e5%85%a8%e6%80%a7%e5%92%8c%e9%80%9f%e5%ba%a6%e7%9a%84%e5%8f%96%e8%88%8d">内联函数对安全性和速度的取舍</a></li>
+<li><a href="#inline-vs-micro">inline vs micro</a></li>
+<li><a href="#%e9%97%ae%e9%a2%98">问题</a>
+
+<ul>
+<li><a href="#%e9%97%ae%e9%a2%98c99-inline-without-static-or-extern">问题：C99 inline without static or extern</a></li>
+</ul></li>
+<li><a href="#%e5%8f%82%e8%80%83">参考</a></li>
+</ul>
+
+<h2 id="描述">描述</h2>
+
+<ul>
+<li>C++ 提出，C99 引入支持，C89 支持内联扩展</li>
+<li><code>inline</code>用于需要某个函数的定义对调用者可见的程序优化
+
+<ul>
+<li>可见性：函数需要有内部链接，或者外部链接且和调用者在同一个编译单元。此时，函数声明或定义中的<code>inline</code>只用于指示对这个函数的调用可被展开优化</li>
+<li>当调用者和被调用的函数定义位于不同的编译单元时，<code>inline</code>支持包含调用者的编译单元也包含一个局部(内联)的函数的定义</li>
+</ul></li>
+<li><code>inline</code>用于声明一个内联函数，可使 GCC 直接更快地调用此函数
+
+<ul>
+<li>GCC 可以将内联函数代码展开插入到调用者代码内部，因此减少了函数调用(寄存器状态的修改保存)的负载</li>
+<li>如果实参的值是常量，可在编译时计算简化，因此不是所有内联函数代码都会被包含</li>
+</ul></li>
+<li>可使用<code>-finline-functions</code>选项指定 GCC 将所有“足够简单”的函数展开插入到调用者内部</li>
+<li><code>inline</code>用于多个编译单元调用某个函数，但是只想暴露该函数的定义在一个头文件</li>
+<li>在关闭优化时，GCC 不会内联任何函数，必须在某处定义符号，<code>inline</code>声明定义的函数才是可见的</li>
+</ul>
+
+<h2 id="术语和定义">术语和定义</h2>
+
+<h3 id="编译单元">编译单元</h3>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/1106149/what-is-a-translation-unit-in-c" target="_blank">What is a “translation unit” in C++</a></li>
+<li>编译单元(compilation/translation unit): C++ 编译的基础单元。包括一个单独的源文件，以及直接或间接包含的头文件的内容，减去条件预处理忽视的内容</li>
+<li>一个编译单元可被编译成一个目标文件、库或可执行程序</li>
+</ul>
+
+<h3 id="单定义规则">单定义规则</h3>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/4192170/what-exactly-is-one-definition-rule-in-c" target="_blank">What exactly is One Definition Rule in C++</a></li>
+<li>单定义规则(one-definition rule)：每个程序对于其使用的每个非内联函数或对象应该只包含一个定义。定义可以显式出现在该程序中，可在标准库或用户定义的库中查找，或者隐式定义。内联函数应在每个使用的编译单元中定义</li>
+<li>每个编译单元对于所有的变量、函数、类的类型、枚举类型或模板不超过一个定义</li>
+</ul>
+
+<h2 id="内联声明">内联声明</h2>
+
+<h3 id="非成员函数">非成员函数</h3>
+
+<ul>
+<li>GCC 实现三种语法来声明内联函数
+
+<ul>
+<li>使用<code>-finline-functions</code>，同时指定参数<code>-std=gnu89/fgnu89-inline</code>，或所有内联函数声明处有<code>gnu-inline</code>属性</li>
+<li>指定参数<code>-std=c99/-std=gnu99</code>，或者使用更新的 C 版本</li>
+<li>编译 C++ 代码</li>
+</ul></li>
+
+<li><p>使用<code>inline</code>关键字</p>
+
+<pre><code class="language-c">static inline int inc(int *a)
+{
+return (*a)++;
+}
+</code></pre></li>
+
+<li><p>如果在 ISO C90 程序的头文件中声明内联，使用<code>__inline__</code></p></li>
+
+<li><p>上述三种类型的内联行为再两种情况下是行为是类似的</p>
+
+<ul>
+<li>用于<code>static</code>函数</li>
+<li>第一次声明时未使用<code>inline</code>关键字，定义时使用<code>inline</code>关键字</li>
+</ul></li>
+
+<li><p>除了速度，上述两种方式和不使用<code>inline</code>关键字行为相同</p>
+
+<pre><code class="language-c">extern int inc(int *a);
+inline int inc(int *a)
+{
+return (*a)++;
+}
+</code></pre></li>
+
+<li><p>当一个函数是<code>static inline</code>时，如果所有调用函数的地方展开插入了此函数的代码，而且函数的地址从未被使用，那么函数自己的汇编代码从未被引用。这种情况下，除非使用<code>-fkeep-inline-functions</code>，GCC 实际上不会为此函数生成汇编代码。如果有一处调用未展开插入代码，那么正常生成汇编代码；如果程序引用了该地址，函数必须正常编译，因为此处不能被内联</p></li>
+
+<li><p><strong>注意</strong>：除非是在一个<code>.cpp</code>文件使用，必须将内联函数定义放在一个头文件，然后从其他<code>.cpp</code>调用，否则会有链接错误<code>unresolved external</code></p></li>
+</ul>
+
+<h3 id="成员函数">成员函数</h3>
+
+<ul>
+<li><p>GCC 将定义在类内的成员函数视作内联函数(可没有<code>inline</code>)。可使用<code>-fno-default-inline</code>覆盖</p>
+
+<pre><code class="language-cpp">class Fred {
+public:
+void f(int i, char c)
+{
+  // ...
+}
+};
+</code></pre></li>
+
+<li><p>类似声明非成员函数：声明时不带<code>inline</code>，定义时使用<code>inline</code>，在类外部定义</p>
+
+<ul>
+<li><p><strong>建议使用此方式，以隐藏类的实现</strong></p>
+
+<pre><code class="language-cpp">class Foo {
+public:
+void method();  // Best practice: Don't put the inline keyword here
+// ...
+};
+
+inline void Foo::method()  // Best practice: Put the inline keyword here
+{
+// ...
+}
+</code></pre></li>
+</ul></li>
+
+<li><p><strong>注意</strong>：必须将内联函数定义放在一个头文件，然后从其他<code>.cpp</code>调用，否则会有链接错误<code>unresolved external</code></p></li>
+</ul>
+
+<h2 id="不适合内联替换的用法">不适合内联替换的用法</h2>
+
+<ul>
+<li>函数定义包含下面用法的不适合内联替换
+
+<ul>
+<li>可变参数函数</li>
+<li>使用<code>alloca</code>函数</li>
+<li>使用计算的<code>goto</code></li>
+<li>使用非本地的<code>goto</code></li>
+<li>使用嵌入函数</li>
+<li>使用<code>setjmp</code></li>
+<li>使用<code>__builtin_longjmp</code>/<code>__builtin_return</code>/<code>__built_apply_args</code></li>
+</ul></li>
+</ul>
+
+<h2 id="c-c-static-extern-inline">C/C++ static/extern + inline</h2>
+
+<h3 id="c89-90-inline">C89/90 inline</h3>
+
+<ul>
+<li><p>inline：可能会被内联展开。总会生成非内联版本且对外部可见。只在一个编译单元定义，其他编译单元可见且视为非内联函数</p>
+
+<ul>
+<li>每个编译单元只会拥有该函数的拷贝，每个拷贝只对编译单元内部可见，且拷贝之间不会有冲突。缺点包括两部分</li>
+<li>大型工程中，可能包含很多相同函数的拷贝，导致目标代码增大</li>
+<li>不太可能比较函数指针，因为不确定是哪份拷贝版本</li>
+<li>C89 编译器支持内联扩展</li>
+<li>MVC++：<code>__forceinline</code></li>
+<li>GCC/Clang：在不优化时，除非指定<code>always_inline</code>属性，GCC 不会内联任何函数
+
+<ul>
+<li><code>__attribute__((always_inline))</code></li>
+<li><code>__attribute__((__always_inline__))</code>：可避免与用户定义的宏<code>always_inline</code>冲突</li>
+</ul></li>
+<li>编译器在某些情况下不能内联替换，此时会有编译警告</li>
+
+<li><p>建议使用下面的可移植代码</p>
+
+<pre><code class="language-c">#ifdef _MSC_VER
+#define forceinline __forceinline
+#elif defined(__GNUC__)
+#define forceinline inline __attribute__((__always_inline__))
+#elif defined(__CLANG__)
+#if __has_attribute(__always_inline__)
+    #define forceinline inline __attribute__((__always_inline__))
+#else
+    #define forceinline inline
+#endif
+#else
+#define forceinline inline
+#endif
+</code></pre></li>
+</ul></li>
+
+<li><p>extern inline：不会生成非内联版本对外部可见，但是可以调用(必须在其他编译单元定义，且调用的代码和内联代码相同)，<code>one-definition</code>的原则适用</p>
+
+<ul>
+<li>原因：C89 中定义为<code>extern</code>的存储不会被保留，而不带<code>extern</code>的存储一定会保留；C99 的<code>extern inline</code>会生成非内联函数</li>
+<li>类似宏。使用方式是将函数定义(同时指定<code>inline</code>和<code>extern</code>关键字)放在一个头文件中，把另一个定义的拷贝(不指定<code>inline</code>和<code>extern</code>关键字)放在一个库文件中。头文件的定义使得大部分函数调用都是内联展开的。如果存在其他编译单元的函数调用，引用这个库文件的唯一拷贝</li>
+</ul></li>
+
+<li><p>static inline：不会生成外部可见的非内联版本，但是可能会生成一个局部可见的函数，<code>one-definition</code>的原则不适用</p></li>
+</ul>
+
+<h3 id="c99-inline">C99 inline</h3>
+
+<ul>
+<li><p>inline：类似 C89/90的<code>extern inline</code>，不会生成外部可见代码，但是可以调用(必须在其他编译单元定义，且调用的代码和内联代码相同)</p>
+
+<ul>
+<li><p>在头文件(.h)中使用<code>inline</code>定义，在一个编译单元的源文件(.c)中使用<code>extern</code>和<code>inline</code></p>
+
+<pre><code class="language-c">//.h
+inline double dabs(double x) {return x &lt; 0.0 ? -x : x;}
+//.c
+extern inline double dabs(double x);
+</code></pre></li>
+</ul></li>
+
+<li><p>extern inline：类似 C89/90的<code>inline</code>，不会生成外部可见代码，至多一个编译单元可以使用此函数</p>
+
+<ul>
+<li>定义为<code>inline</code>的函数要求：程序的其他地方有且只有一处需要声明该函数为<code>extern inline</code>或没有修饰符</li>
+<li>如果有多处声明，链接器会报重复的符号错误</li>
+<li>其他地方没有声明，链接器不会报错</li>
+<li>建议：在头文件定义<code>inline</code>函数，为每个函数创建一个<code>.c</code>文件，包含该函数的<code>extern inline</code>声明以及对应的头文件：声明和包含头文件的语句先后无关</li>
+</ul></li>
+
+<li><p>static inline：类似 C89/90，二者之间相同</p></li>
+</ul>
+
+<h3 id="c-inline">C++ inline</h3>
+
+<ul>
+<li>inline：一处内联其他所有地方都会内联。编译器/链接器会排序该符号的多个实例
+
+<ul>
+<li>在头文件定义，对整个工程可见；且如果不能展开替换，只会生成一个外部符号</li>
+<li>在所有地方有相同的定义，必须有<code>inline</code>关键字</li>
+<li>类内定义的函数会自动添加<code>inline</code>修饰符</li>
+</ul></li>
+<li>extern inline：没有此定义，支持的编译器行为类似 C89/90</li>
+<li>static inline：没有此定义，支持的编译器行为类似 C89/90</li>
+</ul>
+
+<h2 id="gcc-编译选项">GCC 编译选项</h2>
+
+<ul>
+<li>GCC 版本大于等于 4.2：使用 C89 的<code>inline</code>语法，即使显式指定了<code>-std=c99</code></li>
+<li>GCC 版本是 5：GCC 使用 gnu11 的语法，默认使用 C99 的<code>inline</code>语法
+
+<ul>
+<li>显式指定<code>-std=gnu89</code>：使用 C89 语法</li>
+<li>指定<code>-fgnu89-inline</code>或在所有<code>inline</code>声明处增加<code>gnu_inline</code>属性：使用 C89 语法，只会影响内联</li>
+<li>指定<code>-std=c99</code>或<code>-std=c11</code>或<code>-std=gnu99</code>(不带<code>-fgnu89-inline</code>)：确定使用 C99 语法</li>
+</ul></li>
+<li>使用<code>-winline</code>：当标记为<code>inline</code>的函数不可替换时，编译警告</li>
+</ul>
+
+<h2 id="内联函数对安全性和速度的取舍">内联函数对安全性和速度的取舍</h2>
+
+<ul>
+<li>C 语言中，可以通过在结构体中放一个<code>void*</code>实现对结构体的封装，即结构体的使用者不知道<code>void*</code>指向的真正的数据，但可以通过调用函数将<code>void*</code>转成合适的隐藏类型。这个做法会破坏类型的安全性，也会包括对结构体其他字段的访问(如果允许直接访问结构体的域，需要知道如何解释<code>void*</code>的使用者就可以直接访问结构体，使得很难修改底层的数据结构)</li>
+<li>包含内联函数的目标代码的大小和执行速度的影响是不可预测的
+
+<ul>
+<li>时间性能：以空间换时间</li>
+<li>可使程序变快
+
+<ul>
+<li>减少函数调用的代价</li>
+<li>可移除函数调用所需的指令：栈和寄存器的使用</li>
+<li>不需要寄存器传递参数</li>
+<li>在引用调用、地址调用或共享调用时，不需要引用和解引用</li>
+<li>支持高级优化和调度</li>
+</ul></li>
+<li>可使程序变慢：内联展开会增加代码大小，在内存页有限的情况下，可能增加内存页的置换和磁盘的读写</li>
+<li>目标代码大小</li>
+<li>可使程序变大：通常状况下展开代码类似于拷贝代码</li>
+<li>可使程序变小：展开函数时，编译器可能会优化代码，移除不必要的代码</li>
+<li>内存性能</li>
+<li>系统抖动(内存页置换)
+
+<ul>
+<li>调用的内联函数和当前函数可能位于不同的页，内联展开可能使其位于同一个页，可避免系统抖动</li>
+<li>可能增大二进制可执行文件大小，导致系统抖动</li>
+</ul></li>
+<li>缓存未命中
+
+<ul>
+<li>内联通常改善了二进制代码内部引用的局部性，可减少使用缓存行来存储内部循环，使得 CPU 受限的应用运行更快</li>
+<li>可能导致对多个缓存行的循环处理，导致缓存抖动</li>
+</ul></li>
+<li>可能和运行速度无关：大部分系统不是 CPU 受限的，而是 I/O、数据库或网络受限的，即系统整个性能的瓶颈在于文件系统、数据库或网络。因此，除非 CPU 固定在 100%，内联函数不会使得程序运行更快</li>
+</ul></li>
+</ul>
+
+<h2 id="inline-vs-micro">inline vs micro</h2>
+
+<ul>
+<li>展开时间不同
+
+<ul>
+<li>内联展开发生在编译时，不会修改源码(text)</li>
+<li>宏展开发生在编译之前，生成不同的 text 再给编译器处理，会污染命名空间和代码，不利于调试</li>
+</ul></li>
+<li>类型检查：C 语言中宏调用没有类型检查；内联函数会检查参数类型，必须正确执行类型转换</li>
+<li>C 语言中，宏不能像函数一样调用<code>return</code>关键字，不能终止调用者</li>
+<li>编译错误：宏内的编译错误很难理解，因为指向的是展开的代码，而不是源代码</li>
+<li>递归：很多编译器可以内联递归函数，但是递归宏是不允许的
+
+<ul>
+<li>有的编译器可控制递归展开的深度</li>
+</ul></li>
+<li>代码的可维护性：随着函数改进，函数的内联属性可能会变化，一个函数内联与否比宏的修改要简单</li>
+<li>宏的其他问题
+
+<ul>
+<li>含<a href="https://isocpp.org/wiki/faq/misc-technical-issues#macros-with-if" target="_blank"><code>if</code></a></li>
+<li>含<a href="https://isocpp.org/wiki/faq/misc-technical-issues#macros-with-multi-stmts" target="_blank">多个语句</a></li>
+<li>含<a href="https://isocpp.org/wiki/faq/misc-technical-issues#macros-with-token-pasting" target="_blank">令牌黏贴</a></li>
+</ul></li>
+
+<li><p>内联函数避免上述问题：内联函数检查每个参数一次，类似于调用普通函数，但是更快</p>
+
+<pre><code class="language-c">// A macro that returns the absolute value of i
+#define unsafe(i) ( (i) &gt;= 0 ? (i) : -(i) )
+
+// An inline function that returns the absolute value of i
+inline int safe(int i) { return i &gt;= 0 ? i : -i; }
+
+int f();
+
+void userCode(int x)
+{
+int ans;
+
+ans = unsafe(x++);   // Error! x is incremented twice
+ans = unsafe(f());   // Danger! f() is called twice
+
+ans = safe(x++);     // Correct! x is incremented once
+ans = safe(f());     // Correct! f() is called once
+}
+</code></pre></li>
+</ul>
+
+<h2 id="问题">问题</h2>
+
+<ul>
+<li>编译器不一定会内联程序员指定的函数
+
+<ul>
+<li>模板方法/函数不是总被内联展开</li>
+</ul></li>
+<li>内联函数的代码暴露给调用者</li>
+<li>传统的 C 编译系统会增加内联编译时间，因为会拷贝函数体到调用者</li>
+<li>C99 的要求
+
+<ul>
+<li>如果在别处使用某内联函数，只能有一个<code>extern</code>声明。当关掉优化禁止内联时，如果没有会有链接错误</li>
+<li>如果增加声明，放到一个库进行链接，使用链接时优化或<code>static inline</code>，可能导致不能到达的代码</li>
+</ul></li>
+<li>C++中，普通函数只需要在一个模块中定义，但是需要在每个模块中定义使用的内联函数，否则不能编译某个单独的模块(依赖其他模块)。视编译器而定，可能会导致不能内联替换的模块的对象文件包含函数的拷贝</li>
+<li>在嵌入式软件中，可能通过类似<code>pragma</code>编译指令将一些函数放到代码段。如果一个内存段的代码调用另一个内存段的代码，如果被调用函数内部有内联，那么可能会停到一个不应该的段。比如高性能的内存段代码空间有限，如果内部函数调用另一个高性能内存之外的函数，且被调用函数较大，内部有内联的话，可能会超出高性能内存的空间</li>
+<li>C++ 编译时链接，因此如果修改了内联函数，必须重新编译使用此函数的所有代码</li>
+</ul>
+
+<h3 id="问题-c99-inline-without-static-or-extern">问题：C99 inline without static or extern</h3>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/26503235/c-inline-function-and-gcc" target="_blank">C, inline function and GCC [duplicate]</a></li>
+<li><a href="https://stackoverflow.com/questions/6312597/is-inline-without-static-or-extern-ever-useful-in-c99" target="_blank">Is “inline” without “static” or “extern” ever useful in C99</a></li>
+
+<li><p><a href="https://stackoverflow.com/questions/16245521/c99-inline-function-in-c-file/16245669#16245669" target="_blank">C99 inline function in .c file</a></p>
+
+<pre><code class="language-cpp">// main.cpp
+inline int foo() {return 10 + 3;}
+
+int main() {foo(); return 0;}
+// g++ -std=c99 -x c main.cpp
+// gcc -std=c99 -o a main.cpp
+</code></pre></li>
+
+<li><p>GCC 链接错误<code>undefined reference to foo</code></p></li>
+
+<li><p>问题：<code>inline</code>只是声明内联函数，不会生成实际的代码，但是<code>extern</code>和<code>static</code>用于告诉编译器将函数放在哪个对象文件，用于编译生成对应的代码(可能是拷贝)</p></li>
+
+<li><p>解决方案：</p>
+
+<ul>
+<li>增加<code>extern inline int foo();</code></li>
+<li>增加<code>static</code>修饰符，告诉编译器<code>有且只在这里</code>，以便生成对应代码</li>
+<li>或使用<code>-O</code>优化代码，编译器将标记为<code>inline</code>的代码内联展开，在这里会忽略这部分代码</li>
+</ul></li>
+</ul>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Inline_function" target="_blank">Inline function</a></li>
+<li><a href="https://gcc.gnu.org/onlinedocs/gcc/Inline.html" target="_blank">An Inline Function is As Fast As a Macro</a></li>
+<li><a href="https://isocpp.org/wiki/faq/inline-functions" target="_blank">inline functions</a></li>
+<li><a href="https://gustedt.wordpress.com/2010/11/29/myth-and-reality-about-inline-in-c99/" target="_blank">Myth and reality about inline in C99</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/cplusplus/inline/&amp;text=%e5%86%85%e8%81%94" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/cplusplus/inline/&amp;t=%e5%86%85%e8%81%94" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%86%85%e8%81%94&amp;body=https://xueqing.github.io/blog/cplusplus/inline/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/cplusplus/inline/&amp;title=%e5%86%85%e8%81%94" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e5%86%85%e8%81%94%20https://xueqing.github.io/blog/cplusplus/inline/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/cplusplus/inline/&amp;title=%e5%86%85%e8%81%94" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_string_case_convert/">C&#43;&#43; string 转换大小写</a></li>
+      
+      <li><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></li>
+      
+      <li><a href="/blog/cplusplus/effectivec&#43;&#43;_3/">Effective C&#43;&#43;, 3rd</a></li>
+      
+      <li><a href="/blog/cplusplus/raii/">RAII 资源获取即初始化</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

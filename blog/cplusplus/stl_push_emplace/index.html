@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="前言 std::queue::emplace std::deque::emplace_back std::allocator_traits::construct std::allocator std::deque::allocator std::queue::push std::deque::push_back std::vector 的 emplace_back 和 push_back 产生时间 类型的构造函数不止 1 个 效率 std::map 的 emplace 和 insert 其他参考 前言 下面的说明以 STL 的 queue 为实例，其他 STL 还有 push_back/emplace_back 等，各自的影响不尽">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/cplusplus/stl_push_emplace/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/cplusplus/stl_push_emplace/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/cplusplus/stl_push_emplace/">
+  <meta property="og:title" content="STL 的 push 和 emplace | kiki">
+  <meta property="og:description" content="前言 std::queue::emplace std::deque::emplace_back std::allocator_traits::construct std::allocator std::deque::allocator std::queue::push std::deque::push_back std::vector 的 emplace_back 和 push_back 产生时间 类型的构造函数不止 1 个 效率 std::map 的 emplace 和 insert 其他参考 前言 下面的说明以 STL 的 queue 为实例，其他 STL 还有 push_back/emplace_back 等，各自的影响不尽"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>STL 的 push 和 emplace | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>STL 的 push 和 emplace</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e5%89%8d%e8%a8%80">前言</a></li>
+<li><a href="#stdqueueemplace">std::queue::emplace</a>
+
+<ul>
+<li><a href="#stddequeemplaceback">std::deque::emplace_back</a></li>
+<li><a href="#stdallocatortraitsconstruct">std::allocator_traits::construct</a></li>
+<li><a href="#stdallocator">std::allocator</a></li>
+<li><a href="#stddequeallocator">std::deque::allocator</a></li>
+</ul></li>
+<li><a href="#stdqueuepush">std::queue::push</a>
+
+<ul>
+<li><a href="#stddequepushback">std::deque::push_back</a></li>
+</ul></li>
+<li><a href="#stdvector-%e7%9a%84-emplaceback-%e5%92%8c-pushback">std::vector 的 emplace_back 和 push_back</a>
+
+<ul>
+<li><a href="#%e4%ba%a7%e7%94%9f%e6%97%b6%e9%97%b4">产生时间</a></li>
+<li><a href="#%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e4%b8%8d%e6%ad%a2-1-%e4%b8%aa">类型的构造函数不止 1 个</a></li>
+<li><a href="#%e6%95%88%e7%8e%87">效率</a></li>
+</ul></li>
+<li><a href="#stdmap-%e7%9a%84-emplace-%e5%92%8c-insert">std::map 的 emplace 和 insert</a></li>
+<li><a href="#%e5%85%b6%e4%bb%96%e5%8f%82%e8%80%83">其他参考</a></li>
+</ul>
+
+<h2 id="前言">前言</h2>
+
+<ul>
+<li>下面的说明以 STL 的 queue 为实例，其他 STL 还有 push_back/emplace_back 等，各自的影响不尽相同
+
+<ul>
+<li><a href="http://www.cplusplus.com/reference/deque/deque/" target="_blank">deque</a>: emplace/emplace_back/emplace_front/insert/push_back/push_front</li>
+<li><a href="http://www.cplusplus.com/reference/forward_list/forward_list/" target="_blank">forward_list</a>: emplace_after/emplace_front/insert_after/push_front</li>
+<li><a href="http://www.cplusplus.com/reference/list/list/" target="_blank">list</a>: emplace/emplace_back/emplace_front/insert/push_back/push_front</li>
+<li><a href="http://www.cplusplus.com/reference/map/map/" target="_blank">map</a>: emplace/emplace_hint/insert</li>
+<li><a href="http://www.cplusplus.com/reference/queue/queue/" target="_blank">queue</a>: emplace/push</li>
+<li><a href="http://www.cplusplus.com/reference/set/set/" target="_blank">set</a>: emplace/emplace_hint/insert</li>
+<li><a href="http://www.cplusplus.com/reference/stack/stack/" target="_blank">stack</a>: emplace/push</li>
+<li><a href="http://www.cplusplus.com/reference/vector/vector/" target="_blank">vector</a>: emplace/emplace_back/insert/push_back</li>
+</ul></li>
+</ul>
+
+<h2 id="std-queue-emplace">std::queue::emplace</h2>
+
+<ul>
+<li>参考 <a href="http://www.cplusplus.com/reference/queue/queue/emplace/" target="_blank">std::queue::emplace</a></li>
+<li><strong>函数原型</strong>： <code>template &lt;class... Args&gt; void emplace (Args&amp;&amp;... args);</code>
+
+<ul>
+<li>args：被传递作为新元素构造函数的参数</li>
+</ul></li>
+<li><strong>功能</strong>：构造并插入一个元素。增加新元素到 queue 的末尾，即当前最后一个元素之后。将传入的参数作为新元素的构造函数的参数。</li>
+<li>底层容器对象调用 <a href="http://www.cplusplus.com/reference/deque/deque/emplace_back/" target="_blank">emplace_back</a>，并传递参数。</li>
+</ul>
+
+<h3 id="std-deque-emplace-back">std::deque::emplace_back</h3>
+
+<ul>
+<li>参考 <a href="http://www.cplusplus.com/reference/deque/deque/emplace_back/" target="_blank">std::deque::emplace_back</a></li>
+<li><strong>函数原型</strong>：<code>template &lt;class... Args&gt; void emplace_back (Args&amp;&amp;... args);</code>
+
+<ul>
+<li>args：被传递作为新元素构造函数的参数</li>
+</ul></li>
+<li><strong>功能</strong>：构造并在末尾插入一个元素。增加新元素到 deque 的末尾，即当前最后一个元素之后。将传入的参数作为新元素的构造函数的参数。</li>
+<li>这个操作将容器大小高效增加 1</li>
+<li>元素通过调用 <a href="http://www.cplusplus.com/reference/memory/allocator_traits/construct/" target="_blank">std::allocator_traits::construct</a> 和参数构造。
+
+<ul>
+<li>新元素的存储通过 <code>allocator_traits&lt;allocator_type&gt;::construct()</code> 分配，失败时可能会抛异常(对于默认的 <a href="http://www.cplusplus.com/reference/memory/allocator/" target="_blank">std::allocator</a>，分配失败会抛 bad_alloc 异常)。</li>
+</ul></li>
+<li><strong>迭代器有效性</strong>：容器相关的所有迭代器无效，但是指针和引用是有效的，和调用函数之前指向的元素相同。</li>
+<li><strong>异常安全性</strong>：强保证。如果抛出异常，则容器没有改变。如果 <code>std::allocator_traits::construct</code> 对于传递的参数不支持，会导致未定义的行为。</li>
+</ul>
+
+<h4 id="std-allocator-traits-construct">std::allocator_traits::construct</h4>
+
+<ul>
+<li>参考 <a href="http://www.cplusplus.com/reference/memory/allocator_traits/construct/" target="_blank">std::allocator_traits::construct</a></li>
+<li>静态成员函数</li>
+<li><strong>函数原型</strong>：<code>template &lt;class T, class... Args&gt; static void construct (allocator_type alloc, T* p, Args&amp;&amp;... args );</code></li>
+<li><strong>功能</strong>：构造一个元素。在指针 p 指向的位置传递参数给构造函数构造一个元素对象。</li>
+<li><strong>注意</strong>：对象被 in-place 构造，而不用为元素分配存储。如果不可行，则调用 <code>::new (static_cast&lt;void*&gt;(p)) T (forward&lt;Args&gt;(args)...)</code></li>
+</ul>
+
+<h4 id="std-allocator">std::allocator</h4>
+
+<ul>
+<li>参考 <a href="http://www.cplusplus.com/reference/memory/allocator/" target="_blank">std::allocator</a></li>
+<li><strong>函数原型</strong>：<code>template &lt;class T&gt; class allocator;</code>
+
+<ul>
+<li>T：对象分配的元素类型</li>
+</ul></li>
+<li><strong>功能</strong>：默认分配器。
+
+<ul>
+<li>分配器：定义内存模型的类，被标准库的一些部分使用，大多数情况是被 STL 容器使用。</li>
+<li>allocator 是默认分配器模板，这是所有标准容器未指定最后一个(可选的)模板参数时会使用的分配器，也是标准库中唯一一个预定义的分配器。</li>
+</ul></li>
+</ul>
+
+<h4 id="std-deque-allocator">std::deque::allocator</h4>
+
+<ul>
+<li>参考<a href="http://www.cplusplus.com/reference/deque/deque/get_allocator/" target="_blank">std::deque::get_allocator</a></li>
+<li><strong>函数原型</strong>：<code>allocator_type get_allocator() const noexcept;</code>
+
+<ul>
+<li>allocator_type：是容器使用的分配器的类型</li>
+</ul></li>
+<li><strong>功能</strong>：返回和 deque 对象相关的分配器对象的拷贝。</li>
+<li><strong>异常安全性</strong>：保证没有异常。拷贝默认分配器的任何实例也保存不会抛异常</li>
+</ul>
+
+<h2 id="std-queue-push">std::queue::push</h2>
+
+<ul>
+<li>参考 <a href="http://www.cplusplus.com/reference/queue/queue/push/" target="_blank">std::queue::push</a></li>
+<li><strong>函数原型</strong>：<code>void push (const value_type&amp; val);</code>或<code>void push (value_type&amp;&amp; val);</code>
+
+<ul>
+<li>val：经过初始化的新插入元素的值</li>
+<li>value_type：是容器元素的类型</li>
+</ul></li>
+<li><strong>功能</strong>：插入一个新元素到 queue 末尾，即当前最后一个元素之后。新元素的内容被初始化为 <code>val</code>。</li>
+<li>底层容器对象调用 <a href="http://www.cplusplus.com/reference/deque/deque/push_back/" target="_blank">push_back</a></li>
+</ul>
+
+<h3 id="std-deque-push-back">std::deque::push_back</h3>
+
+<ul>
+<li>参考 <a href="http://www.cplusplus.com/reference/deque/deque/push_back/" target="_blank">std::deque::push_back</a></li>
+<li><strong>函数原型</strong>：<code>void push_back (const value_type&amp; val);</code>或<code>void push_back (value_type&amp;&amp; val);</code>
+
+<ul>
+<li>val：将要拷贝或移动给新对象的值</li>
+<li>value_type：是容器元素的类型</li>
+</ul></li>
+<li>新元素的存储通过容器的 <a href="http://www.cplusplus.com/reference/deque/deque/get_allocator/" target="_blank">allocator</a> 分配，失败时可能会抛异常(对于默认的<a href="http://www.cplusplus.com/reference/memory/allocator/" target="_blank">std::allocator</a>，分配失败会抛 bad_alloc 异常)</li>
+<li><strong>迭代器有效性</strong>：容器相关的所有迭代器无效，但是指针和引用是有效的，和调用函数之前指向的元素相同。</li>
+<li><strong>异常安全性</strong>：强保证。如果抛出异常，则容器没有改变。如果 <code>std::allocator_traits::construct</code> 对于传递的参数不支持，会导致未定义的行为。</li>
+</ul>
+
+<h2 id="std-vector-的-emplace-back-和-push-back">std::vector 的 emplace_back 和 push_back</h2>
+
+<h3 id="产生时间">产生时间</h3>
+
+<ul>
+<li>push_back 是标准 C++ 创建之初就有的；emplace_back 是在 C++11 特性前提下增加的</li>
+</ul>
+
+<h3 id="类型的构造函数不止-1-个">类型的构造函数不止 1 个</h3>
+
+<ul>
+<li>当类型的构造函数不止 1 个时：push_back 只接收类型的对象，emplace_back 接收类型构造函数的参数</li>
+
+<li><p>C++ 11 支持从参数构造对象，因此当类型的构造函数参数只有一个时，push_back 可以传入构造函数参数，C++ 11 会构造对象，并传递对象给容器</p>
+
+<pre><code class="language-cpp">class OneParam
+{
+int m_i;
+public:
+OneParam(int ii) : m_i(ii) { cout &lt;&lt; &quot;OneParam::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+OneParam(const OneParam &amp;copy) : m_i(copy.m_i) { cout &lt;&lt; &quot;OneParam::copy::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+~OneParam( ) { cout &lt;&lt; &quot;~OneParam::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+
+int get() const { return m_i; }
+};
+
+class MoreThanOneParam
+{
+int m_i;
+string m_s;
+public:
+MoreThanOneParam(int ii, string s) : m_i(ii), m_s(s) { cout &lt;&lt; &quot;MoreThanOneParam::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+MoreThanOneParam(const MoreThanOneParam &amp;copy) : m_i(copy.m_i), m_s(copy.m_s) { cout &lt;&lt; &quot;MoreThanOneParam::copy::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+~MoreThanOneParam( ) { cout &lt;&lt; &quot;~MoreThanOneParam::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+
+int getInt() const { return m_i; }
+string getString() const { return m_s; }
+};
+
+int main( )
+{
+vector&lt;OneParam&gt; vec1={ 21 , 45 }; //对于每个元素，构造一次，拷贝一次，析构一次
+vec1.push_back( OneParam(34) ); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+vec1.push_back( 901 ); //构造一次，拷贝一次，析构一次
+vec1.emplace_back( OneParam(7889) ); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+vec1.emplace_back( 4156 ); //构造一次
+//21; 45; 34; 901; 7889; 4156;
+for( auto &amp;elem:vec1 ) { cout &lt;&lt; elem.get() &lt;&lt; &quot;; &quot;; } //21; 45; 34; 901; 7889; 4156;
+cout &lt;&lt; endl;
+
+vector&lt;MoreThanOneParam&gt; vec2={ {21,&quot;String&quot;} , MoreThanOneParam{45 , &quot;tinger&quot;} }; //对于每个元素，构造一次，拷贝一次，析构一次
+vec2.push_back( MoreThanOneParam(34 , &quot;Happy&quot; ) ); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+//    vec2.push_back( 901 , &quot;Doer&quot; ); //Error!!
+vec2.emplace_back( MoreThanOneParam(78 , &quot;Gomu gomu&quot; )); //构造一次，拷贝一次，析构一次【底层可能会对 vector 重新分配内存，导致对之前元素的拷贝和析构】
+vec2.emplace_back( 41 , &quot;Shanks&quot; ); //构造一次
+//21 String; 45 tinger; 34 Happy; 78 Gomu gomu; 41 Shanks;
+for( auto &amp;elem:vec2 ) { cout &lt;&lt; elem.getInt( ) &lt;&lt; &quot; &quot; &lt;&lt; elem.getString( ) &lt;&lt; &quot;; &quot;; }
+cout &lt;&lt; endl;
+
+cin.get( );
+return 0;
+}
+</code></pre></li>
+</ul>
+
+<h3 id="效率">效率</h3>
+
+<ul>
+<li>这里的效率指的是：代码工作更快，生成的负载更小</li>
+<li>当 vector 的类型是内置类型时，push_back 和 emplace_back 没有区别</li>
+<li>当 vector 的类型是用户自定义类型时，emplace_back 比 push_back 更高效
+
+<ul>
+<li>当尝试直接添加对象 (在对象被创建之前) 到 vector，使用 push_back 的流程是</li>
+<li>调用构造函数创建临时对象</li>
+<li>在 vector 中创建临时对象的拷贝</li>
+<li>拷贝对象完成之后，调用析构函数销毁临时对象</li>
+<li>使用 emplace_back 将不会创建临时对象，而是直接在 vector 中创建对象。因此提高了性能</li>
+</ul></li>
+</ul>
+
+<h2 id="std-map-的-emplace-和-insert">std::map 的 emplace 和 insert</h2>
+
+<ul>
+<li><p>insert 需要先创建临时对象，然后拷贝到 <code>std::pair&lt;key, val&gt;</code> 中，再将 pair 拷贝到 map 中</p>
+
+<pre><code class="language-cpp">class Complicated
+{
+int m_i;
+double m_d;
+string m_s;
+public:
+Complicated(int i, double d, string s) : m_i(i), m_d(d), m_s(s) { cout &lt;&lt; &quot;Complicated::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+Complicated(const Complicated &amp;copy) : m_i(copy.m_i), m_d(copy.m_d), m_s(copy.m_s) { cout &lt;&lt; &quot;Complicated::copy::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+~Complicated() { cout &lt;&lt; &quot;~Complicated::&quot; &lt;&lt; m_i &lt;&lt; endl; }
+};
+
+int main()
+{
+map&lt;int, Complicated&gt; m;
+
+m.insert( make_pair(4, Complicated(4, 4.0, &quot;C++4&quot;)) ); //构造一次，拷贝两次，析构两次
+m.insert( 5, {5, 5.0, &quot;C++5&quot;} ); //构造一次，拷贝两次，析构两次
+m.insert( pair&lt;int, Complicated&gt;(7, {7, 7.0, &quot;C++7&quot;}) ); //构造一次，拷贝两次，析构两次
+m.emplace( piecewise_construct, forward_as_tuple(6), forward_as_tuple(6, 6.0, &quot;C++6&quot;) ); //构造一次
+
+//4; 5; 6; 7;
+for( auto &amp;elem:m )  cout &lt;&lt; elem.first &lt;&lt; &quot;; &quot;;
+cout &lt;&lt; endl;
+
+cin.get();
+return 0;
+}
+</code></pre></li>
+</ul>
+
+<h2 id="其他参考">其他参考</h2>
+
+<ul>
+<li><a href="http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function" target="_blank">C++ difference between emplace_back and push_back function</a></li>
+<li><a href="https://stackoverflow.com/questions/4303513/push-back-vs-emplace-back" target="_blank">https://stackoverflow.com/questions/4303513/push-back-vs-emplace-back</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+  
+  <a class="badge badge-light" href="/tags/stl/">STL</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/cplusplus/stl_push_emplace/&amp;text=STL%20%e7%9a%84%20push%20%e5%92%8c%20emplace" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/cplusplus/stl_push_emplace/&amp;t=STL%20%e7%9a%84%20push%20%e5%92%8c%20emplace" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=STL%20%e7%9a%84%20push%20%e5%92%8c%20emplace&amp;body=https://xueqing.github.io/blog/cplusplus/stl_push_emplace/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/cplusplus/stl_push_emplace/&amp;title=STL%20%e7%9a%84%20push%20%e5%92%8c%20emplace" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=STL%20%e7%9a%84%20push%20%e5%92%8c%20emplace%20https://xueqing.github.io/blog/cplusplus/stl_push_emplace/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/cplusplus/stl_push_emplace/&amp;title=STL%20%e7%9a%84%20push%20%e5%92%8c%20emplace" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/cplusplus/stl/">STL</a></li>
+      
+      <li><a href="/blog/cplusplus/hash_map/">hash map</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></li>
+      
+      <li><a href="/blog/cplusplus/cplusplus_string_case_convert/">C&#43;&#43; string 转换大小写</a></li>
+      
+      <li><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

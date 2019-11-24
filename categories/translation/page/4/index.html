@@ -353,6 +353,84 @@
   
   
   <div>
+    <h2><a href="/translation/go-doc/command/run/">go run</a></h2>
+    <div class="article-style">
+      
+      构建并运行程序 对于简单的程序，可以使用 go run program.go 直接构建并允许程序 go run 不会再运行目录生成任何文件，可执行文件被放在临时文件中执行，工作目录被设置
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/test_package/">go test</a></h2>
+    <div class="article-style">
+      
+      用法：go test [build/test flags] [packages] [build/test flags &amp; test binary flags] go test 自动测试通过导入路径命名的包。命令按下面的格式打印测试结果的概要： ok archive/tar 0.011s FAIL archive/zip 0.022s ok compress/gzip 0.033s ... 之后是每个失败的包的
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/gopath_and_module/">GOPATH 和模块</a></h2>
+    <div class="article-style">
+      
+      当使用模块时，不再使用 GOPATH 来解决导入。但是，它仍被用于存储下载的源码(在 GOPATH/pkg/mod)和编译好的命令(在 GOPATH/bin)
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/command/gopath_env_var/">GOPATH 环境变量</a></h2>
+    <div class="article-style">
+      
+      Go 路径用于解决导入语句，它通过 go/build 包实现，并记录在 go/build 包。 GOPATH 环境变量列举了寻找 Go 代码的位置。在 Unix 上，其值是一个冒号分隔的字符串。在 Windows 上，其值是一
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/gotour/images/">Images</a></h2>
+    <div class="article-style">
+      
+      /* Exercise: Images Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of image.Image instead of a slice of data. Define your own Image type, implement the necessary methods, and call pic.ShowImage. Bounds should return a image.Rectangle, like image.Rect(0, 0, w, h). ColorModel should return color.RGBAModel. At should return a color; the value v in the last picture generator corresponds to color.
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/golangpkg/iotest/">iotest 包</a></h2>
+    <div class="article-style">
+      
+      概述 索引 参考 Golang 官网文档 学习。 导入语句：import &quot;testing/iotest&quot; 概述 iotest 包实现了主要用于 testing 的 Reader 和 Writer。 索引 参考
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/gotour/loops_and_functions/">Loops and Functions</a></h2>
+    <div class="article-style">
+      
+      ```go /* Exercise: Loops and Functions As a way to play with functions and loops, let&rsquo;s implement a square root function: given a number x, we want to find the number z for which z² is most nearly x.
+Computers typically compute the square root of x using a loop. Starting with some guess z, we can adjust z based on how close z² is to x, producing a better guess:
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/translation/go-doc/gotour/maps/">Maps</a></h2>
+    <div class="article-style">
+      
+      ```go /* Exercise: Maps Implement WordCount. It should return a map of the counts of each “word” in the string s. The wc.Test function runs a test suite against the provided function and prints success or failure.
+You might find strings.Fields helpful. */
+package main
+import ( &ldquo;strings&rdquo;
+&quot;golang.org/x/tour/wc&quot;  )
+func wordCount(s string) map[string]int { m := make(map[string]int) var ss []string ss = strings.Fields(s) for i := 0; i &lt; len(ss); i++ { m[ss[i]]++ }
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/translation/go-doc/golangpkg/quick/">quick 包</a></h2>
     <div class="article-style">
       
@@ -372,80 +450,6 @@ type myReader struct{}
 func (r myReader) Read(c []byte) (int, error) { i := 0 for ; i &lt; len&copy;; i++ { c[i] = &lsquo;A&rsquo; } for ; i &lt; cap&copy;; i++ { c = append(c, &lsquo;A&rsquo;) }
 return cap(c), nil  }
 func main() { reader.Validate(myReader{}) }
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/rot_reader/">rot13Reader</a></h2>
-    <div class="article-style">
-      
-      ```go /* Exercise: rot13Reader A common pattern is an io.Reader that wraps another io.Reader, modifying the stream in some way.
-For example, the gzip.NewReader function takes an io.Reader (a stream of compressed data) and returns a *gzip.Reader that also implements io.Reader (a stream of the decompressed data).
-Implement a rot13Reader that implements io.Reader and reads from an io.Reader, modifying the stream by applying the rot13 substitution cipher to all alphabetical characters.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/slices/">Slices</a></h2>
-    <div class="article-style">
-      
-      /* Exercise: Slices Implement Pic. It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers. When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values. The choice of image is up to you. Interesting functions include (x+y)/2, x*y, and x^y. (You need to use a loop to allocate each []uint8 inside the [][]uint8.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/stringer/">Stringers</a></h2>
-    <div class="article-style">
-      
-      /* Exercise: Stringers Make the IPAddr type implement fmt.Stringer to print the address as a dotted quad. For instance, IPAddr{1, 2, 3, 4} should print as &quot;1.2.3.4&quot;. */ package main import ( &quot;fmt&quot; &quot;strconv&quot; &quot;strings&quot; ) type iPAddr [4]byte func (ip iPAddr) String() string { arr := []string{&quot;0&quot;, &quot;.&quot;, &quot;0&quot;, &quot;.&quot;, &quot;0&quot;, &quot;.&quot;, &quot;0&quot;} for i := 0; i &lt; 4; i++ { arr[i&lt;&lt;1] = strconv.Itoa(int(ip[i])) } sip := strings.Join(arr, &quot;&quot;) return sip } func main() { hosts := map[string]iPAddr{ &quot;loopback&quot;: {127, 0, 0, 1}, &quot;googleDNS&quot;: {8, 8, 8, 8}, } for name, ip := range hosts { fmt.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/golangpkg/testing/">testing 包</a></h2>
-    <div class="article-style">
-      
-      概述 基准测试 示例函数 跳过测试 子测试项目和子基准测试 Main 索引 例子 子目录 参考 Golang 官网文档 学习。 导入语句：import &quot;testing&quot; 概述 testing 包提供对 Go 包的自动测试。
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/web_crawler/">Web Crawler</a></h2>
-    <div class="article-style">
-      
-      /* Exercise: Web Crawler In this exercise you'll use Go's concurrency features to parallelize a web crawler. Modify the Crawl function to fetch URLs in parallel without fetching the same URL twice. Hint: you can keep a cache of the URLs that have been fetched on a map, but maps alone are not safe for concurrent use! */ package main import ( &quot;fmt&quot; ) type Fetcher interface { // Fetch returns the body of URL and // a slice of URLs found on that page.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/golangdoc/gdb/">使用 GDB 调试 Go 代码</a></h2>
-    <div class="article-style">
-      
-      参考 Go 官方文档——使用 GDB 调试 Go 代码学习。
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/blog/subtest/">使用子测试和子基准测试</a></h2>
-    <div class="article-style">
-      
-      介绍 表驱动测试基础 表驱动的基准测试 使用子测试的表驱动测试 运行指定的测试或基准测试 设置和清理 并行控制 并行运行一组测试 一组并行测试之后的清理 结论
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/golangdoc/articles/go_command/">关于 Go 命令</a></h2>
-    <div class="article-style">
-      
-      参考 Go 官方文档——关于 Go 命令 学习。
       
     </div>
   </div>

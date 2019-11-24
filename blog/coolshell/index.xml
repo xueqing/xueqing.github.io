@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>酷壳搬运工 | kiki</title>
+    <link>https://xueqing.github.io/blog/coolshell/</link>
+      <atom:link href="https://xueqing.github.io/blog/coolshell/index.xml" rel="self" type="application/rss+xml" />
+    <description>酷壳搬运工</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>酷壳搬运工</title>
+      <link>https://xueqing.github.io/blog/coolshell/</link>
+    </image>
+    
+    <item>
+      <title>五个方法成为更好的程序员</title>
+      <link>https://xueqing.github.io/blog/coolshell/%E4%BA%94%E4%B8%AA%E6%96%B9%E6%B3%95%E6%88%90%E4%B8%BA%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/coolshell/%E4%BA%94%E4%B8%AA%E6%96%B9%E6%B3%95%E6%88%90%E4%B8%BA%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://coolshell.cn/articles/2606.html&#34; target=&#34;_blank&#34;&gt;原文&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;好的程序员并一定是技术强的程序员，而是那些可以在不完美的工作环境下保证软件质量和工作效率的程序员&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;寻找不同观点
+
+&lt;ul&gt;
+&lt;li&gt;要经常在做事之前问自己和别人，这么做对不对&lt;/li&gt;
+&lt;li&gt;做完事后问自己，还可不可以改进&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;努力去寻找别的不同的观点或方法&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;程序员应该经常上网，经常和同事讨论不同的实现方法，不同的技术观点，这样才能取长补短&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;千万别信自己的代码
+
+&lt;ul&gt;
+&lt;li&gt;当出现问题的时候，要学会 review 代码中所有的可疑点，千万别觉得某段代码很简单，可以略过&lt;/li&gt;
+&lt;li&gt;在查错的过程中，切忌过早下结论，切忌四处乱改,停下来想一想，会是哪儿的代码有重大嫌疑，然后查看一下代码，捋一捋程序的逻辑&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;思考和放松
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;思考其实就是一种放松&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;做事前多想一想，这样做事的时候就不会不顾此失彼，手忙脚乱&lt;/li&gt;
+&lt;li&gt;在工作中要学会享受，要学会放松心情&lt;/li&gt;
+&lt;li&gt;善于总结成败得失，善于思考，善于调整，善于放松&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;学习历史，跟上时代
+
+&lt;ul&gt;
+&lt;li&gt;一定要学习历史，整个计算机文化的历史&lt;/li&gt;
+&lt;li&gt;只有通过历史，才能明白历史上出现的问题，新技术出来的原因，这样才能够更了解新的技术和未来的方向&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;使用新型的技术&lt;/strong&gt;，停下来接受培训，可以工作得更快更高效&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;积极推动测试活动&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;积极地在各个环节推动项目组进行测试活动&lt;/li&gt;
+&lt;li&gt;只有测试才能证明软件可以正常工作，只有测试才能保证软件的质量&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>多些时间能少写些代码</title>
+      <link>https://xueqing.github.io/blog/coolshell/%E5%A4%9A%E4%BA%9B%E6%97%B6%E9%97%B4%E8%83%BD%E5%B0%91%E5%86%99%E4%BA%9B%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/coolshell/%E5%A4%9A%E4%BA%9B%E6%97%B6%E9%97%B4%E8%83%BD%E5%B0%91%E5%86%99%E4%BA%9B%E4%BB%A3%E7%A0%81/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://coolshell.cn/articles/5686.html&#34; target=&#34;_blank&#34;&gt;原文&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件的精髓在于设计
+
+&lt;ul&gt;
+&lt;li&gt;时间和空间的取舍、TCP/UDP 通信、同步异步、数据冗余&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;重要&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;多和客户讨论需求和未来可能的变化：避免边开发边加需求&lt;/li&gt;
+&lt;li&gt;调查实现的技术难点和细节&lt;/li&gt;
+&lt;li&gt;和其他人讨论并推敲架构和设计：选择成熟的框架？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;TDD、快速原型和迭代可能会对软件和团队产生负面影响
+
+&lt;ul&gt;
+&lt;li&gt;TDD、快速原型和迭代更关注功能性需求&lt;/li&gt;
+&lt;li&gt;需要考虑性能问题、高可用性问题、系统维护性问题&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;重构是噩梦，应该越少越好&lt;/li&gt;
+&lt;li&gt;避免过度设计和纸上谈兵，设计不仅仅是太累和思考，还需要尝试&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>开发团队的效率</title>
+      <link>https://xueqing.github.io/blog/coolshell/%E5%BC%80%E5%8F%91%E5%9B%A2%E9%98%9F%E7%9A%84%E6%95%88%E7%8E%87/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/coolshell/%E5%BC%80%E5%8F%91%E5%9B%A2%E9%98%9F%E7%9A%84%E6%95%88%E7%8E%87/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://coolshell.cn/articles/11656.html&#34; target=&#34;_blank&#34;&gt;原文&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;几种典型的开发方式&#34;&gt;几种典型的开发方式&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件开发中的“锁”
+
+&lt;ul&gt;
+&lt;li&gt;技术能力上的锁：需要不同的语言开发一个项目，每人只会一种语言&lt;/li&gt;
+&lt;li&gt;负责模块上的锁：不同的人负责不同的模块&lt;/li&gt;
+&lt;li&gt;时间锁、进度锁：掌握语言或模块负责的人不同，需要协作开发&lt;/li&gt;
+&lt;li&gt;沟通锁、利益锁：人员增多会增加沟通成本&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方案&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;一个程序员应该可以掌握多个语言，能够负责多个模块甚至不同的职责&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;接力棒式软件开发
+
+&lt;ul&gt;
+&lt;li&gt;底层开发-上层开发-测试-运维。。。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方案&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;不同的团队有自己的框架（开发框架和服务框架），使得其他团队可以自己接入&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;保姆式软件开发
+
+&lt;ul&gt;
+&lt;li&gt;从产品到研发、测试和运维，每个团队没有较好的完成自己的工作，需要之后的团队来发现问题&lt;/li&gt;
+&lt;li&gt;产品的需求不完整，后期边开发边加需求&lt;/li&gt;
+&lt;li&gt;研发没有充分测试自己的代码，使得测试花更多时间来定位错误&lt;/li&gt;
+&lt;li&gt;测试没有充分测试产品，使得运维需要花更多时间重新部署服务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方案&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;招聘懂“需求”、注重“软件工程”、“软件质量”和“软件维护”的工程师&lt;/li&gt;
+&lt;li&gt;自己管理自己&lt;/li&gt;
+&lt;li&gt;支持性工作的人越少越好&lt;/li&gt;
+&lt;li&gt;服务化。我服务于代表让对方做起事来更容易&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;WatchDog 软件开发
+
+&lt;ul&gt;
+&lt;li&gt;为了解决某个系统的问题，要用一个新的系统去监控&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方案&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;想好设计，多评估几个设计，简化流程&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;故障驱动式软件开发
+
+&lt;ul&gt;
+&lt;li&gt;以上线为目的，出问题再改，使得后期话更多时间定为错误、重构代码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方案&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;基础知识和理论知识的重要性，多使用成熟的方案&lt;/li&gt;
+&lt;li&gt;考虑清楚再写实现，做好设计&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;总结
+
+&lt;ul&gt;
+&lt;li&gt;软件工程师分工分得越细这个团队就越没效率，团队间的服务化是关键的关键&lt;/li&gt;
+&lt;li&gt;需要在一个环节上认真，这个环节越往前就越有效率，越往后就越没效率：需求收集-设计和编码-测试&lt;/li&gt;
+&lt;li&gt;“小而精的团队”+“条件和资源受限”是效率的根本，这样才会用最经济的手段做最有价值的事&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;软件架构上要松耦合，团队组织上要紧耦合&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;工程师文化是关键，重视过程就是重视结果&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
