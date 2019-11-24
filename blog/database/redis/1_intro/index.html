@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Site description in Chinese...">
+  <meta name="description" content="1.1 key-value 缓存产品特点 1.2 Redis 优点 1.3 Redis 配置 1.4 Redis 数据类型 1.5 Redis 数据库 1.1 key-value 缓存产品特点 支持数据持久化：可将内存数据保存到磁盘，重启的时候再次加载使用 支持简单">
 
   
-  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/tags/markdown/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/database/redis/1_intro/">
 
   
 
@@ -93,14 +93,12 @@
 
 
   
-  <link rel="alternate" href="/tags/markdown/index.xml" type="application/rss+xml" title="kiki">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://xueqing.github.io/tags/markdown/">
+  <link rel="canonical" href="https://xueqing.github.io/blog/database/redis/1_intro/">
 
   
   
@@ -113,29 +111,32 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="kiki">
-  <meta property="og:url" content="https://xueqing.github.io/tags/markdown/">
-  <meta property="og:title" content="markdown | kiki">
-  <meta property="og:description" content="Site description in Chinese..."><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://xueqing.github.io/blog/database/redis/1_intro/">
+  <meta property="og:title" content="1 Redis 简介 | kiki">
+  <meta property="og:description" content="1.1 key-value 缓存产品特点 1.2 Redis 优点 1.3 Redis 配置 1.4 Redis 数据类型 1.5 Redis 数据库 1.1 key-value 缓存产品特点 支持数据持久化：可将内存数据保存到磁盘，重启的时候再次加载使用 支持简单"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
   
-    <meta property="og:updated_time" content="2019-11-10T16:22:30&#43;08:00">
+    
+    
   
 
   
 
 
 
-
   
 
 
   
 
 
+  
 
 
 
-  <title>markdown | kiki</title>
+
+
+  <title>1 Redis 简介 | kiki</title>
 
 </head>
 
@@ -239,7 +240,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/blog/"><span>博客</span></a>
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
         </li>
 
         
@@ -317,54 +318,385 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
   
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>1 Redis 简介</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#11-key-value-%e7%bc%93%e5%ad%98%e4%ba%a7%e5%93%81%e7%89%b9%e7%82%b9">1.1 key-value 缓存产品特点</a></li>
+<li><a href="#12-redis-%e4%bc%98%e7%82%b9">1.2 Redis 优点</a></li>
+<li><a href="#13-redis-%e9%85%8d%e7%bd%ae">1.3 Redis 配置</a></li>
+<li><a href="#14-redis-%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b">1.4 Redis 数据类型</a></li>
+<li><a href="#15-redis-%e6%95%b0%e6%8d%ae%e5%ba%93">1.5 Redis 数据库</a></li>
+</ul>
+
+<h2 id="1-1-key-value-缓存产品特点">1.1 key-value 缓存产品特点</h2>
+
+<ul>
+<li>支持数据持久化：可将内存数据保存到磁盘，重启的时候再次加载使用</li>
+<li>支持简单的 key-value 类型，也支持 list/set/zset/hash 数据的存储</li>
+<li>支持数据备份：master-slave 模式的数据备份</li>
+</ul>
+
+<h2 id="1-2-redis-优点">1.2 Redis 优点</h2>
+
+<ul>
+<li>性能极高：读写速度快</li>
+<li>数据类型丰富：支持 string/list/hash/set/zset(sorted set)</li>
+<li>原子性：单个操作是原子性的。多个操作支持事务，即原子性，通过 MULTI 和 EXEC 指令包起来</li>
+<li>特性丰富：支持 publish/subscribe，通知，key 过期等</li>
+</ul>
+
+<h2 id="1-3-redis-配置">1.3 Redis 配置</h2>
+
+<ul>
+<li>配置文件位于安装目录，文件名 <code>redis.conf</code>(Windows 下是 <code>redis.windows.conf</code>)</li>
+<li>查看配置项 <code>CONFIG GET CONFIG_STRING_NAME</code>
+
+<ul>
+<li><code>CONFIG_STRING_NAME</code> 为 <code>*</code> 表示获取所有配置项</li>
+</ul></li>
+<li>设置配置项 <code>CONFIG GET CONFIG_STRING_NAME NEW_CONFIG_VALUE</code></li>
+</ul>
+
+<h2 id="1-4-redis-数据类型">1.4 Redis 数据类型</h2>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>简介</th>
+<th>特性</th>
+<th>命令</th>
+<th>场景</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>string</td>
+<td>key-value</td>
+<td>二进制安全，即 string 可包含任何数据(jpg 对象或序列化的对象等)</td>
+<td><code>SET key val</code>/<code>GET key</code></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>hash</td>
+<td>key-value 对集合，即编程中的 Map</td>
+<td>适合存储对象，可像数据库只修改某一属性值</td>
+<td><code>HMSET hash_name key1 val1 [key2 val2...]</code>/<code>HGET hash_name key</code></td>
+<td>存储/读取/修改用户属性</td>
+</tr>
+
+<tr>
+<td>list</td>
+<td>string 列表(双向链表)，按插入顺序排序，下标从 0 开始</td>
+<td>增删快，可操作某一段元素</td>
+<td><code>lpush list_key value</code>/<code>lrange list_key start_index end_index</code></td>
+<td>消息队列；最新消息排行等(如朋友圈时间线)</td>
+</tr>
+
+<tr>
+<td>set</td>
+<td>string 无序集合，不允许 member 重复，hash 表实现</td>
+<td>增删查的复杂度都是 O(1)；为集合提供交并差运算</td>
+<td><code>sadd set_key member</code>：添加 member 到 set_key 对应的集合，成功返回 1，已存在返回 0，set_key 对应集合不存在返回错误；<code>smembers set_key</code></td>
+<td>共同好友；利用唯一性，统计访问网站的所有独立 IP；根据 tag 求交集，大于某阈值可推荐好友</td>
+</tr>
+
+<tr>
+<td>zset</td>
+<td>string 集合，member 唯一，score 可重复。score是 double 类型，根据 score 为 member 从小到大排序</td>
+<td>数据插入时已排序</td>
+<td><code>zadd zset_key score member</code>/<code>ZEANGEBYSCORE zset_key score1 score2</code></td>
+<td>排行榜；带权重的消息队列</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="1-5-redis-数据库">1.5 Redis 数据库</h2>
+
+<ul>
+<li>一个 Redis 示例提供了多个字典用于存储数据。客户端可指定存储的字典。每个字典可理解成一个独立的数据库。每个数据库数据隔离不共享</li>
+<li>Redis 不支持自定义数据名字，每个数据库以编号(0 开始)命名。默认支持 16 个数据库，可通过配置文件修改</li>
+<li>客户端连接 Redis 之后，默认选择 0 号数据库，可使用 <code>SELECT db_no</code> 更换数据库</li>
+<li>局限性
+
+<ul>
+<li>开发者需要自己记录每个数据库存储的数据</li>
+<li>不支持为每个数据库单独设置密码。所以所有数据库的权限是绑定的</li>
+<li>多个数据库不是完全隔离，如 <code>FLUSHALL</code> 可清除一个 Redis 示例所有数据库的数据。所以不建议多个应用程序使用一个 Redis 实例的不同数据库存储数据。且 Redis 是轻量级的，一个空的实例占用内存很小</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/database/">database</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/database/redis/1_intro/&amp;text=1%20Redis%20%e7%ae%80%e4%bb%8b" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/database/redis/1_intro/&amp;t=1%20Redis%20%e7%ae%80%e4%bb%8b" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=1%20Redis%20%e7%ae%80%e4%bb%8b&amp;body=https://xueqing.github.io/blog/database/redis/1_intro/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/database/redis/1_intro/&amp;title=1%20Redis%20%e7%ae%80%e4%bb%8b" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=1%20Redis%20%e7%ae%80%e4%bb%8b%20https://xueqing.github.io/blog/database/redis/1_intro/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/database/redis/1_intro/&amp;title=1%20Redis%20%e7%ae%80%e4%bb%8b" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
   
   
     
   
-<div class="universal-wrapper pt-3">
-  <h1>markdown</h1>
-
   
 
-  
-</div>
 
 
 
-<div class="universal-wrapper">
-  
+
 
   
   
-  <div>
-    <h2><a href="/blog/markdown_%E8%A7%84%E8%8C%83/">Markdown 规范</a></h2>
-    <div class="article-style">
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
       
-      编辑器 基本技巧 标题 代码 粗斜体 换行 链接 列表 普通无序列表 普通有序列表 列表嵌套 表格 引用 普通引用 引用嵌套引用 引用嵌套列表 引用嵌套代码块 图片 分隔符 高级
       
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
     </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/database/memcached/1_intro/">1 Memcached 简介</a></li>
+      
+      <li><a href="/blog/database/redis/2_command/">2 Redis 命令</a></li>
+      
+      <li><a href="/blog/database/redis/3_advanced/">3 Redis 进阶</a></li>
+      
+      <li><a href="/blog/database/redis/4_vm/">4 Redis VM 技术</a></li>
+      
+      <li><a href="/blog/database/redis_vs_memcached/">Redis vs Memcached</a></li>
+      
+    </ul>
   </div>
   
 
-  
 
-</div>
+
+  </div>
+</article>
 
       
 

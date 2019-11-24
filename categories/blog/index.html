@@ -353,10 +353,82 @@
   
   
   <div>
-    <h2><a href="/blog/markdown_%E8%A7%84%E8%8C%83/">Markdown 规范</a></h2>
+    <h2><a href="/blog/database/redis_vs_memcached/">Redis vs Memcached</a></h2>
+    <div class="article-style">
+      
+      1 概览 2 什么是 Memcached 3 什么是 Redis 4 Memcached 和 Redis 的相似点 5 Memcached 和 Redis 的不同 6 选择 Memcached 还是 Redis 6.1 选择 Memcached 6.2 选择 Redis 6.3 总结 7 参考 1 概览 关系型数据库是常见的数据库类型，但是
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/memcached/readme/">前言</a></h2>
+    <div class="article-style">
+      
+      目录 参考 目录 1 Memcached 简介 2 Memcached 存储命令 3 Memcached 查找命令 4 Memcached 统计命令 5 Memcached 实例 参考 Memcached 教程 Redis 命令
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/readme/">前言</a></h2>
+    <div class="article-style">
+      
+      概念 目录 参考 概念 BSD 协议：可自由的使用，修改源代码，也可将修改后的代码作为开源或专有软件再发布 守护进程(Daemon Process)：Linu
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/markdown/markdown_%E8%A7%84%E8%8C%83/">Markdown 规范</a></h2>
     <div class="article-style">
       
       编辑器 基本技巧 标题 代码 粗斜体 换行 链接 列表 普通无序列表 普通有序列表 列表嵌套 表格 引用 普通引用 引用嵌套引用 引用嵌套列表 引用嵌套代码块 图片 分隔符 高级
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/memcached/1_intro/">1 Memcached 简介</a></h2>
+    <div class="article-style">
+      
+      1.1 前言 1.2 特点 1.3 支持的语言 1.4 Memcached 用户 1.1 前言 Memcached 是一个自由开源、高性能、分布式内存对象缓存系统 基于内存的 key-value 存储，用于存储小块的任意数据(字符串、对象
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/1_intro/">1 Redis 简介</a></h2>
+    <div class="article-style">
+      
+      1.1 key-value 缓存产品特点 1.2 Redis 优点 1.3 Redis 配置 1.4 Redis 数据类型 1.5 Redis 数据库 1.1 key-value 缓存产品特点 支持数据持久化：可将内存数据保存到磁盘，重启的时候再次加载使用 支持简单
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/2_command/">2 Redis 命令</a></h2>
+    <div class="article-style">
+      
+      2.1 命令 2.2 键命令 2.3 字符串命令 2.4 哈希命令 2.5 列表命令 2.6 集合命令 2.7 有序集合命令 2.8 Redis HyperLogLog 命令 2.9 Redis 发布订阅命令 2.10 Redis 事务命令 2.11 Redis 脚本命令 2.12 Redis 连接命令 2.13 Redis 服务
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/3_advanced/">3 Redis 进阶</a></h2>
+    <div class="article-style">
+      
+      3.1 Redis 数据备份与恢复 3.2 Redis 安全 3.3 Redis 性能测试 3.4 Redis 客户端命令 3.5 Redis 管道技术 3.6 Redis 分区 3.1 Redis 数据备份与恢复 命令 描述 SAVE 创建当前数据库的备份，在 Redis 安装目录创建 dump.rdb
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/4_vm/">4 Redis VM 技术</a></h2>
+    <div class="article-style">
+      
+      4.1 前言 4.2 简单解释 VM 4.3 何时使用 VM 是个好主意 4.4 VM 配置 4.5 设置 vm-max-memory 4.6 配置 swap 文件 4.7 线程式 VM vs 阻塞式 VM 4.8 需要知道的一些事 4.8.1 swap 文件的好位置 4.8.2 监视 VM 4.8.3 开启 VM 的
       
     </div>
   </div>
@@ -366,78 +438,6 @@
     <div class="article-style">
       
       auto_ptr unique_ptr shared_ptr weak_ptr reference auto_ptr C++11 已经弃用。unique_ptr是新的具有相似功能的智能指针，但是安全性更高。 auto_ptr是管理对象的指针，通过new的操作
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></h2>
-    <div class="article-style">
-      
-      关于 new int() 和 new int[] #define LEN 100 int *arr1 = new int(LEN); int *arr2 = new int[LEN]; 第一行的代码arr1指向内存中int = 100的一个数的地址 第二行的代码arr2指向长度为 100 的数组的内
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/cplusplus_string_case_convert/">C&#43;&#43; string 转换大小写</a></h2>
-    <div class="article-style">
-      
-      #include &lt;string&gt; #include &lt;algorithm&gt; void CString::StringToUpper(std::string &amp;str) { std::transform(str.begin(), str.end(), str.begin(), ::toupper); } void CString::StringToLower(std::string &amp;str) { std::transform(str.begin(), str.end(), str.begin(), ::tolower); } 提示出错error: no matching function for call to ‘transform(__gnu_cxx::__normal_i
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></h2>
-    <div class="article-style">
-      
-      UB(Undefined behavior):程序的行为没有限制。常见的未定义行为例子包括：数组访问内存越界，有符号数溢出，间接访问空指针，在一个表达式中无顺序多次
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/chrome/ex_import_pwd/">Chrome 导入和导出密码</a></h2>
-    <div class="article-style">
-      
-      Chrome 导入和导出密码 启用功能 导出密码 导入密码 重置功能 密码管理软件 启用功能 进入地址栏，输入chrome://flags/#PasswordImpo
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/chrome/extensions/">Chrome 插件</a></h2>
-    <div class="article-style">
-      
-      插件 功能 Infinity 新标签页，还有邮件提醒、天气预报、笔记、TODO、壁纸、历史记录等 QRImagefromURL 把 Chrome 当前的网址，生成标准二维码格式图片，扫描二维码会得到网址，
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/coolshell/code_review/codereview/">Code Review 代码审查</a></h2>
-    <div class="article-style">
-      
-      关于 CR 目的 前提 需要做什么 步骤 标准 执行 事前准备阶段 实施阶段 事后跟踪 注意事项 经常进行 CR CR 不要太正式，而且要短 尽可能的让不同的人 Reivew 你的代码 保持积极
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/coolshell/code_review/code_review/">code_review 预研</a></h2>
-    <div class="article-style">
-      
-      code_review 中的几个提示 从 code_review 谈如何做技术 简单实用的 code_review 工具 Review board 追踪待决代码的改动，并可以让 Code-Review 更为容易和简练 Codestriker Groogle 各式各样语言的语法高亮 支持整个版本树的比较
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/effectivec&#43;&#43;_3/">Effective C&#43;&#43;, 3rd</a></h2>
-    <div class="article-style">
-      
-      1.让自己习惯 C++ 01.视 C++ 为一个语言联邦 02.常量，枚举和内联优于宏定义 03.尽可能使用常量 04.确定对象被使用前已先被初始化 2.构造/析构
       
     </div>
   </div>

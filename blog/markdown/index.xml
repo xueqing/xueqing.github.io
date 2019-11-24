@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>md | kiki</title>
-    <link>https://xueqing.github.io/tags/md/</link>
-      <atom:link href="https://xueqing.github.io/tags/md/index.xml" rel="self" type="application/rss+xml" />
-    <description>md</description>
+    <title>Markdown | kiki</title>
+    <link>https://xueqing.github.io/blog/markdown/</link>
+      <atom:link href="https://xueqing.github.io/blog/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <description>Markdown</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language><lastBuildDate>Sun, 10 Nov 2019 16:22:30 +0800</lastBuildDate>
     <image>
       <url>https://xueqing.github.io/img/icon-192.png</url>
-      <title>md</title>
-      <link>https://xueqing.github.io/tags/md/</link>
+      <title>Markdown</title>
+      <link>https://xueqing.github.io/blog/markdown/</link>
     </image>
     
     <item>

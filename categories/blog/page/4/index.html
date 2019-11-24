@@ -353,10 +353,91 @@
   
   
   <div>
-    <h2><a href="/blog/cplusplus/mix_c_and_cpp/">结合 C 和 C&#43;&#43; 代码</a></h2>
+    <h2><a href="/blog/cplusplus/const/">关于 const</a></h2>
     <div class="article-style">
       
-      需要了解的知识 在 C++ 中调用 C 语言函数 在 C 中调用 C++ 语言函数 在 C 中调用 C++ 非成员函数 在 C 中调用 C++ 成员函数 在 C 中调用 C++ 重载函数 C++ 名称重整 C++ 链接器处理 C
+      1 常量正确性(const correctness) 1.1 概述 1.2 const 和 * 1.3 const 和 &amp; 1.4 成员函数 2 二重指针 3 修改 const 4 X-&gt;const X 5 reference 1 常量正确性(const correctness) 1.1 概述 常量正确性：即使用关键
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/extren_c/">关键字 extern 在 C 语言的使用</a></h2>
+    <div class="article-style">
+      
+      前言 变量或函数的声明和定义 声明和定义全局变量的最好方式 关键点 1：可以声明多次但初始化一次 关键点 2：默认存储类是 extern 关键点 3：extern 变量或
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/inline/">内联</a></h2>
+    <div class="article-style">
+      
+      描述 术语和定义 编译单元 单定义规则 内联声明 非成员函数 成员函数 不适合内联替换的用法 C/C++ static/extern + inline C89/90 inline C99 inline C++ inline GCC 编译选项 内联函数对安全性和速度的取舍 inline vs
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/reentrant/">可重入性</a></h2>
+    <div class="article-style">
+      
+      常见的线程不安全函数和对应的 unix 下的线程安全函数 保持跨越多个调用状态的函数 rand，对应 rand_r strtok，对应 strtok_r 返回指向静态变量的指针的函数 as
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/coolshell/%E5%A4%9A%E4%BA%9B%E6%97%B6%E9%97%B4%E8%83%BD%E5%B0%91%E5%86%99%E4%BA%9B%E4%BB%A3%E7%A0%81/">多些时间能少写些代码</a></h2>
+    <div class="article-style">
+      
+      原文 软件的精髓在于设计 时间和空间的取舍、TCP/UDP 通信、同步异步、数据冗余 重要 多和客户讨论需求和未来可能的变化：避免边开发边加需求 调查实
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/markdown/problem/">常见问题</a></h2>
+    <div class="article-style">
+      
+      显示反引号 用两个反引号`
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/coolshell/%E5%BC%80%E5%8F%91%E5%9B%A2%E9%98%9F%E7%9A%84%E6%95%88%E7%8E%87/">开发团队的效率</a></h2>
+    <div class="article-style">
+      
+      原文 几种典型的开发方式 软件开发中的“锁” 技术能力上的锁：需要不同的语言开发一个项目，每人只会一种语言 负责模块上的锁：不同的人负责不同的模块 时
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/exception/">异常</a></h2>
+    <div class="article-style">
+      
+      为什么使用异常 C++ 使用异常 使用异常的反对观点 替代方案：通过判断或函数返回值检查错误 使用 try/catch/throw 而不是条件判断和返回错误码来改善软件质量 异常便于传递错
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/course/interesting_links/">感兴趣的链接</a></h2>
+    <div class="article-style">
+      
+      课程链接 Distributed Systems 教程链接 Code your own blockchain with golang
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/array_decay/">数组退化问题</a></h2>
+    <div class="article-style">
+      
+      数组退化 类型和纬度丢失就是数组退化。通常发生在通过值或指针传递数组。这种情况下，数组发送的是它的首地址，因此数组的大小不是原始大小，而是首地
       
     </div>
   </div>
@@ -368,6 +449,8 @@
     
     <li class="page-item"><a class="page-link" href="/categories/blog/page/3/">&laquo;</a></li>
     
+    
+    <li class="page-item"><a class="page-link" href="/categories/blog/page/5/">&raquo;</a></li>
     
   </ul>
 </nav>

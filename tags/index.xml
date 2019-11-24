@@ -13,10 +13,10 @@
     </image>
     
     <item>
-      <title>markdown</title>
-      <link>https://xueqing.github.io/tags/markdown/</link>
+      <title>md</title>
+      <link>https://xueqing.github.io/tags/md/</link>
       <pubDate>Sun, 10 Nov 2019 16:22:30 +0800</pubDate>
-      <guid>https://xueqing.github.io/tags/markdown/</guid>
+      <guid>https://xueqing.github.io/tags/md/</guid>
       <description></description>
     </item>
     
@@ -57,6 +57,14 @@
       <link>https://xueqing.github.io/tags/course/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://xueqing.github.io/tags/course/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>database</title>
+      <link>https://xueqing.github.io/tags/database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/database/</guid>
       <description></description>
     </item>
     

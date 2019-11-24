@@ -31,7 +31,7 @@
   <meta name="description" content="Site description in Chinese...">
 
   
-  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/tags/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/database/redis/">
 
   
 
@@ -93,14 +93,14 @@
 
 
   
-  <link rel="alternate" href="/tags/index.xml" type="application/rss+xml" title="kiki">
+  <link rel="alternate" href="/blog/database/redis/index.xml" type="application/rss+xml" title="kiki">
   
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://xueqing.github.io/tags/">
+  <link rel="canonical" href="https://xueqing.github.io/blog/database/redis/">
 
   
   
@@ -113,12 +113,12 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="kiki">
-  <meta property="og:url" content="https://xueqing.github.io/tags/">
-  <meta property="og:title" content="Tags | kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/database/redis/">
+  <meta property="og:title" content="Redis | kiki">
   <meta property="og:description" content="Site description in Chinese..."><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
   
-    <meta property="og:updated_time" content="2019-11-10T16:22:30&#43;08:00">
+    
   
 
   
@@ -135,7 +135,7 @@
 
 
 
-  <title>Tags | kiki</title>
+  <title>Redis | kiki</title>
 
 </head>
 
@@ -239,7 +239,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/blog/"><span>博客</span></a>
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
         </li>
 
         
@@ -338,7 +338,7 @@
     
   
 <div class="universal-wrapper pt-3">
-  <h1>Tags</h1>
+  <h1>Redis</h1>
 
   
 
@@ -353,86 +353,52 @@
   
   
   <div>
-    <h2><a href="/tags/md/">md</a></h2>
+    <h2><a href="/blog/database/redis/readme/">前言</a></h2>
     <div class="article-style">
+      
+      概念 目录 参考 概念 BSD 协议：可自由的使用，修改源代码，也可将修改后的代码作为开源或专有软件再发布 守护进程(Daemon Process)：Linu
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/tags/agile/">agile</a></h2>
+    <h2><a href="/blog/database/redis/1_intro/">1 Redis 简介</a></h2>
     <div class="article-style">
+      
+      1.1 key-value 缓存产品特点 1.2 Redis 优点 1.3 Redis 配置 1.4 Redis 数据类型 1.5 Redis 数据库 1.1 key-value 缓存产品特点 支持数据持久化：可将内存数据保存到磁盘，重启的时候再次加载使用 支持简单
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/tags/c&#43;&#43;/">c&#43;&#43;</a></h2>
+    <h2><a href="/blog/database/redis/2_command/">2 Redis 命令</a></h2>
     <div class="article-style">
+      
+      2.1 命令 2.2 键命令 2.3 字符串命令 2.4 哈希命令 2.5 列表命令 2.6 集合命令 2.7 有序集合命令 2.8 Redis HyperLogLog 命令 2.9 Redis 发布订阅命令 2.10 Redis 事务命令 2.11 Redis 脚本命令 2.12 Redis 连接命令 2.13 Redis 服务
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/tags/chrome/">chrome</a></h2>
+    <h2><a href="/blog/database/redis/3_advanced/">3 Redis 进阶</a></h2>
     <div class="article-style">
+      
+      3.1 Redis 数据备份与恢复 3.2 Redis 安全 3.3 Redis 性能测试 3.4 Redis 客户端命令 3.5 Redis 管道技术 3.6 Redis 分区 3.1 Redis 数据备份与恢复 命令 描述 SAVE 创建当前数据库的备份，在 Redis 安装目录创建 dump.rdb
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/tags/coolshell/">coolshell</a></h2>
+    <h2><a href="/blog/database/redis/4_vm/">4 Redis VM 技术</a></h2>
     <div class="article-style">
       
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/tags/course/">course</a></h2>
-    <div class="article-style">
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/tags/database/">database</a></h2>
-    <div class="article-style">
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/tags/go-blog/">go-blog</a></h2>
-    <div class="article-style">
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/tags/go-command/">go-command</a></h2>
-    <div class="article-style">
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/tags/go-doc-wiki/">go-doc-wiki</a></h2>
-    <div class="article-style">
+      4.1 前言 4.2 简单解释 VM 4.3 何时使用 VM 是个好主意 4.4 VM 配置 4.5 设置 vm-max-memory 4.6 配置 swap 文件 4.7 线程式 VM vs 阻塞式 VM 4.8 需要知道的一些事 4.8.1 swap 文件的好位置 4.8.2 监视 VM 4.8.3 开启 VM 的
       
     </div>
   </div>
   
 
   
-<nav>
-  <ul class="pagination justify-content-center">
-    
-    
-    <li class="page-item"><a class="page-link" href="/tags/page/2/">&raquo;</a></li>
-    
-  </ul>
-</nav>
-
 
 </div>
 

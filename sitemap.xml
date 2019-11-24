@@ -3,6 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xueqing.github.io/blog/database/redis_vs_memcached/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/database/memcached/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/database/redis/readme/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/readme/</loc>
   </url>
   
@@ -52,12 +64,17 @@
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/tags/markdown/</loc>
+    <loc>https://xueqing.github.io/blog/markdown/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/blog/markdown_%E8%A7%84%E8%8C%83/</loc>
+    <loc>https://xueqing.github.io/blog/markdown/markdown_%E8%A7%84%E8%8C%83/</loc>
+    <lastmod>2019-11-10T16:22:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/md/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
@@ -72,12 +89,15 @@
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/blog/</loc>
-    <lastmod>2019-11-10T16:22:30+08:00</lastmod>
+    <loc>https://xueqing.github.io/authors/admin/</loc>
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/authors/admin/</loc>
+    <loc>https://xueqing.github.io/blog/database/memcached/1_intro/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/database/redis/1_intro/</loc>
   </url>
   
   <url>
@@ -85,11 +105,23 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/database/redis/2_command/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/2-manifesto/</loc>
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/database/redis/3_advanced/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/3-characteristics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/database/redis/4_vm/</loc>
   </url>
   
   <url>
@@ -182,6 +214,10 @@
   
   <url>
     <loc>https://xueqing.github.io/tags/course/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/database/</loc>
   </url>
   
   <url>
@@ -313,6 +349,14 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/markdown/markdownlint_rules/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/database/memcached/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/publication_types/</loc>
   </url>
   
@@ -326,6 +370,10 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/reader/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/database/redis/</loc>
   </url>
   
   <url>
@@ -449,6 +497,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/markdown/problem/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/golangdoc/faq/</loc>
   </url>
   
@@ -470,6 +522,10 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/database/</loc>
   </url>
   
   <url>
@@ -526,6 +582,10 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/command/remote_import_path/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/</loc>
   </url>
   
   <url>

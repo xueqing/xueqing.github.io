@@ -1,0 +1,2047 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>database | kiki</title>
+    <link>https://xueqing.github.io/tags/database/</link>
+      <atom:link href="https://xueqing.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <description>database</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>database</title>
+      <link>https://xueqing.github.io/tags/database/</link>
+    </image>
+    
+    <item>
+      <title>Redis vs Memcached</title>
+      <link>https://xueqing.github.io/blog/database/redis_vs_memcached/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/redis_vs_memcached/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%e6%a6%82%e8%a7%88&#34;&gt;1 概览&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-%e4%bb%80%e4%b9%88%e6%98%af-memcached&#34;&gt;2 什么是 Memcached&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-%e4%bb%80%e4%b9%88%e6%98%af-redis&#34;&gt;3 什么是 Redis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-memcached-%e5%92%8c-redis-%e7%9a%84%e7%9b%b8%e4%bc%bc%e7%82%b9&#34;&gt;4 Memcached 和 Redis 的相似点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-memcached-%e5%92%8c-redis-%e7%9a%84%e4%b8%8d%e5%90%8c&#34;&gt;5 Memcached 和 Redis 的不同&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%e9%80%89%e6%8b%a9-memcached-%e8%bf%98%e6%98%af-redis&#34;&gt;6 选择 Memcached 还是 Redis&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#61-%e9%80%89%e6%8b%a9-memcached&#34;&gt;6.1 选择 Memcached&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#62-%e9%80%89%e6%8b%a9-redis&#34;&gt;6.2 选择 Redis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#63-%e6%80%bb%e7%bb%93&#34;&gt;6.3 总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-%e5%8f%82%e8%80%83&#34;&gt;7 参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-概览&#34;&gt;1 概览&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;关系型数据库是常见的数据库类型，但是不适合存储大量的数据。因此，引入了 NoSQL。它表示非关系型或非 SQL。Memcached 和 Redis 归类为 NoSQL&lt;/li&gt;
+&lt;li&gt;Memcached 和 Redis 最大的区别在于
+
+&lt;ul&gt;
+&lt;li&gt;Memcached 是开源的，高性能，分布式内存缓存系统，可通过最小化数据加载代价而加速 web 应用&lt;/li&gt;
+&lt;li&gt;Redis 是开源的，key-value 存储，用于建设可扩展的 web 应用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-什么是-memcached&#34;&gt;2 什么是 Memcached&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Memcached 是开源的，高性能，分布式内存缓存系统。它是持久化数据存储&lt;/li&gt;
+&lt;li&gt;Memcached 主要的优势在于它降低了数据库加载代价，因此对于大量数据库加载的网站是非常有效且快速的&lt;/li&gt;
+&lt;li&gt;Memcached 有存储命令、检索命令、统计命令
+
+&lt;ul&gt;
+&lt;li&gt;存储命令&lt;/li&gt;
+&lt;li&gt;set：为一个新的或已有的键设置新值&lt;/li&gt;
+&lt;li&gt;add：为一个新键设置值&lt;/li&gt;
+&lt;li&gt;replace：替换已有的键的值&lt;/li&gt;
+&lt;li&gt;append：为已有键增加一些数据&lt;/li&gt;
+&lt;li&gt;检索命令&lt;/li&gt;
+&lt;li&gt;get：获取键中保存的值&lt;/li&gt;
+&lt;li&gt;delete：删除已有键&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-什么是-redis&#34;&gt;3 什么是 Redis&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 是开源的，内存型数据结构存储，用作数据库、缓存和消息代理&lt;/li&gt;
+&lt;li&gt;Redis 代表远程字典服务器(remote dictionary server)。以 key-value 格式存储数据&lt;/li&gt;
+&lt;li&gt;用户在 Redis 命令行界面(command line interfacem, CLI)，使用命令和数据库通信
+
+&lt;ul&gt;
+&lt;li&gt;SET：写数据到 Redis 数据存储&lt;/li&gt;
+&lt;li&gt;GET：从 Redis 数据存储读数据&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Redis 简单易用。它归类为 NoSQL 数据库。和像 MySQL，Oracle 的关系型数据库不同，Redis 不使用表存储数据
+
+&lt;ul&gt;
+&lt;li&gt;Redis 不使用常规的 SQL 命令，例如 select、delete、create、update 等&lt;/li&gt;
+&lt;li&gt;Redis 使用数据结构存储数据。主要的数据结构是 string，list，set，sorted set，hash，bitmap 等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Redis 使用 C 语言编写，是开源的，跨平台的系统&lt;/li&gt;
+&lt;li&gt;Redis 主要的优势在于它保存数据在内存中。这使得 Redis 非常快速。它也可以写数据到磁盘。Redis 可用作一个缓存系统或是全面的数据库&lt;/li&gt;
+&lt;li&gt;Redis 另外一个优势是它可以和其他数据库一起使用。Redis 可以存储频繁访问的数据，而不访问主要的数据库，并且可以从主要的数据库获取其它的数据&lt;/li&gt;
+&lt;li&gt;Redis 遵循 master-slave 架构。它提供性能、可扩展性且易用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-memcached-和-redis-的相似点&#34;&gt;4 Memcached 和 Redis 的相似点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;都归类为 NoSQL&lt;/li&gt;
+&lt;li&gt;都以 key-value 格式存储数据：Redis 更准确的描述是作为数据结构存储&lt;/li&gt;
+&lt;li&gt;都将存储数据到内存(毫秒级延迟)&lt;/li&gt;
+&lt;li&gt;二者都是轻量级，和易失缓存一样快
+
+&lt;ul&gt;
+&lt;li&gt;Memcached 易失内存型的 key-value 存储&lt;/li&gt;
+&lt;li&gt;Redis 不限于此，是一个数据结构服务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;易用性、支持多种编程语言(Java/Python/PHP/C/C++/C#/JavaScript/NodeJS/Ruby/Go)&lt;/li&gt;
+&lt;li&gt;支持数据分割：允许分布数据到多个节点，以便随着需求增长扩展数据处理能力&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-memcached-和-redis-的不同&#34;&gt;5 Memcached 和 Redis 的不同&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;不同点&lt;/th&gt;
+&lt;th&gt;Memcached&lt;/th&gt;
+&lt;th&gt;Redis&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;描述&lt;/td&gt;
+&lt;td&gt;开源的，高性能，分布式内存缓存系统，可通过最小化数据加载代价而加速 web 应用&lt;/td&gt;
+&lt;td&gt;开源的，key-value 存储，可作为数据库、缓存和消息代理&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;易安装&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;高级数据结构&lt;/td&gt;
+&lt;td&gt;N(字符串和整型)&lt;/td&gt;
+&lt;td&gt;Y(string/list/set/sorted set/hash)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;多线程架构&lt;/td&gt;
+&lt;td&gt;Y(充分利用多核)&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;快照&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y(时间快照存储数据到磁盘，用于归档或恢复)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;复制&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y(支持 master-slave 复制)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;事务&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;pub/sub&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Lua 脚本&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;地理空间支持&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y(可查找两个元素之间的距离，或者查找给定范围的所有元素)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;速度&lt;/td&gt;
+&lt;td&gt;读写速度更快&lt;/td&gt;
+&lt;td&gt;读写速度快，但是取决于开发的应用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;6-选择-memcached-还是-redis&#34;&gt;6 选择 Memcached 还是 Redis&lt;/h2&gt;
+
+&lt;h3 id=&#34;6-1-选择-memcached&#34;&gt;6.1 选择 Memcached&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当缓存相当小的静态数据，比如 HTML 代码段：Memcached 内部的内存管理系统在最简单的应用场景下是更加高效，因为只占用相当小的内存资源用于元数据&lt;/li&gt;
+&lt;li&gt;当数据大小动态变化，Memcached 的内存管理效率快速下降，有时内存会碎片化
+
+&lt;ul&gt;
+&lt;li&gt;同时，大数据集经常牵涉到序列化数据，需要更多空间存储&lt;/li&gt;
+&lt;li&gt;如果使用Memcached，当重启时数据会丢失，而且重建缓存代价很好&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Memcached 在伸缩性方面比 Redis 好： Memcached 是多线程，很方便增加计算资源；Redis 大多数是单线程，在不丢失数据的情况下只能通过集群水平增长
+
+&lt;ul&gt;
+&lt;li&gt;集群是有效的扩展方案，但是在设置和操作方面很复杂&lt;/li&gt;
+&lt;li&gt;Memcached 不支持复制&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Memcached 在处理高流量网站方面更好：可以一次读大量信息，而且响应时间快。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;memcached_redis_cluster.jpg&#34; alt=&#34;Memcached 和 Redis 的集群&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;6-2-选择-redis&#34;&gt;6.2 选择 Redis&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 支持更多数据类型，所以作为缓存可以提供更更好的性能和效率&lt;/li&gt;
+&lt;li&gt;数据回收(data eviction)：缓存使用数据回收机制，从内存删除旧数据为新数据分配空间
+
+&lt;ul&gt;
+&lt;li&gt;Memcached 使用 LRU(least recently used, 最近最少使用)算法，有时随机回收大小类似的数据&lt;/li&gt;
+&lt;li&gt;Redis 支持细粒度控制回收，提供 6 种不同的回收策&lt;/li&gt;
+&lt;li&gt;Redis 支持 lazy 和 active 的回收，即需要更多空间或主动地(proactively)&lt;/li&gt;
+&lt;li&gt;Memcached 值支持 lazy 回收&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Redis 作为数据结构的一些特性
+
+&lt;ul&gt;
+&lt;li&gt;丰富的数据类型和使用命令&lt;/li&gt;
+&lt;li&gt;默认持久化到磁盘&lt;/li&gt;
+&lt;li&gt;锁事务(WATCH/MULTI/EXEC)&lt;/li&gt;
+&lt;li&gt;发布订阅(pub/sub)非常快&lt;/li&gt;
+&lt;li&gt;值可达 512MB(Memcached 限制每个键 1MB)&lt;/li&gt;
+&lt;li&gt;支持 Lua 脚本(2.6 开始)&lt;/li&gt;
+&lt;li&gt;内嵌集群(3.0 开始)&lt;/li&gt;
+&lt;li&gt;在各方面非常快&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Redis 丰富的数据类型非常重要。它支持 Redis 提供共享队列(lists)，消息机制(pub/sub)，存储会话(hash)，高评分跟踪(sorted set)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;6-3-总结&#34;&gt;6.3 总结&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Memcached 和 Redis 归类为 NoSQL。它们不使用结构化化查询语言(structed query language)来存储、检索和操作数据&lt;/li&gt;
+&lt;li&gt;不同点在于 Memcached 是开源、高性能分布式内存缓存系统，Redis 是开源、key-value 存储用于构建可扩展 web 应用&lt;/li&gt;
+&lt;li&gt;使用 Memcached 还是 Redis 取决于应用：需要高级数据结构时可使用 Redis；降低数据库加载代价，加速 web 应用可使用 Memcached&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-参考&#34;&gt;7 参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.differencebetween.com/difference-between-memcached-and-vs-redis/&#34; target=&#34;_blank&#34;&gt;Difference Between Memcached and Redis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/pulse/memcached-vs-redis-which-one-pick-ranjeet-vimal/&#34; target=&#34;_blank&#34;&gt;Memcached vs Redis, Which One to Pick&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/elasticache/redis-vs-memcached/&#34; target=&#34;_blank&#34;&gt;Choosing between Redis and Memcached&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/blog/database/memcached/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/memcached/readme/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%9b%ae%e5%bd%95&#34;&gt;目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;1_intro.md&#34; target=&#34;_blank&#34;&gt;1 Memcached 简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;2_store_command.md&#34; target=&#34;_blank&#34;&gt;2 Memcached 存储命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;3_retrieval_command.md&#34; target=&#34;_blank&#34;&gt;3 Memcached 查找命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;4_statistics_command.md&#34; target=&#34;_blank&#34;&gt;4 Memcached 统计命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;5_examples.md&#34; target=&#34;_blank&#34;&gt;5 Memcached 实例&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.runoob.com/Memcached/Memcached-tutorial.html&#34; target=&#34;_blank&#34;&gt;Memcached 教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://redis.io/commands&#34; target=&#34;_blank&#34;&gt;Redis 命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/blog/database/redis/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/redis/readme/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e5%bf%b5&#34;&gt;概念&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%9b%ae%e5%bd%95&#34;&gt;目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;BSD 协议：可自由的使用，修改源代码，也可将修改后的代码作为开源或专有软件再发布&lt;/li&gt;
+&lt;li&gt;守护进程(Daemon Process)：Linux 的后台服务进程。生存期较长，通常独立于控制终端且周期性地执行某种任务或等待处理某些发生的事件。脱离终端是为了避免进程被任何终端产生的信息打断，其执行过程中的信息也不显示在任何终端&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;1_intro.md&#34; target=&#34;_blank&#34;&gt;1 Redis 简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;2_command.md&#34; target=&#34;_blank&#34;&gt;2 Redis 命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;3_advanced.md&#34; target=&#34;_blank&#34;&gt;3 Redis 进阶&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;4_vm.md&#34; target=&#34;_blank&#34;&gt;4 Redis VM 技术&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.runoob.com/redis/redis-tutorial.html&#34; target=&#34;_blank&#34;&gt;Redis 教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://redis.io/commands&#34; target=&#34;_blank&#34;&gt;Redis 命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1 Memcached 简介</title>
+      <link>https://xueqing.github.io/blog/database/memcached/1_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/memcached/1_intro/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-%e5%89%8d%e8%a8%80&#34;&gt;1.1 前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e7%89%b9%e7%82%b9&#34;&gt;1.2 特点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-%e6%94%af%e6%8c%81%e7%9a%84%e8%af%ad%e8%a8%80&#34;&gt;1.3 支持的语言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-memcached-%e7%94%a8%e6%88%b7&#34;&gt;1.4 Memcached 用户&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-1-前言&#34;&gt;1.1 前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Memcached 是一个自由开源、高性能、分布式内存对象缓存系统&lt;/li&gt;
+&lt;li&gt;基于内存的 key-value 存储，用于存储小块的任意数据(字符串、对象)。这些数据可以是数据库调用、API 调用或页面渲染的结果&lt;/li&gt;
+&lt;li&gt;设计简洁：便于快速开发，减轻开发难度，解决了大数据量缓存的问题。API 兼容大部分流行的开发语言&lt;/li&gt;
+&lt;li&gt;本质上是一个简洁的 key-value 存储系统&lt;/li&gt;
+&lt;li&gt;一般的使用目的：通过缓存数据库查询结果，减少数据库访问次数，以提高动态 web 应用的速度，提高可扩展性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-2-特点&#34;&gt;1.2 特点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;协议简单&lt;/li&gt;
+&lt;li&gt;基于 libevent 的事件处理
+
+&lt;ul&gt;
+&lt;li&gt;libevent 是一个基于事件触发的网络库&lt;/li&gt;
+&lt;li&gt;libevent API 提供一种机制：当一个文件描述符的特定时间发生(可读、可写、出错)，或一个定时时间发生，libevent 自动执行用户指定的回调函数，来处理事件&lt;/li&gt;
+&lt;li&gt;libevent 也支持信号或常规超时的回调&lt;/li&gt;
+&lt;li&gt;libevent 用于取代网络服务器中的事件循环检查框架&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;内置内存存储方式&lt;/li&gt;
+&lt;li&gt;分布式不互相通信&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-3-支持的语言&#34;&gt;1.3 支持的语言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;许多语言实现了连接 Memcached 的客户端，以 Perl、PHP 为主&lt;/li&gt;
+&lt;li&gt;其他语言包括：Python/Ruby/C#/C/C++/Lua&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-4-memcached-用户&#34;&gt;1.4 Memcached 用户&lt;/h2&gt;
+
+&lt;p&gt;LiveJournal/Wikipedia/Flickr/Bebo/Twitter/Typepad/Yellowbot/Youtube/WordPress.com/Craigslist/Mixi&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1 Redis 简介</title>
+      <link>https://xueqing.github.io/blog/database/redis/1_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/redis/1_intro/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-key-value-%e7%bc%93%e5%ad%98%e4%ba%a7%e5%93%81%e7%89%b9%e7%82%b9&#34;&gt;1.1 key-value 缓存产品特点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-redis-%e4%bc%98%e7%82%b9&#34;&gt;1.2 Redis 优点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-redis-%e9%85%8d%e7%bd%ae&#34;&gt;1.3 Redis 配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-redis-%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b&#34;&gt;1.4 Redis 数据类型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-redis-%e6%95%b0%e6%8d%ae%e5%ba%93&#34;&gt;1.5 Redis 数据库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-1-key-value-缓存产品特点&#34;&gt;1.1 key-value 缓存产品特点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持数据持久化：可将内存数据保存到磁盘，重启的时候再次加载使用&lt;/li&gt;
+&lt;li&gt;支持简单的 key-value 类型，也支持 list/set/zset/hash 数据的存储&lt;/li&gt;
+&lt;li&gt;支持数据备份：master-slave 模式的数据备份&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-2-redis-优点&#34;&gt;1.2 Redis 优点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;性能极高：读写速度快&lt;/li&gt;
+&lt;li&gt;数据类型丰富：支持 string/list/hash/set/zset(sorted set)&lt;/li&gt;
+&lt;li&gt;原子性：单个操作是原子性的。多个操作支持事务，即原子性，通过 MULTI 和 EXEC 指令包起来&lt;/li&gt;
+&lt;li&gt;特性丰富：支持 publish/subscribe，通知，key 过期等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-3-redis-配置&#34;&gt;1.3 Redis 配置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配置文件位于安装目录，文件名 &lt;code&gt;redis.conf&lt;/code&gt;(Windows 下是 &lt;code&gt;redis.windows.conf&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;查看配置项 &lt;code&gt;CONFIG GET CONFIG_STRING_NAME&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CONFIG_STRING_NAME&lt;/code&gt; 为 &lt;code&gt;*&lt;/code&gt; 表示获取所有配置项&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;设置配置项 &lt;code&gt;CONFIG GET CONFIG_STRING_NAME NEW_CONFIG_VALUE&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-4-redis-数据类型&#34;&gt;1.4 Redis 数据类型&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;简介&lt;/th&gt;
+&lt;th&gt;特性&lt;/th&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;key-value&lt;/td&gt;
+&lt;td&gt;二进制安全，即 string 可包含任何数据(jpg 对象或序列化的对象等)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SET key val&lt;/code&gt;/&lt;code&gt;GET key&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;hash&lt;/td&gt;
+&lt;td&gt;key-value 对集合，即编程中的 Map&lt;/td&gt;
+&lt;td&gt;适合存储对象，可像数据库只修改某一属性值&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;HMSET hash_name key1 val1 [key2 val2...]&lt;/code&gt;/&lt;code&gt;HGET hash_name key&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;存储/读取/修改用户属性&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;list&lt;/td&gt;
+&lt;td&gt;string 列表(双向链表)，按插入顺序排序，下标从 0 开始&lt;/td&gt;
+&lt;td&gt;增删快，可操作某一段元素&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;lpush list_key value&lt;/code&gt;/&lt;code&gt;lrange list_key start_index end_index&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;消息队列；最新消息排行等(如朋友圈时间线)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;set&lt;/td&gt;
+&lt;td&gt;string 无序集合，不允许 member 重复，hash 表实现&lt;/td&gt;
+&lt;td&gt;增删查的复杂度都是 O(1)；为集合提供交并差运算&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sadd set_key member&lt;/code&gt;：添加 member 到 set_key 对应的集合，成功返回 1，已存在返回 0，set_key 对应集合不存在返回错误；&lt;code&gt;smembers set_key&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;共同好友；利用唯一性，统计访问网站的所有独立 IP；根据 tag 求交集，大于某阈值可推荐好友&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;zset&lt;/td&gt;
+&lt;td&gt;string 集合，member 唯一，score 可重复。score是 double 类型，根据 score 为 member 从小到大排序&lt;/td&gt;
+&lt;td&gt;数据插入时已排序&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;zadd zset_key score member&lt;/code&gt;/&lt;code&gt;ZEANGEBYSCORE zset_key score1 score2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;排行榜；带权重的消息队列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;1-5-redis-数据库&#34;&gt;1.5 Redis 数据库&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个 Redis 示例提供了多个字典用于存储数据。客户端可指定存储的字典。每个字典可理解成一个独立的数据库。每个数据库数据隔离不共享&lt;/li&gt;
+&lt;li&gt;Redis 不支持自定义数据名字，每个数据库以编号(0 开始)命名。默认支持 16 个数据库，可通过配置文件修改&lt;/li&gt;
+&lt;li&gt;客户端连接 Redis 之后，默认选择 0 号数据库，可使用 &lt;code&gt;SELECT db_no&lt;/code&gt; 更换数据库&lt;/li&gt;
+&lt;li&gt;局限性
+
+&lt;ul&gt;
+&lt;li&gt;开发者需要自己记录每个数据库存储的数据&lt;/li&gt;
+&lt;li&gt;不支持为每个数据库单独设置密码。所以所有数据库的权限是绑定的&lt;/li&gt;
+&lt;li&gt;多个数据库不是完全隔离，如 &lt;code&gt;FLUSHALL&lt;/code&gt; 可清除一个 Redis 示例所有数据库的数据。所以不建议多个应用程序使用一个 Redis 实例的不同数据库存储数据。且 Redis 是轻量级的，一个空的实例占用内存很小&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2 Redis 命令</title>
+      <link>https://xueqing.github.io/blog/database/redis/2_command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/redis/2_command/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e5%91%bd%e4%bb%a4&#34;&gt;2.1 命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e9%94%ae%e5%91%bd%e4%bb%a4&#34;&gt;2.2 键命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%91%bd%e4%bb%a4&#34;&gt;2.3 字符串命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#24-%e5%93%88%e5%b8%8c%e5%91%bd%e4%bb%a4&#34;&gt;2.4 哈希命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#25-%e5%88%97%e8%a1%a8%e5%91%bd%e4%bb%a4&#34;&gt;2.5 列表命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#26-%e9%9b%86%e5%90%88%e5%91%bd%e4%bb%a4&#34;&gt;2.6 集合命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#27-%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e5%91%bd%e4%bb%a4&#34;&gt;2.7 有序集合命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#28-redis-hyperloglog-%e5%91%bd%e4%bb%a4&#34;&gt;2.8 Redis HyperLogLog 命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#29-redis-%e5%8f%91%e5%b8%83%e8%ae%a2%e9%98%85%e5%91%bd%e4%bb%a4&#34;&gt;2.9 Redis 发布订阅命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#210-redis-%e4%ba%8b%e5%8a%a1%e5%91%bd%e4%bb%a4&#34;&gt;2.10 Redis 事务命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#211-redis-%e8%84%9a%e6%9c%ac%e5%91%bd%e4%bb%a4&#34;&gt;2.11 Redis 脚本命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#212-redis-%e8%bf%9e%e6%8e%a5%e5%91%bd%e4%bb%a4&#34;&gt;2.12 Redis 连接命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#213-redis-%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%91%bd%e4%bb%a4&#34;&gt;2.13 Redis 服务器命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-命令&#34;&gt;2.1 命令&lt;/h2&gt;
+
+&lt;p&gt;通过 Redis 客户端再 Redis 服务上执行 Redis 命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 启动客户端，连接本地 redis 服务
+redis-cli
+# 检查 redis 服务是否启动
+PING
+# 连接远程 redis 服务
+redis-cli -h host -p port -a password
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;避免中文乱码 &lt;code&gt;redis-cli --raw&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-2-键命令&#34;&gt;2.2 键命令&lt;/h2&gt;
+
+&lt;p&gt;用于管理 redis 的 key：&lt;code&gt;COMMAND key_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;DEL key&lt;/td&gt;
+&lt;td&gt;key 存在时删除 key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DUMP key&lt;/td&gt;
+&lt;td&gt;序列化 key，返回被序列化的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;EXISTS key&lt;/td&gt;
+&lt;td&gt;检查 key 是否存在&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;EXPIRE key seconds&lt;/td&gt;
+&lt;td&gt;为给定 key 设置过期时间，以秒计&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;EXPIREAT key timestamp&lt;/td&gt;
+&lt;td&gt;EXPIREAT 的作用和 EXPIRE 类似，都用于为 key 设置过期时间。EXPIREAT 命令接受的时间参数是 UNIX 时间戳(unix timestamp)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PEXPIRE key milliseconds&lt;/td&gt;
+&lt;td&gt;设置 key 的过期时间以毫秒计&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PEXPIREAT key milliseconds-timestamp&lt;/td&gt;
+&lt;td&gt;设置 key 过期时间的时间戳(unix timestamp) 以毫秒计&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;KEYS pattern&lt;/td&gt;
+&lt;td&gt;查找所有符合给定模式(pattern)的 key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MOVE key db&lt;/td&gt;
+&lt;td&gt;将当前数据库的 key 移动到给定的数据库 db 当中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PERSIST key&lt;/td&gt;
+&lt;td&gt;移除 key 的过期时间，key 将持久保持&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PTTL key&lt;/td&gt;
+&lt;td&gt;以毫秒为单位返回 key 的剩余的过期时间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;TTL key&lt;/td&gt;
+&lt;td&gt;以秒为单位，返回给定 key 的剩余生存时间(TTL, time to live)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RANDOMKEY&lt;/td&gt;
+&lt;td&gt;从当前数据库中随机返回一个 key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RENAME key newkey&lt;/td&gt;
+&lt;td&gt;修改 key 的名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RENAMENX key newkey&lt;/td&gt;
+&lt;td&gt;仅当 newkey 不存在时，将 key 改名为 newkey&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;TYPE key&lt;/td&gt;
+&lt;td&gt;返回 key 所储存的值的类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-3-字符串命令&#34;&gt;2.3 字符串命令&lt;/h2&gt;
+
+&lt;p&gt;用于管理字符串值：&lt;code&gt;COMMAND key_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SET key value&lt;/td&gt;
+&lt;td&gt;设置 key 的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GET key&lt;/td&gt;
+&lt;td&gt;获取 key 的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GETRANGE key start end&lt;/td&gt;
+&lt;td&gt;返回 key 中字符串值的子字符&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GETSET key value&lt;/td&gt;
+&lt;td&gt;将 key 的值设为 value ，并返回 key 的旧值(old value)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GETBIT key offset&lt;/td&gt;
+&lt;td&gt;对 key 所储存的字符串值，获取指定偏移量上的位(bit)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MGET key1 [key2..]&lt;/td&gt;
+&lt;td&gt;获取所有(一个或多个)给定 key 的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SETBIT key offset value&lt;/td&gt;
+&lt;td&gt;对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SETEX key seconds value&lt;/td&gt;
+&lt;td&gt;将值 value 关联到 key ，并将 key 的过期时间设为 seconds (秒)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SETNX key value&lt;/td&gt;
+&lt;td&gt;只有在 key 不存在时设置 key 的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SETRANGE key offset value&lt;/td&gt;
+&lt;td&gt;用 value 覆写给定 key 所储存的字符串值，从偏移量 offset 开始&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;STRLEN key&lt;/td&gt;
+&lt;td&gt;返回 key 所储存的字符串值的长度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MSET key value [key value &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;同时设置一个或多个 key-value 对&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MSETNX key value [key value &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PSETEX key milliseconds value&lt;/td&gt;
+&lt;td&gt;和 SETEX 命令相似，以毫秒为单位设置 key 的生存时间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;INCR key&lt;/td&gt;
+&lt;td&gt;将 key 中储存的数字值增一&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;INCRBY key increment&lt;/td&gt;
+&lt;td&gt;将 key 所储存的值加上给定的增量值(increment)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;INCRBYFLOAT key increment&lt;/td&gt;
+&lt;td&gt;将 key 所储存的值加上给定的浮点增量值(increment)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DECR key&lt;/td&gt;
+&lt;td&gt;将 key 中储存的数字值减 1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DECRBY key decrement&lt;/td&gt;
+&lt;td&gt;key 所储存的值减去给定的减量值(decrement)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;APPEND key value&lt;/td&gt;
+&lt;td&gt;如果 key 已经存在并且是一个字符串， 将 value 追加到该 key 原来值的末尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-4-哈希命令&#34;&gt;2.4 哈希命令&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;HDEL key field1 [field2]&lt;/td&gt;
+&lt;td&gt;删除一个或多个哈希表字段&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HEXISTS key field&lt;/td&gt;
+&lt;td&gt;查看哈希表 key 中，指定的字段是否存在&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HGET key field&lt;/td&gt;
+&lt;td&gt;获取存储在哈希表中指定字段的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HGETALL key&lt;/td&gt;
+&lt;td&gt;获取在哈希表中指定 key 的所有字段和值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HINCRBY key field increment&lt;/td&gt;
+&lt;td&gt;为哈希表 key 中的指定字段的整数值加上增量 increment&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HINCRBYFLOAT key field increment&lt;/td&gt;
+&lt;td&gt;为哈希表 key 中的指定字段的浮点数值加上增量 increment&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HKEYS key&lt;/td&gt;
+&lt;td&gt;获取所有哈希表中的字段&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HLEN key&lt;/td&gt;
+&lt;td&gt;获取哈希表中字段的数量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HMGET key field1 [field2]&lt;/td&gt;
+&lt;td&gt;获取所有给定字段的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HMSET key field1 value1 [field2 value2 ]&lt;/td&gt;
+&lt;td&gt;同时将多个 field-value (域-值)对设置到哈希表 key 中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HSET key field value&lt;/td&gt;
+&lt;td&gt;将哈希表 key 中的字段 field 的值设为 value&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HSETNX key field value&lt;/td&gt;
+&lt;td&gt;只有在字段 field 不存在时，设置哈希表字段的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HVALS key&lt;/td&gt;
+&lt;td&gt;获取哈希表中所有值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;HSCAN key cursor [MATCH pattern] [COUNT count]&lt;/td&gt;
+&lt;td&gt;迭代哈希表中的键值对&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-5-列表命令&#34;&gt;2.5 列表命令&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;BLPOP key1 [key2 ] timeout&lt;/td&gt;
+&lt;td&gt;移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;BRPOP key1 [key2 ] timeout&lt;/td&gt;
+&lt;td&gt;移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;BRPOPLPUSH source destination timeout&lt;/td&gt;
+&lt;td&gt;从列表中弹出一个值，将弹出的元素插入到另外一个列表中并返回它； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LINDEX key index&lt;/td&gt;
+&lt;td&gt;通过索引获取列表中的元&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LINSERT key BEFORE&lt;/td&gt;
+&lt;td&gt;AFTER pivot value&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LLEN key&lt;/td&gt;
+&lt;td&gt;获取列表长&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LPOP key&lt;/td&gt;
+&lt;td&gt;移出并获取列表的第一个元&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LPUSH key value1 [value2]&lt;/td&gt;
+&lt;td&gt;将一个或多个值插入到列表头&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LPUSHX key value&lt;/td&gt;
+&lt;td&gt;将一个值插入到已存在的列表头&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LRANGE key start stop&lt;/td&gt;
+&lt;td&gt;获取列表指定范围内的元&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LREM key count value&lt;/td&gt;
+&lt;td&gt;移除列表元&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LSET key index value&lt;/td&gt;
+&lt;td&gt;通过索引设置列表元素的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LTRIM key start stop&lt;/td&gt;
+&lt;td&gt;对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RPOP key&lt;/td&gt;
+&lt;td&gt;移除列表的最后一个元素，返回值为移除的元素&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RPOPLPUSH source destination&lt;/td&gt;
+&lt;td&gt;移除列表的最后一个元素，并将该元素添加到另一个列表并返&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RPUSH key value1 [value2]&lt;/td&gt;
+&lt;td&gt;在列表中添加一个或多个&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RPUSHX key value&lt;/td&gt;
+&lt;td&gt;为已存在的列表添加&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-6-集合命令&#34;&gt;2.6 集合命令&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SADD key member1 [member2]&lt;/td&gt;
+&lt;td&gt;向集合添加一个或多个成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SCARD key&lt;/td&gt;
+&lt;td&gt;获取集合的成员数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SDIFF key1 [key2]&lt;/td&gt;
+&lt;td&gt;返回给定所有集合的差集&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SDIFFSTORE destination key1 [key2]&lt;/td&gt;
+&lt;td&gt;返回给定所有集合的差集并存储在 destination 中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SINTER key1 [key2]&lt;/td&gt;
+&lt;td&gt;返回给定所有集合的交集&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SINTERSTORE destination key1 [key2]&lt;/td&gt;
+&lt;td&gt;返回给定所有集合的交集并存储在 destination 中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SISMEMBER key member&lt;/td&gt;
+&lt;td&gt;判断 member 元素是否是集合 key 的成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SMEMBERS key&lt;/td&gt;
+&lt;td&gt;返回集合中的所有成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SMOVE source destination member&lt;/td&gt;
+&lt;td&gt;将 member 元素从 source 集合移动到 destination 集合&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SPOP key&lt;/td&gt;
+&lt;td&gt;移除并返回集合中的一个随机元素&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SRANDMEMBER key [count]&lt;/td&gt;
+&lt;td&gt;返回集合中一个或多个随机数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SREM key member1 [member2]&lt;/td&gt;
+&lt;td&gt;移除集合中一个或多个成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SUNION key1 [key2]&lt;/td&gt;
+&lt;td&gt;返回所有给定集合的并集&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SUNIONSTORE destination key1 [key2]&lt;/td&gt;
+&lt;td&gt;所有给定集合的并集存储在 destination 集合中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SSCAN key cursor [MATCH pattern] [COUNT count]&lt;/td&gt;
+&lt;td&gt;迭代集合中的元素&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-7-有序集合命令&#34;&gt;2.7 有序集合命令&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ZADD key score1 member1 [score2 member2]&lt;/td&gt;
+&lt;td&gt;向有序集合添加一个或多个成员，或者更新已存在成员的分数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZCARD key&lt;/td&gt;
+&lt;td&gt;获取有序集合的成员数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZCOUNT key min max&lt;/td&gt;
+&lt;td&gt;计算在有序集合中指定区间分数的成员数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZINCRBY key increment member&lt;/td&gt;
+&lt;td&gt;有序集合中对指定成员的分数加上增量 increment&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZINTERSTORE destination numkeys key [key &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;计算给定的一个或多个有序集的交集并将结果集存储在新的有序集合 key 中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZLEXCOUNT key min max&lt;/td&gt;
+&lt;td&gt;在有序集合中计算指定字典区间内成员数量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZRANGE key start stop [WITHSCORES]&lt;/td&gt;
+&lt;td&gt;通过索引区间返回有序集合成指定区间内的成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZRANGEBYLEX key min max [LIMIT offset count]&lt;/td&gt;
+&lt;td&gt;通过字典区间返回有序集合的成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]&lt;/td&gt;
+&lt;td&gt;通过分数返回有序集合指定区间内的成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZRANK key member&lt;/td&gt;
+&lt;td&gt;返回有序集合中指定成员的索引&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZREM key member [member &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;移除有序集合中的一个或多个成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZREMRANGEBYLEX key min max&lt;/td&gt;
+&lt;td&gt;移除有序集合中给定的字典区间的所有成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZREMRANGEBYRANK key start stop&lt;/td&gt;
+&lt;td&gt;移除有序集合中给定的排名区间的所有成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZREMRANGEBYSCORE key min max&lt;/td&gt;
+&lt;td&gt;移除有序集合中给定的分数区间的所有成员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZREVRANGE key start stop [WITHSCORES]&lt;/td&gt;
+&lt;td&gt;返回有序集中指定区间内的成员，通过索引，分数从高到底&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZREVRANGEBYSCORE key max min [WITHSCORES]&lt;/td&gt;
+&lt;td&gt;返回有序集中指定分数区间内的成员，分数从高到低排序&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZREVRANK key member&lt;/td&gt;
+&lt;td&gt;返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZSCORE key member&lt;/td&gt;
+&lt;td&gt;返回有序集中，成员的分数值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZUNIONSTORE destination numkeys key [key &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;计算给定的一个或多个有序集的并集，并存储在新的 key 中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ZSCAN key cursor [MATCH pattern] [COUNT count]&lt;/td&gt;
+&lt;td&gt;迭代有序集合中的元素(包括元素成员和元素分值)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)其实不太准确&lt;/p&gt;
+
+&lt;p&gt;在redis sorted sets里面当items内容大于64的时候同时使用了hash和skiplist两种设计实现。这也会为了排序和查找性能做的优化。所以如上可知：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;添加和删除都需要修改skiplist，所以复杂度为O(log(n))。但是如果仅仅是查找元素的话可以直接使用hash，其复杂度为O(1)。
+其他的range操作复杂度一般为O(log(n))。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;当然如果是小于64的时候，因为是采用了ziplist的设计，其时间复杂度为O(n)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;2-8-redis-hyperloglog-命令&#34;&gt;2.8 Redis HyperLogLog 命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 2.8.9 版本添加 HyperLogLog 结构，用于做基数统计&lt;/li&gt;
+&lt;li&gt;优点：输入元素的数量或提交非常大时，计算基数所需空间小且固定&lt;/li&gt;
+&lt;li&gt;原因：HyperLogLog 只根据输入元素计算基数，不会存储元素本身。所以也不能返回输入的各个元素&lt;/li&gt;
+&lt;li&gt;基数估计：在误差可接受范围内，快速计算基数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PFADD key element [element &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;添加指定元素到 HyperLogLog 中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PFCOUNT key [key &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;返回给定 HyperLogLog 的基数估算值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PFMERGE destkey sourcekey [sourcekey &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;将多个 HyperLogLog 合并为一个 HyperLogLog&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-9-redis-发布订阅命令&#34;&gt;2.9 Redis 发布订阅命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 发布订阅(pub/sub)是一种消息通信模式：发送者发送消息，订阅者接收消息
+
+&lt;ul&gt;
+&lt;li&gt;Redis 客户端可以订阅任意数量的频道&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PSUBSCRIBE pattern [pattern &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;订阅一个或多个符合给定模式的频道&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PUBSUB subcommand [argument [argument &amp;hellip;]]&lt;/td&gt;
+&lt;td&gt;查看订阅与发布系统状态&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PUBLISH channel message&lt;/td&gt;
+&lt;td&gt;将信息发送到指定的频道&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PUNSUBSCRIBE [pattern [pattern &amp;hellip;]]&lt;/td&gt;
+&lt;td&gt;退订所有给定模式的频道&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SUBSCRIBE channel [channel &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;订阅给定的一个或多个频道的信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;UNSUBSCRIBE [channel [channel &amp;hellip;]]&lt;/td&gt;
+&lt;td&gt;退订给定的频道&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-10-redis-事务命令&#34;&gt;2.10 Redis 事务命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 事务可一次执行多个命令，且保证
+
+&lt;ul&gt;
+&lt;li&gt;批量操作在发送 EXEC 命令前被放入缓存队列&lt;/li&gt;
+&lt;li&gt;收到 EXEC 命令后进入事务执行，事务中任意命令执行失败，其余命令仍旧执行&lt;/li&gt;
+&lt;li&gt;事务执行过程中，其他客户端提交的命令请求不会插入到事务执行命令序列&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一个事务从开始到执行有三个阶段：开始事务、命令入列、执行事务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：单个 Redis 命令的执行是原子性的。但 Redis 未在事务上增加维护原子性的机制，所以 Redis 事务的执行不是原子性的
+
+&lt;ul&gt;
+&lt;li&gt;事务可理解为一个打包的批量执行脚本，但批量指令不是原子化的，中间指令的失败不会回滚前面已做指令，也不会停止执行后续指令&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;事务的原子性是指：事务要么完整的被执行，要么完全不执行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;DISCARD&lt;/td&gt;
+&lt;td&gt;取消事务，放弃执行事务块内的所有命令&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;EXEC&lt;/td&gt;
+&lt;td&gt;执行所有事务块内的命令&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MULTI&lt;/td&gt;
+&lt;td&gt;标记一个事务块的开始&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;UNWATCH&lt;/td&gt;
+&lt;td&gt;取消 WATCH 命令对所有 key 的监视&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;WATCH key [key &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-11-redis-脚本命令&#34;&gt;2.11 Redis 脚本命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 脚本使用 Lua 解释器执行脚本。Redis 2.6 内嵌支持 Lua 环境&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EVAL script numkeys key [key &amp;hellip;] arg [arg &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;执行 Lua 脚本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;EVALSHA sha1 numkeys key [key &amp;hellip;] arg [arg &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;执行 Lua 脚本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SCRIPT EXISTS script [script &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;查看指定的脚本是否已经被保存在缓存当中&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SCRIPT FLUSH&lt;/td&gt;
+&lt;td&gt;从脚本缓存中移除所有脚本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SCRIPT KILL&lt;/td&gt;
+&lt;td&gt;杀死当前正在运行的 Lua 脚本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SCRIPT LOAD script&lt;/td&gt;
+&lt;td&gt;将脚本 script 添加到脚本缓存中，但并不立即执行这个脚本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-12-redis-连接命令&#34;&gt;2.12 Redis 连接命令&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;AUTH password&lt;/td&gt;
+&lt;td&gt;验证密码是否正确&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ECHO message&lt;/td&gt;
+&lt;td&gt;打印字符串&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PING&lt;/td&gt;
+&lt;td&gt;查看服务是否运行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;QUIT&lt;/td&gt;
+&lt;td&gt;关闭当前连接&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SELECT index&lt;/td&gt;
+&lt;td&gt;切换到指定的数据库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-13-redis-服务器命令&#34;&gt;2.13 Redis 服务器命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;INFO&lt;/code&gt; 命令获取 Redis 服务器的统计信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;BGREWRITEAOF&lt;/td&gt;
+&lt;td&gt;异步执行一个 AOF(AppendOnly File) 文件重写操作&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;BGSAVE&lt;/td&gt;
+&lt;td&gt;在后台异步保存当前数据库的数据到磁盘&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT KILL [ip:port] [ID client-id]&lt;/td&gt;
+&lt;td&gt;关闭客户端连接&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT LIST&lt;/td&gt;
+&lt;td&gt;获取连接到服务器的客户端连接列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT GETNAME&lt;/td&gt;
+&lt;td&gt;获取连接的名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT PAUSE timeout&lt;/td&gt;
+&lt;td&gt;在指定时间内终止运行来自客户端的命令&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT SETNAME connection-name&lt;/td&gt;
+&lt;td&gt;设置当前连接的名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLUSTER SLOTS&lt;/td&gt;
+&lt;td&gt;获取集群节点的映射数组&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;COMMAND&lt;/td&gt;
+&lt;td&gt;获取 Redis 命令详情数组&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;COMMAND COUNT&lt;/td&gt;
+&lt;td&gt;获取 Redis 命令总数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;COMMAND GETKEYS&lt;/td&gt;
+&lt;td&gt;获取给定命令的所有键&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;TIME&lt;/td&gt;
+&lt;td&gt;返回当前服务器时间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;COMMAND INFO command-name [command-name &amp;hellip;]&lt;/td&gt;
+&lt;td&gt;获取指定 Redis 命令描述的数组&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CONFIG GET parameter&lt;/td&gt;
+&lt;td&gt;获取指定配置参数的值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CONFIG REWRITE&lt;/td&gt;
+&lt;td&gt;对启动 Redis 服务器时所指定的 redis.conf 配置文件进行改写&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CONFIG SET parameter value&lt;/td&gt;
+&lt;td&gt;修改 redis 配置参数，无需重启&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CONFIG RESETSTAT&lt;/td&gt;
+&lt;td&gt;重置 INFO 命令中的某些统计数据&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DBSIZE&lt;/td&gt;
+&lt;td&gt;返回当前数据库的 key 的数量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DEBUG OBJECT key&lt;/td&gt;
+&lt;td&gt;获取 key 的调试信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DEBUG SEGFAULT&lt;/td&gt;
+&lt;td&gt;让 Redis 服务崩溃&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;FLUSHALL&lt;/td&gt;
+&lt;td&gt;删除所有数据库的所有key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;FLUSHDB&lt;/td&gt;
+&lt;td&gt;删除当前数据库的所有key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;INFO [section]&lt;/td&gt;
+&lt;td&gt;获取 Redis 服务器的各种信息和统计数值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LASTSAVE&lt;/td&gt;
+&lt;td&gt;返回最近一次 Redis 成功将数据保存到磁盘上的时间，以 UNIX 时间戳格式表示&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MONITOR&lt;/td&gt;
+&lt;td&gt;实时打印出 Redis 服务器接收到的命令，调试用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ROLE&lt;/td&gt;
+&lt;td&gt;返回主从实例所属的角色&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SAVE&lt;/td&gt;
+&lt;td&gt;同步保存数据到硬盘&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SHUTDOWN [NOSAVE] [SAVE]&lt;/td&gt;
+&lt;td&gt;异步保存数据到硬盘，并关闭服务器&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SLAVEOF host port&lt;/td&gt;
+&lt;td&gt;将当前服务器转变为指定服务器的从属服务器(slave server)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SLOWLOG subcommand [argument]&lt;/td&gt;
+&lt;td&gt;管理 redis 的慢日志&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SYNC&lt;/td&gt;
+&lt;td&gt;用于复制功能(replication)的内部命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3 Redis 进阶</title>
+      <link>https://xueqing.github.io/blog/database/redis/3_advanced/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/redis/3_advanced/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-redis-%e6%95%b0%e6%8d%ae%e5%a4%87%e4%bb%bd%e4%b8%8e%e6%81%a2%e5%a4%8d&#34;&gt;3.1 Redis 数据备份与恢复&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-redis-%e5%ae%89%e5%85%a8&#34;&gt;3.2 Redis 安全&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#33-redis-%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95&#34;&gt;3.3 Redis 性能测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#34-redis-%e5%ae%a2%e6%88%b7%e7%ab%af%e5%91%bd%e4%bb%a4&#34;&gt;3.4 Redis 客户端命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#35-redis-%e7%ae%a1%e9%81%93%e6%8a%80%e6%9c%af&#34;&gt;3.5 Redis 管道技术&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#36-redis-%e5%88%86%e5%8c%ba&#34;&gt;3.6 Redis 分区&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-1-redis-数据备份与恢复&#34;&gt;3.1 Redis 数据备份与恢复&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SAVE&lt;/td&gt;
+&lt;td&gt;创建当前数据库的备份，在 Redis 安装目录创建 dump.rdb 文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CONFIG GET dir&lt;/td&gt;
+&lt;td&gt;获取 Redis 安装目录。将备份文件 dump.rdb 移动到安装目录并启动服务即可&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;BGSAVE&lt;/td&gt;
+&lt;td&gt;在后台执行命令，创建 Redis 备份文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;3-2-redis-安全&#34;&gt;3.2 Redis 安全&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过配置文件设置密码，使得客户端连接到 Redis 服务需要密码验证&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CONFIG get requirepass&lt;/td&gt;
+&lt;td&gt;查看是否设置了密码验证。默认 requirepass 参数为空，即无需密码&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CONFIG set requirepass password&lt;/td&gt;
+&lt;td&gt;设置密码。之后客户端连接 Redis 服务需要密码验证&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;AUTH password&lt;/td&gt;
+&lt;td&gt;输入密码验证&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;3-3-redis-性能测试&#34;&gt;3.3 Redis 性能测试&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过同时执行多个命令实现性能测试&lt;/li&gt;
+&lt;li&gt;基本命令 &lt;code&gt;redis-benchmark [option] [option value]&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 Redis 安装目录下执行&lt;/li&gt;
+&lt;li&gt;不是 Redis 客户端的内部命令&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;可选参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;默认值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-h&lt;/td&gt;
+&lt;td&gt;指定服务器主机名&lt;/td&gt;
+&lt;td&gt;127.0.0.1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-p&lt;/td&gt;
+&lt;td&gt;指定服务器端口&lt;/td&gt;
+&lt;td&gt;6379&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-s&lt;/td&gt;
+&lt;td&gt;指定服务器 socket&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-c&lt;/td&gt;
+&lt;td&gt;指定并发连接数&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-n&lt;/td&gt;
+&lt;td&gt;指定请求数&lt;/td&gt;
+&lt;td&gt;10000&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-d&lt;/td&gt;
+&lt;td&gt;以字节的形式指定 SET/GET 值的数据大小&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-k&lt;/td&gt;
+&lt;td&gt;1=keep alive 0=reconnect&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-r&lt;/td&gt;
+&lt;td&gt;SET/GET/INCR 使用随机 key, SADD 使用随机值&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-P&lt;/td&gt;
+&lt;td&gt;通过管道传输 numreq 请求&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-q&lt;/td&gt;
+&lt;td&gt;强制退出 redis。仅显示 query/sec 值&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;csv&lt;/td&gt;
+&lt;td&gt;以 CSV 格式输出&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-l&lt;/td&gt;
+&lt;td&gt;生成循环，永久执行测试&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-t&lt;/td&gt;
+&lt;td&gt;仅运行以逗号分隔的测试命令列表&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-I&lt;/td&gt;
+&lt;td&gt;Idle 模式。仅打开 N 个 idle 连接并等待&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;3-4-redis-客户端命令&#34;&gt;3.4 Redis 客户端命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 通过监听一个 TCP 端口或 Unix socket 方式接收来自客户端的连接。建立一个连接后，Redis 内部会进行
+
+&lt;ul&gt;
+&lt;li&gt;客户端 socket 被设置为非阻塞模式，因为 Redis 在网络事件处理上采用的是非阻塞多路复用模型&lt;/li&gt;
+&lt;li&gt;为该 socket 设置 TCP_NODELAY 属性，禁用 Nagle 算法&lt;/li&gt;
+&lt;li&gt;创建一个可读的文件事件用于监听该客户端 socket 的数据发送&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;最大连接数： Redis 2.4 中，最大连接数被硬编码到代码内部。2.6 之后可配置
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CONFIG get maxclients&lt;/code&gt; 查看最大连接数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CONFIG set maxclients 1000&lt;/code&gt; 修改最大连接数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;redis-server --maxclients 10000&lt;/code&gt; 在服务启动时设置最大连接数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CLIENT LIST&lt;/td&gt;
+&lt;td&gt;返回连接到 Redis 服务的客户端列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT SETNAME&lt;/td&gt;
+&lt;td&gt;设置当前连接的名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT GETNAME&lt;/td&gt;
+&lt;td&gt;获取通过 CLIENT SETNAME 命令设置的服务名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT PAUSE&lt;/td&gt;
+&lt;td&gt;挂起客户端连接，指定挂起的时间以毫秒计&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CLIENT KILL&lt;/td&gt;
+&lt;td&gt;关闭&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;3-5-redis-管道技术&#34;&gt;3.5 Redis 管道技术&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 是一种基于客户端-服务端模型以及请求/响应协议的 TCP 服务。一般步骤
+
+&lt;ul&gt;
+&lt;li&gt;客户端向服务端发送一个查询请求，并监听 socket 返回。通常以阻塞模式，等待服务端响应&lt;/li&gt;
+&lt;li&gt;服务端处理命令，将结果返回给客户端&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Redis 管道技术可在服务端未响应时，客户端可继续向服务端发送请求，并最终一次性读取所有服务端的响应&lt;/li&gt;
+&lt;li&gt;管道技术提高了 Redis 服务的性能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-6-redis-分区&#34;&gt;3.6 Redis 分区&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分区是分割数据到多个 Redis 实例的处理过程。每个实例只保存 key 的一个子集&lt;/li&gt;
+&lt;li&gt;优势
+
+&lt;ul&gt;
+&lt;li&gt;通过利用多台计算机内存的和值，使得可以构造更大的数据库&lt;/li&gt;
+&lt;li&gt;通过多核和多台计算机，支持扩展计算能力；通过多台计算机和网络适配器，支持扩展网络带宽&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;不足
+
+&lt;ul&gt;
+&lt;li&gt;通常不支持涉及多个 key 的操作。如，当两个 set 映射到不同的 Redis 实例上时，不能对两个 set 做交集操作&lt;/li&gt;
+&lt;li&gt;不能使用涉及多个 key 的 Redis 事务&lt;/li&gt;
+&lt;li&gt;数据处理复杂。如，需要处理多个 rdb/aof 文件，并且从多个实例和主机备份持久化文件&lt;/li&gt;
+&lt;li&gt;增删容量复杂。Redis 集群大多支持在运行时增删节点的透明数据平衡能力。类似于客户端分区、代理等其他系统则不支持此特性。可参考 presharding 技术&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;分区类型
+
+&lt;ul&gt;
+&lt;li&gt;范围分区：映射一定范围的对象到特定的 Redis 实例&lt;/li&gt;
+&lt;li&gt;不足：要有一个区间范围到实例的映射表，要管理表和各种对象的映射表&lt;/li&gt;
+&lt;li&gt;哈希分区：对任何 key 都适用。操作方法&lt;/li&gt;
+&lt;li&gt;用一个 hash 函数将 key 转换为一个数字&lt;/li&gt;
+&lt;li&gt;对整数取模(按照 Redis 实例数目)，从而映射到其中一个 Redis 实例&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4 Redis VM 技术</title>
+      <link>https://xueqing.github.io/blog/database/redis/4_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/database/redis/4_vm/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e5%89%8d%e8%a8%80&#34;&gt;4.1 前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e7%ae%80%e5%8d%95%e8%a7%a3%e9%87%8a-vm&#34;&gt;4.2 简单解释 VM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e4%bd%95%e6%97%b6%e4%bd%bf%e7%94%a8-vm-%e6%98%af%e4%b8%aa%e5%a5%bd%e4%b8%bb%e6%84%8f&#34;&gt;4.3 何时使用 VM 是个好主意&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#44-vm-%e9%85%8d%e7%bd%ae&#34;&gt;4.4 VM 配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#45-%e8%ae%be%e7%bd%ae-vm-max-memory&#34;&gt;4.5 设置 vm-max-memory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#46-%e9%85%8d%e7%bd%ae-swap-%e6%96%87%e4%bb%b6&#34;&gt;4.6 配置 swap 文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#47-%e7%ba%bf%e7%a8%8b%e5%bc%8f-vm-vs-%e9%98%bb%e5%a1%9e%e5%bc%8f-vm&#34;&gt;4.7 线程式 VM vs 阻塞式 VM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#48-%e9%9c%80%e8%a6%81%e7%9f%a5%e9%81%93%e7%9a%84%e4%b8%80%e4%ba%9b%e4%ba%8b&#34;&gt;4.8 需要知道的一些事&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#481-swap-%e6%96%87%e4%bb%b6%e7%9a%84%e5%a5%bd%e4%bd%8d%e7%bd%ae&#34;&gt;4.8.1 swap 文件的好位置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#482-%e7%9b%91%e8%a7%86-vm&#34;&gt;4.8.2 监视 VM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#483-%e5%bc%80%e5%90%af-vm-%e7%9a%84-redisrdb-%e6%96%87%e4%bb%b6-%e5%92%8c-%e5%8f%aa%e8%83%bd%e8%bf%bd%e5%8a%a0%e7%9a%84%e6%96%87%e4%bb%b6%e5%93%aa%e4%b8%aa%e5%a5%bd&#34;&gt;4.8.3 开启 VM 的 Redis：.rdb 文件 和 只能追加的文件哪个好&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#484-%e5%b0%bd%e5%8f%af%e8%83%bd%e5%b0%91%e7%9a%84%e4%bd%bf%e7%94%a8%e5%86%85%e5%ad%98&#34;&gt;4.8.4 尽可能少的使用内存&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#49-vm-%e7%a8%b3%e5%ae%9a%e6%80%a7&#34;&gt;4.9 VM 稳定性&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#410-%e5%8f%82%e8%80%83&#34;&gt;4.10 参考&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#411-%e5%85%b6%e4%bb%96%e5%86%85%e5%ae%b9&#34;&gt;4.11 其他内容&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#4111-redis-%e5%af%b9%e8%b1%a1%e5%92%8c-vm-pointer&#34;&gt;4.11.1 Redis 对象和 VM pointer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4112-%e4%ba%a4%e6%8d%a2%e8%bf%87%e7%a8%8b&#34;&gt;4.11.2 交换过程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-1-前言&#34;&gt;4.1 前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;重要提示&lt;/strong&gt;：Redis VM(virtual memory) 现在已经弃用。2.4 是最新支持 VM 的版本(但警告不鼓励使用 VM)。我们发现使用 VM 有一些劣势和问题。在将来的 Redis，我们希望简单提供最好的内存数据库(但像往常一样持久化到磁盘)，至少现在不用考虑支持大于 RAM 大小的数据库。我们将来致力于提供脚本化、集群和更好的持久化&lt;/li&gt;
+&lt;li&gt;Redis VM 特性第一次出现在稳定的 Redis 2.0 发布版本。然而，VM 在 &lt;a href=&#34;http://github.com/antirez/redis&#34; target=&#34;_blank&#34;&gt;git&lt;/a&gt; 的不稳定分支上仍然可以获取，且稳定可测试&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-2-简单解释-vm&#34;&gt;4.2 简单解释 VM&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 遵循 key-value 模型。键和一些值关联。通常，Redis 将键和相关的值保存在内存。有时这不是最好的选项，所以在设计上必须把键放在内存(为了保证快速查找)，但是可以把较少使用的值交换到磁盘&lt;/li&gt;
+&lt;li&gt;在实际中，这意味着如果你在内存有 100 000 个键的数据集，但是只有 10% 的键经常使用，支持 VM 的 Redis 会尝试将较少使用的键关联的值转移到磁盘。当客户端的命令请求这些值时，这些值从 swap 文件加载到主存&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-3-何时使用-vm-是个好主意&#34;&gt;4.3 何时使用 VM 是个好主意&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在使用 VM 之前，你应该问自己你是否真的需要它。Redis 是磁盘备份，内存型数据库。正确使用 Redis 几乎总是有足够的 RAM 保存所有数据到内存。仍然有一些场景是不可能实现的
+
+&lt;ul&gt;
+&lt;li&gt;数据访问非常不均匀。只有小部分的键(比如网站上相关的活跃用户)被大量访问。同时每个键有大量的数据在内存中&lt;/li&gt;
+&lt;li&gt;不管数据访问模式和大量的值，只是没有足够的内存存放所有的数据。这种配置下，Redis 可当作磁盘型数据库，而键保存在内存，因此键查找很快，但是访问实际的值需要访问磁盘(较慢)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;需要记住一个重要的概念&lt;code&gt;Redis 不能交换键&lt;/code&gt;，因此如果内存问题的事实是键太多而对应的值很小，VM 不是解决方案&lt;/li&gt;
+&lt;li&gt;然而，如果因为值很大(比如大量的字符串、列表、集合或者有太多元素的哈希)而占用大量内存，VM 是一个好主意&lt;/li&gt;
+&lt;li&gt;有时候，可以通过哈希将相关的数据组合在一个键中，从而将“键很多，值很小”的问题转换成“键很少，值很大”的问题。比如，不要为对象的每个属性设置一个键，而是每个对象一个键，用哈希表示不同的属性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-4-vm-配置&#34;&gt;4.4 VM 配置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配置 VM 不难，但是需要根据需求仔细设置最好的参数&lt;/li&gt;
+&lt;li&gt;通过编辑 redis.conf 开启和配置 VM：&lt;code&gt;vm-enabled yes&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;其他一些配置选项可以改变 VM 行为。规则就是不想使用默认配置运行 Redis，因为每个问题和数据集需要一些微调以达到最好的优势&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-5-设置-vm-max-memory&#34;&gt;4.5 设置 vm-max-memory&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vm-max-memory&lt;/code&gt; 指定 Redis 在交换值到磁盘之前可以自由使用的内存大小&lt;/li&gt;
+&lt;li&gt;基本上，如果没有达到这个内存限制，Redis 不会交换对象，所有对象在内存中。一旦达到这个限制，Redis 会交换足够的对象以使内存降到限制以下&lt;/li&gt;
+&lt;li&gt;交换的对象主要是“年纪最大”(即未被使用的实际最长)，但是一个对象的“可交换性”与它在内存中大小的对数是成比例的。因此，虽然偏向更旧的对象，当“年纪”相同时首先交换更大的对象&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;警告&lt;/strong&gt;：因为不能交换键，在键使用空间大于内存时，Redis 不会考虑 &lt;code&gt;vm-max-memory&lt;/code&gt; 设置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vm-max-memory&lt;/code&gt; 最好的值是足够的 RAM 来保持数据工作集。在实际中，只要给 Redis 尽可能多的空间，交换过程更好&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-6-配置-swap-文件&#34;&gt;4.6 配置 swap 文件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis 使用交换文件将数据从内存转移到磁盘。交换文件和数据持久性无关，而且当一个 Redis 示例终止时可以被删除。但是，Redis 运行时，不应移动、删除或改变交换文件&lt;/li&gt;
+&lt;li&gt;因为在随机访问方式中经常使用 Redis 交换文件，把交换文件放在 SSD(solid state disk)会达到更好的性能&lt;/li&gt;
+&lt;li&gt;交换文件被分成页。一个值可以被交换到一个或多个页，但是一个页不能保存超过一个值&lt;/li&gt;
+&lt;li&gt;没有直接方式告诉 Redis 应该使用多大的交换文件。而是配置两个不同的值，二者相乘得到使用的字节数。可通过 redis.conf 配置两个参数
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vm-pages&lt;/code&gt;：交换文件的页数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vm-page-size&lt;/code&gt;：页的大小，以字节为单位&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;比如页大小是 32 bytes，总页数是 10 000 000，交换文件可以保存 320 MB 的数据&lt;/li&gt;
+&lt;li&gt;因为一个页不能保存超过一个值(但是一个值可以保存在多个页)，必须仔细设置这些参数。通常，最好的注意是设置页大小以便大部分值可以使用较少的页交换&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-7-线程式-vm-vs-阻塞式-vm&#34;&gt;4.7 线程式 VM vs 阻塞式 VM&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;另一个很重要的配置参数是 &lt;code&gt;vm-max-threads&lt;/code&gt;。默认值是 4&lt;/li&gt;
+&lt;li&gt;表示为了执行交换文件的 I/O 操作所用的线程数量最大值。一个好的值只要和系统的核数匹配即可&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0&lt;/code&gt; 会开启阻塞式 VM。当配置成阻塞式 VM 时，Redis 会以同步阻塞方式执行 I/O
+
+&lt;ul&gt;
+&lt;li&gt;客户端访问交换出去的值，从磁盘读时会阻塞其他客户端，因此客户端经历的延迟会变大，尤其当磁盘慢或者忙，或者磁盘有大的交换的值&lt;/li&gt;
+&lt;li&gt;阻塞式 VM 的性能总的来说较好，因为没有同步、线程创建、恢复等待值的阻塞客户端的时间损失。因此，如果愿意接受较高的延迟，阻塞式 VM 是个好的选择。尤其是交换很少发生，且大部分访问的数据都在内存时&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;相反，如果有大量的交换操作，且有许多核想要利用，而且通常不希望处理交换值的客户端阻塞其他客户端几毫秒(交换值很大的时候时间更长)，最好使用线程式 VM&lt;/li&gt;
+&lt;li&gt;鼓励使用不同的配置对数据集做实验。。。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-8-需要知道的一些事&#34;&gt;4.8 需要知道的一些事&lt;/h2&gt;
+
+&lt;h3 id=&#34;4-8-1-swap-文件的好位置&#34;&gt;4.8.1 swap 文件的好位置&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在很多配置中，交换文件可以很大，达到 40GB 甚至更大。不是所有类型的文件系统可以较好的处理大文件，尤其是 Mac OS X 文件系统在处理大文件方面比较差&lt;/li&gt;
+&lt;li&gt;建议使用 Linux ext3 文件系统，或者其他较好支持稀疏文件(sparse files)的文件系统。什么是稀疏文件呢？
+
+&lt;ul&gt;
+&lt;li&gt;稀疏文件大部分内容是空白的。高级的文件系统如 ext2，ext3，ext4，ReiserFS，Reiser4 等可以更有效地编码这些文件，并且在需要的时候为文件分配更多的空间，即文件更多的实际块被使用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;交换文件显然是非常稀疏的，尤其是当服务运行时间较短，或者相比交换出去的数据更大时。一个不支持稀疏文件的文件系统创建一个大文件时，有时会阻塞 Redis 流程&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-8-2-监视-vm&#34;&gt;4.8.2 监视 VM&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当有一个开启 VM 的 Redis 系统允许时，可能对它如何工作感兴趣：总共交换了多少对象，每秒交换和加载的对象数目等&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;有一个工具方便检查 VM 如何允许，是 &lt;a href=&#34;http://github.com/antirez/redis-tools&#34; target=&#34;_blank&#34;&gt;Redis 工具&lt;/a&gt;的一部分。这个工具叫做 &lt;code&gt;redis-stat&lt;/code&gt;，使用方式很直接：&lt;code&gt;./redis-stat vmstat&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;./redis-stat vmstat
+--------------- objects --------------- ------ pages ------ ----- memory -----
+load-in  swap-out  swapped   delta      used     delta      used     delta
+138837   1078936   800402    +800402    807620   +807620    209.50M  +209.50M
+4277     38011     829802    +29400     837441   +29821     206.47M  -3.03M
+3347     39508     862619    +32817     870340   +32899     202.96M  -3.51M
+4445     36943     890646    +28027     897925   +27585     199.92M  -3.04M
+10391    16902     886783    -3863      894104   -3821      200.22M  +309.56K
+8888     19507     888371    +1588      895678   +1574      200.05M  -171.81K
+8377     20082     891664    +3293      899850   +4172      200.10M  +53.55K
+9671     20210     892586    +922       899917   +67        199.82M  -285.30K
+10861    16723     887638    -4948      895003   -4914      200.13M  +312.35K
+9541     21945     890618    +2980      898004   +3001      199.94M  -197.11K
+9689     17257     888345    -2273      896405   -1599      200.27M  +337.77K
+10087    18784     886771    -1574      894577   -1828      200.36M  +91.60K
+9330     19350     887411    +640       894817   +240       200.17M  -189.72K
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;上述输出的 redis 服务开启了 VM，大约有 1 百万键，且有大量的同步加载使用 &lt;code&gt;redis-load&lt;/code&gt; 工具&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以从输出中看到，每秒都发生一些 load-in 和 swap-out 操作。注意第一行表示服务启动后实际的值，后续的行和前面的不一样&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果分配足够的内存来保存数据工作集，可能应该看到更少的交换发送，因为 redis-stat 是一个很有价值的工具来理解是否需要去商店购买 RAM&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-8-3-开启-vm-的-redis-rdb-文件-和-只能追加的文件哪个好&#34;&gt;4.8.3 开启 VM 的 Redis：.rdb 文件 和 只能追加的文件哪个好&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当开启 VM 时，保存和加载数据库是相当慢的操作。如果服务配置成使用最小的内存(即 &lt;code&gt;vm-max-memory&lt;/code&gt; 设置成 0)，在开启 VM 后，在 2 秒内加载的数据库通常需要 13 秒时间加载&lt;/li&gt;
+&lt;li&gt;因此，你可能想要切换配置使用只能追加的文件(Append Only File)来持久化，以便于你可以一直执行 &lt;code&gt;BGREWRITEAOF&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;需要注意当一个 &lt;code&gt;BGSAVE&lt;/code&gt; 或 &lt;code&gt;BGREWRITEAOF&lt;/code&gt; 在处理时，Redis 不会在磁盘上交换新的值。当有一个子进程访问 VM 时 VM 是只读的。因此如果一个工作的子进程有大量的写操作时，内存使用会增长
+
+&lt;ul&gt;
+&lt;li&gt;子进程在读 VM 时，主进程不能进行值交换操作。因为通常读完一次值，“年龄”变小，可能从 VM 取出，而交换新的值&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-8-4-尽可能少的使用内存&#34;&gt;4.8.4 尽可能少的使用内存&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;将 Redis 设置成磁盘型数据库，而只保存键在内存的一个有趣的设置是设置 &lt;code&gt;vm-max-memory&lt;/code&gt; 为 0。如果不介意更多延迟和较差的性能，但是想要非常大的值使用更少的内存，这个是好的设置&lt;/li&gt;
+&lt;li&gt;这种设置情况，应该首先尝试设置 VM 是阻塞式的(&lt;code&gt;vm-max-threads&lt;/code&gt; 为 0)，因为大业务量会导致很多交换操作，且和简单的阻塞式实现相比，线程会消耗大量的资源&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-9-vm-稳定性&#34;&gt;4.9 VM 稳定性&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VM 仍然是实验性代码，但是在过去的几周，在开发环境下用各种方式测试了 VM，甚至在一些生产环境。在测试阶段没有注意到 bug。但是在一些未控制的环境，且出于某些原因无法复现这些设置，会出现更加模糊的 bug&lt;/li&gt;
+&lt;li&gt;在这个阶段，鼓励在开发环境尝试 VM，甚至是生产环境下，当数据库不是关键型任务，比如大量持久化数据可以小时而不会有任何问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-10-参考&#34;&gt;4.10 参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://redis.io/topics/virtual-memory&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-11-其他内容&#34;&gt;4.11 其他内容&lt;/h2&gt;
+
+&lt;h3 id=&#34;4-11-1-redis-对象和-vm-pointer&#34;&gt;4.11.1 Redis 对象和 VM pointer&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;键值都是 Redis 的对象，但是当值被移到 VM 时，会变成 VM pointer。主要记录值在磁盘的信息，如记录对象在交换文件第几页、共使用几页等内容&lt;/li&gt;
+&lt;li&gt;Redis 对象和 VM pointer 都有一个字段 storage，用于判断值的位置
+
+&lt;ul&gt;
+&lt;li&gt;redis_vm_memory：在内存&lt;/li&gt;
+&lt;li&gt;redis_vm_swapped：在磁盘&lt;/li&gt;
+&lt;li&gt;redis_vm_loading：在磁盘，但目前正有进程将其加载到内存&lt;/li&gt;
+&lt;li&gt;redis_vm_swapping：在内存，但目前正有进程将其写入磁盘&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-11-2-交换过程&#34;&gt;4.11.2 交换过程&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;将对象交换到交换文件
+
+&lt;ul&gt;
+&lt;li&gt;计算保存此对象需要占用多少页&lt;/li&gt;
+&lt;li&gt;在交换文件中寻找一段连续空间保存此对象&lt;/li&gt;
+&lt;li&gt;把对象写入交换文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;将对象从交换文件取出到内存
+
+&lt;ul&gt;
+&lt;li&gt;VM pointer 记录了对象在文件的起始页和占用页数，直接加载到内存即可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;阻塞式 VM 在内存使用超过设定的 &lt;code&gt;vm-max-memory&lt;/code&gt; 时，会循环找到候选对象进行交换直到内存使用下降到设定值以下&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
