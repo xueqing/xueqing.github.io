@@ -1,0 +1,4564 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go 基础知识 | kiki</title>
+    <link>https://xueqing.github.io/blog/go/basic/</link>
+      <atom:link href="https://xueqing.github.io/blog/go/basic/index.xml" rel="self" type="application/rss+xml" />
+    <description>go 基础知识</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>go 基础知识</title>
+      <link>https://xueqing.github.io/blog/go/basic/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/blog/go/basic/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/readme/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;go_install.md&#34; target=&#34;_blank&#34;&gt;安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_struct.md&#34; target=&#34;_blank&#34;&gt;结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_basic_syntax.md&#34; target=&#34;_blank&#34;&gt;基础语法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_data_type.md&#34; target=&#34;_blank&#34;&gt;数据类型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_variables.md&#34; target=&#34;_blank&#34;&gt;变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_constant.md&#34; target=&#34;_blank&#34;&gt;常量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_operator.md&#34; target=&#34;_blank&#34;&gt;运算符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_decision_making.md&#34; target=&#34;_blank&#34;&gt;条件语句&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_loop.md&#34; target=&#34;_blank&#34;&gt;循环语句&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_function.md&#34; target=&#34;_blank&#34;&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_scope_rule.md&#34; target=&#34;_blank&#34;&gt;变量作用域&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_array.md&#34; target=&#34;_blank&#34;&gt;数组&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_pointer.md&#34; target=&#34;_blank&#34;&gt;指针&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_structure.md&#34; target=&#34;_blank&#34;&gt;结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_slice.md&#34; target=&#34;_blank&#34;&gt;切片&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_range.md&#34; target=&#34;_blank&#34;&gt;范围&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_map.md&#34; target=&#34;_blank&#34;&gt;散列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_recursive.md&#34; target=&#34;_blank&#34;&gt;递归函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_type_casting.md&#34; target=&#34;_blank&#34;&gt;类型转换&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_method.md&#34; target=&#34;_blank&#34;&gt;方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_interface.md&#34; target=&#34;_blank&#34;&gt;接口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_error_handling.md&#34; target=&#34;_blank&#34;&gt;错误处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;补充笔记
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;go_exception.md&#34; target=&#34;_blank&#34;&gt;异常处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_package.md&#34; target=&#34;_blank&#34;&gt;包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_struct.md&#34; target=&#34;_blank&#34;&gt;结构体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_goroutine.md&#34; target=&#34;_blank&#34;&gt;goroutine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_channel.md&#34; target=&#34;_blank&#34;&gt;通道&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_waitgroup.md&#34; target=&#34;_blank&#34;&gt;WaitGroup 和 worker pool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_mutex.md&#34; target=&#34;_blank&#34;&gt;锁&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;go_module.md&#34; target=&#34;_blank&#34;&gt;模块&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 互斥锁</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_mutex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_mutex/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#syncmutex&#34;&gt;sync.Mutex&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;sync-mutex&#34;&gt;sync.Mutex&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;互斥：保证每次只有一个 goroutine 可以访问一个共享的变量&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;go 标准库提供 &lt;code&gt;sync.Mutex&lt;/code&gt; 互斥锁类型及两个方法： &lt;code&gt;Lock&lt;/code&gt; 和 &lt;code&gt;Unlock&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在代码前调用 &lt;code&gt;Lock&lt;/code&gt;，在代码后调用 &lt;code&gt;Unlock&lt;/code&gt; 保证这段代码的互斥执行&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可用 &lt;code&gt;defer&lt;/code&gt; 语句保证互斥锁一定会被解锁&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;sync&amp;quot;
+&amp;quot;time&amp;quot;
+)
+
+// SafeCounter is safe to use concurrently.
+type SafeCounter struct {
+v   map[string]int
+mux sync.Mutex
+}
+
+// Inc increments the counter for the given key.
+func (c *SafeCounter) Inc(key string) {
+c.mux.Lock()
+// Lock so only one goroutine at a time can access the map c.v.
+c.v[key]++
+c.mux.Unlock()
+}
+
+// Value returns the current value of the counter for the given key.
+func (c *SafeCounter) Value(key string) int {
+c.mux.Lock()
+// Lock so only one goroutine at a time can access the map c.v.
+defer c.mux.Unlock()
+return c.v[key]
+}
+
+func main() {
+c := SafeCounter{v: make(map[string]int)}
+for i := 0; i &amp;lt; 1000; i++ {
+go c.Inc(&amp;quot;somekey&amp;quot;)
+}
+
+time.Sleep(time.Second)
+fmt.Println(c.Value(&amp;quot;somekey&amp;quot;))
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 函数</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_function/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%87%bd%e6%95%b0-function&#34;&gt;函数 function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%87%bd%e6%95%b0%e7%94%a8%e6%b3%95&#34;&gt;函数用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%87%bd%e6%95%b0%e5%80%bc&#34;&gt;函数值&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8c%bf%e5%90%8d%e5%87%bd%e6%95%b0&#34;&gt;匿名函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%af%e5%8f%98%e5%87%bd%e6%95%b0-variadic-function&#34;&gt;可变函数 variadic function&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b9%e6%b3%95-vs-%e5%87%bd%e6%95%b0&#34;&gt;方法 vs 函数&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b9%e6%b3%95%e7%9a%84%e5%80%bc%e6%8e%a5%e6%94%b6%e8%80%85-vs-%e5%87%bd%e6%95%b0%e7%9a%84%e5%80%bc%e5%8f%82%e6%95%b0&#34;&gt;方法的值接收者 vs 函数的值参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b9%e6%b3%95%e7%9a%84%e6%8c%87%e9%92%88%e6%8e%a5%e6%94%b6%e8%80%85%e5%92%8c%e5%87%bd%e6%95%b0%e7%9a%84%e6%8c%87%e9%92%88%e5%8f%82%e6%95%b0&#34;&gt;方法的指针接收者和函数的指针参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;函数-function&#34;&gt;函数 function&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;函数是基本的代码块，用于执行一个任务&lt;/li&gt;
+&lt;li&gt;最少有一个 main 函数，且 main 函数必须在 main 包中&lt;/li&gt;
+&lt;li&gt;可通过函数划分不同功能，逻辑上每个函数执行指定的任务&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;函数声明包含名称、返回类型和参数&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参数可选，类似于占位符，是函数的形参。当连续两个或多个已命名形参类型相同时，除最后一个类型外，其它都可以忽略&lt;/li&gt;
+&lt;li&gt;值传递：调用函数时将实际参数复制一份传递给函数，函数内修改参数不会影响实际参数&lt;/li&gt;
+&lt;li&gt;引用传递：调用函数时传递参数的地址，函数内修改参数会影响到实际的值&lt;/li&gt;
+&lt;li&gt;默认使用值传递&lt;/li&gt;
+&lt;li&gt;返回类型可选&lt;/li&gt;
+&lt;li&gt;多值返回：函数可以返回任意数量的返回值&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;命名返回值：返回值可以是命名的，可以当做是定义在函数顶部的变量&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这些名字应当具有一定的意义，可作为文档使用用于记录返回值的含义&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;一个不带参数的 &lt;code&gt;return&lt;/code&gt; 语句返回命名返回值，也就是直接返回。直接返回语句应只用于短函数，否则会破坏函数的可读性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func func_name( [param_list] ) [return_types] {
+// func_body
+}
+
+func swap(x, y string) (string, string) {
+return y, x
+}
+
+// 命名返回值
+func split(sum int) (x, y int) {
+sx = sum * 4 / 9
+sy = sum - x
+sreturn
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;函数用法&#34;&gt;函数用法&lt;/h2&gt;
+
+&lt;h2 id=&#34;函数值&#34;&gt;函数值&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;函数作为值，即定义后作为值使用&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;函数值可以像其他值一样传递，可以用作函数的参数或返回值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+func compute(fn func(float64, float64) float64) float64 {
+return fn(3, 4)
+}
+
+func main() {
+hypot := func(x, y float64) float64 {
+    return math.Sqrt(x*x + y*y)
+}
+fmt.Println(hypot(5, 12))
+
+fmt.Println(compute(hypot))
+fmt.Println(compute(math.Pow))
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;匿名函数&#34;&gt;匿名函数&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;闭包，即匿名函数，在动态编程中使用&lt;/li&gt;
+&lt;li&gt;闭包是一个函数值，它引用了其函数体外的变量。该函数可以访问并赋予其引用的变量的值，即该函数被这些变量“绑定”在一起&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;匿名函数是一个“内联”语句或表达式，其优越性在于可以直接使用函数内的变量，不必声明&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func getSequence() func() int {
+i := 0
+return func() int {
+    i += 1
+    return i
+}
+}
+
+nextNum := getSequence() //i=0
+fmt.Println(nextNum()) //i=1
+fmt.Println(nextNum()) //i=2
+fmt.Println(nextNum()) //i=3
+
+nextNum1 := getSequence() //i=0
+fmt.Println(nextNum1()) //i=1
+fmt.Println(nextNum1()) //i=2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func fibonacci() func() int {
+before := 0
+val := 1
+return func() int {
+    ret := before
+    before = val
+    val = ret + val
+    return ret
+}
+}
+
+func main() {
+f := fibonacci()
+for i := 0; i &amp;lt; 10; i++ {
+    fmt.Println(f())
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;可变函数-variadic-function&#34;&gt;可变函数 variadic function&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可变函数的参数数目是可变的，当最后一个参数用&lt;code&gt;...T&lt;/code&gt;表示时，函数就可以接受任意数目的类型 T 作为最后一个参数&lt;/li&gt;
+&lt;li&gt;可变函数实际是将传递的可变数目的参数转成一个新建的切片作为参数&lt;/li&gt;
+&lt;li&gt;不能直接传递一个切片作为参数给可变函数，还需要在切片后面加上&lt;code&gt;...&lt;/code&gt;，才可以将切片作为可变函数的参数，而且不用创建新切片，而是直接传递原始的切片&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;方法-vs-函数&#34;&gt;方法 vs 函数&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方法是包含了接收者的函数&lt;/li&gt;
+&lt;li&gt;可以把接收者作为函数的参数来实现方法&lt;/li&gt;
+&lt;li&gt;为什么使用方法
+
+&lt;ul&gt;
+&lt;li&gt;go 不是一个纯粹的面向对象的变成语言，可以使用方法来实现和类类似的行为&lt;/li&gt;
+&lt;li&gt;可以定义类型不同的同名方法，但是不能定义同名函数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;方法的值接收者-vs-函数的值参数&#34;&gt;方法的值接收者 vs 函数的值参数&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;具有值参数的函数，只能接受值作为参数&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;具有值接收者的方法，可以接受指针和值接收者&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type rectangle struct {
+len float64
+width float64
+}
+
+func area(rec rectangle) {
+fmt.Println(&amp;quot;area: %f * %f = %f&amp;quot;, rec.len, rec.width, (rec.len * rec.width))
+}
+
+func (rec rectangle) area() {
+fmt.Println(&amp;quot;area: %f * %f = %f&amp;quot;, rec.len, rec.width, (rec.len * rec.width))
+}
+
+func caller() {
+r := rectangle(
+    len: 3,
+    width: 4,
+)
+
+area(r)
+r.area()
+
+p := &amp;amp;r
+//area(p),编译错误
+p.area() //go 会解释成(*p).area()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;方法的指针接收者和函数的指针参数&#34;&gt;方法的指针接收者和函数的指针参数&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;具有指针参数的函数，只能接受指针作为参数&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;具有指针接收者的方法，可以接受指针和值接收者&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type rectangle struct {
+len float64
+width float64
+}
+
+func area(rec *rectangle) {
+fmt.Println(&amp;quot;area: %f * %f = %f&amp;quot;, rec.len, rec.width, (rec.len * rec.width))
+}
+
+func (rec *rectangle) area() {
+fmt.Println(&amp;quot;area: %f * %f = %f&amp;quot;, rec.len, rec.width, (rec.len * rec.width))
+}
+
+func caller() {
+r := rectangle(
+    len: 3,
+    width: 4,
+)
+
+p := &amp;amp;r
+area(p)
+p.area()
+
+//area(r),编译错误
+r.area() //go 会解释成(&amp;amp;p).area()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 切片</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_slice/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#slice&#34;&gt;slice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#slice-%e9%95%bf%e5%ba%a6%e5%92%8c%e5%ae%b9%e9%87%8f&#34;&gt;slice 长度和容量&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#append-%e8%bf%bd%e5%8a%a0%e5%88%b0-slice&#34;&gt;append 追加到 slice&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#copy-%e5%af%b9-slice-%e6%8b%b7%e8%b4%9d&#34;&gt;copy 对 slice 拷贝&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%af%b9-slice-%e5%88%87%e7%89%87&#34;&gt;对 slice 切片&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#slice-vs-array&#34;&gt;slice vs array&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%9b%e5%bb%ba-array-%e5%92%8c-slice&#34;&gt;创建 array 和 slice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%87%e7%89%87%e5%ba%95%e5%b1%82%e6%98%af%e6%95%b0%e7%bb%84&#34;&gt;切片底层是数组&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-make-%e5%87%bd%e6%95%b0%e5%88%9b%e5%bb%ba-slice&#34;&gt;使用 make 函数创建 slice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#slice-%e5%86%85%e5%ad%98%e5%82%a8-slice&#34;&gt;slice 内存储 slice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%86%85%e5%ad%98%e4%bc%98%e5%8c%96&#34;&gt;内存优化&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;slice&#34;&gt;slice&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;切片是对数组的抽象，是一种“动态数组”，长度不固定，可以追加元素&lt;/li&gt;
+&lt;li&gt;定义 &lt;code&gt;var slice_name []type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;初始化
+
+&lt;ul&gt;
+&lt;li&gt;直接初始化&lt;code&gt;slice_name := [] int {var1, var2..., varn}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;引用数组初始化&lt;code&gt;slice_name := arr_name[:]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;引用部分数组初始化&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;slice_name := arr_name[startIndex:endIndex]&lt;/code&gt;，引用下标 startIndex 到 endIndex-1 下的元素创建为一个新的切片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;slice_name := arr_name[startIndex:]&lt;/code&gt;，引用下标 startIndex 到最后一个元素创建为一个新的切片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;slice_name := arr_name[startIndex:]&lt;/code&gt;，引用第一个元素到 endIndex-1 下的元素创建为一个新的切片&lt;/li&gt;
+&lt;li&gt;通过切片初始化&lt;code&gt;slice_name := origina_slice[startIndex:endIndex]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;slice-长度和容量&#34;&gt;slice 长度和容量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;len(slice_name)&lt;/code&gt; 方法获取切片长度，指的是 slice 中元素的数目&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;cap(slice_name)&lt;/code&gt; 方法获取切片容量，即最长可以达到多少，指的是底层数组的元素数目，起始下标是创建切片时的起始下标&lt;/li&gt;
+&lt;li&gt;空切片 nil，即未初始化的切片，长度为 0，容量为 0，没有底层数组&lt;/li&gt;
+&lt;li&gt;切片截取&lt;code&gt;slice_name[lower_bound : upper_bound]&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下限默认为 0&lt;/li&gt;
+&lt;li&gt;上限默认为 len(slice_name)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;增加切片容量：创建一个更大的数组并把原数组的内容拷贝到新数组，新切片的容量增加一倍
+
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;append(slice_name, [param_list])&lt;/code&gt; 函数往切片追加新元素&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[param_list]&lt;/code&gt;也可以是一个切片，用&lt;code&gt;...&lt;/code&gt;，如&lt;code&gt;newslice := append(slice1, slice2...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;copy(dst_slice, ori_slice) int&lt;/code&gt; 函数拷贝切片&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;append-追加到-slice&#34;&gt;append 追加到 slice&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用 &lt;code&gt;func append(slice_name []T, [param_list]) []T&lt;/code&gt; 函数往切片追加新元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;slice 的类型是 T&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[param_list]&lt;/code&gt;是要追加到 slice 的 T 类型的值，也可以是一个切片，用 &lt;code&gt;...&lt;/code&gt;，如 &lt;code&gt;newslice := append(slice1, slice2...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;返回值是一个 slice，包含了 slice_name 的所有元素以及追加的所有元素&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果 slice_name 不能包含所有追加的元素，会分配一个更大的数组，返回的 slice 指向新分配的数组&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+)
+
+func main() {
+var s []int
+printSlice(s) //len=0 cap=0 []
+
+s = append(s, 0)
+printSlice(s) //len=1 cap=1 [0]
+
+s = append(s, 1)
+printSlice(s) //len=2 cap=2 [0 1]
+
+s = append(s, 2, 3, 4)
+printSlice(s) //len=5 cap=6 [0 1 2 3 4]
+
+a := []int{7, 8, 9}
+s = append(s, a...) //使用 ... 语法将参数展开为参数列表
+printSlice(s)       //len=8 cap=12 [0 1 2 3 4 7 8 9]
+}
+
+func printSlice(s []int) {
+fmt.Printf(&amp;quot;len=%d cap=%d %v\n&amp;quot;, len(s), cap(s), s)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;copy-对-slice-拷贝&#34;&gt;copy 对 slice 拷贝&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;copy(dst_slice, ori_slice) int&lt;/code&gt; 函数拷贝切片
+
+&lt;ul&gt;
+&lt;li&gt;将 ori_slice 的元素复制到 dst_slice&lt;/li&gt;
+&lt;li&gt;返回复制元素的数目&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;对-slice-切片&#34;&gt;对 slice 切片&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;当 slice 容量足够大，可以对一个 slice 进行再切片&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+s := []int{2, 3, 5, 7, 11, 13}
+printSlice(s) //len=6 cap=6 [2 3 5 7 11 13]
+
+s = s[:0]     //分割 slice 长度为 0
+printSlice(s) //len=0 cap=6 []
+
+s = s[:4]     //扩展 slice 长度
+printSlice(s) //len=4 cap=6 [2 3 5 7]
+
+s = s[2:]     //丢弃前两个值
+printSlice(s) //len=2 cap=4 [5 7]
+
+s = s[:4]     //扩展 slice
+printSlice(s) //len=4 cap=4 [5 7 11 13]
+
+// s = s[:6] //error: slice bounds out of range [:6] with capacity 4
+}
+
+func printSlice(s []int) {
+fmt.Printf(&amp;quot;len=%d cap=%d %v\n&amp;quot;, len(s), cap(s), s)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;slice-vs-array&#34;&gt;slice vs array&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考 &lt;a href=&#34;https://blog.go-zh.org/go-slices-usage-and-internals&#34; target=&#34;_blank&#34;&gt;Go 切片：用法和本质&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;创建-array-和-slice&#34;&gt;创建 array 和 slice&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建一个数组 &lt;code&gt;[3] bool {true, true, false}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;创建一个相同的数组，并且创建数组的一个 slice 引用 &lt;code&gt;[] bool {true, true, false}&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;切片没有指定元素的数目&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+slice1 := []int{2, 3, 5, 7, 11, 13}
+fmt.Println(slice1)
+
+slice2 := []bool{true, false, true, true, false, true}
+fmt.Println(slice2)
+
+st := []struct{
+    i int
+    b bool
+} {
+    {2, true},
+    {3, false},
+    {5, true},
+    {7, true},
+    {11, false},
+    {13, true},
+}
+fmt.Println(st)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;切片底层是数组&#34;&gt;切片底层是数组&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;slice 是一个数组片段的描述。它包含了指向数组的指针、片段的长度和容量(片段的最大长度)
+
+&lt;ul&gt;
+&lt;li&gt;长度是 slice 引用的元素数目&lt;/li&gt;
+&lt;li&gt;容量是底层数组的元素数目(从切片指针开始计数)&lt;/li&gt;
+&lt;li&gt;切片增长不能超出其容量，否则会导致运行时异常。也不能使用小于零的索引访问切片之前的元素&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;slice 其实是对底层数组的引用，本身不存储数据，对 slice 的修改会修改底层的数组，其他共享底层数据的 slice 也会看到底层数组的修改
+
+&lt;ul&gt;
+&lt;li&gt;slice 操作不会复制底层指向的元素。它创建一个新的 slice 并复用之前 slice 的底层数组&lt;/li&gt;
+&lt;li&gt;slice 操作和数组索引一样高效&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;slice 作为函数变量，函数内对 slice 的修改也会影响调用者底层数组的元素&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func sliceTest() {
+arr := [...]int{1, 2, 3, 4, 5, 6, 7}
+sli := arr[1:4]
+fmt.Printf(&amp;quot;slice len=%d, cap=%d&amp;quot;, len(sli), cap(sli)) //1,2,3,4,5,6,7
+fmt.Println(&amp;quot;original array &amp;quot;, arr) //1,2,3,4,5,6,7
+for i := range sli {
+sli[i]++
+}
+fmt.Println(&amp;quot;modifiled array &amp;quot;, arr) //1,3,4,5,5,6,7
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;使用-make-函数创建-slice&#34;&gt;使用 make 函数创建 slice&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可使用内置 &lt;code&gt;make&lt;/code&gt; 函数创建切片&lt;code&gt;var slice_name []type = make([]type, len, cap)&lt;/code&gt;或&lt;code&gt;slice_name := make([]type, len, cap)&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;make&lt;/code&gt; 函数创建一个数组，然后返回一个引用数组的切片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;len&lt;/code&gt; 是数组的长度也是切片的初始长度&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cap&lt;/code&gt; 容量参数可选，默认为指定的长度大小&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;通过 &lt;code&gt;make&lt;/code&gt; 函数初始化&lt;code&gt;slice_name := make([]type, len, cap)&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+s := make([]int, 5) //长度和容量为 5，初始值都为 0
+printSlice(&amp;quot;s&amp;quot;, s)  //s len=5 cap=5 [0 0 0 0 0]
+
+a := make([]int, 0, 5) //长度为 0，容量为 5，初始为空
+printSlice(&amp;quot;a&amp;quot;, a)     //a len=0 cap=5 []
+
+b := a[:2]         //长度为 2，容量为 5，初始值为 0
+printSlice(&amp;quot;b&amp;quot;, b) //b len=2 cap=5 [0 0]
+
+c := b[2:5]        //长度为 3，容量为 3，初始值为 0
+printSlice(&amp;quot;c&amp;quot;, c) //c len=3 cap=3 [0 0 0]
+}
+
+func printSlice(str string, s []int) {
+fmt.Printf(&amp;quot;%s len=%d cap=%d %v\n&amp;quot;, str, len(s), cap(s), s)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;slice-内存储-slice&#34;&gt;slice 内存储 slice&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;slice 可以存储任何类型，包含其他 slice&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;strings&amp;quot;
+)
+
+func main() {
+board := [][]string{
+    []string{&amp;quot;_&amp;quot;, &amp;quot;_&amp;quot;, &amp;quot;_&amp;quot;},
+    []string{&amp;quot;_&amp;quot;, &amp;quot;_&amp;quot;, &amp;quot;_&amp;quot;},
+    []string{&amp;quot;_&amp;quot;, &amp;quot;_&amp;quot;, &amp;quot;_&amp;quot;},
+}
+
+board[0][0] = &amp;quot;X&amp;quot;
+board[0][2] = &amp;quot;X&amp;quot;
+board[1][0] = &amp;quot;O&amp;quot;
+board[1][2] = &amp;quot;X&amp;quot;
+board[2][2] = &amp;quot;O&amp;quot;
+
+for i := 0; i &amp;lt; len(board); i++ {
+    fmt.Printf(&amp;quot;%s\n&amp;quot;, strings.Join(board[i], &amp;quot; &amp;quot;))
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;内存优化&#34;&gt;内存优化&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;slice 是对底层数组的引用，因此只要 slice 在内存中，数组就不能被回收&lt;/li&gt;
+&lt;li&gt;当切片只引用了一小部分数组的数据来处理，可以使用&lt;code&gt;func copy(dst, src []T) int&lt;/code&gt;来赋值切片，然后使用新切片就可以回收原始的较大的数组&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 包</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_package/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#package&#34;&gt;package&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%bb%98%e8%ae%a4%e5%af%bc%e5%85%a5&#34;&gt;默认导入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%af%bc%e5%87%ba%e5%8c%85%e5%86%85%e6%a0%87%e8%af%86%e7%ac%a6&#34;&gt;导出包内标识符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%af%bc%e5%85%a5%e5%8c%85%e7%9a%84%e9%87%8d%e5%91%bd%e5%90%8d&#34;&gt;导入包的重命名&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#go-%e7%bc%96%e8%af%91%e9%80%9f%e5%ba%a6%e5%bf%ab&#34;&gt;Go 编译速度快&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%af%bc%e5%85%a5%e5%8c%bf%e5%90%8d%e5%8c%85&#34;&gt;导入匿名包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8c%85%e7%9a%84%e5%88%9d%e5%a7%8b%e5%8c%96%e5%85%a5%e5%8f%a3-init&#34;&gt;包的初始化入口 init&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%86%85%e9%83%a8%e5%8c%85&#34;&gt;内部包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8c%85%e7%9a%84%e6%96%87%e6%a1%a3%e5%8c%96&#34;&gt;包的文档化&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;package&#34;&gt;package&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;package pkg_name&lt;/code&gt;定义程序属于哪个包，每个 go 文件第一行&lt;/li&gt;
+&lt;li&gt;package 用于组织 go 的源码改善可用性和易读性，提供代码的模块化&lt;/li&gt;
+&lt;li&gt;代码包的导入路径是相对于 Go 语言自身的源码目录（即 &lt;code&gt;$GOROOT/src&lt;/code&gt;）或在环境变量 &lt;code&gt;GOPATH&lt;/code&gt; 中指定的某个目录的 &lt;code&gt;src&lt;/code&gt; 子目录下的子路径，使用 &lt;code&gt;/&lt;/code&gt; 分隔路径&lt;/li&gt;
+&lt;li&gt;导入的包名使用双引号包围，习惯上将文件夹的最后一个元素命名与包名一致。例外的情况
+
+&lt;ul&gt;
+&lt;li&gt;如果某包定义一条命令(可执行的 Go 程序)，那么总是使用 &lt;code&gt;main&lt;/code&gt;。这是告诉 &lt;code&gt;go build&lt;/code&gt; 必须调用链接器生成可执行文件&lt;/li&gt;
+&lt;li&gt;目录中一些文件以 &lt;code&gt;test.go&lt;/code&gt; 结尾，包名会以 &lt;code&gt;_test&lt;/code&gt; 结尾，这是外部测试包。其他的文件是普通包。&lt;code&gt;_test&lt;/code&gt; 后缀告诉 &lt;code&gt;go test&lt;/code&gt; 两个包都需要构建，并指明文件属于哪个包&lt;/li&gt;
+&lt;li&gt;外部测试包用于避免测试所依赖的导入图中的循环依赖&lt;/li&gt;
+&lt;li&gt;一些依赖管理工具会在包导入路径末尾追加版本号，包名仍然不包含版本号后缀&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;默认导入&#34;&gt;默认导入&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;单行导入：&lt;code&gt;import pkg_name&lt;/code&gt; 导入包&lt;/li&gt;
+&lt;li&gt;多行导入：导入多个包时，建议使用 &lt;code&gt;()&lt;/code&gt; 将导入的包放在一起，即分组导入&lt;/li&gt;
+&lt;li&gt;包分组：导入的包之间通过添加空行分组。通常将来自不同组织的包独立分组。包的导入顺序无关紧要，但是在每个分组中一般会根据字符串顺序排列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;导出包内标识符&#34;&gt;导出包内标识符&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;导出名：首字母大写的名字是导出的名字，首字母小写只能包内使用。导入包之后只能使用包导出的名字&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;导入包的重命名&#34;&gt;导入包的重命名&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;导入包后可以自定义引用的包名&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;导入包的重命名：如果同时导入两个名字相同的包，那么导入声明必须至少为一个同名包指定一个新的包名避免冲突&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
+&amp;quot;crypto/rand&amp;quot;
+mrand &amp;quot;math/rand&amp;quot;
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;导入包的重命名只影响当前源文件。其它的源文件如果导入了相同的包，可以用导入包原本默认的名字或重命名为另一个完全不同的名字&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;导入包重命名不仅仅只是为了解决名字冲突。如果导入的一个包名很笨重，特别是在一些自动生成的代码中，这时候用一个简短名称会更方便&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;选择用简短名称重命名导入包时候最好统一，以避免包名混乱&lt;/li&gt;
+&lt;li&gt;选择另一个包名称还可以帮助避免和本地普通变量名产生冲突&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每个导入声明语句都明确指定了当前包和被导入包之间的依赖关系。如果遇到包循环导入的情况，Go语言的构建工具将报告错误&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;go-编译速度快&#34;&gt;Go 编译速度快&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有三个主要原因
+
+&lt;ul&gt;
+&lt;li&gt;所有的导入必须在每一个源文件的开头进行显示列出，这样编译器不需要读取和处理整个文件来确定依赖性&lt;/li&gt;
+&lt;li&gt;包的依赖性形成有向无环图，因为没有环，包可以独立甚至并行编译&lt;/li&gt;
+&lt;li&gt;Go 包编译输出的目标文件不仅记录它自己的导出信息，也记录所依赖包的导出信息。当编译一个包时，编译器对于每一个导入必须读取一个目标文件，但是不需要超出这些文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;导入匿名包&#34;&gt;导入匿名包&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go 导入一个包之后不在代码中使用是不合法的
+
+&lt;ul&gt;
+&lt;li&gt;导入包，只需要调用包中的 init 函数：在包名之前加下划线和空格&lt;code&gt;import _  pkg_name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;暂时导入包，之后才会需要，建议在 import 之后紧跟语句&lt;code&gt;var _ = pkg_name.SomeFunc // error silencer&lt;/code&gt;，此语句可避免编译错误&lt;/li&gt;
+&lt;li&gt;在真正使用包中的代码之后就删掉此语句&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;包的初始化入口-init&#34;&gt;包的初始化入口 init&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;init 函数用于执行初始化任务，或者在执行之前验证程序的正确性&lt;/li&gt;
+&lt;li&gt;init 函数的特性
+
+&lt;ul&gt;
+&lt;li&gt;每个源码可以使用 1 个 init 函数&lt;/li&gt;
+&lt;li&gt;init 函数会在程序执行前(main 函数执行前)被自动调用&lt;/li&gt;
+&lt;li&gt;调用顺序为 main 中引用的包，以深度优先顺序初始化&lt;/li&gt;
+&lt;li&gt;假设包的引用关系 &lt;code&gt;main-&amp;gt;A-&amp;gt;B-&amp;gt;C&lt;/code&gt;，那么这些包的 init 函数调用顺序为 &lt;code&gt;C.init-&amp;gt;B.init-&amp;gt;A.init-&amp;gt;main&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;同一个包中的多个 init 函数的调用顺序不可预期&lt;/li&gt;
+&lt;li&gt;init 函数不应有返回值，不应包括任何参数，不能在源码中显式调用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;包的初始化顺序
+
+&lt;ul&gt;
+&lt;li&gt;初始化包级别的变量&lt;/li&gt;
+&lt;li&gt;调用 init 函数，如果有多个 init 函数（在一个或多个文件中），按照编译器接收顺序调用：go 会从 main 包开始检查其引用的所有包，每个包也可能包含其他的包。编译器由此构建出一个树状的包引用关系，再根据引用顺序决定编译顺序，依次编译这些包的代码。在运行时，被最后导入的包会最先初始化并调用 init 函数&lt;/li&gt;
+&lt;li&gt;导入的包先初始化&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每个包只初始化一次&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;geometry.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;geometry/rectangle&amp;quot;
+&amp;quot;log&amp;quot;
+)
+
+var recLen, recWidth float64 = 3, -4
+
+func init() {
+fmt.Println(&amp;quot;Geometry init func&amp;quot;)
+if recLen &amp;lt; 0 {
+  log.Fatal(&amp;quot;length is less than zero&amp;quot;)
+}
+
+if recWidth &amp;lt; 0 {
+  log.Fatal(&amp;quot;width is less than zero&amp;quot;)
+}
+}
+
+func main() {
+fmt.Println(&amp;quot;Geometry main func&amp;quot;)
+fmt.Println(&amp;quot;rectangle area: %.2f&amp;quot;, rectangle.Area(recLen, recWidth))
+fmt.Println(&amp;quot;rectangle diagonal: %.2f&amp;quot;, rectangle.Diagonal(recLen, recWidth))
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;rectangle.go&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package rectangle
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+func init() {
+fmt.Println(&amp;quot;Rectangle init func&amp;quot;)
+}
+
+func Area(len, width float64) float64 {
+area := len * width
+return area
+}
+
+func Diagonal(len, width float64) float64 {
+diagonal := math.Sqrt(len*len + width*width)
+return diagonal
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;内部包&#34;&gt;内部包&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;内部包只能被另一个包导入。这个包位于以 internal 目录的父目录为根目录的树中&lt;/li&gt;
+&lt;li&gt;内部包可以不需要导出标识符就可以被满足条件的包访问&lt;/li&gt;
+&lt;li&gt;例如有下面的文件夹 &lt;code&gt;net/http&lt;/code&gt; &lt;code&gt;net/http/internal/chunked&lt;/code&gt; &lt;code&gt;net/http/httputil&lt;/code&gt; &lt;code&gt;net/url&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;net/http/httputil&lt;/code&gt; 和 &lt;code&gt;net/http&lt;/code&gt; 可以导入 &lt;code&gt;net/http/internal/chunked&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;net/url&lt;/code&gt; 不可以导入 &lt;code&gt;net/http/internal/chunked&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;net/url&lt;/code&gt; 可以导入 &lt;code&gt;net/http/httputil&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;包的文档化&#34;&gt;包的文档化&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;文档注释是完整的语句，使用声明的包名作为开头的第一句注释通常是总结
+
+&lt;ul&gt;
+&lt;li&gt;可以出现在任何文件，但是必须只有一个&lt;/li&gt;
+&lt;li&gt;文件名通常是 &lt;code&gt;doc.go&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;函数参数和其他的标识符不用括号或特别标注&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 变量</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_variables/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;变量声明使用关键字 var。可以用于包内或函数内&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;变量声明&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;指定类型不赋值，使用默认值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;var vname vtype = value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;提供初始化值时可省略类型，根据初始化值自行判定变量类型&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;var vname = value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;省略 var，注意&lt;code&gt;:=&lt;/code&gt;左侧的变量不应该是已经声明过的，否则会导致编译错误&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vname := value&lt;/code&gt;，省略了变量类型&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;只能用于函数体内，建议使用。函数外的每个语句都是以关键字(&lt;code&gt;var/func&lt;/code&gt;等)开头，因此不能使用 &lt;code&gt;:=&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var a int = 10
+var b = 10
+c := 10
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;多变量声明&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;var&lt;/code&gt; 声明&lt;/li&gt;
+&lt;li&gt;可出现在包或函数级别&lt;/li&gt;
+&lt;li&gt;类型相同，非全局变量
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;var vname1 vname2 vname3 vtype = v1, v2, v3&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;不声明类型，自动推断
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;var vname1, vname2, vname3 = v1, v2, v3&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;短变量声明：使用&lt;code&gt;:=&lt;/code&gt;，左侧的变量是未声明过的&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vname1, vname2, vname3 := v1, v2, v3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;只能在函数体中使用&lt;/strong&gt;，建议使用&lt;/li&gt;
+&lt;li&gt;必须一次初始化所有的变量&lt;/li&gt;
+&lt;li&gt;左边至少有一个变量是未声明过的，否则编译错误&lt;code&gt;no new variables on left side of :=&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;因式分解关键字：一般用于声明全局变量，在一个语句中声明不同类型的变量，即“分组”成一个语法块&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var (
+vname1 vtype1
+vname2 vtype2
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;注意&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;已声明的变量不能再使用&lt;code&gt;:=&lt;/code&gt;赋值&lt;/li&gt;
+&lt;li&gt;定义变量之前使用会是编译错误&lt;code&gt;undefined&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在代码块定义局部变量未使用是编译错误&lt;code&gt;declared but not used&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;全局变量运行只定义不使用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以并行赋值/同时赋值&lt;code&gt;a, b, c = 5, 7, &amp;quot;abc&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在实际更新变量前，右边所有的表达式被推演&lt;/li&gt;
+&lt;li&gt;如果表达式比较复杂，避免使用多重赋值形式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;交换变量值，必须类型相同&lt;code&gt;a, b = b, a&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;空白标识符&lt;code&gt;_&lt;/code&gt;用于抛弃值&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个只写变量，不能得到值&lt;/li&gt;
+&lt;li&gt;可以接收函数返回值，但是只使用部分返回值&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;支持给变量赋值，该值在运行时计算&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;c := math.Min(a, b)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;go 是强类型语言，不支持隐式类型转换&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;age := 20
+age = &amp;quot;kiki&amp;quot; //error: cannot use &amp;quot;kiki&amp;quot; (type string) as type int in assignment
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 变量作用域</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_scope_rule/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_scope_rule/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;函数内定义的变量是局部变量，只作用于函数体内，参数和返回值都是局部变量&lt;/li&gt;
+&lt;li&gt;函数外定义的变量是全局变量，全局变量可在整个包甚至外部包（导出后）使用
+
+&lt;ul&gt;
+&lt;li&gt;函数内的局部变量可以覆盖全局变量&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;函数定义中的变量是形式参数，形式参数作为函数的局部变量使用&lt;/li&gt;
+&lt;li&gt;变量默认值，即默认初始化的值
+
+&lt;ul&gt;
+&lt;li&gt;int 默认值 0&lt;/li&gt;
+&lt;li&gt;float32 默认值 0&lt;/li&gt;
+&lt;li&gt;pointer 默认值 nil&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 基础语法</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_basic_syntax/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_basic_syntax/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;行分隔符：一行就是一个语句；多个语句放一行需要手动加&lt;code&gt;;&lt;/code&gt;，但是不建议&lt;/li&gt;
+&lt;li&gt;注释不被编译，但是建议每个包一个注释&lt;/li&gt;
+&lt;li&gt;标识符：用于命名变量、类型等程序实体，以字母或下划线开头&lt;/li&gt;
+&lt;li&gt;关键字，25 个
+
+&lt;ul&gt;
+&lt;li&gt;break, case, chan, const, continue&lt;/li&gt;
+&lt;li&gt;default, defer, else, fallthrough, for&lt;/li&gt;
+&lt;li&gt;func, go, goto, if, import&lt;/li&gt;
+&lt;li&gt;interface, map, package, range, return&lt;/li&gt;
+&lt;li&gt;select, struct, switch, type, var&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;预定义标识符，36 个
+
+&lt;ul&gt;
+&lt;li&gt;append, bool, byte, cap, close, complex&lt;/li&gt;
+&lt;li&gt;complex64, complex128, copy, false, float32, float64&lt;/li&gt;
+&lt;li&gt;imag, int, int8, int16, int32, int64&lt;/li&gt;
+&lt;li&gt;iota, len, make, new, nil, panic&lt;/li&gt;
+&lt;li&gt;print, println, real, recover, string, true&lt;/li&gt;
+&lt;li&gt;uint, uint8, uint16, uint32, unit64&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;空格：变量声明需要空格隔开；适当空格增加易阅读性&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 常量</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_constant/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b8%b8%e9%87%8f&#34;&gt;常量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e5%80%bc%e5%b8%b8%e9%87%8f&#34;&gt;数值常量&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;常量&#34;&gt;常量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;定义类似于变量声明，但是需要 &lt;code&gt;const&lt;/code&gt; 关键字
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;const vname [vtype] = value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;显式类型定义&lt;code&gt;const vname vtype = value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;隐式类型定义&lt;code&gt;const vname = value&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不能使用 &lt;code&gt;:=&lt;/code&gt; 声明&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;相同类型声明 &lt;code&gt;const vname1, vname2, vname3 = value1, value2, value3&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;用于枚举&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;const {
+  Unknown = 0
+  Famale = 1
+  Male = 2
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;常量可使用 &lt;code&gt;len()&lt;/code&gt;, &lt;code&gt;cap()&lt;/code&gt;, &lt;code&gt;unsafe.Sizeof()&lt;/code&gt; 函数计算表达式的值，函数必须是内置函数，否则编译错误&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;a = &amp;quot;abc&amp;quot;
+unsafe.Sizeof(a) //16，字符串类型在 go 中是个结构，包括指向数组的指针和长度，每部分都是 8 字节，所以是 16 个字节
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;iota: 特殊常量，一个可被编译器修改的常量&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;const&lt;/code&gt; 关键字出现时被重置为 0（const 内部的第一行之前）&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;const&lt;/code&gt; 中每新增一行常量声明，&lt;code&gt;iota&lt;/code&gt; 计数一次&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;const {
+a = iota //a=0
+b = iota //b=1，也可写 b
+c = iota //c=2，也可写 c
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;常量必须在编译时确定&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;数值常量&#34;&gt;数值常量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;数值常量是高精度值，一个没有类型的常量根据上下文确定自身的类型&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+const (
+Big = 1 &amp;lt;&amp;lt; 100
+Small = Big &amp;gt;&amp;gt; 99
+)
+
+func needInt(x int) int { return x*10 + 1 }
+func needFloat(x float64) float64 {
+return x * 0.1
+}
+
+func main() {
+fmt.Println(needInt(Small))
+fmt.Println(needInt(Big))     //error: constant 1267650600228229401496703205376 overflows int
+fmt.Println(needFloat(Small))
+fmt.Println(needFloat(Big))
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 循环语句</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_loop/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#for-%e5%be%aa%e7%8e%af&#34;&gt;for 循环&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%22while%22-%e5%be%aa%e7%8e%af&#34;&gt;&amp;ldquo;while&amp;rdquo; 循环&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%be%aa%e7%8e%af%e5%b5%8c%e5%a5%97&#34;&gt;循环嵌套&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%be%aa%e7%8e%af%e6%8e%a7%e5%88%b6%e8%af%ad%e5%8f%a5&#34;&gt;循环控制语句&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%97%a0%e9%99%90%e5%be%aa%e7%8e%af&#34;&gt;无限循环&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;for-循环&#34;&gt;for 循环&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go 循环只有 for 结构。包含 3 个组件
+
+&lt;ul&gt;
+&lt;li&gt;初始化语句：通常是短变量声明，声明的变量只对 for 循环可见&lt;/li&gt;
+&lt;li&gt;条件语句：条件为 false 时退出循环&lt;/li&gt;
+&lt;li&gt;后置语句&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;上述三个组件不需要小括号，但是需要大括号&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+sum := 0
+for i := 0; i &amp;lt; 10; i++ {
+sum += i
+}
+fmt.Println(sum)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;while-循环&#34;&gt;&amp;ldquo;while&amp;rdquo; 循环&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;初始化语句和后置语句是可选的，此时可以去掉两个分号，相当于 C 的 &lt;code&gt;while&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+sum := 1
+for sum &amp;lt; 1000 { //或 &amp;quot;for ; sum &amp;lt; 1000; {&amp;quot;
+sum += sum
+}
+fmt.Println(sum)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;循环嵌套&#34;&gt;循环嵌套&lt;/h2&gt;
+
+&lt;p&gt;for 循环嵌套 for 循环&lt;/p&gt;
+
+&lt;h2 id=&#34;循环控制语句&#34;&gt;循环控制语句&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;break&lt;/li&gt;
+&lt;li&gt;continue&lt;/li&gt;
+&lt;li&gt;goto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;无限循环&#34;&gt;无限循环&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;省略条件语句，或设置循环条件为永真，就是无限循环&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;for { //或 &amp;quot;for true {&amp;quot;
+//...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 指针</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_pointer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_pointer/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;指针变量指向一个值的内存地址：不是所有值都有地址，但是所有变量都有地址
+
+&lt;ul&gt;
+&lt;li&gt;每一个聚合类型变量的组成(结构体的成员或数组中的元素)都是变量，都有一个地址&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;先声明指针才可以使用指针&lt;/li&gt;
+&lt;li&gt;声明&lt;code&gt;var ptr_name *ptr_type&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ptr_type&lt;/code&gt;是指针类型&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ptr_name&lt;/code&gt;是指针变量名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;*&lt;/code&gt;用于指定变量是作为一个指针&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;通过 &lt;code&gt;&amp;amp;&lt;/code&gt; 生成一个变量的指针变量&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;i := 42
+p = &amp;amp;i
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;*ptr&lt;/code&gt;在指针类型前加&lt;code&gt;*&lt;/code&gt;获取指针所指向的内容，也就是“间接引用”或“重定向”&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;fmt.Println(*p)
+*p = 21
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;和 C 不同，go 的指针没有数学运算&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;空指针 &lt;code&gt;nil&lt;/code&gt;：指针定义后未分配到变量时值为 &lt;code&gt;nil&lt;/code&gt;，类似其他语言的 &lt;code&gt;null/None/nil/NULL&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;指针变量通常缩写为 ptr&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;指针数组，来存储地址，声明&lt;code&gt;var ptr_name [len]*ptr_type&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;指向指针的指针，声明&lt;code&gt;var pptr_name **pptr_type&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;**pptr&lt;/code&gt;在指针的指针类型前加&lt;code&gt;**&lt;/code&gt;获取指针所指向的内容&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;指针作为函数参数，通过引用或地址传参可在函数内部改变变量值&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 接口</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_interface/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%9d%9e%e4%be%b5%e5%85%a5%e5%bc%8f%e8%ae%be%e8%ae%a1&#34;&gt;非侵入式设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a5%e5%8f%a3%e5%ae%9a%e4%b9%89&#34;&gt;接口定义&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a5%e5%8f%a3%e5%ae%9e%e7%8e%b0&#34;&gt;接口实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a5%e5%8f%a3%e5%80%bc&#34;&gt;接口值&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ba%95%e5%b1%82%e5%80%bc%e4%b8%ba-nil-%e7%9a%84%e6%8e%a5%e5%8f%a3%e5%80%bc&#34;&gt;底层值为 nil 的接口值&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a5%e5%8f%a3%e5%80%bc%e4%b8%ba-nil&#34;&gt;接口值为 nil&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%a9%ba%e6%8e%a5%e5%8f%a3&#34;&gt;空接口&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b1%bb%e5%9e%8b%e6%96%ad%e8%a8%80type-assertion&#34;&gt;类型断言(type assertion)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b1%bb%e5%9e%8b%e9%80%89%e6%8b%a9type-switch&#34;&gt;类型选择(type switch)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8e%a5%e5%8f%a3%e5%92%8c%e7%b1%bb%e5%9e%8b%e7%9a%84%e5%85%b3%e7%b3%bb&#34;&gt;接口和类型的关系&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%80%e4%b8%aa%e7%b1%bb%e5%9e%8b%e5%8f%af%e4%bb%a5%e5%ae%9e%e7%8e%b0%e5%a4%9a%e4%b8%aa%e6%8e%a5%e5%8f%a3&#34;&gt;一个类型可以实现多个接口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a4%9a%e4%b8%aa%e7%b1%bb%e5%9e%8b%e5%8f%af%e4%bb%a5%e5%ae%9e%e7%8e%b0%e7%9b%b8%e5%90%8c%e7%9a%84%e6%8e%a5%e5%8f%a3&#34;&gt;多个类型可以实现相同的接口&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;非侵入式设计&#34;&gt;非侵入式设计&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go 语言的接口设计是非侵入式的，接口编写者无须知道接口被哪些类型实现。而接口实现者只需知道实现的是什么样子的接口，但无须指明实现哪一个接口。编译器知道最终编译时使用哪个类型实现哪个接口，或者接口应该由谁来实现&lt;/li&gt;
+&lt;li&gt;非侵入式设计是 Go 语言设计师经过多年的大项目经验总结出来的设计之道。只有让接口和实现者真正解耦，编译速度才能真正提高，项目之间的耦合度也会降低不少&lt;/li&gt;
+&lt;li&gt;传统的派生式接口及类关系构建的模式，让类型间拥有强耦合的父子关系。这种关系一般会以“类派生图”的方式进行。经常可以看到大型软件极为复杂的派生树。随着系统的功能不断增加，这棵“派生树”会变得越来越复杂。对于 Go 语言来说，非侵入式设计让实现者的所有类型均是平行的、组合的。如何组合则留到使用者编译时再确认。因此，使用 Go 语言时，不需要同时也不可能有“类派生图”，开发者唯一需要关注的就是“我需要什么”，以及“我能实现什么”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;接口定义&#34;&gt;接口定义&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接口是双方约定的一种合作协议。接口实现者不需要关心接口会被怎样使用，调用者也不需要关心接口的实现细节。接口是一种类型，也是一种抽象结构，不会暴露所含数据的格式、类型及结构&lt;/li&gt;
+&lt;li&gt;在面向对象中，接口定义了一个对象的行为&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用 type 和 interface 关键字定义接口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type interface_name interface {
+method_name1([param_list]) [return_type]
+method_name2([param_list]) [return_type]
+method_name3([param_list]) [return_type]
+...
+method_namen([param_list]) [return_type]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;interface_name&lt;/code&gt;：接口类型名。使用 type 将接口定义为自定义的类型名。Go 语言的接口在命名时，一般会在单词后面添加 er，如有写操作的接口叫 Writer，有字符串功能的接口叫 Stringer，有关闭功能的接口叫 Closer 等&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;method_name&lt;/code&gt;：方法名。当方法名首字母是大写时，且这个接口类型名首字母也是大写时，这个方法可以被接口所在的包之外的代码访问&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;param_list&lt;/code&gt; &lt;code&gt;return_type&lt;/code&gt;：参数列表和返回值列表中的参数变量名可以被忽略&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;接口实现&#34;&gt;接口实现&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接口类型是由一组方法签名定义的集合，接口类型的变量可以保存任何实现了这些方法的值&lt;/li&gt;
+&lt;li&gt;接口把所有的具有共性的方法定义在一起，如果一个任意类型 T 的方法集为一个接口类型的方法集的超集，则说类型 T 实现了此接口类型。T 可以是一个非接口类型，也可以是一个接口类型&lt;/li&gt;
+&lt;li&gt;实现关系在 Go 语言中是隐式的。两个类型之间的实现关系不需要在代码中显式地表示出来。Go 语言中没有类似于 implements 的关键字。Go 编译器将自动在需要的时候检查两个类型之间的实现关系&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;接口定义后，需要实现接口，调用方才能正确编译通过并使用接口。接口的实现需要遵循两条规则才能让接口可用&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接口的方法与实现接口的类型方法格式一致&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;接口中所有方法均被实现&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+type abser interface {
+Abs() float64
+}
+
+func main() {
+var a abser
+f := myFloat(-math.Sqrt2)
+v := vertex{3, 4}
+
+a = f // a myFloat 实现了 abser
+fmt.Println(a.Abs())
+
+a = &amp;amp;v // a *vertex 实现了 abser
+fmt.Println(a.Abs())
+
+// a = v // error: v 是一个 vertex(而不是 *vertex), 所以没有实现 abser
+}
+
+type myFloat float64
+
+func (f myFloat) Abs() float64 {
+if f &amp;lt; 0 {
+return float64(-f)
+}
+return float64(f)
+}
+
+type vertex struct {
+X, Y float64
+}
+
+func (v *vertex) Abs() float64 {
+return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;接口值&#34;&gt;接口值&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接口也是值
+
+&lt;ul&gt;
+&lt;li&gt;接口值可用作函数的参数或返回值&lt;/li&gt;
+&lt;li&gt;在内部，接口值可看做包含值和具体类型的元组 &lt;code&gt;(value, type)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;通过 &lt;code&gt;%v&lt;/code&gt; 和 &lt;code&gt;%T&lt;/code&gt; 可以访问接口的值和类型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;接口值保存了一个具体底层类型的具体值&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;接口值调用方法时会执行其底层类型的同名方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+type myInterface interface {
+M()
+}
+
+type st struct {
+S string
+}
+
+func (t *st) M() {
+fmt.Println(t.S)
+}
+
+type myFloat float64
+
+func (f myFloat) M() {
+fmt.Println(f)
+}
+
+func main() {
+var i myInterface
+
+i = &amp;amp;st{&amp;quot;Hello&amp;quot;}
+describe(i)
+i.M()
+
+i = myFloat(math.Pi)
+describe(i)
+i.M()
+}
+
+func describe(i myInterface) {
+fmt.Printf(&amp;quot;(%v, %T)\n&amp;quot;, i, i)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;底层值为-nil-的接口值&#34;&gt;底层值为 nil 的接口值&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;接口内的具体值为 nil，方法仍然会被 nil 接收者调用。&lt;strong&gt;保存了 nil 具体值的接口本身并不为 nil&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+type myInterface interface {
+M()
+}
+
+type st struct {
+S string
+}
+
+func (t *st) M() {
+if t == nil {
+    fmt.Println(&amp;quot;&amp;lt;nil&amp;gt;&amp;quot;)
+    return
+}
+fmt.Println(t.S)
+}
+
+func main() {
+var i myInterface
+
+i = &amp;amp;st{&amp;quot;Hello&amp;quot;}
+describe(i)
+i.M()
+
+var stp *st
+i = stp
+describe(i)
+i.M()
+}
+
+func describe(i myInterface) {
+fmt.Printf(&amp;quot;(%v, %T)\n&amp;quot;, i, i)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;接口值为-nil&#34;&gt;接口值为 nil&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;nil 接口值既不保存值也不保存具体类型&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为 nil 接口调用方法会报运行时错误，因为接口的元组内并未包含可以指明该调用哪个具体方法的类型&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+)
+
+type myInterface interface {
+M()
+}
+
+func main() {
+var i myInterface
+describe(i)
+i.M() // panic: runtime error: invalid memory address or nil pointer dereference
+}
+
+func describe(i myInterface) {
+fmt.Printf(&amp;quot;(%v, %T)\n&amp;quot;, i, i)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;空接口&#34;&gt;空接口&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;指定了零个方法的接口值称为 “空接口” &lt;code&gt;interface{}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;空接口可保存任何类型的值(因为每个类型都至少实现了零个方法)&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;空接口用于处理未知类型的值。如 &lt;code&gt;fmt.Print&lt;/code&gt; 可接受类型为 &lt;code&gt;interface{}&lt;/code&gt; 的任意数量的参数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+var i interface{}
+describe(i)
+
+i = 42
+describe(i)
+
+i = &amp;quot;hello&amp;quot;
+describe(i)
+}
+
+func describe(i interface{}) {
+fmt.Printf(&amp;quot;(%v, %T)\n&amp;quot;, i, i)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;类型断言-type-assertion&#34;&gt;类型断言(type assertion)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;类型断言提供了访问接口值底层具体值的方式 &lt;code&gt;t := i.(T)&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;断言接口值 i 保存了具体类型 T，并将其底层类型为 T 的值赋予变量 t&lt;/li&gt;
+&lt;li&gt;若 i 未保存 T 类型的值，会触发一个 panic&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;类型断言可返回两个值：其底层值，一个布尔值判断断言是否成功 &lt;code&gt;t, ok := i.(T)&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+var i interface{} = &amp;quot;hello&amp;quot;
+
+s := i.(string)
+fmt.Println(s)
+
+s, ok := i.(string)
+fmt.Println(s, ok)
+
+f, ok := i.(float64)
+fmt.Println(f, ok)
+
+f = i.(float64) // 报错(panic)
+fmt.Println(f)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;类型选择-type-switch&#34;&gt;类型选择(type switch)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;类型选择语句用于判断某个 interface 变量中实际存储的变量类型&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func do(i interface{}) {
+switch v := i.(type) {
+case int:
+    fmt.Printf(&amp;quot;Twice %v is %v\n&amp;quot;, v, v*2)
+case string:
+    fmt.Printf(&amp;quot;%q is %v bytes long\n&amp;quot;, v, len(v))
+default:
+    fmt.Printf(&amp;quot;I don&#39;t know about type %T!\n&amp;quot;, v)
+}
+}
+
+func main() {
+do(21)
+do(&amp;quot;hello&amp;quot;)
+do(true)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;接口和类型的关系&#34;&gt;接口和类型的关系&lt;/h2&gt;
+
+&lt;h3 id=&#34;一个类型可以实现多个接口&#34;&gt;一个类型可以实现多个接口&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接口间彼此独立，不知道对方的实现&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Socket 结构的 Write() 方法实现了 io.Writer 以及 io.Closer 接口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Socket struct {
+}
+
+func (s *Socket) Write(p []byte) (n int, err error) {
+  return 0, nil
+}
+
+func (s *Socket) Close() error {
+  return nil
+}
+
+func usingWriter( writer io.Writer){
+  writer.Write( nil ) // 使用io.Writer的代码, 并不知道Socket和io.Closer的存在
+}
+
+func usingCloser( closer io.Closer) {
+  closer.Close() // 使用io.Closer, 并不知道Socket和io.Writer的存在
+}
+
+func main() {
+  s := new(Socket) // 实例化Socket
+  usingWriter(s)
+  usingCloser(s)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;多个类型可以实现相同的接口&#34;&gt;多个类型可以实现相同的接口&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接口的方法可以通过在类型中嵌入其他类型或者结构体来实现&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Service 接口定义了两个方法：一个是开启服务的方法（Start()），一个是输出日志的方法（Log()）&lt;/li&gt;
+&lt;li&gt;使用 GameService 结构体来实现 Service，GameService 自己的结构只能实现 Start() 方法，而 Service 接口中的 Log() 方法已经被一个能输出日志的日志器（Logger）实现了，无须再进行 GameService 封装，或者重新实现一遍&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;选择将 Logger 嵌入到 GameService 能最大程度地避免代码冗余，简化代码结构&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Service interface {
+Start()  // 开启服务
+Log(string)  // 日志输出
+}
+
+type Logger struct {
+}
+
+func (g *Logger) Log(l string) {
+}
+
+type GameService struct {
+Logger  // 嵌入日志器
+}
+
+func (g *GameService) Start() {
+}
+
+func main() {
+var s Service = new(GameService)
+s.Start()
+s.Log(&amp;quot;hello&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 散列表</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_map/</guid>
+      <description>
+
+&lt;h2 id=&#34;map定义和初始化&#34;&gt;map定义和初始化&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;map 是一种无序的键值对的集合，可以通过 key 快速检索数据，使用 hash 表实现&lt;/li&gt;
+&lt;li&gt;定义集合
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;var map_name[key_type]val_type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用 make 函数&lt;code&gt;map_name := make(map[key_type]val_type)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;不初始化 map，得到的是一个 nil map，不能用于存放键值对&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;map 文法：类似 struct，但是需要键名&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;当顶级类型是一个 type 的名字时，可以忽视&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type vertex struct {
+Lat, Long float64
+}
+
+var m = map[string]vertex{
+&amp;quot;Bell lab&amp;quot;: vertex{
+40.68433, -74.39967,
+},
+&amp;quot;Google&amp;quot;: vertex{
+37.42202, -122.08408,
+},
+}
+
+var m1 = map[string]vertex{
+&amp;quot;Bell lab&amp;quot;: { 40.68433, -74.39967},
+&amp;quot;Google&amp;quot;: { 37.42202, -122.08408},
+}
+
+func main() {
+fmt.Println(m)
+fmt.Println(m1)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;修改-map&#34;&gt;修改 map&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;map_name[key]&lt;/code&gt; 查看元素在集合中是否存在
+
+&lt;ul&gt;
+&lt;li&gt;如果元素存在，返回的第一个元素是对应的键，第二个元素是 true&lt;/li&gt;
+&lt;li&gt;元素不存在，在返回第二个元素是 false&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;插入或更新元素 &lt;code&gt;map_name[key] = val&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;delete() 函数用于删除集合的元素&lt;code&gt;delete(map_name, key)&lt;/code&gt;，指定元素名和对应的键&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+)
+
+func main() {
+m := make(map[string]int)
+
+m[&amp;quot;answer&amp;quot;] = 42
+fmt.Println(&amp;quot;The value:&amp;quot;, m[&amp;quot;answer&amp;quot;])
+
+m[&amp;quot;answer&amp;quot;] = 48
+fmt.Println(&amp;quot;The value:&amp;quot;, m[&amp;quot;answer&amp;quot;])
+
+delete(m, &amp;quot;answer&amp;quot;)
+fmt.Println(&amp;quot;The value:&amp;quot;, m[&amp;quot;answer&amp;quot;])
+
+val, ok := m[&amp;quot;answer&amp;quot;]
+fmt.Println(&amp;quot;The value:&amp;quot;, val, &amp;quot;Present?&amp;quot;, ok)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 数据类型</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_data_type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_data_type/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b&#34;&gt;数据类型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e9%bb%98%e8%ae%a4%e5%88%9d%e5%a7%8b%e5%8c%96%e5%80%bc&#34;&gt;数据类型默认初始化值&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%b1%bb%e5%9e%8b%e6%8e%a8%e5%af%bc&#34;&gt;类型推导&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;数据类型&#34;&gt;数据类型&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数据类型把数据分成所需内存大小不同的数据
+
+&lt;ul&gt;
+&lt;li&gt;布尔型：true 或 false&lt;/li&gt;
+&lt;li&gt;数字类型：&lt;/li&gt;
+&lt;li&gt;整型
+
+&lt;ul&gt;
+&lt;li&gt;有符号 int(int, int8, int16, int32, int64)，默认是 int&lt;/li&gt;
+&lt;li&gt;int 是 32 或 64 位，取决于底层平台。建议使用 int 来表示整数，除非需要指定大小&lt;/li&gt;
+&lt;li&gt;32 位系统就是 32 位，64 位 系统就是 64 位&lt;/li&gt;
+&lt;li&gt;无符号 uint(uint, uint8, uint16, uint32, unit64)&lt;/li&gt;
+&lt;li&gt;uint 32 或 64 位，同上&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;浮点型 float(float32, float64)，默认是 float64&lt;/li&gt;
+&lt;li&gt;复数 complex(complex64, complex128)
+
+&lt;ul&gt;
+&lt;li&gt;complex64 32 位实数和虚数&lt;/li&gt;
+&lt;li&gt;complex128 64 位实数和虚数&lt;/li&gt;
+&lt;li&gt;使用内置函数 complex 构造一个复数&lt;code&gt;func complex(r, i FloatType) ComplexType&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;实部 r 和虚部 i 应该是同一类型，float32 或 float64，返回的复数类型是 complex64 或 complex128&lt;/li&gt;
+&lt;li&gt;也可直接生成复数&lt;code&gt;c := 6 + 7i&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;byte 是 uint8 的别名&lt;/li&gt;
+&lt;li&gt;rune 是 int32 的别名，表示 Unicode code point&lt;/li&gt;
+&lt;li&gt;uintptr 无符号整型，用于存放一个指针&lt;/li&gt;
+&lt;li&gt;字符串类型：字节使用 UTF-8 编码标识 Unicode 文本，是字节的集合&lt;/li&gt;
+&lt;li&gt;派生类型：&lt;/li&gt;
+&lt;li&gt;指针类型 pointer&lt;/li&gt;
+&lt;li&gt;数组类型&lt;/li&gt;
+&lt;li&gt;结构化类型 struct&lt;/li&gt;
+&lt;li&gt;Channel 类型&lt;/li&gt;
+&lt;li&gt;函数类型&lt;/li&gt;
+&lt;li&gt;切片类型&lt;/li&gt;
+&lt;li&gt;接口类型 interface&lt;/li&gt;
+&lt;li&gt;map 类型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;可以使用 &lt;code&gt;%T&lt;/code&gt; 格式化打印变量的类型，使用 &lt;code&gt;%v&lt;/code&gt; 打印变量的值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;数据类型默认初始化值&#34;&gt;数据类型默认初始化值&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;变量默认值，即默认初始化的值，对应各自的 “零” 值
+
+&lt;ul&gt;
+&lt;li&gt;int 默认值 0&lt;/li&gt;
+&lt;li&gt;boolean 默认值 false&lt;/li&gt;
+&lt;li&gt;string 默认值 &amp;ldquo;&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;float32 默认值 0&lt;/li&gt;
+&lt;li&gt;pointer 默认值 nil&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;类型推导&#34;&gt;类型推导&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当声明变量使用隐形类型(使用不带类型的 &lt;code&gt;:=&lt;/code&gt; 或 &lt;code&gt;var =&lt;/code&gt;)，需要通过右值推导变量的类型&lt;/li&gt;
+&lt;li&gt;当右值的类型是声明过的，则新变量与其类型相同&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;当右值是一个没有类型的数值常量时，根据常量精度推导变量类型(int/float64/complex128)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;i := 42           // int
+f := 3.142        // float64
+g := 0.867 + 0.5i // complex128
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 数组</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_array/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#array&#34;&gt;array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e7%bb%84%e5%88%9d%e5%a7%8b%e5%8c%96&#34;&gt;数组初始化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a4%9a%e7%bb%b4%e6%95%b0%e7%bb%84&#34;&gt;多维数组&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e7%bb%84%e4%bd%9c%e4%b8%ba%e5%87%bd%e6%95%b0%e5%8f%82%e6%95%b0&#34;&gt;数组作为函数参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;array&#34;&gt;array&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数组是具有相同类型，长度固定，已编号的数据项序列&lt;/li&gt;
+&lt;li&gt;可通过索引来读写数组元素&lt;/li&gt;
+&lt;li&gt;声明数组需要指定类型和元素个数 &lt;code&gt;var arr_name [size] arr_type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;也可使用 &lt;code&gt;[...]&lt;/code&gt; 让编译器统计数组字面值中元素的数目&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;数组初始化&#34;&gt;数组初始化&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数组不需要显式初始化，可以直接使用使用数组的零值，数组元素会自动初始化为对应类型的零值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;var arr1 = [5]float32{1, 2.0, 3.1, 4, 5.4}&lt;/code&gt;，也可写成 &lt;code&gt;var arr1 = [...]float32{1, 2.0, 3.1, 4, 5.4}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;{}&lt;/code&gt;中的元素个数不能大于&lt;code&gt;[]&lt;/code&gt;的数字&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;多维数组&#34;&gt;多维数组&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多维数组声明&lt;code&gt;var arr_name [size1] [size2]...[sizen] arr_type&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;数组作为函数参数&#34;&gt;数组作为函数参数&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传递数组的时候，会复制整个数组，为了避免复制，可以传递数组指针&lt;/li&gt;
+&lt;li&gt;未定义长度的数组只能传给不限制数组长度的函数&lt;/li&gt;
+&lt;li&gt;长度已定义的数组只能传给限制了相同数组长度的函数&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;形参设定数组大小&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func myFunc(arr [10] int) {
+  //...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;形参未设定数组大小&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func myFunc(arr [] int) {
+  //...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 方法</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_method/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_method/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b9%e6%b3%95-method&#34;&gt;方法 method&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b9%e6%b3%95%e7%9a%84%e6%8e%a5%e6%94%b6%e8%80%85%e6%98%af-struct&#34;&gt;方法的接收者是 struct&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b9%e6%b3%95%e7%9a%84%e6%8e%a5%e6%94%b6%e8%80%85%e6%98%af%e9%9d%9e%e7%bb%93%e6%9e%84%e4%bd%93&#34;&gt;方法的接收者是非结构体&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8c%87%e9%92%88%e6%8e%a5%e6%94%b6%e8%80%85-vs-%e5%80%bc%e6%8e%a5%e6%94%b6%e8%80%85&#34;&gt;指针接收者 vs 值接收者&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e6%8c%87%e9%92%88%e6%8e%a5%e6%94%b6%e8%80%85&#34;&gt;使用指针接收者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%80%bc%e6%8e%a5%e6%94%b6%e8%80%85&#34;&gt;使用值接收者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b9%e6%b3%95%e7%9a%84%e5%8c%bf%e5%90%8d%e5%9f%9f&#34;&gt;方法的匿名域&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;方法-method&#34;&gt;方法 method&lt;/h2&gt;
+
+&lt;h3 id=&#34;方法的接收者是-struct&#34;&gt;方法的接收者是 struct&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go 没有类，但是可以为 struct 类型定义方法&lt;/li&gt;
+&lt;li&gt;方法是一类带特殊的“接收者”参数的函数
+
+&lt;ul&gt;
+&lt;li&gt;方法接收者在参数列表内，位于 &lt;code&gt;func&lt;/code&gt; 关键字和方法名之间&lt;/li&gt;
+&lt;li&gt;接收者可以是命名类型或者结构体类型的个值或一个指针&lt;/li&gt;
+&lt;li&gt;所有给定类型的方法属于该类型的方法集&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;语法格式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (v_name v_type) func_name() [return_type] {
+  //func body
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;示例&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type Circle struct {
+  radius float64
+}
+
+func (c Circle) getArea() float64 {
+  return 3.14 * c.radius * c.radius
+}
+
+func main() {
+  var c1 Circle
+  c1.radius = 10.00
+  fmt.Println(c1.getArea())
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;方法的接收者是非结构体&#34;&gt;方法的接收者是非结构体&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;也可以为非 struct 类型声明方法，定义作用于一个类型的方法&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接收者的类型定义和方法声明必须在同一个包内，不能为内建类型声明方法&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可为内置类型起一个别名，然后基于别名作为接收者定义方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+type MyFloat float64
+
+func (f MyFloat) Abs() float64 {
+if f &amp;lt; 0 {
+return float64(-f)
+}
+return float64(f)
+}
+
+func main() {
+f := MyFloat(-math.Sqrt2)
+fmt.Println(f.Abs())
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;指针接收者-vs-值接收者&#34;&gt;指针接收者 vs 值接收者&lt;/h2&gt;
+
+&lt;h3 id=&#34;使用指针接收者&#34;&gt;使用指针接收者&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用指针接收者，在方法内部修改会影响调用者&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;场景 1：希望方法内部修改影响调用者&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;场景 2：拷贝数据结构的代价比较大&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+type Vertex struct {
+X, Y float64
+}
+
+func (v Vertex) Abs() float64 {
+return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func (v *Vertex) Scale(f float64) {
+v.X = v.X * f
+v.Y = v.Y * f
+}
+
+func main() {
+v := Vertex{3, 4}
+v.Scale(10)
+fmt.Println(v.Abs())
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;带指针参数的函数必须接受一个指针，而以指针为接收者的方法被调用时，接收者可以是值或者指针，go 会根据接收者类型自动调整&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+)
+
+type vertex struct {
+  X, Y float64
+}
+
+func (v *vertex) Scale(f float64) {
+  v.X = v.X * f
+  v.Y = v.Y * f
+}
+
+func scaleFunc(v *vertex, f float64) {
+  v.X = v.X * f
+  v.Y = v.Y * f
+}
+
+func main() {
+  v := vertex{3, 4}
+  v.Scale(2)
+  scaleFunc(&amp;amp;v, 10)
+
+  p := &amp;amp;vertex{4, 3}
+  p.Scale(3)
+  scaleFunc(p, 8)
+
+  fmt.Println(v, p)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;使用值接收者&#34;&gt;使用值接收者&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用值接收者，类似于形参，方法内部的修改不影响调用者&lt;/li&gt;
+&lt;li&gt;接收一个值作为参数的函数必须接受一个指定类型的值，而以值作为接收者的方法被调用时，接收者可以是值或者指针&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;方法的匿名域&#34;&gt;方法的匿名域&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;方法的接收者是一个结构体的匿名域（结构体中的结构体），可直接调用不指定匿名域&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type address struct {
+city string
+state string
+}
+
+func (a address) fullAddress() {
+fmt.Println(&amp;quot;Full address: %s, %s&amp;quot;, a.city. a.state)
+}
+
+type person struct {
+firstName string
+lastName string
+address
+}
+
+func printPersonInfo(p person) {
+fmt.Println(&amp;quot;name: %s %s&amp;quot;, p.firstName, p.secondName)
+p.fullAddress()//p.address.fullAddress()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 条件语句</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_decision_making/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_decision_making/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#if&#34;&gt;if&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#if-%e8%af%ad%e5%8f%a5&#34;&gt;if 语句&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ifelse-%e8%af%ad%e5%8f%a5&#34;&gt;if&amp;hellip;else 语句&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#if-%e5%b5%8c%e5%a5%97%e8%af%ad%e5%8f%a5&#34;&gt;if 嵌套语句&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#switch&#34;&gt;switch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#select&#34;&gt;select&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;if&#34;&gt;if&lt;/h2&gt;
+
+&lt;h3 id=&#34;if-语句&#34;&gt;if 语句&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;类似于 for 循环，但是不需要小括号，需要大括号&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;if x &amp;lt; 0 {
+  return 0
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;if 语句可以在执行条件语句之前有一个简短的语句，在这个语句声明的变量的作用范围在 if 语句末尾结束&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func pow(x, n, lim float64) float64 {
+if v := math.Pow(x, n); v &amp;lt; lim {
+    return v
+}
+return lim
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;if-else-语句&#34;&gt;if&amp;hellip;else 语句&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;if 语句中声明的变量对于匹配的 else 代码块也是可见的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func pow(x, n, lim float64) float64 {
+  if v := math.Pow(x, n); v &amp;lt; lim {
+      return v
+  } else {
+      fmt.Printf(&amp;quot;%g &amp;gt;= %g\n&amp;quot;, v, lim)
+  }
+  return lim
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;if-嵌套语句&#34;&gt;if 嵌套语句&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;if {
+    //...
+    if {
+        //...
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;switch&#34;&gt;switch&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个 case 分支都是唯一的，从上到下测试直到匹配，&lt;strong&gt;只执行匹配项&lt;/strong&gt;，匹配项后面不用加 break(每个测试项后面自动加上 break)，和 C++ 不同&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;另外一个区别是每个 case 不需要是常数，值也不必是整数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;switch var1 { //case 的值必须是相同类型
+  case var1[, var11, var111]://可同时测试多个条件，用逗号分隔
+      //...
+  case var2:
+      //...
+  default:
+      //...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;switch 也有简短的声明语句，声明变量只对 switch 范围可见&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+  &amp;quot;runtime&amp;quot;
+)
+
+func main() {
+  switch os := runtime.GOOS; os {
+  case &amp;quot;darwin&amp;quot;:
+      fmt.Println(&amp;quot;OS X&amp;quot;)
+  case &amp;quot;linux&amp;quot;:
+      fmt.Println(&amp;quot;Linux&amp;quot;)
+  default:
+      fmt.Printf(&amp;quot;%s\n&amp;quot;, os)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;没有条件语句的 switch 和 &lt;code&gt;switch true&lt;/code&gt; 相同。这个可以用于实现比较长的 if-then-else 链&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+  &amp;quot;time&amp;quot;
+)
+
+func main() {
+  t := time.Now()
+  switch {
+  case t.Hour() &amp;lt; 12:
+      fmt.Println(&amp;quot;Good morning&amp;quot;)
+  case t.Hour() &amp;lt; 17:
+      fmt.Println(&amp;quot;Good afternoon&amp;quot;)
+  default:
+      fmt.Println(&amp;quot;Good evening&amp;quot;)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;select&#34;&gt;select&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;select&lt;/code&gt; 语句使一个 goroutine 可以等待多个通信操作&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;类似于 &lt;code&gt;switch&lt;/code&gt; 语句，会随机执行一个可允许的 &lt;code&gt;case&lt;/code&gt;，如果没有 &lt;code&gt;case&lt;/code&gt; 可以允许则阻塞到有 &lt;code&gt;case&lt;/code&gt; 可以运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;select {
+  case condition1:
+      //...
+  case condition2:
+      //...
+  default:
+      //...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;case&lt;/code&gt; 必须是一个通信，所有 &lt;code&gt;channel&lt;/code&gt; 表达式会被求值&lt;/li&gt;
+&lt;li&gt;所有发送的表达式会被求值&lt;/li&gt;
+&lt;li&gt;任意某个 &lt;code&gt;channel&lt;/code&gt; 可以进行，就会执行，其他的被忽略&lt;/li&gt;
+&lt;li&gt;如果多个 &lt;code&gt;case&lt;/code&gt; 可以执行，会随机公平选择一个执行，忽略其他&lt;/li&gt;
+&lt;li&gt;没有可以执行的 &lt;code&gt;case&lt;/code&gt; 语句&lt;/li&gt;
+&lt;li&gt;如果有 &lt;code&gt;default&lt;/code&gt;，则执行 &lt;code&gt;default&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;否则阻塞至某个通信可以运行，go 不会重新对 &lt;code&gt;channel&lt;/code&gt; 或值进行求值&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为了在尝试发送或者接收时不发生阻塞，可使用 &lt;code&gt;default&lt;/code&gt; 分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func fibonacci(c, quit chan int) {
+x, y := 0, 1
+for {
+select {
+case c &amp;lt;- x:
+    x, y = y, x+y
+case &amp;lt;-quit:
+    fmt.Println(&amp;quot;quit&amp;quot;)
+    return
+}
+}
+}
+
+func main() {
+c := make(chan int)
+quit := make(chan int)
+go func() {
+for i := 0; i &amp;lt; 10; i++ {
+    fmt.Println(&amp;lt;-c)
+}
+quit &amp;lt;- 0
+}()
+fibonacci(c, quit)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 模块</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_module/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_module/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8&#34;&gt;1 快速入门&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-%e6%96%b0%e5%bb%ba%e5%b7%a5%e7%a8%8b&#34;&gt;1.1 新建工程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e6%af%8f%e6%97%a5%e5%b7%a5%e4%bd%9c%e6%b5%81&#34;&gt;1.2 每日工作流&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-%e6%96%b0%e6%a6%82%e5%bf%b5&#34;&gt;2 新概念&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-module-%e6%a8%a1%e5%9d%97&#34;&gt;2.1 module 模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-gomod&#34;&gt;2.2 go.mod&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-%e7%89%88%e6%9c%ac%e9%80%89%e6%8b%a9&#34;&gt;2.3 版本选择&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#24-%e8%af%ad%e4%b9%89%e5%af%bc%e5%85%a5%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6&#34;&gt;2.4 语义导入版本控制&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%9d%97&#34;&gt;3 如何使用模块&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-%e5%a6%82%e4%bd%95%e5%ae%89%e8%a3%85%e5%92%8c%e6%bf%80%e6%b4%bb%e6%a8%a1%e5%9d%97%e6%94%af%e6%8c%81&#34;&gt;3.1 如何安装和激活模块支持&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-%e5%ae%9a%e4%b9%89%e4%b8%80%e4%b8%aa%e6%a8%a1%e5%9d%97&#34;&gt;3.2 定义一个模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#33-%e5%8d%87%e7%ba%a7%e5%92%8c%e9%99%8d%e7%ba%a7%e4%be%9d%e8%b5%96&#34;&gt;3.3 升级和降级依赖&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#34-%e5%87%86%e5%a4%87%e5%8f%91%e5%b8%83%e6%a8%a1%e5%9d%97&#34;&gt;3.4 准备发布模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#341-%e5%8f%91%e8%a1%8crelease%e6%89%80%e6%9c%89%e7%89%88%e6%9c%ac%e6%a8%a1%e5%9d%97&#34;&gt;3.4.1 发行(release)所有版本模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#342-%e5%8f%91%e8%a1%8c-v2-%e7%89%88%e6%9c%ac%e6%a8%a1%e5%9d%97&#34;&gt;3.4.2 发行 v2+ 版本模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#343-%e5%8f%91%e5%b8%83%e4%b8%80%e4%b8%aa%e5%8f%91%e8%a1%8c%e7%89%88%e6%9c%ac&#34;&gt;3.4.3 发布一个发行版本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%e8%bf%81%e7%a7%bb%e5%88%b0%e6%a8%a1%e5%9d%97&#34;&gt;4 迁移到模块&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e8%bf%81%e7%a7%bb%e6%80%bb%e7%bb%93&#34;&gt;4.1 迁移总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e8%bf%81%e7%a7%bb%e7%9b%b8%e5%85%b3%e7%9a%84%e8%af%9d%e9%a2%98&#34;&gt;4.2 迁移相关的话题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#421-%e4%bd%bf%e7%94%a8%e8%be%83%e6%97%a9%e7%9a%84%e4%be%9d%e8%b5%96%e7%ae%a1%e7%90%86%e5%99%a8%e8%87%aa%e5%8a%a8%e8%bf%81%e7%a7%bb&#34;&gt;4.2.1 使用较早的依赖管理器自动迁移&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#422-%e6%8f%90%e4%be%9b%e4%be%9d%e8%b5%96%e4%bf%a1%e6%81%af%e7%bb%99%e6%97%a7%e7%89%88%e6%9c%ac%e7%9a%84-go-%e5%92%8c%e9%9d%9e%e6%a8%a1%e5%9d%97%e4%bd%bf%e7%94%a8%e8%80%85&#34;&gt;4.2.2 提供依赖信息给旧版本的 Go 和非模块使用者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#423-%e6%9b%b4%e6%96%b0%e9%a2%84%e5%85%88%e5%b7%b2%e6%9c%89%e7%9a%84%e5%ae%89%e8%a3%85%e6%8c%87%e5%af%bc&#34;&gt;4.2.3 更新预先已有的安装指导&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#424-%e9%81%bf%e5%85%8d%e7%a0%b4%e5%9d%8f%e5%b7%b2%e6%9c%89%e7%9a%84%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84&#34;&gt;4.2.4 避免破坏已有的导入路径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#425-%e5%bd%93%e7%ac%ac%e4%b8%80%e6%ac%a1%e9%87%87%e7%94%a8%e6%a8%a1%e5%9d%97%e4%b8%94%e6%a8%a1%e5%9d%97%e6%9c%89-v2-%e7%9a%84%e5%8c%85%e6%97%b6%e5%8d%87%e7%ba%a7%e4%b8%bb%e7%89%88%e6%9c%ac%e5%8f%b7&#34;&gt;4.2.5 当第一次采用模块且模块有 v2+ 的包时升级主版本号&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#426-v2-%e6%a8%a1%e5%9d%97%e5%85%81%e8%ae%b8%e4%b8%80%e6%ac%a1%e7%bc%96%e8%af%91%e4%b8%ad%e6%9c%89%e5%a4%9a%e4%b8%aa%e4%b8%bb%e7%89%88%e6%9c%ac%e5%8f%b7&#34;&gt;4.2.6 v2+ 模块允许一次编译中有多个主版本号&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#427-%e9%9d%9e%e6%a8%a1%e5%9d%97%e4%bb%a3%e7%a0%81%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%9d%97&#34;&gt;4.2.7 非模块代码使用模块&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#4271-%e9%9d%9e%e6%a8%a1%e5%9d%97%e4%bb%a3%e7%a0%81%e4%bd%bf%e7%94%a8-v0v1-%e6%a8%a1%e5%9d%97&#34;&gt;4.2.7.1 非模块代码使用 v0/v1 模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4272-%e9%9d%9e%e6%a8%a1%e5%9d%97%e4%bb%a3%e7%a0%81%e4%bd%bf%e7%94%a8-v2-%e6%a8%a1%e5%9d%97&#34;&gt;4.2.7.2 非模块代码使用 v2+ 模块&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#428-%e7%bb%99%e9%a2%84%e5%85%88%e5%b7%b2%e6%9c%89%e7%9a%84-v2-%e5%8c%85%e4%bd%9c%e8%80%85%e4%bd%bf%e7%94%a8%e7%9a%84%e7%ad%96%e7%95%a5&#34;&gt;4.2.8 给预先已有的 v2+ 包作者使用的策略&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#4281-%e8%a6%81%e6%b1%82%e5%ae%a2%e6%88%b7%e4%bd%bf%e7%94%a8-1971103111-%e7%89%88%e6%9c%ac%e7%9a%84-go&#34;&gt;4.2.8.1 要求客户使用 1.9.7+/1.10.&lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.11+ 版本的 Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4282-%e5%85%81%e8%ae%b8%e5%ae%a2%e6%88%b7%e4%bd%bf%e7%94%a8%e6%9b%b4%e6%97%a7%e7%89%88%e6%9c%ac%e7%9a%84-go%e5%a6%82-go18&#34;&gt;4.2.8.2 允许客户使用更旧版本的 Go，如 Go1.8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4283-%e7%ad%89%e5%be%85%e9%80%89%e6%8b%a9%e6%a8%a1%e5%9d%97&#34;&gt;4.2.8.3 等待选择模块&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-%e5%85%b6%e4%bb%96%e8%b5%84%e6%ba%90&#34;&gt;5 其他资源&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%e5%88%9d%e5%a7%8b-vgo-%e5%bb%ba%e8%ae%ae%e4%b9%8b%e5%90%8e%e7%9a%84%e6%94%b9%e5%8f%98&#34;&gt;6 初始 Vgo 建议之后的改变&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-github-issues&#34;&gt;7 Github issues&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-faqs&#34;&gt;8 FAQs&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#81-%e5%a6%82%e4%bd%95%e6%a0%87%e8%ae%b0%e7%89%88%e6%9c%ac%e6%98%af%e4%b8%8d%e5%85%bc%e5%ae%b9%e7%9a%84&#34;&gt;8.1 如何标记版本是不兼容的&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#82-%e4%bd%95%e6%97%b6%e6%98%af%e6%97%a7%e8%a1%8c%e4%b8%ba-vs-%e6%96%b0%e7%9a%84%e5%9f%ba%e4%ba%8e%e6%a8%a1%e5%9d%97%e7%9a%84%e8%a1%8c%e4%b8%ba&#34;&gt;8.2 何时是旧行为 vs 新的基于模块的行为&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#83-%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%9a%e8%bf%87-go-get-%e5%ae%89%e8%a3%85%e4%b8%80%e4%b8%aa%e5%b7%a5%e5%85%b7%e6%8a%a5%e9%94%99-cannot-find-main-module&#34;&gt;8.3 为什么通过 &lt;code&gt;go get&lt;/code&gt; 安装一个工具报错 &lt;code&gt;cannot find main module&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#84-%e5%a6%82%e4%bd%95%e4%b8%ba%e4%b8%80%e4%b8%aa%e6%a8%a1%e5%9d%97%e8%b7%9f%e8%b8%aa%e5%b7%a5%e5%85%b7%e4%be%9d%e8%b5%96&#34;&gt;8.4 如何为一个模块跟踪工具依赖&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#85-%e6%a8%a1%e5%9d%97%e6%94%af%e6%8c%81%e7%9a%84%e7%8a%b6%e6%80%81%e5%9c%a8-ide%e7%bc%96%e8%be%91%e5%99%a8%e5%92%8c%e6%a0%87%e5%87%86%e5%b7%a5%e5%85%b7%e6%af%94%e5%a6%82-goimportgorename%e7%ad%89-%e6%98%af%e4%bb%80%e4%b9%88%e6%a0%b7%e7%9a%84&#34;&gt;8.5 模块支持的状态在 IDE，编辑器和标准工具(比如 goimport，gorename等) 是什么样的&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-faqs-%e5%85%b6%e4%bb%96%e6%8e%a7%e5%88%b6&#34;&gt;9 FAQs-其他控制&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#91-%e5%9c%a8%e6%a8%a1%e5%9d%97%e4%b8%8a%e5%b7%a5%e4%bd%9c%e6%97%b6%e5%8f%af%e7%94%a8%e7%9a%84%e7%a4%be%e5%8c%ba%e5%b7%a5%e5%85%b7&#34;&gt;9.1 在模块上工作时可用的社区工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#92-%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8-replace-%e6%8c%87%e4%bb%a4&#34;&gt;9.2 什么时候使用 replace 指令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#93-%e8%83%bd%e5%90%a6%e5%ae%8c%e5%85%a8%e5%9c%a8%e6%9c%ac%e5%9c%b0%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f%e4%bd%86%e5%9c%a8-vcs-%e4%b9%8b%e5%a4%96%e5%b7%a5%e4%bd%9c&#34;&gt;9.3 能否完全在本地文件系统但在 VCS 之外工作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#94-%e6%a8%a1%e5%9d%97%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8-vendor%e6%98%af%e5%90%a6%e4%b8%8d%e5%86%8d%e9%9c%80%e8%a6%81-vendor&#34;&gt;9.4 模块如何使用 vendor？是否不再需要 vendor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#941-%e6%a8%a1%e5%9d%97%e4%b8%8b%e8%bd%bd%e5%92%8c%e9%aa%8c%e8%af%81&#34;&gt;9.4.1 模块下载和验证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#942-%e6%a8%a1%e5%9d%97%e5%92%8c%e7%9b%ae%e5%bd%95&#34;&gt;9.4.2 模块和目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#95-%e6%98%af%e5%90%a6%e6%9c%89-always-on-%e7%9a%84%e6%a8%a1%e5%9d%97%e4%bb%93%e5%ba%93%e5%92%8c%e4%bc%81%e4%b8%9a%e4%bb%a3%e7%90%86&#34;&gt;9.5 是否有 always on 的模块仓库和企业代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#96-%e8%83%bd%e5%90%a6%e6%8e%a7%e5%88%b6%e4%bd%95%e6%97%b6%e6%9b%b4%e6%96%b0-gomodgo-%e5%b7%a5%e5%85%b7%e4%bd%95%e6%97%b6%e4%bd%bf%e7%94%a8%e7%bd%91%e7%bb%9c%e6%bb%a1%e8%b6%b3%e4%be%9d%e8%b5%96&#34;&gt;9.6 能否控制何时更新 go.mod，go 工具何时使用网络满足依赖&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#961-goflags-%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f&#34;&gt;9.6.1 GOFLAGS 环境变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#962--modreadonly-%e6%a0%87%e8%af%86%e5%a6%82-go-build--modreadonly&#34;&gt;9.6.2 -mod=readonly 标识(如 &lt;code&gt;go build -mod=readonly&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#963-go-mod-vendor-%e5%91%bd%e4%bb%a4&#34;&gt;9.6.3 go mod vendor 命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#964--modvendor-%e6%a0%87%e8%af%86%e5%a6%82-go-build--modvendor&#34;&gt;9.6.4 -mod=vendor 标识(如 &lt;code&gt;go build -mod=vendor&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#965-go111moduleoff-%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f&#34;&gt;9.6.5 GO111MODULE=off 环境变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#966-goproxyoff-%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f&#34;&gt;9.6.6 GOPROXY=off 环境变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#967-goproxyfilefilesystempath-%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f&#34;&gt;9.6.7 GOPROXY=file:///filesystem/path 环境变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#968-%e5%bc%80%e6%ba%90%e7%9a%84%e5%88%86%e5%b8%83%e5%bc%8f%e6%a8%a1%e5%9d%97%e4%bb%93%e5%ba%93%e5%a6%82-athens-%e5%b7%a5%e7%a8%8b&#34;&gt;9.6.8 开源的分布式模块仓库，如 Athens 工程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#969-go-mod-download-%e5%91%bd%e4%bb%a4&#34;&gt;9.6.9 go mod download 命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9610-gomod-%e4%b8%ad%e7%9a%84-replace-%e6%8c%87%e4%bb%a4&#34;&gt;9.6.10 go.mod 中的 replace 指令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#97-%e5%9c%a8-ci-%e7%b3%bb%e7%bb%9f%e5%a6%82-travis-%e6%88%96-circleci-%e4%b8%ad%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%9d%97&#34;&gt;9.7 在 CI 系统(如 Travis 或 CircleCI) 中如何使用模块&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-faqs-gomod-%e5%92%8c-gosum&#34;&gt;10 FAQs-go.mod 和 go.sum&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#101-%e4%b8%ba%e4%bb%80%e4%b9%88-go-mod-tidy-%e8%ae%b0%e5%bd%95-gomod-%e7%9a%84%e9%97%b4%e6%8e%a5%e5%92%8c%e6%b5%8b%e8%af%95%e4%be%9d%e8%b5%96&#34;&gt;10.1 为什么 go mod tidy 记录 go.mod 的间接和测试依赖&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#102-gosum-%e6%98%af%e5%90%a6%e6%98%af%e9%94%81%e6%96%87%e4%bb%b6%e4%b8%ba%e4%bb%80%e4%b9%88-gosum-%e5%8c%85%e5%90%ab%e4%b8%8d%e5%86%8d%e4%bd%bf%e7%94%a8%e7%9a%84%e6%a8%a1%e5%9d%97%e7%89%88%e6%9c%ac%e4%bf%a1%e6%81%af&#34;&gt;10.2 go.sum 是否是锁文件？为什么 go.sum 包含不再使用的模块版本信息&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#103-%e6%98%af%e5%90%a6%e5%ba%94%e8%af%a5%e6%8f%90%e4%ba%a4-gosum-%e5%92%8c-gomod-%e6%96%87%e4%bb%b6&#34;&gt;10.3 是否应该提交 go.sum 和 go.mod 文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#104-%e5%a6%82%e6%9e%9c%e6%b2%a1%e6%9c%89%e4%bb%bb%e4%bd%95%e4%be%9d%e8%b5%96%e6%98%af%e5%90%a6%e4%bb%8d%e5%ba%94%e8%af%a5%e5%a2%9e%e5%8a%a0%e4%b8%80%e4%b8%aa-gomod-%e6%96%87%e4%bb%b6&#34;&gt;10.4 如果没有任何依赖是否仍应该增加一个 go.mod 文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#11-faqs-%e8%af%ad%e4%b9%89%e5%af%bc%e5%85%a5%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6&#34;&gt;11 FAQs-语义导入版本控制&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#111-%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%bb%e7%89%88%e6%9c%ac%e5%8f%b7%e5%bf%85%e9%a1%bb%e5%87%ba%e7%8e%b0%e5%9c%a8%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84&#34;&gt;11.1 为什么主版本号必须出现在导入路径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#112-%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%bb%e7%89%88%e6%9c%ac%e5%8f%b7-v0v1-%e8%a2%ab%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84%e5%bf%bd%e8%a7%86&#34;&gt;11.2 为什么主版本号 v0/v1 被导入路径忽视&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#113-%e4%bd%bf%e7%94%a8%e4%b8%bb%e7%89%88%e6%9c%ac%e5%8f%b7-v0v1-%e7%bb%99%e9%a1%b9%e7%9b%ae%e6%89%93%e6%a0%87%e7%ad%be%e6%88%96%e4%bd%bf%e7%94%a8-v2-%e6%a0%87%e8%ae%b0%e7%a0%b4%e5%9d%8f%e6%80%a7%e7%9a%84%e5%8f%98%e5%8c%96%e7%9a%84%e5%bd%b1%e5%93%8d%e6%98%af%e4%bb%80%e4%b9%88&#34;&gt;11.3 使用主版本号 v0/v1 给项目打标签或使用 v2+ 标记破坏性的变化的影响是什么&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#114-%e6%a8%a1%e5%9d%97%e8%83%bd%e5%90%a6%e4%bd%bf%e7%94%a8%e6%b2%a1%e6%9c%89%e9%80%89%e6%8b%a9%e5%8a%a0%e5%85%a5%e6%a8%a1%e5%9d%97%e7%9a%84%e5%8c%85&#34;&gt;11.4 模块能否使用没有选择加入模块的包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#115-%e6%a8%a1%e5%9d%97%e8%83%bd%e5%90%a6%e4%bd%bf%e7%94%a8%e6%b2%a1%e6%9c%89%e5%8a%a0%e5%85%a5%e6%a8%a1%e5%9d%97%e7%9a%84-v2-%e5%8c%85-incompatible-%e6%84%8f%e5%91%b3%e7%9d%80%e4%bb%80%e4%b9%88&#34;&gt;11.5 模块能否使用没有加入模块的 v2+ 包？ +incompatible 意味着什么&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#116-%e7%a6%81%e7%94%a8%e6%a8%a1%e5%9d%97%e6%94%af%e6%8c%81%e6%97%b6%e5%9c%a8%e7%bc%96%e8%af%91%e4%b8%ad%e5%a6%82%e4%bd%95%e5%af%b9%e5%be%85-v2-%e6%a8%a1%e5%9d%97%e6%9c%80%e5%b0%8f%e6%a8%a1%e5%9d%97%e5%85%bc%e5%ae%b9%e6%80%a7%e5%9c%a8-go197go1103go111-%e4%b8%ad%e5%a6%82%e4%bd%95%e5%b7%a5%e4%bd%9c&#34;&gt;11.6 禁用模块支持时在编译中如何对待 v2+ 模块？最小模块兼容性在 Go1.9.7+/Go1.10.3+/Go1.11 中如何工作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#117-%e5%a6%82%e6%9e%9c%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa-gomod-%e4%bd%86%e6%98%af%e4%bb%93%e5%ba%93%e4%b8%8d%e4%bd%bf%e7%94%a8-semver-%e6%a0%87%e7%ad%be%e4%bc%9a%e5%8f%91%e7%94%9f%e4%bb%80%e4%b9%88&#34;&gt;11.7 如果创建一个 go.mod 但是仓库不使用 semver 标签会发生什么&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#118-%e4%b8%80%e4%b8%aa%e6%a8%a1%e5%9d%97%e8%83%bd%e5%90%a6%e4%be%9d%e8%b5%96%e8%87%aa%e8%ba%ab%e4%b8%8d%e5%90%8c%e7%9a%84%e7%89%88%e6%9c%ac&#34;&gt;11.8 一个模块能否依赖自身不同的版本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-faqs-%e5%a4%9a%e6%a8%a1%e5%9d%97%e4%bb%93%e5%ba%93&#34;&gt;12 FAQs-多模块仓库&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#121-%e4%bb%80%e4%b9%88%e6%98%af%e5%a4%9a%e6%a8%a1%e5%9d%97%e4%bb%93%e5%ba%93&#34;&gt;12.1 什么是多模块仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#122-%e6%98%af%e5%90%a6%e5%ba%94%e8%af%a5%e5%9c%a8%e4%b8%80%e4%b8%aa%e4%bb%93%e5%ba%93%e5%8c%85%e5%90%ab%e5%a4%9a%e4%b8%aa%e6%a8%a1%e5%9d%97&#34;&gt;12.2 是否应该在一个仓库包含多个模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#123-%e8%83%bd%e5%90%a6%e7%bb%99%e5%a4%9a%e6%a8%a1%e5%9d%97%e4%bb%93%e5%ba%93%e5%a2%9e%e5%8a%a0%e4%b8%80%e4%b8%aa%e6%a8%a1%e5%9d%97&#34;&gt;12.3 能否给多模块仓库增加一个模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#124-%e8%83%bd%e5%90%a6%e4%bb%8e%e5%a4%9a%e6%a8%a1%e5%9d%97%e4%bb%93%e5%ba%93%e5%88%a0%e9%99%a4%e4%b8%80%e4%b8%aa%e6%a8%a1%e5%9d%97&#34;&gt;12.4 能否从多模块仓库删除一个模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#125-%e6%a8%a1%e5%9d%97%e8%83%bd%e5%90%a6%e4%be%9d%e8%b5%96%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%a8%a1%e5%9d%97%e7%9a%84-internal&#34;&gt;12.5 模块能否依赖另一个模块的 internal/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#126-%e8%83%bd%e5%90%a6%e5%a2%9e%e5%8a%a0%e4%b8%80%e4%b8%aa-gomod-%e6%96%87%e4%bb%b6%e6%8e%92%e9%99%a4%e4%b8%8d%e9%9c%80%e8%a6%81%e7%9a%84%e5%86%85%e5%ae%b9%e6%a8%a1%e5%9d%97%e6%98%af%e5%90%a6%e6%9c%89%e7%ad%89%e4%bb%b7%e7%9a%84-gitignore-%e6%96%87%e4%bb%b6&#34;&gt;12.6 能否增加一个 go.mod 文件排除不需要的内容？模块是否有等价的 .gitignore 文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-faqs-%e6%9c%80%e5%b0%8f%e7%89%88%e6%9c%ac%e9%80%89%e6%8b%a9&#34;&gt;13 FAQs-最小版本选择&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#131-%e6%9c%80%e5%b0%8f%e7%89%88%e6%9c%ac%e9%80%89%e6%8b%a9%e6%98%af%e5%90%a6%e4%bc%9a%e4%bd%bf%e5%bc%80%e5%8f%91%e8%80%85%e5%be%97%e5%88%b0%e9%87%8d%e8%a6%81%e7%9a%84%e6%9b%b4%e6%96%b0&#34;&gt;13.1 最小版本选择是否会使开发者得到重要的更新&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-faqs-%e5%8f%af%e8%83%bd%e7%9a%84%e9%97%ae%e9%a2%98&#34;&gt;14 FAQs-可能的问题&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#141-%e5%a6%82%e6%9e%9c%e5%8f%91%e7%8e%b0%e9%97%ae%e9%a2%98%e6%9c%89%e5%93%aa%e4%ba%9b%e9%80%9a%e7%94%a8%e7%9a%84%e4%b8%9c%e8%a5%bf%e5%8f%af%e4%bb%a5%e5%ae%9a%e4%bd%8d%e6%a3%80%e6%9f%a5&#34;&gt;14.1 如果发现问题，有哪些通用的东西可以定位检查&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#142-%e5%a6%82%e6%9e%9c%e6%b2%a1%e6%9c%89%e7%9c%8b%e5%88%b0%e9%a2%84%e6%9c%9f%e7%9a%84%e4%be%9d%e8%b5%96%e7%89%88%e6%9c%ac%e5%8f%af%e4%bb%a5%e6%a3%80%e6%9f%a5%e4%bb%80%e4%b9%88&#34;&gt;14.2 如果没有看到预期的依赖版本，可以检查什么&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#143-%e4%b8%ba%e4%bb%80%e4%b9%88%e5%be%97%e5%88%b0%e9%94%99%e8%af%af-cannot-find-module-providing-package-foo&#34;&gt;14.3 为什么得到错误 cannot find module providing package foo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#144-%e4%b8%ba%e4%bb%80%e4%b9%88-go-mod-init-%e6%8a%a5%e9%94%99-cannot-determine-module-path-for-source-directory&#34;&gt;14.4 为什么 go mod init 报错 cannot determine module path for source directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#145-%e6%9c%89%e4%b8%80%e4%b8%aa%e5%a4%8d%e6%9d%82%e7%9a%84%e4%b8%94%e6%b2%a1%e6%9c%89%e5%8a%a0%e5%85%a5%e6%a8%a1%e5%9d%97%e7%9a%84%e4%be%9d%e8%b5%96%e5%87%ba%e7%8e%b0%e9%97%ae%e9%a2%98%e8%83%bd%e5%90%a6%e4%bd%bf%e7%94%a8%e5%ae%83%e7%9b%ae%e5%89%8d%e7%9a%84%e4%be%9d%e8%b5%96%e7%ae%a1%e7%90%86%e5%99%a8%e7%9a%84%e4%bf%a1%e6%81%af&#34;&gt;14.5 有一个复杂的且没有加入模块的依赖出现问题。能否使用它目前的依赖管理器的信息&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#146-%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e7%94%b1%e4%ba%8e%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84%e5%92%8c%e5%a3%b0%e6%98%8e%e6%a8%a1%e5%9d%97%e8%ba%ab%e4%bb%bd%e4%b8%8d%e5%8c%b9%e9%85%8d%e5%af%bc%e8%87%b4%e7%9a%84-parsing-gomod-unexpected-module-path-%e5%92%8c-error-loading-module-requirements-%e9%94%99%e8%af%af&#34;&gt;14.6 如何解决由于导入路径和声明模块身份不匹配导致的 parsing go.mod: unexpected module path 和 error loading module requirements 错误&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#1461-%e5%87%ba%e7%8e%b0%e9%97%ae%e9%a2%98%e7%9a%84%e5%8e%9f%e5%9b%a0&#34;&gt;14.6.1 出现问题的原因&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#1462-%e5%9c%ba%e6%99%af%e7%a4%ba%e4%be%8b&#34;&gt;14.6.2 场景示例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#1463-%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95&#34;&gt;14.6.3 解决方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#147-%e4%b8%ba%e4%bb%80%e4%b9%88-go-build-%e8%a6%81%e6%b1%82-gcc%e4%b8%ba%e4%bb%80%e4%b9%88%e9%a2%84%e7%bc%96%e8%af%91%e5%8c%85%e5%a6%82-nethttp-%e4%b8%8d%e7%94%a8&#34;&gt;14.7 为什么 go build 要求 gcc？为什么预编译包(如 net/http) 不用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#148-%e6%a8%a1%e5%9d%97%e8%83%bd%e5%90%a6%e5%9c%a8%e7%9b%b8%e5%af%b9%e5%af%bc%e5%85%a5%e8%b7%af%e5%be%84%e5%a6%82-import-%22subdir%22%e6%ad%a3%e5%b8%b8%e5%b7%a5%e4%bd%9c&#34;&gt;14.8 模块能否在相对导入路径(如 import &amp;ldquo;./subdir&amp;rdquo;)正常工作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#149-%e6%9f%90%e4%ba%9b%e9%9c%80%e8%a6%81%e7%9a%84%e6%96%87%e4%bb%b6%e5%8f%af%e8%83%bd%e4%b8%8d%e5%9c%a8%e5%ae%9a%e4%bd%8d%e7%9a%84-vendor-%e7%9b%ae%e5%bd%95&#34;&gt;14.9 某些需要的文件可能不在定位的 vendor 目录&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-%e7%9b%b8%e5%85%b3%e9%93%be%e6%8e%a5&#34;&gt;15 相关链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-快速入门&#34;&gt;1 快速入门&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-1-新建工程&#34;&gt;1.1 新建工程&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 1 在 GPOPATH 之外创建工程
+mkdir -p /tmp/mygopro/repo
+# 2 切换到工程目录
+cd /tmp/mygopro/repo
+# 3 初始化工程
+git init
+# 4 添加远程仓库路径
+git remote add origin https://github.com/my/repo
+# 5 初始化一个新模块, 会创建一个 go.mod 文件
+go mod init github.com/my/repo
+# 6 写 go 源码
+cat &amp;lt;&amp;lt;EOF &amp;gt; hello.go
+&amp;gt; package main
+&amp;gt;
+&amp;gt; import (
+&amp;gt;     &amp;quot;fmt&amp;quot;
+&amp;gt;     &amp;quot;rsc.io/quote&amp;quot;
+&amp;gt; )
+&amp;gt;
+&amp;gt; func main() {
+&amp;gt;     fmt.Println(quote.Hello())
+&amp;gt; }
+&amp;gt; EOF
+# 7 编译和运行
+go build -o hello
+./hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-2-每日工作流&#34;&gt;1.2 每日工作流&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;添加 &lt;code&gt;import&lt;/code&gt; 语句到 &lt;code&gt;.go&lt;/code&gt; 代码&lt;/li&gt;
+&lt;li&gt;标准命令(&lt;code&gt;go build&lt;/code&gt; 或 &lt;code&gt;go test&lt;/code&gt;) 会自动增加新依赖的最高版本以满足导入(更新 &lt;code&gt;go.mod&lt;/code&gt; 的 &lt;code&gt;require&lt;/code&gt; 命令，并下载新的依赖)&lt;/li&gt;
+&lt;li&gt;需要时，可以使用命令(&lt;code&gt;go get foo@v1.2.3&lt;/code&gt; 或 &lt;code&gt;go get foo@master&lt;/code&gt; 或 &lt;code&gt;go get foo@commitid&lt;/code&gt; 或 &lt;code&gt;go get foo@master&lt;/code&gt;)或直接编辑 &lt;code&gt;go.mod&lt;/code&gt; 选择依赖的具体版本&lt;/li&gt;
+&lt;li&gt;其他有用的命令
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go list -m all&lt;/code&gt;: 查看编译会使用的所有的直接或间接依赖的最终版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -u -m all&lt;/code&gt;: 查看可用的所有的直接或间接依赖的次级和补丁升级版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -u ./...&lt;/code&gt; 或 &lt;code&gt;go list -u=patch ./...&lt;/code&gt; (从模块根路径): 升级所有直接或间接依赖到最新的次级或补丁升级(忽视 pre-release)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go build ./...&lt;/code&gt; 或 &lt;code&gt;go test ./...&lt;/code&gt; (从模块根路径):编译或测试模块内的所有包&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod tidy&lt;/code&gt;: 从 &lt;code&gt;go.mod&lt;/code&gt; 删除不再需要的依赖，增加新依赖&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;replace&lt;/code&gt; &lt;code&gt;gohack&lt;/code&gt;: 使用依赖的一个 fork 或本地拷贝或精确版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod vendor&lt;/code&gt;: 可选的步骤，创建一个 &lt;code&gt;vendor&lt;/code&gt; 目录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-新概念&#34;&gt;2 新概念&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-1-module-模块&#34;&gt;2.1 module 模块&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模块是相关的 Go 包的集合，它们作为一个单一的单元被打上版本号&lt;/li&gt;
+&lt;li&gt;模块记录精确的依赖需求，创建可再复制的构建&lt;/li&gt;
+&lt;li&gt;最常见的是，一个版本控制仓库包含确切的一个模块，在仓库的根目录定义。(可在一个仓库支持多模块，但是通常导致在持续进行的基础上比一个仓库一个模块工作更多)&lt;/li&gt;
+&lt;li&gt;仓库、模块和包的关系：
+
+&lt;ul&gt;
+&lt;li&gt;一个仓库包含一个或多个 Go 模块&lt;/li&gt;
+&lt;li&gt;每个模块包含一个或多个 Go 包&lt;/li&gt;
+&lt;li&gt;每个包由一个单一的目录内的一个或多个 Go 源文件组成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;模块必须根据 semver 打上版本号，通常是 &lt;code&gt;v(major).(minor).(patch)&lt;/code&gt;，如 &lt;code&gt;v0.1.0&lt;/code&gt;/&lt;code&gt;v1.2.3&lt;/code&gt;/&lt;code&gt;v1.5.0-rc.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-2-go-mod&#34;&gt;2.2 go.mod&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有 4 个指令 &lt;code&gt;module/require/replace/exclude&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;module: 声明模块身份，提供了模块路径。包的导入路径由模块路径和包目录与 &lt;code&gt;go.mod&lt;/code&gt; 的相对路径决定&lt;/li&gt;
+&lt;li&gt;require:&lt;/li&gt;
+&lt;li&gt;replace: 只作用于当前(主)模块&lt;/li&gt;
+&lt;li&gt;exclude: 只作用于当前(主)模块&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-3-版本选择&#34;&gt;2.3 版本选择&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;源码增加新的导入语句，且在 &lt;code&gt;go.mod&lt;/code&gt; 的 &lt;code&gt;require&lt;/code&gt; 指令未覆盖时，大多数命令会自动查找合适的模块，增加最高版本到 &lt;code&gt;go.mod&lt;/code&gt; 的 &lt;code&gt;require&lt;/code&gt; 指令&lt;/li&gt;
+&lt;li&gt;编译时使用最小版本选择算法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-4-语义导入版本控制&#34;&gt;2.4 语义导入版本控制&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;导入兼容性规则(import compatibility rule)：如果一个旧包和新包又相同的导入路径，那么新包必须向后兼容旧包&lt;/li&gt;
+&lt;li&gt;semver 要求当向后不兼容时需要修改主版本号&lt;/li&gt;
+&lt;li&gt;语义导入版本控制(Semantic Import Versioning) 就是同时遵循导入兼容性规则和 semver的结果，即在导入路径添加主版本号——确保当主版本号因为兼容性破坏增加时导入路径也会改变
+
+&lt;ul&gt;
+&lt;li&gt;遵循 semver&lt;/li&gt;
+&lt;li&gt;对于 v0 或者 v1 版本，不要增加主版本号在模块路径或者导入路径&lt;/li&gt;
+&lt;li&gt;如果模块版本是 v2+，模块路径和包导入路径必须增加 &lt;code&gt;/vN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;上面适用于已经使用模块或者导入其他模块。下面是未使用模块的三个过渡异常
+
+&lt;ul&gt;
+&lt;li&gt;gopkg.in&lt;/li&gt;
+&lt;li&gt;当导入非模块的 v2+ 包时使用 &lt;code&gt;+incompatible&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;当未启用模块模式时使用最小模块兼容性(Minimal module compatibility)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-如何使用模块&#34;&gt;3 如何使用模块&lt;/h2&gt;
+
+&lt;h3 id=&#34;3-1-如何安装和激活模块支持&#34;&gt;3.1 如何安装和激活模块支持&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装方法
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/dl/&#34; target=&#34;_blank&#34;&gt;安装最新的 Go1.11 发行版&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/doc/install/source&#34; target=&#34;_blank&#34;&gt;用 master 分支源码安装 Go 工具链&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;激活支持方法
+
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;$GOPATH/src&lt;/code&gt; 之外调用 go 命令，且在当前目录或任意父目录存在有效的 &lt;code&gt;go.mod&lt;/code&gt; 文件且环境变量 &lt;code&gt;GO111MODULE&lt;/code&gt; 未设置(或显式设置成 &lt;code&gt;auto&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;调用 go 命令设置 &lt;code&gt;GO111MODULE=on&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-2-定义一个模块&#34;&gt;3.2 定义一个模块&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;为已有工程创建一个 &lt;code&gt;go.mod&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 1 切换到模块源码树的根路径($GOPATH 之外，可以不设置 GO111MODULE 来激活模块模式)
+cd &amp;lt;project path outside $GOPATH/src&amp;gt;
+## 1.1 对于在 $GOPATH/src 目录之内的工程，需要手动激活
+export GO111MODULE=on
+cd $GOPATH/src/&amp;lt;project path&amp;gt;
+# 2 创建初始模块定义，并从 dep 或其他依赖管理器转化依赖信息，增加 require 声明到 go.mod 以匹配现有配置
+go mod init
+## 2.1 可以指定模块路径(命令不能自动确定模块路径，或需要覆盖该路径)
+go mod init github.com/my/repo
+# 3 编译模块。在模块根路径执行，互编译当前模块的所有包。go build 会自动添加缺失或未转化的依赖
+go build ./...
+# 4 按照配置测试模块，确认对于选中的版本是正常的
+go test ./...
+# 5 可选。运行模块和所有直接或间接依赖的测试，检查兼容性
+go test all
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：当依赖包含 v2+ 版本，或者正在初始化一个 v2+ 模块，需要在运行 &lt;code&gt;go mod init&lt;/code&gt; 之后，编辑 &lt;code&gt;go.mod&lt;/code&gt; 和 &lt;code&gt;.go&lt;/code&gt; 代码，添加 &lt;code&gt;/vN&lt;/code&gt; 到导入路径。参考 &lt;a href=&#34;https://github.com/golang/go/wiki/Modules#semantic-import-versioning&#34; target=&#34;_blank&#34;&gt;Semantic Import Versioning&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：执行 &lt;code&gt;go build ./...&lt;/code&gt; 或类似命令成功之后才可以允许 &lt;code&gt;go mod tidy&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-3-升级和降级依赖&#34;&gt;3.3 升级和降级依赖&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;直接编辑 &lt;code&gt;go.mod&lt;/code&gt; 文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get&lt;/code&gt;: 对依赖升级或降级，此命令会自动更新 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go build&lt;/code&gt;/&lt;code&gt;go test&lt;/code&gt;/&lt;code&gt;go list&lt;/code&gt;: 会自动增加新依赖以满足导入(更新 &lt;code&gt;go.mod&lt;/code&gt; 的 &lt;code&gt;require&lt;/code&gt; 命令，并下载新的依赖)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -u -m all&lt;/code&gt;: 查看可用的所有的直接或间接依赖的次级和补丁升级版本&lt;/li&gt;
+&lt;li&gt;将当前模块的所有直接或间接依赖升级到最新版本，可在模块根目录执行下面的命令
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go get -u ./...&lt;/code&gt;: 使用最新的次级或补丁发布(增加 &lt;code&gt;-t&lt;/code&gt; 也会升级测试依赖)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get -u=patch ./...&lt;/code&gt;: 使用最新的补丁发布(增加 &lt;code&gt;-t&lt;/code&gt; 也会升级测试依赖)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get foo&lt;/code&gt;/&lt;code&gt;go get foo@latest&lt;/code&gt;: 升级 &lt;code&gt;foo&lt;/code&gt; 到最新版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get -u foo&lt;/code&gt;/&lt;code&gt;go get -u foo@latest&lt;/code&gt;: 升级 &lt;code&gt;foo&lt;/code&gt; 及其直接或间接依赖到最新版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get foo@v1.6.2&lt;/code&gt;/&lt;code&gt;go get foo@e3702bed2&lt;/code&gt;/&lt;code&gt;go get foo@&#39;&amp;lt;v1.6.2&#39;&lt;/code&gt;: 升级或降级到具体版本，可以添加版本后缀或 &lt;a href=&#34;https://golang.org/cmd/go/#hdr-Module_queries&#34; target=&#34;_blank&#34;&gt;module query&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;module query 不能得到一个 &lt;a href=&#34;https://semver.org/&#34; target=&#34;_blank&#34;&gt;semver 标签&lt;/a&gt;，会在 &lt;code&gt;go.mod&lt;/code&gt; 记录一个&lt;a href=&#34;https://tip.golang.org/cmd/go/#hdr-Pseudo_versions&#34; target=&#34;_blank&#34;&gt;伪版本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get foo@master&lt;/code&gt;: 使用分支名，获取分支的最新版本，不需要有 semver 标签&lt;/li&gt;
+&lt;li&gt;模块可以使用没有转成模块的包，包括记录可用的 semver 标签和使用这些标签升级或降级。模块也可以使用没有合适的 semver 标签的包，此时记录的是伪版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go test all&lt;/code&gt;: 升级或降级所有依赖后，可以为所有包运行测试以检查兼容性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-4-准备发布模块&#34;&gt;3.4 准备发布模块&lt;/h3&gt;
+
+&lt;h4 id=&#34;3-4-1-发行-release-所有版本模块&#34;&gt;3.4.1 发行(release)所有版本模块&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;去掉多余依赖，增加依赖 &lt;code&gt;go mod tidy&lt;/code&gt;。&lt;code&gt;go build&lt;/code&gt; 和 &lt;code&gt;go test&lt;/code&gt; 不会从 &lt;code&gt;go.mod&lt;/code&gt; 删除不需要的依赖&lt;/li&gt;
+&lt;li&gt;测试模块 &lt;code&gt;go test all&lt;/code&gt;，包括测试直接或间接依赖，验证当前选择包版本的兼容性&lt;/li&gt;
+&lt;li&gt;确保 &lt;code&gt;go.sum&lt;/code&gt; 文件和 &lt;code&gt;go.mod&lt;/code&gt; 文件一起提交了&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;3-4-2-发行-v2-版本模块&#34;&gt;3.4.2 发行 v2+ 版本模块&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;将一个工程改成模块时，升级主版本号：使用的时候直接在导入路径添加新的主版本号更简单；也便于在旧版本上修改和完善&lt;/li&gt;
+&lt;li&gt;有两个可选机制发行 v2+ 版本的模块。当推送新的标签时，使用者可以知道新模块的发布。比如创建一个 &lt;code&gt;v3.0.0&lt;/code&gt; 发行
+
+&lt;ul&gt;
+&lt;li&gt;主分支：更新 &lt;code&gt;go.mod&lt;/code&gt; 文件在 &lt;code&gt;module&lt;/code&gt; 命令的模块路径末尾添加 &lt;code&gt;/v3&lt;/code&gt;;更新模块内的 import 语句；给本次发行添加标签 &lt;code&gt;v3.0.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;主子目录：创建一个 &lt;code&gt;v3&lt;/code&gt; 子目录；放一个新的 &lt;code&gt;go.mod&lt;/code&gt; 文件在 &lt;code&gt;v3&lt;/code&gt; 目录；更新模块内的 import 语句；给本次发行添加标签 &lt;code&gt;v3.0.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;这个可以提供更好的向后兼容性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3-4-3-发布一个发行版本&#34;&gt;3.4.3 发布一个发行版本&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过推送一个标签到苍鹭发布新模块版本。标签包括两个字符串：前缀和版本号
+
+&lt;ul&gt;
+&lt;li&gt;前缀指明模块在仓库内定义的位置：如果定义在仓库根目录，前缀为空。标签就是版本号&lt;/li&gt;
+&lt;li&gt;在多模块仓库中，前缀区分不同模块的版本。前缀是仓库内定义模块的目录。如果仓库是主子目录形式，前缀不包含主版本号后缀&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;比如，有一个模块 &lt;code&gt;example.com/repo/sub/v2&lt;/code&gt;，需要发布 &lt;code&gt;v2.1.6&lt;/code&gt;，仓库主目录是 &lt;code&gt;example.com/repo&lt;/code&gt;，模块在仓库内的 &lt;code&gt;sub/v2/go.mod&lt;/code&gt; 定义，则模块的前缀是 &lt;code&gt;sub/&lt;/code&gt;，这次发布完整的标签是 &lt;code&gt;sub/v2.1.6&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-迁移到模块&#34;&gt;4 迁移到模块&lt;/h2&gt;
+
+&lt;h3 id=&#34;4-1-迁移总结&#34;&gt;4.1 迁移总结&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;设计模块系统是为了允许整个 Go 生态系统的不同包按不同比率选择性加入&lt;/li&gt;
+&lt;li&gt;v2+ 版本的包在迁移时因为 &lt;a href=&#34;#24-%e8%af%ad%e4%b9%89%e5%af%bc%e5%85%a5%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6&#34;&gt;语义导入版本控制&lt;/a&gt;需要考虑更多&lt;/li&gt;
+&lt;li&gt;新包以及 v0/v1 的包在选择模块时考虑较少&lt;/li&gt;
+&lt;li&gt;Go1.11 定义的模块可被旧版本的 Go 使用(但是 Go 版本依靠主模块及其依赖使用的策略)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-2-迁移相关的话题&#34;&gt;4.2 迁移相关的话题&lt;/h3&gt;
+
+&lt;h4 id=&#34;4-2-1-使用较早的依赖管理器自动迁移&#34;&gt;4.2.1 使用较早的依赖管理器自动迁移&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go mod init&lt;/code&gt; 自动将需要的信息翻译到 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果创建 v2+ 的模块，确保 &lt;code&gt;go.mod&lt;/code&gt; 中的 &lt;code&gt;module&lt;/code&gt; 指令增加了 &lt;code&gt;/vN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果导入 v2+ 的模块，可能需要手动调整 &lt;code&gt;go.mod&lt;/code&gt; 中的 &lt;code&gt;require&lt;/code&gt; 指令增加了 &lt;code&gt;/vN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod init&lt;/code&gt; 不会修改源码文件的导入声明&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-2-2-提供依赖信息给旧版本的-go-和非模块使用者&#34;&gt;4.2.2 提供依赖信息给旧版本的 Go 和非模块使用者&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;vendor&lt;/code&gt; 目录&lt;/li&gt;
+&lt;li&gt;旧版本的 Go 以及禁用模块模式的 Go1.11/Go1.12+ 都可以使用 &lt;code&gt;go mod vendor&lt;/code&gt; 生成的 &lt;code&gt;vendor&lt;/code&gt; 目录&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-2-3-更新预先已有的安装指导&#34;&gt;4.2.3 更新预先已有的安装指导&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;先前的模块，通常使用 &lt;code&gt;go get -u&lt;/code&gt; 安装。如果是发布模块，基于模块的使用者考虑使用 &lt;code&gt;go get&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 指示 go 工具升级模块的所有直接或间接依赖&lt;/li&gt;
+&lt;li&gt;模块使用者之后可以选择使用 &lt;code&gt;go get -u&lt;/code&gt;，但是一开始安装使用 &lt;code&gt;go get&lt;/code&gt; 可以有更多好处。参考&lt;a href=&#34;https://github.com/golang/proposal/blob/master/design/24301-versioned-go.md#update-timing--high-fidelity-builds&#34; target=&#34;_blank&#34;&gt;高保真的构建&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get -u&lt;/code&gt; 仍然有效，且对安装指令是有效选择&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get&lt;/code&gt; 对于基于模块的使用者不是严格必须的
+
+&lt;ul&gt;
+&lt;li&gt;简单的增加导入语句，后续的 &lt;code&gt;go build&lt;/code&gt;/&lt;code&gt;go test&lt;/code&gt; 会根据需求自动下载模块并更新 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;基于模块的消费者默认不使用 &lt;code&gt;vendor&lt;/code&gt; 目录&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-2-4-避免破坏已有的导入路径&#34;&gt;4.2.4 避免破坏已有的导入路径&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当模块导入路径和对应模块的声明路径不匹配时会报 &lt;code&gt;unexpected module path&lt;/code&gt; 错误。破坏的情况包括
+
+&lt;ul&gt;
+&lt;li&gt;模块导入路径发生变化：比如不再使用 &lt;code&gt;gopkg.in&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;改变路径大小写：导入路径和对应模块路径是大小写敏感的&lt;/li&gt;
+&lt;li&gt;选择模块之后，修改模块路径&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-2-5-当第一次采用模块且模块有-v2-的包时升级主版本号&#34;&gt;4.2.5 当第一次采用模块且模块有 v2+ 的包时升级主版本号&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果有 v2+ 包，在第一此采用模块时，建议升级主版本号&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-2-6-v2-模块允许一次编译中有多个主版本号&#34;&gt;4.2.6 v2+ 模块允许一次编译中有多个主版本号&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;因为规则说明——“不同的导入路径包是不同的包”&lt;/li&gt;
+&lt;li&gt;此时，包级别状态会有多个拷贝，且每个主版本会运行自己的 &lt;code&gt;init&lt;/code&gt; 函数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-2-7-非模块代码使用模块&#34;&gt;4.2.7 非模块代码使用模块&lt;/h4&gt;
+
+&lt;h5 id=&#34;4-2-7-1-非模块代码使用-v0-v1-模块&#34;&gt;4.2.7.1 非模块代码使用 v0/v1 模块&lt;/h5&gt;
+
+&lt;h5 id=&#34;4-2-7-2-非模块代码使用-v2-模块&#34;&gt;4.2.7.2 非模块代码使用 v2+ 模块&lt;/h5&gt;
+
+&lt;h4 id=&#34;4-2-8-给预先已有的-v2-包作者使用的策略&#34;&gt;4.2.8 给预先已有的 v2+ 包作者使用的策略&lt;/h4&gt;
+
+&lt;h5 id=&#34;4-2-8-1-要求客户使用-1-9-7-1-10-3-1-11-版本的-go&#34;&gt;4.2.8.1 要求客户使用 1.9.7+/1.10.&lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.11+ 版本的 Go&lt;/h5&gt;
+
+&lt;h5 id=&#34;4-2-8-2-允许客户使用更旧版本的-go-如-go1-8&#34;&gt;4.2.8.2 允许客户使用更旧版本的 Go，如 Go1.8&lt;/h5&gt;
+
+&lt;h5 id=&#34;4-2-8-3-等待选择模块&#34;&gt;4.2.8.3 等待选择模块&lt;/h5&gt;
+
+&lt;h2 id=&#34;5-其他资源&#34;&gt;5 其他资源&lt;/h2&gt;
+
+&lt;h2 id=&#34;6-初始-vgo-建议之后的改变&#34;&gt;6 初始 Vgo 建议之后的改变&lt;/h2&gt;
+
+&lt;h2 id=&#34;7-github-issues&#34;&gt;7 Github issues&lt;/h2&gt;
+
+&lt;h2 id=&#34;8-faqs&#34;&gt;8 FAQs&lt;/h2&gt;
+
+&lt;h3 id=&#34;8-1-如何标记版本是不兼容的&#34;&gt;8.1 如何标记版本是不兼容的&lt;/h3&gt;
+
+&lt;h3 id=&#34;8-2-何时是旧行为-vs-新的基于模块的行为&#34;&gt;8.2 何时是旧行为 vs 新的基于模块的行为&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模块在 Go1.11 开始，因此按照设计旧行为会默认保留&lt;/li&gt;
+&lt;li&gt;什么时候是旧的 1.10 状态行为(查找 &lt;code&gt;vendor&lt;/code&gt; 目录和 GOPATH 来寻找依赖)，什么时候是新的基于模块的行为
+
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;GOPATH&lt;/code&gt; 之内: 默认是旧的 1.10 行为，会忽视模块&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;GOPATH&lt;/code&gt; 之外且在文件树之内有一个 &lt;code&gt;go.mod&lt;/code&gt; 文件: 默认是模块行为&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GO111MODULE&lt;/code&gt; 环境变量&lt;/li&gt;
+&lt;li&gt;不设置或 &lt;code&gt;auto&lt;/code&gt;: 上述默认行为&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;on&lt;/code&gt;: 强制支持模块，与目录位置无关&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;off&lt;/code&gt;: 强制不支持模块，与目录位置无关&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-3-为什么通过-go-get-安装一个工具报错-cannot-find-main-module&#34;&gt;8.3 为什么通过 &lt;code&gt;go get&lt;/code&gt; 安装一个工具报错 &lt;code&gt;cannot find main module&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;因为设置了 &lt;code&gt;GO111MODULE=on&lt;/code&gt;，但是所在文件树没有 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;主要原因是 &lt;code&gt;go.mod&lt;/code&gt; 记录了依赖信息，但是设置了 &lt;code&gt;GO111MODULE=on&lt;/code&gt;，而 &lt;code&gt;go get&lt;/code&gt; 不能获取依赖信息&lt;/li&gt;
+&lt;li&gt;方法
+
+&lt;ul&gt;
+&lt;li&gt;最简单的方法设置 &lt;code&gt;GO111MODULE=auto&lt;/code&gt;，或者不设置&lt;/li&gt;
+&lt;li&gt;临时使用 Go1.10 行为 &lt;code&gt;GO111MODULE=off go get&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;创建一个临时的 &lt;code&gt;go.mod&lt;/code&gt; 文件然后丢弃，这样可以避免报错 &lt;code&gt;cannot use path@version syntax in GOPATH mode&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用 &lt;a href=&#34;https://github.com/myitcv/gobin#usage&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;gobin&lt;/code&gt;&lt;/a&gt;：&lt;code&gt;gobin&lt;/code&gt; 默认会安装/运行主包而不用先手动创建一个模块。也可以使用 &lt;code&gt;-m&lt;/code&gt; 使用现有的模块解决依赖(由环境变量 GOMOD 指定)&lt;/li&gt;
+&lt;li&gt;为全局安装的工具创建 &lt;code&gt;go.mod&lt;/code&gt;，比如 &lt;code&gt;~/global-tools/go.mod&lt;/code&gt;，然后切换到那个目录，再运行 &lt;code&gt;go get&lt;/code&gt;/&lt;code&gt;go install&lt;/code&gt; 安装全局工具&lt;/li&gt;
+&lt;li&gt;为每个工具在单独的目录创建 &lt;code&gt;go.mod&lt;/code&gt;，比如 &lt;code&gt;~/tools/gorename/go.mod&lt;/code&gt;/&lt;code&gt;~/tools/goimports/go.mod&lt;/code&gt;，然后切换到合适的目录，再运行 &lt;code&gt;go get&lt;/code&gt;/&lt;code&gt;go install&lt;/code&gt; 安装工具&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-4-如何为一个模块跟踪工具依赖&#34;&gt;8.4 如何为一个模块跟踪工具依赖&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果：
+
+&lt;ul&gt;
+&lt;li&gt;在模块中想要是有一个基于 go 的工具(比如 &lt;code&gt;stringer&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;想要在自己模块的 &lt;code&gt;go.mod&lt;/code&gt; 中跟踪工具的版本，并确保每个人使用相同版本的工具&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;建议在模块添加一个 &lt;code&gt;tools.go&lt;/code&gt; 文件，添加感兴趣的工具的导入语句(比如 &lt;code&gt;import _ &amp;quot;golang.org/x/tools/cmd/stringer&amp;quot;&lt;/code&gt;)，并增加 &lt;code&gt;// +build tools&lt;/code&gt; 编译限制。&lt;a href=&#34;https://github.com/go-modules-by-example/index/blob/master/010_tools/README.md&#34; target=&#34;_blank&#34;&gt;例子参考&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;导入语句允许 go 命令精确记录工具的版本信息到 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;编译限制阻止正常的编译导入工具&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-5-模块支持的状态在-ide-编辑器和标准工具-比如-goimport-gorename等-是什么样的&#34;&gt;8.5 模块支持的状态在 IDE，编辑器和标准工具(比如 goimport，gorename等) 是什么样的&lt;/h3&gt;
+
+&lt;h2 id=&#34;9-faqs-其他控制&#34;&gt;9 FAQs-其他控制&lt;/h2&gt;
+
+&lt;h3 id=&#34;9-1-在模块上工作时可用的社区工具&#34;&gt;9.1 在模块上工作时可用的社区工具&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rogpeppe/gohack&#34; target=&#34;_blank&#34;&gt;github.com/rogpeppe/gohack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marwan-at-work/mod&#34; target=&#34;_blank&#34;&gt;github.com/marwan-at-work/mod&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/akyoto/mgit&#34; target=&#34;_blank&#34;&gt;github.com/akyoto/mgit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/goware/modvendor&#34; target=&#34;_blank&#34;&gt;github.com/goware/modvendor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/psampaz/go-mod-outdated&#34; target=&#34;_blank&#34;&gt;github.com/psampaz/go-mod-outdated&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;9-2-什么时候使用-replace-指令&#34;&gt;9.2 什么时候使用 replace 指令&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;replace&lt;/code&gt; 允许提供另外一个导入路径，控制实际使用的依赖，而不用更新源码中的导入路径&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;replace&lt;/code&gt; 允许顶层模块控制依赖的实际版本：&lt;code&gt;replace example.com/some/dependency =&amp;gt; example.com/some/dependency v1.2.3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;replace&lt;/code&gt; 允许使用一个 fork 依赖：&lt;code&gt;replace example.com/original/import/path =&amp;gt; /your/forked/import/path&lt;/code&gt;，当需要修改一些依赖时，可以有一个本地 fork，并修改顶层模块的 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;replace&lt;/code&gt; 可用于多模块项目中，告诉 go 工具一个模块在磁盘上的的相对和绝对路径：&lt;code&gt;replace example.com/project/foo =&amp;gt; ../foo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;9-3-能否完全在本地文件系统但在-vcs-之外工作&#34;&gt;9.3 能否完全在本地文件系统但在 VCS 之外工作&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。VCS 不需要。如果再 VCS 之外，可以在 &lt;code&gt;require&lt;/code&gt; 指令中使用版本号 &lt;code&gt;v0.0.0&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go1.11 中必须手动在 &lt;code&gt;require&lt;/code&gt; 指令中增加版本号 &lt;code&gt;v0.0.0&lt;/code&gt;，Go1.12 之后不再需要手动添加&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;9-4-模块如何使用-vendor-是否不再需要-vendor&#34;&gt;9.4 模块如何使用 vendor？是否不再需要 vendor&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vgo&lt;/code&gt; 的初始系统建议完全丢掉 vendor。但是社区返回导致保留对 vendor 的支持&lt;/li&gt;
+&lt;li&gt;简单来说，模块使用 vendor
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go mod vendor&lt;/code&gt;： 重置主模块的 &lt;code&gt;vendor&lt;/code&gt; 目录一包含编译和测试主模块所有包所需的包(根据 &lt;code&gt;go.mod&lt;/code&gt; 状态和 Go 源码)。目录不包含 vendored 包的测试代码&lt;/li&gt;
+&lt;li&gt;默认的，&lt;code&gt;go build&lt;/code&gt; 等 go 命令在模块模式时会忽视 &lt;code&gt;vendor&lt;/code&gt; 目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-mod=vendor&lt;/code&gt; 标识指示 go 命令使用主模块顶层的 vendor 目录来满足依赖&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GOFLAGS=-mod=vendor&lt;/code&gt; 可以设置使用 vendor 目录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;当模块模式禁用时，旧版本的 Go 可以使用 vendor 目录。因此，vendor 是使得模块提供依赖给旧版本 Go 的模块使用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-4-1-模块下载和验证&#34;&gt;9.4.1 模块下载和验证&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;根据 &lt;code&gt;GOPROXY&lt;/code&gt;，go 命令可以从一个代理或直连到源码控制服务拉取代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GOPROXY&lt;/code&gt; 默认设置是 &lt;code&gt;https://proxy.golang.org,direct&lt;/code&gt;，即尝试 Google 运行的 Go 模块代理，如果代理报告没有模块(HTTP 错误码 404 或 410)，会尝试直连&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GOPROXY&lt;/code&gt; 为 &lt;code&gt;off&lt;/code&gt; 时，不允许从任何源码下载模块。否则，&lt;code&gt;GOPROXY&lt;/code&gt; 是逗号分隔的模块代理的 URL，go 命令会从这些代理拉取模块
+
+&lt;ul&gt;
+&lt;li&gt;对于每个请求，go 命令按顺序尝试代理，当代理返回 404 或 410 HTTP 状态码时，会继续尝试下个代理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;direct&lt;/code&gt; 之后的代理都不会尝试&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GOPRIVATE&lt;/code&gt; 和 &lt;code&gt;GONOPPROXY&lt;/code&gt; 允许对指定的模块绕过代理&lt;/li&gt;
+&lt;li&gt;对于所有的模块，go 命令会根据已知的校验值检查下载，检测未预料的变化。检查先查询当前模块的 &lt;code&gt;go.sum&lt;/code&gt; 文件，失败时检查 Go 的校验值数据库，后者由 &lt;code&gt;GOSUMDB&lt;/code&gt; 和 &lt;code&gt;GONOSUMDB&lt;/code&gt; 控制&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-4-2-模块和目录&#34;&gt;9.4.2 模块和目录&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;使用模块时，go 命令会完全忽视 &lt;code&gt;vendor&lt;/code&gt; 目录&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;默认的，go 命令通过从源码下载模块和使用这些下载的备份(在验证之后)&lt;/li&gt;
+&lt;li&gt;为了和旧版本的 Go 交互，或者保证编译使用的所有文件被存储在一个单独的目录树，&lt;code&gt;go mod vendor&lt;/code&gt; 在当前主模块的根目录创建一个 &lt;code&gt;vendor&lt;/code&gt; 目录，用于存储编译和测试主模块所需的依赖模块的所有包&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go build -mod=vendor&lt;/code&gt;: 使用模块的顶层的 &lt;code&gt;vendor&lt;/code&gt; 目录来编译以满足依赖(不使用通常的网络源码和本地缓存)。&lt;strong&gt;注意&lt;/strong&gt;只有主模块的顶层 &lt;code&gt;vendor&lt;/code&gt; 目录会使用，其他位置的 &lt;code&gt;vendor&lt;/code&gt; 目录仍然忽略&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;9-5-是否有-always-on-的模块仓库和企业代理&#34;&gt;9.5 是否有 always on 的模块仓库和企业代理&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://proxy.golang.org/&#34; target=&#34;_blank&#34;&gt;proxy.golang.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gocenter.io/&#34; target=&#34;_blank&#34;&gt;gocenter.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mirrors.aliyun.com/goproxy&#34; target=&#34;_blank&#34;&gt;mirrors.aliyun.com/goproxy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://goproxy.cn/&#34; target=&#34;_blank&#34;&gt;goproxy.cn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://goproxy.io/&#34; target=&#34;_blank&#34;&gt;goproxy.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gomods/athens&#34; target=&#34;_blank&#34;&gt;Athens&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://athens.azurefd.net/&#34; target=&#34;_blank&#34;&gt;athens.azurefd.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/goproxy/goproxy&#34; target=&#34;_blank&#34;&gt;Goproxy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://thumbai.app/&#34; target=&#34;_blank&#34;&gt;THUMBAI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;9-6-能否控制何时更新-go-mod-go-工具何时使用网络满足依赖&#34;&gt;9.6 能否控制何时更新 go.mod，go 工具何时使用网络满足依赖&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;默认的，类似于 &lt;code&gt;go build&lt;/code&gt; 目录会忽视 &lt;code&gt;vendor&lt;/code&gt; 目录，在需要的时候访问网络满足导入&lt;/li&gt;
+&lt;li&gt;go 工具提供了一些参数来支持一些行为 &lt;code&gt;-mod=readonly&lt;/code&gt;/&lt;code&gt;-mod=vendor&lt;/code&gt;/&lt;code&gt;GOFLAGS&lt;/code&gt;/&lt;code&gt;GOPROXY=off&lt;/code&gt;/&lt;code&gt;GOPROXY=file:///filesystem/path&lt;/code&gt;/&lt;code&gt;go mod vendor&lt;/code&gt;/&lt;code&gt;go mod download&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-1-goflags-环境变量&#34;&gt;9.6.1 GOFLAGS 环境变量&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;允许设置特殊 go 命令的默认标识&lt;/li&gt;
+&lt;li&gt;对于 CI 和测试工作流有用，可用于定义每天开发的默认标识或行为，比如设置 &lt;code&gt;GOFLAGS=-mod=vendor&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-2-mod-readonly-标识-如-go-build-mod-readonly&#34;&gt;9.6.2 -mod=readonly 标识(如 &lt;code&gt;go build -mod=readonly&lt;/code&gt;)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;禁止大多数 go 命令(除了&lt;code&gt;go get&lt;/code&gt;/&lt;code&gt;go mod&lt;/code&gt;)修改 &lt;code&gt;go.mod&lt;/code&gt;，导致想要隐式更新 &lt;code&gt;go.mod&lt;/code&gt; 的命令失败&lt;/li&gt;
+&lt;li&gt;用于检查 &lt;code&gt;go.mod&lt;/code&gt; 不需要更新，比如集成或测试时&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-3-go-mod-vendor-命令&#34;&gt;9.6.3 go mod vendor 命令&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重置主模块的 &lt;code&gt;vendor&lt;/code&gt; 目录一包含编译和测试主模块所有包所需的包(根据 &lt;code&gt;go.mod&lt;/code&gt; 状态和 Go 源码)&lt;/li&gt;
+&lt;li&gt;不同团队对于 vendor 的哲学观点不同。vendor 可用于记录依赖到源码的版本控制，同事在外部源码出问题(宕机、消失或移动)时提供弹性&lt;/li&gt;
+&lt;li&gt;可为使用旧版本 Go 的用户提供相同的依赖&lt;/li&gt;
+&lt;li&gt;支持 CI 过程旧版本 Go(比如 Go1.9/Go1.10) 的测试&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-4-mod-vendor-标识-如-go-build-mod-vendor&#34;&gt;9.6.4 -mod=vendor 标识(如 &lt;code&gt;go build -mod=vendor&lt;/code&gt;)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;默认的，&lt;code&gt;go build&lt;/code&gt; 等 go 命令在模块模式时会忽视 &lt;code&gt;vendor&lt;/code&gt; 目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-mod=vendor&lt;/code&gt; 标识指示 go 命令使用主模块顶层的 &lt;code&gt;vendor&lt;/code&gt; 目录来满足依赖(j禁用网络资源和本地缓存)&lt;/li&gt;
+&lt;li&gt;想要一直使用设置 &lt;code&gt;GOFLAGS=-mod=vendor&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-5-go111module-off-环境变量&#34;&gt;9.6.5 GO111MODULE=off 环境变量&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go 命令不会支持新的模块。而是查找 &lt;code&gt;vendor&lt;/code&gt; 目录和 GOPATH 来寻找依赖(遵循 pre-1.11 行为)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-6-goproxy-off-环境变量&#34;&gt;9.6.6 GOPROXY=off 环境变量&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模块模式的 go 命令不允许使用网络依赖&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-7-goproxy-file-filesystem-path-环境变量&#34;&gt;9.6.7 GOPROXY=file:///filesystem/path 环境变量&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;go 命令会使用文件系统(本地或远程)解决依赖，不再有实际运行的代理进程&lt;/li&gt;
+&lt;li&gt;go 命令存储下载的依赖在本地缓存(&lt;code&gt;$GOPATH/pkg/mod&lt;/code&gt;)，而且缓存格式和代理的需求相同，因此缓存可当做内容被基于文件系统的 GOPROXY 或简单的用作 GOPROXY 的 web 服务使用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod download&lt;/code&gt; 定位到 &lt;code&gt;$GOPATH/pkg/mod/cache/download&lt;/code&gt;，意味着这个命令可用于预先定位或更新 GOPROXY 的内容&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-8-开源的分布式模块仓库-如-athens-工程&#34;&gt;9.6.8 开源的分布式模块仓库，如 Athens 工程&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个目标是提供 “always on” 的模块仓库&lt;/li&gt;
+&lt;li&gt;一个不同的目标是单独的代理服务器，可被一个组织部署和控制可用的模块&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-9-go-mod-download-命令&#34;&gt;9.6.9 go mod download 命令&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大多数每日工作不需要这个命令(因为通常 go命令会自动下载需要的模块)&lt;/li&gt;
+&lt;li&gt;主要用于在一些 CI 中，用于 docker 编译的缓存预热(pre-warming caches)&lt;/li&gt;
+&lt;li&gt;也可能被代理事宜作为缓存缺失时获取模块的一种方式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-6-10-go-mod-中的-replace-指令&#34;&gt;9.6.10 go.mod 中的 replace 指令&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以控制顶层的 &lt;code&gt;go.mod&lt;/code&gt; 以满足 Go 源码或 go.mod 文件实际使用的依赖&lt;/li&gt;
+&lt;li&gt;一个用例：如果需要修改一个依赖的内容，可以有本地 fork，在顶层的 &lt;code&gt;go.mod&lt;/code&gt; 使用 &lt;code&gt;replace example.com/original/import/path =&amp;gt; your/forked/import/path&lt;/code&gt;，而不用更新代码中的导入路径。&lt;code&gt;replace&lt;/code&gt; 指令允许提供另外一个导入路径(可能在 VCS 的另外一个模块，或者在本地文件系统)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;replace&lt;/code&gt; 也允许顶层模块实际使用依赖的具体版本，如 &lt;code&gt;replace example.com/some/dependency =&amp;gt; example.com/some/dependency@v1.2.3&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;9-7-在-ci-系统-如-travis-或-circleci-中如何使用模块&#34;&gt;9.7 在 CI 系统(如 Travis 或 CircleCI) 中如何使用模块&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最简单的方法就是设置 &lt;code&gt;GO111MODULE=off&lt;/code&gt;，大部分 CI 系统都可以使用&lt;/li&gt;
+&lt;li&gt;对于 Go1.11 的 CI，无论模块启用还是禁用，假设用户还没有适用模块，可以考虑使用 vendor&lt;/li&gt;
+&lt;li&gt;参考
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://arslan.io/2018/08/26/using-go-modules-with-vendor-support-on-travis-ci/&#34; target=&#34;_blank&#34;&gt;Using Go modules with vendor support on Travis CI&lt;/a&gt; by Fatih Arslan&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@toddkeech/go-modules-and-circleci-c0d6fac0b000&#34; target=&#34;_blank&#34;&gt;Go Modules and CircleCI&lt;/a&gt; by Todd Keech&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;10-faqs-go-mod-和-go-sum&#34;&gt;10 FAQs-go.mod 和 go.sum&lt;/h2&gt;
+
+&lt;h3 id=&#34;10-1-为什么-go-mod-tidy-记录-go-mod-的间接和测试依赖&#34;&gt;10.1 为什么 go mod tidy 记录 go.mod 的间接和测试依赖&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模块系统在 &lt;code&gt;go.mod&lt;/code&gt; 记录精确的依赖需求&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod tidy&lt;/code&gt; 更新当前的 &lt;code&gt;go.mod&lt;/code&gt; 以包含模块中测试所需的依赖——如果一个测试失败，必须知道使用的依赖以重复该失败&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod tidy&lt;/code&gt; 同时确保当前的 &lt;code&gt;go.mod&lt;/code&gt; 反映了对所有的操作系统、架构和编译标签的组合的依赖需求。相反的，其他的命令(如 &lt;code&gt;go build&lt;/code&gt;/&lt;code&gt;go test&lt;/code&gt;)只更新 &lt;code&gt;go.mod&lt;/code&gt; 以提供当前的 &lt;code&gt;GOOS&lt;/code&gt;，&lt;code&gt;GOARCH&lt;/code&gt; 和编译标签被请求的包导入的包(这也是 &lt;code&gt;go mod tidy&lt;/code&gt; 可能增加其他 go 命令没有增加的需求的原因之一)&lt;/li&gt;
+&lt;li&gt;如果你的模块的依赖本身没有一个 &lt;code&gt;go.mod&lt;/code&gt;(比如因为依赖还没有选择加入模块)，或依赖的 &lt;code&gt;go.mod&lt;/code&gt; 缺少一些依赖(比如因为模块的作者没有运行 &lt;code&gt;go mod tidy&lt;/code&gt;)，那么缺失的依赖会加入到你的模块的需求，并带有一个 &lt;code&gt;// indirect&lt;/code&gt; 注释表明依赖不是从你的模块直接导入的&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意：&lt;/strong&gt;这也意味着你的模块的直接或间接依赖缺失的测试依赖也会被记录在当前的 &lt;code&gt;go.mod&lt;/code&gt;。比如，&lt;code&gt;go test all&lt;/code&gt; 运行你的模块所有的直接或间接依赖的测试，这是验证当前版本组合有效的一种方式。如果允许时某个依赖的一个测试失败，记录完整的测试依赖信息是很重要的，以便可以重复 &lt;code&gt;go test all&lt;/code&gt; 行为&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go.mod&lt;/code&gt; 有 &lt;code&gt;// indirect&lt;/code&gt; 依赖的另外一个原因：当升级或降级一个间接依赖且超出直接依赖的需求时(比如运行 &lt;code&gt;go get -u&lt;/code&gt;/&lt;code&gt;go get foo@1.2.3&lt;/code&gt;)，go 工具需要在某个地方记录新版本信息，并且记录在 &lt;code&gt;go.mod&lt;/code&gt; 文件(并且不会去更改依赖的 &lt;code&gt;go.mod&lt;/code&gt; 文件)&lt;/li&gt;
+&lt;li&gt;一般的，上述是模块通过记录精确的依赖信息提供 100% 可重复编译和测试的一部分行为&lt;/li&gt;
+&lt;li&gt;相关命令
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go mod why -m &amp;lt;module&amp;gt;&lt;/code&gt; 显示 &lt;code&gt;go.mod&lt;/code&gt; 中指定模块出现的原因&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod graph&lt;/code&gt;/&lt;code&gt;go list -m all&lt;/code&gt; 检查需要的模块及其版本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;10-2-go-sum-是否是锁文件-为什么-go-sum-包含不再使用的模块版本信息&#34;&gt;10.2 go.sum 是否是锁文件？为什么 go.sum 包含不再使用的模块版本信息&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不是。&lt;code&gt;go.sum&lt;/code&gt; 在一次编译中提供足够的信息支持 100% 可重复的编译&lt;/li&gt;
+&lt;li&gt;出于验证的目的，&lt;code&gt;go.sum&lt;/code&gt; 包含预期的对指定模块版本内容的加密校验值&lt;/li&gt;
+&lt;li&gt;在某种程度上，因为 &lt;code&gt;go.sum&lt;/code&gt; 不是锁文件，它在停止使用一个模块或者模块的某个版本之后仍然为模块版本保留加密校验值。这允许在之后重新使用一些模块时提供校验，也提供了额外的安全性&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go.sum&lt;/code&gt; 记录一次编译所有的直接或间接依赖的校验值(因此 &lt;code&gt;go.sum&lt;/code&gt; 经常会比 &lt;code&gt;go.mod&lt;/code&gt; 有更多的模块)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;10-3-是否应该提交-go-sum-和-go-mod-文件&#34;&gt;10.3 是否应该提交 go.sum 和 go.mod 文件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通常应该一起提交 &lt;code&gt;go.sum&lt;/code&gt; 和 &lt;code&gt;go.mod&lt;/code&gt; 文件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go.sum&lt;/code&gt; 包含预期的对指定模块版本内容的加密校验值&lt;/li&gt;
+&lt;li&gt;如果某人克隆仓库并使用 go 命令下载依赖，当他们下载的依赖拷贝和 &lt;code&gt;go.sum&lt;/code&gt; 对应的条目不匹配时会报错&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go mod verify&lt;/code&gt; 检查模块的磁盘缓存备份仍然和 &lt;code&gt;go.sum&lt;/code&gt; 的条目匹配&lt;/li&gt;
+&lt;li&gt;注意，&lt;code&gt;go.sum&lt;/code&gt; 不是一个锁文件(一些可选的依赖管理系统使用的锁文件)。&lt;code&gt;go.mod&lt;/code&gt; 提供足够的信息支持可重复的编译&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;10-4-如果没有任何依赖是否仍应该增加一个-go-mod-文件&#34;&gt;10.4 如果没有任何依赖是否仍应该增加一个 go.mod 文件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;是的。
+
+&lt;ul&gt;
+&lt;li&gt;支持在 GOPATH 之外工作&lt;/li&gt;
+&lt;li&gt;有助于和模块生态圈沟通&lt;/li&gt;
+&lt;li&gt;其中的 &lt;code&gt;module&lt;/code&gt; 指令可作为代码身份的明确声明&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;11-faqs-语义导入版本控制&#34;&gt;11 FAQs-语义导入版本控制&lt;/h2&gt;
+
+&lt;h3 id=&#34;11-1-为什么主版本号必须出现在导入路径&#34;&gt;11.1 为什么主版本号必须出现在导入路径&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;为了遵循最小兼容原则，简化了系统其它部分&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;11-2-为什么主版本号-v0-v1-被导入路径忽视&#34;&gt;11.2 为什么主版本号 v0/v1 被导入路径忽视&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;忽视 v1 有两个原因
+
+&lt;ul&gt;
+&lt;li&gt;许多开发人员会创建一个包，该包在发布 v1 之后永远不会有破坏性的变化，这也是一开始鼓励的。当开发人员没有计划发布 v2 时，不应该强迫他们有显式的 v1。那样只会是干扰。当最终创建 v2 时，才需要加 v2 以便区分默认的 v1&lt;/li&gt;
+&lt;li&gt;大量已有的代码建议忽视 v1，而不是在每个地方都加上 v1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;忽视 v0
+
+&lt;ul&gt;
+&lt;li&gt;根据 semver 规定，对于 v0 没有任何兼容性保证。因此要求显式的 v0 对于兼容性没有什么帮助；必须指明完全精确的类似 v0.1.2，而每次库更新时需要更新所有的导入路径。这是过犹不及的。相反的，我们希望开发人员会简单地查看依赖的模块列表，并适当地谨慎任何 v0.x.y 版本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;忽视 v0/v1 的影响：将没办法从区分路径区分它们，但是 v0 通常是通向 v1 的一系列破坏性变化，因此将 v1 视为破坏性变化的最后阶段是有意义的
+&amp;gt;&amp;gt;&amp;gt; 通过使用 v0.x，你正在接受 v0.(x+1) 可能迫使你修改代码。那么为什么 v0.(x+1) 叫做 v1.0 是一个问题呢？&lt;/li&gt;
+&lt;li&gt;忽视 v0/v1 是强制性而非可选的，因此这是包的一个规范导入路径&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;11-3-使用主版本号-v0-v1-给项目打标签或使用-v2-标记破坏性的变化的影响是什么&#34;&gt;11.3 使用主版本号 v0/v1 给项目打标签或使用 v2+ 标记破坏性的变化的影响是什么&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;和 API 兼容性相关&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;11-4-模块能否使用没有选择加入模块的包&#34;&gt;11.4 模块能否使用没有选择加入模块的包&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。对于没有加入模块的仓库
+
+&lt;ul&gt;
+&lt;li&gt;但是具有有效的 semver 标签(包括要求的前导 &lt;code&gt;v&lt;/code&gt;)：可使用 &lt;code&gt;go get&lt;/code&gt; 获取这些标签，并记录对应 semver 版本到导入模块的 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;没有有效的 semver 标签：使用伪版本(如 &lt;code&gt;v0.0.0-20171006230638-a6e239ea1c69&lt;/code&gt;，包含时间戳，commit-id，如此设计以允许给版本排序)记录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;11-5-模块能否使用没有加入模块的-v2-包-incompatible-意味着什么&#34;&gt;11.5 模块能否使用没有加入模块的 v2+ 包？ +incompatible 意味着什么&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。如果导入的 v2+ 包具有有效的 semver 标签，将会在记录时添加 &lt;code&gt;+incompatible&lt;/code&gt; 后缀&lt;/li&gt;
+&lt;li&gt;当 go 工具在模块模式(如 &lt;code&gt;GO111MODULE=on&lt;/code&gt;)操作时，下面的核心原则总为真
+
+&lt;ul&gt;
+&lt;li&gt;1 包的导入路径定义了包的身份&lt;/li&gt;
+&lt;li&gt;导入路径不同的包视为不同的包&lt;/li&gt;
+&lt;li&gt;导入路径相同的包视为相同的包(即使 VCS 标签表明二者主版本号不同)&lt;/li&gt;
+&lt;li&gt;2 没有 &lt;code&gt;/vN&lt;/code&gt; 的导入路径视为 v0/v1 模块(即使导入包没有加入模块，且 VCS 标签表明主版本号大于 1)&lt;/li&gt;
+&lt;li&gt;3 模块的 &lt;code&gt;go.mod&lt;/code&gt; 开始声明的模块路径(如 &lt;code&gt;module foo/v2&lt;/code&gt;)是&lt;/li&gt;
+&lt;li&gt;该模块身份的确定性声明&lt;/li&gt;
+&lt;li&gt;该模块必须被使用代码如何导入的确定性声明&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;+incompatible&lt;/code&gt; 后缀表明上述原则 2 实际上在下面情况下为真
+
+&lt;ul&gt;
+&lt;li&gt;导入的包没有加入模块&lt;/li&gt;
+&lt;li&gt;且其 VCS 标签表明主版本号大于 1&lt;/li&gt;
+&lt;li&gt;且原则 2 会覆盖 VCS 标签——没有 &lt;code&gt;/vN&lt;/code&gt; 的导入路径视为 v0/v1 模块(即使 VCS 标签主版本号大于 1)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;即，当在模块模式操作时，go 工具将认为非模块的 v2+ 包不知道语义导入版本控制，并将其视作包 v1 版本系列的(非兼容的)扩展( &lt;code&gt;+incompatible&lt;/code&gt; 后缀指示 go 工具这样做)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;11-6-禁用模块支持时在编译中如何对待-v2-模块-最小模块兼容性在-go1-9-7-go1-10-3-go1-11-中如何工作&#34;&gt;11.6 禁用模块支持时在编译中如何对待 v2+ 模块？最小模块兼容性在 Go1.9.7+/Go1.10.3+/Go1.11 中如何工作&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;主子目录方式：v2+ 模块会创建子目录(如&lt;code&gt;mymodule/v2&lt;/code&gt;/&lt;code&gt;mymodule/v3&lt;/code&gt;)，并将合适的包移动或拷贝到子目录，这种方式的包是可以被不支持或禁用模块的 Go 使用&lt;/li&gt;
+&lt;li&gt;主分支方式：通过 &lt;code&gt;go.mod&lt;/code&gt; 和提交 semver 标签确定模块版本信息(经常在 &lt;code&gt;master&lt;/code&gt; 分支)。由此引入了最小模块兼容性。主要目的是
+
+&lt;ul&gt;
+&lt;li&gt;允许旧版本 Go(1.9.7+/1.10.3+) 更容易编译使用语义导入版本控制的模块，并提供和 Go1.11 禁用模块时相同的行为&lt;/li&gt;
+&lt;li&gt;允许旧代码使用 v2+ 模块，而不用旧代码修改导入路径添加 &lt;code&gt;/vN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;不用依赖模块作者创建 &lt;code&gt;/vN&lt;/code&gt; 子目录而实现上述两种行为&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;11-7-如果创建一个-go-mod-但是仓库不使用-semver-标签会发生什么&#34;&gt;11.7 如果创建一个 go.mod 但是仓库不使用 semver 标签会发生什么&lt;/h3&gt;
+
+&lt;h3 id=&#34;11-8-一个模块能否依赖自身不同的版本&#34;&gt;11.8 一个模块能否依赖自身不同的版本&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。但是两个包不能循环依赖&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;12-faqs-多模块仓库&#34;&gt;12 FAQs-多模块仓库&lt;/h2&gt;
+
+&lt;h3 id=&#34;12-1-什么是多模块仓库&#34;&gt;12.1 什么是多模块仓库&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多模块仓库是指一个仓库包含多个模块，每个模块有自己的 &lt;code&gt;go.mod&lt;/code&gt; 文件&lt;/li&gt;
+&lt;li&gt;每个模块起始于包含它自己的 &lt;code&gt;go.mod&lt;/code&gt; 的目录，并且包含此目录及其子目录下的所有包，不包含包含另外的 &lt;code&gt;go.mod&lt;/code&gt; 文件的子树&lt;/li&gt;
+&lt;li&gt;每个模块有自己的版本信息。位于仓库跟木库下的模块的版本标签必须包含相关目录作为前缀
+
+&lt;ul&gt;
+&lt;li&gt;有一个文件 &lt;code&gt;my-repo/foo/rop/go.mod&lt;/code&gt;，那么模块 &lt;code&gt;my-repo/foo/rop&lt;/code&gt; 的 1.2.3 版本的标签是 &lt;code&gt;foo/rop/v1.2.3&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一个顶层模块的路径时另外一个模块路径的前缀&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;12-2-是否应该在一个仓库包含多个模块&#34;&gt;12.2 是否应该在一个仓库包含多个模块&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;相比一个仓库包含多个模块，一个仓库一个模块在增加模块、删除模块、给模块打版本号方面更简单
+
+&lt;ul&gt;
+&lt;li&gt;在仓库根路径执行 &lt;code&gt;go test ./...&lt;/code&gt; 不会再测试仓库所有代码&lt;/li&gt;
+&lt;li&gt;需要用 &lt;code&gt;replace&lt;/code&gt; 指令管理模块之间的关系&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一个仓库包含多个模块的应用场景
+
+&lt;ul&gt;
+&lt;li&gt;有一个用法例子，且例子有复杂的依赖关系。这种情况可以创建一个 &lt;code&gt;examples&lt;/code&gt;/&lt;code&gt;_examples&lt;/code&gt; 目录包含自己的 &lt;code&gt;go.mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;某个仓库有复杂的依赖集合，但是有一个客户端 API 只有少数依赖。在某些场景下，创建一个 &lt;code&gt;api&lt;/code&gt;/&lt;code&gt;clientapi&lt;/code&gt; 或类似的目录持有自己的 &lt;code&gt;go.mod&lt;/code&gt;，或者将 &lt;code&gt;clientapi&lt;/code&gt; 单独分出一个仓库比较好&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;上述两种场景，如果只是为了一个大量间接依赖的性能或者下载大小，建议首先尝试 &lt;code&gt;GOPOROXY&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;12-3-能否给多模块仓库增加一个模块&#34;&gt;12.3 能否给多模块仓库增加一个模块&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。但是有两类问题
+
+&lt;ul&gt;
+&lt;li&gt;新增模块的包不在版本控制中。需要做的事情包括：增加包和 &lt;code&gt;go.mod&lt;/code&gt; 在同一提交，给提交打标签，推送标签&lt;/li&gt;
+&lt;li&gt;增加的模块在版本控制，并且包含已有的一个或多个包。这种情况需要&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;12-4-能否从多模块仓库删除一个模块&#34;&gt;12.4 能否从多模块仓库删除一个模块&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。问题同上&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;12-5-模块能否依赖另一个模块的-internal&#34;&gt;12.5 模块能否依赖另一个模块的 internal/&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。因为路径前缀是共享的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;12-6-能否增加一个-go-mod-文件排除不需要的内容-模块是否有等价的-gitignore-文件&#34;&gt;12.6 能否增加一个 go.mod 文件排除不需要的内容？模块是否有等价的 .gitignore 文件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个目录中空的 &lt;code&gt;go.mod&lt;/code&gt; 文件会导致该目录及其子目录不被顶层的 Go 模块包含&lt;/li&gt;
+&lt;li&gt;如果不想包含的目录不包含任何 &lt;code&gt;.go&lt;/code&gt; 文件，只需要放一个空的 &lt;code&gt;go.mod&lt;/code&gt; 文件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;13-faqs-最小版本选择&#34;&gt;13 FAQs-最小版本选择&lt;/h2&gt;
+
+&lt;h3 id=&#34;13-1-最小版本选择是否会使开发者得到重要的更新&#34;&gt;13.1 最小版本选择是否会使开发者得到重要的更新&lt;/h3&gt;
+
+&lt;h2 id=&#34;14-faqs-可能的问题&#34;&gt;14 FAQs-可能的问题&lt;/h2&gt;
+
+&lt;h3 id=&#34;14-1-如果发现问题-有哪些通用的东西可以定位检查&#34;&gt;14.1 如果发现问题，有哪些通用的东西可以定位检查&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;检查启用了模块：运行 &lt;code&gt;go env&lt;/code&gt; 查看 &lt;code&gt;GOMOD&lt;/code&gt; 不为空
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GOMOD&lt;/code&gt; 不能设置，是 &lt;code&gt;go env&lt;/code&gt; 的输出&lt;/li&gt;
+&lt;li&gt;如果设置 &lt;code&gt;GO111MODULE=on&lt;/code&gt; 以启用模块，检查不要是复数形式 &lt;code&gt;GO111MODULES=on&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果预期使用 vendor，检查 &lt;code&gt;-mod=vendor&lt;/code&gt; 被传递给相关的 go 命令，或者设置了 &lt;code&gt;GOFLAGS=-mod=vendor&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模块默认忽视 &lt;code&gt;vendor&lt;/code&gt; 除非要求 go 工具使用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go list -m all&lt;/code&gt; 检查编译实际选择的版本列表
+
+&lt;ul&gt;
+&lt;li&gt;相比查看 &lt;code&gt;go.mod&lt;/code&gt; 会给出更多详细信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果允许 &lt;code&gt;go get foo&lt;/code&gt; 失败，或者 &lt;code&gt;go build&lt;/code&gt; 在 &lt;code&gt;foo&lt;/code&gt; 包失败。可使用 &lt;code&gt;go get -v foo&lt;/code&gt;/&lt;code&gt;go get -v -x foo&lt;/code&gt; 查看输出
+
+&lt;ul&gt;
+&lt;li&gt;一般的，&lt;code&gt;go get&lt;/code&gt; 比 &lt;code&gt;go build&lt;/code&gt; 提供更多详细的错误信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 标识请求打印更多冗长细节，不过注意一些错误(比如 404)可能基于远程仓库的配置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get -v -x foo&lt;/code&gt; 也会显示调用的 git 或其他 VCS 命令(如有必要，可以经常在 go 工具上下文之外执行相同的命令用于故障排除)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;检查是否使用了旧的 git 版本
+
+&lt;ul&gt;
+&lt;li&gt;对于 vgo 原型和 Go1.11beta，使用旧的 git 是常见的错误源，但是在 GA1.11 中较少出现&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Go1.11 的模块缓存有时候会导致错误，尤其是先前有网络错误或者同时执行多个 go 命令时。可以将 &lt;code&gt;$GOPATH/pkg/mod&lt;/code&gt; 到一个备份目录，运行 &lt;code&gt;go clean -modcache&lt;/code&gt;，然后检查之前的问题是否出现&lt;/li&gt;
+&lt;li&gt;如果使用 Docker，检查是否可以可以在 Docker 之外复制行为(且如果行为只出现在 Docker，上述条目可用于比较 Docker 内外的结果)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;14-2-如果没有看到预期的依赖版本-可以检查什么&#34;&gt;14.2 如果没有看到预期的依赖版本，可以检查什么&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;执行 &lt;code&gt;go mod tidy&lt;/code&gt;。如果 &lt;code&gt;go mod tidy&lt;/code&gt; 改变了没有预期的依赖版本，先查看&lt;a href=&#34;#101-%e4%b8%ba%e4%bb%80%e4%b9%88-go-mod-tidy-%e8%ae%b0%e5%bd%95-gomod-%e7%9a%84%e9%97%b4%e6%8e%a5%e5%92%8c%e6%b5%8b%e8%af%95%e4%be%9d%e8%b5%96&#34;&gt;go mod tidy 记录 go.mod 的间接和测试依赖&lt;/a&gt;。如果没有解释，可以尝试重置 &lt;code&gt;go.mod&lt;/code&gt;，然后运行 &lt;code&gt;go list -mod=readonly all&lt;/code&gt;，可以就要求修改版本给出更多信息&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;go list -m all&lt;/code&gt;，查看编译实际选择的版本列表。&lt;code&gt;go list -m all&lt;/code&gt; 显示最终选择的版本，包括间接依赖和解决共享依赖的版本。并显示了任何 &lt;code&gt;replace&lt;/code&gt; 和 &lt;code&gt;exclude&lt;/code&gt; 指令的结果&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;go mod graph&lt;/code&gt;/&lt;code&gt;go mod graph | grep &amp;lt;module-of-interest&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;其他有用的命令包括 &lt;code&gt;go mod why -m &amp;lt;module&amp;gt;&lt;/code&gt;/&lt;code&gt;go list&lt;/code&gt;/&lt;code&gt;go list -deps -f &#39;{{with .Module}}{{.Path}} {{.Version}}{{end}}&#39; ./... | sort -u&lt;/code&gt;(显示编译使用的精确版本，不包括只用于测试的依赖)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;14-3-为什么得到错误-cannot-find-module-providing-package-foo&#34;&gt;14.3 为什么得到错误 cannot find module providing package foo&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;可能是路径不对。首先可以检查错误信息中列举的路径&lt;/li&gt;
+&lt;li&gt;尝试 &lt;code&gt;go get -v foo&lt;/code&gt;/&lt;code&gt;go get -v -x foo&lt;/code&gt;。通常，&lt;code&gt;go get&lt;/code&gt; 比 &lt;code&gt;get build&lt;/code&gt; 提供更多的错误信息&lt;/li&gt;
+&lt;li&gt;其他可能原因
+
+&lt;ol&gt;
+&lt;li&gt;当前目录没有 go 源码文件，但是运行了 &lt;code&gt;go build&lt;/code&gt;/&lt;code&gt;go build .&lt;/code&gt;。可以尝试运行 &lt;code&gt;go build ./...&lt;/code&gt;(&lt;code&gt;./...&lt;/code&gt; 通配符匹配当前模块的所有包)&lt;/li&gt;
+&lt;li&gt;Go1.11 的模块缓存在遇到网络问题或者同时允许多个 go 命令时会导致这个错误。在 Go1.12 已经接近。参考&lt;a href=&#34;#141-%e5%a6%82%e6%9e%9c%e5%8f%91%e7%8e%b0%e9%97%ae%e9%a2%98%e6%9c%89%e5%93%aa%e4%ba%9b%e9%80%9a%e7%94%a8%e7%9a%84%e4%b8%9c%e8%a5%bf%e5%8f%af%e4%bb%a5%e5%ae%9a%e4%bd%8d%e6%a3%80%e6%9f%a5&#34;&gt;上面的问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;14-4-为什么-go-mod-init-报错-cannot-determine-module-path-for-source-directory&#34;&gt;14.4 为什么 go mod init 报错 cannot determine module path for source directory&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go mod init&lt;/code&gt; 不带参数是会基于不同的暗示(VCS 元数据等)尝试猜测合适的模块路。但是，命令不能总是猜测的预期的合适路径&lt;/li&gt;
+&lt;li&gt;如果 &lt;code&gt;go mod init&lt;/code&gt; 报这类错，必须自己提供模块路径(&lt;code&gt;go mod init module_path&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;14-5-有一个复杂的且没有加入模块的依赖出现问题-能否使用它目前的依赖管理器的信息&#34;&gt;14.5 有一个复杂的且没有加入模块的依赖出现问题。能否使用它目前的依赖管理器的信息&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以。这需要一些手动步骤，但是在一些复杂场景是有用的&lt;/li&gt;
+&lt;li&gt;当运行 &lt;code&gt;go mod init&lt;/code&gt; 初始化模块时，命令会从先前的依赖管理器通过翻译配置文件(如 &lt;code&gt;Gopkg.lock/glide.lock/vendor.json&lt;/code&gt;)自动转换到 &lt;code&gt;go.mod&lt;/code&gt; 文件，该文件包含了对应的 &lt;code&gt;require&lt;/code&gt; 指令。先前的一些文件信息通畅描述了所有直接或间接依赖的版本信息&lt;/li&gt;
+&lt;li&gt;然而，当添加一个还没有加入模块的新依赖，新依赖不会有上述类似的自动转换过程。如果该新依赖本身有一些非模块依赖，且这些依赖有破坏性的变化，那么在某些场景下，会导致不兼容问题。换句话说，不会自动使用先前对于新依赖的依赖管理器，而这会在某些场景导致非间接依赖的问题&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;一个方法是在有问题的非模块直接依赖运行 &lt;code&gt;go mod init&lt;/code&gt; 转化当前依赖管理器，然后使用生成的临时 &lt;code&gt;go.mod&lt;/code&gt; 的 &lt;code&gt;require&lt;/code&gt; 指令定位或更新你的模块的 &lt;code&gt;go.mod&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;临时 &lt;code&gt;go.mod&lt;/code&gt; 生成的 &lt;code&gt;require&lt;/code&gt; 信息可手动移动到你的模块实际的 &lt;code&gt;go.mod&lt;/code&gt;，或考虑使用 &lt;a href=&#34;https://github.com/rogpeppe/gomodmerge&#34; target=&#34;_blank&#34;&gt;gomodmerge&lt;/a&gt; 工具。除此之外，可能会增加 &lt;code&gt;require github.com/some/nonmodule v1.2.3&lt;/code&gt; 到你的模块实际的 &lt;code&gt;go.mod&lt;/code&gt; 以匹配手动克隆的版本&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git clone -b v1.2.3 https://github.com/some/nonmodule /tmp/scratchpad/nonmodule
+cd /tmp/scratchpad/nonmodule
+go mod init
+cat go.mod
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;14-6-如何解决由于导入路径和声明模块身份不匹配导致的-parsing-go-mod-unexpected-module-path-和-error-loading-module-requirements-错误&#34;&gt;14.6 如何解决由于导入路径和声明模块身份不匹配导致的 parsing go.mod: unexpected module path 和 error loading module requirements 错误&lt;/h3&gt;
+
+&lt;h4 id=&#34;14-6-1-出现问题的原因&#34;&gt;14.6.1 出现问题的原因&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般的，一个模块在 &lt;code&gt;go.mod&lt;/code&gt; 中通过 &lt;code&gt;module&lt;/code&gt; 指令声明它的身份。这个该模块的“模块路径”，并且 go 工具强制声明的模块路径和使用者的导入路径的一致性。如果一个模块的 &lt;code&gt;go.mod&lt;/code&gt; 文件读到 &lt;code&gt;module example.com/m&lt;/code&gt;，那么使用者必须使用导入语句从该模块导入包，且必须以模块路径开头(如 &lt;code&gt;import &amp;quot;example.com/m&amp;quot;&lt;/code&gt; 或&lt;code&gt;import &amp;quot;example.com/m/sub/pkg&amp;quot;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;如果使用者的导入路径和对应的声明模块路径出现不匹配，go 命令会报错 &lt;code&gt;parsing go.mod: unexpected module path&lt;/code&gt;。此外，在某些场景下，go 命令会之后再报一个更一般的错误 &lt;code&gt;error loading module requirements&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;这个错误最常见的原因是如果有一个名字变化(如 &lt;code&gt;github.com/Sirupsen/logrus&lt;/code&gt; 到 &lt;code&gt;github.com/sirupsen/logrus&lt;/code&gt;)，或者如果一个模块有时通过两个不同于先前模块的名字(如 &lt;code&gt;github.com/golang/sync&lt;/code&gt; 和建议的 &lt;code&gt;golang.org/x/sync&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;如果有一个仍然使用旧的名字或不规范的名字导入的依赖，而该依赖之后采用模块并在 &lt;code&gt;go.mod&lt;/code&gt; 声明规范的名字，就会出现问题。这个错误可以在一次升级时触发，当此模块的升级版本声明了一个规范的模块路径，但是该路径不匹配旧的导入路径&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;14-6-2-场景示例&#34;&gt;14.6.2 场景示例&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当前有一个间接依赖 &lt;code&gt;github.com/Quasilyte/go-consistent&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;此工程采用模块，然后将名字改成 &lt;code&gt;github.com/quasilyte/go-consistent&lt;/code&gt;，这是一个破坏性的变化。GitHub 从旧名字导向新的名字&lt;/li&gt;
+&lt;li&gt;运行 &lt;code&gt;go get -u&lt;/code&gt;，尝试升级所有的直接或间接依赖&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;github.com/Quasilyte/go-consistent&lt;/code&gt; 尝试升级，但是最新的 &lt;code&gt;go.mod&lt;/code&gt; 发现现在读到的是 &lt;code&gt;module github.com/quasilyte/go-consistent&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;整个升级操作会失败，错误是：
+&amp;gt; go: github.com/Quasilyte/go-consistent@v0.0.0-20190521200055-c6f3937de18c: parsing go.mod: unexpected module path &amp;ldquo;github.com/quasilyte/go-consistent&amp;rdquo; go get: error loading module requirements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;14-6-3-解决方法&#34;&gt;14.6.3 解决方法&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;整个错误最常见的形式是
+&amp;gt; go: example.com/some/OLD/name@vX.Y.Z: parsing go.mod: unexpected module path &amp;ldquo;example.com/some/NEW/name&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;如果浏览 &lt;code&gt;example.com/some/NEW/name&lt;/code&gt; 仓库，可以检查最新发布版或 &lt;code&gt;master&lt;/code&gt; 查看 &lt;code&gt;go.mod&lt;/code&gt; 文件，是否在第一行声明 &lt;code&gt;module example.com/some/NEW/name&lt;/code&gt;。如果是，示意看到的 &lt;code&gt;old module name&lt;/code&gt; 和 &lt;code&gt;new module name&lt;/code&gt; 问题&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;解决步骤&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 检查自己的代码是否使用 &lt;code&gt;example.com/some/OLD/name&lt;/code&gt;。如果是，更新代码使用 &lt;code&gt;module example.com/some/NEW/name&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;2 如果再升级时遇到这个错误，应该尝试 Go 的 tip 版本。此版本有更多针对性的的升级逻辑，通常可以绕过这个问题，且经常对于这种情况有更好的错误信息。&lt;strong&gt;注意：&lt;/strong&gt;tip/1.13 和 1.12 的 &lt;code&gt;go get&lt;/code&gt; 参数不同。比如获取 tip 并使用 tip 更新依赖的命令如下。因为这个有问题的旧的导入经常是在间接依赖，使用 tip 升级然后运行 &lt;code&gt;go mod tidy&lt;/code&gt; 经常会升级过去有问题的版本，并且从 &lt;code&gt;go.mod&lt;/code&gt; 移除有问题的版本，然后可以使用 Go1.&lt;sup&gt;12&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.11 进入正常状态&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;go get golang.org/dl/gotip &amp;amp;&amp;amp; gotip download
+gotip get -u all
+gotip mod tidy
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;3 如果在执行 &lt;code&gt;go get -u foo&lt;/code&gt;/&lt;code&gt;go get -u foo@latest&lt;/code&gt; 时遇到这个错误，尝试移除 &lt;code&gt;-u&lt;/code&gt;。&lt;code&gt;go get -u foo&lt;/code&gt; 不仅仅只更新 &lt;code&gt;foo&lt;/code&gt; 到最新版本，也会更新 &lt;code&gt;foo&lt;/code&gt; 的所有直接或间接依赖到最新版本。但是 &lt;code&gt;foo&lt;/code&gt; 的一些直接或间接依赖可能没有使用 semver 或模块&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;4 如果上述步骤没有解决问题，下一个方法可能会比较复杂，但是大多数情况可以解决这类问题。这个方法只是有错误信息，以及简单浏览 VCS 历史&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;4.1 进入 &lt;code&gt;example.com/some/NEW/name&lt;/code&gt; 仓库&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;4.2 确定何时引入 &lt;code&gt;go.mod&lt;/code&gt; 文件(比如使用 &lt;a href=&#34;https://www.git-scm.com/docs/git-blame&#34; target=&#34;_blank&#34;&gt;git blame&lt;/a&gt; 或 &lt;a href=&#34;https://www.git-scm.com/docs/git-log&#34; target=&#34;_blank&#34;&gt;git log&lt;/a&gt; 命令查看 &lt;code&gt;go.mod&lt;/code&gt; 的修改历史)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;4.3 选中 &lt;code&gt;go.mod&lt;/code&gt; 被引入的前一次提交或发布&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;4.4 在你的 &lt;code&gt;go.mod&lt;/code&gt; 增加一个 &lt;code&gt;replace&lt;/code&gt; 语句，&lt;code&gt;reolace&lt;/code&gt; 两边都使用旧名字：&lt;code&gt;replace example.com/some/OLD/name =&amp;gt; example.com/some/OLD/name &amp;lt;version-just-before-go.mod&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在前述的场景示例中，旧名字是 &lt;code&gt;github.com/Quasilyte/go-consistent&lt;/code&gt;，新名字是 &lt;code&gt;github.com/quasilyte/go-consistent&lt;/code&gt;，可以看到 &lt;code&gt;go.mod&lt;/code&gt; 在 &lt;a href=&#34;https://github.com/quasilyte/go-consistent/tree/00c5b0cf371a96059852487731370694d75ffacf&#34; target=&#34;_blank&#34;&gt;00c5b0cf371a&lt;/a&gt; 被引入&lt;/li&gt;
+&lt;li&gt;该仓库没有使用 semver 标签，因此我们必须选取前一次提交 &lt;a href=&#34;https://github.com/quasilyte/go-consistent/tree/00dd7fb039e1eff09e7c0bfac209934254409360&#34; target=&#34;_blank&#34;&gt;00dd7fb039e&lt;/a&gt;，并且使用旧的大写 Quasilyte 到 &lt;code&gt;replace&lt;/code&gt; 两侧：&lt;code&gt;replace github.com/Quasilyte/go-consistent =&amp;gt; github.com/Quasilyte/go-consistent 00dd7fb039e&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这个 &lt;code&gt;replace&lt;/code&gt; 语句使我们可以通过有效地阻止旧名字升级到 &lt;code&gt;go.mod&lt;/code&gt; 出现的新名字而越过新旧名字不匹配的问题实现升级。通常，现在通过 &lt;code&gt;go get -u&lt;/code&gt; 或类似命令升级可以避免这样的错误。如果完成升级，可以检查是否仍有代码使用旧名字导入(如 &lt;code&gt;go mod graph | grep github.com/Quasilyte/go-consistent&lt;/code&gt;)，如果没有，可以移除 &lt;code&gt;repalce&lt;/code&gt; 指令。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这样经常生效的原因是如果使用有问题的旧导入路径，升级本身会失败。即使升级完成最后也不会使用这个路径&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;5 如果上述路径没有解决问题，可能因为某些当前依赖的最新版本中仍在使用有问题的旧导入路径。这种情况下，需要识别出谁仍在使用旧的路径，并且找出或者打开一个 issue 请求这个有问题的导入者修改代码使用规范路径。使用前述的 &lt;code&gt;gotip&lt;/code&gt; 可能识别出有问题的导入者，但是并不是所有场景有用，尤其是升级的情况。如果不确定谁在使用旧路径导入，通常可以通过创建一个干净的模块缓存找出来，执行出问题的操作，然后在模块缓存中 grep 有问题的导入路径。比如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;export GOPATH=$(mktemp -d)
+go get -u foo               # peform operation that generates the error of interest
+cd $GOPATH/pkg/mod
+grep -R --include=&amp;quot;*.go&amp;quot; github.com/Quasilyte/go-consistent
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;6 如果这些步骤不足以解决问题，或者你是一个项目的维护者，且似乎因为循环引用不能移除旧路径的引用，可以&lt;a href=&#34;https://github.com/golang/go/wiki/Resolving-Problems-From-Modified-Module-Path&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;最后，上述步骤致力于如果解决一个底层的新旧名字问题。然而，如果 &lt;code&gt;go.mod&lt;/code&gt; 被放置在错误的位置或简单的是因为错误的模块路径，这会出现相同的问题。在这种情况下，导入该模块总会失败。如果你正在导入你刚刚新建的模块，且之前从未成功导入过，你应当检查 &lt;code&gt;go.mod&lt;/code&gt; 被正确放置且有对应的合适的模块路径。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最常见的方法是一个仓库一个 &lt;code&gt;go.mod&lt;/code&gt;，且是在仓库根目录放置单一的 &lt;code&gt;go.mod&lt;/code&gt; 文件。并且使用仓库名字作为文件中声明的 &lt;code&gt;module&lt;/code&gt; 指令的模块路径&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;14-7-为什么-go-build-要求-gcc-为什么预编译包-如-net-http-不用&#34;&gt;14.7 为什么 go build 要求 gcc？为什么预编译包(如 net/http) 不用&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;因为预编译包是非模块的(对 GOPATH 有效)，因此不能被重复使用。即在模块模式时需要重新编译标准库的包&lt;/li&gt;
+&lt;li&gt;这个问题只在加入模块时出现，对于 Go1.11 可以禁用 &lt;code&gt;cgo&lt;/code&gt;(如 &lt;code&gt;GO111MODULE=on CGO_ENABLED=0 go build&lt;/code&gt;) 或者安装 gcc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;14-8-模块能否在相对导入路径-如-import-subdir-正常工作&#34;&gt;14.8 模块能否在相对导入路径(如 import &amp;ldquo;./subdir&amp;rdquo;)正常工作&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不能。在模块中，子目录最终会有一个名字。如果当前目录是 &lt;code&gt;module m&lt;/code&gt;，那么导入的子目录就是 &lt;code&gt;m/subdir&lt;/code&gt;，不再是 &lt;code&gt;./subdir&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;14-9-某些需要的文件可能不在定位的-vendor-目录&#34;&gt;14.9 某些需要的文件可能不在定位的 vendor 目录&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go mod vendor&lt;/code&gt; 不会拷贝没有 &lt;code&gt;.go&lt;/code&gt; 文件的目录到 &lt;code&gt;vendor&lt;/code&gt;。设计如此&lt;/li&gt;
+&lt;li&gt;对于传统的 vendor：检查模块缓存&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;15-相关链接&#34;&gt;15 相关链接&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/golang/go/wiki/Modules&#34; target=&#34;_blank&#34;&gt;Go module wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tip.golang.org/cmd/go/#hdr-Modules_and_vendoring&#34; target=&#34;_blank&#34;&gt;Modules and vendoring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/thepudds/go-module-knobs/blob/master/README.md&#34; target=&#34;_blank&#34;&gt;List of go module knobs for controlling CI, vendoring, and when go commands access the network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/doc/go1.13#modules&#34; target=&#34;_blank&#34;&gt;module 工具&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 程</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_goroutine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_goroutine/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#goroutine&#34;&gt;goroutine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa-goroutine&#34;&gt;创建一个 goroutine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#goroutine-%e4%bc%98%e4%ba%8e%e7%ba%bf%e7%a8%8b&#34;&gt;goroutine 优于线程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goroutine&#34;&gt;goroutine&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goroutine 是和其他函数或方法并发运行的函数或方法&lt;/li&gt;
+&lt;li&gt;goroutine 可认为是轻量级的线程，比线程创建代价小&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;创建一个-goroutine&#34;&gt;创建一个 goroutine&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;go&lt;/code&gt; 可以开始一个 goroutine：&lt;code&gt;go f(x, y, z)&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;f&lt;/code&gt; &lt;code&gt;x&lt;/code&gt; &lt;code&gt;y&lt;/code&gt; &lt;code&gt;z&lt;/code&gt; 的求值发生在当前的 goroutine&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;f&lt;/code&gt; 的执行发生在新的 goroutine- 启动一个 goroutine 时，&lt;code&gt;go&lt;/code&gt; 立即返回，继续执行下一行代码，新启动的 goroutine 的返回值都会被忽略&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;main goroutine 应当启动其他 goroutine。因为 main goroutine 终止时，程序就会终止，不会再有 goroutine 运行&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;goroutine 在相同的地址空间运行，因此在访问共享的内存时必须同步&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;time&amp;quot;
+)
+
+func say(s string) {
+for i := 0; i &amp;lt; 5; i++ {
+    time.Sleep(5000 * time.Millisecond)
+    fmt.Println(s)
+}
+}
+
+func main() {
+go say(&amp;quot;world&amp;quot;)
+say(&amp;quot;hello&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;goroutine-优于线程&#34;&gt;goroutine 优于线程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;goroutine 更加轻量。只有几个 Kb 大小的栈，且可根据需求增长。但是线程的栈大小是固定的？？&lt;/li&gt;
+&lt;li&gt;goroutine 被复用到更少数量的线程。一个线程可能有很多 goroutine，当该线程的一个 goroutine 阻塞时，另外一个 OS 线程被创建，并将剩余的 goroutine 移到新的 OS 线程&lt;/li&gt;
+&lt;li&gt;goroutine 使用 channel 通信。channel 可以防止 goroutine 访问共享内存时竞争。channel 可认为是一个管道&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 类型转换</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_type_casting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_type_casting/</guid>
+      <description>
+
+&lt;h2 id=&#34;类型声明&#34;&gt;类型声明&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;type&lt;/code&gt; 声明定义一个新的命名类型，它和某个已有类型使用同样的底层类型。命名；类型提供了一种方式来区分底层类型的不同或不兼容使用，这样就不会在无意中混用他们。&lt;/p&gt;
+
+&lt;p&gt;比如，把不同计量单位的温度值转换为不同的类型。即使使用的底层类型相同，二者是不是相同的类型，不能使用算术表达式进行比较和合并。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type celsius float64
+type fahrenheit float64
+
+const (
+  absoluteZeroC celsius = -273.15
+  freezingC     celsius = 0
+  boilingC      celsius = 100
+)
+
+func main() {
+  fmt.Printf(&amp;quot;cToF(%2f) = (%2f)\n&amp;quot;, absoluteZeroC, cToF(absoluteZeroC))
+  // error:cannot use boilingC (type celsius) as type fahrenheit in argument to fToC
+  fmt.Printf(&amp;quot;fToC(%2f) = (%2f)\n&amp;quot;, boilingC, fToC(boilingC))
+  fmt.Printf(&amp;quot;fToC(%2f) = (%2f)\n&amp;quot;, boilingC, fToC(fahrenheit(boilingC)))
+}
+
+func cToF(c celsius) fahrenheit { return fahrenheit(c*9/5 + 32) }
+func fToC(f fahrenheit) celsius { return celsius((f - 32) * 5 / 9) }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;类型转换&#34;&gt;类型转换&lt;/h2&gt;
+
+&lt;p&gt;对于每个类型 T，都有一个对应的类型转换操作 T(x) 将值转化为类型 T。如果两个类型具有相同的底层类型或二者都是指向相同底层类型变量的未命名指针类型，则二者可以相互转化。类型转化不改变；类型值的表达方式，仅改变类型。如果 x 对于类型 T 是可赋值的，类型转化也是允许的，但是通常是不必要的。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;类型转换用于将一种数据类型的变量转换为另一种类型的变量，go 不支持隐式类型转换&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+func main() {
+var x, y int = 3, 4
+var f float64 = math.Sqrt(float64(x*x + y*y))
+var z uint = f //error: cannot use f (type float64) as type uint in assignment
+fmt.Println(x, y, z)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;格式&lt;code&gt;type_name(expression)&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;type_name 是类型&lt;/li&gt;
+&lt;li&gt;expression 是表达式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 结构</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_structure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_structure/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;package pkg_name&lt;/code&gt;定义包名，即程序属于哪个包，每个 go 文件第一行
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;package main&lt;/code&gt;表示一个可独立执行的程序&lt;/li&gt;
+&lt;li&gt;每个 go 的应用程序必须包含一个 main 包&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;import pkg_name&lt;/code&gt;表示程序需要使用的包，如 fmt 实现了格式化输入输出函数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;func func_name(){}&lt;/code&gt;定义了程序的函数
+
+&lt;ul&gt;
+&lt;li&gt;main 函数是每一个可执行程序必须包含的，一般来说都是在启动后第一个执行的函数&lt;/li&gt;
+&lt;li&gt;有 init 函数的时候先执行 init 函数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/*...*/&lt;/code&gt;和&lt;code&gt;//&lt;/code&gt;是注释&lt;/li&gt;
+&lt;li&gt;标识符（常量、变量、类型、函数名、结构字段等）
+
+&lt;ul&gt;
+&lt;li&gt;以大写字母开头，则该对象可以被外部包的代码使用，即导出（类比面向对象的 public）&lt;/li&gt;
+&lt;li&gt;以小写字母开头，则对外包不可见，只在包内部可见可用（类比面向对象的 protected）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;执行程序
+
+&lt;ul&gt;
+&lt;li&gt;程序以&lt;code&gt;.go&lt;/code&gt;结尾&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;go run filename.go&lt;/code&gt;可运行代码&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;编译程序
+
+&lt;ul&gt;
+&lt;li&gt;执行&lt;code&gt;go install filename&lt;/code&gt;，会寻找&lt;code&gt;filename&lt;/code&gt;文件夹下的包含 main 函数的文件，编译生成二进制文件&lt;code&gt;filename&lt;/code&gt;放在对应的&lt;code&gt;bin&lt;/code&gt;目录下&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Note：go 语言不支持&lt;code&gt;{&lt;/code&gt;放单独一行，和 C 和 C++ 不一样&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 结构体</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_struct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_struct/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%9a%e4%b9%89%e7%bb%93%e6%9e%84%e4%bd%93&#34;&gt;定义结构体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%ae%bf%e9%97%ae%e7%bb%93%e6%9e%84%e4%bd%93%e6%88%90%e5%91%98%e5%8f%98%e9%87%8f&#34;&gt;访问结构体成员变量&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;定义结构体&#34;&gt;定义结构体&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;struct&lt;/code&gt; 是域的集合&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;定义结构体需要使用 type 和 struct 关键字&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type vertex struct {
+  X int
+  Y int
+}
+
+func main() {
+  fmt.Println(vertex{1, 2})
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;声明结构体变量：结构体字面量代表使用列举的域给新分配的结构体赋值&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;var_name := struct_name {var1, var2...,varn}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;var_name := struct_name {key1 : var1, key2 : val2..., keyn : varn}&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用 &lt;code&gt;key:&lt;/code&gt; 可以仅列出部分字段，与字段名顺序无关&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type vertex struct {
+X, Y int
+}
+
+var (
+v1 = vertex{1, 2}
+v2 = vertex{X : 1}
+v3 = vertex{}
+p = &amp;amp;vertex{2, 3}
+)
+
+func main() {
+fmt.Println(v1, v2, v3, p) //{1 2} {1 0} {0 0} &amp;amp;{2 3}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;访问结构体成员变量&#34;&gt;访问结构体成员变量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;访问结构体成员变量用 &lt;code&gt;.&lt;/code&gt; 操作符&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;和 C++ 不一样，结构体指针访问结构体成员变量也用 &lt;code&gt;.&lt;/code&gt; 操作符&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type vertex struct {
+  X int
+  Y int
+}
+
+func main() {
+  v := vertex{1, 2}
+  fmt.Println(v)
+  p := &amp;amp;v
+  p.X = 1e9
+  fmt.Println(v)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;结构体作为函数参数&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 范围</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_range/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_range/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;range 关键字用于 for 循环中迭代数组 array、切片 slice、通道 channel 或 集合 map 的元素&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在数组和切片中返回元素的索引和索引对应的值的拷贝，在集合中返回 key-value 对的 key 值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+)
+
+func main() {
+  var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+  for i, v := range pow {
+      fmt.Printf(&amp;quot;2**%d = %d\n&amp;quot;, i, v)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以赋值给 &lt;code&gt;_&lt;/code&gt; 跳过索引或值&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;for i, _ := range pow&lt;/code&gt;。如果只想要索引，可以忽视第二个参数 &lt;code&gt;for i := range pow&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;for _, val := range pow&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+)
+
+func main() {
+pow := make([]int, 10)
+
+for i := range pow {
+  pow[i] = 1 &amp;lt;&amp;lt; uint(i) //2**i
+}
+
+for _, val := range pow {
+  fmt.Printf(&amp;quot;%d\n&amp;quot;, val)
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 运算符</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_operator/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;算术运算符: +, -, *, /, %, ++, &amp;ndash;&lt;/li&gt;
+&lt;li&gt;关系运算符: ==, !=, &amp;gt;, &amp;lt;, &amp;gt;=, &amp;lt;=&lt;/li&gt;
+&lt;li&gt;逻辑运算符: &amp;amp;&amp;amp;, ||, !&lt;/li&gt;
+&lt;li&gt;位运算符: &amp;amp;, |, ^(异或), &amp;lt;&amp;lt;, &amp;gt;&amp;gt;&lt;/li&gt;
+&lt;li&gt;赋值运算符: =, +=, -=, *=, /=, %=, &amp;lt;&amp;lt;=, &amp;gt;&amp;gt;=, &amp;amp;=, |=, ^=&lt;/li&gt;
+&lt;li&gt;其他运算符: &amp;amp;(返回变量存储地址), *(指针变量)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 递归函数</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_recursive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_recursive/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func myRecursion() {
+  //myRecursion()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>go 错误处理</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_error_handling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_error_handling/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;go 使用 &lt;code&gt;error&lt;/code&gt; 值表示错误状态，通过内置的错误接口提供了非常简单的错误处理机制&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;error&lt;/code&gt; 是一个接口类型，定义&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type error interface {
+  Error() string
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可在编码中通过实现 &lt;code&gt;error&lt;/code&gt; 接口类型生成错误信息&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;函数通常在最后一个返回值返回错误信息，使用 &lt;code&gt;errors.New&lt;/code&gt; 可返回一个错误信息&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;errors.new&lt;/code&gt; 接收一个字符串作为参数&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果有错误信息，则得到一个非 nil 的 &lt;code&gt;error&lt;/code&gt; 对象，通常将返回值与 nil 比较&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;i, err := strconv.Atoi(&amp;quot;42&amp;quot;)
+if err != nil {
+fmt.Printf(&amp;quot;couldn&#39;t convert number: %v\n&amp;quot;, err)
+return
+}
+fmt.Println(&amp;quot;Converted integer:&amp;quot;, i)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;打印 &lt;code&gt;error&lt;/code&gt; 的时候，调用的是内部的&lt;code&gt;Error() string&lt;/code&gt;方法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用 &lt;code&gt;fmt.Errorf&lt;/code&gt; 函数可以给 &lt;code&gt;error&lt;/code&gt; 增加更多信息&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;fmt.Errorf&lt;/code&gt; 接收参数和格式化字符串&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+
+type errNegativeSqrt float64
+
+func (e errNegativeSqrt) Error() string {
+return fmt.Sprint(&amp;quot;cannot Sqrt negative number: &amp;quot;, float64(e))
+}
+
+func mySqrt(x float64) (float64, error) {
+if x &amp;lt; 0 {
+return -1, errNegativeSqrt(x)
+}
+z := x / 2
+tmp := 0.0
+for math.Abs(z-tmp) &amp;gt;= 0.000000000001 {
+tmp = z
+z -= (z*z - x) / (2 * z)
+}
+return z, nil
+}
+
+func main() {
+fmt.Println(mySqrt(2))
+fmt.Println(mySqrt(-2))
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WaitGroup 和 worker pool</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_waitgroup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_waitgroup/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#waitgroup&#34;&gt;WaitGroup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#worker-pool&#34;&gt;worker pool&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;waitgroup&#34;&gt;WaitGroup&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WaitGroup 用于等待一个集合的 goroutine 执行完毕。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;WaitGroup 是一个结构体，内部使用了一个计数器，使用 Add 可以增加计数，使用 Done 可以减少计数。当计数为 0 的时候，Wait 返回&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;WaitGroup 不能使用值传递，否则会复制拷贝，将不能通知 Wait 函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func goroutineProccess(index int, wg *sync.WaitGroup) {
+fmt.Println(&amp;quot;start goroutineProcess &amp;quot;, index)
+time.Sleep(2 * time.Second)
+fmt.Printf(&amp;quot;Ended goroutineProcess %d\n&amp;quot;, index)
+wg.Done()
+}
+
+func WaitgroupTest() {
+routineNumber := 3
+var wg sync.WaitGroup
+for i := 0; i &amp;lt; routineNumber; i++ {
+wg.Add(1)
+go goroutineProccess(i, &amp;amp;wg)
+}
+wg.Wait()
+fmt.Println(&amp;quot;All goroutine exit...&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;worker-pool&#34;&gt;worker pool&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;worker pool 是一个线程的集合，等待分配任务执行。任务完成之后，立刻准备下一个任务&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用 buffered channel 实现 worker pool&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Job struct {
+id       int
+randomno int
+}
+
+type Result struct {
+job         Job
+sumofdigits int
+}
+
+var jobs = make(chan Job, 10)
+var results = make(chan Result, 10)
+
+func digits(number int) int {
+sum := 0
+no := number
+for no != 0 {
+    sum += no % 10
+    no /= 10
+}
+time.Sleep(2 * time.Second)
+return sum
+}
+
+func dowork(wg *sync.WaitGroup) {
+for job := range jobs {
+    sum := Result{job, digits(job.randomno)}
+    results &amp;lt;- sum
+}
+wg.Done()
+}
+
+func createWorkerPool(noOfWorkers int) {
+var wg sync.WaitGroup
+for i := 0; i &amp;lt; noOfWorkers; i++ {
+    wg.Add(1)
+    go dowork(&amp;amp;wg)
+}
+wg.Wait()
+close(results)
+}
+
+func createJobs(noOfJobs int) {
+for i := 0; i &amp;lt; noOfJobs; i++ {
+    randomno := rand.Intn(999)
+    job := Job{i, randomno}
+    jobs &amp;lt;- job
+}
+close(jobs)
+}
+
+func getResult(done chan bool) {
+for result := range results {
+    fmt.Printf(&amp;quot;Job id = %2d, randomno = %3d, result = %d\n&amp;quot;, result.job.id, result.job.randomno, result.sumofdigits)
+}
+done &amp;lt;- true
+}
+
+func WokerPoolTest() {
+startTime := time.Now()
+noOfJobs := 100
+go createJobs(noOfJobs)
+noOfWorkers := 10
+go createWorkerPool(noOfWorkers)
+done := make(chan bool)
+go getResult(done)
+&amp;lt;-done
+endTime := time.Now()
+diff := endTime.Sub(startTime)
+fmt.Println(&amp;quot;Cost &amp;quot;, diff.Seconds(), &amp;quot; seconds&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>信道</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_channel/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#channel&#34;&gt;channel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8d%95%e5%90%91-channel&#34;&gt;单向 channel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#close-%e5%85%b3%e9%97%ad%e4%bf%a1%e9%81%93&#34;&gt;close 关闭信道&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9c%89%e7%bc%93%e5%86%b2%e7%9a%84-channel&#34;&gt;有缓冲的 channel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;channel&#34;&gt;channel&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;channel 可认为是带有类型的 pipe，goroutine 通过 channel 通信&lt;/li&gt;
+&lt;li&gt;每个 channel 有一个关联的类型，这个类型是 channel 允许传输的数据类型
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chan T&lt;/code&gt; 是一个 T 类型的通道&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;channel 的初始化值是 nil，使用 make 定义&lt;code&gt;chan_name := make(chan chan_type)&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用信道操作符 &lt;code&gt;&amp;lt;-&lt;/code&gt; 发送或接收值，箭头是数据流的方向&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;data := &amp;lt;- chan_name&lt;/code&gt;从 chan_name 读数据，当不需要保存读的数据时是&lt;code&gt;&amp;lt;- chan_name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chan_name &amp;lt;- data&lt;/code&gt;往 chan_name 写数据&lt;/li&gt;
+&lt;li&gt;发送和接收模式是阻塞的，通过 channel 发送数据的时候，控制会阻塞在发送语句直到其他的 goroutine 从 channel 读数据，读数据亦然&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;避免死锁：如果等待从 channel 读或写的 goroutine 没有对应的写或读，将会阻塞&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func calcSquares(number int, squareop chan int) {
+sum := 0
+for number != 0 {
+digit := number % 10
+sum += digit * digit
+number /= 10
+}
+squareop &amp;lt;- sum
+}
+
+func calcCubes(number int, cubeop chan int) {
+sum := 0
+for number != 0 {
+digit := number % 10
+sum += digit * digit * digit
+number /= 10
+}
+cubeop &amp;lt;- sum
+}
+
+func ChannelTest() {
+number := 54
+squarech := make(chan int)
+cubech := make(chan int)
+go calcSquares(number, squarech)
+go calcCubes(number, cubech)
+squareop, cubeop := &amp;lt;-squarech, &amp;lt;-cubech
+fmt.Printf(&amp;quot;squares = %d, cubes = %d\n&amp;quot;, squareop, cubeop)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;单向-channel&#34;&gt;单向 channel&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以创建单向的 channel，只用来发送或接受数据，然而没有什么意义&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;chan&amp;lt;- chan_type&lt;/code&gt;创建只发送/写 channel&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func unidirectionalChannel(unich chan&amp;lt;- int) {
+unich &amp;lt;- 1
+}
+
+func unidirectionalChannelTest() {
+unich := make(chan&amp;lt;- int)
+go unidirectionalChannel(unich)
+// fmt.Println(&amp;lt;-unich) //invalid operation xx(received from send-only type)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;close-关闭信道&#34;&gt;close 关闭信道&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;发送者可以通过&lt;code&gt;close chan_name&lt;/code&gt;关闭 channel，通知接收者没有数据了，接收者通过&lt;code&gt;var, ok := &amp;lt;- chan_name&lt;/code&gt;接受数据，如果是已经关闭的 channel，ok 会赋值 false，主要在用 &lt;code&gt;for range&lt;/code&gt; 循环从 channel 不断接受数据时使用&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;只有发送者才能关闭信道&lt;/strong&gt;。向一个已经关闭的信道发送数据会引发程序 panic&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;信道与文件不同，通常情况下无需关闭&lt;/strong&gt;。只有在必须告诉接收者不再有需要发送的值时才有必要关系，例如终止一个 &lt;code&gt;for range&lt;/code&gt; 循环&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func chanSender(chanop chan int) {
+  for i := 0; i &amp;lt; 10; i++ {
+      chanop &amp;lt;- i
+  }
+  close(chanop)
+}
+
+func chanReceiver() {
+  chanop := make(chan int)
+  go chanSender(chanop)
+  // for {
+  //     data, ok := &amp;lt;-chanop
+  //     if ok == false {
+  //         break
+  //     }
+  //     fmt.Println(&amp;quot;Received &amp;quot;, data, ok)
+  // }
+
+  for data := range chanop {
+      fmt.Println(&amp;quot;Received &amp;quot;, data)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func getDigits(number int, digitch chan int) {
+  for number != 0 {
+      digit := number % 10
+      digitch &amp;lt;- digit
+      number /= 10
+  }
+  close(digitch)
+}
+
+func calcSquares(number int, squareop chan int) {
+  sum := 0
+  digitch := make(chan int)
+  go getDigits(number, digitch)
+  for digit := range digitch {
+      sum += digit * digit
+  }
+  squareop &amp;lt;- sum
+}
+
+func calcCubes(number int, cubeop chan int) {
+  sum := 0
+  digitch := make(chan int)
+  go getDigits(number, digitch)
+  for digit := range digitch {
+      sum += digit * digit * digit
+  }
+  cubeop &amp;lt;- sum
+}
+
+func ChannelTest() {
+  number := 54
+  squarech := make(chan int)
+  cubech := make(chan int)
+  go calcSquares(number, squarech)
+  go calcCubes(number, cubech)
+  squareop, cubeop := &amp;lt;-squarech, &amp;lt;-cubech
+  fmt.Printf(&amp;quot;squares = %d, cubes = %d\n&amp;quot;, squareop, cubeop)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;有缓冲的-channel&#34;&gt;有缓冲的 channel&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;channel 默认没有缓冲，发送和接收都会阻塞&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;make(chan type, capacity)&lt;/code&gt;可以创建 buffered channel，只有缓冲满的时候发送会阻塞，只有缓冲空的时候接收会阻塞
+
+&lt;ul&gt;
+&lt;li&gt;channel 容量默认为 0，即没有缓冲，会阻塞&lt;/li&gt;
+&lt;li&gt;长度是 channel 缓冲现有的元素数目，容量是 channel 缓冲最多可以容纳的数目&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>安装 go</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_install/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#linux-%e5%ae%89%e8%a3%85%e5%92%8c%e4%bd%bf%e7%94%a8-go&#34;&gt;Linux 安装和使用 go&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%85&#34;&gt;安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95-gopath&#34;&gt;设置工作目录 GOPATH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%b5%8b%e8%af%95%e5%ae%89%e8%a3%85&#34;&gt;测试安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%85%e5%85%b6%e4%bb%96%e7%89%88%e6%9c%ac&#34;&gt;安装其他版本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#windows-%e5%ae%89%e8%a3%85%e5%92%8c%e4%bd%bf%e7%94%a8-go&#34;&gt;Windows 安装和使用 go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#macos-%e5%ae%89%e8%a3%85%e5%92%8c%e4%bd%bf%e7%94%a8-go&#34;&gt;MacOS 安装和使用 go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8d%b8%e8%bd%bd%e6%97%a7%e7%89%88%e6%9c%ac&#34;&gt;卸载旧版本&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34;&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vscode-%e4%bd%bf%e7%94%a8-go&#34;&gt;vscode 使用 go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%85%8d%e7%bd%ae%e4%bb%a3%e7%90%86&#34;&gt;配置代理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;linux-安装和使用-go&#34;&gt;Linux 安装和使用 go&lt;/h2&gt;
+
+&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下载&lt;a href=&#34;https://golang.org/dl/&#34; target=&#34;_blank&#34;&gt;安装包&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;选择最新的 &lt;a href=&#34;https://dl.google.com/go/go1.11.2.linux-amd64.tar.gz&#34; target=&#34;_blank&#34;&gt;Linux 版本&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载&lt;code&gt;wget https://dl.google.com/go/go1.11.2.linux-amd64.tar.gz&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://golang.org/doc/install&#34; target=&#34;_blank&#34;&gt;安装&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;解压：&lt;code&gt;tar -C /usr/local -zxf go1.11.2.linux-amd64.tar.gz&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;配置环境变量
+
+&lt;ul&gt;
+&lt;li&gt;修改&lt;code&gt;/etc/profile&lt;/code&gt;或&lt;code&gt;~/.profile&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;追加&lt;code&gt;export PATH=$PATH:/usr/local/go/bin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;source&lt;/code&gt;命令更新配置文件立即生效&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;设置工作目录-gopath&#34;&gt;设置工作目录 GOPATH&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;工作目录下面有三个文件夹
+
+&lt;ul&gt;
+&lt;li&gt;src：存放源码的目录，新建项目都在该目录下&lt;/li&gt;
+&lt;li&gt;pkg：编译生成的包文件存放目录&lt;/li&gt;
+&lt;li&gt;bin：编译生成的可执行文件和 go 相关的工具&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;默认工作目录是 &lt;code&gt;$HOME/go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果需要自定义工作目录：
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;建议：&lt;/strong&gt;不要和 go 的安装目录相同&lt;/li&gt;
+&lt;li&gt;修改 &lt;code&gt;~/.bashrc&lt;/code&gt;，添加 &lt;code&gt;export GOPATH=$HOME/go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 使脚本生效&lt;/li&gt;
+&lt;li&gt;修改&lt;code&gt;/etc/profile&lt;/code&gt;或&lt;code&gt;~/.profile&lt;/code&gt;，添加 &lt;code&gt;export GOROOT=$HOME/go&lt;/code&gt;，将 &lt;code&gt;$HOME/go/bin&lt;/code&gt; 加入系统环境变量 &lt;code&gt;PATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;source&lt;/code&gt;命令更新配置文件立即生效
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;测试安装&#34;&gt;测试安装&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建并进入默认工作目录 &lt;code&gt;~/go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;创建并进入目录 &lt;code&gt;src/hello&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;创建文件 &lt;code&gt;hello.go&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+fmt.Printf(&amp;quot;Hello, world\n&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;编译：&lt;code&gt;go build&lt;/code&gt;，生成可执行文件 &lt;code&gt;hello&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;运行：&lt;code&gt;./hello&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装二进制文件到工作目录的 &lt;code&gt;bin&lt;/code&gt; 目录：&lt;code&gt;go install&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;删除工作目录的二进制文件：&lt;code&gt;go clean -i&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;安装其他版本&#34;&gt;安装其他版本&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装版本 1.10.7
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go get golang.org/dl/go1.10.7&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go1.10.7 download&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;使用版本 1.10.7
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;go1.10.7 version&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;windows-安装和使用-go&#34;&gt;Windows 安装和使用 go&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下载 Windows &lt;a href=&#34;https://golang.org/dl/&#34; target=&#34;_blank&#34;&gt;安装包&lt;/a&gt; msi 文件&lt;/li&gt;
+&lt;li&gt;安装到 &lt;code&gt;c:\Go&lt;/code&gt; 目录&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;c:\Go\bin&lt;/code&gt; 加入系统环境变量 &lt;code&gt;PATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;测试安装
+
+&lt;ul&gt;
+&lt;li&gt;创建 go 的工作目录，比如 &lt;code&gt;g:\gopro&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置工作目录路径：在用户变量中加入 &lt;code&gt;GOPATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;g:\gopro\bin&lt;/code&gt; 加入系统环境变量 &lt;code&gt;PATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;创建 &lt;code&gt;g:\gopro\src\hello&lt;/code&gt; 目录，创建 &lt;code&gt;hello.go&lt;/code&gt; 文件&lt;/li&gt;
+&lt;li&gt;打开 Windows 终端，切换到 &lt;code&gt;g:\gopro\src\hello&lt;/code&gt; 目录&lt;/li&gt;
+&lt;li&gt;编译：&lt;code&gt;go build&lt;/code&gt;，生成可执行文件 &lt;code&gt;hello.exe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;运行：&lt;code&gt;hello&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装二进制文件到工作目录的 &lt;code&gt;bin&lt;/code&gt; 目录：&lt;code&gt;go install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除工作目录的二进制文件：&lt;code&gt;go clean -i&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;macos-安装和使用-go&#34;&gt;MacOS 安装和使用 go&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;执行 &lt;code&gt;brew install go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;配置环境变量
+
+&lt;ul&gt;
+&lt;li&gt;修改 &lt;code&gt;~/.profile&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;追加&lt;code&gt;export GOROOT=/usr/local/go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;追加&lt;code&gt;export PATH=$PATH:$GOROOT/bin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;source ~/.profile&lt;/code&gt;命令更新配置文件立即生效&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;验证配置：执行 &lt;code&gt;go version&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;写测试程序&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;写 &lt;code&gt;hello.go&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+fmt.println(&amp;quot;Hello World!&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;执行 &lt;code&gt;go run hello.go&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;卸载旧版本&#34;&gt;卸载旧版本&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除 go 目录
+
+&lt;ul&gt;
+&lt;li&gt;Linux/MacOS/FreeBSD &lt;code&gt;/usr/local/go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Windows &lt;code&gt;c:\go&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;从环境变量 &lt;code&gt;PATH&lt;/code&gt; 中删除 go 的 bin 目录
+
+&lt;ul&gt;
+&lt;li&gt;Linux/FreeBSD 编辑 &lt;code&gt;/etc/profile&lt;/code&gt; 或 &lt;code&gt;~/.profile&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;MacOS 删除 &lt;code&gt;/etc/paths.d/go&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;查看 golang 环境变量 &lt;code&gt;go env&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;vscode-使用-go&#34;&gt;vscode 使用 go&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装插件 &lt;code&gt;Go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;配置 vscode
+
+&lt;ul&gt;
+&lt;li&gt;选择 &lt;code&gt;File&lt;/code&gt; -&amp;gt; &lt;code&gt;Preferences&lt;/code&gt; -&amp;gt; &lt;code&gt;Settings&lt;/code&gt;，搜索 go&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Go: Build On Save&amp;rdquo;: &amp;ldquo;workspace&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Go: Gopath&amp;rdquo;: &amp;ldquo;/home/kiki/go&amp;rdquo;
+
+&lt;ul&gt;
+&lt;li&gt;Linux 配置: &amp;ldquo;/home/kiki/go&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Windows 配置: &amp;ldquo;G:\gopro&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Go: Goroot&amp;rdquo;
+
+&lt;ul&gt;
+&lt;li&gt;Linux 配置: &amp;ldquo;/usr/local/go&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Windows 配置：&amp;rdquo;C:\Go&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;打开 go 的工作目录，第一次打开 go 后缀结尾的文件时，会提示安装 gopkgs，选择 &lt;code&gt;Install All&lt;/code&gt;，等待安装结束&lt;/li&gt;
+&lt;li&gt;vscode 自动安装失败，执行手动安装
+
+&lt;ul&gt;
+&lt;li&gt;1 在 &lt;code&gt;%GOPATH%/src/golang.org/x&lt;/code&gt; 目录下，执行 &lt;code&gt;git clone git@github.com:golang/tools.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;2 进入 &lt;code&gt;%GOPATH%/src/golang.org/x/tools/cmd/gorename&lt;/code&gt; 目录，执行 &lt;code&gt;go install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;3 进入 &lt;code&gt;%GOPATH%/src/golang.org/x/tools/cmd/guru&lt;/code&gt; 目录，执行 &lt;code&gt;go install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;4 重启 vscode，打开 go 后缀结尾的文件，点击 &lt;code&gt;Analysis Tools Missing&lt;/code&gt;，继续之前安装失败的 go 包&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装过程中，有的包可能会安装失败&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 使用 tools 下载&lt;/li&gt;
+&lt;li&gt;进入 &lt;code&gt;%GOPATH%/src/golang.org/x&lt;/code&gt; 目录，使用命令 &lt;code&gt;git clone https://github.com/golang/tools.git&lt;/code&gt; 下载插件依赖工具的源码，所需工具源码就都保存在 tools 目录中&lt;/li&gt;
+&lt;li&gt;进入 &lt;code&gt;%GOPATH%&lt;/code&gt; 目录，根据之前的安装失败提示信息安装对应的依赖工具：比如 &lt;code&gt;go install github.com/mdempsky/gocode&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;2 使用 lint 下载&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;go install golang.org/x/lint/golint&lt;/code&gt; 报错&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;can&#39;t load package: package golang.org/x/lint/golint: cannot find package &amp;quot;golang.org/x/lint/golint&amp;quot; in any of:
+/usr/local/go/src/golang.org/x/lint/golint (from $GOROOT)
+/home/kiki/go/src/golang.org/x/lint/golint (from $GOPATH)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;因为 golint 的源码在 lint 下，而不是 tools，需要单独拉取 golint 源码&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;进入 &lt;code&gt;%GOPATH%\src\golang.org\x&lt;/code&gt; 目录，执行命令 &lt;code&gt;git clone https://github.com/golang/lint&lt;/code&gt; 拉取 golint 源码&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;进入 &lt;code&gt;%GOPATH%&lt;/code&gt; 目录，通过 &lt;code&gt;go install&lt;/code&gt; 安装 golint：&lt;code&gt;go install golang.org/x/lint/golint&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;重启 vscode 后，插件就可以正常使用了&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;配置代理&#34;&gt;配置代理&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;执行 &lt;code&gt;go mod init&lt;/code&gt; 生成默认 module 文件&lt;/li&gt;
+&lt;li&gt;配置环境变量 &lt;code&gt;export GOPROXY=https://goproxy.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;重启 vscode，安装插件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Shift+P&lt;/code&gt;，输入 &lt;code&gt;go&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;选择 &lt;code&gt;Install/Update Tools&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;全选，安装。重启 vscode 即可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>异常处理</title>
+      <link>https://xueqing.github.io/blog/go/basic/go_exception/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/basic/go_exception/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#defer-%e4%bd%bf%e7%94%a8&#34;&gt;defer 使用&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#defer-%e6%a0%88&#34;&gt;defer 栈&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#panic-%e4%bd%bf%e7%94%a8&#34;&gt;panic 使用&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#recover-%e4%bd%bf%e7%94%a8&#34;&gt;recover 使用&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Go 不支持 try..catch..finally 这种异常。使用多值返回来返回错误&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在极端情况下才用异常（如除数为 0），异常处理使用了 defer，panic，recover&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;go 可以抛出一个 panic 的异常，在 defer 中通过 recover 捕获异常，然后处理&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;defer-使用&#34;&gt;defer 使用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;defer 的参数值是在执行 defer 语句的地方立即计算的，而不是在调用实际函数的时候计算，但是会在对应环境返回时调用函数&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;应用场景：与代码流无关必须执行的函数或方法调用&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;等待并发结束&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;打开一些资源的时候，遇到错误需要提前返回，在返回前需要关闭对应的资源&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func readWritFile() bool {
+file.open(&amp;quot;file&amp;quot;)
+defer file.close()
+
+if faiure1 {
+    return false
+}
+
+if failure2 {
+    return false
+}
+
+return true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;defer-栈&#34;&gt;defer 栈&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以在函数中添加多个 defer 语句。当函数执行到最后，返回之前，会逆序执行这些语句，类似一个 defer 栈&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import (
+  &amp;quot;fmt&amp;quot;
+)
+
+func main() {
+  fmt.Println(&amp;quot;counting&amp;quot;)
+
+  for i := 0; i &amp;lt; 10; i++ {
+      defer fmt.Println(i)
+  }
+
+  fmt.Println(&amp;quot;done&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;panic-使用&#34;&gt;panic 使用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;panic 用来表示非常严重的不可恢复的错误。是一个内置函数&lt;/li&gt;
+&lt;li&gt;函数执行到 panic，不会继续执行，但是会执行 defer 的代码，之后将控制转移给调用者，向上传递，直至遇到打印 panic 消息，打印堆栈，然后终止&lt;/li&gt;
+&lt;li&gt;场景 1：一个不可恢复的错误,程序不能继续执行。如 web 服务不能绑定端口&lt;/li&gt;
+&lt;li&gt;场景 2：编程错误，如空指针访问&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;recover-使用&#34;&gt;recover 使用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 panic 之后，执行 defer 的时候可以将 panic 捕获，阻止 panic 向上传递。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在 defer 的地方调用 recover 函数，如果有 panic，被捕获的 panic 就不会向上传递，defer 处理完之后返回&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;recover 只在 defer 中调用才有用&lt;/li&gt;
+&lt;li&gt;只有在相同的 goroutine 中调用 recover 才有效&lt;/li&gt;
+&lt;li&gt;运行时的 panic 也可用 recover 捕获恢复&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在 recover 之后会丢失堆栈，可在 recover 中获取和打印堆栈，使用&lt;code&gt;debug.PrintStack()&lt;/code&gt;打印堆栈&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func caller() {
+fmt.Println(&amp;quot;Enter caller&amp;quot;)
+defer func() { //先声明 defer
+fmt.Println(&amp;quot;Enter func&amp;quot;)
+if err := recover(); err != nil {
+    fmt.Println(err) //打印 panic 传入的内容
+}
+fmt.Println(&amp;quot;Leave func&amp;quot;)
+}()
+callee()
+fmt.Println(&amp;quot;Leave caller&amp;quot;)
+}
+
+func callee() {
+fmt.Println(&amp;quot;Enter callee&amp;quot;)
+panic(-1)
+fmt.Println(&amp;quot;Leave callee&amp;quot;)
+}
+
+func main() {
+caller()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;输出结果是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Enter caller
+Enter callee
+Enter func
+-1
+Leave func
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

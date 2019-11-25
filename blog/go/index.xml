@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go | kiki</title>
+    <link>https://xueqing.github.io/blog/go/</link>
+      <atom:link href="https://xueqing.github.io/blog/go/index.xml" rel="self" type="application/rss+xml" />
+    <description>go</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>go</title>
+      <link>https://xueqing.github.io/blog/go/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/blog/go/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/go/readme/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;study/README.md&#34; target=&#34;_blank&#34;&gt;Go 基础学习&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./traps/README.md&#34;&gt;Go 开发遇到的坑&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

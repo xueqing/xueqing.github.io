@@ -206,7 +206,7 @@
 &lt;li&gt;Memcached 在处理高流量网站方面更好：可以一次读大量信息，而且响应时间快。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;memcached_redis_cluster.jpg&#34; alt=&#34;Memcached 和 Redis 的集群&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://xueqing.github.io/blog/database/memcached_redis_cluster.jpg&#34; alt=&#34;Memcached 和 Redis 的集群&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;6-2-选择-redis&#34;&gt;6.2 选择 Redis&lt;/h3&gt;
 

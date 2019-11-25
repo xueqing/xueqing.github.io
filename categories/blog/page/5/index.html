@@ -353,10 +353,89 @@
   
   
   <div>
-    <h2><a href="/blog/cplusplus/mix_c_and_cpp/">结合 C 和 C&#43;&#43; 代码</a></h2>
+    <h2><a href="/blog/git/git_push/">git push 推送数据</a></h2>
     <div class="article-style">
       
-      需要了解的知识 在 C++ 中调用 C 语言函数 在 C 中调用 C++ 语言函数 在 C 中调用 C++ 非成员函数 在 C 中调用 C++ 成员函数 在 C 中调用 C++ 重载函数 C++ 名称重整 C++ 链接器处理 C
+      # 将本地的 master 分支推送至 origin 服务器的 dev 分支 git push origin master:dev git push url master
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_rebase/">git rebase 变基</a></h2>
+    <div class="article-style">
+      
+      变基 git rebase git rebase -i 参考 变基 变基和三方合并整合的最终结果指向的快照始终是一样的, 只是提交历史不同 变基是将一系列提交按照原有次序依次应用到另一分支上
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_remote/">git remote 远程仓库</a></h2>
+    <div class="article-style">
+      
+      # 查看指定的每一个远程服务器的简写 git remote # 查看需要读写远程仓库使用的 git 保存的简写与其对应的 URL git remote -v # 查看某一个远程仓库信息 git remote show [remote-name] # 添加一个新
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_revert/">git revert</a></h2>
+    <div class="article-style">
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_rm/">git rm 移除文件</a></h2>
+    <div class="article-style">
+      
+      # 从工作目录中删除指定的文件并存入暂存区 git rm file1 # 删除之前修改过并且已经放到暂存区域的文件, --forced, 用于防止误删还没有添加到快照的数据 git rm -f file1 # 从 git
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_status/">git status 跟踪状态</a></h2>
+    <div class="article-style">
+      
+      # 查看哪些文件处于什么状态 git status # 得到一种更为紧凑的格式输出, --short git status -s git status --ignored
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_submodule/">git submodule</a></h2>
+    <div class="article-style">
+      
+      git submodule 应用场景 问题 高级命令 git将submodule有关的信息保存在两个地方： .gitmodules在仓库中，有版本控制，修改之后会同步到其他
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_tag/">git tag 标签</a></h2>
+    <div class="article-style">
+      
+      标签不能像分支一样来回移动. 分为轻量标签（lightweight）与附注标签（annotated） 轻量标签：很像一个不会改变的分支, 只是一个
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_branch/">git 分支</a></h2>
+    <div class="article-style">
+      
+      HEAD git branch git checkout 合并分支 拉取分支 删除远程仓库分支 分支引用 HEAD HEAD：一个指针, 指向当前所在的本地分支 HEAD 分支随着提交操作自动向前移动 检出时 HEAD 随之移动
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/git/git_alias/">git 别名管理</a></h2>
+    <div class="article-style">
+      
+      使用git config为命令设置别名 输入 git cpick commit-id 就可以引用某次提交 git config --global alias.cpick cherry-pick git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status 使用git config新建
       
     </div>
   </div>
@@ -368,6 +447,8 @@
     
     <li class="page-item"><a class="page-link" href="/categories/blog/page/4/">&laquo;</a></li>
     
+    
+    <li class="page-item"><a class="page-link" href="/categories/blog/page/6/">&raquo;</a></li>
     
   </ul>
 </nav>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>django cms | kiki</title>
+    <link>https://xueqing.github.io/blog/django_cms/</link>
+      <atom:link href="https://xueqing.github.io/blog/django_cms/index.xml" rel="self" type="application/rss+xml" />
+    <description>django cms</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>django cms</title>
+      <link>https://xueqing.github.io/blog/django_cms/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/blog/django_cms/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/django_cms/readme/</guid>
+      <description>&lt;p&gt;参考&lt;a href=&#34;http://docs.django-cms.org/en/latest/index.html&#34; target=&#34;_blank&#34;&gt;官网&lt;/a&gt;学习。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

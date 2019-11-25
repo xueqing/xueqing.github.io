@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="HEAD git branch git checkout 合并分支 拉取分支 删除远程仓库分支 分支引用 HEAD HEAD：一个指针, 指向当前所在的本地分支 HEAD 分支随着提交操作自动向前移动 检出时 HEAD 随之移动">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/git/git_branch/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/git/git_branch/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/git/git_branch/">
+  <meta property="og:title" content="git 分支 | kiki">
+  <meta property="og:description" content="HEAD git branch git checkout 合并分支 拉取分支 删除远程仓库分支 分支引用 HEAD HEAD：一个指针, 指向当前所在的本地分支 HEAD 分支随着提交操作自动向前移动 检出时 HEAD 随之移动"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>git 分支 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>git 分支</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#head">HEAD</a></li>
+<li><a href="#git-branch">git branch</a></li>
+<li><a href="#git-checkout">git checkout</a></li>
+<li><a href="#%e5%90%88%e5%b9%b6%e5%88%86%e6%94%af">合并分支</a></li>
+<li><a href="#%e6%8b%89%e5%8f%96%e5%88%86%e6%94%af">拉取分支</a></li>
+<li><a href="#%e5%88%a0%e9%99%a4%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e5%88%86%e6%94%af">删除远程仓库分支</a></li>
+<li><a href="#%e5%88%86%e6%94%af%e5%bc%95%e7%94%a8">分支引用</a></li>
+</ul>
+
+<h2 id="head">HEAD</h2>
+
+<ul>
+<li>HEAD：一个指针, 指向当前所在的本地分支
+
+<ul>
+<li>HEAD 分支随着提交操作自动向前移动</li>
+<li>检出时 HEAD 随之移动</li>
+</ul></li>
+</ul>
+
+<h2 id="git-branch">git branch</h2>
+
+<pre><code class="language-sh"># 查看当前所有分支列表, 星号表示 HEAD 指向的分支
+git branch
+# 创建新分支 dev
+git branch dev
+# 以7次前的提交创建新的 master 分支
+git branch master HEAD~7
+# 在 commit-id 创建分支 dev
+git branch dev [commit-id]
+# 删除 dev 分支
+git branch -d dev
+# 强制删除 dev 分支
+git branch -D dev
+# 查看每个分支的最后一次提交
+git branch -v
+# 查看哪些分支已经合并到当前分支
+git branch --merged
+# 查看所有包含未合并工作的分支
+git branch --no-merged
+# 设置已有的本地分支正在跟踪的上游分支,--set-upstream-to
+git branch -u origin/dev
+# 重命名 master 分支为 fix
+git branch -m master fix
+# 列举所有本地分支并显示具体信息
+git branch -vv
+</code></pre>
+
+<h2 id="git-checkout">git checkout</h2>
+
+<pre><code class="language-sh"># 切换至 dev 分支
+git checkout dev
+# 创建并切换至分支 dev，等同于 git branch + git checkout
+git checkout -b dev
+# 在 commit-id 创建并切换至分支 dev
+git checkout -b dev [commit-id]
+# 从远程 dev 分支创建本地分支 deve, 本地 deve 分支会自动从 origin/dev 分支拉取
+git checkout -b deve origin/dev
+# 以7次前的提交创建并切换到新的 master 分支
+git checkout HEAD~7 -b master
+# 从远程 dev 分支创建本地分支 dev, 本地 dev 分支会自动从 origin/dev 分支拉取
+git checkout --track origin/dev
+</code></pre>
+
+<h2 id="合并分支">合并分支</h2>
+
+<pre><code class="language-sh"># 合并 dev 分支至当前分支
+# 当设置好跟踪分支后, 可以通过 @{upstream} 或 @{u} 快捷方式来引用它
+# 所以在 master 分支且它正在跟踪 origin/master 时, 可以使用 git merge @{u} 来取代 git merge origin/master
+git merge dev
+</code></pre>
+
+<h2 id="拉取分支">拉取分支</h2>
+
+<pre><code class="language-sh"># 抓取所有的远程仓库
+git fetch --all
+</code></pre>
+
+<h2 id="删除远程仓库分支">删除远程仓库分支</h2>
+
+<pre><code class="language-sh"># 删除远程 dev 分支, git v1.7.0
+git push origin --delete dev
+# git v1.5.0
+git push origin :dev
+# git v2.8.0
+git push origin -d dev
+</code></pre>
+
+<h2 id="分支引用">分支引用</h2>
+
+<pre><code class="language-sh"># 查看某个分支指向的SHA-1
+git rev-parse branch_name
+</code></pre>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/git/">git</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/git/git_branch/&amp;text=git%20%e5%88%86%e6%94%af" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/git/git_branch/&amp;t=git%20%e5%88%86%e6%94%af" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=git%20%e5%88%86%e6%94%af&amp;body=https://xueqing.github.io/blog/git/git_branch/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/git/git_branch/&amp;title=git%20%e5%88%86%e6%94%af" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=git%20%e5%88%86%e6%94%af%20https://xueqing.github.io/blog/git/git_branch/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/git/git_branch/&amp;title=git%20%e5%88%86%e6%94%af" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/git/git_add/">git add 添加文件</a></li>
+      
+      <li><a href="/blog/git/git_bisect/">git bisect 查找错误提交</a></li>
+      
+      <li><a href="/blog/git/git_blame/">git blame</a></li>
+      
+      <li><a href="/blog/git/git_bundle/">git bundle</a></li>
+      
+      <li><a href="/blog/git/git_-cherry-pick/">git cherry-pick 选择某次提交</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

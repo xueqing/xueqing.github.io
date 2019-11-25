@@ -353,6 +353,76 @@
   
   
   <div>
+    <h2><a href="/blog/database/redis/1_intro/">1 Redis 简介</a></h2>
+    <div class="article-style">
+      
+      1.1 key-value 缓存产品特点 1.2 Redis 优点 1.3 Redis 配置 1.4 Redis 数据类型 1.5 Redis 数据库 1.1 key-value 缓存产品特点 支持数据持久化：可将内存数据保存到磁盘，重启的时候再次加载使用 支持简单
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/django_cms/tutorial/1_install/">1 安装</a></h2>
+    <div class="article-style">
+      
+      1.1 环境要求 1.2 配置 Python 环境 1.2.1 配置 Python 1.2.2 配置 pip 1.2.3 配置 python3-venv 1.2 创建和激活虚拟环境 1.3 使用 django CMS installer 1.4 启动 runserver 1.1 环境要求 django CMS 要求 Django &gt;=1.11，Python 2
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/2_command/">2 Redis 命令</a></h2>
+    <div class="article-style">
+      
+      2.1 命令 2.2 键命令 2.3 字符串命令 2.4 哈希命令 2.5 列表命令 2.6 集合命令 2.7 有序集合命令 2.8 Redis HyperLogLog 命令 2.9 Redis 发布订阅命令 2.10 Redis 事务命令 2.11 Redis 脚本命令 2.12 Redis 连接命令 2.13 Redis 服务
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/django_cms/tutorial/2_template_palceholder/">2 模板和占位符</a></h2>
+    <div class="article-style">
+      
+      2.1 模板 2.2 占位符 2.3 静态占位符 2.4 渲染菜单 2.1 模板 可以使用 HTML 模板来定制网站外观、定义占位符标记要管理的内容，以及使用特殊标签生成菜单等。 可以使用不同
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/3_advanced/">3 Redis 进阶</a></h2>
+    <div class="article-style">
+      
+      3.1 Redis 数据备份与恢复 3.2 Redis 安全 3.3 Redis 性能测试 3.4 Redis 客户端命令 3.5 Redis 管道技术 3.6 Redis 分区 3.1 Redis 数据备份与恢复 命令 描述 SAVE 创建当前数据库的备份，在 Redis 安装目录创建 dump.rdb
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/django_cms/tutorial/3_integrate_app/">3 集成应用</a></h2>
+    <div class="article-style">
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/database/redis/4_vm/">4 Redis VM 技术</a></h2>
+    <div class="article-style">
+      
+      4.1 前言 4.2 简单解释 VM 4.3 何时使用 VM 是个好主意 4.4 VM 配置 4.5 设置 vm-max-memory 4.6 配置 swap 文件 4.7 线程式 VM vs 阻塞式 VM 4.8 需要知道的一些事 4.8.1 swap 文件的好位置 4.8.2 监视 VM 4.8.3 开启 VM 的
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/smart_ptr/">auto_ptr, unique_ptr, shared_ptr and weak_ptr</a></h2>
+    <div class="article-style">
+      
+      auto_ptr unique_ptr shared_ptr weak_ptr reference auto_ptr C++11 已经弃用。unique_ptr是新的具有相似功能的智能指针，但是安全性更高。 auto_ptr是管理对象的指针，通过new的操作
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/blog/cplusplus/cplusplus_new/">C&#43;&#43; new</a></h2>
     <div class="article-style">
       
@@ -366,78 +436,6 @@
     <div class="article-style">
       
       #include &lt;string&gt; #include &lt;algorithm&gt; void CString::StringToUpper(std::string &amp;str) { std::transform(str.begin(), str.end(), str.begin(), ::toupper); } void CString::StringToLower(std::string &amp;str) { std::transform(str.begin(), str.end(), str.begin(), ::tolower); } 提示出错error: no matching function for call to ‘transform(__gnu_cxx::__normal_i
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/undefined_behavior/">C&#43;&#43; 未定义的行为</a></h2>
-    <div class="article-style">
-      
-      UB(Undefined behavior):程序的行为没有限制。常见的未定义行为例子包括：数组访问内存越界，有符号数溢出，间接访问空指针，在一个表达式中无顺序多次
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/chrome/ex_import_pwd/">Chrome 导入和导出密码</a></h2>
-    <div class="article-style">
-      
-      Chrome 导入和导出密码 启用功能 导出密码 导入密码 重置功能 密码管理软件 启用功能 进入地址栏，输入chrome://flags/#PasswordImpo
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/chrome/extensions/">Chrome 插件</a></h2>
-    <div class="article-style">
-      
-      插件 功能 Infinity 新标签页，还有邮件提醒、天气预报、笔记、TODO、壁纸、历史记录等 QRImagefromURL 把 Chrome 当前的网址，生成标准二维码格式图片，扫描二维码会得到网址，
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/coolshell/code_review/codereview/">Code Review 代码审查</a></h2>
-    <div class="article-style">
-      
-      关于 CR 目的 前提 需要做什么 步骤 标准 执行 事前准备阶段 实施阶段 事后跟踪 注意事项 经常进行 CR CR 不要太正式，而且要短 尽可能的让不同的人 Reivew 你的代码 保持积极
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/coolshell/code_review/code_review/">code_review 预研</a></h2>
-    <div class="article-style">
-      
-      code_review 中的几个提示 从 code_review 谈如何做技术 简单实用的 code_review 工具 Review board 追踪待决代码的改动，并可以让 Code-Review 更为容易和简练 Codestriker Groogle 各式各样语言的语法高亮 支持整个版本树的比较
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/effectivec&#43;&#43;_3/">Effective C&#43;&#43;, 3rd</a></h2>
-    <div class="article-style">
-      
-      1.让自己习惯 C++ 01.视 C++ 为一个语言联邦 02.常量，枚举和内联优于宏定义 03.尽可能使用常量 04.确定对象被使用前已先被初始化 2.构造/析构
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/hash_map/">hash map</a></h2>
-    <div class="article-style">
-      
-      class hash_map { hash_map() {set_load(); v.reserve(max_load*b.size());} // 表“太满”(如 75% 满)时性能会恶化 void set_load(float m=0.7, float g=1.6) {max_load=m; grow=g;} // 查找 mapped_type&amp; operator[] (const key_type&amp; k) { // 先计算散列值，查找表索引 size_type i = hash(k) % b.size(); // 找到之后遍历散列链匹配
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/cplusplus/lambda/">lambda 表达式</a></h2>
-    <div class="article-style">
-      
-      问题 解决方法 返回类型 &ldquo;捕获&rdquo;变量 使用 lambda 作为变量 参考 问题 C++ 包含一些有用的通用函数，比如 std::for_each 和 std::transform
       
     </div>
   </div>

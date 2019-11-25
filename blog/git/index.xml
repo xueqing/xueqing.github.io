@@ -1,0 +1,1697 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git | kiki</title>
+    <link>https://xueqing.github.io/blog/git/</link>
+      <atom:link href="https://xueqing.github.io/blog/git/index.xml" rel="self" type="application/rss+xml" />
+    <description>git</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>git</title>
+      <link>https://xueqing.github.io/blog/git/</link>
+    </image>
+    
+    <item>
+      <title>前言</title>
+      <link>https://xueqing.github.io/blog/git/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/readme/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#git-%e5%ae%89%e8%a3%85&#34;&gt;git 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-%e9%85%8d%e7%bd%ae&#34;&gt;git 配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-%e5%b8%ae%e5%8a%a9&#34;&gt;git 帮助&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-%e5%9f%ba%e7%a1%80&#34;&gt;git 基础&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#git-%e4%bb%93%e5%ba%93%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95%e6%9a%82%e5%ad%98%e5%8c%ba%e5%9f%9f%e6%96%87%e4%bb%b6%e7%8a%b6%e6%80%81&#34;&gt;git 仓库、工作目录、暂存区域、文件状态&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%9d%e5%a7%8b%e5%8c%96%e7%89%88%e6%9c%ac%e5%ba%93&#34;&gt;初始化版本库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%b0%e5%bb%ba%e7%89%88%e6%9c%ac%e5%ba%93&#34;&gt;新建版本库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%8b%e9%9a%86%e7%89%88%e6%9c%ac%e5%ba%93&#34;&gt;克隆版本库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%89%88%e6%9c%ac%e5%ba%93%e7%9b%ae%e5%bd%95-git&#34;&gt;版本库目录 .git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#blob-%e5%af%b9%e8%b1%a1&#34;&gt;blob 对象&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tree-%e5%af%b9%e8%b1%a1&#34;&gt;tree 对象&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#commit-%e5%af%b9%e8%b1%a1&#34;&gt;commit 对象&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b8%b8%e7%94%a8-git-%e5%91%bd%e4%bb%a4&#34;&gt;常用 git 命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-%e6%9c%8d%e5%8a%a1%e5%99%a8&#34;&gt;git 服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83%e7%bd%91%e7%ab%99&#34;&gt;参考网站&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a5%bd%e7%8e%a9%e7%9a%84%e7%bd%91%e7%ab%99&#34;&gt;好玩的网站&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-安装&#34;&gt;git 安装&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://git-scm.com/download/linux&#34; target=&#34;_blank&#34;&gt;Linux&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Fedora
+sudo yum install git
+# Debian
+sudo apt-get install git
+sudo apt-get install gitk git-gui
+# 源码安装,[下载地址](http://git-scm.com/download)
+sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+export GIT_VER=2.0.0
+wget https://www.kernel.org/pub/software/scm/git/git-$GIT_VER.tar.gz
+tar -zxf git-$GIT_VER.tar.gz
+pushd git-$GIT_VER
+make prefix=/usr/local all
+sudo make prefix=/usr/local install
+popd
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Windows&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://git-scm.com/download/win&#34; target=&#34;_blank&#34;&gt;msysgit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Git 图形化操作程序, &lt;a href=&#34;https://tortoisegit.org/&#34; target=&#34;_blank&#34;&gt;TortoiseGit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://windows.github.com/&#34; target=&#34;_blank&#34;&gt;GitHub for Windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mac&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装 Xcode 后自动装上 Git&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourceforge.net/projects/git-osx-installer/&#34; target=&#34;_blank&#34;&gt;使用图形化的Git 安装工具Git OS X&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-配置&#34;&gt;git 配置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参考&lt;a href=&#34;git_config.md&#34; target=&#34;_blank&#34;&gt;git_config&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-帮助&#34;&gt;git 帮助&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有三种命令可以找到 git 命令的使用手册
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git help &amp;lt;verb&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git &amp;lt;verb&amp;gt; --help&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;man git-&amp;lt;verb&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git help config&lt;/code&gt;            # 查看 config 命令的手册&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-基础&#34;&gt;git 基础&lt;/h2&gt;
+
+&lt;h3 id=&#34;git-仓库-工作目录-暂存区域-文件状态&#34;&gt;git 仓库、工作目录、暂存区域、文件状态&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git仓库：git 用来保存项目的元数据和对象数据库的地方&lt;/li&gt;
+&lt;li&gt;工作目录：对项目的某个版本独立提取出来的内容.  是从 git 仓库的压缩数据库中提取出来的文件, 放在磁盘上使用或修改&lt;/li&gt;
+&lt;li&gt;暂存区域(索引)：一个文件, 保存了下次将提交的文件列表信息, 一般在 Git 仓库目录中&lt;/li&gt;
+&lt;li&gt;基本的 Git 工作流程如下：
+
+&lt;ul&gt;
+&lt;li&gt;在工作目录中修改文件&lt;/li&gt;
+&lt;li&gt;暂存文件, 将文件的快照放入暂存区域&lt;/li&gt;
+&lt;li&gt;提交更新, 找到暂存区域的文件, 将快照永久性存储到 git 仓库目录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;文件状态：&lt;img src=&#34;gitfilestatus.png&#34; alt=&#34;git-文件的状态变化周期&#34; title=&#34;git-文件的状态变化周期&#34; /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;已提交状态(commited)：git 目录中保存着的特定版本文件&lt;/li&gt;
+&lt;li&gt;已暂存状态(staged)：作了修改并已放入暂存区域&lt;/li&gt;
+&lt;li&gt;工作目录下的每一个文件都属于已跟踪(tracked)或未跟踪(untracked),已跟踪的文件状态可处于未修改(unmodified)、已修改(modified)或已放入暂存区(staged)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;初始化版本库&#34;&gt;初始化版本库&lt;/h3&gt;
+
+&lt;h4 id=&#34;新建版本库&#34;&gt;新建版本库&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 确定版本库目录
+mkdir dirname
+pushd dirname
+# 生成 .git 目录以及其下的版本历史记录文件, push 时易出现冲突
+git init
+# 创建一个裸仓库, 只保存git历史提交的版本信息, 不允许用户在上面进行各种 git 操作
+git init --bare
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;克隆版本库&#34;&gt;克隆版本库&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;自动将其添加为远程仓库并默认以 “origin” 为简写&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自动设置本地 master 分支跟踪克隆的远程仓库的 master 分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 1 使用 ssh 协议克隆
+# 1.1 默认本地仓库名字和远程仓库相同
+git clone git@github.com:tensorflow/tensorflow.git
+# 在当前目录下创建 tensorflow 目录, 并在这个目录下初始化一个 .git 文件夹,
+# 从远程仓库拉取下所有数据放入 .git 文件夹, 然后从中读取最新版本的文件的拷贝
+# 1.2 自定义本地仓库的名字克隆
+git clone git@github.com:tensorflow/tensorflow.git MyTensorflow
+# 2 使用 HTTPS 协议克隆
+git clone https://github.com/tensorflow/tensorflow.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;版本库目录-git&#34;&gt;版本库目录 .git&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;文件(夹)名&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;HEAD&lt;/td&gt;
+&lt;td&gt;指向最新提交&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;config&lt;/td&gt;
+&lt;td&gt;项目的配置信息, git config 命令会改动它&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;description&lt;/td&gt;
+&lt;td&gt;项目的描述信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;hooks&lt;/td&gt;
+&lt;td&gt;系统默认钩子脚本目录&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;index&lt;/td&gt;
+&lt;td&gt;索引文件，记录统计版本库的每个文件，如大小、创建时间和最后修改时间，对比当前统计信息和索引确定文件是否被修改&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;logs&lt;/td&gt;
+&lt;td&gt;各个 refs 的历史信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;objects&lt;/td&gt;
+&lt;td&gt;git 本地仓库的所有对象(commits, trees, blobs, tags)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;refs&lt;/td&gt;
+&lt;td&gt;标识项目里的每个分支指向了哪个提交(commit)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;blob-对象&#34;&gt;blob 对象&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git 基于“内容寻址”：文件不是按照文件名存储，而是按照包含内容的哈希值，存在一个叫“blob 对象”的文件中&lt;/li&gt;
+&lt;li&gt;可以把文件内容的哈希值看做一个唯一 ID&lt;/li&gt;
+&lt;li&gt;blob 对象存储文件内容，与文件名无关&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;tree-对象&#34;&gt;tree 对象&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;tree 对象：一组包含文件类型、文件名和哈希值的数据&lt;/li&gt;
+&lt;li&gt;tree 对象存储文件名&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;commit-对象&#34;&gt;commit 对象&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;commit 对象存储提交信息及其创建的日期和时间&lt;/li&gt;
+&lt;li&gt;commit 对象是原子性的，即一个提交不会部分地记录变更&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;常用-git-命令&#34;&gt;常用 git 命令&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;添加文件参考&lt;a href=&#34;./git_add.md&#34;&gt;git_add&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;防止文件误添加
+
+&lt;ul&gt;
+&lt;li&gt;修改 .gitignore&lt;/li&gt;
+&lt;li&gt;修改 .git/info/exclude&lt;/li&gt;
+&lt;li&gt;格式规范参考&lt;a href=&#34;./git_ignore.md&#34;&gt;git_ignore&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;提交更新参考&lt;a href=&#34;./git_commit.md&#34;&gt;git_commit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;跟踪状态参考&lt;a href=&#34;./git_status.md&#34;&gt;git_status&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;提交日志参考&lt;a href=&#34;./git_log.md&#34;&gt;git_log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;移除文件参考&lt;a href=&#34;./git_rm.md&#34;&gt;git_rm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;移动文件参考&lt;a href=&#34;./git_mv.md&#34;&gt;git_mv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;远程仓库参考&lt;a href=&#34;./git_remote.md&#34;&gt;git_remote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;推送数据参考&lt;a href=&#34;./git_push.md&#34;&gt;git_push&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;标签参考&lt;a href=&#34;./git_tag.md&#34;&gt;git_tag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;分支参考&lt;a href=&#34;./git_branch.md&#34;&gt;git_branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;变基参考&lt;a href=&#34;./git_rebase.md&#34;&gt;git_rebase&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;版本比较参考&lt;a href=&#34;./git_diff.md&#34;&gt;git_diff&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;撤消操作
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git commit --amend&lt;/code&gt;  # 尝试重新提交&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git reset HEAD f1&lt;/code&gt;   # 取消暂存文件 f1&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout -- f1&lt;/code&gt;  # 撤消之前对文件 f1 所做的修改&lt;/li&gt;
+&lt;li&gt;参考&lt;a href=&#34;./git_reset.md&#34;&gt;git_reset&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-服务器&#34;&gt;git 服务器&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;协议
+
+&lt;ul&gt;
+&lt;li&gt;本地协议: 远程版本库就是硬盘内的另一个目录. 常见于团队每一个成员都对一个共享的文件系统(例如一个挂载的 NFS)拥有访问权, 或者比较少见的多人共用同一台电脑的情况&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone /opt/git/project.git&lt;/code&gt;      # Git 会尝试使用硬链接（hard link）或直接复制所需要的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone file:///opt/git/project.git&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考网站&#34;&gt;参考网站&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www-cs-students.stanford.edu/~blynn//gitmagic/&#34; target=&#34;_blank&#34;&gt;Git Magic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/en/v2&#34; target=&#34;_blank&#34;&gt;git-scm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;好玩的网站&#34;&gt;好玩的网站&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.blog/&#34; target=&#34;_blank&#34;&gt;github blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git add 添加文件</title>
+      <link>https://xueqing.github.io/blog/git/git_add/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_add/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;git add: 添加内容到下一次提交中. 当使用 git commit 时, git 将依据暂存区域的内容来进行文件的提交&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以用它开始跟踪新文件, 或者把已跟踪的文件放到暂存区, 还能用于合并时把有冲突的文件标记为已解决状态等&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 把 path 添加到索引库, path 可以是文件或目录
+git add path
+# 添加所有文件
+git add .
+# 添加指定文件
+git add file1 file2
+# 不处理未跟踪(untracked)的文件
+git add -u [&amp;lt;path&amp;gt;]
+# 添加所有
+git add -A [&amp;lt;path&amp;gt;]
+# 查看所有修改过或已删除文件但是未提交的文件
+git add -i [&amp;lt;path&amp;gt;]
+# 交互式添加修改内容到本次提交
+git add -i
+# 交互式选择当前的修改添加到本次提交，只需输入 y/n
+git add -p
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;提交空文件&#34;&gt;提交空文件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方法 1：在空文件夹创建一个空文件 &lt;code&gt;.gitkeep&lt;/code&gt;，提交该文件&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法 2：在空文件夹创建一个空文件 &lt;code&gt;.gitignore&lt;/code&gt;，文件内容如下。提交文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;# 忽视目录所有内容
+*
+# 不忽视 .gitignore 文件
+!.gitignore
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git bisect 查找错误提交</title>
+      <link>https://xueqing.github.io/blog/git/git_bisect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_bisect/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;已知 HEAD 节点是错误的，正确版本是 xxxxx 对应的提交，使用&lt;code&gt;git bisect&lt;/code&gt;查找错误的提交&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git bisect start
+git bisect bad HEAD
+git bisect good xxxxx
+# git 从中间的历史记录检出一个中间状态，在此状态上测试功能
+# 1 如果此状态错误
+git bisect bad
+# 2 如果此状态正确
+git bisect good
+# 迭代多次之后可以找到导致错误的提交
+# 返回到原始状态
+git bisect reset
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git blame</title>
+      <link>https://xueqing.github.io/blog/git/git_blame/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_blame/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git blame&lt;/code&gt;可标注出指定文件的每一行内容的最后修改者和最后修改时间&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;线下完成，即读本地磁盘完成&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git blame bug.c
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git bundle</title>
+      <link>https://xueqing.github.io/blog/git/git_bundle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_bundle/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;打包整个仓库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 发送者使用仓库创建一个文件包
+git bundle create somefile HEAD
+# 接收者使用 somefile 文件获取提交
+git pull somefile
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;打包部分提交：假设 xxxx 是发送者和接收者共享的最近提交&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 发送者打包增加的变更
+git bundle create somefile HEAD ^xxxx
+# 使用标签记录最近一次打包的节点
+git tag -f lastbundle HEAD
+# 一段时间后创建新文件包
+git bundle create newbundle HEAD ^lastbundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git cherry-pick 选择某次提交</title>
+      <link>https://xueqing.github.io/blog/git/git_-cherry-pick/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_-cherry-pick/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 选择某次提交应用到当前分支
+git cherry-pick &amp;lt;commit-id&amp;gt;
+# 选择某次提交应用到当前分支，并保留原提交者信息
+git cherry-pick -x &amp;lt;commit-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;批量操作&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 应用 start-commit-id （不包含） 到 end-commit-id （包含）之间的提交到当前分支
+git cherry-pick &amp;lt;start-commit-id&amp;gt;..&amp;lt;end-commit-id&amp;gt;
+# 应用 start-commit-id （包含） 到 end-commit-id （包含）之间的提交到当前分支
+git cherry-pick &amp;lt;start-commit-id&amp;gt;^..&amp;lt;end-commit-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git clean 清理工作目录</title>
+      <link>https://xueqing.github.io/blog/git/git_clean/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_clean/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git clean&lt;/code&gt; 从工作目录移除未被跟踪的文件，直接删除，不能从回收站找到&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-d&lt;/code&gt; 移除未跟踪的目录&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-f&lt;/code&gt; 强制移除文件或目录，如果 &lt;code&gt;clean.requireForce&lt;/code&gt; 设置为 true，&lt;code&gt;git clean&lt;/code&gt; 只有添加 &lt;code&gt;-f&lt;/code&gt;&lt;code&gt;-n&lt;/code&gt;&lt;code&gt;-i&lt;/code&gt; 才会清理&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 移除工作目录中所有未追踪的文件以及空的目录
+git clean -f -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-n&lt;/code&gt; “演示”查看将会清除的内容，不会移除任何文件或目录&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 可以打印“将要移除什么”，并未真正移除，相当于“演示”
+git clean -d -n
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-x&lt;/code&gt; 不使用 &lt;code&gt;.gitignore&lt;/code&gt; 或者 &lt;code&gt;$GIT_DIR/info/exclude&lt;/code&gt; 指定的忽略规则，仍然使用 &lt;code&gt;-e&lt;/code&gt; 选项指定的忽略规则&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以移除所有的未跟踪文件，包括构建目录，可以用来创建一个干净的工作目录&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 移除未跟踪的文件和目录
+git clean -d -x
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-X&lt;/code&gt; 只移除忽略的文件，可以用于保留手动创建的文件&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git commit 提交更新</title>
+      <link>https://xueqing.github.io/blog/git/git_commit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_commit/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 将提交信息与命令放在同一行
+git commit -m &amp;quot;add README&amp;quot;
+# 自动把所有已经跟踪过的文件暂存起来一并提交, 跳过 git add 步骤
+git commit -a -m &amp;quot;add README&amp;quot;
+# 在日志信息之后添加提交者的信息，--signoff
+git commit -s
+# git commit &amp;lt;file&amp;gt;...
+git commit -p
+git commit –allow-empty
+# 改变上一次提交
+git commit --amend
+# 把本地的修改包含在上一次提交
+git commit --amend -a
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git config 配置</title>
+      <link>https://xueqing.github.io/blog/git/git_config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_config/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E9%85%8D%E7%BD%AE&#34;&gt;配置&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF&#34;&gt;修改配置信息&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF&#34;&gt;查看配置信息&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;修改配置信息&#34;&gt;修改配置信息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;/etc/gitconfig：包含系统上每一个用户及他们仓库的通用配置, 使用&lt;code&gt;--system&lt;/code&gt;会从此文件读写配置变量&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 输出中文文件名显示问题
+git config --system core.quotepath false
+# 开启颜色显示
+git config --system color.ui true
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;~/.gitconfig 或 ~/.config/git/config：只针对当前用户.  使用&lt;code&gt;--global&lt;/code&gt;让 git 读写此文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 配置全局用户名
+git config --global user.name kiki
+# 配置全局 email
+git config --global user.email kiki@bmi.com
+# 配置默认文本编辑器(默认 vim)
+git config --global core.editor emacs
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为 git 命令设置别名，参考&lt;a href=&#34;./git_alias.md&#34;&gt;git_alias&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;rep-dir/.git/config：当前使用仓库的 Git 目录中的 config 文件, 只针对该仓库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 配置某个项目用户名
+git config user.name xueqing
+# 配置某个项目 email
+git config user.email haijuanchen.sun@gmail.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每一个级别覆盖上一级别的配置, 所以 .git/config 的配置变量会覆盖 /etc/gitconfig 中的配置变量&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;查看配置信息&#34;&gt;查看配置信息&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 列出所有 git 当时能找到的配置
+git config --list
+git config -l
+# git config &amp;lt;key&amp;gt; 检查 Git 的某一项配置
+# 查看用户名
+git config user.name
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git diff 版本比较</title>
+      <link>https://xueqing.github.io/blog/git/git_diff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_diff/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#diff-%e6%8f%92%e4%bb%b6&#34;&gt;diff 插件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-diff&#34;&gt;git diff&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;diff-插件&#34;&gt;diff 插件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以使用 &lt;code&gt;git difftool&lt;/code&gt; 命令来用 Araxis , emerge 或 vimdiff 等软件通过图形化的方式或其它格式输出方式输出 diff 分析结果&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;git difftool --tool-help&lt;/code&gt; 命令查看系统支持哪些 git diff 插件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-diff&#34;&gt;git diff&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 工作目录中当前文件和暂存区域快照之间的差异, 即修改之后还没有暂存起来的变化内容
+git diff
+# HEAD 和暂存区比较, 即已暂存的将要添加到下次提交里的内容, --staged
+git diff --cached
+# HEAD 和工作区比较
+git diff HEAD
+# HEAD 和 HEAD 的父版本比较
+git diff HEAD HEAD^
+# HEAD 父父版本和 HEAD 的父版本比较
+git diff HEAD~2 HEAD^
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git grep</title>
+      <link>https://xueqing.github.io/blog/git/git_grep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_grep/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git log</title>
+      <link>https://xueqing.github.io/blog/git/git_log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_log/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%af%ad%e6%b3%95&#34;&gt;语法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4&#34;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%bc%95%e7%94%a8%e6%97%a5%e5%bf%97-reflog&#34;&gt;引用日志 reflog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;语法&#34;&gt;语法&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;git log [&amp;lt;options&amp;gt;] [&amp;lt;revision range&amp;gt;] [[--] &amp;lt;path&amp;gt;…​]&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;options&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-L &amp;lt;start&amp;gt;,&amp;lt;end&amp;gt;:&amp;lt;file&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看指定文件的开始行到结束行的提交历史&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-L :&amp;lt;funcname&amp;gt;:&amp;lt;file&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看指定文件的函数的提交历史&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;常用命令&#34;&gt;常用命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;pretty              # 使用其他格式显示历史提交信息. 可用 oneline/short/full/fuller/format&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 按行显示每次提交
+git log --pretty=oneline
+# 定制要显示的记录格式
+git log --pretty=format
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;stat                # 显示每次更新的文件修改统计信息&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;graph               # 显示 ASCII 图形表示的分支合并历史&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log -p                    # 按补丁格式显示每个更新之间的差异&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 比较本地 master 分支和 origin/master 分支的差别
+git log -p master..origin/master
+# 显示最近两次提交的差别
+git log -p -2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;decorate            # 查看各个分支当前所指的对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 输出提交历史、各个分支的指向以及项目的分支分叉情况
+git log --oneline --decorate --graph --all
+# 显示简短且唯一的 SHA-1 值
+git log --abbrev-commit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log -(n)                  # 仅显示最近的 n 条提交&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;since, &amp;ndash;after      # 仅显示指定时间之后的提交&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;until, &amp;ndash;before     # 仅显示指定时间之前的提交&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;author              # 仅显示指定作者相关的提交&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;committer           # 仅显示指定提交者相关的提交&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log &amp;ndash;grep                # 仅显示含指定关键字的提交&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log -S                    # 仅显示添加或移除了某个关键字的提交&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;git log -g                    # 查看类似于 git log 输出格式的引用日志信息&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;引用日志-reflog&#34;&gt;引用日志 reflog&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;工作时,  git 会在后台保存一个引用日志(reflog), 引用日志记录了最近几个月你的 HEAD 和分支引用所指向的历史&lt;/li&gt;
+&lt;li&gt;每当 HEAD 指向的位置发生了变化, git 就会将这个信息存储到引用日志&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;引用日志只存在于本地仓库, 一个记录你在你自己的仓库里做过什么的日志&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 查看引用日志
+git reflog
+# 使用`@{n}`引用 reflog 中输出的提交记录
+git show HEAD@{5}
+# 查看 master 分支在昨天的时候指向了哪个提交
+git show master@{yesterday}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;祖先引用是另一种指明一个提交的方式. 如果在引用的尾部加上一个&lt;code&gt;^&lt;/code&gt;,  git 会将其解析为该引用的上一个提交&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 查看上一个提交, 也就是 “HEAD 的父提交”
+git show HEAD^
+# d921970^2 代表 “d921970 的第二父提交” 这个语法只适用于合并(merge)的提交
+git show d921970^2
+# HEAD^^^, 也是第一父提交的第一父提交的第一父提交
+git show HEAD~3
+# HEAD^^^, 也是第一父提交的第一父提交的第一父提交的第二父提交
+git show HEAD~3^2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.git-scm.com/docs/git-log&#34; target=&#34;_blank&#34;&gt;git log&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git move 移动文件</title>
+      <link>https://xueqing.github.io/blog/git/git_mv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_mv/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# git rm + git add
+git mv file_from file_to
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git patch 补丁</title>
+      <link>https://xueqing.github.io/blog/git/git_patch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_patch/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%99%ae%e9%80%9a%e8%a1%a5%e4%b8%81&#34;&gt;普通补丁&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%ad%a3%e5%bc%8f%e8%a1%a5%e4%b8%81-git-format-patch&#34;&gt;正式补丁 git format-patch&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e6%95%b0&#34;&gt;参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%94%a8%e4%ba%8e%e9%82%ae%e4%bb%b6%e5%8f%91%e9%80%81&#34;&gt;用于邮件发送&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%9b%b4%e6%8e%a5%e7%94%a8%e4%ba%8e-git-am&#34;&gt;直接用于 git am&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;普通补丁&#34;&gt;普通补丁&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 发送者生成一个补丁
+git diff xxx &amp;gt; my.patch
+# 接收者在其他地方使用这个补丁
+git apply &amp;lt; my.patch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;正式补丁-git-format-patch&#34;&gt;正式补丁 git format-patch&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git format-patch&lt;/code&gt;生成补丁用于 email 发送，格式是类似 UNIX mailbox&lt;/li&gt;
+&lt;li&gt;命令的输出用于 email 发送或者&lt;code&gt;git am&lt;/code&gt;直接使用&lt;/li&gt;
+&lt;li&gt;是更正式的设置，记录作者名字或签名&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;参数&#34;&gt;参数&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--root&lt;/code&gt;从提交历史开始的所有提交&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-M&lt;/code&gt;检测重命名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-B&lt;/code&gt;分割完整的重写信息为删除和创建对，即把提交当做删除旧文件，创建新文件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-M -B&lt;/code&gt;可将一个完全重写的文件当做重命名&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;--stdout&lt;/code&gt;将所有提交以 mbox 格式打印到标准输出，而不是为每个提交创建一个文件&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;不使用时，在当前文件夹为每次提交生成一个单独的文件，并打印文件的名字&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 为某一时刻生成补丁
+git format-patch xxxx
+# 为某一个提交范围生成补丁
+git format-patch xxxx..HEAD^^
+# 提取在当前分支但是不在 origin 分支的提交
+git format-patch origin
+# 提取工程开始到 &amp;lt;commit&amp;gt; 的所有的提交
+git format-patch --root &amp;lt;commit&amp;gt;
+# 等同于
+git format-patch -M -B origin
+# 提取当前分支最上面的 3 次提交，生成补丁
+git format-patch -3
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;用于邮件发送&#34;&gt;用于邮件发送&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 发送者可使用 git-send-email 发送 git format-patch 的结果给接收者
+# 接收者保存邮件到文件 email.txt，然后应用补丁创建一个提交，会自动包含作者的信息
+git am &amp;lt; email.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;直接用于-git-am&#34;&gt;直接用于 git am&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git am&lt;/code&gt; 将 mailbox 的邮件信息分割成提交日志信息、作者信息和补丁，应用它们至当前分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 提取 R1 和 R2 之间的提交，使用 git am 来 cherry-pick 提交应用到当前分支
+git format-patch -k --stdout R1..R2 | git am -3 -k
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-format-patch&#34; target=&#34;_blank&#34;&gt;git format-patch doc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/gitrevisions&#34; target=&#34;_blank&#34;&gt;gitrevisions doc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-am&#34; target=&#34;_blank&#34;&gt;git am doc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-send-email&#34; target=&#34;_blank&#34;&gt;git send-email doc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-apply&#34; target=&#34;_blank&#34;&gt;git apply doc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git push 推送数据</title>
+      <link>https://xueqing.github.io/blog/git/git_push/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_push/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 将本地的 master 分支推送至 origin 服务器的 dev 分支
+git push origin master:dev
+git push url master
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git rebase 变基</title>
+      <link>https://xueqing.github.io/blog/git/git_rebase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_rebase/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%98%e5%9f%ba&#34;&gt;变基&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-rebase&#34;&gt;git rebase&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#git-rebase--i&#34;&gt;git rebase -i&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;变基&#34;&gt;变基&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;变基和三方合并整合的最终结果指向的快照始终是一样的, 只是提交历史不同&lt;/li&gt;
+&lt;li&gt;变基是将一系列提交按照原有次序依次应用到另一分支上, 而三方合并是把最终结果合在一起&lt;/li&gt;
+&lt;li&gt;变基使得提交历史更加简洁&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：不要对在你的仓库外有副本的分支执行变基&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-rebase&#34;&gt;git rebase&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 将当前分支变基到 base_branch
+git rebase base_branch
+# 将 topic_branch 变基到 base_branch
+# 等同于 git checkout topic_branch &amp;amp;&amp;amp; git rebase base_branch
+git rebase base_branch topic_branch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;git-rebase-i&#34;&gt;git rebase -i&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;交互式变基的命令&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;pick/p：使用提交&lt;/li&gt;
+&lt;li&gt;reword/r：使用提交，但是修改日志信息&lt;/li&gt;
+&lt;li&gt;edit/e：标记一个提交需要修改&lt;/li&gt;
+&lt;li&gt;squash/s：将当前提交与前一个提交合并&lt;/li&gt;
+&lt;li&gt;fixup/f：将当前提交与前一个提交合并，并丢弃日志信息&lt;/li&gt;
+&lt;li&gt;exec/x：使用 shell 运行剩下的命令行&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;drop/d：删除提交&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 放弃修改
+git rebase --abort
+# 重写从初次提交到达 commit 的所有历史
+git rebase -i --root &amp;lt;commit&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-rebase&#34; target=&#34;_blank&#34;&gt;git rebase&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git remote 远程仓库</title>
+      <link>https://xueqing.github.io/blog/git/git_remote/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_remote/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 查看指定的每一个远程服务器的简写
+git remote
+# 查看需要读写远程仓库使用的 git 保存的简写与其对应的 URL
+git remote -v
+# 查看某一个远程仓库信息
+git remote show [remote-name]
+# 添加一个新的远程 git 仓库, 同时指定一个简写
+git remote add &amp;lt;shortname&amp;gt; &amp;lt;url&amp;gt;
+# 移除一个远程仓库
+git remote rm lvlin
+# 修改一个远程仓库的简写名, 这同样也会修改远程分支名字
+git remote rename temp lvlin
+# 列出远端分支
+git remote -r
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git revert</title>
+      <link>https://xueqing.github.io/blog/git/git_revert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_revert/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git rm 移除文件</title>
+      <link>https://xueqing.github.io/blog/git/git_rm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_rm/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 从工作目录中删除指定的文件并存入暂存区
+git rm file1
+# 删除之前修改过并且已经放到暂存区域的文件, --forced, 用于防止误删还没有添加到快照的数据
+git rm -f file1
+# 从 git 仓库中删除文件, 即从暂存区域移除, 但仍然保留在当前工作目录
+git rm --cached file1
+# 可以使用 glob 模式
+# 删除 log/ 目录下扩展名为 .log 的所有文件
+git rm log/\*.log
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git status 跟踪状态</title>
+      <link>https://xueqing.github.io/blog/git/git_status/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_status/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 查看哪些文件处于什么状态
+git status
+# 得到一种更为紧凑的格式输出, --short
+git status -s
+git status --ignored
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git submodule</title>
+      <link>https://xueqing.github.io/blog/git/git_submodule/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_submodule/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#git-submodule&#34;&gt;git submodule&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF&#34;&gt;应用场景&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E9%97%AE%E9%A2%98&#34;&gt;问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E9%AB%98%E7%BA%A7%E5%91%BD%E4%BB%A4&#34;&gt;高级命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git&lt;/code&gt;将&lt;code&gt;submodule&lt;/code&gt;有关的信息保存在两个地方：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.gitmodules&lt;/code&gt;在仓库中，有版本控制，修改之后会同步到其他仓库，使用&lt;code&gt;submodule&lt;/code&gt;相关命令的时候会自动更新&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.git/config&lt;/code&gt;在本地，需要手动更新，或者执行&lt;code&gt;git submodule sync&lt;/code&gt;将新的配置从&lt;code&gt;.gitmodules&lt;/code&gt;拷贝到&lt;code&gt;.git/config&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git submodule sync&lt;/code&gt;会将&lt;code&gt;submodule&lt;/code&gt;远程的 url 配置设置到&lt;code&gt;.gitmodules&lt;/code&gt;，并且只会影响&lt;code&gt;.git/config&lt;/code&gt;已经有 url 的条目&lt;/li&gt;
+&lt;li&gt;指定&lt;code&gt;--recursive&lt;/code&gt;，将会递归更新注册的&lt;code&gt;submodule&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;应用场景&#34;&gt;应用场景&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;场景1：添加一个&lt;code&gt;submodule&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git submodule add repo_url local_path&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;此命令做三件事：克隆工程到本地；创建/修改&lt;code&gt;.gitmodules&lt;/code&gt;标记&lt;code&gt;submodule&lt;/code&gt;的具体信息；更新&lt;code&gt;.git/config&lt;/code&gt;文件，增加&lt;code&gt;submodule&lt;/code&gt;的地址&lt;/li&gt;
+&lt;li&gt;可用&lt;code&gt;git submodule add -b branch_name repo_url local_path&lt;/code&gt;指定&lt;code&gt;submodule&lt;/code&gt;跟踪的分支&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;场景 2：删除一个&lt;code&gt;submodule&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git submodule deinit -f -- path_to_submodule&lt;/code&gt;(路径最后不要加斜线)&lt;/li&gt;
+&lt;li&gt;删除&lt;code&gt;.git/modules&lt;/code&gt;下面的文件夹&lt;/li&gt;
+&lt;li&gt;从 git 版本控制中删除缓存的子模块对应文件夹&lt;/li&gt;
+&lt;li&gt;本地仍保留文件&lt;code&gt;git rm --cached path_to_submodule&lt;/code&gt;(路径最后不要加斜线)&lt;/li&gt;
+&lt;li&gt;本地不保留文件&lt;code&gt;git rm -f path_to_submodule&lt;/code&gt;(路径最后不要加斜线)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;场景 3：更新&lt;code&gt;submodule&lt;/code&gt;的&lt;code&gt;url&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除&lt;code&gt;.git/config&lt;/code&gt;相关代码&lt;/li&gt;
+&lt;li&gt;删除工程目录下的&lt;code&gt;.gitmodules&lt;/code&gt;相关代码&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;git submodule sync --recursive&lt;/code&gt;更新到本地的配置文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;场景 4：克隆一个有&lt;code&gt;submodule&lt;/code&gt;的项目
+
+&lt;ul&gt;
+&lt;li&gt;分步克隆&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone repo_url&lt;/code&gt;，&lt;code&gt;submodule&lt;/code&gt;的代码不会和父项目一起克隆出来&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git submodule update --init [--recursive]&lt;/code&gt;可以检出&lt;code&gt;submodule&lt;/code&gt;的代码，&lt;code&gt;recursive&lt;/code&gt;适用于嵌套&lt;code&gt;submodule&lt;/code&gt;的项目&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git submodule update --init [--recursive] subname&lt;/code&gt;可以检出指定子模块&lt;code&gt;subname&lt;/code&gt;的代码，&lt;code&gt;recursive&lt;/code&gt;适用于嵌套&lt;code&gt;submodule&lt;/code&gt;的项目&lt;/li&gt;
+&lt;li&gt;一步克隆&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone repo_url --recursive&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;场景 5：更新&lt;code&gt;submodule&lt;/code&gt;，与远程仓库同步&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;更改对应的&lt;code&gt;submodule&lt;/code&gt;提交到远程仓库&lt;/li&gt;
+&lt;li&gt;在父工程中，进入该&lt;code&gt;submodule&lt;/code&gt;，执行&lt;code&gt;git pull&lt;/code&gt;，可以用&lt;code&gt;git status&lt;/code&gt;查看&lt;code&gt;submodule&lt;/code&gt;是否有改到&lt;/li&gt;
+&lt;li&gt;如果有改到，需要执行&lt;code&gt;git add&lt;/code&gt;提交该&lt;code&gt;submodule&lt;/code&gt;的更新&lt;/li&gt;
+&lt;li&gt;也可在父工程中执行&lt;code&gt;git submodule update --remote&lt;/code&gt;更新所有子模块到最新版本，再执行&lt;code&gt;git add&lt;/code&gt;提交所有子模块的更新&lt;/li&gt;
+&lt;li&gt;注意：在含有子模块的工程中，每次执行&lt;code&gt;git pull&lt;/code&gt;之后需要执行&lt;code&gt;git submodule update --remote&lt;/code&gt;更新子模块&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;技巧：可以通过修改&lt;code&gt;~/.gitconfig&lt;/code&gt;设置每次&lt;code&gt;git pull&lt;/code&gt;之后执行&lt;code&gt;git submodule update --remote&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-code&#34;&gt;[alias]
+psu = !git pull &amp;amp;&amp;amp; git submodule update
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;问题 1：&lt;code&gt;git submodule add&lt;/code&gt;时报错&lt;code&gt;A git directory for xxx is found locally with remote(s): origin&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除&lt;code&gt;.git/config&lt;/code&gt;相关代码&lt;/li&gt;
+&lt;li&gt;删除工程目录下的&lt;code&gt;.gitmodules&lt;/code&gt;相关代码&lt;/li&gt;
+&lt;li&gt;删除缓存的子模块&lt;code&gt;git rm --cached path_to_submodule&lt;/code&gt;`(路径最后不要加斜线)&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;git submodule sync --recursive&lt;/code&gt;更新到本地的配置文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;问题 2：&lt;code&gt;git submodule add&lt;/code&gt;时报错&lt;code&gt;Pathspec xxx is in submodule&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除缓存的子模块&lt;code&gt;git rm --cached path_to_submodule&lt;/code&gt;(路径最后不要加斜线)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;高级命令&#34;&gt;高级命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;查看差异输出，使得子模块的差异输出更加具体&lt;code&gt;git diff --cached --submodule&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改子模块跟踪分支
+
+&lt;ul&gt;
+&lt;li&gt;只修改本地：修改&lt;code&gt;.git/config&lt;/code&gt;文件中对应子模块的设置&lt;/li&gt;
+&lt;li&gt;修改仓库：&lt;/li&gt;
+&lt;li&gt;修改&lt;code&gt;.gitmodule&lt;/code&gt;的命令&lt;code&gt;git config -f .gitmodules submodule.Utility.branch dev&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Utility&lt;/code&gt;是子模块的名字&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dev&lt;/code&gt;是&lt;code&gt;Utility&lt;/code&gt;的分支&lt;/li&gt;
+&lt;li&gt;不用&lt;code&gt;-f .gitmodules&lt;/code&gt;只会应用到本地&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;同步到本地配置&lt;code&gt;git submodule sync&lt;/code&gt;????&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;在主项目查看子模块的更改摘要：配置选项&lt;code&gt;status.submodulesummary&lt;/code&gt;，使用命令&lt;code&gt;git config status.submodulesummary 1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;子模块遍历
+
+&lt;ul&gt;
+&lt;li&gt;遍历子模块保存工作进度&lt;code&gt;git submodule foreach &#39;git stash save&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;遍历子模块新建工作分支&lt;code&gt;git submodule foreach &#39;git checkout -b featureA&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在主项目查看所有子模块的修改内容&lt;code&gt;git diff; git submodule foreach &#39;git diff&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除所有子模块本地的修改&lt;code&gt;git submodule foreach --recursive &#39;git checkout .&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;在主项目修改子模块
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git submodule update&lt;/code&gt;更新子模块的文件时，会将子仓库留在一个&lt;code&gt;游离的HEAD&lt;/code&gt;状态，本地没有工作分支跟踪改到&lt;/li&gt;
+&lt;li&gt;首先进入子模块检出一个分支，修改之后提交到本地&lt;/li&gt;
+&lt;li&gt;拉取远程仓库的子模块提交并合并到本地&lt;code&gt;git submodule update --remote --rebase/merge&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;发布子模块的改到
+
+&lt;ul&gt;
+&lt;li&gt;在主项目推送代码到远程仓库前检查本地有没有未推送的子模块修改&lt;code&gt;git push --recursive-submodules=check&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果提交的子模块改到未推送，会导致主项目的推送失败，可以根据提示进入子模块然后推送到远程仓库&lt;/li&gt;
+&lt;li&gt;或者使用&lt;code&gt;git push --recursive-submodules=on-demand&lt;/code&gt;，&lt;code&gt;git&lt;/code&gt;会尝试推送子模块修改到远程仓库，只有子模块都推送成功，主项目才可以推送&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git tag 标签</title>
+      <link>https://xueqing.github.io/blog/git/git_tag/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_tag/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;标签不能像分支一样来回移动. 分为轻量标签（lightweight）与附注标签（annotated）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;轻量标签：很像一个不会改变的分支, 只是一个特定提交的引用. 本质上是将提交校验和存储到一个文件中 - 没有保存任何其他信息&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;附注标签：存储在 git 数据库中的一个完整对象.  是可以被校验的；包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 列出已有的标签
+git tag
+# 列出 1.8.5 系列的标签
+git tag -l &#39;v1.8.5*&#39;
+# 创建一个附注标签
+git tag -a v1.4 -m &#39;v1.4&#39;
+# 查看标签信息与对应的提交信息
+git show v1.4
+# 创建一个轻量标签
+git tag v1.4-lw
+# 不会看到额外的标签信息.  只会显示出提交信息
+git show v1.4-lw
+# 在 commit-id 提交上打标签
+git tag -a v1.2 &amp;lt;commit-id&amp;gt;
+# 把所有不在远程仓库服务器上的标签全部推送到远程仓库服务器
+git push origin --tags
+# 把 [tagname] 标签推送到远程仓库服务器
+git push origin [tagname]
+# 在标签 v2.0.0 上创建分支 v2
+git checkout -b v2 v2.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git 分支</title>
+      <link>https://xueqing.github.io/blog/git/git_branch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_branch/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#head&#34;&gt;HEAD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-branch&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-checkout&#34;&gt;git checkout&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%90%88%e5%b9%b6%e5%88%86%e6%94%af&#34;&gt;合并分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8b%89%e5%8f%96%e5%88%86%e6%94%af&#34;&gt;拉取分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%a0%e9%99%a4%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e5%88%86%e6%94%af&#34;&gt;删除远程仓库分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%86%e6%94%af%e5%bc%95%e7%94%a8&#34;&gt;分支引用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;head&#34;&gt;HEAD&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HEAD：一个指针, 指向当前所在的本地分支
+
+&lt;ul&gt;
+&lt;li&gt;HEAD 分支随着提交操作自动向前移动&lt;/li&gt;
+&lt;li&gt;检出时 HEAD 随之移动&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-branch&#34;&gt;git branch&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 查看当前所有分支列表, 星号表示 HEAD 指向的分支
+git branch
+# 创建新分支 dev
+git branch dev
+# 以7次前的提交创建新的 master 分支
+git branch master HEAD~7
+# 在 commit-id 创建分支 dev
+git branch dev [commit-id]
+# 删除 dev 分支
+git branch -d dev
+# 强制删除 dev 分支
+git branch -D dev
+# 查看每个分支的最后一次提交
+git branch -v
+# 查看哪些分支已经合并到当前分支
+git branch --merged
+# 查看所有包含未合并工作的分支
+git branch --no-merged
+# 设置已有的本地分支正在跟踪的上游分支,--set-upstream-to
+git branch -u origin/dev
+# 重命名 master 分支为 fix
+git branch -m master fix
+# 列举所有本地分支并显示具体信息
+git branch -vv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;git-checkout&#34;&gt;git checkout&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 切换至 dev 分支
+git checkout dev
+# 创建并切换至分支 dev，等同于 git branch + git checkout
+git checkout -b dev
+# 在 commit-id 创建并切换至分支 dev
+git checkout -b dev [commit-id]
+# 从远程 dev 分支创建本地分支 deve, 本地 deve 分支会自动从 origin/dev 分支拉取
+git checkout -b deve origin/dev
+# 以7次前的提交创建并切换到新的 master 分支
+git checkout HEAD~7 -b master
+# 从远程 dev 分支创建本地分支 dev, 本地 dev 分支会自动从 origin/dev 分支拉取
+git checkout --track origin/dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;合并分支&#34;&gt;合并分支&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 合并 dev 分支至当前分支
+# 当设置好跟踪分支后, 可以通过 @{upstream} 或 @{u} 快捷方式来引用它
+# 所以在 master 分支且它正在跟踪 origin/master 时, 可以使用 git merge @{u} 来取代 git merge origin/master
+git merge dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;拉取分支&#34;&gt;拉取分支&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 抓取所有的远程仓库
+git fetch --all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;删除远程仓库分支&#34;&gt;删除远程仓库分支&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 删除远程 dev 分支, git v1.7.0
+git push origin --delete dev
+# git v1.5.0
+git push origin :dev
+# git v2.8.0
+git push origin -d dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;分支引用&#34;&gt;分支引用&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 查看某个分支指向的SHA-1
+git rev-parse branch_name
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git 别名管理</title>
+      <link>https://xueqing.github.io/blog/git/git_alias/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_alias/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用&lt;code&gt;git config&lt;/code&gt;为命令设置别名&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;输入 git cpick commit-id 就可以引用某次提交
+git config --global alias.cpick cherry-pick
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用&lt;code&gt;git config&lt;/code&gt;新建命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 输入 git unstage fileA 就可以取消文件暂存
+git config --global alias.unstage &#39;reset HEAD --&#39;
+# 输入 git last 可以查看最后一次提交
+git config --global alias.last &#39;log -1 HEAD&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用&lt;code&gt;git config&lt;/code&gt;可以执行外部命令，在命令前加&lt;code&gt;!&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 输入 git visual 等同于执行 gitk
+git config --global alias.visual &#39;!gitk&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>github 账户管理</title>
+      <link>https://xueqing.github.io/blog/git/account_ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/account_ssh/</guid>
+      <description>
+
+&lt;h2 id=&#34;添加-ssh-ke-到-github-账户&#34;&gt;添加 SSH ke 到 github 账户&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;检查 .ssh 文件夹是否有密钥 &lt;code&gt;ls ~/.ssh/&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;没有的话生成密钥 &lt;code&gt;ssh-keygen -t rsa -C &amp;quot;your_email@example.com&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;添加 SSH key 到 ssh-agent&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 后台启动 ssh-agent
+eval $(ssh-agent -s)
+# 添加 key
+ssh-add ~/.ssh/id_rsa
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在 github 的个人设置中添加一个 ssh-key&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;也可在某个 repository 中单独管理访问的 ssh-key&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;测试连接-github-网站&#34;&gt;测试连接 github 网站&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 尝试 ssh 到 github
+ssh -T git@github.com
+# 看到更详细的信息
+ssh -vT git@github.com
+# 看到 warning 之后输入 yes 尝试继续连接，如果看到 Hi username 说明连接成功
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;验证捆绑到-github-账户的-public-key&#34;&gt;验证捆绑到 github 账户的 public key&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 启动 ssh-agent 服务
+ssh-agent -s
+# 查看 public key 的 fingerprint
+ssh-add -l
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>关于 gitignore 文件</title>
+      <link>https://xueqing.github.io/blog/git/git_ignore/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_ignore/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a0%bc%e5%bc%8f%e8%a7%84%e8%8c%83&#34;&gt;格式规范&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%80%9a%e9%85%8d%e7%ac%a6&#34;&gt;通配符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%9c%e7%ba%bf&#34;&gt;斜线&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%a4%e4%b8%aa%e6%98%9f%e5%8f%b7&#34;&gt;两个星号&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%22%22-%e5%8f%96%e6%b6%88%e5%bf%bd%e8%a7%86&#34;&gt;&amp;rdquo;!&amp;rdquo; 取消忽视&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%bf%bd%e7%95%a5%e6%96%87%e4%bb%b6%e7%a4%ba%e4%be%8b&#34;&gt;忽略文件示例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;格式规范&#34;&gt;格式规范&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;所有空行或者以 ＃ 开头的行都会被 git 忽略&lt;/li&gt;
+&lt;li&gt;可以使用标准的 glob 模式匹配
+
+&lt;ul&gt;
+&lt;li&gt;glob 模式指 shell 所使用的简化了的正则表达式，包括&lt;code&gt;*&lt;/code&gt;、&lt;code&gt;?&lt;/code&gt;、&lt;code&gt;[]&lt;/code&gt;、&lt;code&gt;**&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;匹配模式可以以(/)开头防止递归&lt;/li&gt;
+&lt;li&gt;匹配模式可以以(/)结尾指定目录&lt;/li&gt;
+&lt;li&gt;要忽略指定模式以外的文件或目录, 可以在模式前加上惊叹号(!)取反&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;通配符&#34;&gt;通配符&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;*&lt;/code&gt; 匹配除了 &lt;code&gt;/&lt;/code&gt; 的所有字符，匹配零个或多个任意字符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;?&lt;/code&gt; 匹配除了 &lt;code&gt;/&lt;/code&gt; 的所有单字符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[]&lt;/code&gt; 匹配任何一个列在方括号中的字符：如果在方括号中使用短划线分隔两个字符, 表示所有在这两个字符范围内的都可以匹配
+
+&lt;ul&gt;
+&lt;li&gt;比如 &lt;code&gt;[0-9]&lt;/code&gt; 表示匹配所有 0 到 9 的数字&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;斜线&#34;&gt;斜线&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;行首第一个 &lt;code&gt;/&lt;/code&gt; 匹配路径的开始, 以 &lt;code&gt;.gitignore&lt;/code&gt; 当前所在路径计算相对路径&lt;/li&gt;
+&lt;li&gt;如 &lt;code&gt;/*.txt&lt;/code&gt; 匹配与 &lt;code&gt;.gitignore&lt;/code&gt; 同一路径下的 txt 文件, 不包含 &lt;code&gt;.gitignore&lt;/code&gt; 当前路径下子文件内的 txt 文件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;test/*.txt&lt;/code&gt; 路径的开始是 &lt;code&gt;t&lt;/code&gt; 而不是 &lt;code&gt;/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;两个星号&#34;&gt;两个星号&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;**/&lt;/code&gt; 匹配任意中间目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/**&lt;/code&gt; 匹配包含的所有内容, 包括文件和文件夹, 以及子文件和子文件下的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/**/&lt;/code&gt; 匹配 0 个或多个目录&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;取消忽视&#34;&gt;&amp;rdquo;!&amp;rdquo; 取消忽视&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;!pattern&lt;/code&gt; 否认 pattern, 即前一个 pattern 匹配的文件会再被包含&lt;/li&gt;
+&lt;li&gt;注意: 如果一个文件的父文件夹被忽略, 那么 git 不能再包含该文件&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;忽视除了 /build/debug 下 除了 snap 的文件和文件夹&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-gitignore&#34;&gt;## 前两句可互换顺序
+build/debug/*
+!build/debug
+!build/debug/snap
+## 如果包含下面的语句则不能再包含 snap 文件和文件夹
+# build
+# build/
+# build/**
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;忽略文件示例&#34;&gt;忽略文件示例&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;# 注释行&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;*.[oa]&lt;/code&gt;        # 忽略所有以 .a 或 .o 为扩展名的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!lib.a&lt;/code&gt;        # 但是 lib.a 文件或者目录不要忽略&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/TODO&lt;/code&gt;         # 只忽略根目录下的 TODO, 子目录的 TODO 不忽略&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;build/&lt;/code&gt;        # 忽略所有 build/ 目录下的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;doc/*.txt&lt;/code&gt;     # 忽略 doc/&lt;em&gt;.txt, 但 doc/server/&lt;/em&gt;.txt 不忽略&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;doc/**/*.pdf&lt;/code&gt;  # 忽略 doc文件夹下所有的*.pdf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/gitignore&#34; target=&#34;_blank&#34;&gt;教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/github/gitignore&#34; target=&#34;_blank&#34;&gt;ignore 模板&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>制造历史</title>
+      <link>https://xueqing.github.io/blog/git/git_fast_import/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_fast_import/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#git-fast-import&#34;&gt;git fast-import&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-fast-export&#34;&gt;git fast-export&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-fast-import&#34;&gt;git fast-import&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git fast-import&lt;/code&gt;支持从一个特定格式的文本读入，从头创建 git 历史记录&lt;/li&gt;
+&lt;li&gt;可用这个命令很快写一个脚本运行一次，一次迁移整个项目&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;写一个临时文件置于&lt;code&gt;/tmp/history&lt;/code&gt;，文本内容如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;commit refs/heads/master
+committer Alice &amp;lt;alice@example.com&amp;gt; Thu, 01 Jan 1970 00:00:00 +0000
+data &amp;lt;&amp;lt;EOT
+Initial commit.
+EOT
+
+M 100644 inline hello.c
+data &amp;lt;&amp;lt;EOT
+#include &amp;lt;stdio.h&amp;gt;
+
+int main() {
+printf(&amp;quot;Hello, world!\n&amp;quot;);
+return 0;
+}
+EOT
+
+
+commit refs/heads/master
+committer Bob &amp;lt;bob@example.com&amp;gt; Tue, 14 Mar 2000 01:59:26 -0800
+data &amp;lt;&amp;lt;EOT
+Replace printf() with write().
+EOT
+
+M 100644 inline hello.c
+data &amp;lt;&amp;lt;EOT
+#include &amp;lt;unistd.h&amp;gt;
+
+int main() {
+write(1, &amp;quot;Hello, world!\n&amp;quot;, 14);
+return 0;
+}
+EOT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 使用上述临时文件创建一个 git 仓库
+mkdir project; cd project; git init
+git fast-import --date-format=rfc2822 &amp;lt; /tmp/history
+# 检出最新版本
+git checkout master
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-fast-export&#34;&gt;git fast-export&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git fast-export&lt;/code&gt;可将任意仓库转成&lt;code&gt;git fast-import&lt;/code&gt;格式&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>常见场景</title>
+      <link>https://xueqing.github.io/blog/git/git_scenario/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_scenario/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%e6%81%a2%e5%a4%8d%e4%b9%8b%e5%89%8d%e5%88%a0%e9%99%a4%e7%9a%84%e6%96%87%e4%bb%b6&#34;&gt;1 恢复之前删除的文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-%e5%b0%86-dev-%e5%88%86%e6%94%af%e5%bf%ab%e9%80%9f%e5%90%88%e5%b9%b6%e5%88%b0-master-%e5%88%86%e6%94%af&#34;&gt;2 将 dev 分支快速合并到 master 分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-%e5%b0%86%e5%9f%ba%e4%ba%8e-server-%e5%88%86%e6%94%af%e7%9a%84-client-%e5%88%86%e6%94%af%e7%9a%84%e6%8f%90%e4%ba%a4%e5%92%8c-server-%e7%9a%84%e6%8f%90%e4%ba%a4%e5%bf%ab%e9%80%9f%e5%90%88%e5%b9%b6%e5%88%b0-master-%e5%88%86%e6%94%af&#34;&gt;3 将基于 server 分支的 client 分支的提交和 server 的提交快速合并到 master 分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%e4%bb%8e%e6%89%80%e6%9c%89%e6%8f%90%e4%ba%a4%e4%b8%ad%e5%88%a0%e9%99%a4%e6%9f%90%e6%96%87%e4%bb%b6&#34;&gt;4 从所有提交中删除某文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-%e5%b0%86-dev-%e6%96%b0%e6%8f%90%e4%ba%a4%e7%9a%84%e4%bb%a3%e7%a0%81%e5%90%88%e5%b9%b6%e5%88%b0-master-%e5%88%86%e6%94%af&#34;&gt;5 将 dev 新提交的代码合并到 master 分支&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%e6%92%a4%e6%b6%88%e6%93%8d%e4%bd%9c&#34;&gt;6 撤消操作&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-恢复之前删除的文件&#34;&gt;1 恢复之前删除的文件&lt;/h2&gt;
+
+&lt;p&gt;比方 A，B，C，D 是四个连续的提交，其中 B 基于 A 删除了一些文件。现在需要把这些删除的文件加回 D。假设现在位于 D&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 方法1：A与B的差别是那些删除的文件。可以创建一个补丁代表这些差别，然后打补丁
+git diff B A | git apply
+# 方法2：从 A 中把文件拿出来
+git checkout A foo.c bar.h
+# 方法3：把从 A 到 B 的变化视为可撤销的变更
+git revert B
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-将-dev-分支快速合并到-master-分支&#34;&gt;2 将 dev 分支快速合并到 master 分支&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 找到 dev 和 master 分支最近共同祖先, 提取 dev 分支相对于最近共同祖先所做的所有提交修改并存为临时文件,
+# 然后将 dev 分支 指向 master 分支, 最后将之前另存的临时文件的修改依次应用
+# 等同于 git checkout dev &amp;amp;&amp;amp; git rebase master
+git rebase master dev
+# 切回 master 分支, 进行一次快速合并
+git checkout master &amp;amp;&amp;amp; git merge dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-将基于-server-分支的-client-分支的提交和-server-的提交快速合并到-master-分支&#34;&gt;3 将基于 server 分支的 client 分支的提交和 server 的提交快速合并到 master 分支&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 取出 client 分支, 找出处于 client 和 server 分支的共同祖先之后的修改, 然后把它们在 master 分支上重放一遍
+git rebase --onto master server client
+# 切回 master 分支, 进行一次快速合并
+git checkout master &amp;amp;&amp;amp; git merge client
+# 将 server 分支变基到目标分支 master
+# 等同于 git checkout server &amp;amp;&amp;amp; git rebase master
+git rebase master server
+# 切回 master 分支, 进行一次快速合并
+git checkout master &amp;amp;&amp;amp; git merge server
+# 删除两个分支
+git branch -d client server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;4-从所有提交中删除某文件&#34;&gt;4 从所有提交中删除某文件&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;5-将-dev-新提交的代码合并到-master-分支&#34;&gt;5 将 dev 新提交的代码合并到 master 分支&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;合并分支分两种&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;刻意制造分支，使得版本迭代历史更加清晰&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--no-off&lt;/code&gt; 即执行正常合并，在当前分支上生成一个合并节点&lt;/li&gt;
+&lt;li&gt;不加 &lt;code&gt;--no-off&lt;/code&gt;，git 默认执行“快速合并（fast-forward merge）”，如果 dev 分支本来是基于最新的 master 分支开发的，合并之后 master 分支会指向当前的 dev 分支&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将提交历史直线化，使得 master 分支的提交历史没有分叉&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 1 切换到 dev 分支
+git checkout dev
+# 2 提交修改 git commit -a -m &amp;quot;xxx&amp;quot;
+# 3 切换到 master 分支
+git checkout master
+# 4 拉取最新的代码
+git pull --rebase origin master
+# 5 合并分支
+# 5.1 刻意制造分支：合并 dev 分支代码到 master 分支
+git merge --no-off dev
+# 5.2 将提交历史直线化
+# 5.2.1 切换到要合并的分支
+git checkout dev
+# 5.2.2 将需要提交的代码变基到最新的 master 分支
+git rebase master
+# 5.2.3 切换到 master 分支
+git checkout master
+# 5.2.4 快速合并 dev 分支
+git merge dev
+# 6 推送代码到远程仓库
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;6-撤消操作&#34;&gt;6 撤消操作&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 尝试重新提交
+git commit --amend
+# 取消暂存文件 f1
+git reset HEAD f1
+# 撤消之前对文件 f1 所做的修改
+git checkout -- f1
+# git reset [--hard | soft | mixed | merge | keep] [HEAD | &amp;lt;commit&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>重写分支</title>
+      <link>https://xueqing.github.io/blog/git/git_filter_branch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_filter_branch/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#git-filter-branch&#34;&gt;git filter-branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-filter-branch&#34;&gt;git filter-branch&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 从所有提交中删除文件 filename
+# 当提交中不包含此文件时，`rm filename`会失败提交，可使用`rm -f filename`
+git filter-branch --tree-filter &#39;rm filename&#39; HEAD
+# 比 --tree-filter 更快
+git filter-branch --index-filter &#39;git rm --cached --ignore-unmatch filename&#39; HEAD
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/git-filter-branch&#34; target=&#34;_blank&#34;&gt;git filter-branch doc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>重设状态</title>
+      <link>https://xueqing.github.io/blog/git/git_reset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/git/git_reset/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;将当前分支的 HEAD 重设到指定的状态&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;语法&#34;&gt;语法&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git reset [&amp;lt;mode&amp;gt;] [-q] [&amp;lt;commit&amp;gt;]&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;mode 包括&lt;code&gt;--soft | --mixed [N] | --hard | --merge | --keep&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置当前分支的 HEAD 到 &lt;code&gt;&amp;lt;commit&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;mixed 是默认模式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;reset&lt;/code&gt; 之前，git 会保存原本的 &lt;code&gt;HEAD&lt;/code&gt; 到 &lt;code&gt;ORIG_HEAD&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git reset &amp;lt;commit&amp;gt;&lt;/code&gt; 之后可通过 &lt;code&gt;git reset ORIG_HEAD&lt;/code&gt; 回到原来的地方&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 重设暂存区和工作区, 丢弃所有改变, 把 HEAD 指向 commit
+git reset --hard
+# 暂存区和工作区内容不做任何改变, 仅把 HEAD 指向 commit, 可用于删除提交历史记录, 只生成一次提交
+git reset --soft
+# 仅重设暂存区, 不改变工作区
+git reset --mixed
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-reset-soft-合并提交&#34;&gt;git reset &amp;ndash;soft 合并提交&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 合并最近 3 次提交
+git reset --soft HEAD~3
+# 使用这 3 次提交的信息
+git commit --edit -m&amp;quot;$(git log --format=%B --reverse HEAD..HEAD@{1})&amp;quot;
+# 重新编写提交信息
+git add . &amp;amp;&amp;amp; git commit -m &amp;quot;new commit message&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

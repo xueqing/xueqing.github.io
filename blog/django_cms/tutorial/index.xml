@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>django cms 教程 | kiki</title>
+    <link>https://xueqing.github.io/blog/django_cms/tutorial/</link>
+      <atom:link href="https://xueqing.github.io/blog/django_cms/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <description>django cms 教程</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>django cms 教程</title>
+      <link>https://xueqing.github.io/blog/django_cms/tutorial/</link>
+    </image>
+    
+    <item>
+      <title>1 安装</title>
+      <link>https://xueqing.github.io/blog/django_cms/tutorial/1_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/django_cms/tutorial/1_install/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-%e7%8e%af%e5%a2%83%e8%a6%81%e6%b1%82&#34;&gt;1.1 环境要求&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e9%85%8d%e7%bd%ae-python-%e7%8e%af%e5%a2%83&#34;&gt;1.2 配置 Python 环境&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#121-%e9%85%8d%e7%bd%ae-python&#34;&gt;1.2.1 配置 Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#122-%e9%85%8d%e7%bd%ae-pip&#34;&gt;1.2.2 配置 pip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#123-%e9%85%8d%e7%bd%ae-python3-venv&#34;&gt;1.2.3 配置 python3-venv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e5%88%9b%e5%bb%ba%e5%92%8c%e6%bf%80%e6%b4%bb%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83&#34;&gt;1.2 创建和激活虚拟环境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-%e4%bd%bf%e7%94%a8-django-cms-installer&#34;&gt;1.3 使用 django CMS installer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-%e5%90%af%e5%8a%a8-runserver&#34;&gt;1.4 启动 runserver&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-1-环境要求&#34;&gt;1.1 环境要求&lt;/h2&gt;
+
+&lt;p&gt;django CMS 要求 Django &amp;gt;=1.11，Python 2.7/&amp;gt;=3.3。下面使用 Python3。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-2-配置-python-环境&#34;&gt;1.2 配置 Python 环境&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-2-1-配置-python&#34;&gt;1.2.1 配置 Python&lt;/h3&gt;
+
+&lt;p&gt;本地环境是 ubuntu 16.04。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 查看本地的 Python 版本
+python
+# python      python2     python2.7   python3     python3.5   python3.5m  python3m
+# 配置 python2.7 和 python3
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 100
+# update-alternatives: using /usr/bin/python2.7 to provide /usr/bin/python (python) in auto mode
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 2
+# 配置使用 python3，选择 2，即 /usr/bin/python3
+sudo update-alternatives --config python
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-2-2-配置-pip&#34;&gt;1.2.2 配置 pip&lt;/h3&gt;
+
+&lt;p&gt;pip 是 Python 包管理工具。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;sudo apt-get install python-pip python3-pip
+# 可能会有 warning: not replacing /usr/bin/pip with a link 错误， ll /usr/bin/pip* 查看可知道 /usr/bin/pip 不是一个软链接，可以删除 /usr/bin/pip，再重新执行 --install 命令
+sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip2 100
+sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 2
+# 配置使用 pip3，选择 2，即 /usr/bin/pip3
+sudo update-alternatives --config pip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-2-3-配置-python3-venv&#34;&gt;1.2.3 配置 python3-venv&lt;/h3&gt;
+
+&lt;p&gt;在 Debian/Ubuntu系统，需要使用 &lt;code&gt;apt-get install python3-venv&lt;/code&gt; 命令安装 python3-venv 包。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-2-创建和激活虚拟环境&#34;&gt;1.2 创建和激活虚拟环境&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 创建虚拟环境，遇到 The virtual environment was not created successfully because ensurepip is not availabl ... 错误，参考上述教程安装 python3-venv
+python -m venv env
+# 激活虚拟环境
+source env/bin/activate
+# 升级虚拟环境的 pip
+pip install --upgrade pip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;1-3-使用-django-cms-installer&#34;&gt;1.3 使用 django CMS installer&lt;/h2&gt;
+
+&lt;p&gt;django CMS installer 是一个帮助设置一个新项目的脚本。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 安装 django CMS installer，安装之后可使用 djangocms 命令
+(env) kiki@ubuntu:~$ pip install djangocms-installer
+# 新建目录并切换到该目录
+(env) kiki@ubuntu:~$ mkdir mydjango &amp;amp;&amp;amp; cd mydjango
+# 新建一个 django 项目
+(env) kiki@ubuntu:~/mydjango$ djangocms -f -p . mysite
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;关于 &lt;code&gt;djangocms -f -p . mysite&lt;/code&gt; 命令：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;djangocms&lt;/code&gt; 表示运行 django CMS installer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 表示安装 django Filer，是用于 django 的一个文件管理应用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p .&lt;/code&gt; 表示使用当前目录作为新项目目录的父目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mysite&lt;/code&gt; 指定新项目目录的名字&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;installer 会创建一个管理员用户，用户名/密码 是 &lt;code&gt;admin&lt;/code&gt;/&lt;code&gt;admin&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-4-启动-runserver&#34;&gt;1.4 启动 runserver&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;(env) kiki@ubuntu:~/mydjango$ python manage.py runserver
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在浏览器打开 &lt;code&gt;http://localhost:8000/&lt;/code&gt; 或 &lt;code&gt;http://127.0.0.1:8000/&lt;/code&gt;，可以看到登录页面，然后可以新建页面。&lt;/p&gt;
+
+&lt;p&gt;当需要登录时，在 URL 后面添加 &lt;code&gt;?edit&lt;/code&gt;，会启动工具栏，可以输入用户名和密码重新登录并管理网站。&lt;/p&gt;
+
+&lt;p&gt;当前的 Django 版本是 1.11.25，django CMS 版本是 3.6.0。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2 模板和占位符</title>
+      <link>https://xueqing.github.io/blog/django_cms/tutorial/2_template_palceholder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/django_cms/tutorial/2_template_palceholder/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e6%a8%a1%e6%9d%bf&#34;&gt;2.1 模板&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e5%8d%a0%e4%bd%8d%e7%ac%a6&#34;&gt;2.2 占位符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-%e9%9d%99%e6%80%81%e5%8d%a0%e4%bd%8d%e7%ac%a6&#34;&gt;2.3 静态占位符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#24-%e6%b8%b2%e6%9f%93%e8%8f%9c%e5%8d%95&#34;&gt;2.4 渲染菜单&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-模板&#34;&gt;2.1 模板&lt;/h2&gt;
+
+&lt;p&gt;可以使用 HTML 模板来定制网站外观、定义占位符标记要管理的内容，以及使用特殊标签生成菜单等。&lt;/p&gt;
+
+&lt;p&gt;可以使用不同的格式或内置组件定义多个模板，然后根据需要为每个页面选择模板。一个页面的模板总是可被其他页面使用。&lt;/p&gt;
+
+&lt;p&gt;网站模板位于 &lt;code&gt;mysite/templates&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;默认的，网站页面使用 &lt;code&gt;fullwidth.html&lt;/code&gt; 模板，即列举在项目 &lt;code&gt;settings.py&lt;/code&gt; 的 &lt;code&gt;CMS_TEMPLATES&lt;/code&gt; 元组的第一个。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html(settings.py)&#34;&gt;CMS_TEMPLATES = (
+    ## Customize this
+    (&#39;fullwidth.html&#39;, &#39;Fullwidth&#39;),
+    (&#39;sidebar_left.html&#39;, &#39;Sidebar Left&#39;),
+    (&#39;sidebar_right.html&#39;, &#39;Sidebar Right&#39;)
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-2-占位符&#34;&gt;2.2 占位符&lt;/h2&gt;
+
+&lt;p&gt;占位符定义 HTML 模板的一部分，然后在渲染网页的时候使用数据库的内容填充它。通过使用 django CMS 的前端的编辑机制(使用 Django 的模板标签)编辑网页内容。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;fullwidth.html&lt;/code&gt; 包含一个占位符 &lt;code&gt;{% placeholder &amp;quot;content&amp;quot; %}&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;fullwidth.html&lt;/code&gt; 还有一个占位符 &lt;code&gt;{% load cms_tags %}&lt;/code&gt;。&lt;code&gt;cms_tags&lt;/code&gt; 是需要的模板标签库。&lt;/p&gt;
+
+&lt;p&gt;可以参考 &lt;a href=&#34;https://docs.djangoproject.com/en/dev/topics/templates/&#34; target=&#34;_blank&#34;&gt;Django 文档&lt;/a&gt; 查看更多关于 Django 的模板标签。&lt;/p&gt;
+
+&lt;p&gt;给 &lt;code&gt;fullwidth.html&lt;/code&gt; 的 &lt;code&gt;{% block content %}&lt;/code&gt; 部分增加一些占位符。比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% block content %}
+  {% placeholder &amp;quot;feature&amp;quot; %}
+  {% placeholder &amp;quot;content&amp;quot; %}
+  {% placeholder &amp;quot;splashbox&amp;quot; %}
+{% endblock content %}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果切换到结构模式，看以看到新的可用的占位符：&lt;code&gt;Feature&lt;/code&gt; 和 &lt;code&gt;Splashbox&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;2-3-静态占位符&#34;&gt;2.3 静态占位符&lt;/h2&gt;
+
+&lt;p&gt;静态占位符可以在网站的多个位置展示相同的内容。静态占位符大多数行为类似普通占位符，但是当创建一个静态占位符并增加内容，它会在全局保存。即使从一个模板删除这个静态占位符，也可以之后重用。&lt;/p&gt;
+
+&lt;p&gt;比如，增加一个 footer 到所有的页面。因为我们想要 footer 出现在每个页面，应该增加到基础模板(&lt;code&gt;mysite/templates/base.html&lt;/code&gt;)。放置在 HTML &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; 元素的末尾：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;        &amp;lt;footer&amp;gt;
+            {% static_placeholder &#39;footer&#39; %}
+        &amp;lt;/footer&amp;gt;
+
+        {% render_block &amp;quot;js&amp;quot; %}
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;保存模板文件，返回到浏览器。刷新任一页面，在结构模式可以看到新的静态占位符。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：为了减少界面的凌乱，静态占位符的插件默认会被隐藏。可点击展开。&lt;/p&gt;
+
+&lt;p&gt;如果按照正常方式增加内容到新的占位符，你会看到它出现在网站的其他页面。&lt;/p&gt;
+
+&lt;h2 id=&#34;2-4-渲染菜单&#34;&gt;2.4 渲染菜单&lt;/h2&gt;
+
+&lt;p&gt;使用 &lt;a href=&#34;http://docs.django-cms.org/en/latest/reference/navigation.html&#34; target=&#34;_blank&#34;&gt;show_menu&lt;/a&gt; 渲染模板中的菜单。&lt;/p&gt;
+
+&lt;p&gt;使用 &lt;code&gt;show_menu&lt;/code&gt; 的模板必须首先加载 CMS 的 &lt;code&gt;menu_tags&lt;/code&gt; 库：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% load menu_tags %}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们在 &lt;code&gt;mysite/templates/base.html&lt;/code&gt; 使用的菜单：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;ul class=&amp;quot;nav&amp;quot;&amp;gt;
+    {% show_menu 0 100 100 100 %}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个选项控制展示在菜单树的网站层级。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3 集成应用</title>
+      <link>https://xueqing.github.io/blog/django_cms/tutorial/3_integrate_app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/django_cms/tutorial/3_integrate_app/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

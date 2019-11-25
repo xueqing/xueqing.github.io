@@ -353,6 +353,15 @@
   
   
   <div>
+    <h2><a href="/translation/go-doc/command/mod/">go mod</a></h2>
+    <div class="article-style">
+      
+      用法 download edit graph init tidy vendor verify why 用法 用于操作模块。注意：所有的 go 命令支持模块 用法：go mod &lt;command&gt; [arguments] 命令 功能 download 下载模块到本地缓存 edit 使用工具或脚本更新 go.mod graph 打印模块
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/translation/go-doc/command/run/">go run</a></h2>
     <div class="article-style">
       
@@ -407,6 +416,15 @@
   </div>
   
   <div>
+    <h2><a href="/translation/hls/live_playlist_sliding_window_construction/">live playlist (滑动窗口)构造</a></h2>
+    <div class="article-style">
+      
+      原文 概述 示例 EXTM3U EXT-X-PLAYLIST-TYPE EXT-X-TARGETDURATION EXT-X-VERSION EXT-X-MEDIA-SEQUENCE EXTINF 更新 playlist 文件 概述 在直播会话中，当生成新的媒体文件且可访问时，通过从文件中移除媒体 URL 来更新索引文件。EXT-X-ENDL
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/translation/go-doc/gotour/loops_and_functions/">Loops and Functions</a></h2>
     <div class="article-style">
       
@@ -426,30 +444,6 @@ package main
 import ( &ldquo;strings&rdquo;
 &quot;golang.org/x/tour/wc&quot;  )
 func wordCount(s string) map[string]int { m := make(map[string]int) var ss []string ss = strings.Fields(s) for i := 0; i &lt; len(ss); i++ { m[ss[i]]++ }
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/golangpkg/quick/">quick 包</a></h2>
-    <div class="article-style">
-      
-      概述 索引 参考 Golang 官网文档 学习。 导入语句：import &quot;testing/quick&quot; 概述 quick 包实现了帮辅助黑盒测试的工具函数。 testing/quick 包被冻结，且不再接受新特性。 索引 参考
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/translation/go-doc/gotour/reader/">Readers</a></h2>
-    <div class="article-style">
-      
-      ```go /* Exercise: Readers Implement a Reader type that emits an infinite stream of the ASCII character &lsquo;A&rsquo;. */
-package main
-import &ldquo;golang.org/x/tour/reader&rdquo;
-type myReader struct{}
-func (r myReader) Read(c []byte) (int, error) { i := 0 for ; i &lt; len&copy;; i++ { c[i] = &lsquo;A&rsquo; } for ; i &lt; cap&copy;; i++ { c = append(c, &lsquo;A&rsquo;) }
-return cap(c), nil  }
-func main() { reader.Validate(myReader{}) }
       
     </div>
   </div>

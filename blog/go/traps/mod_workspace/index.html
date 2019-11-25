@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="旧行为 vs 基于模块的行为 在 GOPATH 之外工作 VSCode 对模块的支持 保存文件时不再自动导入 相关链接 旧行为 vs 基于模块的行为 模块在 Go1.11 开始，因此按照设计旧行为会默认保">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/go/traps/mod_workspace/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/go/traps/mod_workspace/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/go/traps/mod_workspace/">
+  <meta property="og:title" content="module 不要在 vscode 工作区打开工程 | kiki">
+  <meta property="og:description" content="旧行为 vs 基于模块的行为 在 GOPATH 之外工作 VSCode 对模块的支持 保存文件时不再自动导入 相关链接 旧行为 vs 基于模块的行为 模块在 Go1.11 开始，因此按照设计旧行为会默认保"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>module 不要在 vscode 工作区打开工程 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>module 不要在 vscode 工作区打开工程</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e6%97%a7%e8%a1%8c%e4%b8%ba-vs-%e5%9f%ba%e4%ba%8e%e6%a8%a1%e5%9d%97%e7%9a%84%e8%a1%8c%e4%b8%ba">旧行为 vs 基于模块的行为</a></li>
+<li><a href="#%e5%9c%a8-gopath-%e4%b9%8b%e5%a4%96%e5%b7%a5%e4%bd%9c">在 GOPATH 之外工作</a></li>
+<li><a href="#vscode-%e5%af%b9%e6%a8%a1%e5%9d%97%e7%9a%84%e6%94%af%e6%8c%81">VSCode 对模块的支持</a>
+
+<ul>
+<li><a href="#%e4%bf%9d%e5%ad%98%e6%96%87%e4%bb%b6%e6%97%b6%e4%b8%8d%e5%86%8d%e8%87%aa%e5%8a%a8%e5%af%bc%e5%85%a5">保存文件时不再自动导入</a></li>
+</ul></li>
+<li><a href="#%e7%9b%b8%e5%85%b3%e9%93%be%e6%8e%a5">相关链接</a></li>
+</ul>
+
+<h2 id="旧行为-vs-基于模块的行为">旧行为 vs 基于模块的行为</h2>
+
+<ul>
+<li>模块在 Go1.11 开始，因此按照设计旧行为会默认保留。因此需要注意什么时候是旧的 1.10 状态行为(查找 <code>vendor</code> 目录和 GOPATH 来寻找依赖)，什么时候是新的基于模块的行为
+
+<ul>
+<li>在 <code>GOPATH</code> 之内: 默认是旧的 1.10 行为，会忽视模块</li>
+<li>在 <code>GOPATH</code> 之外且在文件树之内有一个 <code>go.mod</code> 文件: 默认是模块行为</li>
+<li><code>GO111MODULE</code> 环境变量</li>
+<li>不设置或 <code>auto</code>: 上述默认行为</li>
+<li><code>on</code>: 强制支持模块，与目录位置无关</li>
+<li><code>off</code>: 强制不支持模块，与目录位置无关</li>
+</ul></li>
+</ul>
+
+<h2 id="在-gopath-之外工作">在 GOPATH 之外工作</h2>
+
+<ul>
+<li>如果对于一个给定的导入路径，有多个包的版本，那么要求包的开发版本放在一个指定的位置是没有意义的。如果需要同时在 v1.3 和 v1.4 版本上修改 bug，显然需要在不同的位置切换模块。实际上，这种情况下，没有必要在 GOPATH 目录工作</li>
+<li>GOPATH 做了三件事
+
+<ul>
+<li>定义依赖的版本(现在在 <code>go.mod</code>)</li>
+<li>保存这些依赖的源码(现在在分别的 cache)</li>
+<li>提供一种方式来推测特定目录(去掉先导的 <code>$GOPATH/src</code>)代码内的导入路径(现在有机制来确定当前目录代码的导入路径，可以停止要求程序猿在 GOPATH 工作)</li>
+<li>此机制位于 <code>go.mod</code> 文件的 <code>module</code> 命令。比如当前目录是 <code>buggy</code>，且 <code>../go.mod</code> 包含 <code>module &quot;rsc.io/quote&quot;</code>，那么当前目录的导入路径就是 <code>rsc.io/quote/buggy</code></li>
+</ul></li>
+
+<li><p><code>vgo</code> 原型支持在 GOPATH 之外工作。比如下面的例子，即使 Upspin 没有引入 <code>go.mod</code> 文件也可以工作</p>
+
+<pre><code class="language-sh">cd $HOME
+git clone https://github.com/upspin/upspin
+cd upspin
+# vgo 从 导入注释推测模块名字是 upsin.io，并且从 Gopkg.loc 推测需要的依赖版本
+vgo test -short ./...
+</code></pre></li>
+</ul>
+
+<h2 id="vscode-对模块的支持">VSCode 对模块的支持</h2>
+
+<ul>
+<li>新的语言服务 gopls 支持模块，设置 <code>&quot;go.useLanguageServer&quot;: true</code></li>
+</ul>
+
+<h3 id="保存文件时不再自动导入">保存文件时不再自动导入</h3>
+
+<ul>
+<li>如果不使用语言服务，插件默认使用 <code>goreturns</code> 工具格式化文件，并自动导入缺失的包。但是 <code>goreturns</code> 工具不支持模块，因此存文件时自动导入的特性不生效</li>
+<li>增加设置 <code>&quot;go.formatTool&quot;: &quot;goimports&quot;</code>，然后使用 <code>Go: Install/Update Tools</code> 安装或更新 <code>goimports</code>，因为 <code>goimports</code> 已经增加对模块的支持</li>
+</ul>
+
+<h2 id="相关链接">相关链接</h2>
+
+<ul>
+<li><a href="https://github.com/golang/go/wiki/Modules" target="_blank">Go module wiki</a></li>
+<li><a href="https://github.com/golang/go/wiki/Modules#when-do-i-get-old-behavior-vs-new-module-based-behavior" target="_blank">When do I get old behavior vs. new module-based behavior</a></li>
+<li><a href="https://research.swtch.com/vgo-cmd" target="_blank">Versioned Go Commands</a></li>
+<li><a href="https://research.swtch.com/vgo-cmd#working_outside_gopath" target="_blank">Working outside GOPATH</a></li>
+<li><a href="https://github.com/Microsoft/vscode-go/wiki/Go-modules-support-in-Visual-Studio-Code" target="_blank">Go modules support in Visual Studio Code</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/go/">go</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/go/traps/mod_workspace/&amp;text=module%20%e4%b8%8d%e8%a6%81%e5%9c%a8%20vscode%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%89%93%e5%bc%80%e5%b7%a5%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/go/traps/mod_workspace/&amp;t=module%20%e4%b8%8d%e8%a6%81%e5%9c%a8%20vscode%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%89%93%e5%bc%80%e5%b7%a5%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=module%20%e4%b8%8d%e8%a6%81%e5%9c%a8%20vscode%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%89%93%e5%bc%80%e5%b7%a5%e7%a8%8b&amp;body=https://xueqing.github.io/blog/go/traps/mod_workspace/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/go/traps/mod_workspace/&amp;title=module%20%e4%b8%8d%e8%a6%81%e5%9c%a8%20vscode%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%89%93%e5%bc%80%e5%b7%a5%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=module%20%e4%b8%8d%e8%a6%81%e5%9c%a8%20vscode%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%89%93%e5%bc%80%e5%b7%a5%e7%a8%8b%20https://xueqing.github.io/blog/go/traps/mod_workspace/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/go/traps/mod_workspace/&amp;title=module%20%e4%b8%8d%e8%a6%81%e5%9c%a8%20vscode%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%89%93%e5%bc%80%e5%b7%a5%e7%a8%8b" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/go/basic/go_waitgroup/">WaitGroup 和 worker pool</a></li>
+      
+      <li><a href="/blog/go/basic/go_mutex/">go 互斥锁</a></li>
+      
+      <li><a href="/blog/go/basic/go_function/">go 函数</a></li>
+      
+      <li><a href="/blog/go/basic/go_slice/">go 切片</a></li>
+      
+      <li><a href="/blog/go/basic/go_package/">go 包</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

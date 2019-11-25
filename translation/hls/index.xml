@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HLS | kiki</title>
+    <link>https://xueqing.github.io/translation/hls/</link>
+      <atom:link href="https://xueqing.github.io/translation/hls/index.xml" rel="self" type="application/rss+xml" />
+    <description>HLS</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>HLS</title>
+      <link>https://xueqing.github.io/translation/hls/</link>
+    </image>
+    
+    <item>
+      <title>Event playlist 构造</title>
+      <link>https://xueqing.github.io/translation/hls/event_playlist_construction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/hls/event_playlist_construction/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/event_playlist_construction&#34; target=&#34;_blank&#34;&gt;原文&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34;&gt;概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%a4%ba%e4%be%8b&#34;&gt;示例&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#extm3u&#34;&gt;EXTM3U&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-playlist-type&#34;&gt;EXT-X-PLAYLIST-TYPE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-targetduration&#34;&gt;EXT-X-TARGETDURATION&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-version&#34;&gt;EXT-X-VERSION&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-media-sequence&#34;&gt;EXT-X-MEDIA-SEQUENCE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#extinf&#34;&gt;EXTINF&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9b%b4%e6%96%b0-playlist-%e6%96%87%e4%bb%b6&#34;&gt;更新 playlist 文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;通过 EXT-X-PLAYLIST-TYPE 标记的值设为 EVENT 指定一个 event playlist。它起初没有 EXT-X-ENDLIST 标签，表示当新的媒体文件可访问时将会被加到 playlist。&lt;/p&gt;
+
+&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+
+&lt;p&gt;下面的代码是一个第一个出现在会话中的 event playlist 的示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-PLAYLIST-TYPE:EVENT
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.00,
+fileSequence0.ts
+#EXTINF:10.0,
+fileSequence1.ts
+#EXTINF:10.0,
+fileSequence2.ts
+#EXTINF:10.0,
+fileSequence3.ts
+#EXTINF:10.0,
+fileSequence4.ts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;event playlist 示例中使用的标记有：&lt;/p&gt;
+
+&lt;h3 id=&#34;extm3u&#34;&gt;EXTM3U&lt;/h3&gt;
+
+&lt;p&gt;表明这个 playlist 是 一个扩展的 M3U 文件。这种文件类型通过修改第一行标记为 EXTM3U 以区别于基本的 M3U 文件。所有的 HLS playlist 必须以这个标记开始。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-playlist-type&#34;&gt;EXT-X-PLAYLIST-TYPE&lt;/h3&gt;
+
+&lt;p&gt;提供了适用于整个 playlist 文件的易变信息。这个标记可能包含一个 EVENT 或 VOD 值。如果标记存在且值为 EVENT，服务器一定不能修改或删除 playlist 文件的任意部分(但是它可以追加行到 playlist 文件)。如果标记存在且值为 VOD，playlist 文件一定不能改变。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-targetduration&#34;&gt;EXT-X-TARGETDURATION&lt;/h3&gt;
+
+&lt;p&gt;指定最大的媒体文件时长。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-version&#34;&gt;EXT-X-VERSION&lt;/h3&gt;
+
+&lt;p&gt;表明该 playlist 文件的兼容性版本。playlist 媒体及其服务器必须遵守 HLS 规范的 IETF 互联网草案最新版本的所有规定，此规范定义了协议版本。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-media-sequence&#34;&gt;EXT-X-MEDIA-SEQUENCE&lt;/h3&gt;
+
+&lt;p&gt;表明出现在 playlist 文件的第一个 URL 的序列号。playlist 中的每个媒体文件 URL 有一个唯一的整数序列号。一个 URL 的序列号比前一个 URL 加 1。这个媒体序列号和文件名字无关。&lt;/p&gt;
+
+&lt;h3 id=&#34;extinf&#34;&gt;EXTINF&lt;/h3&gt;
+
+&lt;p&gt;一个记录标识，描述了媒体文件，通过其后的 URL 标记该媒体文件。每个媒体文件 URL 前面必须有一个 EXTINF 标记。这个标记包含一个时长属性，是一个十进制的整数或浮点数，指定了这个媒体片段的时长(单位是秒)。这个时长属性的值必须不大于 EXT-X-TARGETDURATION 的值。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：总使用浮点的 EXTINF 时长(在协议版本 3 支持)。这支持客户端再流内部跳转(seek)时最小化四舍五入的差错。&lt;/p&gt;
+
+&lt;h2 id=&#34;更新-playlist-文件&#34;&gt;更新 playlist 文件&lt;/h2&gt;
+
+&lt;p&gt;当使用 EVENT 标记时，你不能从 playlist 中删除任何东西；你只可能追加新的片段到文件直到这个事件终止，那是会追加一个 EXT-X-ENDLIST 标签。下面的示例展示了使用新的媒体 URL 更新且该事件已经终止的同一 playlist：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-PLAYLIST-TYPE:EVENT
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,
+fileSequence0.ts
+#EXTINF:10.0,
+fileSequence1.ts
+#EXTINF:10.0,
+fileSequence2.ts
+#EXTINF:10.0,
+fileSequence3.ts
+#EXTINF:10.0,
+fileSequence4.ts
+
+// List of files between 4 and 120 go here.
+
+#EXTINF:10.0,
+fileSequence120.ts
+#EXTINF:10.0,
+fileSequence121.ts
+#EXT-X-ENDLIST
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;大概你想要支持用户跳转到事件内的任何一点时，比如一个音乐会或者运动事件，通常使用 event playlist。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>live playlist (滑动窗口)构造</title>
+      <link>https://xueqing.github.io/translation/hls/live_playlist_sliding_window_construction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/hls/live_playlist_sliding_window_construction/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/live_playlist_sliding_window_construction&#34; target=&#34;_blank&#34;&gt;原文&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34;&gt;概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%a4%ba%e4%be%8b&#34;&gt;示例&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#extm3u&#34;&gt;EXTM3U&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-playlist-type&#34;&gt;EXT-X-PLAYLIST-TYPE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-targetduration&#34;&gt;EXT-X-TARGETDURATION&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-version&#34;&gt;EXT-X-VERSION&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-media-sequence&#34;&gt;EXT-X-MEDIA-SEQUENCE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#extinf&#34;&gt;EXTINF&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9b%b4%e6%96%b0-playlist-%e6%96%87%e4%bb%b6&#34;&gt;更新 playlist 文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;在直播会话中，当生成新的媒体文件且可访问时，通过从文件中移除媒体 URL 来更新索引文件。EXT-X-ENDLIST 标记不会在 live playlist 中出现，表示当新的媒体文件可访问时会被追加到索引文件。&lt;/p&gt;
+
+&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+
+&lt;p&gt;下面的代码是一个第一个出现在直播会话中的 live playlist 的示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:1
+#EXTINF:10.0,
+fileSequence1.ts
+#EXTINF:10.0,
+fileSequence2.ts
+#EXTINF:10.0,
+fileSequence3.ts
+#EXTINF:10.0,
+fileSequence4.ts
+#EXTINF:10.0,
+fileSequence5.ts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;live playlist 示例中使用的标记有：&lt;/p&gt;
+
+&lt;h3 id=&#34;extm3u&#34;&gt;EXTM3U&lt;/h3&gt;
+
+&lt;p&gt;表明这个 playlist 是 一个扩展的 M3U 文件。这种文件类型通过修改第一行标记为 EXTM3U 以区别于基本的 M3U 文件。所有的 HLS playlist 必须以这个标记开始。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-playlist-type&#34;&gt;EXT-X-PLAYLIST-TYPE&lt;/h3&gt;
+
+&lt;p&gt;提供了适用于整个 playlist 文件的易变信息。这个标记可能包含一个 EVENT 或 VOD 值。如果标记存在且值为 EVENT，服务器一定不能修改或删除 playlist 文件的任意部分(但是它可以追加行到 playlist 文件)。如果标记存在且值为 VOD，playlist 文件一定不能改变。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-targetduration&#34;&gt;EXT-X-TARGETDURATION&lt;/h3&gt;
+
+&lt;p&gt;指定最大的媒体文件时长。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-version&#34;&gt;EXT-X-VERSION&lt;/h3&gt;
+
+&lt;p&gt;表明该 playlist 文件的兼容性版本。playlist 媒体及其服务器必须遵守 HLS 规范的 IETF 互联网草案最新版本的所有规定，此规范定义了协议版本。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-media-sequence&#34;&gt;EXT-X-MEDIA-SEQUENCE&lt;/h3&gt;
+
+&lt;p&gt;表明出现在 playlist 文件的第一个 URL 的序列号。playlist 中的每个媒体文件 URL 有一个唯一的整数序列号。一个 URL 的序列号比前一个 URL 加 1。这个媒体序列号和文件名字无关。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：对于每个从 playlist 文件移除的 URL，EXT-X-MEDIA-SEQUENCE 标记值必须加 1。媒体 URL 必须按照出现在 playlist 中的顺序移除。更新的索引文件展示了移动窗口为一个持续流。这种会话类型适用于持续的广播。&lt;/p&gt;
+
+&lt;h3 id=&#34;extinf&#34;&gt;EXTINF&lt;/h3&gt;
+
+&lt;p&gt;一个记录标识，描述了媒体文件，通过其后的 URL 标记该媒体文件。每个媒体文件 URL 前面必须有一个 EXTINF 标记。这个标记包含一个时长属性，是一个十进制的整数或浮点数，指定了这个媒体片段的时长(单位是秒)。这个时长属性的值必须不大于 EXT-X-TARGETDURATION 的值。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：总使用浮点的 EXTINF 时长(在协议版本 3 支持)。这支持客户端再流内部跳转(seek)时最小化四舍五入的差错。&lt;/p&gt;
+
+&lt;h2 id=&#34;更新-playlist-文件&#34;&gt;更新 playlist 文件&lt;/h2&gt;
+
+&lt;p&gt;下面的示例展示了使用新的媒体 URL 更新的同一 playlist：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:2
+#EXTINF:10.0,
+fileSequence2.ts
+#EXTINF:10.0,
+fileSequence3.ts
+#EXTINF:10.00,
+fileSequence4.ts
+#EXTINF:10.00,
+fileSequence5.ts
+#EXTINF:10.0,
+fileSequence6.ts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当增加新的媒体 URL 时继续更新 playlist：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:4
+#EXTINF:10.00,
+fileSequence4.ts
+#EXTINF:10.00,
+fileSequence5.ts
+#EXTINF:10.0,
+fileSequence6.ts,
+#EXTINF:10.0,
+fileSequence7.ts,
+#EXTINF:10.0,
+fileSequence8.ts,
+#EXTINF:10.0,
+fileSequence9.ts
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VOD playlist 构造</title>
+      <link>https://xueqing.github.io/translation/hls/vod_playlist_construction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/hls/vod_playlist_construction/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/video_on_demand_playlist_construction&#34; target=&#34;_blank&#34;&gt;原文&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34;&gt;概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%a4%ba%e4%be%8b&#34;&gt;示例&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#extm3u&#34;&gt;EXTM3U&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-targetduration&#34;&gt;EXT-X-TARGETDURATION&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-version&#34;&gt;EXT-X-VERSION&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-media-sequence&#34;&gt;EXT-X-MEDIA-SEQUENCE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#extinf&#34;&gt;EXTINF&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ext-x-endlist&#34;&gt;EXT-X-ENDLIST&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%9b%b8%e5%af%b9%e8%b7%af%e5%be%84&#34;&gt;相对路径&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;对于 VOD(video on demand, 点播) 会话，可以访问的媒体文件表示显示的整个时间段。索引文件是静态的，且包含相关 URL 的一个完整列表，可以访问从显示开始创建的所有媒体文件。这种会话支持用户对整个程序的完整控制。&lt;/p&gt;
+
+&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+
+&lt;p&gt;下面的代码是一个 VOD playlist 的示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,
+http://example.com/movie1/fileSequenceA.ts
+#EXTINF:10.0,
+http://example.com/movie1/fileSequenceB.ts
+#EXTINF:10.0,
+http://example.com/movie1/fileSequenceC.ts
+#EXTINF:9.0,
+http://example.com/movie1/fileSequenceD.ts
+#EXT-X-ENDLIST
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;直播 playlist 示例中使用的标记有：&lt;/p&gt;
+
+&lt;h3 id=&#34;extm3u&#34;&gt;EXTM3U&lt;/h3&gt;
+
+&lt;p&gt;表明这个 playlist 是 一个扩展的 M3U 文件。这种文件类型通过修改第一行标记为 EXTM3U 以区别于基本的 M3U 文件。所有的 HLS playlist 必须以这个标记开始。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-targetduration&#34;&gt;EXT-X-TARGETDURATION&lt;/h3&gt;
+
+&lt;p&gt;指定最大的媒体文件时长。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-version&#34;&gt;EXT-X-VERSION&lt;/h3&gt;
+
+&lt;p&gt;表明该 playlist 文件的兼容性版本。playlist 媒体及其服务器必须遵守 HLS 规范的 IETF 互联网草案最新版本的所有规定，此规范定义了协议版本。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-media-sequence&#34;&gt;EXT-X-MEDIA-SEQUENCE&lt;/h3&gt;
+
+&lt;p&gt;表明出现在 playlist 文件的第一个 URL 的序列号。playlist 中的每个媒体文件 URL 有一个唯一的整数序列号。一个 URL 的序列号比前一个 URL 加 1。这个媒体序列号和文件名字无关。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：EXT-X-MEDIA-SEQUENCE 标记的值&lt;/p&gt;
+
+&lt;h3 id=&#34;extinf&#34;&gt;EXTINF&lt;/h3&gt;
+
+&lt;p&gt;一个记录标识，描述了媒体文件，通过其后的 URL 标记该媒体文件。每个媒体文件 URL 前面必须有一个 EXTINF 标记。这个标记包含一个时长属性，是一个十进制的整数或浮点数，指定了这个媒体片段的时长(单位是秒)。这个时长属性的值必须不大于 EXT-X-TARGETDURATION 的值。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：总使用浮点的 EXTINF 时长(在协议版本 3 支持)。这支持客户端再流内部跳转(seek)时最小化四舍五入的差错。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-endlist&#34;&gt;EXT-X-ENDLIST&lt;/h3&gt;
+
+&lt;p&gt;表明不会再向 playlist 文件增加媒体文件了。&lt;/p&gt;
+
+&lt;h2 id=&#34;相对路径&#34;&gt;相对路径&lt;/h2&gt;
+
+&lt;p&gt;上述的 VOD playlist 示例对于媒体文件 playlist 条目使用完整的路径名。虽然支持这么做，更鼓励使用相对路径。相对路径比绝对路径更易移植且相对于 playlist 文件的 URL。对于单个 playlist 条目使用完整路径名比使用相对路径经常导致文本更长。下面是使用相对路径的相同的 playlist：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,
+fileSequenceA.ts
+#EXTINF:10.0,
+fileSequenceB.ts
+#EXTINF:10.0,
+fileSequenceC.ts
+#EXTINF:9.0,
+fileSequenceD.ts
+#EXT-X-ENDLIST
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>创建一个 master playlist</title>
+      <link>https://xueqing.github.io/translation/hls/creating_a_master_playlist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/hls/creating_a_master_playlist/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/creating_a_master_playlist&#34; target=&#34;_blank&#34;&gt;原文&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;master playlist 描述了对于你的内容所有可访问的 variant(变体)。每个 variant 是一个特定比特率的流版本且被包含在一个单独的 playlist。客户端基于测量的网络比特率切换到最合适的 variant。调节客户端的播放器最小化回放的停顿，以便给用户进坑好的流体验。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://xueqing.github.io/translation/hls/images/hls_master_playlist.png&#34; alt=&#34;hls master playlist&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;master playlist 不能重复读。一旦客户端读到 master playlist，它假定 variant 集合不会改变。当客户端在其中一个单一的 variant playlist 中看到 EXT-X-ENDLIST 标记时流结束。&lt;/p&gt;
+
+&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+
+&lt;p&gt;下面的示例展示了定义不同 variant 的一个 master playlist：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-m3u8&#34;&gt;#EXTM3U
+#EXT-X-STREAM-INF:BANDWIDTH=150000,RESOLUTION=416x234,CODECS=&amp;quot;avc1.42e00a,mp4a.40.2&amp;quot;
+http://example.com/low/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=240000,RESOLUTION=416x234,CODECS=&amp;quot;avc1.42e00a,mp4a.40.2&amp;quot;
+http://example.com/lo_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=440000,RESOLUTION=416x234,CODECS=&amp;quot;avc1.42e00a,mp4a.40.2&amp;quot;
+http://example.com/hi_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=640000,RESOLUTION=640x360,CODECS=&amp;quot;avc1.42e00a,mp4a.40.2&amp;quot;
+http://example.com/high/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=64000,CODECS=&amp;quot;mp4a.40.5&amp;quot;
+http://example.com/audio/index.m3u8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;master playlist 示例中使用的标记有：&lt;/p&gt;
+
+&lt;h3 id=&#34;extm3u&#34;&gt;EXTM3U&lt;/h3&gt;
+
+&lt;p&gt;表明这个 playlist 是 一个扩展的 M3U 文件。这种文件类型通过修改第一行标记为 EXTM3U 以区别于基本的 M3U 文件。所有的 HLS playlist 必须以这个标记开始。&lt;/p&gt;
+
+&lt;h3 id=&#34;ext-x-stream-inf&#34;&gt;EXT-X-STREAM-INF&lt;/h3&gt;
+
+&lt;p&gt;表示 playlist 文件的下一个 URL 标识了另一个 playlist 文件。EXT-X-STREAM-INF 标记包含下面的参数：&lt;/p&gt;
+
+&lt;h4 id=&#34;average-bandwidth&#34;&gt;AVERAGE-BANDWIDTH&lt;/h4&gt;
+
+&lt;p&gt;(可选，但是建议使用)一个整数，表示这个 variant 流的平均比特率。&lt;/p&gt;
+
+&lt;h4 id=&#34;bandwidth&#34;&gt;BANDWIDTH&lt;/h4&gt;
+
+&lt;p&gt;(必选)一个证书，表示对于每个媒体文件所有比特率的上限，单位是 比特/秒。上限值的计算包含了所有出现或将会出现在 playlist 中的容器负载。&lt;/p&gt;
+
+&lt;h4 id=&#34;frame-rate&#34;&gt;FRAME-RATE&lt;/h4&gt;
+
+&lt;p&gt;(可选，但是建议使用)一个浮点值，描述了一个 variant 流的最大帧率。&lt;/p&gt;
+
+&lt;h4 id=&#34;hdcp-level&#34;&gt;HDCP-LEVEL&lt;/h4&gt;
+
+&lt;p&gt;(可选)表明使用的加密类型。有效值是 TYPE-0 和 NONE。如果只有使用 HDCP 保护输出才能播放这个流，使用 TYPE-0。&lt;/p&gt;
+
+&lt;h4 id=&#34;resolution&#34;&gt;RESOLUTION&lt;/h4&gt;
+
+&lt;p&gt;(可选，但是建议使用)这个选项展示了播放 playlist 所有视频的大小，单位是像素。所有包含视频的流都应该包含这个参数。&lt;/p&gt;
+
+&lt;h4 id=&#34;video-range&#34;&gt;VIDEO-RANGE&lt;/h4&gt;
+
+&lt;p&gt;(视编码而定)一个字符串，有效值是 SDR 或 PQ。如果没有指定传输特征编码 1, 16 或 18，那么必须忽视这个参数。&lt;/p&gt;
+
+&lt;h4 id=&#34;codecs&#34;&gt;CODECS&lt;/h4&gt;
+
+&lt;p&gt;(可选，但是建议使用)一个引用字符串，包含了一个逗号分隔的格式列表，其中每个格式指定了出现在 playlist 中的一个媒体片段的媒体采样类型。有效的格式标识是根据 RFC 6381 定义的 ISO 文件格式命名空间。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：虽然 CODECS 参数可选，每个 EXT-X-STREAM-INF 标记应该包含这个属性。这个属性提供了解码一个特定流所需的完整编码。它支持客户端区分只包含音频的 variant 和包含音频及视频的 variant。然后，客户端可以利用这个信息在切换流的时候提供更好的用户体验。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

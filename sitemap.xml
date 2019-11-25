@@ -15,6 +15,26 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/django_cms/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/traps/readme/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/readme/</loc>
   </url>
   
@@ -54,12 +74,12 @@
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/authors/kiki/</loc>
+    <loc>https://xueqing.github.io/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/</loc>
+    <loc>https://xueqing.github.io/authors/kiki/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
@@ -105,6 +125,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/django_cms/tutorial/1_install/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/database/redis/2_command/</loc>
   </url>
   
@@ -113,11 +137,19 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/django_cms/tutorial/2_template_palceholder/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/database/redis/3_advanced/</loc>
   </url>
   
   <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/3-characteristics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/django_cms/tutorial/3_integrate_app/</loc>
   </url>
   
   <url>
@@ -221,6 +253,30 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/django/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/django_cms/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/django_cms/using/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/django_cms/tutorial/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/docker/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/docker/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/effectivec&#43;&#43;_3/</loc>
   </url>
   
@@ -233,11 +289,151 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/translation/hls/event_playlist_construction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/ffmpeg/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ffmepg/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ffmepg/ffmpeg/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/fibonacci_closure/</loc>
   </url>
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/golangpkg/fmt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/git/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_add/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_bisect/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_blame/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_bundle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_-cherry-pick/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_clean/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_commit/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_config/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_diff/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_grep/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_log/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_mv/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_patch/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_push/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_rebase/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_remote/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_revert/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_rm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_status/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_submodule/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_tag/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_branch/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_alias/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/account_ssh/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/gitlab/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/gitlab/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/gitlab/gitlab/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/go/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/</loc>
   </url>
   
   <url>
@@ -293,6 +489,114 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_mutex/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_function/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_package/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_variables/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_scope_rule/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_basic_syntax/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_constant/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_loop/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_pointer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_interface/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_map/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_data_type/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_array/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_method/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_decision_making/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_module/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_goroutine/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_type_casting/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_structure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_struct/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_range/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/traps/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_recursive/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_error_handling/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/go-blog/</loc>
   </url>
   
@@ -329,6 +633,22 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/hls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/hls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/hls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/hls/hls/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/images/</loc>
   </url>
   
@@ -337,7 +657,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/go/traps/json_struct/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/lambda/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/hls/live_playlist_sliding_window_construction/</loc>
   </url>
   
   <url>
@@ -354,6 +682,10 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/database/memcached/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/traps/mod_workspace/</loc>
   </url>
   
   <url>
@@ -429,6 +761,14 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/translation/hls/vod_playlist_construction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_waitgroup/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/web_crawler/</loc>
   </url>
   
@@ -445,7 +785,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/go/traps/var_scope/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/blog/subtest/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_channel/</loc>
   </url>
   
   <url>
@@ -461,7 +809,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/git/git_ignore/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/extren_c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/django_cms/using/content_editor/</loc>
   </url>
   
   <url>
@@ -469,7 +825,23 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/translation/hls/creating_a_master_playlist/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/docker/python_img/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_fast_import/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/reentrant/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/traps/package_var/</loc>
   </url>
   
   <url>
@@ -493,7 +865,27 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/docker/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_install/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/golangdoc/effective_go/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/docker/container/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/docker/container_life/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_scenario/</loc>
   </url>
   
   <url>
@@ -510,6 +902,10 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/cplusplus/exception/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/go/basic/go_exception/</loc>
   </url>
   
   <url>
@@ -534,6 +930,14 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/wiki/articles/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/django_cms/using/create_page/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/docker/image_cmd/</loc>
   </url>
   
   <url>
@@ -590,6 +994,18 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/coolshell/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_filter_branch/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/git/git_reset/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/docker/image_rep_cmd/</loc>
   </url>
   
 </urlset>
