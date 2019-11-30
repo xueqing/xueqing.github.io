@@ -1,0 +1,2042 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webrtc | kiki</title>
+    <link>https://xueqing.github.io/tags/webrtc/</link>
+      <atom:link href="https://xueqing.github.io/tags/webrtc/index.xml" rel="self" type="application/rss+xml" />
+    <description>webrtc</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>webrtc</title>
+      <link>https://xueqing.github.io/tags/webrtc/</link>
+    </image>
+    
+    <item>
+      <title>licode</title>
+      <link>https://xueqing.github.io/blog/webrtc/licode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/webrtc/licode/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;room: 一个 room 的 user 和 client 可以通过 Licode 共享 stream&lt;/li&gt;
+&lt;li&gt;Server APP 通过 Nuve API 创建 room，user 通过 Erizo 连接到 room&lt;/li&gt;
+&lt;li&gt;通过 Erizo Controller 控制 rooms，通过 Erizo API 控制 stream&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Client 的类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Erizo.Stream/Licode Event&lt;/td&gt;
+&lt;td&gt;表示库中一般的事件，被其他类继承&lt;/td&gt;
+&lt;td&gt;room-connected 等&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Erizo.Room/Room Event&lt;/td&gt;
+&lt;td&gt;表示和 room 连接相关的事件&lt;/td&gt;
+&lt;td&gt;room-connected/room-error/room-disconnected&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Erizo.Events/Stream Event&lt;/td&gt;
+&lt;td&gt;表示一个 room 内的 stream 相关的事件&lt;/td&gt;
+&lt;td&gt;access-accepted/access-denied/stream-added/stream-removed/stream-data/stream-attributes/update/bandwidth-alert/stream-failed/stream-ended&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Server 的类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Room&lt;/td&gt;
+&lt;td&gt;表示一个视频会议 room&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Token&lt;/td&gt;
+&lt;td&gt;添加一个新的参与者到一个视频会议 room 的 key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;User&lt;/td&gt;
+&lt;td&gt;一个 user 可以发布和订阅一个视频会议 room 的 stream&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sipML5</title>
+      <link>https://xueqing.github.io/blog/webrtc/sip/sipml5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/webrtc/sip/sipml5/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%e6%9c%af%e8%af%ad&#34;&gt;1 术语&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-%e7%ae%80%e4%bb%8b&#34;&gt;2 简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-sipml5-%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90&#34;&gt;3 sipML5 源码分析&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-%e6%b3%a8%e5%86%8c&#34;&gt;3.1 注册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#311-%e5%bb%ba%e7%ab%8b-websocket-%e8%bf%9e%e6%8e%a5&#34;&gt;3.1.1 建立 WebSocket 连接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#312-%e7%94%9f%e6%88%90-sip-%e5%a4%b4&#34;&gt;3.1.2 生成 SIP 头&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#313-%e5%8f%91%e9%80%81%e6%b3%a8%e5%86%8c%e7%9a%84-sip-%e4%bf%a1%e6%81%af%e7%94%a8-session-%e7%ae%a1%e7%90%86&#34;&gt;3.1.3 发送注册的 SIP 信息(用 session 管理)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#314-%e6%94%b6%e5%88%b0-200-ok&#34;&gt;3.1.4 收到 200 OK&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-%e5%91%bc%e5%8f%ab&#34;&gt;3.2 呼叫&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#321-%e5%91%bc%e5%8f%ab%e8%bf%87%e7%a8%8b%e4%b8%ad%e7%9a%84-sdp-%e4%b8%8e%e6%b5%81&#34;&gt;3.2.1 呼叫过程中的 SDP 与流&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#322-%e5%8f%8c%e5%90%91%e9%bb%98%e8%ae%a4&#34;&gt;3.2.2 双向(默认)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#323-%e5%8d%95%e5%90%91%e5%8f%af%e6%89%a9%e5%85%85&#34;&gt;3.2.3 单向(可扩充)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-api&#34;&gt;4 API&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e7%b1%bb%e5%9b%be&#34;&gt;4.1 类图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e5%88%9d%e5%a7%8b%e5%8c%96%e5%bc%95%e6%93%8e&#34;&gt;4.2 初始化引擎&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e5%88%9b%e5%bb%ba-sip-%e6%a0%88&#34;&gt;4.3 创建 SIP 栈&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#44-%e6%b3%a8%e5%86%8c%e7%99%bb%e5%bd%95&#34;&gt;4.4 注册/登录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#45-%e5%88%9b%e5%bb%ba%e6%8e%a5%e6%94%b6%e9%9f%b3%e9%a2%91%e8%a7%86%e9%a2%91%e4%bc%9a%e8%af%9d&#34;&gt;4.5 创建/接收音频/视频会话&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#46-%e5%85%b1%e4%ba%ab%e5%b1%8f%e5%b9%95%e6%a1%8c%e9%9d%a2&#34;&gt;4.6 共享屏幕/桌面&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#47-%e5%8f%91%e9%80%81%e6%8e%a5%e6%94%b6-sip-message%e7%b1%bb%e4%bc%bc-sms&#34;&gt;4.7 发送/接收 SIP MESSAGE(类似 SMS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#48-%e5%8f%91%e5%b8%83%e5%ad%98%e5%9c%a8%e7%8a%b6%e6%80%81&#34;&gt;4.8 发布存在状态&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#49-%e8%ae%a2%e9%98%85%e5%ad%98%e5%9c%a8%e7%8a%b6%e6%80%81&#34;&gt;4.9 订阅存在状态&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-%e6%b5%8f%e8%a7%88%e5%99%a8webrtc2sip-%e4%b8%8e%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e4%bf%a1%e4%bb%a4%e4%ba%a4%e4%ba%92%e6%b5%81%e7%a8%8b&#34;&gt;5 浏览器、webrtc2sip 与服务器的信令交互流程&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#51-%e6%b3%a8%e5%86%8c%e6%b5%81%e7%a8%8b&#34;&gt;5.1 注册流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#52-%e4%b8%bb%e5%8f%ab%e6%b5%81%e7%a8%8b&#34;&gt;5.2 主叫流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#53-%e8%a2%ab%e5%8f%ab%e6%b5%81%e7%a8%8b&#34;&gt;5.3 被叫流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#54-%e7%bb%88%e7%ab%af%e6%8c%82%e6%96%ad%e6%b5%81%e7%a8%8b&#34;&gt;5.4 终端挂断流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#55-mcu-%e6%8c%82%e6%96%ad%e6%b5%81%e7%a8%8b&#34;&gt;5.5 MCU 挂断流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#56-%e6%b3%a8%e9%94%80%e6%b5%81%e7%a8%8b&#34;&gt;5.6 注销流程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%e9%97%ae%e9%a2%98&#34;&gt;6 问题&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#61-%e5%ae%89%e5%85%a8%e6%9c%ba%e5%88%b6&#34;&gt;6.1 安全机制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#62-%e4%bf%a1%e4%bb%a4%e5%85%bc%e5%ae%b9&#34;&gt;6.2 信令兼容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-%e6%ba%90%e7%a0%81%e5%8f%91%e5%b8%83&#34;&gt;7 源码发布&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#71-%e5%ae%89%e8%a3%85-java&#34;&gt;7.1 安装 java&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#72-%e5%8f%91%e5%b8%83&#34;&gt;7.2 发布&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-%e5%8f%82%e8%80%83&#34;&gt;8 参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-术语&#34;&gt;1 术语&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;RTC&lt;/td&gt;
+&lt;td&gt;real-time communication&lt;/td&gt;
+&lt;td&gt;实时通信&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SIP&lt;/td&gt;
+&lt;td&gt;session initiation protocol&lt;/td&gt;
+&lt;td&gt;会话初始协议&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SMS&lt;/td&gt;
+&lt;td&gt;short message service&lt;/td&gt;
+&lt;td&gt;短信服务&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ICE&lt;/td&gt;
+&lt;td&gt;Internet communication engine&lt;/td&gt;
+&lt;td&gt;互联网通讯引擎&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DTLS&lt;/td&gt;
+&lt;td&gt;datagram transport layer security&lt;/td&gt;
+&lt;td&gt;数据报传输层安全&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SRTP&lt;/td&gt;
+&lt;td&gt;secure real-time transport protocol&lt;/td&gt;
+&lt;td&gt;安全实时传输协议&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;WSS&lt;/td&gt;
+&lt;td&gt;secure websocket&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MCU&lt;/td&gt;
+&lt;td&gt;multi conference unit&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;NGN&lt;/td&gt;
+&lt;td&gt;next generation network&lt;/td&gt;
+&lt;td&gt;下一代网络&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-简介&#34;&gt;2 简介&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;sipML5 是开源的 HTML5 SIP 客户端&lt;/li&gt;
+&lt;li&gt;媒体栈依赖于 WebRTC，建议使用 Chrome 和 Firefox Nightly 测试
+
+&lt;ul&gt;
+&lt;li&gt;Safari，Firefox，Opera 和 IE 需要安装 &lt;a href=&#34;https://github.com/sarandogou/webrtc-everywhere&#34; target=&#34;_blank&#34;&gt;webrtc-everywhere&lt;/a&gt; 扩展&lt;/li&gt;
+&lt;li&gt;主要功能包括生成 SDP、采集本机摄像头和麦克风的音视频数据、传输媒体数据、处理接收到的音视频数据等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;SIP 和 SDP 栈由 JavaScript 实现，网络传输使用 WebSocket
+
+&lt;ul&gt;
+&lt;li&gt;SIP 协议栈：生成和解析 SIP 信令&lt;/li&gt;
+&lt;li&gt;SDP 协议栈：生成和解析 SDP 信令&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-sipml5-源码分析&#34;&gt;3 sipML5 源码分析&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;主要包括 3 个模块
+
+&lt;ul&gt;
+&lt;li&gt;media：主要是会话管理和媒体处理(包括 SDP 的生成和修改)&lt;/li&gt;
+&lt;li&gt;SDP：实现 SDP 协议栈，包括 SDP 的修改和解析函数&lt;/li&gt;
+&lt;li&gt;SIP：实现 SIP 协议栈(包括 SIP 的修改和解析函数)和与多媒体网关进行信令交互(WebSocket)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一般而言，需要进行功能扩充和修改的地方包括：
+
+&lt;ul&gt;
+&lt;li&gt;界面入口：call.htm&lt;/li&gt;
+&lt;li&gt;媒体处理模块：tmedia_session_jsep.js&lt;/li&gt;
+&lt;li&gt;WebSocket 发送和接收的数据：tsip_transport.js&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-1-注册&#34;&gt;3.1 注册&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在生成 SIP 头文件时进行修改和添加&lt;/li&gt;
+&lt;li&gt;如果收到的 SIP 协议格式不支持，将收到的进行修改&lt;/li&gt;
+&lt;li&gt;将发出的 SIP 协议进行修改&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3-1-1-建立-websocket-连接&#34;&gt;3.1.1 建立 WebSocket 连接&lt;/h4&gt;
+
+&lt;h4 id=&#34;3-1-2-生成-sip-头&#34;&gt;3.1.2 生成 SIP 头&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// call.htm: function sipRegister()
+// create SIP stack
+oSipStack = new SIPml.Stack({
+    realm: txtRealm.value,
+    impi: txtPrivateIdentity.value,
+    impu: txtPublicIdentity.value,
+    password: txtPassword.value,
+    display_name: txtDisplayName.value,
+    websocket_proxy_url: (window.localStorage ? window.localStorage.getItem(&#39;org.doubango.expert.websocket_server_url&#39;) : null),
+    outbound_proxy_url: (window.localStorage ? window.localStorage.getItem(&#39;org.doubango.expert.sip_outboundproxy_url&#39;) : null),
+    ice_servers: (window.localStorage ? window.localStorage.getItem(&#39;org.doubango.expert.ice_servers&#39;) : null),
+    enable_rtcweb_breaker: (window.localStorage ? window.localStorage.getItem(&#39;org.doubango.expert.enable_rtcweb_breaker&#39;) == &amp;quot;true&amp;quot; : false),
+    events_listener: { events: &#39;*&#39;, listener: onSipEventStack },
+    enable_early_ims: (window.localStorage ? window.localStorage.getItem(&#39;org.doubango.expert.disable_early_ims&#39;) != &amp;quot;true&amp;quot; : true), // Must be true unless you&#39;re using a real IMS network
+    enable_media_stream_cache: (window.localStorage ? window.localStorage.getItem(&#39;org.doubango.expert.enable_media_caching&#39;) == &amp;quot;true&amp;quot; : false),
+    bandwidth: (window.localStorage ? tsk_string_to_object(window.localStorage.getItem(&#39;org.doubango.expert.bandwidth&#39;)) : null), // could be redefined a session-level
+    video_size: (window.localStorage ? tsk_string_to_object(window.localStorage.getItem(&#39;org.doubango.expert.video_size&#39;)) : null), // could be redefined a session-level
+    sip_headers: [
+            { name: &#39;User-Agent&#39;, value: &#39;IM-client/OMA1.0 sipML5-v1.2016.03.04&#39; },
+            { name: &#39;Organization&#39;, value: &#39;Doubango Telecom&#39; }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;3-1-3-发送注册的-sip-信息-用-session-管理&#34;&gt;3.1.3 发送注册的 SIP 信息(用 session 管理)&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// src/tinySIP/src/transports/tsip_transport.js
+tsip_transport.prototype.send = function (s_branch, o_message, s_dest_ip, i_dest_port) {
+    var o_data = null;
+    if (o_message.is_request() &amp;amp;&amp;amp; (!o_message.is_ack() || (o_message.is_ack() &amp;amp;&amp;amp; !o_message.o_hdr_firstVia)) &amp;amp;&amp;amp; !o_message.is_cancel()) {
+        this.message_addvia(s_branch, o_message); /* should be done before tsip_transport_o_message_update() which could use the Via header */
+        this.message_update_aor(o_message); /* AoR */
+        this.message_update(o_message); /* IPSec, SigComp, ... */
+    }
+    else if (o_message.is_response()) {
+        /* AoR for responses which have a contact header (e.g. 183/200 INVITE) */
+        if (o_message.o_hdr_Contact) {
+            this.message_update_aor(o_message);
+        }
+        if (o_message.o_hdr_firstVia.i_rport == 0) {
+            o_message.o_hdr_firstVia.i_rport = o_message.o_hdr_firstVia.i_port;
+        }
+    }
+
+    o_data = o_message.toString();
+
+    tsk_utils_log_info(&amp;quot;SEND: &amp;quot; + o_data);
+
+    return this.__send(o_data, o_data.length);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;3-1-4-收到-200-ok&#34;&gt;3.1.4 收到 200 OK&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// src/tinySIP/src/transports/tsip_transport.js
+function __tsip_transport_ws_onmessage(evt) {
+    tsk_utils_log_info(&amp;quot;__tsip_transport_ws_onmessage&amp;quot;);
+
+    var o_ragel_state = tsk_ragel_state_create();
+    if(typeof(evt.data) == &#39;string&#39;){
+        tsk_ragel_state_init_str(o_ragel_state, evt.data);
+    }
+    else{
+        tsk_ragel_state_init_ai(o_ragel_state, evt.data);
+    }
+    var o_message = tsip_message.prototype.Parse(o_ragel_state, true);
+
+    if (o_message) {
+        tsk_utils_log_info(&amp;quot;recv=&amp;quot; + o_message);
+        o_message.o_socket = this;
+        return this.o_transport.get_layer().handle_incoming_message(o_message);
+    }
+    else {
+        tsk_utils_log_error(&amp;quot;Failed to parse message: &amp;quot; + evt.data);
+        return -1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-2-呼叫&#34;&gt;3.2 呼叫&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下面关联文件主要是 &lt;code&gt;src/tinyMEDIA/src/tmedia_session_jsep.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3-2-1-呼叫过程中的-sdp-与流&#34;&gt;3.2.1 呼叫过程中的 SDP 与流&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;sequenceDiagram
+participant A as ClientA
+participant stu as STUN Server
+participant sig as Signal Server
+participant B as ClientB
+A -&amp;gt;&amp;gt; sig: 1. connect
+B -&amp;gt;&amp;gt; sig: 2. connect
+Note right of A: 3. Create PeerConnection
+Note right of A: 4. Add Streams
+Note right of A: 5. CreateOffer
+A -&amp;gt;&amp;gt; sig: 6. Send Offer SDP
+sig -&amp;gt;&amp;gt; B: 7. Relay Offer SDP
+Note right of B: 8. CreateAnswer
+B -&amp;gt;&amp;gt; sig: 9. Send Answer SDP
+sig -&amp;gt;&amp;gt; A: 10. Relay Answer SDP
+A -&amp;gt;&amp;gt; stu: 11. Ask my IP
+stu -&amp;gt;&amp;gt; A: 12. OnIceCandidate
+A -&amp;gt;&amp;gt; sig: 13. Send candidate
+sig -&amp;gt;&amp;gt; B: 14. Relay candidate
+Note right of B: 15. AddIceCandidate
+B -&amp;gt;&amp;gt; stu: 16. Ask my IP
+stu -&amp;gt;&amp;gt; B: 17. OnIceCandidate
+B -&amp;gt;&amp;gt; sig: 18. Send candidate
+sig -&amp;gt;&amp;gt; A: 19. Relay candidate
+A --&amp;gt; B: 20. P2P channel
+Note right of B: 21. OnAddStream
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add Streams：添加本地流，对应函数&lt;code&gt;onGetUserMediaSuccess&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果本地不推流，则注释掉 &lt;code&gt;This.o_pc.addStream(o_stream);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__get_lo&lt;/code&gt;：生成 SDP，在&lt;code&gt;onGetUserMediaSuccess&lt;/code&gt;调用&lt;code&gt;This.o_pc.createOffer&lt;/code&gt;会发送 SDP&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__set_ro&lt;/code&gt;：获得远端 SDP 后在此函数处理&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;subscribe_stream_events&lt;/code&gt;：接收远端发送的流，在此函数中调用&lt;code&gt;this.o_pc.onaddstream&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3-2-2-双向-默认&#34;&gt;3.2.2 双向(默认)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;音频(默认)：直接发送带音频的 SDP&lt;/li&gt;
+&lt;li&gt;音视频(默认)：直接发送带音视频的 SDP&lt;/li&gt;
+&lt;li&gt;视频：验证可以扩充视频功能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3-2-3-单向-可扩充&#34;&gt;3.2.3 单向(可扩充)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;音频：web 端对流只接收不发送，SDP 修改成 sendonly&lt;/li&gt;
+&lt;li&gt;音视频：web 端对流只接收不发送，SDP 修改成 sendonly&lt;/li&gt;
+&lt;li&gt;视频：验证可以扩充视频功能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-api&#34;&gt;4 API&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// initialize the engine, start the stack and make video call from bob to alice
+SIPml.init(
+    function(e){
+        var stack =  new SIPml.Stack({realm: &#39;example.org&#39;, impi: &#39;bob&#39;, impu: &#39;sip:bob@example.org&#39;, password: &#39;mysecret&#39;,
+            events_listener: { events: &#39;started&#39;, listener: function(e){
+                    var callSession = stack.newSession(&#39;call-audiovideo&#39;, {
+                            video_local: document.getElementById(&#39;video-local&#39;),
+                            video_remote: document.getElementById(&#39;video-remote&#39;),
+                            audio_remote: document.getElementById(&#39;audio-remote&#39;)
+                        }
+                    );
+                    callSession.call(&#39;alice&#39;);
+                }
+            }
+        });
+        stack.start();
+    }
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-1-类图&#34;&gt;4.1 类图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;classes.bmp&#34; alt=&#34;类图&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-2-初始化引擎&#34;&gt;4.2 初始化引擎&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// initialize the media and signaling engines
+var readyCallback = function(e){
+    createSipStack(); // see next section
+};
+var errorCallback = function(e){
+    console.error(&#39;Failed to initialize the engine: &#39; + e.message);
+}
+SIPml.init(readyCallback, errorCallback);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-3-创建-sip-栈&#34;&gt;4.3 创建 SIP 栈&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// created before any attempt to make/receive calls, send messages or manage presence
+var sipStack;
+var eventsListener = function(e){
+    if(e.type == &#39;started&#39;){
+        login();
+    }
+    else if(e.type == &#39;i_new_message&#39;){ // incoming new SIP MESSAGE (SMS-like)
+        acceptMessage(e);
+    }
+    else if(e.type == &#39;i_new_call&#39;){ // incoming audio/video call
+        acceptCall(e);
+    }
+}
+
+function createSipStack(){
+    sipStack = new SIPml.Stack({
+            realm: &#39;example.org&#39;, // mandatory: domain name
+            impi: &#39;bob&#39;, // mandatory: authorization name (IMS Private Identity)
+            impu: &#39;sip:bob@example.org&#39;, // mandatory: valid SIP Uri (IMS Public Identity)
+            password: &#39;mysecret&#39;, // optional
+            display_name: &#39;Bob legend&#39;, // optional
+            websocket_proxy_url: &#39;wss://sipml5.org:10062&#39;, // optional
+            outbound_proxy_url: &#39;udp://example.org:5060&#39;, // optional
+            enable_rtcweb_breaker: false, // optional
+            events_listener: { events: &#39;*&#39;, listener: eventsListener }, // optional: &#39;*&#39; means all events
+            sip_headers: [ // optional
+                { name: &#39;User-Agent&#39;, value: &#39;IM-client/OMA1.0 sipML5-v1.0.0.0&#39; },
+                { name: &#39;Organization&#39;, value: &#39;Doubango Telecom&#39; }
+            ]
+        }
+    );
+}
+sipStack.start(); // asynchronous function
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-4-注册-登录&#34;&gt;4.4 注册/登录&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var registerSession;
+var eventsListener = function(e){
+    console.info(&#39;session event = &#39; + e.type);
+    if(e.type == &#39;connected&#39; &amp;amp;&amp;amp; e.session == registerSession){
+        makeCall();
+        sendMessage();
+        publishPresence();
+        subscribePresence(&#39;johndoe&#39;); // watch johndoe&#39;s presence status change
+    }
+}
+var login = function(){
+    registerSession = sipStack.newSession(&#39;register&#39;, {
+        events_listener: { events: &#39;*&#39;, listener: eventsListener } // optional: &#39;*&#39; means all events
+    });
+    registerSession.register();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-5-创建-接收音频-视频会话&#34;&gt;4.5 创建/接收音频/视频会话&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var callSession;
+var eventsListener = function(e){
+    console.info(&#39;session event = &#39; + e.type);
+}
+var makeCall = function(){
+    callSession = sipStack.newSession(&#39;call-audiovideo&#39;, {
+        video_local: document.getElementById(&#39;video-local&#39;),
+        video_remote: document.getElementById(&#39;video-remote&#39;),
+        audio_remote: document.getElementById(&#39;audio-remote&#39;),
+        events_listener: { events: &#39;*&#39;, listener: eventsListener } // optional: &#39;*&#39; means all events
+    });
+    callSession.call(&#39;johndoe&#39;);
+}
+
+// to accept incoming audio/video call
+var acceptCall = function(e){
+    e.newSession.accept(); // e.newSession.reject() to reject the call
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-6-共享屏幕-桌面&#34;&gt;4.6 共享屏幕/桌面&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;类比上述创建视频会话，区别在于会话类型(&lt;code&gt;call-screenshare&lt;/code&gt;而不是&lt;code&gt;call-audiovideo&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;屏幕/桌面共享会话不包括音频流，所以在需要增加 SDP 的&lt;code&gt;m&lt;/code&gt;类型来发送音频&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/archive/p/sipml5/wikis/ScreenShare.wiki&#34; target=&#34;_blank&#34;&gt;关于浏览器设置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-7-发送-接收-sip-message-类似-sms&#34;&gt;4.7 发送/接收 SIP MESSAGE(类似 SMS)&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var messageSession;
+var eventsListener = function(e){
+    console.info(&#39;session event = &#39; + e.type);
+}
+var sendMessage = function(){
+    messageSession = sipStack.newSession(&#39;message&#39;, {
+        events_listener: { events: &#39;*&#39;, listener: eventsListener } // optional: &#39;*&#39; means all events
+    });
+    messageSession.send(&#39;johndoe&#39;, &#39;Pêche à la moule&#39;, &#39;text/plain;charset=utf-8&#39;);
+}
+
+// To accept incoming SIP MESSAGE
+var acceptMessage = function(e){
+    e.newSession.accept(); // e.newSession.reject(); to reject the message
+    console.info(&#39;SMS-content = &#39; + e.getContentString() + &#39; and SMS-content-type = &#39; + e.getContentType());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-8-发布存在状态&#34;&gt;4.8 发布存在状态&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var publishSession;
+var eventsListener = function(e){
+    console.info(&#39;session event = &#39; + e.type);
+}
+var publishPresence = function(){
+    publishSession = sipStack.newSession(&#39;publish&#39;, {
+        events_listener: { events: &#39;*&#39;, listener: eventsListener } // optional: &#39;*&#39; means all events
+    });
+    var contentType = &#39;application/pidf+xml&#39;;
+    var content = &#39;&amp;lt;?xml version=\&amp;quot;1.0\&amp;quot; encoding=\&amp;quot;UTF-8\&amp;quot;?&amp;gt;\n&#39; +
+                    &#39;&amp;lt;presence xmlns=\&amp;quot;urn:ietf:params:xml:ns:pidf\&amp;quot;\n&#39; +
+                        &#39; xmlns:im=\&amp;quot;urn:ietf:params:xml:ns:pidf:im\&amp;quot;&#39; +
+                        &#39; entity=\&amp;quot;sip:bob@example.com\&amp;quot;&amp;gt;\n&#39; +
+                        &#39;&amp;lt;tuple id=\&amp;quot;s8794\&amp;quot;&amp;gt;\n&#39; +
+                        &#39;&amp;lt;status&amp;gt;\n&#39;+
+                        &#39;   &amp;lt;basic&amp;gt;open&amp;lt;/basic&amp;gt;\n&#39; +
+                        &#39;   &amp;lt;im:im&amp;gt;away&amp;lt;/im:im&amp;gt;\n&#39; +
+                        &#39;&amp;lt;/status&amp;gt;\n&#39; +
+                        &#39;&amp;lt;contact priority=\&amp;quot;0.8\&amp;quot;&amp;gt;tel:+33600000000&amp;lt;/contact&amp;gt;\n&#39; +
+                        &#39;&amp;lt;note  xml:lang=\&amp;quot;fr\&amp;quot;&amp;gt;Bonjour de Paris :)&amp;lt;/note&amp;gt;\n&#39; +
+                        &#39;&amp;lt;/tuple&amp;gt;\n&#39; +
+                    &#39;&amp;lt;/presence&amp;gt;&#39;;
+
+    // send the PUBLISH request
+    publishSession.publish(content, contentType,{
+        expires: 200,
+        sip_caps: [
+            { name: &#39;+g.oma.sip-im&#39; },
+            { name: &#39;+sip.ice&#39; },
+            { name: &#39;language&#39;, value: &#39;\&amp;quot;en,fr\&amp;quot;&#39; }
+        ],
+        sip_headers: [
+            { name: &#39;Event&#39;, value: &#39;presence&#39; },
+            { name: &#39;Organization&#39;, value: &#39;Doubango Telecom&#39; }
+        ]
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-9-订阅存在状态&#34;&gt;4.9 订阅存在状态&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var subscribeSession;
+var eventsListener = function(e){
+    console.info(&#39;session event = &#39; + e.type);
+    if(e.type == &#39;i_notify&#39;){
+        console.info(&#39;NOTIFY content = &#39; + e.getContentString());
+        console.info(&#39;NOTIFY content-type = &#39; + e.getContentType());
+
+        if (e.getContentType() == &#39;application/pidf+xml&#39;) {
+            if (window.DOMParser) {
+                var parser = new DOMParser();
+                var xmlDoc = parser ? parser.parseFromString(e.getContentString(), &amp;quot;text/xml&amp;quot;) : null;
+                var presenceNode = xmlDoc ? xmlDoc.getElementsByTagName (&amp;quot;presence&amp;quot;)[0] : null;
+                if(presenceNode){
+                    var entityUri = presenceNode.getAttribute (&amp;quot;entity&amp;quot;);
+                    var tupleNode = presenceNode.getElementsByTagName (&amp;quot;tuple&amp;quot;)[0];
+                    if(entityUri &amp;amp;&amp;amp; tupleNode){
+                        var statusNode = tupleNode.getElementsByTagName (&amp;quot;status&amp;quot;)[0];
+                        if(statusNode){
+                            var basicNode = statusNode.getElementsByTagName (&amp;quot;basic&amp;quot;)[0];
+                            if(basicNode){
+                                console.info(&#39;Presence notification: Uri = &#39; + entityUri + &#39; status = &#39; + basicNode.textContent);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+var subscribePresence = function(to){
+    subscribeSession = sipStack.newSession(&#39;subscribe&#39;, {
+            expires: 200,
+            events_listener: { events: &#39;*&#39;, listener: eventsListener },
+            sip_headers: [
+                { name: &#39;Event&#39;, value: &#39;presence&#39; }, // only notify for &#39;presence&#39; events
+                { name: &#39;Accept&#39;, value: &#39;application/pidf+xml&#39; } // supported content types (COMMA-sparated)
+            ],
+            sip_caps: [
+                { name: &#39;+g.oma.sip-im&#39;, value: null },
+                { name: &#39;+audio&#39;, value: null },
+                { name: &#39;language&#39;, value: &#39;\&amp;quot;en,fr\&amp;quot;&#39; }
+            ]
+        }
+    );
+    // start watching for entity&#39;s presence status (You may track event type &#39;connected&#39; to be sure that the request has been accepted by the server)
+    subscribeSession.subscribe(to);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;5-浏览器-webrtc2sip-与服务器的信令交互流程&#34;&gt;5 浏览器、webrtc2sip 与服务器的信令交互流程&lt;/h2&gt;
+
+&lt;h3 id=&#34;5-1-注册流程&#34;&gt;5.1 注册流程&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;浏览器和 webrtc2sip 基于 HTTP 协议进行一次握手，建立 WebSocket 通道&lt;/li&gt;
+&lt;li&gt;浏览器和 webrtc2sip 通过 WebSocket 通道进行 SIP 消息交互&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;webrtc2sip 和 MCU 通过 UDP 进行 SIP 信息交互&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;sequenceDiagram
+participant wb as Web Browser
+participant w2s as webrtc2sip
+participant MCU
+wb -&amp;gt;&amp;gt; w2s: 1. WebSocket 请求 (HTTP)
+w2s -&amp;gt;&amp;gt; wb: 2. WebSocket 回复 (HTTP)
+wb --&amp;gt; w2s: 建立 WebSocket 通道
+wb -&amp;gt;&amp;gt; w2s: 3. Register (WS)
+w2s -&amp;gt;&amp;gt; MCU: 4. Register (UDP)
+MCU -&amp;gt;&amp;gt; w2s: 5. 100 Trying (UDP)
+w2s -&amp;gt;&amp;gt; wb: 6. 100 Trying (WS)
+MCU -&amp;gt;&amp;gt; w2s: 7. 401 Unauthorized (UDP)
+w2s -&amp;gt;&amp;gt; wb: 8. 401 Unauthorized (WS)
+wb -&amp;gt;&amp;gt; w2s: 9. Register (WS)
+w2s -&amp;gt;&amp;gt; MCU: 10. Register (UDP)
+MCU -&amp;gt;&amp;gt; w2s: 11. 100 Trying (UDP)
+w2s -&amp;gt;&amp;gt; wb: 12. 100 Trying (WS)
+MCU -&amp;gt;&amp;gt; w2s: 13. 200 OK (UDP)
+w2s -&amp;gt;&amp;gt; wb: 14. 200 OK (WS)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;5-2-主叫流程&#34;&gt;5.2 主叫流程&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&amp;gt; w2s: 建立 WebSocket 通道
+  wb -&amp;gt;&amp;gt; w2s: 1. INVITE (WS)
+  w2s -&amp;gt;&amp;gt; MCU: 2. INVITE (UDP)
+  MCU -&amp;gt;&amp;gt; w2s: 3. 100 Trying (UDP)
+  w2s -&amp;gt;&amp;gt; wb: 4. 100 Trying (WS)
+  w2s -&amp;gt;&amp;gt; wb: 5. 180 Ringing (WS)
+  MCU -&amp;gt;&amp;gt; w2s: 6. 200 OK (UDP)
+  w2s -&amp;gt;&amp;gt; wb: 7. 200 OK (WS)
+  wb -&amp;gt;&amp;gt; w2s: 8. ACK (WS)
+  w2s -&amp;gt;&amp;gt; MCU: 9. ACK (UDP)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;5-3-被叫流程&#34;&gt;5.3 被叫流程&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&amp;gt; w2s: 建立 WebSocket 通道
+  MCU -&amp;gt;&amp;gt; w2s: 1. INVITE (UDP)
+  w2s -&amp;gt;&amp;gt; wb: 2. INVITE (WS)
+  wb -&amp;gt;&amp;gt; w2s: 3. 100 Trying (WS)
+  w2s -&amp;gt;&amp;gt; MCU: 4. 100 Trying (UDP)
+  wb -&amp;gt;&amp;gt; w2s: 5. 180 Ringing (WS)
+  w2s -&amp;gt;&amp;gt; MCU: 6. 180 Ringing (UDP)
+  wb -&amp;gt;&amp;gt; w2s: 7. 200 OK (WS)
+  w2s -&amp;gt;&amp;gt; MCU: 8. 200 OK (UDP)
+  MCU -&amp;gt;&amp;gt; w2s: 9. ACK (UDP)
+  w2s -&amp;gt;&amp;gt; wb: 10. ACK (WS)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;5-4-终端挂断流程&#34;&gt;5.4 终端挂断流程&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&amp;gt; w2s: 建立 WebSocket 通道
+  wb -&amp;gt;&amp;gt; w2s: 1. BYE (WS)
+  w2s -&amp;gt;&amp;gt; MCU: 2. BYE (UDP)
+  MCU -&amp;gt;&amp;gt; w2s: 3. 100 Trying (UDP)
+  MCU -&amp;gt;&amp;gt; w2s: 4. 200 OK (UDP)
+  w2s -&amp;gt;&amp;gt; wb: 5. 200 OK (WS)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;5-5-mcu-挂断流程&#34;&gt;5.5 MCU 挂断流程&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&amp;gt; w2s: 建立 WebSocket 通道
+  MCU -&amp;gt;&amp;gt; w2s: 1. BYE (UDP)
+  w2s -&amp;gt;&amp;gt; wb: 2. BYE (WS)
+  wb -&amp;gt;&amp;gt; w2s: 3. 200 OK (WS)
+  w2s -&amp;gt;&amp;gt; MCU: 4. 200 OK (UDP)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;5-6-注销流程&#34;&gt;5.6 注销流程&lt;/h3&gt;
+
+&lt;p&gt;类比注册流程，但是 Contact 头域的 expires 设置为 0&lt;/p&gt;
+
+&lt;h2 id=&#34;6-问题&#34;&gt;6 问题&lt;/h2&gt;
+
+&lt;h3 id=&#34;6-1-安全机制&#34;&gt;6.1 安全机制&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;sipML5 基于 WebRTC 和 WebSocket，所以需要浏览器支持二者&lt;/li&gt;
+&lt;li&gt;sipML5 在进行呼叫业务需要借助 WebRTC 访问本地摄像头，所以涉及到安全机制
+
+&lt;ul&gt;
+&lt;li&gt;一般需要 https 部署访问&lt;/li&gt;
+&lt;li&gt;如果没有 https，只能用 localhost 呼叫业务，或者用 Firefox 浏览器呼叫业务(Firefox 解除了 https 的安全机制)。但是 Firefox 不同版本对于 sipML5 的支持可能存在一些问题&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;6-2-信令兼容&#34;&gt;6.2 信令兼容&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SDP 的描述需要兼容
+
+&lt;ul&gt;
+&lt;li&gt;webrtc2sip 中，INVITE 携带的 SDP 的 m 字段必须与 200 OK 所携带的 SDP 的 m 字段一一对应，否则建立会话但不会处理流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;webrtc2sip 与 SIP 网关的 SIP 信令存在差异，可在二者之间添加 SIP 代理&lt;/li&gt;
+&lt;li&gt;webrtc2sip 中，如果 SDP 的端口对应 sendrecv，根据 RFC 规范，对于 SIP 客户端发过来的 RTP 和 RTCP 流会进行端口重设，之后 webrtc2sip将流推送到重新设置的端口，即把流推送到 SIP 客户端的发送端口，可注释重设端口的代码&lt;/li&gt;
+&lt;li&gt;播放音频没有声音：可能是音频采样率的原因，在代码中重设音频采样率&lt;/li&gt;
+&lt;li&gt;会话建立后，SIP 客户端可能 20s 后才显示画面：会话没完全建立时，I 帧已经发生但是未与 SIP 客户端成功建立会话导致 I 帧丢失，要在编码单元设置 I 帧间隔&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-源码发布&#34;&gt;7 源码发布&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;环境：ubuntu16.04&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-1-安装-java&#34;&gt;7.1 安装 java&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 在终端输入 java, 如果未安装会提示可选择的安装包
+sudo apt-get install openjdk-8-jre-headless
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;7-2-发布&#34;&gt;7.2 发布&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 执行工程中的脚本文件 release.sh
+./release.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;8-参考&#34;&gt;8 参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.doubango.org/sipml5/&#34; target=&#34;_blank&#34;&gt;sipML5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/chenhande1990chenhan/article/details/76144844&#34; target=&#34;_blank&#34;&gt;web浏览器无插件播放实时音视频技术&amp;mdash;sipML5(二)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/chenhande1990chenhan/article/details/76291174&#34; target=&#34;_blank&#34;&gt;web浏览器无插件播放实时音视频技术&amp;mdash;webrtc2sip 与 第三方 SIP 网关对接(五)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WebRTC 学习</title>
+      <link>https://xueqing.github.io/blog/webrtc/webrtc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/webrtc/webrtc/</guid>
+      <description>
+
+&lt;h2 id=&#34;简述&#34;&gt;简述&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WebRTC，即网络实时通信(Web Real Time Communication)。最初是为了解决浏览器上视频通话提出，即两个浏览器直接进行视频和音频通信，而不经过服务器。现在还可以传输文字和其他数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;apis&#34;&gt;APIS&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;三个主要任务
+
+&lt;ul&gt;
+&lt;li&gt;获得音频和视频&lt;/li&gt;
+&lt;li&gt;音频和视频通信&lt;/li&gt;
+&lt;li&gt;任意数据通信&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;三个 JS APIs
+
+&lt;ul&gt;
+&lt;li&gt;MediaStream(也叫 getUserMedia)&lt;/li&gt;
+&lt;li&gt;RTCPeerConnection&lt;/li&gt;
+&lt;li&gt;RTCDataChannel&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;mediastream&#34;&gt;MediaStream&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;访问音频或/和视频流&lt;/li&gt;
+&lt;li&gt;可以包含多个 track(轨)
+
+&lt;ul&gt;
+&lt;li&gt;数据流对象&lt;code&gt;stream&lt;/code&gt;包含方法获取音轨和视轨&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stream.getAudioTracks&lt;/code&gt;返回数组，成员是数据流包含的音轨。使用的声音源的数量决定音轨的数量&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stream.getVideoTracks&lt;/code&gt;返回数组，成员是数据流包含的视轨。使用的摄像头的数量决定视轨的数量&lt;/li&gt;
+&lt;li&gt;每个音轨和视轨有两个属性：&lt;code&gt;kind&lt;/code&gt;表示种类，即&lt;code&gt;video/audio&lt;/code&gt;；&lt;code&gt;label&lt;/code&gt;表示唯一的标识&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;通过&lt;code&gt;navigator.getUserMedia()&lt;/code&gt;获得一个 MediaStream&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var constraints = {video : true};
+
+function successCallback(stream) {
+// 返回文档中匹配指定 CSS 选择器的一个元素。
+var video = document.querySelector(&amp;quot;video&amp;quot;);
+// 生成能在 video 中使用 src 属性播放的 URL
+video.src = window.URL.createObjectURL(stream);
+}
+
+function errorCallback(error) {
+console.log(&amp;quot;navigator.getUserMedia error: &amp;quot;, error);
+}
+
+// 第一个参数：一个约束对象，表示要获取哪些多媒体设备。此处表示获取视频
+// 第二个参数：回调函数，在获取多媒体设备成功时调用，传递给它一个 Stream 对象
+// 第三个参数：回调函数，在获取多媒体设备失败时调用，传递给它一个 Error 对象
+navigator.getUserMedia(constraints, successCallback, errorCallback);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果网页使用了&lt;code&gt;getUserMedia&lt;/code&gt;方法，浏览器会询问用户，是否同意浏览器调用麦克风或摄像头：用户同意则调用回调函数&lt;code&gt;successCallback&lt;/code&gt;，否则调用&lt;code&gt;errorCallback&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;errorCallback&lt;/code&gt;接收一个&lt;code&gt;Error&lt;/code&gt;对象，&lt;code&gt;Error&lt;/code&gt;对象的&lt;code&gt;code&lt;/code&gt;属性取值说明错误类型&lt;/li&gt;
+&lt;li&gt;PERMISSION_DENIED：用户拒绝调用设备&lt;/li&gt;
+&lt;li&gt;NOT_SUPPORTED_ERROR：浏览器不支持硬件设备&lt;/li&gt;
+&lt;li&gt;MANDATORY_UNSATISFIED_ERROR：无法发现指定的硬件设备&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;约束对象-constraints&#34;&gt;约束对象&lt;code&gt;Constraints&lt;/code&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;控制 MediaStream 的内容，包括媒体类型、分辨率、帧率&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;video&lt;/td&gt;
+&lt;td&gt;是否接受视频流&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;audio&lt;/td&gt;
+&lt;td&gt;是否接受音频流&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minWidth&lt;/td&gt;
+&lt;td&gt;视频流的最小宽度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxWidth&lt;/td&gt;
+&lt;td&gt;视频流的最大宽度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minHeight&lt;/td&gt;
+&lt;td&gt;视频流的最小高度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxHeight&lt;/td&gt;
+&lt;td&gt;视频流的最大高度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minAspectRatio&lt;/td&gt;
+&lt;td&gt;视频流的最小宽高比&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxAspectRatio&lt;/td&gt;
+&lt;td&gt;视频流的最大宽高比&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minFramerate&lt;/td&gt;
+&lt;td&gt;视频流的最小帧速率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxFrameRate&lt;/td&gt;
+&lt;td&gt;视频流的最大帧速率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;  video: {
+    mandatory: {
+      minWidth: 640,
+      minHeight: 360
+    },
+    optional [{
+      minWidth: 1280,
+      minHeight: 720
+    }]
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;获取音频&#34;&gt;获取音频&lt;/h4&gt;
+
+&lt;p&gt;使用&lt;code&gt;getUserMedia&lt;/code&gt;+&lt;code&gt;Web Audio&lt;/code&gt;获取音频&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// 获取音频输入成功的回调函数
+function gotStream(stream) {
+  var audioContext = new webkitAudioContext();
+  // 为输入流创建一个 AudioNode
+  var mediaStreamSource = audioContext.createMediaStreamSource(stream);
+  // 连接到目的地或其他节点以处理
+  mediaStreamSource.connect(audioContext.destination);
+}
+
+navigator.webkitGetUserMedia({audio:true}, gotStream);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;rtcpeerconnection&#34;&gt;RTCPeerConnection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;点到点(peer to peer)音频和视频通信，包括信号处理、多媒体编解码处理、端到端通信、安全性、带宽管理等&lt;/li&gt;
+&lt;li&gt;不同客户端直接的音频、视频传递不用通过服务器中转。但是，两个客户端需要通过服务器建立联系
+
+&lt;ul&gt;
+&lt;li&gt;服务器为 WebRTC 提供 4 个方面的支持&lt;/li&gt;
+&lt;li&gt;用户发现以及通信&lt;/li&gt;
+&lt;li&gt;信令传输&lt;/li&gt;
+&lt;li&gt;NAT/防火墙穿越&lt;/li&gt;
+&lt;li&gt;点对点通信建立失败时作为中转服务器
+&lt;img src=&#34;https://xueqing.github.io/blog/webrtc/images/webrtcArchitecture.png&#34; alt=&#34;WebRTC 架构&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;RTCPeerConnection&lt;/code&gt;例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// 创建 RTCPeerConnection 实例
+pc = new RTCPeerConnection(null);
+// 如果检测到媒体流连接到本地，调用此函数
+pc.onaddstream = gotRemoteStream;
+// 向 RTCPeerConnection 中加入需要发送的流
+pc.addStream(localStream);
+// 作为发送方，创建并发送一个 offer 信令
+pc.createOffer(gotOffer);
+
+// 发送 offer 的函数，发送本地 session 描述
+function gotOffer(desc) {
+pc.setLocalDescription(desc);
+sendOffer(desc);
+}
+
+// 得到 answer 之后，保存远端的 session 描述
+function gotAnswer(desc) {
+pc.setRemoteDescription(desc);
+}
+
+function gotRemoteStream(e) {
+attachMediaStream(remoteVideo, e.stream);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;rtcdataconnection&#34;&gt;RTCDataConnection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持点到点交换任意数据，包括和 WebSockets 一样的 API、超低延迟、高吞吐、可靠或不可靠、安全性&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API 例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var pc = new webkitRTCPeerConnection(servers,
+{optional: [{RtpDataChannels: true}]});
+
+pc.ondatachannel = function(event) {
+receiveChannel = event.channel;
+receiveChannel.onmessage = function(event) {
+document.querySelector(&amp;quot;div#receiver&amp;quot;).innerHTML = event.data;
+};
+};
+
+sendChannel = pc.createDataChannel(&amp;quot;sendDataChannel&amp;quot;, {reliable: false});
+
+document.querySelector(&amp;quot;button#send&amp;quot;).onlick = function() {
+var data = document.querySelector(&amp;quot;textarea#send&amp;quot;).value;
+sendChannel.send(data);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;服务器和协议&#34;&gt;服务器和协议&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WebRTC 使用 RTCPeerConnection 在浏览器(即 peers)之间传递流数据，但仍然需要服务器来为我们传递信令(signaling)来建立这个信道&lt;/li&gt;
+&lt;li&gt;WebRTC 没有定义信令的方法和协议，信令并不是 RTCPeerConnection API 的一部分&lt;/li&gt;
+&lt;li&gt;开发者可以选择采用任意的消息协议(SIP/XMPP)和任意的双工通信通道&lt;/li&gt;
+&lt;li&gt;信令用于交换三种消息
+
+&lt;ul&gt;
+&lt;li&gt;会话控制消息：初始化或关闭通信，报告错误&lt;/li&gt;
+&lt;li&gt;网络配置：告诉外部世界我的电脑的 IP 地址和端口&lt;/li&gt;
+&lt;li&gt;媒体能力：我的浏览器可以处理的编解码和分辨率，以及浏览器想要通讯的媒体格式
+&lt;img src=&#34;https://xueqing.github.io/blog/webrtc/images/jsep.png&#34; alt=&#34;信号图解&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;nat和防火墙穿越&#34;&gt;NAT和防火墙穿越&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;STUN
+
+&lt;ul&gt;
+&lt;li&gt;告诉我我的公共 IP 地址是什么&lt;/li&gt;
+&lt;li&gt;简单的服务器，容易穿越&lt;/li&gt;
+&lt;li&gt;点到点的数据流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;TURN(Traversal Using Delay NAT，中继 NAT 实现的穿透)
+
+&lt;ul&gt;
+&lt;li&gt;如果点到点通讯失败，提供一个云回退&lt;/li&gt;
+&lt;li&gt;数据通过服务器发送，使用服务器的带宽&lt;/li&gt;
+&lt;li&gt;确保所有环境的呼叫工作&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ICE(Interactive Connectivity Establishment，交互式连接建立)
+
+&lt;ul&gt;
+&lt;li&gt;一个点到点连接的框架，可以整个各种 NAT 穿越技术&lt;/li&gt;
+&lt;li&gt;尝试为每个呼叫找到最好的路径&lt;/li&gt;
+&lt;li&gt;大部分的呼叫可以使用 STUN，少部分使用 TURN，即中继的呼叫&lt;/li&gt;
+&lt;li&gt;优先使用 STUN，尝试建立一个基于 UDP 的连接，如果失败则尝试 TCP(先尝试 HTTP，再尝试 HTTPS)，仍然失败则使用一个中级的 TURN 服务器&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;js-框架&#34;&gt;JS 框架&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;视频聊天
+
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/andyet/SimpleWebRTC&#34; alt=&#34;SimpleWebRTC&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/priologic/easyrtc&#34; alt=&#34;easyRTC&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/webRTC-io/webRTC.io&#34; alt=&#34;webRTC.io&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;点到点数据传输
+
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&#34;https://peerjs.com/&#34; alt=&#34;PeerJS&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/peer5/sharefest&#34; alt=&#34;Sharefest&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.html5rocks.com/en/tutorials/webrtc/basics/&#34; target=&#34;_blank&#34;&gt;Getting Started with WebRTC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>webrtc2sip</title>
+      <link>https://xueqing.github.io/blog/webrtc/sip/webrtc2sip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/webrtc/sip/webrtc2sip/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%e6%9c%af%e8%af%ad&#34;&gt;1 术语&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-webrtc2sip-%e6%9e%b6%e6%9e%84&#34;&gt;2 webrtc2sip 架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-webrtc2sip-%e9%85%8d%e7%bd%ae&#34;&gt;3 webrtc2sip 配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%e7%bc%96%e8%af%91%e6%ba%90%e7%a0%81&#34;&gt;4 编译源码&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e7%bc%96%e8%af%91-doubango-ims-framework&#34;&gt;4.1 编译 Doubango IMS Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#411-%e7%bc%96%e8%af%91-libsrtp&#34;&gt;4.1.1 编译 libsrtp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#412-%e7%bc%96%e8%af%91-openssl&#34;&gt;4.1.2 编译 OpenSSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#413-%e7%bc%96%e8%af%91-libspeex-%e5%92%8c-libspeexdsp&#34;&gt;4.1.3 编译 libspeex 和 libspeexdsp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#414-%e7%bc%96%e8%af%91-yasm&#34;&gt;4.1.4 编译 YASM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#415-%e7%bc%96%e8%af%91-libvpx&#34;&gt;4.1.5 编译 libvpx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#416-%e7%bc%96%e8%af%91-linyuv&#34;&gt;4.1.6 编译 linyuv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#417-%e7%bc%96%e8%af%91-opencore-amr&#34;&gt;4.1.7 编译 opencore-amr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#418-%e7%bc%96%e8%af%91-libopus&#34;&gt;4.1.8 编译 libopus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#419-%e7%bc%96%e8%af%91-libgsm&#34;&gt;4.1.9 编译 libgsm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4110-%e7%bc%96%e8%af%91-g729&#34;&gt;4.1.10 编译 g729&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4111-%e7%bc%96%e8%af%91-ilbc&#34;&gt;4.1.11 编译 iLBC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4112-%e7%bc%96%e8%af%91-x264&#34;&gt;4.1.12 编译 x264&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4113-%e7%bc%96%e8%af%91-ffmpeg&#34;&gt;4.1.13 编译 FFMpeg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4114-%e7%bc%96%e8%af%91-doubango&#34;&gt;4.1.14 编译 Doubango&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e7%bc%96%e8%af%91-webrtc2sip-%e5%92%8c%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93&#34;&gt;4.2 编译 webrtc2sip 和第三方库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e8%bf%90%e8%a1%8c-webrtc2sip&#34;&gt;4.3 运行 webrtc2sip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-%e6%b5%8b%e8%af%95%e7%bd%91%e5%85%b3&#34;&gt;5 测试网关&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#51-%e6%9c%ac%e5%9c%b0%e6%b5%8b%e8%af%95-sipml5-%e5%92%8c-webrtc2sip&#34;&gt;5.1 本地测试 sipML5 和 webrtc2sip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%e4%ba%92%e6%93%8d%e4%bd%9c%e6%80%a7&#34;&gt;6 互操作性&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#61-%e5%85%b3%e4%ba%8e%e6%9c%8d%e5%8a%a1&#34;&gt;6.1 关于服务&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#611-asterisk&#34;&gt;6.1.1 Asterisk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#612-freeswitch&#34;&gt;6.1.2 FreeSwitch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#62-%e5%85%b3%e4%ba%8e-web-%e6%b5%8f%e8%a7%88%e5%99%a8&#34;&gt;6.2 关于 web 浏览器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#621-chrome&#34;&gt;6.2.1 Chrome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#622-firefox-nightly&#34;&gt;6.2.2 Firefox Nightly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#623-firefoxsafariie-%e5%92%8c-opera&#34;&gt;6.2.3 Firefox，Safari，IE 和 Opera&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#624-ericsson-bowser&#34;&gt;6.2.4 Ericsson Bowser&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#7-%e5%ae%89%e5%85%a8%e9%97%ae%e9%a2%98&#34;&gt;7 安全问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#8-%e4%b8%80%e4%ba%9b%e7%bc%96%e8%af%91%e9%97%ae%e9%a2%98&#34;&gt;8 一些编译问题&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#81-webrtc2sip-%e7%bc%96%e8%af%91%e5%87%ba%e9%94%99&#34;&gt;8.1 webrtc2sip 编译出错&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#82-%e8%a7%86%e9%a2%91%e7%bc%96%e8%a7%a3%e7%a0%81%e5%b4%a9%e6%ba%83&#34;&gt;8.2 视频编解码崩溃&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#83-webrtc2sip-%e9%a1%b9%e7%9b%ae%e9%85%8d%e7%bd%ae&#34;&gt;8.3 webrtc2sip 项目配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#84-%e5%85%b3%e4%ba%8e-sipml5-%e6%9c%8d%e5%8a%a1&#34;&gt;8.4 关于 sipML5 服务&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#841-webrtc2sip-%e8%a7%a3%e6%9e%90-sipml5-%e8%af%b7%e6%b1%82%e5%a4%b1%e8%b4%a5&#34;&gt;8.4.1 webrtc2sip 解析 sipML5 请求失败&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#85-%e5%85%b3%e4%ba%8e-chrome-%e4%bd%bf%e7%94%a8&#34;&gt;8.5 关于 Chrome 使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#86-%e5%ae%88%e6%8a%a4%e8%bf%9b%e7%a8%8b&#34;&gt;8.6 守护进程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#9-%e8%bf%90%e8%a1%8c%e9%97%ae%e9%a2%98&#34;&gt;9 运行问题&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#91-errsslversionorciphermismatch&#34;&gt;9.1 ERR_SSL_VERSION_OR_CIPHER_MISMATCH&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#10-%e5%8f%82%e8%80%83&#34;&gt;10 参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-术语&#34;&gt;1 术语&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;RTC&lt;/td&gt;
+&lt;td&gt;real-time communication&lt;/td&gt;
+&lt;td&gt;实时通信&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;W3C&lt;/td&gt;
+&lt;td&gt;world wide web consortium&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SIP&lt;/td&gt;
+&lt;td&gt;session initiation protocol&lt;/td&gt;
+&lt;td&gt;会话初始协议&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;VoIP&lt;/td&gt;
+&lt;td&gt;voice over IP&lt;/td&gt;
+&lt;td&gt;网络电话&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;IMS&lt;/td&gt;
+&lt;td&gt;IP multimedia subsystem&lt;/td&gt;
+&lt;td&gt;多媒体子系统&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;LTE&lt;/td&gt;
+&lt;td&gt;long term evolution&lt;/td&gt;
+&lt;td&gt;长期演进技术&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PSTN&lt;/td&gt;
+&lt;td&gt;public switched telephone networks&lt;/td&gt;
+&lt;td&gt;公共交换电话网&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SMS&lt;/td&gt;
+&lt;td&gt;short message service&lt;/td&gt;
+&lt;td&gt;短信服务&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ICE&lt;/td&gt;
+&lt;td&gt;Internet communication engine&lt;/td&gt;
+&lt;td&gt;互联网通讯引擎&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DTLS&lt;/td&gt;
+&lt;td&gt;datagram transport layer security&lt;/td&gt;
+&lt;td&gt;数据报传输层安全&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SRTP&lt;/td&gt;
+&lt;td&gt;secure real-time transport protocol&lt;/td&gt;
+&lt;td&gt;安全实时传输协议&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;AoR&lt;/td&gt;
+&lt;td&gt;address of record&lt;/td&gt;
+&lt;td&gt;地址记录&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;b2bua&lt;/td&gt;
+&lt;td&gt;back to back user agent&lt;/td&gt;
+&lt;td&gt;背对背用户代理&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MTI&lt;/td&gt;
+&lt;td&gt;mandatory to implement&lt;/td&gt;
+&lt;td&gt;命令到实现&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;WSS&lt;/td&gt;
+&lt;td&gt;secure websocket&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;AMR&lt;/td&gt;
+&lt;td&gt;adaptive multi rate&lt;/td&gt;
+&lt;td&gt;自适应多速率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GSM&lt;/td&gt;
+&lt;td&gt;global system for mobile&lt;/td&gt;
+&lt;td&gt;全球移动通讯系统&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-webrtc2sip-架构&#34;&gt;2 webrtc2sip 架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTML SIP 客户端：使用 &lt;a href=&#34;https://www.doubango.org/sipml5/&#34; target=&#34;_blank&#34;&gt;sipML5&lt;/a&gt; 实现&lt;/li&gt;
+&lt;li&gt;网关包括 4 个模块
+
+&lt;ul&gt;
+&lt;li&gt;SIP Proxy：把来自 WebSocket 的 SIP 传输转换成 UDP/TCP/TLS 等传统 SIP 网络支持的协议&lt;/li&gt;
+&lt;li&gt;如果后台服务支持通过 WebSocket 的 SIP 协议，可以跨过这个模块直接与客户端连接&lt;/li&gt;
+&lt;li&gt;如果使用 RTCWeb Breaker 或 Media Coder 模块，则建议使用此模块&lt;/li&gt;
+&lt;li&gt;RTCWeb Breaker&lt;/li&gt;
+&lt;li&gt;RTCWeb支持 ICE 和 DTLS/SRTP，而传统的 SIP 终端不支持&lt;/li&gt;
+&lt;li&gt;RTCWeb Breaker 转换媒体流以协商两种媒体方式&lt;/li&gt;
+&lt;li&gt;默认是不使用 RTCWeb Breaker，需要客户端再注册之前启用
+
+&lt;ul&gt;
+&lt;li&gt;在 URI 参数中包含&amp;rdquo;rtcweb-breaker=true&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Media Coder&lt;/li&gt;
+&lt;li&gt;Chrome 使用 VP8 的视频编解码，Bowser 使用 H.264 AVC&lt;/li&gt;
+&lt;li&gt;Media Coder 使得可以在 Chrome 和 Bowser 直接建立视频会话&lt;/li&gt;
+&lt;li&gt;可使用 xml 配置文件启用 Media Coder，同时需要启用 RTCWeb breaker 模块&lt;/li&gt;
+&lt;li&gt;click-to-call service&lt;/li&gt;
+&lt;li&gt;基于其他三个模块的完整 SIP click-to-call 解决方案&lt;/li&gt;
+&lt;li&gt;允许通过一个链接直接打电话&lt;/li&gt;
+&lt;li&gt;包括 4 个组件
+
+&lt;ul&gt;
+&lt;li&gt;SMTP Client：为新注册的用户发送激活链接的邮件&lt;/li&gt;
+&lt;li&gt;HTTPS Server：交换浏览器和 click-to-call 服务之间的内容&lt;/li&gt;
+&lt;li&gt;Database connector：连接数据库的接口&lt;/li&gt;
+&lt;li&gt;JSON API：用于认证用户和管理用户账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-webrtc2sip-配置&#34;&gt;3 webrtc2sip 配置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;网关使用 &lt;code&gt;config.xml&lt;/code&gt; 文件进行配置，和网关的运行目录相同&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-编译源码&#34;&gt;4 编译源码&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;基于 CentOS 64，也可在 Linux，Windows 或 OS X 环境编译&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 准备系统
+sudo yum update
+sudo yum install make libtool autoconf subversion git cvs wget libogg-devel gcc gcc-c++ pkgconfig
+sudo yum install nasm
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ubuntu 环境下错误&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# E: Unable to locate package libogg-devel
+sudo apt-get install libogg-dev
+# E: Unable to locate package gcc-c+
+# E: Couldn&#39;t find any package by regex &#39;gcc-c+&#39;
+sudo apt-get install g++
+# E: Unable to locate package pkgconfig
+sudo apt-get install pkg-config
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-编译-doubango-ims-framework&#34;&gt;4.1 编译 Doubango IMS Framework&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://code.google.com/archive/p/doubango/&#34; target=&#34;_blank&#34;&gt;Doubango IMS Framework&lt;/a&gt; 包含所有的信号协议(SIP/SDP/WebSocket 等)和媒体引擎(RTP 栈/音视频编解码)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 检出 Doubango 2.0 的源码
+svn checkout https://doubango.googlecode.com/svn/branches/2.0/doubango doubango
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ubuntu 环境下错误&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# svn: E170013: Unable to connect to a repository at URL &#39;https://doubango.googlecode.com/svn/branches/2.0/doubango&#39;
+# svn: E000110: Error running context: Connection timed out
+wget https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/webrtc2sip/source-archive.zip
+## git 仓库没有 2.0 分支
+##git clone https://github.com/DoubangoTelecom/doubango.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-1-编译-libsrtp&#34;&gt;4.1.1 编译 libsrtp&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+git clone https://github.com/cisco/libsrtp/
+cd libsrtp
+git checkout v1.5.0
+CFLAGS=&amp;quot;-fPIC&amp;quot; ./configure --enable-pic &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;4-1-2-编译-openssl&#34;&gt;4.1.2 编译 OpenSSL&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果使用 RTCWeb Breaker 模块或者 WSS，需要 OpenSSL&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果需要支持 DTLS-SRTP，需要 OpenSSL 1.0.1 版本&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 检查版本
+openssl version
+# 源码编译安装
+wget http://www.openssl.org/source/openssl-1.0.1c.tar.gz
+tar -xvzf openssl-1.0.1c.tar.gz
+cd openssl-1.0.1c
+./config shared --prefix=/usr/local --openssldir=/usr/local/openssl &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;编译错误&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# installing man1/cms.1
+# cms.pod around line 457: Expected text after =item, not a number
+# cms.pod around line 461: Expected text after =item, not a number
+sudo make install_sw
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-3-编译-libspeex-和-libspeexdsp&#34;&gt;4.1.3 编译 libspeex 和 libspeexdsp&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;libspeex(音频编解码) 和 libspeexdsp(音频处理和抖动缓冲区)是可选的，建议启用 libspeexdsp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 命令行安装 dev 包
+sudo yum install speex-devel
+# 源码编译安装
+wget http://downloads.xiph.org/releases/speex/speex-1.2beta3.tar.gz
+tar -xvzf speex-1.2beta3.tar.gz
+cd speex-1.2beta3
+./configure --disable-oggtest --without-libogg &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ubuntu 环境&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# E: Unable to locate package speex-devel
+sudo apt-get install libspeex-dev
+sudo apt-get install libspeexdsp-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-4-编译-yasm&#34;&gt;4.1.4 编译 YASM&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;如果要使能 VPX(VP8 视频编解码) 或 x264(H.264 编解码)，需要 YASM&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
+tar -xvzf yasm-1.2.0.tar.gz
+cd yasm-1.2.0
+./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-5-编译-libvpx&#34;&gt;4.1.5 编译 libvpx&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;libvpx 支持 VP8，是可选的，但是如果需要使用 Chrome 或 Firefox 的视频会话，推荐编译&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 命令行安装 dev 包
+sudo yum install libvpx-devel
+# 源码编译安装
+git clone http://git.chromium.org/webm/libvpx.git
+cd libvpx
+./configure --enable-realtime-only --enable-error-concealment --disable-examples --enable-vp8 --enable-pic --enable-shared --as=yasm
+make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ubuntu 环境&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# E: Unable to locate package libvpx-devel
+sudo apt-get install libvpx-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-6-编译-linyuv&#34;&gt;4.1.6 编译 linyuv&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;libyuv 可选，支持视频缩放和 chroma 转换&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+mkdir libyuv &amp;amp;&amp;amp; cd libyuv
+svn co http://src.chromium.org/svn/trunk/tools/depot_tools .
+./gclient config http://libyuv.googlecode.com/svn/trunk
+./gclient sync &amp;amp;&amp;amp; cd trunk
+make -j6 V=1 -r libyuv BUILDTYPE=Release
+make -j6 V=1 -r libjpeg BUILDTYPE=Release
+cp out/Release/obj.target/libyuv.a /usr/local/lib
+cp out/Release/obj.target/third_party/libjpeg_turbo/libjpeg_turbo.a /usr/local/lib
+mkdir --parents /usr/local/include/libyuv/libyuv
+cp -rf include/libyuv.h /usr/local/include/libyuv
+cp -rf include/libyuv/*.h /usr/local/include/libyuv/libyuv
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;svn 源码仓库克隆失败，跳过&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;查找到资料：&lt;a href=&#34;https://chromium.googlesource.com/libyuv/libyuv/+/master/docs/getting_started.md&#34; target=&#34;_blank&#34;&gt;安装 libyuv&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-7-编译-opencore-amr&#34;&gt;4.1.7 编译 opencore-amr&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;opencore-amr 可选，支持 AMR 音频编解码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+git clone git://opencore-amr.git.sourceforge.net/gitroot/opencore-amr/opencore-amr
+cd opencore-amr
+autoreconf --install &amp;amp;&amp;amp; ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-8-编译-libopus&#34;&gt;4.1.8 编译 libopus&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;libopus 是用于 WebRTC 的 MTI 编解码，可选但建议使用，支持 Opus 音频编解码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+wget http://downloads.xiph.org/releases/opus/opus-1.0.2.tar.gz
+tar -xvzf opus-1.0.2.tar.gz
+cd opus-1.0.2
+./configure --with-pic --enable-float-approx &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-9-编译-libgsm&#34;&gt;4.1.9 编译 libgsm&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;libgsm 可选，支持 GSM 音频编解码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 命令行安装 dev 包(建议)
+sudo yum install gsm-devel
+# 源码编译安装
+wget http://www.quut.com/gsm/gsm-1.0.13.tar.gz
+tar -xvzf gsm-1.0.13.tar.gz
+cd gsm-1.0-pl13 &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install
+#cp -rf ./inc/* /usr/local/include
+#cp -rf ./lib/* /usr/local/lib
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ubuntu 环境&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# E: Unable to locate package gsm-devel
+sudo apt-get install libgsm1-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-10-编译-g729&#34;&gt;4.1.10 编译 g729&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;G729 可选，支持 G.729 音频编解码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+svn co http://g729.googlecode.com/svn/trunk/ g729b
+cd g729b
+./autogen.sh &amp;amp;&amp;amp; ./configure --enable-static --disable-shared &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;svn 源码仓库克隆失败，跳过&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-11-编译-ilbc&#34;&gt;4.1.11 编译 iLBC&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;iLBC 可选，支持 ILBC 音频编解码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+svn co http://doubango.googlecode.com/svn/branches/2.0/doubango/thirdparties/scripts/ilbc
+cd ilbc
+wget http://www.ietf.org/rfc/rfc3951.txt
+awk -f extract.awk rfc3951.txt
+./autogen.sh &amp;amp;&amp;amp; ./configure
+make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;svn 源码仓库克隆失败，跳过&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-12-编译-x264&#34;&gt;4.1.12 编译 x264&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;x264 可选，支持 H.264 视频编解码(要求有 FFMpeg)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+wget ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2
+tar -xvjf last_x264.tar.bz2
+# the output directory may be difference depending on the version and date
+cd x264-snapshot-20121201-2245
+./configure --enable-shared --enable-pic &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ubuntu 环境&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Found no assembler
+# Minimum version is nasm-2.13
+# If you really want to compile without asm, configure with --disable-asm.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-13-编译-ffmpeg&#34;&gt;4.1.13 编译 FFMpeg&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;FFMPeg 可选，支持 H.263，H.264(需要 x264) 和 MP4V-ES 视频编解码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
+cd ffmpeg
+# grap a release branch
+git checkout n1.2
+# configure source code
+./configure \
+--extra-cflags=&amp;quot;-fPIC&amp;quot; \
+--extra-ldflags=&amp;quot;-lpthread&amp;quot; \
+\
+--enable-pic --enable-memalign-hack --enable-pthreads \
+--enable-shared --disable-static \
+--disable-network --enable-pthreads \
+--disable-ffmpeg --disable-ffplay --disable-ffserver --disable-ffprobe \
+\
+--enable-gpl \
+\
+--disable-debug
+# 加入 H.264 编码，在 configure 后添加 --enable-libx264
+make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-1-14-编译-doubango&#34;&gt;4.1.14 编译 Doubango&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 源码编译安装
+## 最小化编译
+cd doubango &amp;amp;&amp;amp; ./autogen.sh &amp;amp;&amp;amp; ./configure --with-ssl --with-srtp --with-speexdsp
+make &amp;amp;&amp;amp; sudo make install
+## 建议的编译
+cd doubango &amp;amp;&amp;amp; ./autogen.sh &amp;amp;&amp;amp; ./configure --with-ssl --with-srtp --with-speexdsp --with-ffmpeg
+make &amp;amp;&amp;amp; sudo make install
+## 完整的编译
+cd doubango &amp;amp;&amp;amp; ./autogen.sh &amp;amp;&amp;amp; ./configure --with-ssl --with-srtp --with-vpx --with-yuv
+--with-amr --with-speex --with-speexdsp --with-gsm --with-ilbc --with-g729 --with-ffmpeg
+make &amp;amp;&amp;amp; sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-2-编译-webrtc2sip-和第三方库&#34;&gt;4.2 编译 webrtc2sip 和第三方库&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;webrtc2sip 依赖于 Doubango IMS Framework v2.0 和 libxml2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 检出源码
+svn co http://webrtc2sip.googlecode.com/svn/trunk/ webrtc2sip
+# 安装 libxml2
+yum install libxml2-devel
+# 编译 webrtc2sip
+export PREFIX=/opt/webrtc2sip
+cd webrtc2sip &amp;amp;&amp;amp; ./autogen.sh &amp;amp;&amp;amp; ./configure --prefix=$PREFIX
+# ./configure --prefix=$PREFIX LDFLAGS=&#39;-ldl&#39; LIBS=&#39;-ldl&#39;
+make clean &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
+cp -f ./config.xml $PREFIX/sbin/config.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;svn 源码仓库克隆失败，跳过&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ubuntu 环境&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git clone https://github.com/DoubangoTelecom/webrtc2sip.git
+sudo apt-get install libxml2-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-3-运行-webrtc2sip&#34;&gt;4.3 运行 webrtc2sip&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;需要有效的配置文件，默认的配置文件是与 &lt;code&gt;webrtc2sip&lt;/code&gt; 同目录的 &lt;code&gt;config.xml&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 执行二进制文件运行
+webrtc2sip
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令行参数&lt;/th&gt;
+&lt;th&gt;支持的版本&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;config=PATH&lt;/td&gt;
+&lt;td&gt;2.1.0&lt;/td&gt;
+&lt;td&gt;覆盖 &lt;code&gt;config.xml&lt;/code&gt; 的默认路径&lt;/td&gt;
+&lt;td&gt;&amp;ndash;config=/tmp/config.xml&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;help&lt;/td&gt;
+&lt;td&gt;2.1.0&lt;/td&gt;
+&lt;td&gt;显示帮助信息&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;version&lt;/td&gt;
+&lt;td&gt;2.1.0&lt;/td&gt;
+&lt;td&gt;显示网关版本&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;运行时错误&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# sqlite/mp_db_sqlite.cc&amp;quot;
+# line: &amp;quot;51&amp;quot;
+# MSG: Failed to open SQLite database with error code = 14 and connectionInfo=./c2c_sqlite.db
+# 在 webrtc2sip 所在文件夹执行语句，修改文件夹权限
+sudo chown -R ubuntu:ubuntu ./
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-测试网关&#34;&gt;5 测试网关&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;假定 webrtc2sip 运行在 192.168.0.1 机器，SIP 服务运行在 192.168.0.2 机器
+
+&lt;ul&gt;
+&lt;li&gt;在浏览器打开 &lt;code&gt;http://sipml5.org/expert.htm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;WebSocket Server URL&lt;/code&gt;区域填写 webrtc2sip 网关监听的 IP 和端口，比如&lt;code&gt;ws://192.168.0.1:10060&lt;/code&gt;或&lt;code&gt;ws://192.168.0.1:10062&lt;/code&gt;。注意不要忘记&lt;code&gt;ws://&lt;/code&gt;或&lt;code&gt;wss://&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;SIP outbound Proxy URL&lt;/code&gt;设置目的 IP 和端口，忽视域名，如&lt;code&gt;udp://192.168.0.2:5060&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果调用传统的 SIP 终端，检查&lt;code&gt;Enable RTCWeb Breaker&lt;/code&gt;选项&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;5-1-本地测试-sipml5-和-webrtc2sip&#34;&gt;5.1 本地测试 sipML5 和 webrtc2sip&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;开启 sipML5 服务，使用&lt;a href=&#34;https://www.npmjs.com/package/lite-server&#34; target=&#34;_blank&#34;&gt;lite_server&lt;/a&gt;，网址默认&lt;code&gt;http://localhost:3000/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;配置注册信息，具体值见下面的表格
+
+&lt;ul&gt;
+&lt;li&gt;假定 sipML5 服务运行在 192.168.1.140 机器&lt;/li&gt;
+&lt;li&gt;传统的 SIP 网关接收待认证的注册，用户编码是 34020000001110000001，密码是 12345678(默认)，端口是 5062(默认)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;注册项&lt;/th&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;必填(Y/N)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Display Name&lt;/td&gt;
+&lt;td&gt;test&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Private Identity&lt;/td&gt;
+&lt;td&gt;34020000001110000001&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Public Identity&lt;/td&gt;
+&lt;td&gt;sip:34020000001110000001@192.168.1.140:5062&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Password&lt;/td&gt;
+&lt;td&gt;12345678&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Realm&lt;/td&gt;
+&lt;td&gt;192.168.1.140&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配置&lt;code&gt;http://localhost:3000/&lt;/code&gt;设置网关信息，具体值见下面的表格
+
+&lt;ul&gt;
+&lt;li&gt;假定传统的 SIP 服务运行在 192.168.1.140 机器，端口是 5060(默认)&lt;/li&gt;
+&lt;li&gt;假定 webrtc2sip 运行在 192.168.1.140 机器，端口是 10060(默认)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;网关配置项&lt;/th&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;WebSocket Server URL&lt;/td&gt;
+&lt;td&gt;ws://192.168.1.140:10060&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SIP outbound Proxy URL&lt;/td&gt;
+&lt;td&gt;udp://192.168.1.140:5060&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;会话配置 phonenumber 为 34020000001310000001&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-互操作性&#34;&gt;6 互操作性&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;建议使用 Chrome 的文档版本&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;6-1-关于服务&#34;&gt;6.1 关于服务&lt;/h3&gt;
+
+&lt;h4 id=&#34;6-1-1-asterisk&#34;&gt;6.1.1 Asterisk&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Asterisk 和 Chrome 在同时获得视频和音频时会有一些问题，解决方法有两种
+
+&lt;ul&gt;
+&lt;li&gt;使能 RTCWeb Breaker(建议)&lt;/li&gt;
+&lt;li&gt;Patching Asterisk：当作为开发者且正在尝试学习新特性时使用。但是 Asterisk 不支持 VP8。打补丁的&lt;a href=&#34;https://code.google.com/archive/p/sipml5/wikis/Asterisk.wiki&#34; target=&#34;_blank&#34;&gt;教程参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;6-1-2-freeswitch&#34;&gt;6.1.2 FreeSwitch&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FreeSwitch 不支持 ICE 和其他的 RTCWeb 特性&lt;/li&gt;
+&lt;li&gt;使能 RTCWeb Breaker 模块可以解决&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;6-2-关于-web-浏览器&#34;&gt;6.2 关于 web 浏览器&lt;/h3&gt;
+
+&lt;h4 id=&#34;6-2-1-chrome&#34;&gt;6.2.1 Chrome&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;建议使用稳定版本&lt;/li&gt;
+&lt;li&gt;Chrome 使用 SAVPF 配置文件。S 即 secure(SRTP)，F 即 feedback。如果远端的 SIP 客户端/服务器不支持这些特性，需要使能 RTCWeb Breaker 模块（web 浏览器端）&lt;/li&gt;
+&lt;li&gt;Chrome 只包含 VP8 视频编解码，但是大多数 SIP 客户端/服务器不支持。如果 SIP 客户端/服务器 支持 H.264，H.263，The偶然 或 MP4V-ES，那么需要使能 RTCWeb Breaker 和 Media Coder 模块
+
+&lt;ul&gt;
+&lt;li&gt;注意：Media Coder 很可能在 sipml5.org 的服务上不能启用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;6-2-2-firefox-nightly&#34;&gt;6.2.2 Firefox Nightly&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;目前只有 Firefox Nightly 原生支持 RTCWeb&lt;/li&gt;
+&lt;li&gt;关于 DTLS-SRTP 解码的 &lt;a href=&#34;http://code.google.com/p/doubango/issues/detail?id=194&#34; target=&#34;_blank&#34;&gt;issue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Firefox Nightly 使用 DTLS-SRTP 实现 RTCWeb，Chrome 使用 SDES-SRTP，因此在两个浏览器之间会话需要使能 RTCWeb Breaker 模块&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;6-2-3-firefox-safari-ie-和-opera&#34;&gt;6.2.3 Firefox，Safari，IE 和 Opera&lt;/h4&gt;
+
+&lt;h4 id=&#34;6-2-4-ericsson-bowser&#34;&gt;6.2.4 Ericsson Bowser&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ericsson Bowser 不支持 SRTP，且只有 H.264 视频编解码&lt;/li&gt;
+&lt;li&gt;Ericsson Bowser 可以与大部分 SIP 客户端通信，但是和 Canary 及其他 RTCWeb 客户端不兼容&lt;/li&gt;
+&lt;li&gt;使能 RTCWeb Breaker(浏览器端) 可以支持 Bowser 与 Chrome 音频会话，因为 G.711 是一个普遍的编解码。需要支持视频的话，需要使能 Media Coder(服务器端)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-安全问题&#34;&gt;7 安全问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当在客户端(web 浏览器)使能 RTCWeb Breaker 模块，服务器会为所有到 web 浏览器收到的和传出去的 INVITE 请求承担 b2bua 的角色。这只适用于绑定到指定 web 浏览器的 SIP 账户&lt;/li&gt;
+&lt;li&gt;作为 b2bua 意味着为每个 INVITE 生成一个全新的请求。新的请求可能被远端的传统 SIP 网络认证，即 b2bua 必须持有 SIP 账户的鉴权信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;8-一些编译问题&#34;&gt;8 一些编译问题&lt;/h2&gt;
+
+&lt;h3 id=&#34;8-1-webrtc2sip-编译出错&#34;&gt;8.1 webrtc2sip 编译出错&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Error: configure: error: Failed to find libtinyIPSec
+export PKG_CONFIG_PATH=&amp;quot;$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig&amp;quot;
+# 编译 webrtc2sip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# mp_object.h:23:23: fatal error: tsk_debug.h: No such file or directory
+make -I/usr/local/include/tinysak/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# /usr/bin/ld: webrtc2sip-sqlite3.o: undefined reference to symbol &#39;dlclose@@GLIBC_2.2.5&#39;
+# //lib/x86_64-linux-gnu/libdl.so.2: error adding symbols: DSO missing from command line
+# collect2: error: ld returned 1 exit status
+./configure --prefix=$PREFIX LDFLAGS=&#39;-ldl&#39; LIBS=&#39;-ldl&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# /usr/local/lib/libtinyNET.so: undefined reference to `CT_POLICY_EVAL_CTX_set1_cert&#39;
+# /usr/local/lib/libtinyNET.so: undefined reference to `X509_get0_pubkey&#39;
+# /usr/local/lib/libtinyNET.so: undefined reference to `SM2_compute_share_key&#39;
+# /usr/local/lib/libtinyNET.so: undefined reference to `CRYPTO_THREAD_write_lock&#39;
+# /usr/local/lib/libtinyNET.so: undefined reference to `OPENSSL_sk_insert
+# 检查 Doubango，重新编译
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;8-2-视频编解码崩溃&#34;&gt;8.2 视频编解码崩溃&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;修改文件：&lt;code&gt;doubango/tinySAK/src/tsk_object.c&lt;/code&gt;(199)&lt;/li&gt;
+&lt;li&gt;修改函数：&lt;code&gt;tsk_object_unref()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改内容：将 &lt;code&gt;tsk_object_delete(self);&lt;/code&gt; 替换为 &lt;code&gt;TSK_OBJECT_SAFE_FREE(self);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-3-webrtc2sip-项目配置&#34;&gt;8.3 webrtc2sip 项目配置&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;操作系统配置：局域网使用时，将 DNS 配置清空&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;vim /etc/resolv.conf
+# 注释掉下面的行
+nameserver 172.17.192.21
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;FreeSwitch 添加 H264 编码支持&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;vim freeswitch/conf/vars.xml
+# &amp;lt;X-PRE-PROCESS cmd=&amp;quot;set&amp;quot; data=&amp;quot;global_codec_prefs=G722,PCMU,PCMA,GSM,H264&amp;quot;/&amp;gt;
+# &amp;lt;X-PRE-PROCESS cmd=&amp;quot;set&amp;quot; data=&amp;quot;outbound_codec_prefs=PCMU,PCMA,GSM,H264&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-4-关于-sipml5-服务&#34;&gt;8.4 关于 sipML5 服务&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/DoubangoTelecom/sipml5&#34; target=&#34;_blank&#34;&gt;源码地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;sipML5 服务连接失败，可能的原因和解决方案
+
+&lt;ul&gt;
+&lt;li&gt;根本原因是没有连接上 webrtc2sip 或 FreeSwitch 服务&lt;/li&gt;
+&lt;li&gt;可能原因1：网络中断。解决方法：恢复网络连接&lt;/li&gt;
+&lt;li&gt;可能原因2：Linux 的防火墙阻止了webrtc2sip 和 FreeSwitch 服务，关闭防火强可以解决此类问题&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Sipml5连接无反应，可能的原因及解决方案
+
+&lt;ul&gt;
+&lt;li&gt;可能的原因是 webrtc2sip 有问题，重新启动 webrtc2sip&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;sipML5 与 Yealink 可视电话进行语音通话成功，但是视频通话呼叫方语音进入 echo 模式，视频不通，可能的原因及解决方案
+
+&lt;ul&gt;
+&lt;li&gt;可能是 webrtc2sip 的配置中&lt;code&gt;&amp;lt;enable-media-coder&amp;gt;no&amp;lt;/enable-media-coder&amp;gt;&lt;/code&gt; 应该改成 yes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;webrtc2sip 启动自动退出，可能的原因及解决方案
+
+&lt;ul&gt;
+&lt;li&gt;可能是配置中所设置的本地 IP 地址与服务器的 IP 地址不一致造成的。修改 IP 地址可以解决此问题&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-4-1-webrtc2sip-解析-sipml5-请求失败&#34;&gt;8.4.1 webrtc2sip 解析 sipML5 请求失败&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;注册配置中&lt;code&gt;Realm&lt;/code&gt;配置成编号，修改成 IP 地址&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;***[DOUBANGO ERROR]: function: &amp;quot;tsip_message_parse()&amp;quot;
+file: &amp;quot;src/parsers/tsip_parser_message.c&amp;quot;
+line: &amp;quot;226&amp;quot;
+MSG: Failed to parse SIP message: /WS df7jal23ls0d.invalid;branch=z9hG4bKy6rW8Wp53Xb2ScABiUoaIJSmmfVGnfyi;rport
+From: &amp;quot;test&amp;quot;&amp;lt;sip:34020000001310000001@192.168.1.140:5062&amp;gt;;tag=TvKDkETklspHcSTWievL
+To: &amp;quot;test&amp;quot;&amp;lt;sip:34020000001310000001@192.168.1.140:5062&amp;gt;
+Contact: &amp;quot;test&amp;quot;&amp;lt;sip:34020000001310000001@df7jal23ls0d.invalid;rtcweb-breaker=yes;transport=ws&amp;gt;;expires=200;click2call=no;+g.oma.sip-im;+audio;language=&amp;quot;en,fr&amp;quot;
+Call-ID: 5b7f4bd8-b0c2-1511-b1f1-2360114685dd
+CSeq: 31494 REGISTER
+Content-Length: 0
+Route: &amp;lt;sip:192.168.1.140:5060;lr;sipml5-outbound;transport=udp&amp;gt;
+Max-Forwards: 70
+User-Agent: IM-client/OMA1.0 sipML5-v1.2016.03.04
+Organization: Doubango Telecom
+Supported: path
+
+
+***[DOUBANGO ERROR]: function: &amp;quot;tsip_transport_layer_ws_cb()&amp;quot;
+file: &amp;quot;src/transports/tsip_transport_layer.c&amp;quot;
+line: &amp;quot;632&amp;quot;
+MSG: Failed to parse SIP message
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-5-关于-chrome-使用&#34;&gt;8.5 关于 Chrome 使用&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chrome 浏览器呼叫时出现 “Media stream permission denied”
+
+&lt;ul&gt;
+&lt;li&gt;可能原因1：使用本地网页访问时容易出现这样的问题。请使用网址访问网站上的网页&lt;/li&gt;
+&lt;li&gt;可能原因2：如果是询问时禁止访问了麦克风和摄像头，请关闭 Chrome，重启&lt;/li&gt;
+&lt;li&gt;如果是 chrome for Android，到应用管理里，清除所有数据&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Chrome 浏览器主叫，被叫方隔很长时间才振铃
+
+&lt;ul&gt;
+&lt;li&gt;很有可能是 webrtc2sip 所在的服务器设置了 DNS，删除 DNS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;8-6-守护进程&#34;&gt;8.6 守护进程&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用守护进程，当 webrtc2sip 服务崩溃时，自动重启该服务&lt;/li&gt;
+&lt;li&gt;使用进程守护者&lt;a href=&#34;https://github.com/russells/process-monitor&#34; target=&#34;_blank&#34;&gt;process-monitor&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;拷贝二进制文件 process-monitor 到 webrtc2sip 的 sbin 目录&lt;/li&gt;
+&lt;li&gt;执行命令 &lt;code&gt;./process-monitor webrtc2sip&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;9-运行问题&#34;&gt;9 运行问题&lt;/h2&gt;
+
+&lt;h3 id=&#34;9-1-err-ssl-version-or-cipher-mismatch&#34;&gt;9.1 ERR_SSL_VERSION_OR_CIPHER_MISMATCH&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;sipML5 报错：Error in connection establishment: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH&lt;/li&gt;
+&lt;li&gt;webrtc2sip 报错：Remote party requesting DTLS-DTLS (UDP/TLS/RTP/SAVPF) but this option is not enabled
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/DoubangoTelecom/webrtc2sip/blob/master/FAQ.md#i-see-remote-party-requesting-dtls-dtls-udptlsrtpsavpf-but-this-option-is-not-enabled-how-can-i-fix-this&#34; target=&#34;_blank&#34;&gt;https://github.com/DoubangoTelecom/webrtc2sip/blob/master/FAQ.md#i-see-remote-party-requesting-dtls-dtls-udptlsrtpsavpf-but-this-option-is-not-enabled-how-can-i-fix-this&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/36293964/dtls-dtls-is-not-enabled&#34; target=&#34;_blank&#34;&gt;https://stackoverflow.com/questions/36293964/dtls-dtls-is-not-enabled&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;10-参考&#34;&gt;10 参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/archive/p/webrtc2sip/wikis/Building_Source_v2_0.wiki&#34; target=&#34;_blank&#34;&gt;webrtc2sip - Building_Source_v2_0.wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://doc.zeroc.com/ice/3.7/introduction&#34; target=&#34;_blank&#34;&gt;ice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.asterisk.org/wiki/display/AST/WebRTC+tutorial+using+SIPML5&#34; target=&#34;_blank&#34;&gt;WebRTC tutorial using SIPML5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

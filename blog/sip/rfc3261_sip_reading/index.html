@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="请求的消息头 回复的消息头 消息 处理应答 Invite 客户事务 应答代码 请求的消息头 举例：以 Alice 向 Bob 发起会话为例 INVITE sip:bob@biloxi.com SIP/2.0 Via: SIP/2.0/UDP pc33.atlanta.com;branch=z9hG4bK776asdhds Max-Forwards: 70 To: Bob &lt;sip:bob@biloxi.com&gt; From: Alice &lt;sip:alice@atlanta.com&gt;;tag=1928301774 Call-ID: a84b4c76e66710@pc33.atlanta.com CSeq: 314159 INVITE Contact: &lt;sip:alice@pc33.atlanta.com&gt; Content-Type: application/sdp Content-Length:">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/sip/rfc3261_sip_reading/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/sip/rfc3261_sip_reading/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/sip/rfc3261_sip_reading/">
+  <meta property="og:title" content="rfc3261: SIP | kiki">
+  <meta property="og:description" content="请求的消息头 回复的消息头 消息 处理应答 Invite 客户事务 应答代码 请求的消息头 举例：以 Alice 向 Bob 发起会话为例 INVITE sip:bob@biloxi.com SIP/2.0 Via: SIP/2.0/UDP pc33.atlanta.com;branch=z9hG4bK776asdhds Max-Forwards: 70 To: Bob &lt;sip:bob@biloxi.com&gt; From: Alice &lt;sip:alice@atlanta.com&gt;;tag=1928301774 Call-ID: a84b4c76e66710@pc33.atlanta.com CSeq: 314159 INVITE Contact: &lt;sip:alice@pc33.atlanta.com&gt; Content-Type: application/sdp Content-Length:"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>rfc3261: SIP | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>rfc3261: SIP</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e8%af%b7%e6%b1%82%e7%9a%84%e6%b6%88%e6%81%af%e5%a4%b4">请求的消息头</a></li>
+<li><a href="#%e5%9b%9e%e5%a4%8d%e7%9a%84%e6%b6%88%e6%81%af%e5%a4%b4">回复的消息头</a></li>
+<li><a href="#%e6%b6%88%e6%81%af">消息</a></li>
+<li><a href="#%e5%a4%84%e7%90%86%e5%ba%94%e7%ad%94">处理应答</a></li>
+<li><a href="#invite-%e5%ae%a2%e6%88%b7%e4%ba%8b%e5%8a%a1">Invite 客户事务</a></li>
+<li><a href="#%e5%ba%94%e7%ad%94%e4%bb%a3%e7%a0%81">应答代码</a></li>
+</ul>
+
+<h2 id="请求的消息头">请求的消息头</h2>
+
+<ul>
+<li><p>举例：以 Alice 向 Bob 发起会话为例</p>
+
+<pre><code class="language-text">INVITE sip:bob@biloxi.com SIP/2.0
+Via: SIP/2.0/UDP pc33.atlanta.com;branch=z9hG4bK776asdhds
+Max-Forwards: 70
+To: Bob &lt;sip:bob@biloxi.com&gt;
+From: Alice &lt;sip:alice@atlanta.com&gt;;tag=1928301774
+Call-ID: a84b4c76e66710@pc33.atlanta.com
+CSeq: 314159 INVITE
+Contact: &lt;sip:alice@pc33.atlanta.com&gt;
+Content-Type: application/sdp
+Content-Length: 142
+(Alice’s SDP not shown)
+</code></pre></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Method name</td>
+<td>位于第一行(INVITE sip:bob@biloxi.com SIP/2.0)</td>
+</tr>
+
+<tr>
+<td>Via</td>
+<td>描述当前请求经历的路径，表示了应答所应当经过的路径。包含请求发起者期待收到回复的地址(pc33.atlanta.com)。包含一个 branch 参数标识会话(branch=z9hG4bK776asdhds)，<strong>branch 必须以 &ldquo;z9hG4bK&rdquo; 开头</strong>。缩写是 v</td>
+</tr>
+
+<tr>
+<td>To</td>
+<td>包含一个展示名(Bob)和一个 SIP 或 SIPS URI(sip:bob@biloxi.com)，标识请求原本要发送的目的地。缩写是 t</td>
+</tr>
+
+<tr>
+<td>From</td>
+<td>包含一个展示名(Alice)和一个 SIP 或 SIPS URI(sip:alice@atlanta.com)，指示请求的发起者。也包含一个 tag 参数，包含一个随机的字符串。用于身份目的。简写是 f</td>
+</tr>
+
+<tr>
+<td>Call-ID</td>
+<td>包含此会话的一个全局唯一标识符，由一个随机字符串和这个 softphone 的主机名或 IP 地址联合生成</td>
+</tr>
+
+<tr>
+<td>CSeq</td>
+<td>Command Sequence，包含一个整数和一个方法名。在一个会话中，每一个新的请求，CSeq 会加 1</td>
+</tr>
+
+<tr>
+<td>Contact</td>
+<td>包含一个 SIP 或 SIPS URI，表示直接路由到此请求发起者，通常是一个 FQDN(fully qualified domain name) 上的一个用户名。如果没有注册域名，可以使用 IP 地址</td>
+</tr>
+
+<tr>
+<td>Max-Forwards</td>
+<td>限制一个请求到达目的地的转发次数。每跳一次数目减 1</td>
+</tr>
+
+<tr>
+<td>Content-Type</td>
+<td>描述请求的消息体，简写是 c</td>
+</tr>
+
+<tr>
+<td>Content-Length</td>
+<td>请求的消息体的十进制字节数，简写是 I</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>To tag，From tag 和 Call-ID 完全定义了一个端到端的 SIP 关系，称为一个会话</li>
+<li>Via 告诉其它元素回复发送到哪里；Contact 告诉其它元素未来的请求发送到哪里</li>
+<li>回复和请求包含一样的 To，From，Call-ID，CSeq，Via 的 branch</li>
+<li>代理服务：atlanta.com SIP server 是一个代理服务。代理服务接收 SIP 请求，代表请求者转发请求
+
+<ul>
+<li>100 (Trying)：表示代理服务已经收到请求，正在代表请求者路由请求到目的地</li>
+<li>代理服务器路由之前，会在 Via 加上或者删掉自己的地址信息</li>
+</ul></li>
+</ul>
+
+<p>其他头域</p>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Route</td>
+<td>用于强制一个请求经过一个 proxy 路由列表，保证正确路由</td>
+</tr>
+
+<tr>
+<td>Record-Route</td>
+<td>proxy 在请求中增加的，包含解析代理主机名或 IP 地址的 URI，用于强制会话中的后续请求经过本 proxy</td>
+</tr>
+
+<tr>
+<td>Content-Encoding</td>
+<td>如果消息正文通过某种形式的编码，如压缩等，必须在此头域指明，简写是 e</td>
+</tr>
+
+<tr>
+<td>Content-Language</td>
+<td>消息正文的语言</td>
+</tr>
+
+<tr>
+<td>Content-Disposition</td>
+<td>指明消息体部分并非可选的消息体，描述消息体，或者消息的多个部分，或者消息体的一部分应被 UAC 或 UAS 怎样解释</td>
+</tr>
+
+<tr>
+<td>Supported</td>
+<td>包含了一个 option tag 的列表，列举了 UAC 或 UAS 支持的 SIP 扩展，必须是 RFCs 的标准扩展。缩写是 k</td>
+</tr>
+
+<tr>
+<td>Require</td>
+<td>说明处理本特定请求需要什么样的 option tags，以便 UAS 可以处理 UAC 的特定请求</td>
+</tr>
+
+<tr>
+<td>Proxy-Require</td>
+<td>说明需要 proxy 支持什么样的 option tag 扩展</td>
+</tr>
+
+<tr>
+<td>Unsupported</td>
+<td>UAS 回复中，表明不支持的扩展</td>
+</tr>
+
+<tr>
+<td>Accept</td>
+<td>UAS 指明支持的媒体类别</td>
+</tr>
+
+<tr>
+<td>Accept-Encoding</td>
+<td>UAS 指明支持的编码方法</td>
+</tr>
+
+<tr>
+<td>Accept-Language</td>
+<td>UAS 指明支持的语言</td>
+</tr>
+
+<tr>
+<td>Allow</td>
+<td>UAS 列举支持的方法</td>
+</tr>
+
+<tr>
+<td>expires</td>
+<td>有效时间，以秒为单位的整数，非法值视为 3600</td>
+</tr>
+
+<tr>
+<td>Retry-After</td>
+<td>可用于 500 或 503 应答，标识大约服务还会处于不可用状态多久；在 404,413,480,486,600,603 应答标识何时被叫方会恢复正常，以秒为单位</td>
+</tr>
+
+<tr>
+<td>Warning</td>
+<td>UAS 回复中，表明拒绝服务的原因，包括一个 3 位的警告代码，主机名和警告正文</td>
+</tr>
+
+<tr>
+<td>In-Reply-To</td>
+<td>列举了本次呼叫相关的或者返回的 Call-ID</td>
+</tr>
+
+<tr>
+<td>Min-Expires</td>
+<td>包含了一个服务器所支持的内部状态(soft-state)的最小的刷新时间间隔，包括被注册服务器所注册的 Contact 头域</td>
+</tr>
+
+<tr>
+<td>Organization</td>
+<td>包含了发出请求或者应答的 SIP 节点所属的组织名字。可以用于让客户端软件过滤呼叫</td>
+</tr>
+
+<tr>
+<td>Priority</td>
+<td>标识了客户端请求的紧急程度，描述了 SIP 应当处理人工或者 UA 发过来的请求的优先级</td>
+</tr>
+
+<tr>
+<td>Proxy-Authenticate</td>
+<td>认证使用</td>
+</tr>
+
+<tr>
+<td>Proxy-Authorization</td>
+<td>允许客户端向一个要求认证的 proxy 证明自己(或证明它的使用者)的身份</td>
+</tr>
+
+<tr>
+<td>WWW-Authenticate</td>
+<td>包含了认证信息</td>
+</tr>
+
+<tr>
+<td>Server</td>
+<td>包含了关于 UAS 处理请求所使用的软件信息</td>
+</tr>
+
+<tr>
+<td>Subject</td>
+<td>提供了呼叫的一个概览，允许呼叫不用分析会话描述就可以大致过滤。缩写是 s</td>
+</tr>
+
+<tr>
+<td>Timestamp</td>
+<td>描述了 UAC 发送请求到 UAS 的时间戳</td>
+</tr>
+
+<tr>
+<td>User-Agent</td>
+<td>包含了发起请求的 UAC 信息</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="回复的消息头">回复的消息头</h2>
+
+<ul>
+<li><p>举例：以 Bob 回复 Alice 为例</p>
+
+<pre><code class="language-text">SIP/2.0 200 OK
+Via: SIP/2.0/UDP server10.biloxi.com
+    ;branch=z9hG4bKnashds8;received=192.0.2.3
+Via: SIP/2.0/UDP bigbox3.site3.atlanta.com
+    ;branch=z9hG4bK77ef4c2312983.1;received=192.0.2.2
+Via: SIP/2.0/UDP pc33.atlanta.com
+    ;branch=z9hG4bK776asdhds ;received=192.0.2.1
+To: Bob &lt;sip:bob@biloxi.com&gt;;tag=a6c85cf
+From: Alice &lt;sip:alice@atlanta.com&gt;;tag=1928301774
+Call-ID: a84b4c76e66710@pc33.atlanta.com
+CSeq: 314159 INVITE
+Contact: &lt;sip:bob@192.0.2.4&gt;
+Content-Type: application/sdp
+Content-Length: 131
+(Bob’s SDP not shown)
+</code></pre></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>响应码和原因短语</td>
+<td>位于第一行，如 200 和 OK</td>
+</tr>
+
+<tr>
+<td>Via</td>
+<td>和请求相同，多的两个是二者的代理服务分别添加的</td>
+</tr>
+
+<tr>
+<td>To</td>
+<td>和请求相同，添加了 tag 参数，会话双方在未来的通讯中会用这两个 tag</td>
+</tr>
+
+<tr>
+<td>From</td>
+<td>和请求相同</td>
+</tr>
+
+<tr>
+<td>Call-ID</td>
+<td>和请求相同</td>
+</tr>
+
+<tr>
+<td>CSeq</td>
+<td>和请求相同</td>
+</tr>
+
+<tr>
+<td>Contact</td>
+<td>包含回复一方可以直接到达的 URI</td>
+</tr>
+
+<tr>
+<td>Content-Type</td>
+<td>描述回复的消息正文，包括消息的媒体类别</td>
+</tr>
+
+<tr>
+<td>Content-Length</td>
+<td>回复的消息正文的十进制字节数</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="消息">消息</h2>
+
+<ul>
+<li>SIP 协议基于文本，使用 utf-8 字符集</li>
+
+<li><p>每个消息包括一个起始行，一个或多个头域，一个空行标识头域的结束，一个可选的消息体</p>
+
+<ul>
+<li>CRLF：carriage-return(回车) line-feed(换行)</li>
+<li>SP: space，空格</li>
+<li>请求的开始行是 Request-Line</li>
+<li>回复的开始行是 Status-Line</li>
+<li>客户端不要求检查或显示 reason-phrase</li>
+<li><code>HCOLON = *(SP/HTAB) &quot;:&quot; SWS</code>允许在冒号之前有空白，但是不允许有行分隔符，并且允许在冒号之后有空白，或者行分隔符</li>
+<li>推荐冒号之前无空格，冒号之后有一个空格</li>
+<li>HTAB 水平制表符，即 Tab 键</li>
+<li><code>LWS = [*WSP CRLF] 1*WSP</code> 线性空白</li>
+<li><code>SWS = [LWS]</code> 线性空白可选</li>
+
+<li><p>不同的 header-name 的顺序是无关的，但是建议将代理处理流程相关的域放在前面；相同的 header-name 的顺序是有关的</p>
+
+<pre><code class="language-text">generic-message  =  start-line
+                *message-header
+                CRLF
+                [ message-body ]
+start-line       =  Request-Line / Status-Line
+Request-Line     =  Method SP Request-URI SP SIP-Version CRLF
+Status-Line      =  SIP-Version SP Status-Code SP Reason-Phrase CRLF
+message-header   =  &quot;header-name&quot; HCOLON header-value *(COMMA header-value)
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="处理应答">处理应答</h2>
+
+<ul>
+<li>UAC 对于不能识别的最终响应，必须将其视为对应的 x00 类的响应代码，且 UAC 必须能够处理所有的 x00 响应代码</li>
+<li>UAC 必须能够处理 100 和 183 (会话进行) 响应</li>
+<li>在应答中，有不止一个 Via 头域值存在，UAC 应该丢弃这个消息。包含超过一个 Via 头域值的消息是因为被错误的路由或者消息被破坏</li>
+</ul>
+
+<h2 id="invite-客户事务">Invite 客户事务</h2>
+
+<ul>
+<li>T1：是一个估计的循环时间（round-trip time，RTT），缺省设置为 500ms</li>
+</ul>
+
+<h2 id="应答代码">应答代码</h2>
+
+<ul>
+<li>临时应答 1xx：标志了对方服务器正在处理请求，还没有决定最后应答。如果服务需要 200ms 以上才可产生最终应答，应发送一个 1xx 应答。1xx 不是可靠传输的，不会导致客户端发送 ACK。可以包含消息体，描述会话</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>应答码</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>100 Trying</td>
+<td>表示下一个节点的服务器以及接收到请求且还未执行这个请求。和其他临时应答的不同点在于，它永远不会被有状态 proxy 转发到上行流</td>
+</tr>
+
+<tr>
+<td>180 Ringing</td>
+<td>UA 收到 Invite 请求并尝试提示客户</td>
+</tr>
+
+<tr>
+<td>181 Call is Being Forwarded</td>
+<td>表示呼叫正在转发到另一个目的地集合</td>
+</tr>
+
+<tr>
+<td>182 Queued</td>
+<td>当呼叫的对方暂时不能接收呼叫，且服务器决定将呼叫排队等候，而不是拒绝呼叫</td>
+</tr>
+
+<tr>
+<td>183 Session Progress</td>
+<td>用于提示建立对话的进度信息。Reason-Phrase (表达原因的句子)、头域或消息体可用于提示呼叫进度的更详细的信息</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>成功信息 2xx：表示请求是成功的</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>应答码</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200 OK</td>
+<td>请求已经处理成功。应答的信息取决于请求的方法</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>转发请求 3xx： 用于提示用户的新位置信息，或为了满足呼叫转发的可选服务地点</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>应答码</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>300 Multiple Choices</td>
+<td>请求的地址有多个选择，每个选择都有自己的地址，用户或 UA 可选择合适的通讯终端，并且转发请求到这个地址</td>
+</tr>
+
+<tr>
+<td>301 Moved Permanently</td>
+<td>不能在 Request-URI 指定的地址找到用户，请求的客户端应使用 Contact 头域所指出的新地址重新尝试</td>
+</tr>
+
+<tr>
+<td>302 Moved Temporarily</td>
+<td>请求方应把请求重新发到这个 Contact 所指出的新地址</td>
+</tr>
+
+<tr>
+<td>305 Use Proxy</td>
+<td>请求的资源必须通过 Contact 头域中指出的 proxy 来访问。接收到这个应答的对象应通过这个 proxy 重新发送这个请求</td>
+</tr>
+
+<tr>
+<td>380 Alternative Service</td>
+<td>呼叫不成功，但是可以尝试可选的服务</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>请求失败 4xx：定义了特定服务响应的请求失败的情况</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>应答码</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>400 Bad Request</td>
+<td>请求语法错误。Reason-Phrase 应当标识这个详细的语法错误</td>
+</tr>
+
+<tr>
+<td>401 Unauthorized</td>
+<td>请求需要用户认证，应答是由 UAS 和 注册服务器产生的，407 是 proxy 服务器产生的</td>
+</tr>
+
+<tr>
+<td>402 Payment Required</td>
+<td>预留，之后使用</td>
+</tr>
+
+<tr>
+<td>403 Forbidden</td>
+<td>服务器支持这个请求，但是拒绝执行请求。增加验证信息是没有必要的，并且请求不应该被重试</td>
+</tr>
+
+<tr>
+<td>404 Not Found</td>
+<td>用户在 Request-URI 指定的域不存在。当 Request-URI 的 domain 和 接收这个请求的 domain 不匹配时，也会产生这个应答</td>
+</tr>
+
+<tr>
+<td>405 Method Not Found</td>
+<td>服务器支持 Request-Line 的方法，但是这个 Request-URI 的地址不允许使用这个方法。应答应包含一个 Allow 头域，包含了指定地址允许的方法列表</td>
+</tr>
+
+<tr>
+<td>406 Not Acceptable</td>
+<td>请求的资源只能产生回复实体包含的内容不被请求的 Accept 域接收</td>
+</tr>
+
+<tr>
+<td>407 Proxy Authentication Required</td>
+<td>标志了客户端应首先在 proxy 上通过认证</td>
+</tr>
+
+<tr>
+<td>408 Request Timeout</td>
+<td>在一段时间内，服务器不能产生一个终结应答。客户端可稍后不更改请求内容重试请求</td>
+</tr>
+
+<tr>
+<td>410 Gone</td>
+<td>请求的资源在服务器上已经不存在了，且不知道应把请求转发到哪里</td>
+</tr>
+
+<tr>
+<td>413 Request Entity Too Large</td>
+<td>请求实体超过了服务器期望或可以处理的大小</td>
+</tr>
+
+<tr>
+<td>414 Request-URI Too Long</td>
+<td>Request-URI 超过了服务器可以处理的长度</td>
+</tr>
+
+<tr>
+<td>415 Unsupported Media Type</td>
+<td>服务器不支持请求的消息体格式，服务器必须根据内容的故障类型返回一个 Accept，Accept-Encoding 或 Accept-Language</td>
+</tr>
+
+<tr>
+<td>416 Unsupported URI Scheme</td>
+<td>服务器不支持 Request-URI 的 URI 方案</td>
+</tr>
+
+<tr>
+<td>420 Bad Extension</td>
+<td>服务器不知道请求的 Proxy-Require 或 Require 指出的协议扩展。在应答的 Unsupported 头域中列出不支持的扩展</td>
+</tr>
+
+<tr>
+<td>421 Extension Required</td>
+<td>UAS 需要特定的扩展来处理请求，但是请求的 Supported 头域没有列出。应答的 Require 头域应列出所需扩展</td>
+</tr>
+
+<tr>
+<td>423 Interval Too Brief</td>
+<td>请求设置的资源刷新时间(或有效时间)过短而被服务器拒绝。比如注册服务器拒绝 Contact 头域中有效期过短的注册请求</td>
+</tr>
+
+<tr>
+<td>480 Temporarily Unavailable</td>
+<td>请求到达被叫方，但被叫方当前不可用。应增加一个 Retry-After 告诉呼叫方多久可以重试呼叫，Reason-Phrase 应当有详细信息</td>
+</tr>
+
+<tr>
+<td>481 Call/Transaction Does Not Exist</td>
+<td>UAS 收到请求，但是没有和现存的对话或事务匹配</td>
+</tr>
+
+<tr>
+<td>482 Loop Detected</td>
+<td>服务器检测到循环</td>
+</tr>
+
+<tr>
+<td>483 Too Many Hops</td>
+<td>请求的 Max-Forwards 头域是 0</td>
+</tr>
+
+<tr>
+<td>484 Address Incomplete</td>
+<td>Request-URI 不完整，Reason-Phrase 应当有附加信息</td>
+</tr>
+
+<tr>
+<td>485 Ambiguous</td>
+<td>Request-URI 是不明确的</td>
+</tr>
+
+<tr>
+<td>486 Busy Here</td>
+<td>成功联系到被叫方的终端系统，但是被叫方在当前终端不能接听，应增加一个 Retry-After 告诉呼叫方多久可以重试呼叫。其它终端(如电话、邮箱)可能有效。如果知道没有其他终端系统可以接受呼叫，返回 600</td>
+</tr>
+
+<tr>
+<td>487 Request Terminated</td>
+<td>请求被 BYE 或 CANCEL 终止</td>
+</tr>
+
+<tr>
+<td>488 Not Acceptable Here</td>
+<td>和 606 相同，但只应用于 Request-URI 所指出的特定资源不能接受，在其它地方请求可能可以接受</td>
+</tr>
+
+<tr>
+<td>491 Request Pending</td>
+<td>同一对话中，UAS 收到的请求有一个依赖的请求正在处理</td>
+</tr>
+
+<tr>
+<td>493 Undecipherable</td>
+<td>UAS 收到的请求包含了一个加密的 MIME，且不知道或没有提供合适的解密密钥</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>服务错误 5xx：服务器本身故障的时候给出的失败应答</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>应答码</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>500 Server Internal Error</td>
+<td>服务器遇到未知的情况，不能继续处理请求</td>
+</tr>
+
+<tr>
+<td>501 Not Implemented</td>
+<td>服务器没有实现相关请求功能</td>
+</tr>
+
+<tr>
+<td>502 Bad Gateway</td>
+<td>服务器作为 gateway 或 proxy，从下行服务器收到一个非法应答</td>
+</tr>
+
+<tr>
+<td>503 Service Unavailable</td>
+<td>由于临时过载或服务器管理导致的服务器暂时不可用。可增加一个 Retry-After 告诉呼叫方多久可以继续呼叫</td>
+</tr>
+
+<tr>
+<td>504 Server Time-out</td>
+<td>服务器在一个外部服务器上没有收到及时的应答。如果从上行服务器收到的请求中 Expires 超时，则返回 408</td>
+</tr>
+
+<tr>
+<td>505 Version Not Supported</td>
+<td>服务器不支持对应的 SIP 版本</td>
+</tr>
+
+<tr>
+<td>513 Message Too Large</td>
+<td>消息长度超过服务器可以处理的长度</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>全局错误 6xx：服务给特定用户有一个最终的信息，并不只是在 Request-URI 的特定实例有最终信息</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>应答码</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>600 Busy Everywhere</td>
+<td>成功连到到被叫方的终端系统，但是被叫方处于忙的状态，不打算接听电话。可增加一个 Retry-After 告诉呼叫方多久可以继续呼叫</td>
+</tr>
+
+<tr>
+<td>603 Decline</td>
+<td>成功访问到被叫方的设备，但是用户明确的不行应答。可增加一个 Retry-After 告诉呼叫方多久可以继续呼叫</td>
+</tr>
+
+<tr>
+<td>604 Does Not Exist Anywhere</td>
+<td>Request-URI 中的用户信息验证失败</td>
+</tr>
+
+<tr>
+<td>606 Not Acceptable</td>
+<td>成功联系到 UA，但是会话描述的一部分(如请求的媒体、带宽或地址类型)不被接受</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sip/">sip</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/sip/rfc3261_sip_reading/&amp;text=rfc3261:%20SIP" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/sip/rfc3261_sip_reading/&amp;t=rfc3261:%20SIP" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=rfc3261:%20SIP&amp;body=https://xueqing.github.io/blog/sip/rfc3261_sip_reading/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/sip/rfc3261_sip_reading/&amp;title=rfc3261:%20SIP" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=rfc3261:%20SIP%20https://xueqing.github.io/blog/sip/rfc3261_sip_reading/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/sip/rfc3261_sip_reading/&amp;title=rfc3261:%20SIP" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/sip/authentication_authorization/">Authentication vs Authorization</a></li>
+      
+      <li><a href="/blog/sip/algo/sip_algorithm/">SIP 相关算法总结</a></li>
+      
+      <li><a href="/blog/sip/algo/sm2/">SM2</a></li>
+      
+      <li><a href="/blog/sip/algo/sm3/">SM3 密码杂凑算法</a></li>
+      
+      <li><a href="/blog/sip/algo/sm4/">SM4 分组密码算法</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

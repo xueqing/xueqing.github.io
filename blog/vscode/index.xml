@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSCode | kiki</title>
+    <link>https://xueqing.github.io/blog/vscode/</link>
+      <atom:link href="https://xueqing.github.io/blog/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <description>VSCode</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>VSCode</title>
+      <link>https://xueqing.github.io/blog/vscode/</link>
+    </image>
+    
+    <item>
+      <title>VSCode 推荐插件</title>
+      <link>https://xueqing.github.io/blog/vscode/%E6%8E%A8%E8%8D%90%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vscode/%E6%8E%A8%E8%8D%90%E6%8F%92%E4%BB%B6/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%b3%e4%ba%8e-markdown-%e7%bc%96%e8%be%91%e7%9a%84%e6%8f%92%e4%bb%b6&#34;&gt;关于 Markdown 编辑的插件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9c%89%e7%94%a8%e7%9a%84%e5%91%bd%e4%bb%a4&#34;&gt;有用的命令&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#markdown-all-in-one&#34;&gt;Markdown All in One&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vscode-icons&#34;&gt;vscode-icons&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;关于-markdown-编辑的插件&#34;&gt;关于 Markdown 编辑的插件&lt;/h2&gt;
+
+&lt;p&gt;基于 VSCode 编辑 Markdown 文本，推荐下面的插件&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;插件名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one&#34; target=&#34;_blank&#34;&gt;Markdown All in One&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;快捷键，目录，列表编辑，打印成 HTML，支持特殊数学符号渲染等&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Markdown Preview Mermaid Support&lt;/td&gt;
+&lt;td&gt;使用 &lt;a href=&#34;https://mermaidjs.github.io/&#34; target=&#34;_blank&#34;&gt;mermaid&lt;/a&gt; 语法画流程图&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;markdownlint&lt;/td&gt;
+&lt;td&gt;检查 Markdown 语法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced&#34; target=&#34;_blank&#34;&gt;Markdown Preview Enhanced&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;增强预览&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker&#34; target=&#34;_blank&#34;&gt;Code Spell Checker&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;拼写检查&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Markdown PDF&lt;/td&gt;
+&lt;td&gt;把 Markdown 转成 PDF&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;npm Intellisense&lt;/td&gt;
+&lt;td&gt;自动补全 npm 模块&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;npm&lt;/td&gt;
+&lt;td&gt;支持 npm 操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;有用的命令&#34;&gt;有用的命令&lt;/h2&gt;
+
+&lt;h3 id=&#34;markdown-all-in-one&#34;&gt;Markdown All in One&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Markdown: Create Table of Contents&lt;/li&gt;
+&lt;li&gt;Markdown: Update Table of Contents&lt;/li&gt;
+&lt;li&gt;Markdown: Toggle code span&lt;/li&gt;
+&lt;li&gt;Markdown: Print current document to HTML&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;vscode-icons&#34;&gt;vscode-icons&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装 vscode-icons，可为 vscode 不同文件类型提供相应的图标&lt;/li&gt;
+&lt;li&gt;在 vscode 插件中搜索 vscode-icons，安装&lt;/li&gt;
+&lt;li&gt;按 &lt;code&gt;F1&lt;/code&gt; 输入 icons，选择 &lt;code&gt;Activate VSCode Icons&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VSCode 教程</title>
+      <link>https://xueqing.github.io/blog/vscode/tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vscode/tutorial/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%91%bd%e4%bb%a4%e8%a1%8c&#34;&gt;命令行&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vscode-%e6%96%87%e4%bb%b6%e5%a4%b9&#34;&gt;.vscode 文件夹&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%aa%e6%80%a7%e5%8c%96%e8%ae%be%e7%bd%ae&#34;&gt;个性化设置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%b0%83%e8%af%95&#34;&gt;调试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令行&#34;&gt;命令行&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 在 vscode 打开当前目录
+code .
+# 在最近使用的 vscode 窗口打开当前目录
+code -r .
+# 新建一个窗口
+code -n
+# 修改语言
+code --locale=es
+# 打开对比编辑器
+code --diff &amp;lt;file1&amp;gt; &amp;lt;file2&amp;gt;
+# 打开文件跳到指定的行和列 &amp;lt;file:line[:column]&amp;gt;
+code --goto package.json:10:5
+# 查看帮助选项
+code --help
+# 停用所有扩展
+code --disable-extensions .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;vscode-文件夹&#34;&gt;.vscode 文件夹&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;存放工作区相关文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tasks.json&lt;/code&gt;：Task Runner&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;launch.json&lt;/code&gt;：调试器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;个性化设置&#34;&gt;个性化设置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;忽略文件/文件夹：修改&lt;code&gt;settings.json&lt;/code&gt;，添加文件或文件夹到&lt;code&gt;files.exclude&lt;/code&gt;或&lt;code&gt;search.exclude&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;调试&#34;&gt;调试&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Node.js 调试
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Microsoft/vscode-recipes/tree/master/nodemon&#34; target=&#34;_blank&#34;&gt;https://github.com/Microsoft/vscode-recipes/tree/master/nodemon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Chrome 调试
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome&#34; target=&#34;_blank&#34;&gt;https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;C++ 调试
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xueqing/vscode-debug/tree/master/cppdebug/helloworld&#34; target=&#34;_blank&#34;&gt;https://github.com/xueqing/vscode-debug/tree/master/cppdebug/helloworld&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.visualstudio.com/docs&#34; target=&#34;_blank&#34;&gt;Getting Started&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>常用快捷键</title>
+      <link>https://xueqing.github.io/blog/vscode/%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vscode/%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>
+
+&lt;h2 id=&#34;windows&#34;&gt;Windows&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键组合&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示命令面板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示最近打开文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;F&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在工作区所有文件中查找&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;F&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在文件夹中查找&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;F&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在当前文件中查找&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;H&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在工作区所有文件中替换&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;H&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在当前文件中替换&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;`&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;新建终端&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;`&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;切换终端&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示输入候选列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;放大&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;缩小&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;-&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;前进&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;&amp;lt;-&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;F2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文件或文件夹重命名&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;复制路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;ubuntu&#34;&gt;Ubuntu&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键组合&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示命令面板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示最近打开文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;F&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在工作区所有文件中查找&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;F&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在文件夹中查找&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;F&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在当前文件中查找&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;H&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在工作区所有文件中替换&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;H&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在当前文件中替换&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;`&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;新建终端&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;`&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;切换终端&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示输入候选列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;放大&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;缩小&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;前进&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;F2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文件或文件夹重命名&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;复制路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;增加快捷键&#34;&gt;增加快捷键&lt;/h3&gt;
+
+&lt;h4 id=&#34;设置大小写&#34;&gt;设置大小写&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;打开 &lt;code&gt;File-&amp;gt; Preferences -&amp;gt; Keyboard Shortcuts&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;搜索 &lt;code&gt;upper&lt;/code&gt;，看到 &lt;code&gt;editor.action.transformToUppercase&lt;/code&gt;，选中左边的加号，增加快捷键设置 &lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;u&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;搜索 &lt;code&gt;lower&lt;/code&gt;，看到 &lt;code&gt;editor.action.transformToLowercase&lt;/code&gt;，选中左边的加号，增加快捷键设置 &lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;l&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

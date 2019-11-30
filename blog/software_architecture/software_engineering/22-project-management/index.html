@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="22.1 风险管理 22.2 人员管理 22.3 团队协作 软件项目管理者的任务是确保软件项目满足和服从这些约束，并确保交付高质量的软件产品 项目管理的目标： 在约定的时间将">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/">
+  <meta property="og:title" content="22 项目管理 | kiki">
+  <meta property="og:description" content="22.1 风险管理 22.2 人员管理 22.3 团队协作 软件项目管理者的任务是确保软件项目满足和服从这些约束，并确保交付高质量的软件产品 项目管理的目标： 在约定的时间将"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>22 项目管理 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>22 项目管理</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#221-%e9%a3%8e%e9%99%a9%e7%ae%a1%e7%90%86">22.1 风险管理</a></li>
+<li><a href="#222-%e4%ba%ba%e5%91%98%e7%ae%a1%e7%90%86">22.2 人员管理</a></li>
+
+<li><p><a href="#223-%e5%9b%a2%e9%98%9f%e5%8d%8f%e4%bd%9c">22.3 团队协作</a></p></li>
+
+<li><p>软件项目管理者的任务是确保软件项目满足和服从这些约束，并确保交付高质量的软件产品</p></li>
+
+<li><p>项目管理的目标：</p>
+
+<ul>
+<li>在约定的时间将软件产品交付给客户</li>
+<li>将全部成本控制在预算之内</li>
+<li>交付的软件产品满足客户的要求</li>
+<li>保持一个愉悦且运作良好的开发团队</li>
+</ul></li>
+
+<li><p>软件工程管理的不同之处：</p>
+
+<ul>
+<li>软件产品是无形的</li>
+<li>大型软件项目常常是“一次性的”项目</li>
+<li>软件开发过程是可变的和机构特定的</li>
+</ul></li>
+</ul>
+
+<h2 id="22-1-风险管理">22.1 风险管理</h2>
+
+<table>
+<thead>
+<tr>
+<th>风险种类</th>
+<th>描述</th>
+<th>举例</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>项目风险</td>
+<td>影响项目进度或项目资源的风险</td>
+<td>职员跳槽、管理层变更、硬件缺乏、需求变更、描述延迟、低估了系统规模</td>
+</tr>
+
+<tr>
+<td>产品风险</td>
+<td>影响开发中软件的质量或性能的风险</td>
+<td>需求变更、描述延迟、低估了系统规模、CASE 工具性能较差</td>
+</tr>
+
+<tr>
+<td>业务风险</td>
+<td>影响软件开发机构或软件产品购买机构的风险</td>
+<td>技术变更、产品竞争</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="22-2-人员管理">22.2 人员管理</h2>
+
+<table>
+<thead>
+<tr>
+<th>关键因素</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>一致性</td>
+<td>对项目组的每个人应该同等对待</td>
+</tr>
+
+<tr>
+<td>尊重</td>
+<td>尊重每个人有不同的技能，所有成员都应该有机会做出贡献</td>
+</tr>
+
+<tr>
+<td>包容</td>
+<td>能够倾听并采纳团队成员的建议</td>
+</tr>
+
+<tr>
+<td>诚实</td>
+<td>对项目组中好的情况和不好的情况保持诚实的态度。诚实地对待自己的技术知识水平，并在必要的时候乐于服从更博学的员工</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>工作动力</th>
+<th>描述</th>
+<th>措施</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>生理的需求</td>
+<td>较低层次，如事物和睡眠</td>
+<td>软件开发人员一般没有饥渴问题</td>
+</tr>
+
+<tr>
+<td>安全的需求</td>
+<td>环境对身体的威胁</td>
+<td>一般没有</td>
+</tr>
+
+<tr>
+<td>社会的需求</td>
+<td>给员工提供与同事交往的时间和场所</td>
+<td>建议面对面交流，而不是电子会议</td>
+</tr>
+
+<tr>
+<td>受尊重的需求</td>
+<td>让员工感受在他们在开发机构中很受尊重</td>
+<td>对员工做出的成绩给予认可，让员工感觉到为他们所支付的报酬能够反映出他们的能力和经验的价值</td>
+</tr>
+
+<tr>
+<td>自我实现的需求</td>
+<td>让员工对自己的工作负责人，分配给他们较难(但是可以完成)的任务，并提供培训计划以提高他们的技能</td>
+<td>员工喜欢学习新知识和技能，培训是一项重要的激励方式</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>职业人士分类</th>
+<th>描述</th>
+<th>特点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>面向任务型</td>
+<td>动力来自所从事的工作。在软件工程中，软件开发智力上的挑战激发了他们的工作热情</td>
+<td>喜欢独自工作，技术可能更出色</td>
+</tr>
+
+<tr>
+<td>面向自我型</td>
+<td>动力来自个人成功和得到认可。他们更乐于把软件开发视为达到自己目标的手段</td>
+<td>喜欢独自工作。团队协调好，可变成面向交互型。可能善于推动整个工作的完成</td>
+</tr>
+
+<tr>
+<td>面向交互型</td>
+<td>动力来自同事们的存在和协作</td>
+<td>喜欢小组作业。更利于小组内部的交流沟通</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="22-3-团队协作">22.3 团队协作</h2>
+
+<ul>
+<li>小组具有凝聚力的好处</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>好处</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>能够建立小组自己的质量标准</td>
+<td>小组一致同意的标准与强加的标准相比，更容易被小组遵守</td>
+</tr>
+
+<tr>
+<td>成员互相学习，互相帮助</td>
+<td>鼓励互相学习可消除互相不了解引起的隔阂</td>
+</tr>
+
+<tr>
+<td>知识分享</td>
+<td>一旦有成员离开小组也可保持工作的连续性。其他成员可接手关键的任务，不会过度影响项目</td>
+</tr>
+
+<tr>
+<td>鼓励重构以及不断改善</td>
+<td>小组成员集体工作交付高质量的产品并解决出现的问题</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>如何增强小组凝聚力</p>
+
+<ul>
+<li>为小组成员及其家庭组织一些社会活动</li>
+<li>通过给小组命名确立小组的特性和地位，尝试建立小组的认同感</li>
+<li>开展有鲜明小组特色的小组建设活动，如运动和游戏</li>
+<li>把组员当做自己人</li>
+<li>必须认为小组成员是负责人的、可信赖的，保障小组成员的知情权</li>
+<li>坦诚的信息交流，可使小组成员感觉自己是小组的一部分</li>
+<li>开发新产品时，负责产品描述和设计的小组成员都参与会议，是每个成员能够关心产品的描述和设计</li>
+<li>午餐会：项目组所有成员互相认识并谈论彼此所关心的问题，比如新产品构想等</li>
+<li>放松日：每个小组成员准备一项相关技术的最新内容并介绍给小组中其他成员，提高小组的技术水平</li>
+</ul></li>
+
+<li><p>影响团队工作的普遍因素</p>
+
+<ul>
+<li>小组的人员：项目小组需要不同类型的成员。因为软件开发包括很多活动——和客户谈判，编码，测试，编写文档等</li>
+<li>团队的组织：组织团队使得小组成员都能尽其所能，所承担的各项任务都能按时完成</li>
+<li>技术和管理上的沟通：小组成员之间、软件开发团队和其他项目信息持有者之间的良好沟通必不可少</li>
+</ul></li>
+
+<li><p>挑选成员</p>
+
+<ul>
+<li>创建一个在技术技能和人格各项之间平衡的小组：挑选不同类型(面向任务、面向自我、面向交互)的成员</li>
+<li>组织成员一起有效的工作：实行民主、集体决策，且需要权威来指导工作。双向沟通，避免较多的会议和冗长的文件</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sa/">sa</a>
+  
+  <a class="badge badge-light" href="/tags/engineer/">engineer</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/&amp;text=22%20%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/&amp;t=22%20%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=22%20%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86&amp;body=https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/&amp;title=22%20%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=22%20%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86%20https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/&amp;title=22%20%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/software_architecture/software_engineering/1-introduction/">1 概述</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/2-software-process/">2 软件过程</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/23-project-planning/">23 项目规划</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/24-quality-management/">24 质量管理</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/25-configuration-management/">25 配置管理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

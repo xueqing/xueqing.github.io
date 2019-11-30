@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio | kiki</title>
+    <link>https://xueqing.github.io/blog/vs/</link>
+      <atom:link href="https://xueqing.github.io/blog/vs/index.xml" rel="self" type="application/rss+xml" />
+    <description>Visual Studio</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>Visual Studio</title>
+      <link>https://xueqing.github.io/blog/vs/</link>
+    </image>
+    
+    <item>
+      <title>MinGW vs Cygwin vs MSVC</title>
+      <link>https://xueqing.github.io/blog/vs/mingw_cygwin_msvc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vs/mingw_cygwin_msvc/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mingw&#34;&gt;Mingw&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mingw-w64&#34;&gt;MinGW-w64&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#msys&#34;&gt;MSYS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#msys2&#34;&gt;MSYS2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cygwin&#34;&gt;Cygwin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mingw-vs-%e5%8c%ba%e5%88%abcygwin&#34;&gt;MinGW vs 区别：Cygwin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#msvc&#34;&gt;MSVC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mingw-%e5%92%8c-msvc-%e7%9a%84%e4%ba%8c%e8%bf%9b%e5%88%b6%e5%85%bc%e5%ae%b9%e6%80%a7&#34;&gt;MinGW 和 MSVC 的二进制兼容性&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%8d%e5%90%8c%e7%bc%96%e8%af%91%e5%99%a8%e7%94%9f%e6%88%90%e7%9a%84%e5%ba%93%e7%9a%84%e4%ba%92%e6%93%8d%e4%bd%9c%e6%80%a7&#34;&gt;不同编译器生成的库的互操作性&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;mingw&#34;&gt;Mingw&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MinGW(Minimalist GNU for Windows)，用于开发原生(32 位) MS-Windows 应用的最小化的开发环境。它提供了一个完整的开源编程工具链，用于开发原生 MS-Windows 应用，且不依赖任何第三方 C-运行时 DLL
+
+&lt;ul&gt;
+&lt;li&gt;它确实依赖一些 MS 提供的 DLL，比如 MSVCRT.DLL(MS 的 C 运行时库)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;MinGW 编译器支持访问 MS 的 C 和 和一些其他语言的运行时函数&lt;/li&gt;
+&lt;li&gt;MinGW 不会尝试为 MS-Windows 上的 POSIX 应用部署提供 POSIX 运行时环境&lt;/li&gt;
+&lt;li&gt;MinGW 能够替代 cl 用于编译不包含 MFC 的、以 WinSDK 为主的 Windows 应用，并且编译出来的应用不依赖于第三方的模拟层支持&lt;/li&gt;
+&lt;li&gt;MinGW 包含
+
+&lt;ul&gt;
+&lt;li&gt;一些 GCC(GNU Compiler Collection)，包括 C/C++/ADA/Fortran 编译器&lt;/li&gt;
+&lt;li&gt;针对 Windows 的 GNU Binutils(汇编器、链接器、归档管理器)&lt;/li&gt;
+&lt;li&gt;一个命令行安装工具，带有可选的 GUI 前后端(mingw-get),用于 MS-Windows 上的 MinGW 和 MSYS 部署&lt;/li&gt;
+&lt;li&gt;一个 GUI 初始安装工具(mingw-get-setup)，用于安装和运行 mingw-get&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;总结：MinGW 是用于 MS-Windows 应用开发的 GNU 工具链(开发环境)，它的编译产物一般是原生 MS-Windows 应用，虽然它本身不一定非要运行在 Windows 系统下(MinGW 工具链也存在于 Linux、BSD 甚至 Cygwin 下)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;mingw-w64&#34;&gt;MinGW-w64&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;前面提到的 MinGW，是针对 32 位 Windows 应用开发的。而且由于版本问题，不能很好的支持较新的 Windows API。MinGW-W64 则是新一代的 MinGW，支持更多的 API，支持 64 位应用开发，甚至支持 32 位 host 编译 64 位应用以及反过来的“交叉”编译。除此之外，它本身也有 32 位和 64 位不同版本，其它与 MinGW 相同&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;msys&#34;&gt;MSYS&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MSYS(Minimal SYStem)，是一个 Bourne Shell 命令行解释器系统。可取代 MS 的 cmd.exe，提供了统一的命令行环境，尤其适用于 MinGW&lt;/li&gt;
+&lt;li&gt;MSYS 是 Cygwin-1.3 的一个轻量级的 fork，是用于辅助 Windows 版 MinGW 进行命令行开发的配套软件包，包含了一小部分 Unix 工具以使得 MinGW 的工具使用起来方便一些&lt;/li&gt;
+&lt;li&gt;由于 MinGW 本身仅代表工具链，而在 Windows 下，由于 cmd 以及配套的命令行工具不够齐全(也不舒服)，因此，MinGW 开发者从曾经比较旧的 Cygwin 创建了一个分支，也用于提供类 Unix 环境&lt;/li&gt;
+&lt;li&gt;与 Cygwin 的大而全不同，MSYS 是冲着小巧玲珑的目标去的，所以整套 MSYS 以及 MinGW，主要以基本的 Linux 工具为主，大小在 200M 左右，并且没有多少扩展能力&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;msys2&#34;&gt;MSYS2&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;由于 MinGW 和 MSYS 更新慢，Cygwin 的许多新功能 MSYS 没有同步过来，于是 Alex 等人建立了新一代的 MSYS 项目。仍然是 fork 了 Cygwin(较新版)，但有个更优秀的包管理器 pacman，有活跃的开发者跟用户组，有大量预编译的软件包(没有 Cygwin 多)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cygwin&#34;&gt;Cygwin&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cygwin 是一个运行于 Windows 平台的类 Unix 模拟环境(以 GNU 工具为代表)&lt;/li&gt;
+&lt;li&gt;Cygwin 提供了一套抽象层 dll，用于将部分 POSIX 调用转换成 Windows 的 API 调用，实现相关功能。其中最典型、最基本的模拟层是 cygwin1.dll。除此之外，随着 Linux 系统的发展壮大，目前 Cygwin 不仅提供 POSIX 兼容，也多了更多模拟层的依赖关系&lt;/li&gt;
+&lt;li&gt;Cygwin 的目录结构基本照搬了 Linux 的样子，但同时也兼容了 Windows 的许多功能
+
+&lt;ul&gt;
+&lt;li&gt;大部分应用使用 Unix 风格的路径，Windows 的盘符通过类似挂载点的方式提供给 Cygwin 使用&lt;/li&gt;
+&lt;li&gt;Cygwin 中既可以运行 Cygwin 的应用(依赖模拟层)，又可以运行 Windows 应用，而传递给应用的路径会经过它的模拟层变换，以此保证程序运行不会出错&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;由于它的模拟层实现了相当良好的 POSIX 兼容，人们试着将许多重要的 Linux/BSD 应用移植到 Cygwin 下，使得 Cygwin 越来越大，功能也越来越丰富，以至于目前很多人直接把将 Linux 应用移植到 Windows 平台的任务都交给了Cygwin(这种移植并非原生)&lt;/li&gt;
+&lt;li&gt;总结：Cygwin 是运行于 Windows 平台的 POSIX “子系统”，提供 Windows 下的类 Unix 环境，并提供将部分 Linux 应用“移植”到 Windows 平台的开发环境的一套软件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;mingw-vs-区别-cygwin&#34;&gt;MinGW vs 区别：Cygwin&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;区别：Cygwin 是模拟 POSIX 系统，源码移植 Linux 应用到 Windows 下；MinGW 是用于开发 Windows 应用的开发环境。如果希望部署 POSIX 应用，考虑 Cygwin&lt;/li&gt;
+&lt;li&gt;联系：均提供了部分 Linux 下的应用，多跑在 Windows 上；MinGW 作为 Cygwin 下的软件包，可以在 Cygwin 上运行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;msvc&#34;&gt;MSVC&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MSVC(Microsoft Visual C++)，是用于 C 和 C++ 编程的一个 IDE。是用于编写和调试 C/C++/C# 代码的工具，大部分代码是为了 MS-Windows/.NET 框架或 DirectX 编写的。最新的版本也支持 JavaScript 和 F#&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;mingw-和-msvc-的二进制兼容性&#34;&gt;MinGW 和 MSVC 的二进制兼容性&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MinGW 编译的软件使用 QT 框架，也依赖 Apache 可移植运行库，即 &lt;a href=&#34;http://apr.apache.org/&#34; target=&#34;_blank&#34;&gt;Apache Portable Runtime, APR&lt;/a&gt;。一些预编译好的 Windows 开发包(如 MySQL 客户端库)使用 MSVC 编译&lt;/li&gt;
+&lt;li&gt;MSVC 和 MinGW 对标准调用函数(stdcall function) 使用不同的命名惯例：MSVC 导出函数为 &lt;code&gt;_name@ordinal&lt;/code&gt;，但是 MinGW 导出为 &lt;code&gt;_name&lt;/code&gt;。因此，MinGW 当调用来自 MSVC 库的 stdcall 函数时会报 &lt;code&gt;undefined reference&lt;/code&gt; 编译错误&lt;/li&gt;
+&lt;li&gt;解决方案参考 &lt;a href=&#34;https://outofhanwell.wordpress.com/2006/05/01/linking-msvc-libraries-with-mingw-projects/&#34; target=&#34;_blank&#34;&gt;Linking MSVC Libraries With MinGW Projects&lt;/a&gt; 和 &lt;a href=&#34;http://www.mingw.org/wiki/MSVC_and_MinGW_DLLs&#34; target=&#34;_blank&#34;&gt;MSVC and MinGW DLLs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;不同编译器生成的库的互操作性&#34;&gt;不同编译器生成的库的互操作性&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不同编译器，甚至相同编译器的不同发布版本生成的目标文件和静态库文件，通常不能一起链接。所以尽量使用相同编译器的相同版本编译源码&lt;/li&gt;
+&lt;li&gt;DLL 文件稍微有些不同。有时候可以在应用中链接另一个编译器生成的 DLL 文件
+
+&lt;ul&gt;
+&lt;li&gt;当 DLL 使用 C 编写兼容性通常很好。比如 MinGW C++ 程序通常链接 Windows 提供的 C 运行时库&lt;/li&gt;
+&lt;li&gt;使用 C++ 编写的 DLL，只要通过一个使用&lt;code&gt;extern &amp;quot;C&amp;quot;&lt;/code&gt;声明的 C 接口就可以&lt;/li&gt;
+&lt;li&gt;否则，会报链接错误。因为不同编译器使用不同的 C++ 名称重整(name-mangling)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;真正的链接间通信要求一个通用的应用二进制接口(Application Binary Interface)，名称重整只是其中一个原因，而且一个编译器会提供 3200 个不同的 ABI&lt;/li&gt;
+&lt;li&gt;虽然 GNU g++ 可以链接 MSVC C++ 库，可以生成 MSVC++ 兼容的 库/DLL 文件，但是由于 C++ 的动态特性，在运行时并不会正常工作。可能的原因包括
+
+&lt;ul&gt;
+&lt;li&gt;名称重整：可能通过显式的 .def 文件绕过去&lt;/li&gt;
+&lt;li&gt;不同的结构对齐规则：需要正确的编译器选项(-mms-bitfields&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;底层的异常和内存模型冲突&lt;/li&gt;
+&lt;li&gt;MSVC DLL 的 new/delete 或 malloc/free 和 Cygwin 的 new/delete 或 malloc/free 不一致。在一个函数中使用不同的 new/malloc 申请的内存，其它地方不能释放&lt;/li&gt;
+&lt;li&gt;MSVC DLL 抛出的异常不能被 Cygwin 的可执行程序捕获，反之亦然&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mingw.org/&#34; target=&#34;_blank&#34;&gt;MinGW 官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cygwin.com/&#34; target=&#34;_blank&#34;&gt;Cygwin 官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B&#34; target=&#34;_blank&#34;&gt;MSVC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mingw.org/wiki/Interoperability_of_Libraries_Created_by_Different_Compiler_Brands&#34; target=&#34;_blank&#34;&gt;Interoperability of Libraries Created by Different Compiler Brands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chadaustin.me/cppinterface.html&#34; target=&#34;_blank&#34;&gt;Binary-compatible C++ Interfaces&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VS2015 使用</title>
+      <link>https://xueqing.github.io/blog/vs/vs2015/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vs/vs2015/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#vs2015-%E4%BD%BF%E7%94%A8&#34;&gt;vs2015 使用&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%BF%AB%E6%8D%B7%E9%94%AE&#34;&gt;快捷键&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F&#34;&gt;环境变量&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;快捷键&#34;&gt;快捷键&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+k, ctrl+c&lt;/td&gt;
+&lt;td&gt;注释&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ctrl+k, ctrl+u&lt;/td&gt;
+&lt;td&gt;取消注释&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;环境变量&#34;&gt;环境变量&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;环境变量名&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$(SolutionDir)&lt;/td&gt;
+&lt;td&gt;解决方案目录：即.sln文件所在路径&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(ProjectDir)&lt;/td&gt;
+&lt;td&gt;项目根目录:, 即.vcxproj文件所在路径&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(Configuration)&lt;/td&gt;
+&lt;td&gt;当前的编译配置名称，比如Debug，或Release&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(ProjectName)&lt;/td&gt;
+&lt;td&gt;当前项目名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(SolutionName)&lt;/td&gt;
+&lt;td&gt;解决方案名称&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(OutDir)&lt;/td&gt;
+&lt;td&gt;项目输出文件目录&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(TargetDir)&lt;/td&gt;
+&lt;td&gt;项目输出文件目录&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(TargetName)&lt;/td&gt;
+&lt;td&gt;项目生成目标文件, 通常和$(ProjectName)同名, 如Game&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(TargetExt)&lt;/td&gt;
+&lt;td&gt;项目生成文件后缀名，如.exe, .lib具体取决于工程设置&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(TargetFileName)&lt;/td&gt;
+&lt;td&gt;项目输出文件名字。比如Game.exe, 等于 $(TargetName) + $(TargetExt)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$(ProjectExt)&lt;/td&gt;
+&lt;td&gt;工程文件后缀名，如.vcxproj&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://elloop.github.io/tools/2016-03-28/visual-studio-predefined-macros&#34; target=&#34;_blank&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Windows 下的 DLL 和 LIB 文件</title>
+      <link>https://xueqing.github.io/blog/vs/dll_vs_lib_files/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vs/dll_vs_lib_files/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#Windows-%E4%B8%8B%E7%9A%84-DLL-%E5%92%8C-LIB-%E6%96%87%E4%BB%B6&#34;&gt;Windows 下的 DLL 和 LIB 文件&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#LIB&#34;&gt;LIB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#DLL&#34;&gt;DLL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%80%BB%E7%BB%93&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8F%82%E8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;lib&#34;&gt;LIB&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;LIB 是静态库，在应用程序编译时 LIB 的函数和程序可被替换和调用。链接器从 LIB 获取所有被引用函数，编译时直接将静态库代码加入程序，运行时会将这部分代码加载到内存，多个程序同时运行使用的是同一份拷贝，可以节省内存&lt;/li&gt;
+&lt;li&gt;LIB 文件可能是静态库文件(包含对象文件)或导入库文件(包含链接器链接到 DLL 的符号)
+
+&lt;ul&gt;
+&lt;li&gt;如果有 DLL 文件，那么 LIB 一般是一些索引信息，记录了 DLL 中函数的入口和位置，DLL 中是函数的具体内容。LIB 文件不是 obj 文件的集合，即里面不会有实际的实现&lt;/li&gt;
+&lt;li&gt;如果只有 LIB 文件，那么这个 LIB 文件是静态编译出来的，索引和实现都在文件中。使用静态编译的 LIB 文件，在运行程序时不需要再挂载动态库，缺点是导致应用程序比较大，失去了动态库的灵活性，发布新库时要发布新的应用程序。一个 LIB 文件实际是任意 obj 文件的集合，obj 文件时 cpp 文件编译生成的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;dll&#34;&gt;DLL&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DLL(Dynamic Link Library)，动态链接库，真正的可执行文件，即应用程序可以在运行时而不是编译时调用这些库。这相对使用 LIB 有一些优点&lt;/li&gt;
+&lt;li&gt;LIB 包含了函数所在 DLL 文件和文件中函数位置的信息(入口)，代码由运行时加载到进程空间中的 DLL 提供。允许可执行模块(DLL 或可执行文件)。仅包含在运行时定位 DLL 函数的可执行代码所需的信息
+
+&lt;ul&gt;
+&lt;li&gt;动态链接包含两个文件：LIB 文件包含被 DLL 导出的函数名称和位置，DLL 包含实际的函数和数据。应用程序使用 LIB 文件链接到 DLL 文件&lt;/li&gt;
+&lt;li&gt;在应用程序的可执行文件，存放的不是被调用的函数代码，而是 DLL 中相应函数代码的地址，从而节省了内存资源&lt;/li&gt;
+&lt;li&gt;DLL 和 LIB 文件必须随应用程序一起发布，否则应用程序会报错&lt;/li&gt;
+&lt;li&gt;如果不想用 LIB 文件或没有 LIB 文件，可以用 Win32 API 函数 LoadLibrary/GetProcAddress 加载库&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;使用 DLL 编写的程序体积小，但是需要 DLL 和可执行文件同时发布&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;LIB 是静态库，编译时使用；DLL(Dynamic Link Library)，动态链接库，运行时使用&lt;/li&gt;
+&lt;li&gt;LIB 文件通常是一个较大的文件；DLL 通常是多个小文件&lt;/li&gt;
+&lt;li&gt;当编写新版本或完全新的应用时，DLL 的复用性比 LIB&lt;/li&gt;
+&lt;li&gt;DLL 文件可被其他程序使用，但是 LIB 文件不能&lt;/li&gt;
+&lt;li&gt;DLL 比 LIB 容易遇到版本方面的问题&lt;/li&gt;
+&lt;li&gt;使用 DLL 开发软件时，因为 DLL 只包含应用需要调用 DLL 代码的存根，仍然需要 LIB 文件，后者包含了函数和代码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/913691/dll-and-lib-files-what-and-why&#34; target=&#34;_blank&#34;&gt;DLL and LIB files - what and why?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.differencebetween.net/technology/difference-between-lib-and-dll/&#34; target=&#34;_blank&#34;&gt;Difference Between LIB and DLL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/ghevinn/article/details/43759655&#34; target=&#34;_blank&#34;&gt;Windows 环境下 LIB 和 DLL 的区别和联系&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="1 描述 2 计算机安全 3 访问控制模型 4 基于角色的访问控制 vs 基于属性的访问控制 4.1 基于角色的访问控制 4.2 基于属性的访问控制 4.3 选择基于属性的访问控制/基">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/sip/access_control/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/sip/access_control/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/sip/access_control/">
+  <meta property="og:title" content="访问控制 | kiki">
+  <meta property="og:description" content="1 描述 2 计算机安全 3 访问控制模型 4 基于角色的访问控制 vs 基于属性的访问控制 4.1 基于角色的访问控制 4.2 基于属性的访问控制 4.3 选择基于属性的访问控制/基"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>访问控制 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>访问控制</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#1-%e6%8f%8f%e8%bf%b0">1 描述</a></li>
+<li><a href="#2-%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%ae%89%e5%85%a8">2 计算机安全</a></li>
+<li><a href="#3-%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6%e6%a8%a1%e5%9e%8b">3 访问控制模型</a></li>
+<li><a href="#4-%e5%9f%ba%e4%ba%8e%e8%a7%92%e8%89%b2%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6-vs-%e5%9f%ba%e4%ba%8e%e5%b1%9e%e6%80%a7%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6">4 基于角色的访问控制 vs 基于属性的访问控制</a>
+
+<ul>
+<li><a href="#41-%e5%9f%ba%e4%ba%8e%e8%a7%92%e8%89%b2%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6">4.1 基于角色的访问控制</a></li>
+<li><a href="#42-%e5%9f%ba%e4%ba%8e%e5%b1%9e%e6%80%a7%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6">4.2 基于属性的访问控制</a></li>
+<li><a href="#43-%e9%80%89%e6%8b%a9%e5%9f%ba%e4%ba%8e%e5%b1%9e%e6%80%a7%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6%e5%9f%ba%e4%ba%8e%e8%a7%92%e8%89%b2%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6">4.3 选择基于属性的访问控制/基于角色的访问控制</a></li>
+<li><a href="#431-rbac-%e7%9a%84%e4%bc%98%e7%bc%ba%e7%82%b9">4.3.1 RBAC 的优缺点</a></li>
+<li><a href="#432-abac-%e7%9a%84%e4%bc%98%e7%bc%ba%e7%82%b9">4.3.2 ABAC 的优缺点</a></li>
+<li><a href="#433-%e6%80%bb%e7%bb%93">4.3.3 总结</a></li>
+</ul></li>
+<li><a href="#5-%e5%8f%82%e8%80%83">5 参考</a></li>
+</ul>
+
+<h2 id="1-描述">1 描述</h2>
+
+<ul>
+<li>在物理安全和信息安全领域，访问控制(Access Control, AC)是对一个地方或其他资源的一个选择性限制访问。访问的含义可能是消费、进入或者使用。授权访问一个资源叫做鉴权(authorization)</li>
+<li>锁和登录凭证是访问控制两种类似的机制</li>
+</ul>
+
+<h2 id="2-计算机安全">2 计算机安全</h2>
+
+<ul>
+<li>在计算机安全领域，通常的访问控制包括身份认证、授权和审计。一个更狭义的访问控制值包含访问批准，即系统决定允许或拒绝一个已认证的主体的访问请求，基于该主体被授权访问的内容</li>
+<li>身份认证和访问控制通常合并成一个操作，以便于基于成功的身份认证，或基于一个匿名的访问令牌批准访问。身份认证方法和令牌包括密码、生物扫描、物理钥匙、电子钥匙和设备、隐藏路径、社会障碍、人类和自动系统的监控</li>
+<li>在所有的访问控制模型中，可以对系统执行操作的实体称为主体，访问需要控制的资源实体称作对象。主体和对象应当做软件实体，而不是人类用户：所有的人类用户只能通过他们控制的软件实体影响系统</li>
+<li>从 2014 年起，访问控制模型趋于两类
+
+<ul>
+<li>基于能力的模型(capability-based model)：对一个对象持有不可伪造的引用或能力提供了对该对象的访问(差不多类似于持有一个房子的钥匙批准访问该房子)。通过一个安全的通道传递这个能力给另一个组来传递访问权限</li>
+<li>基于 ACL(Access control lists) 的模型(ACL-based model)：主体访问一个对象取决于主体的身份是否出现在跟对象相关的列表(差不多类似于一个私人派对的门卫会检查 ID 看是否在客人名单上)。通过编辑列表传递访问权限。(不同的 ACL 系统对于谁或者什么负责编辑列表以及如何编辑列表有不同的惯例)</li>
+</ul></li>
+<li>基于能力和基于 ACL 的模型都有机制允许将访问权限授予一组主体的所有成员</li>
+<li>访问控制系统提供基本的服务，包括售授权(authorization)、身份识别和认证(identification and authentication, I&amp;A)、访问批准(access approval)和问责(accountability)
+
+<ul>
+<li>授权：指定一个主体可以做的</li>
+<li>身份识别和认证：确保只有合法的主体可以登录系统</li>
+<li>访问批准：基于授权策略，介个用户可以访问的资源，在操作中授权访问</li>
+<li>问责：识别一个主体(或与一个用户相关的所有主体)做过的</li>
+</ul></li>
+</ul>
+
+<h2 id="3-访问控制模型">3 访问控制模型</h2>
+
+<table>
+<thead>
+<tr>
+<th>访问控制模型</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>基于属性的访问控制(Attribute-based access control, ABAC)</td>
+<td>通过使用策略评估属性(用户属性、资源属性和环境条件)授予访问权限</td>
+</tr>
+
+<tr>
+<td>自主访问控制(Discretionary access control, DAC)</td>
+<td>由数据所有者确定谁可以访问指定的资源</td>
+</tr>
+
+<tr>
+<td>基于历史的访问控制(History-based access control, HBAC)</td>
+<td>根据请求组的历史活动(行为、请求时间间隔、请求内容等)实时评估授予或取消访问权限。比如，当请求间隔超过一秒一个时，可以授予或取消对服务或数据源的访问权限</td>
+</tr>
+
+<tr>
+<td>基于身份的访问控制(Identity-based access control, IBAC)</td>
+<td>网络管理员使用此模型可基于个人需求更加有效地管理活动和访问</td>
+</tr>
+
+<tr>
+<td>强制访问控制(Mandatory access control, MAC)</td>
+<td>用户没有太多自由确定谁可以访问他们的文件。由系统对用户创建的对象进行统一的强制性控制</td>
+</tr>
+
+<tr>
+<td>基于组织的访问控制(Organization-based access control, OrBAC)</td>
+<td>允许策略设计者定义一个与实现无关的安全策略</td>
+</tr>
+
+<tr>
+<td>基于角色的访问控制(Role-based access control, RBAC)</td>
+<td>根据工作标题允许访问。RBAC 在提供对对象的访问时很大程度上忽略了自由。例如，一个人类资源专家不应该允许创建网络账户，此角色应该保留给网络管理员</td>
+</tr>
+
+<tr>
+<td>基于规则的访问控制(Rule-based access control, RAC)</td>
+<td>大部分基于上下文。比如只允许学生在一天的一部分时间段使用实验室</td>
+</tr>
+
+<tr>
+<td>基于责任的访问控制(Responsibility based access control)</td>
+<td>基于分配给一个演员或业务角色的责任访问信息</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="4-基于角色的访问控制-vs-基于属性的访问控制">4 基于角色的访问控制 vs 基于属性的访问控制</h2>
+
+<h3 id="4-1-基于角色的访问控制">4.1 基于角色的访问控制</h3>
+
+<ul>
+<li>RBAC 是基于定义组织内的雇佣角色和对应特权的访问控制方法。模型的思想是每个雇员被分配一个角色。每个角色有一组权限和限制。一个雇员只有他们在系统中的角色有相关权限才可以访问对象和执行操作</li>
+<li>例如：一个公司的会计应允许访问财务信息，但是不应访问客户联系信息或信用卡数据</li>
+<li>一个用户可被分配一个或多个角色。当有新雇员时，很容易给他们分配一个角色。当有人离开公司，也不需要修改角色参数或中心策略</li>
+<li>几个主要的组成部分
+
+<ul>
+<li>用户：可以访问系统的个人(有 UID)</li>
+<li>角色：命名的工作职能(表明授权级别)</li>
+<li>权限：等于访问权利</li>
+<li>会话：用户和角色直接的映射，表明用户在一个工作时间上下文被分配的角色</li>
+<li>对象：需要权限访问的系统资源</li>
+<li>操作：在受保护的网络的任何操作</li>
+</ul></li>
+<li>基本规则
+
+<ul>
+<li>只有一个主体被分配了对象，此用户才可以执行一个操作</li>
+<li>身份识别和认证不属于操作</li>
+<li>所有的用户行为通过操作完成</li>
+</ul></li>
+<li>RBAC 的实现有 4 个等级
+
+<ul>
+<li>扁平的 RBAC：实现 RBAC 模型的基本功能。为所有的用户和权限分配角色。用户通过获得角色取得权限。可以根据公司需求有足够多的角色和权限。可分配一个用户多个角色，也可分配一个角色给多个用户</li>
+<li>分层的 RBAC：在角色结构内实现分层。分层建立了角色之间的关系。高等级角色的用户拥有低等级角色用户的权限。高等级用户可将低等级角色分配给他的下属</li>
+<li>受限的 RBAC：给安全系统增加了职责分离(SOD, separation of duties)。当一个单一的职责分布在几个雇员时，SOD 是一个众所周知的安全实践。这个对于大中型企业是十分重要的。职责分离保证没有工作会给系统引入虚假的改变，且这些改变没有人可以审计或修正</li>
+<li>对称的 RBAC：支持权限-角色审查和用户-角色审查。它允许识别分配给已有角色的权限(反之亦然)。比如，通过识别一个终止雇员的权限，管理员可以撤回该雇员的权限，然后重新分配角色给其他用户，而权限是相同的或者不同的</li>
+</ul></li>
+<li>难点在于定义角色。需要考虑一个用户完成任务需要的所有权限及该角色的层级。如果赋予一个角色太多权限，会破坏最小权限原则，导致权限误用</li>
+<li>RBAC 通常应用在小型和中型企业。这些组织通常是简单的工作流、有限的角色和比较简单的等级，使得可以有效地确定和描述用户角色</li>
+</ul>
+
+<h3 id="4-2-基于属性的访问控制">4.2 基于属性的访问控制</h3>
+
+<ul>
+<li>ABAC 由 RBAC 演变而来。模型基于为系统内的元素创建一系列属性。中心策略定义了执行任何操所需的用户和对象属性的组合</li>
+<li>主要的组件包括
+
+<ul>
+<li>属性：网络中所有元素的特点。一个属性可以是</li>
+<li>用户特点：雇佣者位置，部门，IP 地址，许可级别等</li>
+<li>对象特点：类型，创建者，敏感度，所需的许可级别等</li>
+<li>行为类型：读，写，编辑，拷贝，粘贴等</li>
+<li>环境特点：时间，星期，位置等</li>
+<li>主体：网络中可执行操作的所有用户或资源。为一个主体分配属性以定义它的许可级别</li>
+<li>对象：网络中存储的所有数据。为对象分配属性以描述和识别它们</li>
+<li>操作：网络中任何主体执行的行为</li>
+<li>策略：允许或限制信息检索系统中的所有行为的一系列规则。规则是基于所有元素(用户、资源、环境)的属性的“If/Then”语句</li>
+</ul></li>
+<li>ABAC 适用于各种大小的奇特，但是更多应用域大型组织。ABAC 的部署和配置阶段比 RBAC 需要更多时间和经理，因为安全管理员需要定义系统的所有属性。一开始，需要为每个系统组件手动分配属性</li>
+<li>与 RBAC 相比，ABAC 是一个更加细粒度的访问控制模型</li>
+</ul>
+
+<h3 id="4-3-选择基于属性的访问控制-基于角色的访问控制">4.3 选择基于属性的访问控制/基于角色的访问控制</h3>
+
+<h4 id="4-3-1-rbac-的优缺点">4.3.1 RBAC 的优缺点</h4>
+
+<ul>
+<li>优点
+
+<ul>
+<li>主要的优点是公司不需要授予或废除个人的访问权限，而是基于角色将用户绑定到一起</li>
+<li>为小中型公司创建一系列角色不是很难</li>
+</ul></li>
+<li>缺点
+
+<ul>
+<li>为大公司创建一系列角色是困难的</li>
+<li>在用户开始工作之前，不能使用系统未知的参数创建规则</li>
+<li>权限只能分配给用户角色，而不包括对象和操作</li>
+<li>可以限制系统内对一些行为的访问，但是不是限制对一些数据的访问</li>
+</ul></li>
+</ul>
+
+<h4 id="4-3-2-abac-的优缺点">4.3.2 ABAC 的优缺点</h4>
+
+<ul>
+<li>优点
+
+<ul>
+<li>主要优点是基于每个系统组件的属性而不是用户的角色授权。因此，可以描述任何复杂度的业务规则。当需要限制一些数据是工作时间段内可访问的，可以通过简单的策略实现</li>
+<li>可以评估授权系统还未创建的主体和资源属性</li>
+</ul></li>
+<li>缺点
+
+<ul>
+<li>因为需要指定和维护策略，所以系统配置是困难的</li>
+<li>几乎不可能确定所有给定的雇佣角色承担的风险</li>
+</ul></li>
+</ul>
+
+<h4 id="4-3-3-总结">4.3.3 总结</h4>
+
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>RBAC</th>
+<th>ABAC</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>灵活性</td>
+<td>Y(适用于小中型组织)</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>可扩展性</td>
+<td>-</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>简单性</td>
+<td>易于为小公司建立角色和权限，但是对于大公司难以维护</td>
+<td>开始的时候难以创建所有策略，易于维护和支持</td>
+</tr>
+
+<tr>
+<td>对简单规则的支持</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>对复杂规则的支持</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>对包含动态参数的规则的支持</td>
+<td>-</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>自定义用户权限</td>
+<td>-(每个自定义都需要创建一个新角色)</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>粒度</td>
+<td>低</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>结合 RBAC 和 ABAC：公司在开始通常实现一个扁平的 RBAC。这个模型易于设置和维护。随着组织成长以及管理更多敏感数据，公司意识到需要更加复杂的访问控制系统。RBAC 和 ABAC 可以一起使用，其中 RBAC 负责粗粒度的工作，ABAC 实现细粒度的部分</li>
+<li>这个模型也称作 RBAC-A。有三个方法处理角色和属性之间的关系
+
+<ul>
+<li>以属性为中心：一个角色称为其中一个用户属性的名字。它类似一个工作标题。这个模型中的角色属性用于标记一个中心位置所需的一系列属性</li>
+<li>以角色为中心：增加属性以限制角色。这个模型中的属性可以减少用户可得的权限。这个方式可以增加数据的安全性</li>
+<li>动态角色：属性(例如一天的时间)可用于决定主体的角色。这种情况下，一个用户的角色可以由动态属性完全确定</li>
+</ul></li>
+</ul>
+
+<h2 id="5-参考">5 参考</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Access_control" target="_blank">Access control wiki</a></li>
+<li><a href="https://www.ekransystem.com/en/blog/rbac-vs-abac" target="_blank">Role-based Access Control vs Attribute-based Access Control: How to Choose</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sip/">sip</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/sip/access_control/&amp;text=%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/sip/access_control/&amp;t=%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6&amp;body=https://xueqing.github.io/blog/sip/access_control/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/sip/access_control/&amp;title=%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6%20https://xueqing.github.io/blog/sip/access_control/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/sip/access_control/&amp;title=%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/sip/authentication_authorization/">Authentication vs Authorization</a></li>
+      
+      <li><a href="/blog/sip/algo/sip_algorithm/">SIP 相关算法总结</a></li>
+      
+      <li><a href="/blog/sip/algo/sm2/">SM2</a></li>
+      
+      <li><a href="/blog/sip/algo/sm3/">SM3 密码杂凑算法</a></li>
+      
+      <li><a href="/blog/sip/algo/sm4/">SM4 分组密码算法</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

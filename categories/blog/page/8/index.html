@@ -353,91 +353,91 @@
   
   
   <div>
-    <h2><a href="/blog/git/git_rm/">git rm 移除文件</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_dpkg/">dpkg 安装和卸载程序</a></h2>
     <div class="article-style">
       
-      # 从工作目录中删除指定的文件并存入暂存区 git rm file1 # 删除之前修改过并且已经放到暂存区域的文件, --forced, 用于防止误删还没有添加到快照的数据 git rm -f file1 # 从 git
+      sudo dpkg -i *.deb安装服务 卸载服务 dpkg -l | grep xxx查看包是否正确安装 第一列的ii指的是installed ok installed dpkg -r xxx移除安装包，但是保留配置文
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/git_status/">git status 跟踪状态</a></h2>
+    <h2><a href="/blog/cplusplus/effectivec&#43;&#43;_3/">Effective C&#43;&#43;, 3rd</a></h2>
     <div class="article-style">
       
-      # 查看哪些文件处于什么状态 git status # 得到一种更为紧凑的格式输出, --short git status -s git status --ignored
+      1.让自己习惯 C++ 01.视 C++ 为一个语言联邦 02.常量，枚举和内联优于宏定义 03.尽可能使用常量 04.确定对象被使用前已先被初始化 2.构造/析构
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/git_submodule/">git submodule</a></h2>
+    <h2><a href="/blog/shell/expect_shell/">expect 脚本</a></h2>
     <div class="article-style">
       
-      git submodule 应用场景 问题 高级命令 git将submodule有关的信息保存在两个地方： .gitmodules在仓库中，有版本控制，修改之后会同步到其他
+      expect 是用来进行自动化控制和测试的工具，可以执行交互式的脚本 在执行脚本过程中，一些交互式的过程可能需要用户输入等信息，这种情况下课使用 expect 脚本 基本
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/git_tag/">git tag 标签</a></h2>
+    <h2><a href="/blog/ffmepg/ffmpeg/">FFMPEG/FFPLAY 源码剖析</a></h2>
     <div class="article-style">
       
-      标签不能像分支一样来回移动. 分为轻量标签（lightweight）与附注标签（annotated） 轻量标签：很像一个不会改变的分支, 只是一个
+      播放器一般原理 Windows DirectShow 媒体文件基本模块：读文件、解复用、视频解码、音频解码、颜色空间转换、视频显示、音频播放 模块：过滤器 filter。 输入输出：
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/git_branch/">git 分支</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_find/">find 命令</a></h2>
     <div class="article-style">
       
-      HEAD git branch git checkout 合并分支 拉取分支 删除远程仓库分支 分支引用 HEAD HEAD：一个指针, 指向当前所在的本地分支 HEAD 分支随着提交操作自动向前移动 检出时 HEAD 随之移动
+      递归删除文件夹下某个文件或文件夹 find 指定-name查找类型默认包括文件和文件夹 find ./ -name .git | xargs rm -rf递归删除当前路径下的.git文件和文件夹 find ./
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/git_alias/">git 别名管理</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_fsck/">fsck 命令</a></h2>
     <div class="article-style">
       
-      使用git config为命令设置别名 输入 git cpick commit-id 就可以引用某次提交 git config --global alias.cpick cherry-pick git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status 使用git config新建
+      Ubuntu16 在启动的时候出错 fsck exited with status code 4 出错原因：磁盘检测不能通过 解决方法：fsck.ext4 -y /dev/sda1
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/account_ssh/">github 账户管理</a></h2>
+    <h2><a href="/blog/ubuntu/gdb/">GDB 学习</a></h2>
     <div class="article-style">
       
-      添加 SSH ke 到 github 账户 检查 .ssh 文件夹是否有密钥 ls ~/.ssh/ 没有的话生成密钥 ssh-keygen -t rsa -C &quot;your_email@example.com&quot; 添加 SSH key 到 ssh-agent # 后台启动 ssh-agent eval $(ssh-agent -s) # 添加 key ssh-add ~/.ssh/id_rsa 在 github 的个人设置中添加一个 ssh-key 也可
+      GDB 学习 g++ 编译 启动 GDB 调试 设置断点 查看各类信息 运行被调试的程序 设置程序中断后欲显示的数据及格式 帮助命令 g++ 编译 添加编译参数-std=c++11 -fpermissive 指
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/gitlab/gitlab/">gitlab 踩坑</a></h2>
+    <h2><a href="/blog/git/git_add/">git add 添加文件</a></h2>
     <div class="article-style">
       
-      cache 使用 gitlab 的 CI/CD 时，将项目的 runner 设置为 group-runner 若同一个 pipeline 中的 stage 之间共享的 cache 依赖于同一个 runner，所以要保证同一个 pipeline 使用的是一个 runner 可以定义基类的 job
+      git add: 添加内容到下一次提交中. 当使用 git commit 时, git 将依据暂存区域的内容来进行文件的提交 可以用它开始跟踪新文件, 或者把已跟踪的文件放到暂存区, 还能用
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_mutex/">go 互斥锁</a></h2>
+    <h2><a href="/blog/git/git_bisect/">git bisect 查找错误提交</a></h2>
     <div class="article-style">
       
-      sync.Mutex sync.Mutex 互斥：保证每次只有一个 goroutine 可以访问一个共享的变量 go 标准库提供 sync.Mutex 互斥锁类型及两个方法： Lock 和 Unlock 在代码前调用 Lock，在代码后调用 Unlock 保证这段代码
+      已知 HEAD 节点是错误的，正确版本是 xxxxx 对应的提交，使用git bisect查找错误的提交 git bisect start git bisect bad HEAD git bisect good xxxxx # git 从中间的历史记录检出一个中间状态，
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_function/">go 函数</a></h2>
+    <h2><a href="/blog/git/git_blame/">git blame</a></h2>
     <div class="article-style">
       
-      函数 function 函数用法 函数值 匿名函数 可变函数 variadic function 方法 vs 函数 方法的值接收者 vs 函数的值参数 方法的指针接收者和函数的指针参数 函数 function 函数是基本的代码块，用于
+      git blame可标注出指定文件的每一行内容的最后修改者和最后修改时间 线下完成，即读本地磁盘完成 git blame bug.c
       
     </div>
   </div>

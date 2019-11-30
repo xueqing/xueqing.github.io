@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 | kiki</title>
+    <link>https://xueqing.github.io/blog/software_architecture/design_pattern/</link>
+      <atom:link href="https://xueqing.github.io/blog/software_architecture/design_pattern/index.xml" rel="self" type="application/rss+xml" />
+    <description>设计模式</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>设计模式</title>
+      <link>https://xueqing.github.io/blog/software_architecture/design_pattern/</link>
+    </image>
+    
+  </channel>
+</rss>

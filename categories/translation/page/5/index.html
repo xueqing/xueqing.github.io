@@ -353,99 +353,91 @@
   
   
   <div>
-    <h2><a href="/translation/go-doc/golangpkg/quick/">quick 包</a></h2>
+    <h2><a href="/translation/go-doc/command/get/">go get</a></h2>
     <div class="article-style">
       
-      概述 索引 参考 Golang 官网文档 学习。 导入语句：import &quot;testing/quick&quot; 概述 quick 包实现了帮辅助黑盒测试的工具函数。 testing/quick 包被冻结，且不再接受新特性。 索引 参考
+      命令 go get 命令支持的 VCS go get 的参数 命令 go get 命令用来动态获取远程代码包，从代码版本控制系统的远程仓库中检出/更新代码包并对其进行编译和安装 在内部实
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/reader/">Readers</a></h2>
+    <h2><a href="/translation/go-doc/command/install/">go install</a></h2>
     <div class="article-style">
       
-      ```go /* Exercise: Readers Implement a Reader type that emits an infinite stream of the ASCII character &lsquo;A&rsquo;. */
-package main
-import &ldquo;golang.org/x/tour/reader&rdquo;
-type myReader struct{}
-func (r myReader) Read(c []byte) (int, error) { i := 0 for ; i &lt; len&copy;; i++ { c[i] = &lsquo;A&rsquo; } for ; i &lt; cap&copy;; i++ { c = append(c, &lsquo;A&rsquo;) }
-return cap(c), nil  }
-func main() { reader.Validate(myReader{}) }
+      命令 安装代码包 安装命令源码文件 go install 的参数 命令 go install 用于编译并安装指定的代码包及它们的依赖包 这个命令在内部实际上分成了两步操作：第一步是生成结果
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/rot_reader/">rot13Reader</a></h2>
+    <h2><a href="/translation/go-doc/command/list/">go list</a></h2>
     <div class="article-style">
       
-      ```go /* Exercise: rot13Reader A common pattern is an io.Reader that wraps another io.Reader, modifying the stream in some way.
-For example, the gzip.NewReader function takes an io.Reader (a stream of compressed data) and returns a *gzip.Reader that also implements io.Reader (a stream of the decompressed data).
-Implement a rot13Reader that implements io.Reader and reads from an io.Reader, modifying the stream by applying the rot13 substitution cipher to all alphabetical characters.
+      用法 -f -m 用法 列举命名包，每行一个。不带参数时判断一个包是否存在工作空间，存在则输出包的导入路径 命令 go list [-f format] [-json] [-m] [list flags] [build flags] [packages] 常用的参数是 -f 和 -j
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/slices/">Slices</a></h2>
+    <h2><a href="/translation/go-doc/command/mod/">go mod</a></h2>
     <div class="article-style">
       
-      /* Exercise: Slices Implement Pic. It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers. When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values. The choice of image is up to you. Interesting functions include (x+y)/2, x*y, and x^y. (You need to use a loop to allocate each []uint8 inside the [][]uint8.
+      用法 download edit graph init tidy vendor verify why 用法 用于操作模块。注意：所有的 go 命令支持模块 用法：go mod &lt;command&gt; [arguments] 命令 功能 download 下载模块到本地缓存 edit 使用工具或脚本更新 go.mod graph 打印模块
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/stringer/">Stringers</a></h2>
+    <h2><a href="/translation/go-doc/command/run/">go run</a></h2>
     <div class="article-style">
       
-      /* Exercise: Stringers Make the IPAddr type implement fmt.Stringer to print the address as a dotted quad. For instance, IPAddr{1, 2, 3, 4} should print as &quot;1.2.3.4&quot;. */ package main import ( &quot;fmt&quot; &quot;strconv&quot; &quot;strings&quot; ) type iPAddr [4]byte func (ip iPAddr) String() string { arr := []string{&quot;0&quot;, &quot;.&quot;, &quot;0&quot;, &quot;.&quot;, &quot;0&quot;, &quot;.&quot;, &quot;0&quot;} for i := 0; i &lt; 4; i++ { arr[i&lt;&lt;1] = strconv.Itoa(int(ip[i])) } sip := strings.Join(arr, &quot;&quot;) return sip } func main() { hosts := map[string]iPAddr{ &quot;loopback&quot;: {127, 0, 0, 1}, &quot;googleDNS&quot;: {8, 8, 8, 8}, } for name, ip := range hosts { fmt.
+      构建并运行程序 对于简单的程序，可以使用 go run program.go 直接构建并允许程序 go run 不会再运行目录生成任何文件，可执行文件被放在临时文件中执行，工作目录被设置
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/golangpkg/testing/">testing 包</a></h2>
+    <h2><a href="/translation/go-doc/command/test_package/">go test</a></h2>
     <div class="article-style">
       
-      概述 基准测试 示例函数 跳过测试 子测试项目和子基准测试 Main 索引 例子 子目录 参考 Golang 官网文档 学习。 导入语句：import &quot;testing&quot; 概述 testing 包提供对 Go 包的自动测试。
+      用法：go test [build/test flags] [packages] [build/test flags &amp; test binary flags] go test 自动测试通过导入路径命名的包。命令按下面的格式打印测试结果的概要： ok archive/tar 0.011s FAIL archive/zip 0.022s ok compress/gzip 0.033s ... 之后是每个失败的包的
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/hls/vod_playlist_construction/">VOD playlist 构造</a></h2>
+    <h2><a href="/translation/go-doc/command/gopath_and_module/">GOPATH 和模块</a></h2>
     <div class="article-style">
       
-      原文 概述 示例 EXTM3U EXT-X-TARGETDURATION EXT-X-VERSION EXT-X-MEDIA-SEQUENCE EXTINF EXT-X-ENDLIST 相对路径 概述 对于 VOD(video on demand, 点播) 会话，可以访问的媒体文件表示显示的整个时间段。索引文件是静态的，且包含相关 URL 的一个完整列
+      当使用模块时，不再使用 GOPATH 来解决导入。但是，它仍被用于存储下载的源码(在 GOPATH/pkg/mod)和编译好的命令(在 GOPATH/bin)
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/web_crawler/">Web Crawler</a></h2>
+    <h2><a href="/translation/go-doc/command/gopath_env_var/">GOPATH 环境变量</a></h2>
     <div class="article-style">
       
-      /* Exercise: Web Crawler In this exercise you'll use Go's concurrency features to parallelize a web crawler. Modify the Crawl function to fetch URLs in parallel without fetching the same URL twice. Hint: you can keep a cache of the URLs that have been fetched on a map, but maps alone are not safe for concurrent use! */ package main import ( &quot;fmt&quot; ) type Fetcher interface { // Fetch returns the body of URL and // a slice of URLs found on that page.
+      Go 路径用于解决导入语句，它通过 go/build 包实现，并记录在 go/build 包。 GOPATH 环境变量列举了寻找 Go 代码的位置。在 Unix 上，其值是一个冒号分隔的字符串。在 Windows 上，其值是一
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/cplusplus/binary_compatible_cpp_interface/">二进制兼容的 C&#43;&#43; 接口</a></h2>
+    <h2><a href="/translation/go-doc/gotour/images/">Images</a></h2>
     <div class="article-style">
       
-      原文参考 Binary-compatible C++ Interfaces。 作者：Chad Austin, 2002.02.15 二进制兼容的 C++ 接口 概述 背景 概念 初次尝试 第二次尝试 第三次修正 第四次修正 完成润色 最终实现 总结
+      /* Exercise: Images Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of image.Image instead of a slice of data. Define your own Image type, implement the necessary methods, and call pic.ShowImage. Bounds should return a image.Rectangle, like image.Rect(0, 0, w, h). ColorModel should return color.RGBAModel. At should return a color; the value v in the last picture generator corresponds to color.
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/blog/subtest/">使用子测试和子基准测试</a></h2>
+    <h2><a href="/translation/go-doc/golangpkg/iotest/">iotest 包</a></h2>
     <div class="article-style">
       
-      介绍 表驱动测试基础 表驱动的基准测试 使用子测试的表驱动测试 运行指定的测试或基准测试 设置和清理 并行控制 并行运行一组测试 一组并行测试之后的清理 结论
+      概述 索引 参考 Golang 官网文档 学习。 导入语句：import &quot;testing/iotest&quot; 概述 iotest 包实现了主要用于 testing 的 Reader 和 Writer。 索引 参考
       
     </div>
   </div>

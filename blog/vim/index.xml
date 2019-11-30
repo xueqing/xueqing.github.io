@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vim 命令 | kiki</title>
+    <link>https://xueqing.github.io/blog/vim/</link>
+      <atom:link href="https://xueqing.github.io/blog/vim/index.xml" rel="self" type="application/rss+xml" />
+    <description>vim 命令</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>vim 命令</title>
+      <link>https://xueqing.github.io/blog/vim/</link>
+    </image>
+    
+    <item>
+      <title>1 Linux Vim 三种工作模式</title>
+      <link>https://xueqing.github.io/blog/vim/1_%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/1_%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-Linux-Vim-%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F&#34;&gt;1 Linux Vim 三种工作模式&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%89%8D%E8%A8%80&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F&#34;&gt;命令模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F&#34;&gt;输入模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F&#34;&gt;编辑模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Vim 有三种工作模式：命令模式、输入模式和编辑模式。三种模式可随意切换&lt;/li&gt;
+&lt;li&gt;不论处于什么模式，都可以按一次 Esc 键返回命令模式。如果多按几次 Esc 键后听到&amp;rdquo;嘀————&amp;rdquo;的声音，则代表已经处于命令模式了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;ref/vim-mode.jpg&#34; alt=&#34;vim-mode&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;命令模式&#34;&gt;命令模式&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 Vim 编辑文件时，默认处于命令模式&lt;/li&gt;
+&lt;li&gt;此模式下，可使用方向键（上、下、左、右键）或 k、j、h、l 移动光标的位置，还可以对文件内容进行复制、粘贴、替换、删除等操作&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;输入模式&#34;&gt;输入模式&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在输入模式下，Vim 可以对文件执行写操作，类似于在 Windows 系统的文档中输入内容&lt;/li&gt;
+&lt;li&gt;在命令模式状态下输入 i、I、a、A、o、O 等插入命令（各指令的具体功能如表所示）进行输入模式，当编辑文件完成后按 Esc 键即可返回命令模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;i&lt;/td&gt;
+&lt;td&gt;在当前光标所在位置插入随后输入的文本，光标后的文本相应向右移动&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;在光标所在行的行首插入随后输入的文本，行首是该行的第一个非空白字符，相当于光标移动到行首执行 i 命令&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;o&lt;/td&gt;
+&lt;td&gt;在光标所在行的下面插入新的一行。光标停在空行首，等待输入文本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;td&gt;在光标所在行的上面插入新的一行。光标停在空行的行首，等待输入文本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;在当前光标所在位置之后插入随后输入的文本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;在光标所在行的行尾插入随后输入的文本，相当于光标移动到行尾再执行a命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;编辑模式&#34;&gt;编辑模式&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;编辑模式用于对文件中的指定内容执行保存、查找或替换等操作&lt;/li&gt;
+&lt;li&gt;在命令模式状态下按“：”键切换到编辑模式，此时 Vim 窗口的左下方出现一个“：”符号，这时就可以输入相关指令进行操作&lt;/li&gt;
+&lt;li&gt;指令执行后 Vim 会自动返回命令模式。如想直接返回命令模式，按 Esc 即可&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim 复制粘贴</title>
+      <link>https://xueqing.github.io/blog/vim/vim_copy_paste/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_copy_paste/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;按&lt;code&gt;ESC&lt;/code&gt;进入命令行模式
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yy&lt;/code&gt; 复制光标所在行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p&lt;/code&gt; 粘贴至游标后&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim 撤销上次修改</title>
+      <link>https://xueqing.github.io/blog/vim/vim_cancel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_cancel/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;u&lt;/code&gt;撤销上次修改&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl+r&lt;/code&gt;恢复撤销操作&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim 文件刷新</title>
+      <link>https://xueqing.github.io/blog/vim/vim_file_flush/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_file_flush/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;在 vim 打开一个文件，在另一个地方修改了文件
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;:e&lt;/code&gt;重新加载文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:e!&lt;/code&gt;强制丢掉本地修改，从磁盘加载文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim 文本编辑</title>
+      <link>https://xueqing.github.io/blog/vim/vim_edit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_edit/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e5%86%b5&#34;&gt;概况&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ad%97%e7%ac%a6&#34;&gt;字符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8d%95%e8%af%8d&#34;&gt;单词&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%a1%8c&#34;&gt;行&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%a5%e5%ad%90&#34;&gt;句子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%ae%b5%e8%90%bd&#34;&gt;段落&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;概况&#34;&gt;概况&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Vi/Vim 中关于编辑操作的命令也比较多，操作单位按从小到大的顺序为(括号内为相应的操作命令)
+
+&lt;ul&gt;
+&lt;li&gt;字符 &lt;code&gt;x、c、s、r、i、a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;单词 &lt;code&gt;cw、cW、cb、cB、dw、dW、db、dB&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;行 &lt;code&gt;dd、d0、d$、I、A、o、O&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;句子 &lt;code&gt;(、)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;段落 &lt;code&gt;{、}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这些操作单位有些可以加操作次数。操作对象的范围计算公式为：&lt;code&gt;操作范围 = 操作次数 * 操作单位&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;d3w/3dw&lt;/code&gt; 命令删除三个单词&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;10dd&lt;/code&gt; 命令删除十行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;字符&#34;&gt;字符&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 删除光标位置的字符
+x
+# 更改当前字符并进入插入模式
+c
+# 替换光标位置的字符并进入插入模式
+s
+# 替换光标位置的字符但不进入插入模式
+r
+# 在当前位置的字符之前进入插入模式
+i
+# 在当前位置的字符之后进入插入模式
+a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;单词&#34;&gt;单词&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 删除当前单词从光标开始的部分并进入插入模式
+cw/cW
+# 删除当前单词从光标所在位置至单词开始的部分并进入插入模式
+cb/cB
+# 删除当前单词从光标开始的部分但不进入插入模式
+dw/dW
+# 删除当前单词从光标所在位置至单词开始的部分但不进入插入模式
+db/dB
+# cW、cB、dW、dB 命令操作的单词是以空白字符(空格、Tab)分隔的字串
+# 比如字符串“str1-str2 str3-str4”，对 cW,cB,dW,dB 命令来说是两个单词，而对 cw、cb、dw、db 命令来说则是四个单词。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;行&#34;&gt;行&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 删除当前行
+dd
+# 删除以当前行开始的 n 行
+ndd
+# 删除从当前光标开始到行末的内容
+d0
+# 删除从当前光标开始到行末的内容
+d$
+# 在当前行的行首进入插入模式
+I
+# 在当前行的行尾进入插入模式
+A
+# 在当前行下方另起一行进入插入模式
+o
+# 在当前行上方另起一行进入插入模式
+O
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;句子&#34;&gt;句子&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 删除当前句子从光标位置开始到句末的内容
+d)
+# 删除当前句子从光标位置开始到句首的内容
+d(
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;段落&#34;&gt;段落&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 删除当前段落从光标位置开始到段末的内容
+d}
+# 删除当前段落从光标位置开始到段首的内容
+d{
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ibm.com/developerworks/cn/linux/l-cn-tip-vim/&#34; target=&#34;_blank&#34;&gt;技巧：快速提高 Vi/Vim 使用效率的原则与途径&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim 显示行号</title>
+      <link>https://xueqing.github.io/blog/vim/vim_show_line_number/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_show_line_number/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;:set number&lt;/code&gt;或者&lt;code&gt;:set nu&lt;/code&gt;显示行号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:set nonumber&lt;/code&gt;或者&lt;code&gt;:set nonu&lt;/code&gt;隐藏行号&lt;/li&gt;
+&lt;li&gt;设置 vim 打开之后自动显示行号
+
+&lt;ul&gt;
+&lt;li&gt;修改&lt;code&gt;/etc/vimrc&lt;/code&gt;是系统范围的初始化配置&lt;/li&gt;
+&lt;li&gt;修改&lt;code&gt;~/.vimrc&lt;/code&gt;是个人 vim 的初始化配置&lt;/li&gt;
+&lt;li&gt;在上述任一文件中输入&lt;code&gt;set number&lt;/code&gt;或&lt;code&gt;set nu&lt;/code&gt;保存即可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim 查找替换</title>
+      <link>https://xueqing.github.io/blog/vim/vim_find_replace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_find_replace/</guid>
+      <description>&lt;p&gt;使用&lt;code&gt;:s&lt;/code&gt;替换字符串，常用的四个&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;:s/qwe/asd/&lt;/code&gt;替换当前行第一个 qwe 为 asd&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:s/qwe/asd/g&lt;/code&gt;替换当前行所有 qwe 为 asd&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:n,$s/qwe/asd/&lt;/code&gt;替换第 n 行到最后一行每行第一个 qwe 为 asd&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:n,$s/qwe/asd/g&lt;/code&gt;替换第 n 行到最后一行每行所有 qwe 为 asd&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>其他命令</title>
+      <link>https://xueqing.github.io/blog/vim/vim_other_cmd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_other_cmd/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;设置 tab 为 4 个空格&lt;code&gt;:set ts=4 (tabstop)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>纵行编辑模式</title>
+      <link>https://xueqing.github.io/blog/vim/vim_visual_block/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vim/vim_visual_block/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;在命令模式下，输入 ctrl+v 状态栏出现 VISAUL BLOCK，进入纵向编辑模式，移动游标选择待编辑的区域
+
+&lt;ul&gt;
+&lt;li&gt;windows 下的 vim 纵向编辑模式是 ctrl+q&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果要选择至文件结尾，输入 G&lt;/li&gt;
+&lt;li&gt;多行行首插入
+
+&lt;ul&gt;
+&lt;li&gt;选择好以后输入大写 I，光标会自动跳转到所选择行的第一行的行首，并进入 insert 模式&lt;/li&gt;
+&lt;li&gt;输入想要插入的内容&lt;/li&gt;
+&lt;li&gt;输入 Esc，编辑完成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多行行首删除
+
+&lt;ul&gt;
+&lt;li&gt;选择好以后输入小写 d，编辑完成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多行行首缩进
+
+&lt;ul&gt;
+&lt;li&gt;选择好以后输入 &amp;gt;  (shift+.)，则选择的内容向后缩进一个 tab&lt;/li&gt;
+&lt;li&gt;选择好以后输入&amp;lt; (shift+,)，则选择的内容向前缩进一个tab&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多行行尾插入
+
+&lt;ul&gt;
+&lt;li&gt;选择好以后输入大写 A，光标会自动跳转到所选择行的第一行的行尾，并进入 insert 模式&lt;/li&gt;
+&lt;li&gt;输入想要输入的内容&lt;/li&gt;
+&lt;li&gt;输入 Esc，编辑完成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多行行尾删除
+
+&lt;ul&gt;
+&lt;li&gt;选择好以后输入小写 x 或小写 d，编辑完成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多行字符替换
+
+&lt;ul&gt;
+&lt;li&gt;选择好以后输入 小写 c，发现刚选中的字符消失，并进入 insert 模式&lt;/li&gt;
+&lt;li&gt;输入想要替换的字符&lt;/li&gt;
+&lt;li&gt;输入 Esc，编辑完成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

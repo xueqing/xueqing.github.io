@@ -353,91 +353,91 @@
   
   
   <div>
-    <h2><a href="/blog/markdown/markdownlint_rules/">Markdownlint Rules</a></h2>
+    <h2><a href="/blog/go/basic/go_loop/">go 循环语句</a></h2>
     <div class="article-style">
       
-      MD001 - Heading levels should only increment by one level at a time MD002 - First heading should be a top level heading MD003 - Heading style MD004 - Unordered list style MD005 - Inconsistent indentation for list items at the same level MD006 - Consider starting bulleted lists at the beginning of the line MD007 - Unordered list indentation MD009 - Trailing spaces MD010 - Hard tabs MD011 - Reversed link syntax MD012 - Multiple consecutive blank lines MD013 - Line length MD014 - Dollar signs used before commands without showing output MD018 - No space after hash on atx style heading MD019 - Multiple spaces after hash on atx style heading MD020 - No space inside hashes on closed atx style heading MD021 - Multiple spaces inside hashes on closed atx style heading MD022 - Headings should be surrounded by blank lines MD023 - Headings must start at the beginning of the line MD024 - Multiple headings with the same content MD025 - Multiple top level headings in the same document MD026 - Trailing punctuation in heading MD027 - Multiple spaces after blockquote symbol MD028 - Blank line inside blockquote MD029 - Ordered list item prefix MD030 - Spaces after list markers MD031 - Fenced code blocks should be surrounded by blank lines MD032 - Lists should be surrounded by blank lines MD033 - Inline HTML MD034 - Bare URL used MD035 - Horizontal rule style MD036 - Emphasis used instead of a heading MD037 - Spaces inside emphasis markers MD038 - Spaces inside code span elements MD039 - Spaces inside link text MD040 - Fenced code blocks should have a language specified MD041 - First line in file should be a top level heading MD042 - No empty links MD043 - Required heading structure MD044 - Proper names should have the correct capitalization MD045 - Images should have alternate text (alt text)  This document contains a description of all rules, what they are checking for, as well as an examples of documents that break the rule and corrected versions of the examples.
+      for 循环 &ldquo;while&rdquo; 循环 循环嵌套 循环控制语句 无限循环 for 循环 go 循环只有 for 结构。包含 3 个组件 初始化语句：通常是短变量声明，声明的变量只对 for 循环可见 条件语句：
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/traps/mod_workspace/">module 不要在 vscode 工作区打开工程</a></h2>
+    <h2><a href="/blog/go/basic/go_pointer/">go 指针</a></h2>
     <div class="article-style">
       
-      旧行为 vs 基于模块的行为 在 GOPATH 之外工作 VSCode 对模块的支持 保存文件时不再自动导入 相关链接 旧行为 vs 基于模块的行为 模块在 Go1.11 开始，因此按照设计旧行为会默认保
+      指针变量指向一个值的内存地址：不是所有值都有地址，但是所有变量都有地址 每一个聚合类型变量的组成(结构体的成员或数组中的元素)都是变量，都有一
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/o2o/o2o/">O2O</a></h2>
+    <h2><a href="/blog/go/basic/go_interface/">go 接口</a></h2>
     <div class="article-style">
       
-      概念 发展历程 核心技术 应用价值 经营模式 主要难题 盈利模式 平衡模式 概念 O2O(online to offline, 在线离线/线上到线下)，指将线下的商务机会与互联网结合，让互联网称为线
+      非侵入式设计 接口定义 接口实现 接口值 底层值为 nil 的接口值 接口值为 nil 空接口 类型断言(type assertion) 类型选择(type switch) 接口和类型的关系 一个类型可以实现
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/p2p/p2p%E5%8F%8Adht/">P2P 中 DHT 网络介绍</a></h2>
+    <h2><a href="/blog/go/basic/go_map/">go 散列表</a></h2>
     <div class="article-style">
       
-      分布式哈希表 DHT Kademlia Kademlia: A Peer-to-Peer Information System Based on the XOR Metric 论文阅读 异或度量 节点状态 KAD 协议 路由表 有效的 key re-publishing 优化 DHT 中 KAD 的应用 P2P(peer-to-peer) 技术的应用：文件分享、即时通信、协同处理
+      map定义和初始化 map 是一种无序的键值对的集合，可以通过 key 快速检索数据，使用 hash 表实现 定义集合 var map_name[key_type]val_type 使用 make 函数map_name := make(map[key_type]val_type) 不初始化 map，
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/shell/perl/perl%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/">perl 脚本解析 xml 文件</a></h2>
+    <h2><a href="/blog/go/basic/go_data_type/">go 数据类型</a></h2>
     <div class="article-style">
       
-      1 使用模块 XML::Simple。XML::Simple 能够解析一个 XML 文件并在以一个 Perl 哈希引用返回数据。在这个哈希中，来自原始 XML 文件的元素作
+      数据类型 数据类型默认初始化值 类型推导 数据类型 数据类型把数据分成所需内存大小不同的数据 布尔型：true 或 false 数字类型： 整型 有符号 int(int, int8, int16, int32, int6
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/qt/qtcreator/">QtCreator 一些基本的配置参数说明</a></h2>
+    <h2><a href="/blog/go/basic/go_array/">go 数组</a></h2>
     <div class="article-style">
       
-      QtCreator pro 文件参数 QtCreator 帮助文档 QtCreator 使用 QtCreator pro 文件参数 参数 含义 TARGET 应用程序名.默认是跟工程文件名一样 (根据不同的平台后缀名会自动添加) TEMPLATE 模板变量指定生成 makefile (app:
+      array 数组初始化 多维数组 数组作为函数参数 array 数组是具有相同类型，长度固定，已编号的数据项序列 可通过索引来读写数组元素 声明数组需要指定类型和元素个数
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/raii/">RAII 资源获取即初始化</a></h2>
+    <h2><a href="/blog/go/basic/go_method/">go 方法</a></h2>
     <div class="article-style">
       
-      概念 使用 RAII 例子 标准库 注解 参考 概念 资源获取即初始化（Resource Acquisition Is Initialization），或称 RAII，是一种 C++ 编程技术，它将必
+      方法 method 方法的接收者是 struct 方法的接收者是非结构体 指针接收者 vs 值接收者 使用指针接收者 使用值接收者 方法的匿名域 方法 method 方法的接收者是 struct go 没有类，但是可
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/rest/quickstart/">reStructuredText 入门</a></h2>
+    <h2><a href="/blog/go/basic/go_decision_making/">go 条件语句</a></h2>
     <div class="article-style">
       
-      原文 reStructuredText 入门 ====================== :作者: kiki :日期: 2019/11/6 翻译 原文__。 __ http://docutils.sourceforge.net/docs/user/rst/quickstart.html :作者: Richard Jones :修订: 5801 :版权: 此文档放置在公共域。 .. contents:: 目录 下面的文本包含看似 “(快速参考_
+      if if 语句 if&hellip;else 语句 if 嵌套语句 switch select if if 语句 类似于 for 循环，但是不需要小括号，需要大括号 if x &lt; 0 { return 0 } if 语句可以在执行条件语句之前有一个简短的语句，
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/shell/shell_script/">shell 脚本</a></h2>
+    <h2><a href="/blog/go/basic/go_module/">go 模块</a></h2>
     <div class="article-style">
       
-      在 shell 脚本中调用另一个脚本 shell 命令行选项解析 getopts getopt shell 获取脚本的进程 ID shell 脚本获取当前时间 shell 执行多个命令的方法 shell test 命令 数值测试 字符串测试 文件测试 连接测
+      1 快速入门 1.1 新建工程 1.2 每日工作流 2 新概念 2.1 module 模块 2.2 go.mod 2.3 版本选择 2.4 语义导入版本控制 3 如何使用模块 3.1 如何安装和激活模块支持 3.2 定义一个模块 3.3 升级和
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/sizeof_strlen/">sizeof vs strlen</a></h2>
+    <h2><a href="/blog/go/basic/go_goroutine/">go 程</a></h2>
     <div class="article-style">
       
-      sizeof strlen 总结 参考 sizeof sizeof 是编译时一元运算符，可用于计算运算元的大小 sizeof 作用于 unsigned int 时，结果一般表示为 size_t sizeof 可用于任何数据类型，包括基本类型(比如整型、浮点
+      goroutine 创建一个 goroutine goroutine 优于线程 goroutine goroutine 是和其他函数或方法并发运行的函数或方法 goroutine 可认为是轻量级的线程，比线程创建代价小 创建一个 goroutine 使用 go 可以开始一个 goro
       
     </div>
   </div>

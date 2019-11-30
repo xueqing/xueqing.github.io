@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node.js | kiki</title>
+    <link>https://xueqing.github.io/blog/js/</link>
+      <atom:link href="https://xueqing.github.io/blog/js/index.xml" rel="self" type="application/rss+xml" />
+    <description>Node.js</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>Node.js</title>
+      <link>https://xueqing.github.io/blog/js/</link>
+    </image>
+    
+    <item>
+      <title>学习 Node.js</title>
+      <link>https://xueqing.github.io/blog/js/nodejs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/js/nodejs/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#nodejs&#34;&gt;node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#npm&#34;&gt;npm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;node-js&#34;&gt;node.js&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;event-driven, non-blocking I/O model
+
+&lt;ul&gt;
+&lt;li&gt;lightweight and efficient&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;architecture
+
+&lt;ul&gt;
+&lt;li&gt;L1: Node core/Standard Library(JS)&lt;/li&gt;
+&lt;li&gt;L2: Node Bindings(C++)&lt;/li&gt;
+&lt;li&gt;L3: Chrome V8(C++) + libuv&amp;copy;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;npm&#34;&gt;npm&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;NPM(Node package manager)&lt;/li&gt;
+&lt;li&gt;package: JS files + package.json(manifest)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

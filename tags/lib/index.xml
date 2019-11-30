@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lib | kiki</title>
+    <link>https://xueqing.github.io/tags/lib/</link>
+      <atom:link href="https://xueqing.github.io/tags/lib/index.xml" rel="self" type="application/rss+xml" />
+    <description>lib</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>lib</title>
+      <link>https://xueqing.github.io/tags/lib/</link>
+    </image>
+    
+    <item>
+      <title>第一章  温故而知新</title>
+      <link>https://xueqing.github.io/blog/link_load_lib/1_%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/link_load_lib/1_%E7%AE%80%E4%BB%8B/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%a1%ac%e4%bb%b6%e5%8e%86%e5%8f%b2%e5%8f%98%e5%8c%96&#34;&gt;硬件历史变化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a4%9a%e9%81%93%e7%a8%8b%e5%ba%8fmultiprogramming%e8%ae%be%e8%ae%a1&#34;&gt;多道程序（Multiprogramming）设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%86%85%e5%ad%98&#34;&gt;内存&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#%e7%ba%bf%e7%a8%8bthread&#34;&gt;线程（Thread）&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ba%bf%e7%a8%8b%e8%b0%83%e5%ba%a6thread-schedule&#34;&gt;线程调度（Thread Schedule）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux-%e5%a4%9a%e7%ba%bf%e7%a8%8b&#34;&gt;Linux 多线程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ba%bf%e7%a8%8b%e5%ae%89%e5%85%a8&#34;&gt;线程安全&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ba%bf%e7%a8%8b%e6%a8%a1%e5%9e%8b&#34;&gt;线程模型&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;计算机硬件三个关键部件：中央处理器 CPU，内存和 I/O 控制芯片&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;硬件历史变化&#34;&gt;硬件历史变化&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;早期的计算机硬件：每个设备的 I/O 控制器和 CPU 以及内存连同一总线&lt;/li&gt;
+&lt;li&gt;CPU 核心频率提升，产生了与内存频率一致的系统总线&lt;/li&gt;
+&lt;li&gt;为了些协调 CPU、内存和高速的图形设备，设计高速的北桥芯片，以便其高速地交换数据&lt;/li&gt;
+&lt;li&gt;设计南桥芯片，专门处理低速设备（磁盘、USB、键盘、鼠标等），由南桥汇总连到北桥
+
+&lt;ul&gt;
+&lt;li&gt;系统总线用 PCI 结构，低速设备用 ISA 总线&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CPU 频率到达 4GHz 的极限，通过增加 CPU 的数量来增加 CPU 的速度
+
+&lt;ul&gt;
+&lt;li&gt;对称多处理器（SMP，Symmetrical Multi-Processing），每个 CPU 在系统中所处的地位和发挥的功能一样，是相互对称的&lt;/li&gt;
+&lt;li&gt;应用场合是商用的服务器和需要处理大量计算的环境&lt;/li&gt;
+&lt;li&gt;多核处理器（Multi-core Processor），多个处理器“被打包”，共享比较昂贵的缓存部件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;系统软件：管理计算机本身的软件
+
+&lt;ul&gt;
+&lt;li&gt;平台性的：操作系统内核/驱动程序/运行库和其他系统工具&lt;/li&gt;
+&lt;li&gt;用于程序开发的：编译器/汇编器/链接器等开发工具和开发库&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;计算机软件体系结构：硬件——硬件规格——操作系统内核——系统调用接口——运行时库——操作系统 API——应用软件
+
+&lt;ul&gt;
+&lt;li&gt;硬件规格（Hardware Specification），由硬件生产厂商负责提供&lt;/li&gt;
+&lt;li&gt;系统调用接口（System Call API），往往以软件中断（Software Interrupt）的方式提供&lt;/li&gt;
+&lt;li&gt;操作系统应用程序编程接口（API，Application Programming Interface）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;多道程序-multiprogramming-设计&#34;&gt;多道程序（Multiprogramming）设计&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;充分利用 CPU 资源&lt;/li&gt;
+&lt;li&gt;当某个程序暂时不适用 CPU 时，监控程序把正在等待 CPU 资源的程序启动&lt;/li&gt;
+&lt;li&gt;缺点：调度时不能满足需要即时响应的需求&lt;/li&gt;
+&lt;li&gt;分时系统（Time-Sharing System）：每个程序运行一段时间以后都主动让出 CPU 给其他程序
+
+&lt;ul&gt;
+&lt;li&gt;缺点：当某个程序进入死循环，整个系统无法响应交互式需求&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多任务系统（Multi-tasking System）：操作系统管理所有硬件资源，所有应用程序以进程的方式运行在比操作系统权限更低的级别
+
+&lt;ul&gt;
+&lt;li&gt;每个进程拥有独立的地址空间，进程之间的地址空间互相隔离&lt;/li&gt;
+&lt;li&gt;操作系统统一分配 CPU，根据每个进程的优先级分配&lt;/li&gt;
+&lt;li&gt;进程运行时间超出一定阈值，操作系统会暂停该进程，将 CPU 资源分配给其他等待运行的进程，即抢占式（Preemptive），操作系统可以强制剥夺 CPU 资源并且分配给它认为目前最需要的进程&lt;/li&gt;
+&lt;li&gt;硬件驱动（Device Driver）程序：和操作系统内核一起运行在特权级，但与操作系统内核直接有一定的独立性。将硬件抽象成一系列概念，提供统一的硬件访问模式。&lt;/li&gt;
+&lt;li&gt;驱动程序的开发工作通常由硬件生产厂商完成。&lt;/li&gt;
+&lt;li&gt;操作系统开发者提供一系列接口和框架，硬件生产厂商安装该接口和框架开发的驱动程序都可以在操作系统上使用。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;内存&#34;&gt;内存&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;早期计算机的程序运行在物理内存，即使用物理地址空间（Physical Address Space）
+
+&lt;ul&gt;
+&lt;li&gt;问题：地址空间不隔离；内存使用效率低；程序运行的地址不确定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;虚拟地址空间（Virtual Address Space）：每个进程都挺自己独立的虚拟空间，且只能访问自己的虚拟地址空间
+
+&lt;ul&gt;
+&lt;li&gt;分段（Segmentation）：分段对内存区域的映射仍以程序为单位，内存不足时内存的切换以程序为单位，会影响速度&lt;/li&gt;
+&lt;li&gt;分页（Paging）：把地址空间等分成固定大小的页，每页大小由硬件决定，或硬件支持多种大小的页，由操作系统选择决定页的大小。&lt;/li&gt;
+&lt;li&gt;虚拟页（VP，Virtual Page）&lt;/li&gt;
+&lt;li&gt;物理页（PP，Physical Page）&lt;/li&gt;
+&lt;li&gt;磁盘页（DP，Disk Page）&lt;/li&gt;
+&lt;li&gt;页错误（Page Fault），进程需要的虚拟页不在内存中&lt;/li&gt;
+&lt;li&gt;内存管理单元（MMU，Memory Management Unit）进行页映射，将虚拟地址映射到物理地址&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;线程-thread&#34;&gt;线程（Thread）&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;程序执行流的最小单元，也被称为轻量级进程（LWP，Lightweight Process）&lt;/li&gt;
+&lt;li&gt;线程包含线程 ID，当前指令指针 PC，寄存器集合和堆栈&lt;/li&gt;
+&lt;li&gt;进程由一到多个线程组成，各个线程共享程序的内存空间（代码段、数据段、堆等）及一些进程级的资源（如打开文件和信号）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;线程调度-thread-schedule&#34;&gt;线程调度（Thread Schedule）&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;三种状态：
+
+&lt;ul&gt;
+&lt;li&gt;运行 Running：线程正在执行&lt;/li&gt;
+&lt;li&gt;就绪 Ready：线程可以执行，等待 CPU 调度&lt;/li&gt;
+&lt;li&gt;等待 Waiting：线程正在等待某一事件（I/O或同步），无法执行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;时间片（Time Slice）
+
+&lt;ul&gt;
+&lt;li&gt;优先级调度（Priority Schedule）：线程有各自的优先级，优先级高的线程会更早地执行&lt;/li&gt;
+&lt;li&gt;IO 密集型线程（IO Bound Thread）比 CPU 密集型线程（CPU Bound Thread）更容易得到优先级的提升
+
+&lt;ul&gt;
+&lt;li&gt;IO 密集型：频繁等待&lt;/li&gt;
+&lt;li&gt;CPU 密集型：频繁进行大量计算&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;系统会提升等待过长时间而未被调度执行的线程的优先级，避免饿死（Starvation）&lt;/li&gt;
+&lt;li&gt;改变线程优先级的三种方式
+
+&lt;ul&gt;
+&lt;li&gt;用户指定优先级&lt;/li&gt;
+&lt;li&gt;根据进入等待状态的频繁程度提升或降低优先级&lt;/li&gt;
+&lt;li&gt;长时间得不到执行而被提升优先级&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;轮转法（Round Robin）：让各个线程轮流执行一小段时间&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;抢占（Preemption）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;linux-多线程&#34;&gt;Linux 多线程&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建线程的三种方式：
+
+&lt;ul&gt;
+&lt;li&gt;fork 复制当前进程，子进程和父进程共享内存空间，执行相同代码，内存空间是写时复制（COW，Copy On Wright）&lt;/li&gt;
+&lt;li&gt;exec 使用新的可执行映像覆盖当前可执行映像&lt;/li&gt;
+&lt;li&gt;clone 创建一个线程并从指定位置开始执行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;线程安全&#34;&gt;线程安全&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;原子（Atomic）操作：单指令操作，不会被调度系统打断&lt;/li&gt;
+&lt;li&gt;同步（Synchronization）：一个线程访问数据未结束的时候，其他线程不得对同一个数据进行访问
+
+&lt;ul&gt;
+&lt;li&gt;锁（Lock）：线程在访问数据或资源之前先试图获得（Acquire）锁，访问结束之后释放（Release）锁&lt;/li&gt;
+&lt;li&gt;信号量（Semaphore）：一个初始值为 N 的信号量允许 N 个线程并发访问&lt;/li&gt;
+&lt;li&gt;二元信号量（Binary Semaphore）：只有占用和非占用两种状态，适合只能被一个线程独占访问的资源&lt;/li&gt;
+&lt;li&gt;访问资源过程：获取信号量；信号量值减 1；信号量值小于 0，则等待，否则继续执行&lt;/li&gt;
+&lt;li&gt;访问之后释放资源过程：获取信号量；信号量值加 1；信号量值小于 1，则唤醒一个等待线程&lt;/li&gt;
+&lt;li&gt;互斥量（Mutex）：只允许一个线程独占访问资源&lt;/li&gt;
+&lt;li&gt;信号量可以被任意线程获取并释放，即获取和释放线程可以不同&lt;/li&gt;
+&lt;li&gt;互斥量只能由获取的线程释放锁&lt;/li&gt;
+&lt;li&gt;临界区(Critical Section)：获取临界区的锁即进入临界区，释放锁则离开临界区&lt;/li&gt;
+&lt;li&gt;互斥量和信号量在系统的任何进程都是可见的&lt;/li&gt;
+&lt;li&gt;临界区的作用范围仅限于本进程，其他进程无法获取该锁&lt;/li&gt;
+&lt;li&gt;读写锁（Read-Write Lock）：允许多个线程读，一个线程写&lt;/li&gt;
+&lt;li&gt;共享的（Shared）：处于共享状态获取的锁，允许其他线程以共享方式获取，此时该锁被分配给多个线程&lt;/li&gt;
+&lt;li&gt;独占的（Exclusive）：处于独占状态获取的锁，其他线程不能获得该锁&lt;/li&gt;
+&lt;li&gt;条件变量（Condition Variable）&lt;/li&gt;
+&lt;li&gt;线程可以等待条件变量，一个条件变量允许多个线程等待&lt;/li&gt;
+&lt;li&gt;线程可以唤醒条件变量，此时某个或者所有等待此条件变量的线程都会被唤醒并继续执行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;可重入（Reentrant）
+
+&lt;ul&gt;
+&lt;li&gt;函数被重入，表示这个函数没有执行完成，由于外部因素或内部调用，又一次进入该函数执行&lt;/li&gt;
+&lt;li&gt;多个线程同时执行该函数&lt;/li&gt;
+&lt;li&gt;函数自身调用自身&lt;/li&gt;
+&lt;li&gt;函数可重入：函数被重入之后不会产生任何不良后果&lt;/li&gt;
+&lt;li&gt;不使用（局部）静态或全局的非 const 变量&lt;/li&gt;
+&lt;li&gt;不使用（局部）静态或全局的非 const 变量的指针&lt;/li&gt;
+&lt;li&gt;仅依赖调用者提供的参数&lt;/li&gt;
+&lt;li&gt;不依赖单个资源的锁（mutex 等）&lt;/li&gt;
+&lt;li&gt;不调用不可重入的函数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;过度优化：编译器会保存变量到寄存器，执行程序时可能会交换指令的顺序
+
+&lt;ul&gt;
+&lt;li&gt;volatile 关键字阻止过度优化&lt;/li&gt;
+&lt;li&gt;防止编译器为了提高速度将一个变量缓存到寄存器而不写回&lt;/li&gt;
+&lt;li&gt;防止编译器跳转操作 volatile 变量的指令顺序&lt;/li&gt;
+&lt;li&gt;barrier 指令：阻止 CPU 将该指令之前的指令交换到该指令之后&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;线程模型&#34;&gt;线程模型&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一对一：一个用户线程对应一个内核线程
+
+&lt;ul&gt;
+&lt;li&gt;真正意义的线程并发&lt;/li&gt;
+&lt;li&gt;对内核线程的数量限制会限制用户线程的数量&lt;/li&gt;
+&lt;li&gt;内核线程上下文切换开销大，导致用户线程的执行效率下降&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多对一：多个用户线程对应一个内核线程
+
+&lt;ul&gt;
+&lt;li&gt;高效的上下文切换&lt;/li&gt;
+&lt;li&gt;不限制用户线程数量&lt;/li&gt;
+&lt;li&gt;一个用户线程阻塞，所有线程无法执行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多对多：多个用户线程对应多个内核线程
+
+&lt;ul&gt;
+&lt;li&gt;一个用户线程阻塞不会阻塞所有用户线程&lt;/li&gt;
+&lt;li&gt;不限制用户线程数量&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>第二章 编译和链接</title>
+      <link>https://xueqing.github.io/blog/link_load_lib/2_%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/link_load_lib/2_%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%b7%b1%e5%85%a5%e7%90%86%e8%a7%a3gcc-helloc%e7%9a%84%e8%bf%87%e7%a8%8b&#34;&gt;深入理解&lt;code&gt;gcc hello.c&lt;/code&gt;的过程&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%a2%84%e5%a4%84%e7%90%86-prepressing&#34;&gt;预处理 Prepressing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bc%96%e8%af%91-compilation&#34;&gt;编译 Compilation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%b1%87%e7%bc%96-assembly&#34;&gt;汇编 Assembly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%93%be%e6%8e%a5-linking&#34;&gt;链接 Linking&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bc%96%e8%af%91%e5%99%a8&#34;&gt;编译器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bc%96%e8%af%91%e8%bf%87%e7%a8%8b&#34;&gt;编译过程&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%89%ab%e6%8f%8f%e8%af%8d%e6%b3%95%e5%88%86%e6%9e%90&#34;&gt;扫描，词法分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%af%ad%e6%b3%95%e5%88%86%e6%9e%90&#34;&gt;语法分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%af%ad%e4%b9%89%e5%88%86%e6%9e%90&#34;&gt;语义分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%ba%90%e4%bb%a3%e7%a0%81%e4%bc%98%e5%8c%96&#34;&gt;源代码优化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%a3%e7%a0%81%e7%94%9f%e6%88%90&#34;&gt;代码生成&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%9b%ae%e6%a0%87%e4%bb%a3%e7%a0%81%e4%bc%98%e5%8c%96&#34;&gt;目标代码优化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%93%be%e6%8e%a5%e5%99%a8&#34;&gt;链接器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%9d%99%e6%80%81%e9%93%be%e6%8e%a5&#34;&gt;静态链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;构建（Build）：集成开发环境（IDE，Integrated Development Environment）通常将编译和链接合并到一起&lt;/p&gt;
+
+&lt;h2 id=&#34;深入理解-gcc-hello-c-的过程&#34;&gt;深入理解&lt;code&gt;gcc hello.c&lt;/code&gt;的过程&lt;/h2&gt;
+
+&lt;h3 id=&#34;预处理-prepressing&#34;&gt;预处理 Prepressing&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;C++ 程序的源代码文件扩展名是&lt;code&gt;.cpp&lt;/code&gt;或&lt;code&gt;.cxx&lt;/code&gt;，头文件扩展名是&lt;code&gt;.h&lt;/code&gt;或&lt;code&gt;.hpp&lt;/code&gt;，预编译后文件扩展名是&lt;code&gt;.ii&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;只执行预编译&lt;code&gt;gcc -E hello.c -o hello.i&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;预编译主要处理源码中以&lt;code&gt;#&lt;/code&gt;开头的预编译指令，比如&lt;code&gt;#define&lt;/code&gt;，&lt;code&gt;#include&lt;/code&gt;等，处理规则如下
+
+&lt;ul&gt;
+&lt;li&gt;删除&lt;code&gt;#define&lt;/code&gt;，展开宏定义&lt;/li&gt;
+&lt;li&gt;处理条件预编译指令，比如&lt;code&gt;#if&lt;/code&gt;，&lt;code&gt;#ifdef&lt;/code&gt;&lt;code&gt;#else&lt;/code&gt;&lt;code&gt;#endif&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;处理&lt;code&gt;#include&lt;/code&gt;预编译指令，将被包含的头文件插入到该预编译指令的位置，此过程是归队执行的&lt;/li&gt;
+&lt;li&gt;删除注释&lt;code&gt;//&lt;/code&gt;和&lt;code&gt;/**/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加行号和文件名标识，比如 &lt;code&gt;#2 &amp;quot;hello.c&amp;quot; 2&lt;/code&gt;，便于编译时编译器产生调试用的行号信息及用于编译时产生编译错误或警告时可以显示行号&lt;/li&gt;
+&lt;li&gt;保留&lt;code&gt;#pragma&lt;/code&gt;编译器指令&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;经过预编译后的&lt;code&gt;.i&lt;/code&gt;文件不包含任何宏定义，且包含的头文件被插入到&lt;code&gt;.i&lt;/code&gt;文件。所以当无法判断宏定义是否正确或头文件包含是否正确时，可以查看预编译后的文件来确定问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;编译-compilation&#34;&gt;编译 Compilation&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;编译是对预处理之后的文件进行词法分析、语法分析、语义分析及优化后产生响应的汇编代码文件&lt;/li&gt;
+&lt;li&gt;执行编译&lt;code&gt;/usr/lib/gcc/x86_64-linux-gnu/4.8/ccl hello.i&lt;/code&gt;，查看分析流程
+
+&lt;ul&gt;
+&lt;li&gt;C++ 代码的预编译和编译程序shi&lt;code&gt;cclplus&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gcc -S hello.i -o hello.s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gcc -S hello.c -o hello.s&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;汇编-assembly&#34;&gt;汇编 Assembly&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;汇编器将汇编代码转变成机器可执行的指令，每一个汇编语句对应一条机器指令&lt;/li&gt;
+&lt;li&gt;执行汇编&lt;code&gt;gcc -c hello.s -o hello.o&lt;/code&gt;，生成目标文件（Object File）
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;as -c hello.s -o hello.o&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gcc -c hello.c -o hello.o&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;链接-linking&#34;&gt;链接 Linking&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;调用&lt;code&gt;ld&lt;/code&gt;产生一个可以正常运行的程序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;编译器&#34;&gt;编译器&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;编译器将高级语言翻译成机器语言。
+
+&lt;ul&gt;
+&lt;li&gt;使用机器语言或汇编语言编写程序十分麻烦&lt;/li&gt;
+&lt;li&gt;使用机器语言或汇编语言编写程序依赖特定的机器&lt;/li&gt;
+&lt;li&gt;高级语言更加关注程序逻辑的本身，而尽量少的考虑计算机本身的限制，如字长、内存大小、通信方式、存储方式等&lt;/li&gt;
+&lt;li&gt;高级语言大大提高了程序开发效率&lt;/li&gt;
+&lt;li&gt;高级语言的可移植性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;编译过程&#34;&gt;编译过程&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Source Code&lt;/code&gt; &amp;gt;&amp;gt; Scanner &amp;gt;&amp;gt; &lt;code&gt;Tokens&lt;/code&gt; &amp;gt;&amp;gt; Grammar Parser &amp;gt;&amp;gt; &lt;code&gt;Syntax Tree&lt;/code&gt; &amp;gt;&amp;gt; Scemantic Analyzer &amp;gt;&amp;gt; &lt;code&gt;Commented Syntax Tree&lt;/code&gt; &amp;gt;&amp;gt; Source Code Optimizer &amp;gt;&amp;gt; &lt;code&gt;Intermediate Representation&lt;/code&gt; &amp;gt;&amp;gt; Code Generator &amp;gt;&amp;gt; &lt;code&gt;Target Code&lt;/code&gt; &amp;gt;&amp;gt; Code Optimizer &amp;gt;&amp;gt; &lt;code&gt;Final Target Code&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;扫描-词法分析&#34;&gt;扫描，词法分析&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;扫描器（Scanner），进行词法分析，运用类似于有限状态机（Finite State Machine）的算法将源代码的字符序列分割成一系列的记号（Token）
+
+&lt;ul&gt;
+&lt;li&gt;记号一般分为：关键字、标识符、字面量（数字、字符串等）和特殊符号（加号、等号等）&lt;/li&gt;
+&lt;li&gt;扫描器同时将标识符放到符号表，将数字、字符串常量放到文字表&lt;/li&gt;
+&lt;li&gt;程序 lex 可以实现词法扫描，按照用户之前描述好的词法规则将输入的字符串分割成一个个记号，这样编译器的开发者只需要根据需要改变词法规则就可以解析不同的语言&lt;/li&gt;
+&lt;li&gt;对于有预处理的语言，比如 C 语言的宏替换和头文件包含等工作交给单独的预处理器处理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;语法分析&#34;&gt;语法分析&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;语法分析器（Grammar Parser）：语法分析器对记号进行语法分析，生成语法树
+
+&lt;ul&gt;
+&lt;li&gt;采用上下文无关语法（Context-free Grammar）的分析手段&lt;/li&gt;
+&lt;li&gt;语法树是以表达式（Expression）为节点的树&lt;/li&gt;
+&lt;li&gt;符号和数字是最小的表达式，通常作为语法树的叶节点&lt;/li&gt;
+&lt;li&gt;语法树已经确定了运算符号的优先级和含义&lt;/li&gt;
+&lt;li&gt;出现了表达式不合法，如括号不匹配、表达式缺少操作符等，编译器会报告语法分析阶段的错误&lt;/li&gt;
+&lt;li&gt;程序 yacc（Yet Another Compiler Compiler）可以根据用户给定的语法规则对输入的记号序列进行解析，从而构造出语法树&lt;/li&gt;
+&lt;li&gt;编译器的开发者只需要高边语法规则就可以编写语法分析器，所以被称为&lt;code&gt;编译器编译器（Compiler Compiler）&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;语义分析&#34;&gt;语义分析&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;语义分析（Semantic Analyzer）：判断语句是否真正有意义
+
+&lt;ul&gt;
+&lt;li&gt;编译器分析的语义是静态语义（Static Semantic），是在编译期可以确定的语义，动态语义（Dynamic Semantic）是在运行期才能确定的语义&lt;/li&gt;
+&lt;li&gt;静态语义通常包括声明和类型的匹配、类型的转换&lt;/li&gt;
+&lt;li&gt;动态语义是在运行期出现的语义相关的问题，比如 将 0 作为除数&lt;/li&gt;
+&lt;li&gt;经过语义分析，正哥语法树的表达式被标识了类型，如果有些类型需要做隐式转换，语义分析程序会在语法树种插入响应的转换节点&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;源代码优化&#34;&gt;源代码优化&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;源代码优化器（Source Code Optimizer）：在源代码级别进行优化
+
+&lt;ul&gt;
+&lt;li&gt;源代码优化器往往将整个语法树转换成中间代码（Intermediate Code），是语法树的顺序表示。和目标机器和运行时环境无关&lt;/li&gt;
+&lt;li&gt;中间代码常见的形式：三地址码（Three-address Code）和 P-代码（P-Code）&lt;/li&gt;
+&lt;li&gt;中间代码使得编译器分为前端和后端：前端负责产生机器无关的中间代码，后端负责将中间代码转换成目标机器代码&lt;/li&gt;
+&lt;li&gt;对于可以跨平台的编译器，可以针对不同的平台使用同一个前端和针对不同机器平台的数个后端&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;代码生成&#34;&gt;代码生成&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;代码生成器（Code Generator），属于编译器后端，将中间代码转换成目标机器代码
+
+&lt;ul&gt;
+&lt;li&gt;此过程依赖于目标机器，不同的机器有不同的字长、寄存器、整数数据类型和浮点数数据类型等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;目标代码优化&#34;&gt;目标代码优化&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;目标代码优化器（Code Optimizer），属于编译器后端，优化目标代码
+
+&lt;ul&gt;
+&lt;li&gt;比如选择合适的寻址方式、使用位移代替乘法运算、删除多余的指令等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;链接器&#34;&gt;链接器&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;现代的编译器将一个源代码文件编译成一个未链接的目标文件，然后由链接器最终将这些目标文件链接起来形成可执行文件。&lt;/li&gt;
+&lt;li&gt;重定位（Relocation）：重新计算各个目标的地址过程&lt;/li&gt;
+&lt;li&gt;程序设计的模块化：将代码安装功能或性质划分，分别形成不同的功能模块，不同的模块之间按照层次结构或其他结构来组织。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;静态链接&#34;&gt;静态链接&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;链接（Linking）的主要内容就是把各个模块之间相互引用的部分都处理好，使得各个模块之间能够正确地衔接。&lt;/li&gt;
+&lt;li&gt;链接主要包括地址和空间分配（Address and Storage Allocation）、符号决议（Symbol Resolution）和重定位（Relocation）等
+
+&lt;ul&gt;
+&lt;li&gt;符号决议有时也叫做符号绑定（Symbol Binding）、名称绑定（Name Binding）、名称决议（Name Resolution），或地址绑定（Address Binding）、指令绑定（Instruction Binding）。“决议”倾向于静态链接，而“绑定”倾向于动态链接，二者使用的范围不同。在静态链接，统称为符号决议。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;静态链接将目标文件（Object File，扩展名一般是&lt;code&gt;.o&lt;/code&gt;或&lt;code&gt;.obj&lt;/code&gt;）和库（Library）一起链接形成最终可执行文件。
+
+&lt;ul&gt;
+&lt;li&gt;库其实是一组目标文件的包，是将一些最常用的代码编译成目标文件后打包存放&lt;/li&gt;
+&lt;li&gt;常见的是运行时库（Runtime Library）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;重定位就是链接器在链接目标文件的时候，将定义在其他目标文件中的函数调用或变量的地址进行修正
+
+&lt;ul&gt;
+&lt;li&gt;重定位入口（Relocation Entry），指的是地址要被修正的地方&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>第三章 目标文件</title>
+      <link>https://xueqing.github.io/blog/link_load_lib/3_%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/link_load_lib/3_%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;可执行文件格式（Executable）主要是 PE（Windows 下，Portable Executable）和 ELF（Linux 下，Executable Linkable Format），都是 COFF（Common file format）格式。&lt;/li&gt;
+&lt;li&gt;目标文件是源代码编译后但未进行链接的中间文件（Windows 下的 .obj 和 Linux 下的 .o），与可执行文件的内容和结构相似
+
+&lt;ul&gt;
+&lt;li&gt;Windows 下广义地把目标文件与可执行文件的格式统称为 PE-COFF 文件格式&lt;/li&gt;
+&lt;li&gt;Linux 下统称为 ELF 文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;可执行文件（Windows 的 .exe 和 Linux 的 ELF 可执行文件），动态链接库（DLL，Dynamic Linking Library）（Windows 的 .dll 和 Linux 的 .so），静态链接库（Static Linking Library）（Windows 的 .lib 和 Linux 的 .a）文件都按照可执行文件格式存储
+
+&lt;ul&gt;
+&lt;li&gt;静态链接库是把很多目标文件捆绑在一起形成一个文件，在加上一些索引&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Windows 下的 DLL 和 LIB 文件</title>
+      <link>https://xueqing.github.io/blog/vs/dll_vs_lib_files/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/vs/dll_vs_lib_files/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#Windows-%E4%B8%8B%E7%9A%84-DLL-%E5%92%8C-LIB-%E6%96%87%E4%BB%B6&#34;&gt;Windows 下的 DLL 和 LIB 文件&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#LIB&#34;&gt;LIB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#DLL&#34;&gt;DLL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%80%BB%E7%BB%93&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8F%82%E8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;lib&#34;&gt;LIB&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;LIB 是静态库，在应用程序编译时 LIB 的函数和程序可被替换和调用。链接器从 LIB 获取所有被引用函数，编译时直接将静态库代码加入程序，运行时会将这部分代码加载到内存，多个程序同时运行使用的是同一份拷贝，可以节省内存&lt;/li&gt;
+&lt;li&gt;LIB 文件可能是静态库文件(包含对象文件)或导入库文件(包含链接器链接到 DLL 的符号)
+
+&lt;ul&gt;
+&lt;li&gt;如果有 DLL 文件，那么 LIB 一般是一些索引信息，记录了 DLL 中函数的入口和位置，DLL 中是函数的具体内容。LIB 文件不是 obj 文件的集合，即里面不会有实际的实现&lt;/li&gt;
+&lt;li&gt;如果只有 LIB 文件，那么这个 LIB 文件是静态编译出来的，索引和实现都在文件中。使用静态编译的 LIB 文件，在运行程序时不需要再挂载动态库，缺点是导致应用程序比较大，失去了动态库的灵活性，发布新库时要发布新的应用程序。一个 LIB 文件实际是任意 obj 文件的集合，obj 文件时 cpp 文件编译生成的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;dll&#34;&gt;DLL&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DLL(Dynamic Link Library)，动态链接库，真正的可执行文件，即应用程序可以在运行时而不是编译时调用这些库。这相对使用 LIB 有一些优点&lt;/li&gt;
+&lt;li&gt;LIB 包含了函数所在 DLL 文件和文件中函数位置的信息(入口)，代码由运行时加载到进程空间中的 DLL 提供。允许可执行模块(DLL 或可执行文件)。仅包含在运行时定位 DLL 函数的可执行代码所需的信息
+
+&lt;ul&gt;
+&lt;li&gt;动态链接包含两个文件：LIB 文件包含被 DLL 导出的函数名称和位置，DLL 包含实际的函数和数据。应用程序使用 LIB 文件链接到 DLL 文件&lt;/li&gt;
+&lt;li&gt;在应用程序的可执行文件，存放的不是被调用的函数代码，而是 DLL 中相应函数代码的地址，从而节省了内存资源&lt;/li&gt;
+&lt;li&gt;DLL 和 LIB 文件必须随应用程序一起发布，否则应用程序会报错&lt;/li&gt;
+&lt;li&gt;如果不想用 LIB 文件或没有 LIB 文件，可以用 Win32 API 函数 LoadLibrary/GetProcAddress 加载库&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;使用 DLL 编写的程序体积小，但是需要 DLL 和可执行文件同时发布&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;LIB 是静态库，编译时使用；DLL(Dynamic Link Library)，动态链接库，运行时使用&lt;/li&gt;
+&lt;li&gt;LIB 文件通常是一个较大的文件；DLL 通常是多个小文件&lt;/li&gt;
+&lt;li&gt;当编写新版本或完全新的应用时，DLL 的复用性比 LIB&lt;/li&gt;
+&lt;li&gt;DLL 文件可被其他程序使用，但是 LIB 文件不能&lt;/li&gt;
+&lt;li&gt;DLL 比 LIB 容易遇到版本方面的问题&lt;/li&gt;
+&lt;li&gt;使用 DLL 开发软件时，因为 DLL 只包含应用需要调用 DLL 代码的存根，仍然需要 LIB 文件，后者包含了函数和代码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/913691/dll-and-lib-files-what-and-why&#34; target=&#34;_blank&#34;&gt;DLL and LIB files - what and why?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.differencebetween.net/technology/difference-between-lib-and-dll/&#34; target=&#34;_blank&#34;&gt;Difference Between LIB and DLL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/ghevinn/article/details/43759655&#34; target=&#34;_blank&#34;&gt;Windows 环境下 LIB 和 DLL 的区别和联系&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

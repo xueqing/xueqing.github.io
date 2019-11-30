@@ -1,0 +1,1840 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>engineer | kiki</title>
+    <link>https://xueqing.github.io/tags/engineer/</link>
+      <atom:link href="https://xueqing.github.io/tags/engineer/index.xml" rel="self" type="application/rss+xml" />
+    <description>engineer</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>engineer</title>
+      <link>https://xueqing.github.io/tags/engineer/</link>
+    </image>
+    
+    <item>
+      <title>软件工程第九版</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/readme/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.pearson.com/us/higher-education/product/Sommerville-Software-Engineering-9th-Edition/9780137035151.html&#34; target=&#34;_blank&#34;&gt;书籍&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一 软件工程导论
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./1-introduction.md&#34;&gt;1 概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./2-software-process.md&#34;&gt;2 软件过程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./3-agile-software-development.md&#34;&gt;3 敏捷软件开发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./4-requirement-engineering.md&#34;&gt;4 需求工程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./5-system-modeling.md&#34;&gt;5 系统建模&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./6-architectural-design.md&#34;&gt;6 体系结构设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./7-design-and-implementation.md&#34;&gt;7 设计与实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./8-software-testing.md&#34;&gt;8 软件测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./9-software-evolution.md&#34;&gt;9 软件进化&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;二 可依赖性和信息安全性&lt;/li&gt;
+&lt;li&gt;三 高级软件工程&lt;/li&gt;
+&lt;li&gt;四 软件管理
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./22-project-management.md&#34;&gt;22 项目管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./23-project-planning.md&#34;&gt;23 项目规划&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./24-quality-management.md&#34;&gt;24 质量管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./25-configuration-management.md&#34;&gt;25 配置管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1 概述</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/1-introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/1-introduction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2 软件过程</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/2-software-process/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/2-software-process/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e8%bd%af%e4%bb%b6%e8%bf%87%e7%a8%8b%e6%a8%a1%e5%9e%8b&#34;&gt;2.1 软件过程模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e8%bf%87%e7%a8%8b%e6%b4%bb%e5%8a%a8&#34;&gt;2.2 过程活动&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-%e5%ba%94%e5%af%b9%e5%8f%98%e6%9b%b4&#34;&gt;2.3 应对变更&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#24-rational-%e7%bb%9f%e4%b8%80%e8%bf%87%e7%a8%8b&#34;&gt;2.4 Rational 统一过程&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;软件过程分类&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;计划驱动：提前计划好所有的过程活动，庵后按计划去考核过程的执行&lt;/li&gt;
+&lt;li&gt;敏捷过程：计划是增量式的，而且很容易根据不断变化的客户需求变更过程&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;过程标准化的重要性：减少在一个机构中多样的软件过程的出现，可以改善沟通、缩短培训时间、使自动化的过程支持更经济&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-软件过程模型&#34;&gt;2.1 软件过程模型&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;常用的过程模型(也叫过程泛型)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;不足&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;瀑布模型&lt;/td&gt;
+&lt;td&gt;计划驱动，开始工作之前，必须对所有过程活动制定计划并给出进度安排&lt;/td&gt;
+&lt;td&gt;完全了解需求，且系统开发过程中不太可能发生重大改变&lt;/td&gt;
+&lt;td&gt;每个阶段生成文档，过程可见，易于根据项目计划监控项目进度&lt;/td&gt;
+&lt;td&gt;不易响应用户的需求变更&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;增量式开发&lt;/td&gt;
+&lt;td&gt;敏捷方法，系统每个增量或版本包括用户需要的一部分功能&lt;/td&gt;
+&lt;td&gt;商务、电子商务和个人系统&lt;/td&gt;
+&lt;td&gt;降低了适应用户需求变更的成本，易得到用户反馈，更快地交付和部署&lt;/td&gt;
+&lt;td&gt;过程不可见，新的增量导致系统结构被破坏&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;面向复用的软件过程&lt;/td&gt;
+&lt;td&gt;根据需求复用现存软件进行开发&lt;/td&gt;
+&lt;td&gt;已存在大量可复用的软件组件，以及组合组件的集成框架&lt;/td&gt;
+&lt;td&gt;减少需要开发的软件数量，降低开发成本和风险，可快速交付&lt;/td&gt;
+&lt;td&gt;需求妥协，可能不符合用户真正的需求，且组件新版本不受机构控制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;2-2-过程活动&#34;&gt;2.2 过程活动&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;包括 4 个基本活动
+
+&lt;ul&gt;
+&lt;li&gt;软件描述：必须定义软件的功能以及软件操作上的约束。其中的关键阶段是&lt;a href=&#34;./4-requirement-engineering.md&#34;&gt;需求工程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;软件设计和实现：对实现软件的结构、系统的数据、系统组件间的接口以及所用算法的描述&lt;/li&gt;
+&lt;li&gt;软件有效性验证：软件必须得到有效性验证，即确保软件是客户所想要的&lt;/li&gt;
+&lt;li&gt;软件进化：软件必须进化以满足不断变化的客户需要&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-3-应对变更&#34;&gt;2.3 应对变更&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;返工：变更增加了软件开发的成本，通常意味着已完成的工作要重做&lt;/li&gt;
+&lt;li&gt;降低返工成本的方法
+
+&lt;ul&gt;
+&lt;li&gt;变更避免：在重大返工发生之前预测变更。比如开发原型，客户试用原型，重新定义需求&lt;/li&gt;
+&lt;li&gt;变更容忍：通常需要增量开发，提出的变更可能是在还没有开发的增量上实现，或者修改单个增量来适应变更&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;应对变更系统需求的方法：
+
+&lt;ul&gt;
+&lt;li&gt;系统原型：快速开发一个系统版本或系统的一部分，以检验客户需求和某些设计决定的可行性。支持变更避免&lt;/li&gt;
+&lt;li&gt;原型：一个软件系统的最初版本，用于验证概念、试用设计选型、发现更多的问题和可能的解决方案&lt;/li&gt;
+&lt;li&gt;增量交付：系统增量地交付给客户，给用户评审和试用。支持变更避免和变更容忍&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-4-rational-统一过程&#34;&gt;2.4 Rational 统一过程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;6 个基本且最好的实践
+
+&lt;ul&gt;
+&lt;li&gt;1 迭代地开发软件：根据客户的轻重缓急来规划系统的增量，在开发过程中先开发和交付最高优先权的系统特性&lt;/li&gt;
+&lt;li&gt;2 对需求的管理：明确地记录客户的需求并跟踪这些需求的变更。在接受之前分析系统变更带来的影响&lt;/li&gt;
+&lt;li&gt;3 使用基于组件的体系结构：将系统体系结构组织成组件的形态&lt;/li&gt;
+&lt;li&gt;4 可视化地建模软件：使用图形 UML 模型表现软件的静态和动态视图&lt;/li&gt;
+&lt;li&gt;5 检验软件质量：保证软件满足了机构质量标准&lt;/li&gt;
+&lt;li&gt;6 控制对软件的变更：使用变更管理系统、配置管理程序和工具来管理软件的变更&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>22 项目管理</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#221-%e9%a3%8e%e9%99%a9%e7%ae%a1%e7%90%86&#34;&gt;22.1 风险管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#222-%e4%ba%ba%e5%91%98%e7%ae%a1%e7%90%86&#34;&gt;22.2 人员管理&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#223-%e5%9b%a2%e9%98%9f%e5%8d%8f%e4%bd%9c&#34;&gt;22.3 团队协作&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;软件项目管理者的任务是确保软件项目满足和服从这些约束，并确保交付高质量的软件产品&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;项目管理的目标：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在约定的时间将软件产品交付给客户&lt;/li&gt;
+&lt;li&gt;将全部成本控制在预算之内&lt;/li&gt;
+&lt;li&gt;交付的软件产品满足客户的要求&lt;/li&gt;
+&lt;li&gt;保持一个愉悦且运作良好的开发团队&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;软件工程管理的不同之处：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件产品是无形的&lt;/li&gt;
+&lt;li&gt;大型软件项目常常是“一次性的”项目&lt;/li&gt;
+&lt;li&gt;软件开发过程是可变的和机构特定的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;22-1-风险管理&#34;&gt;22.1 风险管理&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;风险种类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;举例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;项目风险&lt;/td&gt;
+&lt;td&gt;影响项目进度或项目资源的风险&lt;/td&gt;
+&lt;td&gt;职员跳槽、管理层变更、硬件缺乏、需求变更、描述延迟、低估了系统规模&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;产品风险&lt;/td&gt;
+&lt;td&gt;影响开发中软件的质量或性能的风险&lt;/td&gt;
+&lt;td&gt;需求变更、描述延迟、低估了系统规模、CASE 工具性能较差&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;业务风险&lt;/td&gt;
+&lt;td&gt;影响软件开发机构或软件产品购买机构的风险&lt;/td&gt;
+&lt;td&gt;技术变更、产品竞争&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;22-2-人员管理&#34;&gt;22.2 人员管理&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;关键因素&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;一致性&lt;/td&gt;
+&lt;td&gt;对项目组的每个人应该同等对待&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;尊重&lt;/td&gt;
+&lt;td&gt;尊重每个人有不同的技能，所有成员都应该有机会做出贡献&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;包容&lt;/td&gt;
+&lt;td&gt;能够倾听并采纳团队成员的建议&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;诚实&lt;/td&gt;
+&lt;td&gt;对项目组中好的情况和不好的情况保持诚实的态度。诚实地对待自己的技术知识水平，并在必要的时候乐于服从更博学的员工&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;工作动力&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;措施&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;生理的需求&lt;/td&gt;
+&lt;td&gt;较低层次，如事物和睡眠&lt;/td&gt;
+&lt;td&gt;软件开发人员一般没有饥渴问题&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;安全的需求&lt;/td&gt;
+&lt;td&gt;环境对身体的威胁&lt;/td&gt;
+&lt;td&gt;一般没有&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;社会的需求&lt;/td&gt;
+&lt;td&gt;给员工提供与同事交往的时间和场所&lt;/td&gt;
+&lt;td&gt;建议面对面交流，而不是电子会议&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;受尊重的需求&lt;/td&gt;
+&lt;td&gt;让员工感受在他们在开发机构中很受尊重&lt;/td&gt;
+&lt;td&gt;对员工做出的成绩给予认可，让员工感觉到为他们所支付的报酬能够反映出他们的能力和经验的价值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;自我实现的需求&lt;/td&gt;
+&lt;td&gt;让员工对自己的工作负责人，分配给他们较难(但是可以完成)的任务，并提供培训计划以提高他们的技能&lt;/td&gt;
+&lt;td&gt;员工喜欢学习新知识和技能，培训是一项重要的激励方式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;职业人士分类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;特点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;面向任务型&lt;/td&gt;
+&lt;td&gt;动力来自所从事的工作。在软件工程中，软件开发智力上的挑战激发了他们的工作热情&lt;/td&gt;
+&lt;td&gt;喜欢独自工作，技术可能更出色&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;面向自我型&lt;/td&gt;
+&lt;td&gt;动力来自个人成功和得到认可。他们更乐于把软件开发视为达到自己目标的手段&lt;/td&gt;
+&lt;td&gt;喜欢独自工作。团队协调好，可变成面向交互型。可能善于推动整个工作的完成&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;面向交互型&lt;/td&gt;
+&lt;td&gt;动力来自同事们的存在和协作&lt;/td&gt;
+&lt;td&gt;喜欢小组作业。更利于小组内部的交流沟通&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;22-3-团队协作&#34;&gt;22.3 团队协作&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;小组具有凝聚力的好处&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;好处&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;能够建立小组自己的质量标准&lt;/td&gt;
+&lt;td&gt;小组一致同意的标准与强加的标准相比，更容易被小组遵守&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;成员互相学习，互相帮助&lt;/td&gt;
+&lt;td&gt;鼓励互相学习可消除互相不了解引起的隔阂&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;知识分享&lt;/td&gt;
+&lt;td&gt;一旦有成员离开小组也可保持工作的连续性。其他成员可接手关键的任务，不会过度影响项目&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;鼓励重构以及不断改善&lt;/td&gt;
+&lt;td&gt;小组成员集体工作交付高质量的产品并解决出现的问题&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;如何增强小组凝聚力&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;为小组成员及其家庭组织一些社会活动&lt;/li&gt;
+&lt;li&gt;通过给小组命名确立小组的特性和地位，尝试建立小组的认同感&lt;/li&gt;
+&lt;li&gt;开展有鲜明小组特色的小组建设活动，如运动和游戏&lt;/li&gt;
+&lt;li&gt;把组员当做自己人&lt;/li&gt;
+&lt;li&gt;必须认为小组成员是负责人的、可信赖的，保障小组成员的知情权&lt;/li&gt;
+&lt;li&gt;坦诚的信息交流，可使小组成员感觉自己是小组的一部分&lt;/li&gt;
+&lt;li&gt;开发新产品时，负责产品描述和设计的小组成员都参与会议，是每个成员能够关心产品的描述和设计&lt;/li&gt;
+&lt;li&gt;午餐会：项目组所有成员互相认识并谈论彼此所关心的问题，比如新产品构想等&lt;/li&gt;
+&lt;li&gt;放松日：每个小组成员准备一项相关技术的最新内容并介绍给小组中其他成员，提高小组的技术水平&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;影响团队工作的普遍因素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;小组的人员：项目小组需要不同类型的成员。因为软件开发包括很多活动——和客户谈判，编码，测试，编写文档等&lt;/li&gt;
+&lt;li&gt;团队的组织：组织团队使得小组成员都能尽其所能，所承担的各项任务都能按时完成&lt;/li&gt;
+&lt;li&gt;技术和管理上的沟通：小组成员之间、软件开发团队和其他项目信息持有者之间的良好沟通必不可少&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;挑选成员&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建一个在技术技能和人格各项之间平衡的小组：挑选不同类型(面向任务、面向自我、面向交互)的成员&lt;/li&gt;
+&lt;li&gt;组织成员一起有效的工作：实行民主、集体决策，且需要权威来指导工作。双向沟通，避免较多的会议和冗长的文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>23 项目规划</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#231-%e8%bd%af%e4%bb%b6%e6%8a%a5%e4%bb%b7&#34;&gt;23.1 软件报价&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#232-%e8%ae%a1%e5%88%92%e9%a9%b1%e5%8a%a8%e7%9a%84%e5%bc%80%e5%8f%91&#34;&gt;23.2 计划驱动的开发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#233-%e9%a1%b9%e7%9b%ae%e8%bf%9b%e5%ba%a6%e5%ae%89%e6%8e%92&#34;&gt;23.3 项目进度安排&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#234-%e6%95%8f%e6%8d%b7%e8%a7%84%e5%88%92&#34;&gt;23.4 敏捷规划&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#235-%e4%bc%b0%e7%ae%97%e6%8a%80%e6%9c%af&#34;&gt;23.5 估算技术&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;项目计划：在项目开始建立，用于向项目开发团队和客户说明工作如何开展，以及帮助估计项目进展&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;软件开发项目总成本包括&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;工作量成本(支付给软件开发人员的费用)&lt;/li&gt;
+&lt;li&gt;包括维护在内的硬件和软件费用&lt;/li&gt;
+&lt;li&gt;差旅费和培训费用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;开发过程中，为每个软件版本制定一个非正式的项目计划和工作量成本估计，应该让团队所有成员都参与到规划过程中&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;23-1-软件报价&#34;&gt;23.1 软件报价&lt;/h2&gt;
+
+&lt;p&gt;影响软件报价的因素&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;因素&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;市场机遇&lt;/td&gt;
+&lt;td&gt;开发机构可能为进入一个新的软件市场而提出一个低的报价。在一个项目上的低回报可能会换来今今后更大收益的机会，而且获得的经验可有助于开发新产品&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;成本估算的不确定性&lt;/td&gt;
+&lt;td&gt;如果机构对成本估算不太确定，可能增加应急开支项，使得提出的报价超出了一般收益&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;合同条款&lt;/td&gt;
+&lt;td&gt;客户可能愿意开发者保留对源代码的版权，并在其他项目中使用。这样付出的价钱会比将软件源代码交给客户时少些&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;需求易变性&lt;/td&gt;
+&lt;td&gt;如果需求可能会发生改变，机构会降低它的价格以得到合同，在合同签订后，需求的改变将带来高的要价&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;财务状况&lt;/td&gt;
+&lt;td&gt;处于财务困难中的开发者可能会降低报价来得到一份合同。比正常情况下少赚一些甚至亏一点也比没有项目好。在困难时期现金流比利润更重要&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;23-2-计划驱动的开发&#34;&gt;23.2 计划驱动的开发&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;计划驱动的开发，或者叫做基于计划的开发，是一种给开发过程制定详细的计划的软件工程方法&lt;/li&gt;
+&lt;li&gt;项目计划完整地记录：要完成的工作，谁将执行此项工作，开发进度安排，以及项目的成果是什么&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;计划驱动开发基于工程项目管理技术，可看做管理大型软件开发项目的传统方法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;项目计划书应包括的部分&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;内容&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;引言&lt;/td&gt;
+&lt;td&gt;简要论述项目的目标，并列出影响项目管理的种种约束条件，如预算、时间的限制等&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;项目组织&lt;/td&gt;
+&lt;td&gt;阐述开发团队的组织方式、人员构成及其分工&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;风险分析&lt;/td&gt;
+&lt;td&gt;分析项目可能存在的风险，以及这些风险发生的可能性，并提出降低风险的策略&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;硬件和软件资源需求&lt;/td&gt;
+&lt;td&gt;介绍完成开发所需的硬件和支持软件。如果需要购买硬件，应注明估算的价格和交付的时间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;工作分解&lt;/td&gt;
+&lt;td&gt;把项目分解成一系列的活动，指定项目里程碑和可交付的文档。里程碑是项目的关键阶段，借此可以评估过程，可交付文档是能够交付给客户的工作产品&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;项目进度安排&lt;/td&gt;
+&lt;td&gt;描述项目中各活动之间的依赖关系。到达每个里程碑预期所需的时间以及人员在活动中的分配&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;监控和报告机制&lt;/td&gt;
+&lt;td&gt;说明要提交哪些管理报告、什么时候提交，以及使用什么样的项目监控机制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;项目辅助计划的例子&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;计划&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;质量计划&lt;/td&gt;
+&lt;td&gt;描述在项目中所要使用的质量过程和标准&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;有效性验证计划&lt;/td&gt;
+&lt;td&gt;描述系统有效性验证所采用的方法、资源和进度安排&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;配置管理计划&lt;/td&gt;
+&lt;td&gt;描述所要采用的配置管理过程和结果&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;维护计划&lt;/td&gt;
+&lt;td&gt;预测维护需求、成本以及工作量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;员工发展计划&lt;/td&gt;
+&lt;td&gt;描述如何发展项目人员的技能和经验&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;23-3-项目进度安排&#34;&gt;23.3 项目进度安排&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;项目进度安排：决定如何组织工作，将其分割成单独的一个个任务，并且何时以何种方式完成各项任务
+
+&lt;ul&gt;
+&lt;li&gt;估算需要用于完成每个任务的时间、需要的成本以及完成这些既定任务的人员&lt;/li&gt;
+&lt;li&gt;估算完成每项任务所需的资源，比如服务器所需磁盘资源、需在专门硬件上占用的时间以及项目人员的差旅费预算&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;项目启动阶段创建一个初始项目进度安排，在后续的开发规划过程中修改完善
+
+&lt;ul&gt;
+&lt;li&gt;初始进度安排计划如何给项目分配人员，检查项目进展是否符合合同承诺&lt;/li&gt;
+&lt;li&gt;计划驱动开发：开始阶段创建完整的进度安排，随着项目进行而修改&lt;/li&gt;
+&lt;li&gt;敏捷过程：必须有一个总的进度安排，确定何时完成项目的各个主要阶段。再使用迭代的方法规划各个阶段&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;注意并行的任务：不同的员工研发不同的不见&lt;/li&gt;
+&lt;li&gt;进度安排表示方法
+
+&lt;ul&gt;
+&lt;li&gt;条形图：基于日历时间，表示每项活动的负责人，预计所用时间，以及该项活动预计的开始和结束时间。也叫甘特图&lt;/li&gt;
+&lt;li&gt;活动网络图：表示构成项目的不同活动之间的依赖关系&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;项目活动是基本的规划单元，包括
+
+&lt;ul&gt;
+&lt;li&gt;以天或者月计算的工期&lt;/li&gt;
+&lt;li&gt;工作量估计，反映完成工作所需的人日或人月数&lt;/li&gt;
+&lt;li&gt;活动完成的期限&lt;/li&gt;
+&lt;li&gt;定义好的终点，表示完成一项活动的明确结果。可以是一份文档，举行评审会，或是所有测试的成功完成等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;23-4-敏捷规划&#34;&gt;23.4 敏捷规划&lt;/h2&gt;
+
+&lt;p&gt;极限编程的规划过程&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;步骤&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;情节识别&lt;/td&gt;
+&lt;td&gt;用户情节反映了系统应包含的特征。项目启动时，开发团队和客户尝试定义一系列情景，使其可以覆盖最终系统的所有功能&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;初始估计&lt;/td&gt;
+&lt;td&gt;项目组阅读并讨论情景，按照实现这些情景所需时间将情形排序。此过程也会将大情景拆分成小情景&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;版本规划&lt;/td&gt;
+&lt;td&gt;包括选择和完善上述情景。这些情景反映出了在系统的发布版本中应实现的功能以及实现这些情景的顺序。然后选择发布日期，检查情景以判断工作量估计是否满足发布日期。不满足的话，增加或删除清单上的一些情景&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;迭代规划&lt;/td&gt;
+&lt;td&gt;迭代开发第一步。选择迭代过程要实现的情景，情景个数反映了交付一次迭代的时间和项目组的进度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;任务规划&lt;/td&gt;
+&lt;td&gt;迭代开发第二步。是一个更详细的规划阶段，将情景拆分成各个开发任务。每项任务大概是 4-16 小时。列出本次迭代所有的任务，开发者申请自己要完成的任务&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;迭代完成&lt;/td&gt;
+&lt;td&gt;迭代交付日期到达时，即使未实现所有情景，也宣告完成迭代。迭代完成，考虑已实现的情景，增加工作量，重新规划下一个系统版本。即重复迭代规划和任务规划过程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个开发者根据自己的速度申请任务，申请的任务量不能多于其在规定时间内能完成的任务量&lt;/li&gt;
+&lt;li&gt;如果不能按时完成工作，减少工作量，而不是延长进度安排&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;上述分配任务方法的好处
+
+&lt;ul&gt;
+&lt;li&gt;整个项目组对迭代过程中要完成的任务有一个整体认识。因此他们能够理解项目组其他成员的工作内容已经确定任务依赖关系后应和谁交流&lt;/li&gt;
+&lt;li&gt;每个开发者选择要完成的任务，而不是由项目管理者分配任务。这样开发者对自己选择的任务有一种拥有感，可能激发他们更好地完成任务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;23-5-估算技术&#34;&gt;23.5 估算技术&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;基于经验的技术&lt;/td&gt;
+&lt;td&gt;使用管理者之前项目和应用领域的经验估算要求的未来工作量，即管理者主观给出所需要的工作量的一个估计&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;算法成本建模&lt;/td&gt;
+&lt;td&gt;使用一个公式方法计算项目的工作量，它基于对产品属性(如规模)和过程特点(如参与员工的经验)的估计&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>24 质量管理</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/24-quality-management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/24-quality-management/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#241%e8%bd%af%e4%bb%b6%e8%b4%a8%e9%87%8f&#34;&gt;24.1软件质量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#242-%e8%bd%af%e4%bb%b6%e6%a0%87%e5%87%86&#34;&gt;24.2 软件标准&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#243-%e5%a4%8d%e6%9f%a5%e4%b8%8e%e5%ae%a1%e6%9f%a5&#34;&gt;24.3 复查与审查&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#244-%e8%bd%af%e4%bb%b6%e5%ba%a6%e9%87%8f%e5%92%8c%e9%87%8f%e5%ba%a6&#34;&gt;24.4 软件度量和量度&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;质量保证团队：在大多数公司负责管理版本测试过程，即负责软件的测试，检查系统是否满足需求，以及维护测试过程记录&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;质量规划：为项目制定一个质量计划的过程。应当列出要达到的软件质量，并且描述怎么评估这些质量&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;质量文档：记录项目中的每个子小组所做的工作的文件&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;帮助检查，以避免遗忘重要的任务，或避免团队的一部分会对其他团队所做的工作做出错误的假设&lt;/li&gt;
+&lt;li&gt;贯穿一个系统生命周期的沟通手段&lt;/li&gt;
+&lt;li&gt;允许对系统进化负责的小组追踪测试以及开发团队所做的工作&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;24-1软件质量&#34;&gt;24.1软件质量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件质量管理的一个通用假设：按照需求测试系统。根据测试结果判断是否实现了要求的功能&lt;/li&gt;
+&lt;li&gt;系统的主观质量很大部分依赖于非功能特性：安全性、可理解性、可移植性、信息安全性、可测试性、可用性、可靠性、可调节性、可复用性、适应力、模块化、效率、鲁棒性、复杂度、学习能力&lt;/li&gt;
+&lt;li&gt;开发过程对于软件质量有明显的影响：好的过程更有可能得到好的软件。过程质量的管理和改进能够减少软件开发过程中产生的缺陷&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;24-2-软件标准&#34;&gt;24.2 软件标准&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;重要性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;智慧的结晶&lt;/td&gt;
+&lt;td&gt;软件标准封装了对于机构来说最成功的或最恰当的软件开发实践。制定为标准可避免重犯错误&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;为定义特定环境中的“质量”含义提供了一个框架&lt;/td&gt;
+&lt;td&gt;通过使用标准，为判断软件是否达到要求的质量水平建立基础&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;有助于工作的连续性&lt;/td&gt;
+&lt;td&gt;由一个人着手进行的工作别人可以接着做。软件标准确保一个机构中所有的工程人员采用相同的做法&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;产品标准&lt;/td&gt;
+&lt;td&gt;用于开发的软件产品。包括文档标准，如需求文档格式，文档编写标准，编码标准&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;过程标准&lt;/td&gt;
+&lt;td&gt;定义了软件开发必须遵循的过程。应将良好的开发方法封装其中。过程标准包括对描述、设计和有效性验证过程、过程支持工具以及对在这些过程中产生的文档的描述的定义&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;为了减少不满情绪，设定标准的质量管理人员要采取以下步骤
+
+&lt;ul&gt;
+&lt;li&gt;让软件工程人员参与产品标准的选择&lt;/li&gt;
+&lt;li&gt;定期评审和修改标准，以反映技术的变化&lt;/li&gt;
+&lt;li&gt;尽可能提供支持软件标准的软件工具&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;24-3-复查与审查&#34;&gt;24.3 复查与审查&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;质量复查：检查文档和代码的一致性和完整性，确保遵循质量标准
+
+&lt;ul&gt;
+&lt;li&gt;用来发现软件和项目文档的问题和遗漏&lt;/li&gt;
+&lt;li&gt;复查的结果应当作为质量管理过程的一部分被正式记录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;过程复查：将软件工程的实际过程和计划过程对比。关注点是工程是否能够按时并在预算范围内发布有用的软件&lt;/li&gt;
+&lt;li&gt;复查和审查的目的是提升软件的质量，不是评估开发团队成员的表现
+
+&lt;ul&gt;
+&lt;li&gt;项目管理人员必须对个人的关注保持敏感。必须营造一种文化，发现错误时不责备当事人&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;复查过程
+
+&lt;ul&gt;
+&lt;li&gt;1 复查前活动：复查前工作关心复查的计划和复查的准备工作&lt;/li&gt;
+&lt;li&gt;复查计划：包括建立一个复查团队，安排复查的时间地点，分发要被复查的文档&lt;/li&gt;
+&lt;li&gt;复查准备工作：复查团队见到要复查的软件的一个综述
+
+&lt;ul&gt;
+&lt;li&gt;部分复查团队成员需要阅读并理解软件、文档及相关标准&lt;/li&gt;
+&lt;li&gt;他们独立工作，依靠标准找出错误、遗漏和违背的地方&lt;/li&gt;
+&lt;li&gt;不能参加会议的复查人员，可以提供书面的软件意见&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;2 复查会议：会议期间，被复查文档或程序的作者和复查团队一起把文档从头到尾浏览一遍&lt;/li&gt;
+&lt;li&gt;复查时间不超过两个小时&lt;/li&gt;
+&lt;li&gt;包含一个复查主席，负责保证所有的书面意见被考虑在内。在复查期间写西安一个达成共识的意见和行动的记录&lt;/li&gt;
+&lt;li&gt;包含一个成员正式记录所有复查决议和要采取的行动&lt;/li&gt;
+&lt;li&gt;3 复查后活动：会议结束后，必须解决在复查期间提出的问题&lt;/li&gt;
+&lt;li&gt;比如修复软件漏洞，重构软件以使它和质量标准一致，重写文档&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;敏捷过程的复查
+
+&lt;ul&gt;
+&lt;li&gt;Scrum：每次迭代完成后，会有一个复查会议(冲刺复查)，讨论质量问题&lt;/li&gt;
+&lt;li&gt;极限编程：配对编程确保另一个团队成员经常检查和复查代码。极限编程依赖于个人主动性来提升和重构代码&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;程序审查：同行评审，团队成员合作发现开发程序中的漏洞
+
+&lt;ul&gt;
+&lt;li&gt;不同背景的团队成员，对程序源码进行精心、一行一行的复查&lt;/li&gt;
+&lt;li&gt;寻找错误和问题(逻辑错误，代码异常等)，并在审查会议中描述出来&lt;/li&gt;
+&lt;li&gt;审查时，经常使用一份常见编程错误的检查表。且不同的语言有不同的检查表&lt;/li&gt;
+&lt;li&gt;每个机构应当根据部门标准和实践开发自己的检查表，并经常更新检查表&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;24-4-软件度量和量度&#34;&gt;24.4 软件度量和量度&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文&lt;/th&gt;
+&lt;th&gt;英文&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;目标&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;软件度量&lt;/td&gt;
+&lt;td&gt;measurement&lt;/td&gt;
+&lt;td&gt;对软件组织、系统或过程的某种属性进行量化&lt;/td&gt;
+&lt;td&gt;长期目标是利用度量代替复查，评判软件质量。度量之后达到所需质量阈值就可以不通过复查而被接受&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;软件量度&lt;/td&gt;
+&lt;td&gt;metric&lt;/td&gt;
+&lt;td&gt;能被客观度量的软件系统、系统文档或开发过程有关的特性&lt;/td&gt;
+&lt;td&gt;软件量度影响管理决策的制度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;软件量度分类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;举例&lt;/th&gt;
+&lt;th&gt;影响&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;控制量度&lt;/td&gt;
+&lt;td&gt;支持过程管理，常与软件过程相关&lt;/td&gt;
+&lt;td&gt;修复发现的缺陷所需平均工作量和时间&lt;/td&gt;
+&lt;td&gt;决定是否做出过程改变&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;预言者量度(产品量度)&lt;/td&gt;
+&lt;td&gt;与软件本身相关&lt;/td&gt;
+&lt;td&gt;模块的回路复杂性，程序中标识符的平均长度，在设计中与对象有关的属性和操作的数量&lt;/td&gt;
+&lt;td&gt;用来估计软件变更所需的成本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;软件产品量度可能用到的方法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给系统质量属性赋值：通过度量系统组件的特性(如回路复杂性)，并综合这些量度，评估系统质量属性(如可维护性)&lt;/li&gt;
+&lt;li&gt;找出质量低于标准的系统组件：度量能识别哪些特性背离某些规范的个别组件。比如找出有着高复杂性的问题组件，因为复杂度高难于理解，组件更可能包含错误&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;CK 面向对象的量度套件&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;面向对象量度&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;每个类加权后的方法&lt;/td&gt;
+&lt;td&gt;每个类的方法数，是对每个方法根据复杂度进行加权后计算所得。度量值越大，对象类越复杂&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;继承树的深度(DIT)&lt;/td&gt;
+&lt;td&gt;在继承树中的具体层数。继承树越深，设计越复杂&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;孩子数(NOC)&lt;/td&gt;
+&lt;td&gt;度量类的直接子类数，NOC 度量类层次结构的宽度，DIT 代表它的深度。NOC 高意味着更多的复用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对象类间耦合度(CBO)&lt;/td&gt;
+&lt;td&gt;当一个类中的方法使用在另一个类中定义的方法或实例时，类间就是耦合的。CBO 意味着类是高度依赖的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对类的响应(RFC)&lt;/td&gt;
+&lt;td&gt;当类的对象接收到消息时潜在可能的对此做出相应的方法数的度量。RFC 越高，类的复杂度越高&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;方法追你个缺乏内聚力(LCOM)&lt;/td&gt;
+&lt;td&gt;通过计算类中各对方法而得。LCOM 是两个数的差，一个数是方法间没有共享属性的方法对数，一个数是方法间共享属性的方法对数。此亮度值的意义有争议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件组件分析的关键阶段
+
+&lt;ul&gt;
+&lt;li&gt;选择要做的度量&lt;/li&gt;
+&lt;li&gt;选择要评估的组件&lt;/li&gt;
+&lt;li&gt;度量组件特性&lt;/li&gt;
+&lt;li&gt;识别异常度量&lt;/li&gt;
+&lt;li&gt;分析异常组件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>25 配置管理</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#251-%e5%8f%98%e6%9b%b4%e7%ae%a1%e7%90%86&#34;&gt;25.1 变更管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#252-%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86&#34;&gt;25.2 版本管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#253-%e7%b3%bb%e7%bb%9f%e6%9e%84%e5%bb%ba&#34;&gt;25.3 系统构建&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#254-%e5%8f%91%e5%b8%83%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86&#34;&gt;25.4 发布版本管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;软件系统产品的配置管理活动包括&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;变更管理&lt;/td&gt;
+&lt;td&gt;跟踪来自客户和开发者的软件变更请求，计算做出这些变更的花费并估计其影响，决定是否变更、何时完成变更&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;版本管理&lt;/td&gt;
+&lt;td&gt;跟踪系统组件的多个版本，确保由不同开发者对组件做出的变更不会彼此干涉&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;系统构建&lt;/td&gt;
+&lt;td&gt;一个组装程序组件、数据和库的过程，然后把这些组件编译链接成一个可执行系统&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;发布管理&lt;/td&gt;
+&lt;td&gt;包括准备对外发布的软件，持续跟踪已经发布以供客户使用的系统版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;配置管理术语&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;配置项或软件配置项(SCI)&lt;/td&gt;
+&lt;td&gt;与配置管理控制下的软件项目有关的人格事物(设计、代码、测试数据、文档等)。配置项会存在多个不同的版本。每个配置项有唯一的名字&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;配置控制&lt;/td&gt;
+&lt;td&gt;确保系统和组件的版本得到记录和维护的过程。这样变更可以得到管理，所有的组件的版本都能在整个系统生命周期中识别和存储&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;版本&lt;/td&gt;
+&lt;td&gt;配置项的一个实例，区别于其他配置项的实例。版本总是有一个唯一标识符，通常由配置项名字加上版本号组成&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基线&lt;/td&gt;
+&lt;td&gt;用于组成系统的组件版本的集合。基线是受控的，意味着构成系统的组件的版本是不能改变的，总是可以从它的组成组件中重新创建一个基线&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;代码线&lt;/td&gt;
+&lt;td&gt;是软件组件以及组件所依赖的其他配置项的集合&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主线&lt;/td&gt;
+&lt;td&gt;代表系统不同版本的基线的序列&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;发布版本&lt;/td&gt;
+&lt;td&gt;发布给客户(或其他机构中用户)使用的系统版本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;工作空间&lt;/td&gt;
+&lt;td&gt;一个私有的工作空间，在其中软件可以修改而不至于影响其他会使用或修改软件的开发者&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;分支&lt;/td&gt;
+&lt;td&gt;从现存的代码线的版本中创建一个新的代码线。然后新的代码线和已存在的代码线可独立开发&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;合并&lt;/td&gt;
+&lt;td&gt;通过合并在不同代码线中的单独版本创建软件组件的新版本。这些代码线可能是由某个代码线的先前存在的分支所创建的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;系统构建&lt;/td&gt;
+&lt;td&gt;通过耦合和链接组件和库的适当版本创建一个可执行的系统版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;25-1-变更管理&#34;&gt;25.1 变更管理&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;变更管理过程
+
+&lt;ul&gt;
+&lt;li&gt;提交变更请求：客户(非开发团队)完成并提交一个描述对系统的变更的变更请求&lt;/li&gt;
+&lt;li&gt;变更请求可能是描述错误症状的错误报告，也可能是增加系统附加功能的请求&lt;/li&gt;
+&lt;li&gt;变更请求：可通过填写变更请求表(CRF)来提交&lt;/li&gt;
+&lt;li&gt;变更请求表包含的内容：提议、估算成本、请求、核准、实现和有效性验证日期、开发人员实现变更的概述&lt;/li&gt;
+&lt;li&gt;检查变更请求：检查以确保是否有效&lt;/li&gt;
+&lt;li&gt;检查者可来自客户、应用支持团队或开发团队的一个成员(内部请求时)&lt;/li&gt;
+&lt;li&gt;评估和成本估算：处理有效的变更请求&lt;/li&gt;
+&lt;li&gt;通常是开发团队或维护团队的任务&lt;/li&gt;
+&lt;li&gt;开发团队检查所有因变更而受到影响的组件&lt;/li&gt;
+&lt;li&gt;评估系统请求变更的模块&lt;/li&gt;
+&lt;li&gt;产品开发小组或变更控制委员会估算实现成本以及其他系统组件可能要相应发生变更的成本&lt;/li&gt;
+&lt;li&gt;决定是否同意变更请求时需要考虑的因素
+
+&lt;ul&gt;
+&lt;li&gt;不做变更会引起的后果&lt;/li&gt;
+&lt;li&gt;变更的益处：哪些用户收益&lt;/li&gt;
+&lt;li&gt;变更影响的用户数：影响用户越多，优先级越低，甚至不可取&lt;/li&gt;
+&lt;li&gt;变更所需花费&lt;/li&gt;
+&lt;li&gt;产品发布循环：刚发布版本，可推迟需求到下一个版本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;影响到单个组件或模块的变更，不需要单独评估，可直接交给开发团队&lt;/li&gt;
+&lt;li&gt;实现变更：开发团队变更软件组件时，应维护每个组件的变更记录，也成为组建的导出历史&lt;/li&gt;
+&lt;li&gt;最佳方式是将其放在组件源代码开头的标准化的注释部分&lt;/li&gt;
+&lt;li&gt;注释应该索引到引起系统变更的请求&lt;/li&gt;
+&lt;li&gt;每个版本的变更记录经常放到一个独立页中，一般放在文档的前面&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;25-2-版本管理&#34;&gt;25.2 版本管理&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;版本管理(VM, version management)：跟踪软件组件或配置信息以及使用这些组件系统的不同版本的过程
+
+&lt;ul&gt;
+&lt;li&gt;版本管理确保由不同开发者做出的变更不会彼此影响&lt;/li&gt;
+&lt;li&gt;版本管理过程可看做是管理代码线和基线的过程&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;版本管理系统的特征&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;特征&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;版本和发布版本识别&lt;/td&gt;
+&lt;td&gt;被管理版本提交给系统时给它们分配标识符。标识符通常基于配置项的名字，后跟一位或几位数字&lt;/td&gt;
+&lt;td&gt;简化了定义配置的问题，是快速索引更简单&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;存储管理&lt;/td&gt;
+&lt;td&gt;版本管理系统通常会提供存储管理工具。系统只存储每个版本不同之处的列表而不是每个版本的副本&lt;/td&gt;
+&lt;td&gt;减少了只有轻微差异的不同版本所占存储空间。通过把版本的不同之处列表应用到源版本(通常是最近的版本)，就能够重建目标版本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;变更历史记录&lt;/td&gt;
+&lt;td&gt;记录并列出所有对系统或组件做出的变更&lt;/td&gt;
+&lt;td&gt;在一些系统中，这些变更可以用来选择一个特殊的系统版本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;独立开发&lt;/td&gt;
+&lt;td&gt;不同的开发者可能在同一时间正在相同的组件上工作&lt;/td&gt;
+&lt;td&gt;版本管理系统跟踪检出的组件，确保不同开发者对组件做出的变更不会彼此影响&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;项目支持&lt;/td&gt;
+&lt;td&gt;一个版本管理系统可能支持共享组件的几个项目的开发&lt;/td&gt;
+&lt;td&gt;——&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;25-3-系统构建&#34;&gt;25.3 系统构建&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;系统构建是把软件组织、外部的库、配置文件等编译和链接成一个完整的、可执行的程序的过程&lt;/li&gt;
+&lt;li&gt;构建过程可能有三种不同的系统平台
+
+&lt;ul&gt;
+&lt;li&gt;开发系统：包括开发工具，比如编译器、源码编译器等&lt;/li&gt;
+&lt;li&gt;开发系统对应的是私有工作空间&lt;/li&gt;
+&lt;li&gt;开发人员将代码从版本管理系统下载到私有空间，再做修改&lt;/li&gt;
+&lt;li&gt;构建服务器：用于构建确定的、可执行的系统版本&lt;/li&gt;
+&lt;li&gt;构建服务器和版本管理系统紧密交互&lt;/li&gt;
+&lt;li&gt;系统构建可能依赖外部库，但这些库未包含在版本管理系统&lt;/li&gt;
+&lt;li&gt;目标环境：对应目标平台，是系统运行的平台&lt;/li&gt;
+&lt;li&gt;可能是和用于开发和构建系统相同类型的电脑&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;构建系统的特征&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;特征&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;构建脚本生成&lt;/td&gt;
+&lt;td&gt;在必要情况下，构建系统应该分析待构建的程序，识别依赖的组件，并自动生成一个构建脚本(有时叫配置文件)。系统也应支持手工创建和编辑构建脚本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;版本管理系统集成&lt;/td&gt;
+&lt;td&gt;构建系统应从版本管理系统中检出需要的组件版本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;最小化再编译&lt;/td&gt;
+&lt;td&gt;构建系统应分析出哪些源代码需要进行再编译，再对需要的代码进行编译&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可执行系统创建&lt;/td&gt;
+&lt;td&gt;构建系统应将编译后的各个目标代码文件以及其他需要的文件(如库文件、配置文件等)链接起来，创建可执行的系统&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;测试自动化&lt;/td&gt;
+&lt;td&gt;有的构建系统能使用自动化工具，如 JUnit，自动运行自动测试。可以检查构建是否被变更破坏&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;报告&lt;/td&gt;
+&lt;td&gt;构建系统应提供关于运行的构建或测试成功与否的报告&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;文档生成&lt;/td&gt;
+&lt;td&gt;构建系统可能能生成关于构建和系统帮助页面的版本注释&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;持续集成的步骤&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;步骤&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;检出主线&lt;/td&gt;
+&lt;td&gt;将主线系统从版本管理系统中检出到开发人员的私有工作空间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;构建和测试系统&lt;/td&gt;
+&lt;td&gt;构建系统并允许自动测试，以确保所构建的系统能通过所有测试。不能则构建终止。这时应通知最后提交主线系统的开发人员。他们负责修复这个问题&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;做相应变更&lt;/td&gt;
+&lt;td&gt;完成系统组件的变更&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;构建和测试系统&lt;/td&gt;
+&lt;td&gt;在私有工作空间构建系统并重新运行测试。测试失败则继续编辑&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;检入到构建服务器&lt;/td&gt;
+&lt;td&gt;系统通过测试，将它检入到构建系统，但是不要作为新系统基线提交&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;构建和测试系统&lt;/td&gt;
+&lt;td&gt;在构建服务器上构建系统并运行测试。如果有人修改了组件，检出失败的组件并进行编辑，使测试在私有工作空间通过&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;加入版本管理系统&lt;/td&gt;
+&lt;td&gt;如果系统在构建系统上通过测试，将作出的变更作为系统主线中的一个新的系统基线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;25-4-发布版本管理&#34;&gt;25.4 发布版本管理&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;系统的发布版本：分发给客户的版本
+
+&lt;ul&gt;
+&lt;li&gt;主要发布：交付重要的新功能&lt;/li&gt;
+&lt;li&gt;小型发布：修复漏洞和用户报告的问题&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;发布版本应包括
+
+&lt;ul&gt;
+&lt;li&gt;系统的可执行代码&lt;/li&gt;
+&lt;li&gt;配置文件：定义对于特定安装，发布版本应该如何配置&lt;/li&gt;
+&lt;li&gt;数据文件：比如错误信息的文件，是成功进行系统操作必需的&lt;/li&gt;
+&lt;li&gt;安装程序：用来帮助在目标硬件上安装系统&lt;/li&gt;
+&lt;li&gt;电子和书面文档：用于系统说明&lt;/li&gt;
+&lt;li&gt;包装和相关的宣传：为发布版本所做的工作&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3 敏捷软件开发</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/3-agile-software-development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/3-agile-software-development/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-%e6%95%8f%e6%8d%b7%e6%96%b9%e6%b3%95&#34;&gt;3.1 敏捷方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-%e8%ae%a1%e5%88%92%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91%e5%92%8c%e6%95%8f%e6%8d%b7%e5%bc%80%e5%8f%91&#34;&gt;3.2 计划驱动开发和敏捷开发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#33-%e6%9e%81%e9%99%90%e7%bc%96%e7%a8%8b&#34;&gt;3.3 极限编程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#34-%e6%95%8f%e6%8d%b7%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86&#34;&gt;3.4 敏捷项目管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#35-%e5%8f%af%e6%89%a9%e5%b1%95%e7%9a%84%e6%95%8f%e6%8d%b7%e6%96%b9%e6%b3%95&#34;&gt;3.5 可扩展的敏捷方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;敏捷方法是增量式开发方法，每个增量一般较小，通常两到三周会提供新版本给用户使用&lt;/p&gt;
+
+&lt;h2 id=&#34;3-1-敏捷方法&#34;&gt;3.1 敏捷方法&lt;/h2&gt;
+
+&lt;p&gt;敏捷方法的基本原则&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;原则&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;客户参与&lt;/td&gt;
+&lt;td&gt;客户在开发过程中始终紧密参与。作用是提供新系统的需求、对需求进行排序，并评估系统的迭代&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;增量式交付&lt;/td&gt;
+&lt;td&gt;软件以增量方式开发，客户指定在每个增量的内容&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;人非过程&lt;/td&gt;
+&lt;td&gt;开发团队的技术应得到承认和发扬，团队成员应保持自己的工作风格&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;接受变更&lt;/td&gt;
+&lt;td&gt;预料系统需求的变更，设计系统使其适应变更&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;保持简单性&lt;/td&gt;
+&lt;td&gt;致力于所开发软件和开发过程的简单性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;3-2-计划驱动开发和敏捷开发&#34;&gt;3.2 计划驱动开发和敏捷开发&lt;/h2&gt;
+
+&lt;p&gt;计划驱动开发和敏捷开发的对比&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;区别&lt;/th&gt;
+&lt;th&gt;计划驱动开发&lt;/th&gt;
+&lt;th&gt;敏捷开发&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;过程&lt;/td&gt;
+&lt;td&gt;需求工程-&amp;gt;需求描述-&amp;gt;设计和实现，阶段之间用正式文件沟通&lt;/td&gt;
+&lt;td&gt;需求工程-&amp;gt;设计和实现&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;开始实现之前，详细和描述和设计很重要&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;软件交付并快速取得反馈可行&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;开发系统的规模&lt;/td&gt;
+&lt;td&gt;大的开发团队，大型系统&lt;/td&gt;
+&lt;td&gt;小的、处于同一地点的开发团队&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;开发系统的类型&lt;/td&gt;
+&lt;td&gt;实施之前需要大量分析和设计&lt;/td&gt;
+&lt;td&gt;——&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;预期的系统寿命&lt;/td&gt;
+&lt;td&gt;长寿命，需要更多设计文档&lt;/td&gt;
+&lt;td&gt;文档更新不及时，且长期维护不需要&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;支持系统开发的技术&lt;/td&gt;
+&lt;td&gt;使用 IDE，且没有好的可视化编程和开发工具&lt;/td&gt;
+&lt;td&gt;依赖好的工具以跟踪设计进化&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;组织开发团队&lt;/td&gt;
+&lt;td&gt;分散或外包，需要文档进行沟通&lt;/td&gt;
+&lt;td&gt;——&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;设计和编码人员的能力&lt;/td&gt;
+&lt;td&gt;水平较低，需要更好的设计人员&lt;/td&gt;
+&lt;td&gt;需要更高的技术水平&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;3-3-极限编程&#34;&gt;3.3 极限编程&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;实践或原则&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;增量式规划&lt;/td&gt;
+&lt;td&gt;需求记录在脚本/场景/情景卡片，包含在版本中的故事情节可以决定可用的时间和相对优先级。开发者将脚本分解成任务&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;小版本发布&lt;/td&gt;
+&lt;td&gt;先开发能提供业务价值的一个最小有用集合。增量式地王第一个版本添加新功能&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;简单设计&lt;/td&gt;
+&lt;td&gt;只进行有限的能满足当前需求的设计，不追求太多&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;测试优先的开发&lt;/td&gt;
+&lt;td&gt;实现功能钱，采用一个自动单元测试框架编写对新功能的测试&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;重构&lt;/td&gt;
+&lt;td&gt;期待所有开发人员连续地重构代码，只要有能改善的代码就做，保持代码的简单性和可维护性&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;结对编程&lt;/td&gt;
+&lt;td&gt;开发人员成对工作，检查彼此的工作并提供支持&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;集体所有&lt;/td&gt;
+&lt;td&gt;配对的开发人员参与系统的所有方面的工作，共享代码。任何人可以修改任何代码&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;连续集成&lt;/td&gt;
+&lt;td&gt;任务一完成，将它继承到大系统。每次集成后，必须通过系统所有的单元测试&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可持续的节奏&lt;/td&gt;
+&lt;td&gt;大量超时不能接受，因为这通常会降低代码质量和平均生产率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;在场客户&lt;/td&gt;
+&lt;td&gt;系统最终用户的代表(客户)应全程配合 XP 团队。客户有责任将系统需求带给开发团队&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;3-4-敏捷项目管理&#34;&gt;3.4 敏捷项目管理&lt;/h2&gt;
+
+&lt;p&gt;Scrum 方法是一个通用的敏捷方法，主要是注重迭代开发的管理。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;序号&lt;/th&gt;
+&lt;th&gt;阶段&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;规划纲要&lt;/td&gt;
+&lt;td&gt;建立大致的项目目标，设计软件体系结构&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;冲刺循环&lt;/td&gt;
+&lt;td&gt;每个循环开发一个系统增量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;项目结束&lt;/td&gt;
+&lt;td&gt;总结项目，完善需要的文档(如系统帮助和用户手册)，总结经验&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;冲刺循环的流程：评估，特征的选择和开发，软件实现。特点包括&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;冲刺长度固定：一般是 2~4 周对应一个版本&lt;/li&gt;
+&lt;li&gt;规划起点：积压的任务，即项目中要完成的工作清单
+2.1 评估阶段审查这些积压的任务，进行优先级排序并进行风险的指派
+2.2 在此过程中，用户在每个循环开始时提出新的需求或任务的建议&lt;/li&gt;
+&lt;li&gt;选择阶段：项目团队的人员都参加，和用户角色相同&lt;/li&gt;
+&lt;li&gt;软件开发：每天，团队成员参加短时会议，回顾开发过程，科能会重新安排工作&lt;/li&gt;
+&lt;li&gt;冲刺循环结束：对已做工作复查并交付用户。开始下一个循环&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;3-5-可扩展的敏捷方法&#34;&gt;3.5 可扩展的敏捷方法&lt;/h2&gt;
+
+&lt;p&gt;将敏捷的一些重要内涵应用域大型工程：弹性计划、频繁发布、持续集成、测试驱动开发、良好的团队沟通&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4 需求工程</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/4-requirement-engineering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/4-requirement-engineering/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e5%8a%9f%e8%83%bd%e9%9c%80%e6%b1%82%e5%92%8c%e9%9d%9e%e5%8a%9f%e8%83%bd%e9%9c%80%e6%b1%82&#34;&gt;4.1 功能需求和非功能需求&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e8%bd%af%e4%bb%b6%e9%9c%80%e6%b1%82%e6%96%87%e6%a1%a3&#34;&gt;4.2 软件需求文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e9%9c%80%e6%b1%82%e6%8f%8f%e8%bf%b0&#34;&gt;4.3 需求描述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#44-%e9%9c%80%e6%b1%82%e5%b7%a5%e7%a8%8b%e8%bf%87%e7%a8%8b&#34;&gt;4.4 需求工程过程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#45-%e9%9c%80%e6%b1%82%e5%af%bc%e5%87%ba%e5%92%8c%e5%88%86%e6%9e%90&#34;&gt;4.5 需求导出和分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#46-%e9%9c%80%e6%b1%82%e6%9c%89%e6%95%88%e6%80%a7%e9%aa%8c%e8%af%81&#34;&gt;4.6 需求有效性验证&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#47-%e9%9c%80%e6%b1%82%e7%ae%a1%e7%90%86&#34;&gt;4.7 需求管理&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;需求工程：对服务和约束的发现、分析、建立文档、检验的过程&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;服务：系统提供的服务&lt;/li&gt;
+&lt;li&gt;约束：系统所受到的约束&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;用户需求：表达高层的概要需求&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用自然语言加图的形式给出的、关于系统需要提供哪些服务以及系统操作受到哪些约束的声明&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;系统需求：对系统应该提供服务的详细描述&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;详细地给出系统将要提供的功能以及系统所受到的约束&lt;/li&gt;
+&lt;li&gt;有时也称为功能描述，应该是精确的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-1-功能需求和非功能需求&#34;&gt;4.1 功能需求和非功能需求&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;功能需求：包括对系统应该提供的服务、如何对特殊输入做出反应，以及系统在特定条件下的行为的描述
+
+&lt;ul&gt;
+&lt;li&gt;某些情况下，可能需明确声明系统不应该做什么&lt;/li&gt;
+&lt;li&gt;系统的功能需求描述应该完备且一致&lt;/li&gt;
+&lt;li&gt;完备性：用户所需的所有服务都应该给出描述&lt;/li&gt;
+&lt;li&gt;一致性：需求描述不能前后矛盾&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;非功能需求：对系统提供的服务或功能给出的约束
+
+&lt;ul&gt;
+&lt;li&gt;包括时间约束、开发过程的约束和所受到的标准的约束&lt;/li&gt;
+&lt;li&gt;经常适用于整个系统而不是个别的系统或功能&lt;/li&gt;
+&lt;li&gt;如果有可能，使非功能需求得以量化，从而可测试&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-2-软件需求文档&#34;&gt;4.2 软件需求文档&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件需求文档是对系统开发者需要实现什么的正式陈述
+
+&lt;ul&gt;
+&lt;li&gt;应该包括系统的用户需求和一个详细的系统需求描述&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;敏捷：增量式收集用户需求，并把它们作为用户故事情节卸载卡片上；然后对需求给出优先级排序，优先考虑紧急的需求&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-3-需求描述&#34;&gt;4.3 需求描述&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需求描述就是在需求文档写下用户需求和系统需求
+
+&lt;ul&gt;
+&lt;li&gt;用户需求：从用户角度描述，使用自然语言、图形描述&lt;/li&gt;
+&lt;li&gt;系统需求：是软件工程师系统设计的起点，仅仅描述系统的外部行为和对它的操作上的限制&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-4-需求工程过程&#34;&gt;4.4 需求工程过程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需求工程包括
+
+&lt;ul&gt;
+&lt;li&gt;1 业务需求描述&lt;/li&gt;
+&lt;li&gt;2 可行性研究：在需求工程早起进行。考虑三个相关问题&lt;/li&gt;
+&lt;li&gt;系统是否对机构的总体目标有贡献&lt;/li&gt;
+&lt;li&gt;采用当前技术，系统是否能在时间要求和预算范围内实现&lt;/li&gt;
+&lt;li&gt;系统是否能和正在使用中的其他系统集成&lt;/li&gt;
+&lt;li&gt;3 用户需求导出&lt;/li&gt;
+&lt;li&gt;4 用户需求描述&lt;/li&gt;
+&lt;li&gt;5 原型构造&lt;/li&gt;
+&lt;li&gt;6 系统需求导出&lt;/li&gt;
+&lt;li&gt;7 系统需求描述和建模&lt;/li&gt;
+&lt;li&gt;8 复查(需求有效性验证)&lt;/li&gt;
+&lt;li&gt;重复上述步骤&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-5-需求导出和分析&#34;&gt;4.5 需求导出和分析&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 需求发现：也称为需求导出，是一个对准备建立的系统和正在使用的系统进行信息收集，并从这些信息中提取用户需求和系统需求的过程&lt;/li&gt;
+&lt;li&gt;2 需求分类和组织&lt;/li&gt;
+&lt;li&gt;3 需求优先级排序和协商&lt;/li&gt;
+&lt;li&gt;4 需求描述&lt;/li&gt;
+&lt;li&gt;重复上述步骤&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-6-需求有效性验证&#34;&gt;4.6 需求有效性验证&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需求有效性验证是检验需求是否真正按客户的意愿来定义系统的过程&lt;/li&gt;
+&lt;li&gt;对需求文档定义的需求执行多种类型的检查
+
+&lt;ul&gt;
+&lt;li&gt;有效性检查：某个用户可能认为系统应该执行某项功能&lt;/li&gt;
+&lt;li&gt;一致性检查：在文档中，需求不应该彼此冲突&lt;/li&gt;
+&lt;li&gt;完备性检查：需求文档应该包括所有系统用户想要的功能和约束&lt;/li&gt;
+&lt;li&gt;真实性检查：基于对已有技术的了解，检查需求以保证需求能真正实现。这些检查考虑到系统开发的预算和进度安排&lt;/li&gt;
+&lt;li&gt;可检验性检查：系统书写的需求应该是可以检验的，即能设计出一组检查方法来验证交付的系统是否满足每一个定义的需求&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;需求有效性验证技术包括
+
+&lt;ul&gt;
+&lt;li&gt;需求评审：由一组评审人员对需求进行系统性分析，主要是错误检查和不一致性检查&lt;/li&gt;
+&lt;li&gt;原型建立：为客户和最终用户生成一个可执行的系统模型，他们能在这个模型上体验从而检查系统是否符合他们的真正需要&lt;/li&gt;
+&lt;li&gt;测试用例生成：需求应该是可测试的。把对需求的测试作为有效性验证过程的一部分，从而发现问题。如果很难或者不可能设计测试，那以为着需求的实现很困难，应重新考虑&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-7-需求管理&#34;&gt;4.7 需求管理&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需求管理是一个对系统需求变更了解和控制的过程&lt;/li&gt;
+&lt;li&gt;需求变更管理过程有 3 个阶段
+
+&lt;ul&gt;
+&lt;li&gt;问题分析和变更描述：对问题或变更提议进行分析检查有效性。将分析结果反馈给变更请求者，请求者产生一个更详尽的需求变更提议或取消变更请求&lt;/li&gt;
+&lt;li&gt;变更分析和成本计算&lt;/li&gt;
+&lt;li&gt;变更实现：必要的话，修改需求文档以及系统设计和实现。尽量避免先修改系统再修改需求文档&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>5 系统建模</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/5-system-modeling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/5-system-modeling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>6 体系结构设计</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#6-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1&#34;&gt;6 体系结构设计&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#61-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%86%B3%E7%AD%96&#34;&gt;6.1 体系结构设计决策&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#62-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%A7%86%E5%9B%BE&#34;&gt;6.2 体系结构视图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#63-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F&#34;&gt;6.3 体系结构模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#64-%E5%BA%94%E7%94%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84&#34;&gt;6.4 应用体系结构&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;必要性：开发过程的早期应当涉及建立整体的系统体系结构&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;体系结构的增量式开发并不总是成功的&lt;/li&gt;
+&lt;li&gt;重构一个系统体系结构可能是非常昂贵的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方块图：系统体系结构经常用方块图建模&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方块：代表一个组件&lt;/li&gt;
+&lt;li&gt;方块中的方块：表示所代表的组件又被分解成一些子组件&lt;/li&gt;
+&lt;li&gt;箭头：表示所示方向有数据和控制信号从一个组件流到另一个组件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-1-体系结构设计决策&#34;&gt;6.1 体系结构设计决策&lt;/h2&gt;
+
+&lt;p&gt;非功能性系统需求主要有&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;性能：定位组件的关键操作，部署到同一个平台，减少通信次数&lt;/li&gt;
+&lt;li&gt;信息安全性：采用分层结构，重要资源放在内层，每层采用严格的信息安全有效性验证&lt;/li&gt;
+&lt;li&gt;安全性：安全相关的操作集中在一个或少数几个组件，降低成本和减少安全有效性验证&lt;/li&gt;
+&lt;li&gt;可用性：采用冗余组件以便更新替换和更新组件&lt;/li&gt;
+&lt;li&gt;可维护性：使用小粒度的自包含组件以便于更换。分离数据的生产者和消费者，避免数据共享&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;6-2-体系结构视图&#34;&gt;6.2 体系结构视图&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;4+1 视图：
+
+&lt;ul&gt;
+&lt;li&gt;逻辑视图：显示系统中对象和对象类的抽象，将系统需求和实体关联&lt;/li&gt;
+&lt;li&gt;进程视图：显示运行时系统如何组织为一组交互的进程。对非功能系统特征的判断很有效&lt;/li&gt;
+&lt;li&gt;开发视图：显示软件如何为了开发而被分解，即将软件分解成可由单独的开发人员或开发团队实现的组件。对软件管理者和程序员有用&lt;/li&gt;
+&lt;li&gt;物理视图：显示了系统硬件和软件组件如何分布在处理器上。对系统工程师规划系统部署有用&lt;/li&gt;
+&lt;li&gt;概念视图：系统的抽象视图，可作为把高层次需求分解为详细描述的基础&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;UML：在详细地文档化一个体系结构或使用模型驱动开发时使用&lt;/li&gt;
+&lt;li&gt;ADL：基本要素是组件和连接器，为特定领域涉及，或许可作为模型驱动开发的基础&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-3-体系结构模式&#34;&gt;6.3 体系结构模式&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模式的思想：作为一种表示、共享和复用软件系统知识的方法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;名称 | 描述 | 实例 | 使用时机 | 优点 | 缺点
+&amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash;
+分层体系结构 | 将系统组织成分层结构，每层包含一组相关功能。每层提供服务给紧邻的上一层，因此最底层有可能是整个系统核心服务 | 存在于不同图书馆的共享版权文档的系统分层模型 | 在已有系统的基础上构建新设施使用；开发团队是分散的小团队，每个小团队负责一层功能；系统存在多层信息安全性需求 | 允许在接口不变时更换整层；每层可提供冗余服务以增加系统可靠性 | 很难分离各层，高层可能必须与低层交互；服务在每层被处理会降低性能
+容器体系结构 | 系统所有数据在一个中央容器中管理，可被所有系统组件访问；组件不能直接交互，只通过容器交互 | 指挥和控制系统、CAD 系统和软件的交互开发环境 | 系统生成的大量数据需要持久保存；数据驱动系统中，每当容器中收入数据时触发一个工作或工具 | 组件是独立的，无需知道其他组件的存在；一个组件的变更可传播到所有的组件；所有数据得到一致的管理，因为数据存在同一个地方 | 容器是单点故障，容器会影响整个系统；所有通过容器进行通信会低效；容器分布到多个计算机会困难
+客户机-服务器体系结构 | 系统功能以服务的形态存在，每个服务来自某个单独的服务器。客户机是使用服务和访问服务器的用户 | 电影和视频资料库 | 需要从很多地方访问共享数据；服务器可以复制，适用于系统负载经常变化 | 服务器可分布到网络上。一般性的功能可被所有客户机使用，但不需要被所有服务实现 | 每个服务是单点故障，不能阻止拒绝服务供给或服务器失败；依赖于网络和系统导致性能无法预知；服务器属于不同的机构时不易管理
+管道和过滤器体系结构 | 每个处理组件(过滤器)是分类的，执行某个类型的数据转换。数据流从一个组件流向另一个组件 | 票据处理系统 | 数据处理应用(批处理和事务处理)，一些不同的阶段处理输入数据，并产生响应的输出 | 易于理解并支持变换的复用；工作流风格与很多业务处理体系结构很匹配；通过变换的方式进行进化；可实现为顺序或并发系统 | 通信变换期间所传输的数据格式必须协调好；每个变换必须解析它的输入并写成约定的格式输出；增加了系统负荷，因为不能复用使用不兼容数据结构的函数变换&lt;/p&gt;
+
+&lt;h2 id=&#34;6-4-应用体系结构&#34;&gt;6.4 应用体系结构&lt;/h2&gt;
+
+&lt;p&gt;常见的应用类型的体系结构&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;场景&lt;/th&gt;
+&lt;th&gt;适用的体系结构&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;事务处理应用&lt;/td&gt;
+&lt;td&gt;以数据库为中心，处理来自用户对信息的请求并更新数据库的数据，都是交互式系统&lt;/td&gt;
+&lt;td&gt;交互式银行系统、电子商务系统、信息系统和预订系统&lt;/td&gt;
+&lt;td&gt;管道和过滤器&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;语言处理系统&lt;/td&gt;
+&lt;td&gt;用户意图用形式化语言来表达的系统，语言处理系统将这种语言处理成一种内部格式，然后解释这种内部表示&lt;/td&gt;
+&lt;td&gt;编译器&lt;/td&gt;
+&lt;td&gt;容器和管道过滤器的复合模型&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;信息系统&lt;/td&gt;
+&lt;td&gt;所有涉及与共享数据库交互的系统都可看成基于事务的信息系统。信息系统允许对一个大信息库进行适当的访问&lt;/td&gt;
+&lt;td&gt;基于 web 的系统&lt;/td&gt;
+&lt;td&gt;分层&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>7 设计与实现</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/7-design-and-implementation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/7-design-and-implementation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>8 软件测试</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/8-software-testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/8-software-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>9 软件进化</title>
+      <link>https://xueqing.github.io/blog/software_architecture/software_engineering/9-software-evolution/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/software_architecture/software_engineering/9-software-evolution/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

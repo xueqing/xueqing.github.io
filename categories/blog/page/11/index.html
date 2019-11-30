@@ -353,91 +353,91 @@
   
   
   <div>
-    <h2><a href="/blog/go/basic/go_operator/">go 运算符</a></h2>
+    <h2><a href="/blog/git/account_ssh/">github 账户管理</a></h2>
     <div class="article-style">
       
-      算术运算符: +, -, *, /, %, ++, &ndash; 关系运算符: ==, !=, &gt;, &lt;, &gt;=, &lt;= 逻辑运算符: &amp;&amp;, ||, ! 位运算符: &amp;, |, ^(异或), &lt;&lt;, &gt;&gt; 赋值运算符: =, +=, -=, *=, /=, %=, &lt;&lt;=, &gt;&gt;=, &amp;=, |=, ^= 其他运算
+      添加 SSH ke 到 github 账户 检查 .ssh 文件夹是否有密钥 ls ~/.ssh/ 没有的话生成密钥 ssh-keygen -t rsa -C &quot;your_email@example.com&quot; 添加 SSH key 到 ssh-agent # 后台启动 ssh-agent eval $(ssh-agent -s) # 添加 key ssh-add ~/.ssh/id_rsa 在 github 的个人设置中添加一个 ssh-key 也可
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_recursive/">go 递归函数</a></h2>
+    <h2><a href="/blog/gitlab/gitlab/">gitlab 踩坑</a></h2>
     <div class="article-style">
       
-      定义 func myRecursion() { //myRecursion() }
+      cache 使用 gitlab 的 CI/CD 时，将项目的 runner 设置为 group-runner 若同一个 pipeline 中的 stage 之间共享的 cache 依赖于同一个 runner，所以要保证同一个 pipeline 使用的是一个 runner 可以定义基类的 job
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_error_handling/">go 错误处理</a></h2>
+    <h2><a href="/blog/go/basic/go_mutex/">go 互斥锁</a></h2>
     <div class="article-style">
       
-      go 使用 error 值表示错误状态，通过内置的错误接口提供了非常简单的错误处理机制 error 是一个接口类型，定义 type error interface { Error() string } 可在编码中通过实现 error 接口类型生成错
+      sync.Mutex sync.Mutex 互斥：保证每次只有一个 goroutine 可以访问一个共享的变量 go 标准库提供 sync.Mutex 互斥锁类型及两个方法： Lock 和 Unlock 在代码前调用 Lock，在代码后调用 Unlock 保证这段代码
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/hash_map/">hash map</a></h2>
+    <h2><a href="/blog/go/basic/go_function/">go 函数</a></h2>
     <div class="article-style">
       
-      class hash_map { hash_map() {set_load(); v.reserve(max_load*b.size());} // 表“太满”(如 75% 满)时性能会恶化 void set_load(float m=0.7, float g=1.6) {max_load=m; grow=g;} // 查找 mapped_type&amp; operator[] (const key_type&amp; k) { // 先计算散列值，查找表索引 size_type i = hash(k) % b.size(); // 找到之后遍历散列链匹配
+      函数 function 函数用法 函数值 匿名函数 可变函数 variadic function 方法 vs 函数 方法的值接收者 vs 函数的值参数 方法的指针接收者和函数的指针参数 函数 function 函数是基本的代码块，用于
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/hls/hls/">HLS 学习</a></h2>
+    <h2><a href="/blog/go/basic/go_slice/">go 切片</a></h2>
     <div class="article-style">
       
-      HLS 概述 一些概念 media playlist master playlist HLS 协议简介 输入视频或音频 服务器组件 文件切片器 媒体片段文件 索引文件(Playlists) 分布式组件 客户端软件 会话模式 内容
+      slice slice 长度和容量 append 追加到 slice copy 对 slice 拷贝 对 slice 切片 slice vs array 创建 array 和 slice 切片底层是数组 使用 make 函数创建 slice slice 内存储 slice 内存优化 slice 切片是对数组的抽象，是一种“动态
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/p2p/ipfs/">IPFS 入门</a></h2>
+    <h2><a href="/blog/go/basic/go_package/">go 包</a></h2>
     <div class="article-style">
       
-      IPFS 的优点 IPNS（去中心化命名系统） IPFS HTTP 网关 IPFS vs SC（Sia coin） 不可靠（Unreliable） VS 可靠（Reliable） 总结 IPFS(InterPlanetary File Sya
+      package 默认导入 导出包内标识符 导入包的重命名 Go 编译速度快 导入匿名包 包的初始化入口 init 内部包 包的文档化 package package pkg_name定义程序属于哪个包，每个 go 文
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/traps/json_struct/">json 解析时用到的结构体标签</a></h2>
+    <h2><a href="/blog/go/basic/go_variables/">go 变量</a></h2>
     <div class="article-style">
       
-      1 只有导出的结构体成员对外部程序 (json) 可见 2 结构体必须解析的字段(required 标签) 2.1 结构体标签 2.2 json 解析嵌套域 2.3 json 编码时会对指针解引用，使用
+      变量声明使用关键字 var。可以用于包内或函数内 变量声明 指定类型不赋值，使用默认值 var vname vtype = value 提供初始化值时可省略类型，根据初始化值自行判定变量
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/kindle/kindle/">kindle 使用技能</a></h2>
+    <h2><a href="/blog/go/basic/go_scope_rule/">go 变量作用域</a></h2>
     <div class="article-style">
       
-      邮箱传书 通过下面的步骤将 mobi/pdf 等格式的书转化为 kindle 的格式 azw3 发送邮箱注册 Kindle注册 亚马逊添加信任发送邮箱 发送邮件并改主体为 Convert 在亚马逊云端选择 Kindle
+      函数内定义的变量是局部变量，只作用于函数体内，参数和返回值都是局部变量 函数外定义的变量是全局变量，全局变量可在整个包甚至外部包（导出后）使用
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/lambda/">lambda 表达式</a></h2>
+    <h2><a href="/blog/go/basic/go_basic_syntax/">go 基础语法</a></h2>
     <div class="article-style">
       
-      问题 解决方法 返回类型 &ldquo;捕获&rdquo;变量 使用 lambda 作为变量 参考 问题 C++ 包含一些有用的通用函数，比如 std::for_each 和 std::transform
+      行分隔符：一行就是一个语句；多个语句放一行需要手动加;，但是不建议 注释不被编译，但是建议每个包一个注释 标识符：用于命名变量、类型等程序实体，
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/others/logstash/">logstash 配置文件学习</a></h2>
+    <h2><a href="/blog/go/basic/go_constant/">go 常量</a></h2>
     <div class="article-style">
       
-      配置文件举例 默认位置是 /usr/local/logstash/config/logstash-sample.conf 匹配需求描述 先需要统计后台服务的日志, 主要有下面 4 类 日志类型 格式 举例 服务器日志 [localtime][log_level][module_name] {event_info} [2019-07-25 09:26:57.315][debug ][EasyRedis] {Connect Redis success} 设备认证日志 [localtime][log_level][module_name][dev_name][dev_id][dev_ip] {event_info} [2019-07-25 09:26:07.317][warn ][GbsipServerService][cam1][34020000001320000001][192.168.10.199]
+      常量 数值常量 常量 定义类似于变量声明，但是需要 const 关键字 const vname [vtype] = value 显式类型定义const vname vtype = value 隐式类型定义const vname = value 不能使用 := 声明 相同类
       
     </div>
   </div>

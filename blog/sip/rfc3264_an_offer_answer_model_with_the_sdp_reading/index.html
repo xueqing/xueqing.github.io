@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="answer/offer 协议操作 生成初始 offer 生成 answer offerer 处理 answer 修改会话 表明能力 answer/offer agent：一个 agent 是 offer/answer 交换中的一个协议实现。offer/answer 交换包括两种代理：o">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/">
+  <meta property="og:title" content="rfc3264: An Offer/Answer Model with the SDP | kiki">
+  <meta property="og:description" content="answer/offer 协议操作 生成初始 offer 生成 answer offerer 处理 answer 修改会话 表明能力 answer/offer agent：一个 agent 是 offer/answer 交换中的一个协议实现。offer/answer 交换包括两种代理：o"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>rfc3264: An Offer/Answer Model with the SDP | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>rfc3264: An Offer/Answer Model with the SDP</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#answeroffer">answer/offer</a></li>
+<li><a href="#%e5%8d%8f%e8%ae%ae%e6%93%8d%e4%bd%9c">协议操作</a></li>
+<li><a href="#%e7%94%9f%e6%88%90%e5%88%9d%e5%a7%8b-offer">生成初始 offer</a></li>
+<li><a href="#%e7%94%9f%e6%88%90-answer">生成 answer</a></li>
+<li><a href="#offerer-%e5%a4%84%e7%90%86-answer">offerer 处理 answer</a></li>
+<li><a href="#%e4%bf%ae%e6%94%b9%e4%bc%9a%e8%af%9d">修改会话</a></li>
+<li><a href="#%e8%a1%a8%e6%98%8e%e8%83%bd%e5%8a%9b">表明能力</a></li>
+</ul>
+
+<h2 id="answer-offer">answer/offer</h2>
+
+<ul>
+<li>agent：一个 agent 是 offer/answer 交换中的一个协议实现。offer/answer 交换包括两种代理：offerer 和 answerer</li>
+<li>offerer：会话一方，创建或者修改一个会话。发送的 SDP 消息包含了 offerer 希望使用的媒体流和编解码器的集合，以及 offerer 接收媒体流希望使用的地址和端口</li>
+<li>offer：offerer 发送的 SDP 消息</li>
+<li>answerer：会话的另一方参与者。answerer 为接收到的 offer 生成一个回复的 SDP 消息。消息对应 offer 每个流有一个媒体流，指出这个流是否被接收，以及使用的编解码器和 answerer 接收媒体流希望使用的地址和端口</li>
+<li>answer：answerer 发送的用于回复 offer 的 SDP 消息</li>
+</ul>
+
+<h2 id="协议操作">协议操作</h2>
+
+<ul>
+<li>在任何时候，代理可以生成一个新的 offer 来更新会话。但是
+
+<ul>
+<li>answerer 不能在收到一个 offer 之后，回复或者拒绝之前生成一个新的 offer</li>
+<li>offerer 不能发送一个 offer 之后，在收到回复或拒绝之前生成一个新的 offer</li>
+</ul></li>
+<li>“glare”：一个代理在发送一个 offer 之后，还没有回复这个 offer 就收到一个新的 offer
+
+<ul>
+<li>上层协议应该解决这种冲突</li>
+</ul></li>
+</ul>
+
+<h2 id="生成初始-offer">生成初始 offer</h2>
+
+<ul>
+<li>忽视 e 和 p 字段</li>
+<li>没有 m 字段表示 offerer 希望通讯，但是通过后续的修改 offer 来增加会话的流信息</li>
+<li>单播流
+
+<ul>
+<li>sendonly：offerer 只想发送媒体流</li>
+<li>inactive：offerer 希望通讯，但是不希望发送或接收媒体流</li>
+<li>sendrecv：offerer 想发送和接收媒体流，这个是默认选项</li>
+<li>recvonly：offerer 只想接收媒体流</li>
+<li>RTCP 仍然会在 sendonly/inactive/recvonly 流中发送。媒体流的方向性不影响 RTCP 的使用</li>
+<li>sendrecv/recvonly：offer 中的地址和端口表示 offerer 想要接收媒体流的信息</li>
+<li>sendonly：offer 中的地址和端口表示 offerer 想要接收 RTCP 包的信息
+
+<ul>
+<li>如果没有明确说明 RTCP 的地址和端口，RTCP 包将会发送到比指定的端口大 1 的端口</li>
+</ul></li>
+<li>offer 中的地址和端口和 offerer 发送媒体流的地址和端口无关</li>
+<li>offer 中的端口为 0 表示提供流但是不会使用流，比如回复中的端口为 0 表示拒绝流，或者设置端口为 0 终止已存在的流</li>
+<li>如果 SDP 中包含多个媒体格式(应当按照倾向顺序排列)，表示 answerer 在会话中间可能会修改格式为媒体格式列表中的任一一个，同时不会发送一个新的 offer</li>
+<li>带宽为 0 不被建议，表示不应当发送任何媒体流，包括 RTP 的 RTCP 信息</li>
+<li>offer 中不同类型的媒体流信息表示 offerer 同时希望使用的流；相同类型的媒体流信息表示 offerer 希望同时发送和/或接收指定类型的多个媒体流</li>
+</ul></li>
+<li>多播流
+
+<ul>
+<li>sendonly：只想发送媒体流</li>
+<li>recvonly：只想接收媒体流</li>
+</ul></li>
+</ul>
+
+<h2 id="生成-answer">生成 answer</h2>
+
+<ul>
+<li>对于 offer 中的每一个 “m=”，answer 中必须有对应的 “m=”。这便于基于顺序匹配流</li>
+<li>answer 的 “t=” 必须和 offer 的相等</li>
+<li>如果拒绝一个流，可以将对应的流的端口设置为 0，其他的格式信息被忽略</li>
+<li>单播流
+
+<ul>
+<li>offer 的流为 sendonly，对应的流必须是 recvonly/sendrecv</li>
+<li>offer 的流为 recvonly，对应的流必须是 sendonly/sendrecv</li>
+<li>offer 的流为 sendrecv(没有的话默认为 sendrecv)，对应的流必须是 sendonly/recvonly/sendrecv/inactive</li>
+<li>offer 的流为 inactive，对应的流必须是 inactive</li>
+<li>answer 中标记流为 recvonly，“m=” 中必须包含 offer 中至少一个媒体格式</li>
+<li>answer 中标记流为 sendonly，“m=” 中必须包含 offer 中至少一个媒体格式</li>
+<li>answer 中标记流为 sendrecv，“m=” 中必须包含 offer 中至少一个媒体格式</li>
+<li>answer 中标记流为 inactive</li>
+<li>offer 的流为 sendonly，媒体格式按照 recvonly 构造</li>
+<li>offer 的流为 recvonly，媒体格式按照 sendonly 构造</li>
+<li>offer 的流为 sendrecv，媒体格式按照 sendrecv 构造</li>
+<li>offer 的流为 inactive，媒体格式按照 sendrecv 构造</li>
+<li>尽量按照 offer 的优先顺序排列媒体格式</li>
+<li>如果对于提供的媒体没有通用的媒体格式，answer 将设置端口为 0 来拒绝该媒体流</li>
+<li>如果对于所有的流都没有通用的格式，整个会话被拒绝</li>
+<li>answerer 发送媒体流的格式应该是 offer 中最优先且在 answer 中列举的媒体格式。对于 RTP，即使和 answer 不同，也必须使用 offer 中指定的负载类型</li>
+</ul></li>
+<li>多播流
+
+<ul>
+<li>多播 offer 的 answer 通常涉及修改一个流的某些方面</li>
+<li>如果接受多播流，answer 的地址和端口信息必须和 offer 中的对应，且流的方向信息必须和 offer 的一致</li>
+<li>answer 中的媒体格式必须和 offer 中的相同或者是 offer 的一个子集。移除一个格式表示 answerer 不支持该格式</li>
+<li>如果 offer 中有 ptime 和带宽属性，answer 必须和其一样。否则，answer 可以添加一个非 0 的 ptime 属性
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="offerer-处理-answer">offerer 处理 answer</h2>
+
+<ul>
+<li>如果 answer 是 sendrecv/recvonly，offerer 收到 answer 时可以发送媒体流
+
+<ul>
+<li>offerer 必须使用 answer 中列举的媒体格式发送，且<strong>应该(不是必须)</strong>使用 answer 中第一个媒体格式</li>
+<li>offerer 应该根据 answer 中的 ptime 和带宽来发送媒体</li>
+<li>offerer 可以立即停止监听 offer 中列举但是 answer 中未显示的媒体格式</li>
+</ul></li>
+</ul>
+
+<h2 id="修改会话">修改会话</h2>
+
+<ul>
+<li>在会话期间，任意一方可以发起一个新的 offer 来修改会话属性</li>
+<li>先前的 SDP：包括 offer 或 answer 中提供的 SDP</li>
+<li>新 offer 的 SDP 的 “o=” 必须和先前的 SDP 一样，版本号加 1
+
+<ul>
+<li>新 offer 的 SDP 和先前的 SDP 一致的话，answerer 必须可以处理，可以返回和之前处理过程相同的 SDP</li>
+</ul></li>
+<li>新 offer 的 SDP 的媒体属性必须和之前的 SDP 的每个媒体对应，即 offer 中的媒体数目不会减少。之前的 SDP 删除的媒体流不能在新的 SDP 中移除，可以不显示流的属性</li>
+<li>添加一个媒体流
+
+<ul>
+<li>可以复用之前拒绝的媒体流的位置，即端口设置为 0 的媒体</li>
+<li>在已有的媒体下面添加新的媒体描述</li>
+</ul></li>
+<li>移除一个媒体流
+
+<ul>
+<li>将媒体所在位置的端口设置为 0，可以忽视之前的其他属性，只留下媒体格式</li>
+<li>可以释放与其相关的资源</li>
+</ul></li>
+<li>修改一个媒体流
+
+<ul>
+<li>修改地址，端口或协议</li>
+<li>offerer 一发送 offer，就必须为接收旧的和新的端口做准备。直到收到 answer 和媒体到达新的端口，offerer 才可以停止监听旧端口。此举避免在传送过程中丢掉媒体数据</li>
+<li>answerer 对端口修改的处理和 offerer</li>
+<li>如果提供的流被拒绝，收到拒绝的时候就可以停止监听</li>
+<li>修改地址类比修改端口，不过更新的是连接，而不是端口</li>
+<li>修改协议和修改端口一样处理</li>
+<li>修改媒体格式集</li>
+<li>修改媒体类型：比起添加新媒体，建议修改媒体类型</li>
+<li>修改属性</li>
+</ul></li>
+<li>暂停一个单播流
+
+<ul>
+<li>之前标记为 sendrecv 的流，应改成 sendonly</li>
+<li>之前标记为 recvonly 的流，应改成 inactive</li>
+</ul></li>
+</ul>
+
+<h2 id="表明能力">表明能力</h2>
+
+<ul>
+<li>代理构造一个用于表明媒体能力的 SDP
+
+<ul>
+<li>必须是有效的，忽视 e 和 p 字段</li>
+<li>关于时间属性<code>t= 0 0</code></li>
+<li>代理支持的每个媒体类型必须有对应的媒体描述</li>
+<li>o 字段的会话 ID 必须是唯一的</li>
+<li>端口是 0(确保不会建立媒体流)，连接地址是任意的</li>
+<li>“m=” 的传输表明媒体类型的传输</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sip/">sip</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/&amp;text=rfc3264:%20An%20Offer/Answer%20Model%20with%20the%20SDP" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/&amp;t=rfc3264:%20An%20Offer/Answer%20Model%20with%20the%20SDP" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=rfc3264:%20An%20Offer/Answer%20Model%20with%20the%20SDP&amp;body=https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/&amp;title=rfc3264:%20An%20Offer/Answer%20Model%20with%20the%20SDP" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=rfc3264:%20An%20Offer/Answer%20Model%20with%20the%20SDP%20https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/&amp;title=rfc3264:%20An%20Offer/Answer%20Model%20with%20the%20SDP" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/sip/authentication_authorization/">Authentication vs Authorization</a></li>
+      
+      <li><a href="/blog/sip/algo/sip_algorithm/">SIP 相关算法总结</a></li>
+      
+      <li><a href="/blog/sip/algo/sm2/">SM2</a></li>
+      
+      <li><a href="/blog/sip/algo/sm3/">SM3 密码杂凑算法</a></li>
+      
+      <li><a href="/blog/sip/algo/sm4/">SM4 分组密码算法</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

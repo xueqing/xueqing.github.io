@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="1 术语 2 简介 3 sipML5 源码分析 3.1 注册 3.1.1 建立 WebSocket 连接 3.1.2 生成 SIP 头 3.1.3 发送注册的 SIP 信息(用 session 管理) 3.1.4 收到 200 OK 3.2 呼叫 3.2.1 呼叫过程中的 SDP 与流 3.2.2 双向(默认) 3.2.3 单向(">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/webrtc/sip/sipml5/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/webrtc/sip/sipml5/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/webrtc/sip/sipml5/">
+  <meta property="og:title" content="sipML5 | kiki">
+  <meta property="og:description" content="1 术语 2 简介 3 sipML5 源码分析 3.1 注册 3.1.1 建立 WebSocket 连接 3.1.2 生成 SIP 头 3.1.3 发送注册的 SIP 信息(用 session 管理) 3.1.4 收到 200 OK 3.2 呼叫 3.2.1 呼叫过程中的 SDP 与流 3.2.2 双向(默认) 3.2.3 单向("><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>sipML5 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>sipML5</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#1-%e6%9c%af%e8%af%ad">1 术语</a></li>
+<li><a href="#2-%e7%ae%80%e4%bb%8b">2 简介</a></li>
+<li><a href="#3-sipml5-%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90">3 sipML5 源码分析</a>
+
+<ul>
+<li><a href="#31-%e6%b3%a8%e5%86%8c">3.1 注册</a></li>
+<li><a href="#311-%e5%bb%ba%e7%ab%8b-websocket-%e8%bf%9e%e6%8e%a5">3.1.1 建立 WebSocket 连接</a></li>
+<li><a href="#312-%e7%94%9f%e6%88%90-sip-%e5%a4%b4">3.1.2 生成 SIP 头</a></li>
+<li><a href="#313-%e5%8f%91%e9%80%81%e6%b3%a8%e5%86%8c%e7%9a%84-sip-%e4%bf%a1%e6%81%af%e7%94%a8-session-%e7%ae%a1%e7%90%86">3.1.3 发送注册的 SIP 信息(用 session 管理)</a></li>
+<li><a href="#314-%e6%94%b6%e5%88%b0-200-ok">3.1.4 收到 200 OK</a></li>
+<li><a href="#32-%e5%91%bc%e5%8f%ab">3.2 呼叫</a></li>
+<li><a href="#321-%e5%91%bc%e5%8f%ab%e8%bf%87%e7%a8%8b%e4%b8%ad%e7%9a%84-sdp-%e4%b8%8e%e6%b5%81">3.2.1 呼叫过程中的 SDP 与流</a></li>
+<li><a href="#322-%e5%8f%8c%e5%90%91%e9%bb%98%e8%ae%a4">3.2.2 双向(默认)</a></li>
+<li><a href="#323-%e5%8d%95%e5%90%91%e5%8f%af%e6%89%a9%e5%85%85">3.2.3 单向(可扩充)</a></li>
+</ul></li>
+<li><a href="#4-api">4 API</a>
+
+<ul>
+<li><a href="#41-%e7%b1%bb%e5%9b%be">4.1 类图</a></li>
+<li><a href="#42-%e5%88%9d%e5%a7%8b%e5%8c%96%e5%bc%95%e6%93%8e">4.2 初始化引擎</a></li>
+<li><a href="#43-%e5%88%9b%e5%bb%ba-sip-%e6%a0%88">4.3 创建 SIP 栈</a></li>
+<li><a href="#44-%e6%b3%a8%e5%86%8c%e7%99%bb%e5%bd%95">4.4 注册/登录</a></li>
+<li><a href="#45-%e5%88%9b%e5%bb%ba%e6%8e%a5%e6%94%b6%e9%9f%b3%e9%a2%91%e8%a7%86%e9%a2%91%e4%bc%9a%e8%af%9d">4.5 创建/接收音频/视频会话</a></li>
+<li><a href="#46-%e5%85%b1%e4%ba%ab%e5%b1%8f%e5%b9%95%e6%a1%8c%e9%9d%a2">4.6 共享屏幕/桌面</a></li>
+<li><a href="#47-%e5%8f%91%e9%80%81%e6%8e%a5%e6%94%b6-sip-message%e7%b1%bb%e4%bc%bc-sms">4.7 发送/接收 SIP MESSAGE(类似 SMS)</a></li>
+<li><a href="#48-%e5%8f%91%e5%b8%83%e5%ad%98%e5%9c%a8%e7%8a%b6%e6%80%81">4.8 发布存在状态</a></li>
+<li><a href="#49-%e8%ae%a2%e9%98%85%e5%ad%98%e5%9c%a8%e7%8a%b6%e6%80%81">4.9 订阅存在状态</a></li>
+</ul></li>
+<li><a href="#5-%e6%b5%8f%e8%a7%88%e5%99%a8webrtc2sip-%e4%b8%8e%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e4%bf%a1%e4%bb%a4%e4%ba%a4%e4%ba%92%e6%b5%81%e7%a8%8b">5 浏览器、webrtc2sip 与服务器的信令交互流程</a>
+
+<ul>
+<li><a href="#51-%e6%b3%a8%e5%86%8c%e6%b5%81%e7%a8%8b">5.1 注册流程</a></li>
+<li><a href="#52-%e4%b8%bb%e5%8f%ab%e6%b5%81%e7%a8%8b">5.2 主叫流程</a></li>
+<li><a href="#53-%e8%a2%ab%e5%8f%ab%e6%b5%81%e7%a8%8b">5.3 被叫流程</a></li>
+<li><a href="#54-%e7%bb%88%e7%ab%af%e6%8c%82%e6%96%ad%e6%b5%81%e7%a8%8b">5.4 终端挂断流程</a></li>
+<li><a href="#55-mcu-%e6%8c%82%e6%96%ad%e6%b5%81%e7%a8%8b">5.5 MCU 挂断流程</a></li>
+<li><a href="#56-%e6%b3%a8%e9%94%80%e6%b5%81%e7%a8%8b">5.6 注销流程</a></li>
+</ul></li>
+<li><a href="#6-%e9%97%ae%e9%a2%98">6 问题</a>
+
+<ul>
+<li><a href="#61-%e5%ae%89%e5%85%a8%e6%9c%ba%e5%88%b6">6.1 安全机制</a></li>
+<li><a href="#62-%e4%bf%a1%e4%bb%a4%e5%85%bc%e5%ae%b9">6.2 信令兼容</a></li>
+</ul></li>
+<li><a href="#7-%e6%ba%90%e7%a0%81%e5%8f%91%e5%b8%83">7 源码发布</a>
+
+<ul>
+<li><a href="#71-%e5%ae%89%e8%a3%85-java">7.1 安装 java</a></li>
+<li><a href="#72-%e5%8f%91%e5%b8%83">7.2 发布</a></li>
+</ul></li>
+<li><a href="#8-%e5%8f%82%e8%80%83">8 参考</a></li>
+</ul>
+
+<h2 id="1-术语">1 术语</h2>
+
+<table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>定义</th>
+<th>术语</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>RTC</td>
+<td>real-time communication</td>
+<td>实时通信</td>
+</tr>
+
+<tr>
+<td>SIP</td>
+<td>session initiation protocol</td>
+<td>会话初始协议</td>
+</tr>
+
+<tr>
+<td>SMS</td>
+<td>short message service</td>
+<td>短信服务</td>
+</tr>
+
+<tr>
+<td>ICE</td>
+<td>Internet communication engine</td>
+<td>互联网通讯引擎</td>
+</tr>
+
+<tr>
+<td>DTLS</td>
+<td>datagram transport layer security</td>
+<td>数据报传输层安全</td>
+</tr>
+
+<tr>
+<td>SRTP</td>
+<td>secure real-time transport protocol</td>
+<td>安全实时传输协议</td>
+</tr>
+
+<tr>
+<td>WSS</td>
+<td>secure websocket</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>MCU</td>
+<td>multi conference unit</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>NGN</td>
+<td>next generation network</td>
+<td>下一代网络</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="2-简介">2 简介</h2>
+
+<ul>
+<li>sipML5 是开源的 HTML5 SIP 客户端</li>
+<li>媒体栈依赖于 WebRTC，建议使用 Chrome 和 Firefox Nightly 测试
+
+<ul>
+<li>Safari，Firefox，Opera 和 IE 需要安装 <a href="https://github.com/sarandogou/webrtc-everywhere" target="_blank">webrtc-everywhere</a> 扩展</li>
+<li>主要功能包括生成 SDP、采集本机摄像头和麦克风的音视频数据、传输媒体数据、处理接收到的音视频数据等</li>
+</ul></li>
+<li>SIP 和 SDP 栈由 JavaScript 实现，网络传输使用 WebSocket
+
+<ul>
+<li>SIP 协议栈：生成和解析 SIP 信令</li>
+<li>SDP 协议栈：生成和解析 SDP 信令</li>
+</ul></li>
+</ul>
+
+<h2 id="3-sipml5-源码分析">3 sipML5 源码分析</h2>
+
+<ul>
+<li>主要包括 3 个模块
+
+<ul>
+<li>media：主要是会话管理和媒体处理(包括 SDP 的生成和修改)</li>
+<li>SDP：实现 SDP 协议栈，包括 SDP 的修改和解析函数</li>
+<li>SIP：实现 SIP 协议栈(包括 SIP 的修改和解析函数)和与多媒体网关进行信令交互(WebSocket)</li>
+</ul></li>
+<li>一般而言，需要进行功能扩充和修改的地方包括：
+
+<ul>
+<li>界面入口：call.htm</li>
+<li>媒体处理模块：tmedia_session_jsep.js</li>
+<li>WebSocket 发送和接收的数据：tsip_transport.js</li>
+</ul></li>
+</ul>
+
+<h3 id="3-1-注册">3.1 注册</h3>
+
+<ul>
+<li>在生成 SIP 头文件时进行修改和添加</li>
+<li>如果收到的 SIP 协议格式不支持，将收到的进行修改</li>
+<li>将发出的 SIP 协议进行修改</li>
+</ul>
+
+<h4 id="3-1-1-建立-websocket-连接">3.1.1 建立 WebSocket 连接</h4>
+
+<h4 id="3-1-2-生成-sip-头">3.1.2 生成 SIP 头</h4>
+
+<pre><code class="language-js">// call.htm: function sipRegister()
+// create SIP stack
+oSipStack = new SIPml.Stack({
+    realm: txtRealm.value,
+    impi: txtPrivateIdentity.value,
+    impu: txtPublicIdentity.value,
+    password: txtPassword.value,
+    display_name: txtDisplayName.value,
+    websocket_proxy_url: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.websocket_server_url') : null),
+    outbound_proxy_url: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.sip_outboundproxy_url') : null),
+    ice_servers: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.ice_servers') : null),
+    enable_rtcweb_breaker: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.enable_rtcweb_breaker') == &quot;true&quot; : false),
+    events_listener: { events: '*', listener: onSipEventStack },
+    enable_early_ims: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.disable_early_ims') != &quot;true&quot; : true), // Must be true unless you're using a real IMS network
+    enable_media_stream_cache: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.enable_media_caching') == &quot;true&quot; : false),
+    bandwidth: (window.localStorage ? tsk_string_to_object(window.localStorage.getItem('org.doubango.expert.bandwidth')) : null), // could be redefined a session-level
+    video_size: (window.localStorage ? tsk_string_to_object(window.localStorage.getItem('org.doubango.expert.video_size')) : null), // could be redefined a session-level
+    sip_headers: [
+            { name: 'User-Agent', value: 'IM-client/OMA1.0 sipML5-v1.2016.03.04' },
+            { name: 'Organization', value: 'Doubango Telecom' }
+    ]
+}
+</code></pre>
+
+<h4 id="3-1-3-发送注册的-sip-信息-用-session-管理">3.1.3 发送注册的 SIP 信息(用 session 管理)</h4>
+
+<pre><code class="language-js">// src/tinySIP/src/transports/tsip_transport.js
+tsip_transport.prototype.send = function (s_branch, o_message, s_dest_ip, i_dest_port) {
+    var o_data = null;
+    if (o_message.is_request() &amp;&amp; (!o_message.is_ack() || (o_message.is_ack() &amp;&amp; !o_message.o_hdr_firstVia)) &amp;&amp; !o_message.is_cancel()) {
+        this.message_addvia(s_branch, o_message); /* should be done before tsip_transport_o_message_update() which could use the Via header */
+        this.message_update_aor(o_message); /* AoR */
+        this.message_update(o_message); /* IPSec, SigComp, ... */
+    }
+    else if (o_message.is_response()) {
+        /* AoR for responses which have a contact header (e.g. 183/200 INVITE) */
+        if (o_message.o_hdr_Contact) {
+            this.message_update_aor(o_message);
+        }
+        if (o_message.o_hdr_firstVia.i_rport == 0) {
+            o_message.o_hdr_firstVia.i_rport = o_message.o_hdr_firstVia.i_port;
+        }
+    }
+
+    o_data = o_message.toString();
+
+    tsk_utils_log_info(&quot;SEND: &quot; + o_data);
+
+    return this.__send(o_data, o_data.length);
+}
+</code></pre>
+
+<h4 id="3-1-4-收到-200-ok">3.1.4 收到 200 OK</h4>
+
+<pre><code class="language-js">// src/tinySIP/src/transports/tsip_transport.js
+function __tsip_transport_ws_onmessage(evt) {
+    tsk_utils_log_info(&quot;__tsip_transport_ws_onmessage&quot;);
+
+    var o_ragel_state = tsk_ragel_state_create();
+    if(typeof(evt.data) == 'string'){
+        tsk_ragel_state_init_str(o_ragel_state, evt.data);
+    }
+    else{
+        tsk_ragel_state_init_ai(o_ragel_state, evt.data);
+    }
+    var o_message = tsip_message.prototype.Parse(o_ragel_state, true);
+
+    if (o_message) {
+        tsk_utils_log_info(&quot;recv=&quot; + o_message);
+        o_message.o_socket = this;
+        return this.o_transport.get_layer().handle_incoming_message(o_message);
+    }
+    else {
+        tsk_utils_log_error(&quot;Failed to parse message: &quot; + evt.data);
+        return -1;
+    }
+}
+</code></pre>
+
+<h3 id="3-2-呼叫">3.2 呼叫</h3>
+
+<ul>
+<li>下面关联文件主要是 <code>src/tinyMEDIA/src/tmedia_session_jsep.js</code></li>
+</ul>
+
+<h4 id="3-2-1-呼叫过程中的-sdp-与流">3.2.1 呼叫过程中的 SDP 与流</h4>
+
+<pre><code class="language-mermaid">sequenceDiagram
+participant A as ClientA
+participant stu as STUN Server
+participant sig as Signal Server
+participant B as ClientB
+A -&gt;&gt; sig: 1. connect
+B -&gt;&gt; sig: 2. connect
+Note right of A: 3. Create PeerConnection
+Note right of A: 4. Add Streams
+Note right of A: 5. CreateOffer
+A -&gt;&gt; sig: 6. Send Offer SDP
+sig -&gt;&gt; B: 7. Relay Offer SDP
+Note right of B: 8. CreateAnswer
+B -&gt;&gt; sig: 9. Send Answer SDP
+sig -&gt;&gt; A: 10. Relay Answer SDP
+A -&gt;&gt; stu: 11. Ask my IP
+stu -&gt;&gt; A: 12. OnIceCandidate
+A -&gt;&gt; sig: 13. Send candidate
+sig -&gt;&gt; B: 14. Relay candidate
+Note right of B: 15. AddIceCandidate
+B -&gt;&gt; stu: 16. Ask my IP
+stu -&gt;&gt; B: 17. OnIceCandidate
+B -&gt;&gt; sig: 18. Send candidate
+sig -&gt;&gt; A: 19. Relay candidate
+A --&gt; B: 20. P2P channel
+Note right of B: 21. OnAddStream
+</code></pre>
+
+<ul>
+<li>Add Streams：添加本地流，对应函数<code>onGetUserMediaSuccess</code>
+
+<ul>
+<li>如果本地不推流，则注释掉 <code>This.o_pc.addStream(o_stream);</code></li>
+</ul></li>
+<li><code>__get_lo</code>：生成 SDP，在<code>onGetUserMediaSuccess</code>调用<code>This.o_pc.createOffer</code>会发送 SDP</li>
+<li><code>__set_ro</code>：获得远端 SDP 后在此函数处理</li>
+<li><code>subscribe_stream_events</code>：接收远端发送的流，在此函数中调用<code>this.o_pc.onaddstream</code></li>
+</ul>
+
+<h4 id="3-2-2-双向-默认">3.2.2 双向(默认)</h4>
+
+<ul>
+<li>音频(默认)：直接发送带音频的 SDP</li>
+<li>音视频(默认)：直接发送带音视频的 SDP</li>
+<li>视频：验证可以扩充视频功能</li>
+</ul>
+
+<h4 id="3-2-3-单向-可扩充">3.2.3 单向(可扩充)</h4>
+
+<ul>
+<li>音频：web 端对流只接收不发送，SDP 修改成 sendonly</li>
+<li>音视频：web 端对流只接收不发送，SDP 修改成 sendonly</li>
+<li>视频：验证可以扩充视频功能</li>
+</ul>
+
+<h2 id="4-api">4 API</h2>
+
+<pre><code class="language-js">// initialize the engine, start the stack and make video call from bob to alice
+SIPml.init(
+    function(e){
+        var stack =  new SIPml.Stack({realm: 'example.org', impi: 'bob', impu: 'sip:bob@example.org', password: 'mysecret',
+            events_listener: { events: 'started', listener: function(e){
+                    var callSession = stack.newSession('call-audiovideo', {
+                            video_local: document.getElementById('video-local'),
+                            video_remote: document.getElementById('video-remote'),
+                            audio_remote: document.getElementById('audio-remote')
+                        }
+                    );
+                    callSession.call('alice');
+                }
+            }
+        });
+        stack.start();
+    }
+);
+</code></pre>
+
+<h3 id="4-1-类图">4.1 类图</h3>
+
+<p><img src="classes.bmp" alt="类图" /></p>
+
+<h3 id="4-2-初始化引擎">4.2 初始化引擎</h3>
+
+<pre><code class="language-js">// initialize the media and signaling engines
+var readyCallback = function(e){
+    createSipStack(); // see next section
+};
+var errorCallback = function(e){
+    console.error('Failed to initialize the engine: ' + e.message);
+}
+SIPml.init(readyCallback, errorCallback);
+</code></pre>
+
+<h3 id="4-3-创建-sip-栈">4.3 创建 SIP 栈</h3>
+
+<pre><code class="language-js">// created before any attempt to make/receive calls, send messages or manage presence
+var sipStack;
+var eventsListener = function(e){
+    if(e.type == 'started'){
+        login();
+    }
+    else if(e.type == 'i_new_message'){ // incoming new SIP MESSAGE (SMS-like)
+        acceptMessage(e);
+    }
+    else if(e.type == 'i_new_call'){ // incoming audio/video call
+        acceptCall(e);
+    }
+}
+
+function createSipStack(){
+    sipStack = new SIPml.Stack({
+            realm: 'example.org', // mandatory: domain name
+            impi: 'bob', // mandatory: authorization name (IMS Private Identity)
+            impu: 'sip:bob@example.org', // mandatory: valid SIP Uri (IMS Public Identity)
+            password: 'mysecret', // optional
+            display_name: 'Bob legend', // optional
+            websocket_proxy_url: 'wss://sipml5.org:10062', // optional
+            outbound_proxy_url: 'udp://example.org:5060', // optional
+            enable_rtcweb_breaker: false, // optional
+            events_listener: { events: '*', listener: eventsListener }, // optional: '*' means all events
+            sip_headers: [ // optional
+                { name: 'User-Agent', value: 'IM-client/OMA1.0 sipML5-v1.0.0.0' },
+                { name: 'Organization', value: 'Doubango Telecom' }
+            ]
+        }
+    );
+}
+sipStack.start(); // asynchronous function
+</code></pre>
+
+<h3 id="4-4-注册-登录">4.4 注册/登录</h3>
+
+<pre><code class="language-js">var registerSession;
+var eventsListener = function(e){
+    console.info('session event = ' + e.type);
+    if(e.type == 'connected' &amp;&amp; e.session == registerSession){
+        makeCall();
+        sendMessage();
+        publishPresence();
+        subscribePresence('johndoe'); // watch johndoe's presence status change
+    }
+}
+var login = function(){
+    registerSession = sipStack.newSession('register', {
+        events_listener: { events: '*', listener: eventsListener } // optional: '*' means all events
+    });
+    registerSession.register();
+}
+</code></pre>
+
+<h3 id="4-5-创建-接收音频-视频会话">4.5 创建/接收音频/视频会话</h3>
+
+<pre><code class="language-js">var callSession;
+var eventsListener = function(e){
+    console.info('session event = ' + e.type);
+}
+var makeCall = function(){
+    callSession = sipStack.newSession('call-audiovideo', {
+        video_local: document.getElementById('video-local'),
+        video_remote: document.getElementById('video-remote'),
+        audio_remote: document.getElementById('audio-remote'),
+        events_listener: { events: '*', listener: eventsListener } // optional: '*' means all events
+    });
+    callSession.call('johndoe');
+}
+
+// to accept incoming audio/video call
+var acceptCall = function(e){
+    e.newSession.accept(); // e.newSession.reject() to reject the call
+}
+</code></pre>
+
+<h3 id="4-6-共享屏幕-桌面">4.6 共享屏幕/桌面</h3>
+
+<ul>
+<li>类比上述创建视频会话，区别在于会话类型(<code>call-screenshare</code>而不是<code>call-audiovideo</code>)</li>
+<li>屏幕/桌面共享会话不包括音频流，所以在需要增加 SDP 的<code>m</code>类型来发送音频</li>
+<li><a href="https://code.google.com/archive/p/sipml5/wikis/ScreenShare.wiki" target="_blank">关于浏览器设置</a></li>
+</ul>
+
+<h3 id="4-7-发送-接收-sip-message-类似-sms">4.7 发送/接收 SIP MESSAGE(类似 SMS)</h3>
+
+<pre><code class="language-js">var messageSession;
+var eventsListener = function(e){
+    console.info('session event = ' + e.type);
+}
+var sendMessage = function(){
+    messageSession = sipStack.newSession('message', {
+        events_listener: { events: '*', listener: eventsListener } // optional: '*' means all events
+    });
+    messageSession.send('johndoe', 'Pêche à la moule', 'text/plain;charset=utf-8');
+}
+
+// To accept incoming SIP MESSAGE
+var acceptMessage = function(e){
+    e.newSession.accept(); // e.newSession.reject(); to reject the message
+    console.info('SMS-content = ' + e.getContentString() + ' and SMS-content-type = ' + e.getContentType());
+}
+</code></pre>
+
+<h3 id="4-8-发布存在状态">4.8 发布存在状态</h3>
+
+<pre><code class="language-js">var publishSession;
+var eventsListener = function(e){
+    console.info('session event = ' + e.type);
+}
+var publishPresence = function(){
+    publishSession = sipStack.newSession('publish', {
+        events_listener: { events: '*', listener: eventsListener } // optional: '*' means all events
+    });
+    var contentType = 'application/pidf+xml';
+    var content = '&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n' +
+                    '&lt;presence xmlns=\&quot;urn:ietf:params:xml:ns:pidf\&quot;\n' +
+                        ' xmlns:im=\&quot;urn:ietf:params:xml:ns:pidf:im\&quot;' +
+                        ' entity=\&quot;sip:bob@example.com\&quot;&gt;\n' +
+                        '&lt;tuple id=\&quot;s8794\&quot;&gt;\n' +
+                        '&lt;status&gt;\n'+
+                        '   &lt;basic&gt;open&lt;/basic&gt;\n' +
+                        '   &lt;im:im&gt;away&lt;/im:im&gt;\n' +
+                        '&lt;/status&gt;\n' +
+                        '&lt;contact priority=\&quot;0.8\&quot;&gt;tel:+33600000000&lt;/contact&gt;\n' +
+                        '&lt;note  xml:lang=\&quot;fr\&quot;&gt;Bonjour de Paris :)&lt;/note&gt;\n' +
+                        '&lt;/tuple&gt;\n' +
+                    '&lt;/presence&gt;';
+
+    // send the PUBLISH request
+    publishSession.publish(content, contentType,{
+        expires: 200,
+        sip_caps: [
+            { name: '+g.oma.sip-im' },
+            { name: '+sip.ice' },
+            { name: 'language', value: '\&quot;en,fr\&quot;' }
+        ],
+        sip_headers: [
+            { name: 'Event', value: 'presence' },
+            { name: 'Organization', value: 'Doubango Telecom' }
+        ]
+    });
+}
+</code></pre>
+
+<h3 id="4-9-订阅存在状态">4.9 订阅存在状态</h3>
+
+<pre><code class="language-js">var subscribeSession;
+var eventsListener = function(e){
+    console.info('session event = ' + e.type);
+    if(e.type == 'i_notify'){
+        console.info('NOTIFY content = ' + e.getContentString());
+        console.info('NOTIFY content-type = ' + e.getContentType());
+
+        if (e.getContentType() == 'application/pidf+xml') {
+            if (window.DOMParser) {
+                var parser = new DOMParser();
+                var xmlDoc = parser ? parser.parseFromString(e.getContentString(), &quot;text/xml&quot;) : null;
+                var presenceNode = xmlDoc ? xmlDoc.getElementsByTagName (&quot;presence&quot;)[0] : null;
+                if(presenceNode){
+                    var entityUri = presenceNode.getAttribute (&quot;entity&quot;);
+                    var tupleNode = presenceNode.getElementsByTagName (&quot;tuple&quot;)[0];
+                    if(entityUri &amp;&amp; tupleNode){
+                        var statusNode = tupleNode.getElementsByTagName (&quot;status&quot;)[0];
+                        if(statusNode){
+                            var basicNode = statusNode.getElementsByTagName (&quot;basic&quot;)[0];
+                            if(basicNode){
+                                console.info('Presence notification: Uri = ' + entityUri + ' status = ' + basicNode.textContent);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+var subscribePresence = function(to){
+    subscribeSession = sipStack.newSession('subscribe', {
+            expires: 200,
+            events_listener: { events: '*', listener: eventsListener },
+            sip_headers: [
+                { name: 'Event', value: 'presence' }, // only notify for 'presence' events
+                { name: 'Accept', value: 'application/pidf+xml' } // supported content types (COMMA-sparated)
+            ],
+            sip_caps: [
+                { name: '+g.oma.sip-im', value: null },
+                { name: '+audio', value: null },
+                { name: 'language', value: '\&quot;en,fr\&quot;' }
+            ]
+        }
+    );
+    // start watching for entity's presence status (You may track event type 'connected' to be sure that the request has been accepted by the server)
+    subscribeSession.subscribe(to);
+}
+</code></pre>
+
+<h2 id="5-浏览器-webrtc2sip-与服务器的信令交互流程">5 浏览器、webrtc2sip 与服务器的信令交互流程</h2>
+
+<h3 id="5-1-注册流程">5.1 注册流程</h3>
+
+<ul>
+<li>浏览器和 webrtc2sip 基于 HTTP 协议进行一次握手，建立 WebSocket 通道</li>
+<li>浏览器和 webrtc2sip 通过 WebSocket 通道进行 SIP 消息交互</li>
+
+<li><p>webrtc2sip 和 MCU 通过 UDP 进行 SIP 信息交互</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+participant wb as Web Browser
+participant w2s as webrtc2sip
+participant MCU
+wb -&gt;&gt; w2s: 1. WebSocket 请求 (HTTP)
+w2s -&gt;&gt; wb: 2. WebSocket 回复 (HTTP)
+wb --&gt; w2s: 建立 WebSocket 通道
+wb -&gt;&gt; w2s: 3. Register (WS)
+w2s -&gt;&gt; MCU: 4. Register (UDP)
+MCU -&gt;&gt; w2s: 5. 100 Trying (UDP)
+w2s -&gt;&gt; wb: 6. 100 Trying (WS)
+MCU -&gt;&gt; w2s: 7. 401 Unauthorized (UDP)
+w2s -&gt;&gt; wb: 8. 401 Unauthorized (WS)
+wb -&gt;&gt; w2s: 9. Register (WS)
+w2s -&gt;&gt; MCU: 10. Register (UDP)
+MCU -&gt;&gt; w2s: 11. 100 Trying (UDP)
+w2s -&gt;&gt; wb: 12. 100 Trying (WS)
+MCU -&gt;&gt; w2s: 13. 200 OK (UDP)
+w2s -&gt;&gt; wb: 14. 200 OK (WS)
+</code></pre></li>
+</ul>
+
+<h3 id="5-2-主叫流程">5.2 主叫流程</h3>
+
+<pre><code class="language-mermaid">sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&gt; w2s: 建立 WebSocket 通道
+  wb -&gt;&gt; w2s: 1. INVITE (WS)
+  w2s -&gt;&gt; MCU: 2. INVITE (UDP)
+  MCU -&gt;&gt; w2s: 3. 100 Trying (UDP)
+  w2s -&gt;&gt; wb: 4. 100 Trying (WS)
+  w2s -&gt;&gt; wb: 5. 180 Ringing (WS)
+  MCU -&gt;&gt; w2s: 6. 200 OK (UDP)
+  w2s -&gt;&gt; wb: 7. 200 OK (WS)
+  wb -&gt;&gt; w2s: 8. ACK (WS)
+  w2s -&gt;&gt; MCU: 9. ACK (UDP)
+</code></pre>
+
+<h3 id="5-3-被叫流程">5.3 被叫流程</h3>
+
+<pre><code class="language-mermaid">sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&gt; w2s: 建立 WebSocket 通道
+  MCU -&gt;&gt; w2s: 1. INVITE (UDP)
+  w2s -&gt;&gt; wb: 2. INVITE (WS)
+  wb -&gt;&gt; w2s: 3. 100 Trying (WS)
+  w2s -&gt;&gt; MCU: 4. 100 Trying (UDP)
+  wb -&gt;&gt; w2s: 5. 180 Ringing (WS)
+  w2s -&gt;&gt; MCU: 6. 180 Ringing (UDP)
+  wb -&gt;&gt; w2s: 7. 200 OK (WS)
+  w2s -&gt;&gt; MCU: 8. 200 OK (UDP)
+  MCU -&gt;&gt; w2s: 9. ACK (UDP)
+  w2s -&gt;&gt; wb: 10. ACK (WS)
+</code></pre>
+
+<h3 id="5-4-终端挂断流程">5.4 终端挂断流程</h3>
+
+<pre><code class="language-mermaid">sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&gt; w2s: 建立 WebSocket 通道
+  wb -&gt;&gt; w2s: 1. BYE (WS)
+  w2s -&gt;&gt; MCU: 2. BYE (UDP)
+  MCU -&gt;&gt; w2s: 3. 100 Trying (UDP)
+  MCU -&gt;&gt; w2s: 4. 200 OK (UDP)
+  w2s -&gt;&gt; wb: 5. 200 OK (WS)
+</code></pre>
+
+<h3 id="5-5-mcu-挂断流程">5.5 MCU 挂断流程</h3>
+
+<pre><code class="language-mermaid">sequenceDiagram
+  participant wb as Web Browser
+  participant w2s as webrtc2sip
+  participant MCU
+  wb --&gt; w2s: 建立 WebSocket 通道
+  MCU -&gt;&gt; w2s: 1. BYE (UDP)
+  w2s -&gt;&gt; wb: 2. BYE (WS)
+  wb -&gt;&gt; w2s: 3. 200 OK (WS)
+  w2s -&gt;&gt; MCU: 4. 200 OK (UDP)
+</code></pre>
+
+<h3 id="5-6-注销流程">5.6 注销流程</h3>
+
+<p>类比注册流程，但是 Contact 头域的 expires 设置为 0</p>
+
+<h2 id="6-问题">6 问题</h2>
+
+<h3 id="6-1-安全机制">6.1 安全机制</h3>
+
+<ul>
+<li>sipML5 基于 WebRTC 和 WebSocket，所以需要浏览器支持二者</li>
+<li>sipML5 在进行呼叫业务需要借助 WebRTC 访问本地摄像头，所以涉及到安全机制
+
+<ul>
+<li>一般需要 https 部署访问</li>
+<li>如果没有 https，只能用 localhost 呼叫业务，或者用 Firefox 浏览器呼叫业务(Firefox 解除了 https 的安全机制)。但是 Firefox 不同版本对于 sipML5 的支持可能存在一些问题</li>
+</ul></li>
+</ul>
+
+<h3 id="6-2-信令兼容">6.2 信令兼容</h3>
+
+<ul>
+<li>SDP 的描述需要兼容
+
+<ul>
+<li>webrtc2sip 中，INVITE 携带的 SDP 的 m 字段必须与 200 OK 所携带的 SDP 的 m 字段一一对应，否则建立会话但不会处理流</li>
+</ul></li>
+<li>webrtc2sip 与 SIP 网关的 SIP 信令存在差异，可在二者之间添加 SIP 代理</li>
+<li>webrtc2sip 中，如果 SDP 的端口对应 sendrecv，根据 RFC 规范，对于 SIP 客户端发过来的 RTP 和 RTCP 流会进行端口重设，之后 webrtc2sip将流推送到重新设置的端口，即把流推送到 SIP 客户端的发送端口，可注释重设端口的代码</li>
+<li>播放音频没有声音：可能是音频采样率的原因，在代码中重设音频采样率</li>
+<li>会话建立后，SIP 客户端可能 20s 后才显示画面：会话没完全建立时，I 帧已经发生但是未与 SIP 客户端成功建立会话导致 I 帧丢失，要在编码单元设置 I 帧间隔</li>
+</ul>
+
+<h2 id="7-源码发布">7 源码发布</h2>
+
+<ul>
+<li>环境：ubuntu16.04</li>
+</ul>
+
+<h3 id="7-1-安装-java">7.1 安装 java</h3>
+
+<pre><code class="language-sh"># 在终端输入 java, 如果未安装会提示可选择的安装包
+sudo apt-get install openjdk-8-jre-headless
+</code></pre>
+
+<h3 id="7-2-发布">7.2 发布</h3>
+
+<pre><code class="language-sh"># 执行工程中的脚本文件 release.sh
+./release.sh
+</code></pre>
+
+<h2 id="8-参考">8 参考</h2>
+
+<ul>
+<li><a href="https://www.doubango.org/sipml5/" target="_blank">sipML5</a></li>
+<li><a href="https://blog.csdn.net/chenhande1990chenhan/article/details/76144844" target="_blank">web浏览器无插件播放实时音视频技术&mdash;sipML5(二)</a></li>
+<li><a href="https://blog.csdn.net/chenhande1990chenhan/article/details/76291174" target="_blank">web浏览器无插件播放实时音视频技术&mdash;webrtc2sip 与 第三方 SIP 网关对接(五)</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/webrtc/">webrtc</a>
+  
+  <a class="badge badge-light" href="/tags/sip/">sip</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/webrtc/sip/sipml5/&amp;text=sipML5" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/webrtc/sip/sipml5/&amp;t=sipML5" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=sipML5&amp;body=https://xueqing.github.io/blog/webrtc/sip/sipml5/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/webrtc/sip/sipml5/&amp;title=sipML5" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=sipML5%20https://xueqing.github.io/blog/webrtc/sip/sipml5/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/webrtc/sip/sipml5/&amp;title=sipML5" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/webrtc/sip/webrtc2sip/">webrtc2sip</a></li>
+      
+      <li><a href="/blog/sip/authentication_authorization/">Authentication vs Authorization</a></li>
+      
+      <li><a href="/blog/sip/algo/sip_algorithm/">SIP 相关算法总结</a></li>
+      
+      <li><a href="/blog/sip/algo/sm2/">SM2</a></li>
+      
+      <li><a href="/blog/sip/algo/sm3/">SM3 密码杂凑算法</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

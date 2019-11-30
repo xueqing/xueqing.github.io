@@ -353,91 +353,89 @@
   
   
   <div>
-    <h2><a href="/blog/go/basic/go_slice/">go 切片</a></h2>
+    <h2><a href="/blog/git/git_bundle/">git bundle</a></h2>
     <div class="article-style">
       
-      slice slice 长度和容量 append 追加到 slice copy 对 slice 拷贝 对 slice 切片 slice vs array 创建 array 和 slice 切片底层是数组 使用 make 函数创建 slice slice 内存储 slice 内存优化 slice 切片是对数组的抽象，是一种“动态
+      打包整个仓库 # 发送者使用仓库创建一个文件包 git bundle create somefile HEAD # 接收者使用 somefile 文件获取提交 git pull somefile 打包部分提交：假设 xxxx 是发送者和接收者共享的最近提交 # 发送
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_package/">go 包</a></h2>
+    <h2><a href="/blog/git/git_-cherry-pick/">git cherry-pick 选择某次提交</a></h2>
     <div class="article-style">
       
-      package 默认导入 导出包内标识符 导入包的重命名 Go 编译速度快 导入匿名包 包的初始化入口 init 内部包 包的文档化 package package pkg_name定义程序属于哪个包，每个 go 文
+      # 选择某次提交应用到当前分支 git cherry-pick &lt;commit-id&gt; # 选择某次提交应用到当前分支，并保留原提交者信息 git cherry-pick -x &lt;commit-id&gt; 批量操作 # 应用 start-commit-id （不包含） 到 end-commit-id （包含）之间的提交到
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_variables/">go 变量</a></h2>
+    <h2><a href="/blog/git/git_clean/">git clean 清理工作目录</a></h2>
     <div class="article-style">
       
-      变量声明使用关键字 var。可以用于包内或函数内 变量声明 指定类型不赋值，使用默认值 var vname vtype = value 提供初始化值时可省略类型，根据初始化值自行判定变量
+      git clean 从工作目录移除未被跟踪的文件，直接删除，不能从回收站找到 -d 移除未跟踪的目录 -f 强制移除文件或目录，如果 clean.requireForce 设置为 true，git clean 只有添加 -f-n-i
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_scope_rule/">go 变量作用域</a></h2>
+    <h2><a href="/blog/git/git_commit/">git commit 提交更新</a></h2>
     <div class="article-style">
       
-      函数内定义的变量是局部变量，只作用于函数体内，参数和返回值都是局部变量 函数外定义的变量是全局变量，全局变量可在整个包甚至外部包（导出后）使用
+      # 将提交信息与命令放在同一行 git commit -m &quot;add README&quot; # 自动把所有已经跟踪过的文件暂存起来一并提交, 跳过 git add 步骤 git commit -a -m &quot;add README&quot; # 在日志信息之后添加提交者的信息
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_basic_syntax/">go 基础语法</a></h2>
+    <h2><a href="/blog/git/git_config/">git config 配置</a></h2>
     <div class="article-style">
       
-      行分隔符：一行就是一个语句；多个语句放一行需要手动加;，但是不建议 注释不被编译，但是建议每个包一个注释 标识符：用于命名变量、类型等程序实体，
+      配置 修改配置信息 查看配置信息 修改配置信息 /etc/gitconfig：包含系统上每一个用户及他们仓库的通用配置, 使用--system会从此文
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_constant/">go 常量</a></h2>
+    <h2><a href="/blog/git/git_diff/">git diff 版本比较</a></h2>
     <div class="article-style">
       
-      常量 数值常量 常量 定义类似于变量声明，但是需要 const 关键字 const vname [vtype] = value 显式类型定义const vname vtype = value 隐式类型定义const vname = value 不能使用 := 声明 相同类
+      diff 插件 git diff diff 插件 可以使用 git difftool 命令来用 Araxis , emerge 或 vimdiff 等软件通过图形化的方式或其它格式输出方式输出 diff 分析结果 使用 git difftool --tool-help 命令查看系统支持哪些 git diff 插件 git
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_loop/">go 循环语句</a></h2>
+    <h2><a href="/blog/git/git_grep/">git grep</a></h2>
     <div class="article-style">
-      
-      for 循环 &ldquo;while&rdquo; 循环 循环嵌套 循环控制语句 无限循环 for 循环 go 循环只有 for 结构。包含 3 个组件 初始化语句：通常是短变量声明，声明的变量只对 for 循环可见 条件语句：
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_pointer/">go 指针</a></h2>
+    <h2><a href="/blog/git/git_log/">git log</a></h2>
     <div class="article-style">
       
-      指针变量指向一个值的内存地址：不是所有值都有地址，但是所有变量都有地址 每一个聚合类型变量的组成(结构体的成员或数组中的元素)都是变量，都有一
+      语法 常用命令 引用日志 reflog 参考 语法 git log [&lt;options&gt;] [&lt;revision range&gt;] [[--] &lt;path&gt;…​] options 参数 含义 -L &lt;start&gt;,&lt;end&gt;:&lt;file&gt; 查看指定文件的开始行到结束行的提交历史 -L :&lt;funcname&gt;:&lt;file&gt; 查看指定文件
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_interface/">go 接口</a></h2>
+    <h2><a href="/blog/git/git_mv/">git move 移动文件</a></h2>
     <div class="article-style">
       
-      非侵入式设计 接口定义 接口实现 接口值 底层值为 nil 的接口值 接口值为 nil 空接口 类型断言(type assertion) 类型选择(type switch) 接口和类型的关系 一个类型可以实现
+      # git rm + git add git mv file_from file_to
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_map/">go 散列表</a></h2>
+    <h2><a href="/blog/git/git_patch/">git patch 补丁</a></h2>
     <div class="article-style">
       
-      map定义和初始化 map 是一种无序的键值对的集合，可以通过 key 快速检索数据，使用 hash 表实现 定义集合 var map_name[key_type]val_type 使用 make 函数map_name := make(map[key_type]val_type) 不初始化 map，
+      普通补丁 正式补丁 git format-patch 参数 用于邮件发送 直接用于 git am 参考 普通补丁 # 发送者生成一个补丁 git diff xxx &gt; my.patch # 接收者在其他地方使用这个补丁 git apply &lt; my.patch 正式补丁 git format-patch
       
     </div>
   </div>

@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="25.1 变更管理 25.2 版本管理 25.3 系统构建 25.4 发布版本管理 软件系统产品的配置管理活动包括 名称 描述 变更管理 跟踪来自客户和开发者的软件变更请求，计算做出这些变">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/">
+  <meta property="og:title" content="25 配置管理 | kiki">
+  <meta property="og:description" content="25.1 变更管理 25.2 版本管理 25.3 系统构建 25.4 发布版本管理 软件系统产品的配置管理活动包括 名称 描述 变更管理 跟踪来自客户和开发者的软件变更请求，计算做出这些变"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>25 配置管理 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>25 配置管理</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#251-%e5%8f%98%e6%9b%b4%e7%ae%a1%e7%90%86">25.1 变更管理</a></li>
+<li><a href="#252-%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86">25.2 版本管理</a></li>
+<li><a href="#253-%e7%b3%bb%e7%bb%9f%e6%9e%84%e5%bb%ba">25.3 系统构建</a></li>
+<li><a href="#254-%e5%8f%91%e5%b8%83%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86">25.4 发布版本管理</a></li>
+</ul>
+
+<p>软件系统产品的配置管理活动包括</p>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>变更管理</td>
+<td>跟踪来自客户和开发者的软件变更请求，计算做出这些变更的花费并估计其影响，决定是否变更、何时完成变更</td>
+</tr>
+
+<tr>
+<td>版本管理</td>
+<td>跟踪系统组件的多个版本，确保由不同开发者对组件做出的变更不会彼此干涉</td>
+</tr>
+
+<tr>
+<td>系统构建</td>
+<td>一个组装程序组件、数据和库的过程，然后把这些组件编译链接成一个可执行系统</td>
+</tr>
+
+<tr>
+<td>发布管理</td>
+<td>包括准备对外发布的软件，持续跟踪已经发布以供客户使用的系统版本</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>配置管理术语</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>配置项或软件配置项(SCI)</td>
+<td>与配置管理控制下的软件项目有关的人格事物(设计、代码、测试数据、文档等)。配置项会存在多个不同的版本。每个配置项有唯一的名字</td>
+</tr>
+
+<tr>
+<td>配置控制</td>
+<td>确保系统和组件的版本得到记录和维护的过程。这样变更可以得到管理，所有的组件的版本都能在整个系统生命周期中识别和存储</td>
+</tr>
+
+<tr>
+<td>版本</td>
+<td>配置项的一个实例，区别于其他配置项的实例。版本总是有一个唯一标识符，通常由配置项名字加上版本号组成</td>
+</tr>
+
+<tr>
+<td>基线</td>
+<td>用于组成系统的组件版本的集合。基线是受控的，意味着构成系统的组件的版本是不能改变的，总是可以从它的组成组件中重新创建一个基线</td>
+</tr>
+
+<tr>
+<td>代码线</td>
+<td>是软件组件以及组件所依赖的其他配置项的集合</td>
+</tr>
+
+<tr>
+<td>主线</td>
+<td>代表系统不同版本的基线的序列</td>
+</tr>
+
+<tr>
+<td>发布版本</td>
+<td>发布给客户(或其他机构中用户)使用的系统版本</td>
+</tr>
+
+<tr>
+<td>工作空间</td>
+<td>一个私有的工作空间，在其中软件可以修改而不至于影响其他会使用或修改软件的开发者</td>
+</tr>
+
+<tr>
+<td>分支</td>
+<td>从现存的代码线的版本中创建一个新的代码线。然后新的代码线和已存在的代码线可独立开发</td>
+</tr>
+
+<tr>
+<td>合并</td>
+<td>通过合并在不同代码线中的单独版本创建软件组件的新版本。这些代码线可能是由某个代码线的先前存在的分支所创建的</td>
+</tr>
+
+<tr>
+<td>系统构建</td>
+<td>通过耦合和链接组件和库的适当版本创建一个可执行的系统版本</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="25-1-变更管理">25.1 变更管理</h2>
+
+<ul>
+<li>变更管理过程
+
+<ul>
+<li>提交变更请求：客户(非开发团队)完成并提交一个描述对系统的变更的变更请求</li>
+<li>变更请求可能是描述错误症状的错误报告，也可能是增加系统附加功能的请求</li>
+<li>变更请求：可通过填写变更请求表(CRF)来提交</li>
+<li>变更请求表包含的内容：提议、估算成本、请求、核准、实现和有效性验证日期、开发人员实现变更的概述</li>
+<li>检查变更请求：检查以确保是否有效</li>
+<li>检查者可来自客户、应用支持团队或开发团队的一个成员(内部请求时)</li>
+<li>评估和成本估算：处理有效的变更请求</li>
+<li>通常是开发团队或维护团队的任务</li>
+<li>开发团队检查所有因变更而受到影响的组件</li>
+<li>评估系统请求变更的模块</li>
+<li>产品开发小组或变更控制委员会估算实现成本以及其他系统组件可能要相应发生变更的成本</li>
+<li>决定是否同意变更请求时需要考虑的因素
+
+<ul>
+<li>不做变更会引起的后果</li>
+<li>变更的益处：哪些用户收益</li>
+<li>变更影响的用户数：影响用户越多，优先级越低，甚至不可取</li>
+<li>变更所需花费</li>
+<li>产品发布循环：刚发布版本，可推迟需求到下一个版本</li>
+</ul></li>
+<li>影响到单个组件或模块的变更，不需要单独评估，可直接交给开发团队</li>
+<li>实现变更：开发团队变更软件组件时，应维护每个组件的变更记录，也成为组建的导出历史</li>
+<li>最佳方式是将其放在组件源代码开头的标准化的注释部分</li>
+<li>注释应该索引到引起系统变更的请求</li>
+<li>每个版本的变更记录经常放到一个独立页中，一般放在文档的前面</li>
+</ul></li>
+</ul>
+
+<h2 id="25-2-版本管理">25.2 版本管理</h2>
+
+<ul>
+<li>版本管理(VM, version management)：跟踪软件组件或配置信息以及使用这些组件系统的不同版本的过程
+
+<ul>
+<li>版本管理确保由不同开发者做出的变更不会彼此影响</li>
+<li>版本管理过程可看做是管理代码线和基线的过程</li>
+</ul></li>
+<li>版本管理系统的特征</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>描述</th>
+<th>优点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>版本和发布版本识别</td>
+<td>被管理版本提交给系统时给它们分配标识符。标识符通常基于配置项的名字，后跟一位或几位数字</td>
+<td>简化了定义配置的问题，是快速索引更简单</td>
+</tr>
+
+<tr>
+<td>存储管理</td>
+<td>版本管理系统通常会提供存储管理工具。系统只存储每个版本不同之处的列表而不是每个版本的副本</td>
+<td>减少了只有轻微差异的不同版本所占存储空间。通过把版本的不同之处列表应用到源版本(通常是最近的版本)，就能够重建目标版本</td>
+</tr>
+
+<tr>
+<td>变更历史记录</td>
+<td>记录并列出所有对系统或组件做出的变更</td>
+<td>在一些系统中，这些变更可以用来选择一个特殊的系统版本</td>
+</tr>
+
+<tr>
+<td>独立开发</td>
+<td>不同的开发者可能在同一时间正在相同的组件上工作</td>
+<td>版本管理系统跟踪检出的组件，确保不同开发者对组件做出的变更不会彼此影响</td>
+</tr>
+
+<tr>
+<td>项目支持</td>
+<td>一个版本管理系统可能支持共享组件的几个项目的开发</td>
+<td>——</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="25-3-系统构建">25.3 系统构建</h2>
+
+<ul>
+<li>系统构建是把软件组织、外部的库、配置文件等编译和链接成一个完整的、可执行的程序的过程</li>
+<li>构建过程可能有三种不同的系统平台
+
+<ul>
+<li>开发系统：包括开发工具，比如编译器、源码编译器等</li>
+<li>开发系统对应的是私有工作空间</li>
+<li>开发人员将代码从版本管理系统下载到私有空间，再做修改</li>
+<li>构建服务器：用于构建确定的、可执行的系统版本</li>
+<li>构建服务器和版本管理系统紧密交互</li>
+<li>系统构建可能依赖外部库，但这些库未包含在版本管理系统</li>
+<li>目标环境：对应目标平台，是系统运行的平台</li>
+<li>可能是和用于开发和构建系统相同类型的电脑</li>
+</ul></li>
+<li>构建系统的特征</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>构建脚本生成</td>
+<td>在必要情况下，构建系统应该分析待构建的程序，识别依赖的组件，并自动生成一个构建脚本(有时叫配置文件)。系统也应支持手工创建和编辑构建脚本</td>
+</tr>
+
+<tr>
+<td>版本管理系统集成</td>
+<td>构建系统应从版本管理系统中检出需要的组件版本</td>
+</tr>
+
+<tr>
+<td>最小化再编译</td>
+<td>构建系统应分析出哪些源代码需要进行再编译，再对需要的代码进行编译</td>
+</tr>
+
+<tr>
+<td>可执行系统创建</td>
+<td>构建系统应将编译后的各个目标代码文件以及其他需要的文件(如库文件、配置文件等)链接起来，创建可执行的系统</td>
+</tr>
+
+<tr>
+<td>测试自动化</td>
+<td>有的构建系统能使用自动化工具，如 JUnit，自动运行自动测试。可以检查构建是否被变更破坏</td>
+</tr>
+
+<tr>
+<td>报告</td>
+<td>构建系统应提供关于运行的构建或测试成功与否的报告</td>
+</tr>
+
+<tr>
+<td>文档生成</td>
+<td>构建系统可能能生成关于构建和系统帮助页面的版本注释</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>持续集成的步骤</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>检出主线</td>
+<td>将主线系统从版本管理系统中检出到开发人员的私有工作空间</td>
+</tr>
+
+<tr>
+<td>构建和测试系统</td>
+<td>构建系统并允许自动测试，以确保所构建的系统能通过所有测试。不能则构建终止。这时应通知最后提交主线系统的开发人员。他们负责修复这个问题</td>
+</tr>
+
+<tr>
+<td>做相应变更</td>
+<td>完成系统组件的变更</td>
+</tr>
+
+<tr>
+<td>构建和测试系统</td>
+<td>在私有工作空间构建系统并重新运行测试。测试失败则继续编辑</td>
+</tr>
+
+<tr>
+<td>检入到构建服务器</td>
+<td>系统通过测试，将它检入到构建系统，但是不要作为新系统基线提交</td>
+</tr>
+
+<tr>
+<td>构建和测试系统</td>
+<td>在构建服务器上构建系统并运行测试。如果有人修改了组件，检出失败的组件并进行编辑，使测试在私有工作空间通过</td>
+</tr>
+
+<tr>
+<td>加入版本管理系统</td>
+<td>如果系统在构建系统上通过测试，将作出的变更作为系统主线中的一个新的系统基线</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="25-4-发布版本管理">25.4 发布版本管理</h2>
+
+<ul>
+<li>系统的发布版本：分发给客户的版本
+
+<ul>
+<li>主要发布：交付重要的新功能</li>
+<li>小型发布：修复漏洞和用户报告的问题</li>
+</ul></li>
+<li>发布版本应包括
+
+<ul>
+<li>系统的可执行代码</li>
+<li>配置文件：定义对于特定安装，发布版本应该如何配置</li>
+<li>数据文件：比如错误信息的文件，是成功进行系统操作必需的</li>
+<li>安装程序：用来帮助在目标硬件上安装系统</li>
+<li>电子和书面文档：用于系统说明</li>
+<li>包装和相关的宣传：为发布版本所做的工作</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sa/">sa</a>
+  
+  <a class="badge badge-light" href="/tags/engineer/">engineer</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/&amp;text=25%20%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/&amp;t=25%20%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=25%20%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86&amp;body=https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/&amp;title=25%20%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=25%20%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86%20https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/&amp;title=25%20%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/software_architecture/software_engineering/1-introduction/">1 概述</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/2-software-process/">2 软件过程</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/22-project-management/">22 项目管理</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/23-project-planning/">23 项目规划</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/24-quality-management/">24 质量管理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

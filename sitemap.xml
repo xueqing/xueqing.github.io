@@ -71,6 +71,74 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/link_load_lib/1_%E7%AE%80%E4%BB%8B/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/1-introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/link_load_lib/2_%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/link_load_lib/3_%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/3-architecture-models/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/4-object-oriented-paradigm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/5-data-flow-architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/6-data-centered-architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/7-hierarchical-architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/8-interaction-oriented-architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/9-distributed-architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/10-component-based-architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/11-user-interface/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/12-architecture-techniques/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/authors/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
@@ -86,12 +154,12 @@
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/</loc>
+    <loc>https://xueqing.github.io/authors/kiki/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xueqing.github.io/authors/kiki/</loc>
+    <loc>https://xueqing.github.io/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
   
@@ -129,6 +197,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/vim/1_%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/database/memcached/1_intro/</loc>
   </url>
   
@@ -150,6 +222,10 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/1-introduction/</loc>
   </url>
   
   <url>
@@ -181,7 +257,31 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/2-software-process/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/22-project-management/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/24-quality-management/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/25-configuration-management/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/database/redis/3_advanced/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/3-agile-software-development/</loc>
   </url>
   
   <url>
@@ -225,6 +325,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/4-requirement-engineering/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/5-definition-of-done/</loc>
   </url>
   
@@ -234,6 +338,14 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/linux/5_%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/5-system-modeling/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/</loc>
   </url>
   
   <url>
@@ -257,6 +369,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/7-design-and-implementation/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/7-iteration-planning/</loc>
   </url>
   
@@ -269,7 +385,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/8-software-testing/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/9-useful-terms/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/9-software-evolution/</loc>
   </url>
   
   <url>
@@ -281,7 +405,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/sip/authentication_authorization/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/smart_ptr/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/awk/</loc>
   </url>
   
   <url>
@@ -365,6 +497,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/cygwin/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/database/</loc>
   </url>
   
@@ -401,7 +537,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_dpkg/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/effectivec&#43;&#43;_3/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/engineer/</loc>
   </url>
   
   <url>
@@ -441,11 +585,23 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_find/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/golangpkg/fmt/</loc>
   </url>
   
   <url>
     <loc>https://xueqing.github.io/tags/food/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_fsck/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/gdb/</loc>
   </url>
   
   <url>
@@ -757,6 +913,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/google_style_guide/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/command/gopath_and_module/</loc>
   </url>
   
@@ -797,6 +957,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/js/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/go/traps/json_struct/</loc>
   </url>
   
@@ -821,11 +985,35 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_ldconfig/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/lib/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/licode/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/webrtc/licode/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/life/</loc>
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/link/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/linux/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/linux_other_cmd/</loc>
   </url>
   
   <url>
@@ -861,7 +1049,35 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/mingw/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vs/mingw_cygwin_msvc/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/go/traps/mod_workspace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_mongodb/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/msvc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_mysql/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/js/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_nodejs/</loc>
   </url>
   
   <url>
@@ -870,6 +1086,14 @@
   
   <url>
     <loc>https://xueqing.github.io/tags/o2o/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/openssl/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/openssl_version_mismatch/</loc>
   </url>
   
   <url>
@@ -917,6 +1141,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_mq/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/raii/</loc>
   </url>
   
@@ -933,6 +1161,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_redis/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/rest/</loc>
   </url>
   
@@ -945,7 +1177,39 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/sip/rfc2976_the_sip_info_method_reading/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/rfc3261_sip_reading/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/rfc4566_sdp_reading/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/rfc6665_sip_specific_event_notification_reading/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/rot_reader/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/sa/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_sed/</loc>
   </url>
   
   <url>
@@ -961,6 +1225,26 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/sip/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/algo/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/algo/sip_algorithm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/webrtc/sip/sipml5/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/sizeof_strlen/</loc>
   </url>
   
@@ -969,11 +1253,31 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/sip/algo/sm2/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/algo/sm3/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/algo/sm4/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/sphinx/</loc>
   </url>
   
   <url>
     <loc>https://xueqing.github.io/blog/others/sphinx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/stackoverflow/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/stackoverflow/</loc>
   </url>
   
   <url>
@@ -994,6 +1298,18 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/stringer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/svn/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/svn/svn/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/svn/</loc>
   </url>
   
   <url>
@@ -1021,6 +1337,46 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/ubuntu/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_apt_get_install_failure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_tool/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_phpmyadmin/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_wireshark/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_rookie/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_disk/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_syslog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/update_alternatives/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/using/</loc>
   </url>
   
@@ -1029,7 +1385,67 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/vim/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_copy_paste/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_cancel/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_file_flush/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_edit/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_show_line_number/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_find_replace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vs/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/hls/vod_playlist_construction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/vs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vs/vs2015/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vscode/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/vscode/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vscode/%E6%8E%A8%E8%8D%90%E6%8F%92%E4%BB%B6/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vscode/tutorial/</loc>
   </url>
   
   <url>
@@ -1038,6 +1454,38 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/web_crawler/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/webrtc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/webrtc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/webrtc/sip/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/webrtc/webrtc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/webrtc/sip/webrtc2sip/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_wget/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/windows/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vs/dll_vs_lib_files/</loc>
   </url>
   
   <url>
@@ -1073,6 +1521,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_hosts/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/</loc>
   </url>
   
@@ -1093,7 +1545,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/sip/sip_3pcc/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/extren_c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_other_cmd/</loc>
   </url>
   
   <url>
@@ -1113,6 +1573,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/stackoverflow/delete_void_pointer/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/docker/python_img/</loc>
   </url>
   
@@ -1126,6 +1590,10 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/go/traps/package_var/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/shell_new_file/</loc>
   </url>
   
   <url>
@@ -1149,6 +1617,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/js/nodejs/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/wiki/learn_testing/</loc>
   </url>
   
@@ -1158,6 +1630,14 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/go/basic/go_install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/ubuntu_brew/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/apache/</loc>
   </url>
   
   <url>
@@ -1174,6 +1654,10 @@
   
   <url>
     <loc>https://xueqing.github.io/reading/%E5%B0%8F%E6%A3%AE%E6%9E%97/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vscode/%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
   </url>
   
   <url>
@@ -1229,6 +1713,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/sip/certificate/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/database/</loc>
   </url>
   
@@ -1253,6 +1741,14 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/sip/terminology/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/ubuntu/regular_expression/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/command/test_func/</loc>
   </url>
   
@@ -1265,7 +1761,19 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/sip/gb35114/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/link_load_lib/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/algorithm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/vim/vim_visual_block/</loc>
   </url>
   
   <url>
@@ -1297,7 +1805,27 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/design_pattern/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/access_control/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/reading/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/software_engineering/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/software_architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/translation/software_architecture_tutorial/</loc>
   </url>
   
   <url>
@@ -1330,6 +1858,10 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/docker/image_rep_cmd/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/sip/algo/random/</loc>
   </url>
   
 </urlset>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>licode | kiki</title>
+    <link>https://xueqing.github.io/tags/licode/</link>
+      <atom:link href="https://xueqing.github.io/tags/licode/index.xml" rel="self" type="application/rss+xml" />
+    <description>licode</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>licode</title>
+      <link>https://xueqing.github.io/tags/licode/</link>
+    </image>
+    
+    <item>
+      <title>licode</title>
+      <link>https://xueqing.github.io/blog/webrtc/licode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/webrtc/licode/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;room: 一个 room 的 user 和 client 可以通过 Licode 共享 stream&lt;/li&gt;
+&lt;li&gt;Server APP 通过 Nuve API 创建 room，user 通过 Erizo 连接到 room&lt;/li&gt;
+&lt;li&gt;通过 Erizo Controller 控制 rooms，通过 Erizo API 控制 stream&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Client 的类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Erizo.Stream/Licode Event&lt;/td&gt;
+&lt;td&gt;表示库中一般的事件，被其他类继承&lt;/td&gt;
+&lt;td&gt;room-connected 等&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Erizo.Room/Room Event&lt;/td&gt;
+&lt;td&gt;表示和 room 连接相关的事件&lt;/td&gt;
+&lt;td&gt;room-connected/room-error/room-disconnected&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Erizo.Events/Stream Event&lt;/td&gt;
+&lt;td&gt;表示一个 room 内的 stream 相关的事件&lt;/td&gt;
+&lt;td&gt;access-accepted/access-denied/stream-added/stream-removed/stream-data/stream-attributes/update/bandwidth-alert/stream-failed/stream-ended&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Server 的类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Room&lt;/td&gt;
+&lt;td&gt;表示一个视频会议 room&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Token&lt;/td&gt;
+&lt;td&gt;添加一个新的参与者到一个视频会议 room 的 key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;User&lt;/td&gt;
+&lt;td&gt;一个 user 可以发布和订阅一个视频会议 room 的 stream&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

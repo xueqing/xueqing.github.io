@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="介绍 节点行为 订阅者 通知者 通知者 NOTIFY 行为 订阅者 NOTIFY 行为 事件包 介绍 网络中的实体可以订阅网络中的资源或不同资源的呼叫状态或呼叫，当这些状态改变的时候，">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/">
+  <meta property="og:title" content="rfc3265: SIP Specific Event Notification | kiki">
+  <meta property="og:description" content="介绍 节点行为 订阅者 通知者 通知者 NOTIFY 行为 订阅者 NOTIFY 行为 事件包 介绍 网络中的实体可以订阅网络中的资源或不同资源的呼叫状态或呼叫，当这些状态改变的时候，"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>rfc3265: SIP Specific Event Notification | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>rfc3265: SIP Specific Event Notification</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e4%bb%8b%e7%bb%8d">介绍</a></li>
+<li><a href="#%e8%8a%82%e7%82%b9%e8%a1%8c%e4%b8%ba">节点行为</a>
+
+<ul>
+<li><a href="#%e8%ae%a2%e9%98%85%e8%80%85">订阅者</a></li>
+<li><a href="#%e9%80%9a%e7%9f%a5%e8%80%85">通知者</a></li>
+<li><a href="#%e9%80%9a%e7%9f%a5%e8%80%85-notify-%e8%a1%8c%e4%b8%ba">通知者 NOTIFY 行为</a></li>
+<li><a href="#%e8%ae%a2%e9%98%85%e8%80%85-notify-%e8%a1%8c%e4%b8%ba">订阅者 NOTIFY 行为</a></li>
+</ul></li>
+<li><a href="#%e4%ba%8b%e4%bb%b6%e5%8c%85">事件包</a></li>
+</ul>
+
+<h2 id="介绍">介绍</h2>
+
+<ul>
+<li>网络中的实体可以订阅网络中的资源或不同资源的呼叫状态或呼叫，当这些状态改变的时候，这些实体可以发送通知</li>
+<li>订阅是有时效性的，必须通过后续的 SUBSCRIBE 消息刷新</li>
+</ul>
+
+<h2 id="节点行为">节点行为</h2>
+
+<ul>
+<li>SUBSCRIBE 方法是一个用来请求远端节点的当前状态和后续状态变化的请求方法</li>
+<li>SUBSCRIBE 请求有 “Expires” 头域显示请求有效期，之后通过新的 SUBSCRIBE 请求来刷新有效期
+
+<ul>
+<li>SUBSCRIBE 回复的 200 中也必须包含一个 “Expires” 头域，必须比请求的有效期长</li>
+<li>“Contact” 头域中的 “expires” 和订阅的有效期无关</li>
+<li>当 SUBSCRIBE 请求的 “Expires” 值为 0，表示取消订阅一个事件。成功的取消订阅也会触发一个 NOTIFY 消息</li>
+</ul></li>
+</ul>
+
+<h3 id="订阅者">订阅者</h3>
+
+<ul>
+<li>订阅者必须在 SUBSCRIBE 请求包含有且仅有一个 “Event” 头域，表示订阅的事件或事件类</li>
+<li>订阅者想要订阅一个资源的一个指定的状态，构造并发送一个 SUBSCRIBE 请求
+
+<ul>
+<li>200 回复表示接受订阅请求，用户被鉴权订阅请求的资源</li>
+<li>“Expires” 头域，必须比请求的有效期短，定义了这个订阅的实际有效期</li>
+<li>202 回复表示理解订阅请求，但是用户未被授权</li>
+<li>489 回复表示不理解订阅消息的 “Event” 头域指定的事件或事件类</li>
+<li>423 回复表示过期时间太短，即过期时间大于 0，小于 1 小时，且小于通知者配置的最小时间。回复的头域应包含 “Min-Expires” 头域指明最小时间</li>
+</ul></li>
+<li>刷新订阅：发送一个 SUBSCRIBE 请求，“Event” 头域的 “id” (如果存在)必须和之前的订阅请求一致
+
+<ul>
+<li>481 回复表示订阅被终止，订阅者不会收到通知。如果订阅者仍希望订阅这个状态，必须重新发送一个和之前的订阅无关的初始化订阅请求</li>
+<li>其它的非 481 的回复，订阅仍被认为是有效的，但是通常是网络问题或者通知者的问题，订阅者不会接收到 NOTIFY 消息</li>
+</ul></li>
+</ul>
+
+<h3 id="通知者">通知者</h3>
+
+<ul>
+<li>通知者需要保存订阅的事件包的名称， “Event” 头域以及 “id” 参数(如果存在)</li>
+<li>通知者接收或者刷新一个订阅，即发送一个 200 回复之后，必须立即发送一个 NOTIFY 消息告知订阅者当前的状态
+
+<ul>
+<li>如果当前资源的状态对于处理的订阅请求没有意义，NOTIFY 的消息体可以为空或者 “neutral”</li>
+<li>通知者对订阅者身份的认证，是通过一个 401 回复还不是 407 回复，即通知者在接受订阅和通知事件的时候是作为一个用户代理存在的</li>
+<li>代理节点通常使用 407 来认证身份</li>
+<li>认证失败，通知者返回 “403 Forbidden” 或 “603 Decline”</li>
+<li>如果通知者通过交互的方式决定是否允许一个订阅，应立即给出一个 “202 Accept” 应答</li>
+<li>如果通知者延迟认证，且认证失败，应构造一个 NOTIFY 消息，包含 “Subscription-State” 头域，且该头域包含一个 “terminated” 值及一个原因短语 “rejected”</li>
+<li>如果通知者过期未收到更新订阅消息，应该移除订阅，发送一个 NOTIFY 消息，包含 “Subscription-State” 头域，且该头域包含一个 “terminated” 值及一个原因短语 “reason=timeout”</li>
+</ul></li>
+<li>如果不支持 PINT，且 SUBSCRIBE 请求不包含 “Accept-Event” 头域，通知者返回 “489 Vad Event”</li>
+</ul>
+
+<h3 id="通知者-notify-行为">通知者 NOTIFY 行为</h3>
+
+<ul>
+<li>如果收到 NOTIFY 消息的节点没有订阅，回复 481</li>
+<li>发送一个 NOTIFY 请求，“Event” 头域的 “id” (如果存在)必须和之前的订阅请求一致</li>
+<li>如果 NOTIFY 的回复超时，或者回复是非 200，则 NOTIFY 请求失败，通知者移除对应的订阅</li>
+<li>如果 NOTIFY 请求的回复是 481，通知者移除对应的订阅，表示无论是什么情况，取消对应的订阅</li>
+<li>NOTIFY 请求必须包含 “Subscription-State” 头域，取值范围是 “active/pending/terminated”
+
+<ul>
+<li>当取值 “active/pending”，NOTIFY 的 “Subscription-State” 头域应该包含一个 “expires” 参数</li>
+<li>active：表示接受订阅，且订阅通过认证</li>
+<li>如果有 “expires”  参数，订阅者应该当做认证订阅的时长，并且根据时长调整认证</li>
+<li>“reason” 和 “retry-after” 参数无意义</li>
+<li>pending：表示收到订阅，但是当前的策略信息不足以决定接受或者拒绝这个订阅</li>
+<li>如果有 “expires”  参数，订阅者应该当做认证订阅的时长，并且根据时长调整认证</li>
+<li>“reason” 和 “retry-after” 参数无意义</li>
+<li>terminated：表示订阅不是 active</li>
+<li>“Subscription-State” 头域可以包含一个 “retry-after” 参数
+
+<ul>
+<li>表示多久之后订阅者可以尝试重新订阅。如果没有 “retry-after” 参数，可以在任意时刻尝试重新订阅</li>
+</ul></li>
+<li>“expires” 参数无意义</li>
+<li>“Subscription-State” 头域应该包含一个 “reason” 参数。取值应该是下面的范围
+
+<ul>
+<li>deactivated：终止订阅，但是订阅者应该立即用新的订阅重试。比如允许节点之间的订阅迁移。“retry-after” 参数无意义</li>
+<li>rejected：认证策略的变化而终止订阅。订阅者不应该重新订阅。“retry-after” 参数无意义</li>
+<li>timeout：过期之前未刷新而终止订阅。订阅者可以立即重试订阅。“retry-after” 参数无意义</li>
+<li>noresource：监视的资源状态不存在而终止订阅。订阅者不应该重试订阅。“retry-after” 参数无意义</li>
+<li>probation：终止订阅，但是订阅者应该在一段时间之后重试。如果指定 “retry-after” 参数，则至少等待指定的时间之后重试订阅</li>
+<li>giveup：通知者不能获得认证信息而终止订阅。如果指定 “retry-after” 参数，则至少等待指定的时间之后重试订阅；否则应立即重试订阅，但是很可能变成 “pending” 状态</li>
+</ul></li>
+</ul></li>
+<li>如果订阅者认为通知式可接受的，应立即回复 200。一般，通知的回复不会包含消息体。但是如果 NOTIFY 请求包含 “Accept” 头域，回复可以包含消息体</li>
+</ul>
+
+<h3 id="订阅者-notify-行为">订阅者 NOTIFY 行为</h3>
+
+<ul>
+<li>关于订阅的回复：回复和 SUBSCRIBE 请求包含相同的 “Call-ID”、“CSeq” 和“From” 头域的 “tag” 参数</li>
+<li>判断 NOTIFY 和订阅是否一致：
+
+<ul>
+<li>NOTIFY 请求和 SUBSCRIBE 请求的有相同的 “Call-ID”，前者的 “To” 头域的 “tag” 参数和后者的 “From” 头域的 “tag” 参数相同</li>
+<li>NOTIFY 请求和 SUBSCRIBE 请求的 “Event” 头域相同</li>
+<li>“Event” 类型相同，且如果一方的 “Event” 头域有 “id”，二者必须都有且相同</li>
+</ul></li>
+<li>如果订阅者不支持 NOTIFY 的 “Event” 头域，返回 “489 Bad Event”</li>
+<li>订阅者发送一个“Expires” 值为 0 的 SUBSCRIBE 请求，表示取消订阅一个事件
+
+<ul>
+<li>只有收到一个 “Subscription-State” 为 “terminated” 的 NOTIFY 消息才认为是订阅被取消或终止，“reason” 参数是 “timeout”</li>
+</ul></li>
+</ul>
+
+<h2 id="事件包">事件包</h2>
+
+<ul>
+<li>传递事件包的两种机制
+
+<ul>
+<li>传递完整状态信息：事件包需要传递的状态信息比较小，或者仅仅传递当前状态对于特定的事件类型不是足够的</li>
+<li>增量传递信息：需要传递的状态比较大，可以使用包含增量状态的 NOTIFY 消息传递状态</li>
+<li>立即给 SUBSCRIBE 请求的 NOTIFY 消息包含全部的状态信息。后续由于状态变化传递的 NOTIFY 消息只包含改变的状态。订阅者将资源状态合并到已知的当前状态</li>
+<li>支持增量传递的事件包必须包含一个版本号，每次 NOTIFY 通信时加 1，此版本号在消息体，而不是 SIP 头</li>
+<li>第一个 NOTIFY 的版本号应该和上次最后一个 NOTIFY 的版本号响应，即第一个 NOTIFY 不增加版本号</li>
+<li>如果到达的 NOTIFY 的版本号增加大于 1，说明订阅者错过了一个增量。应当忽视这个 NOTIFY 消息，保存版本号用户检测消息丢失。然后重新发送一个 SUBSCRIBE 强制 NOTIFY 包含一个完整的状态</li>
+</ul></li>
+<li>出于安全性考虑，通知者受到 SUBSCRIBE 请求，不应返回具体的 220/4xx/6xx 而暴露敏感的策略信息，而是统一返回 202。202 表示理解订阅请求，但是用户未被授权。可在后续的 NOTIFY 中表示接受或拒绝该订阅</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sip/">sip</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/&amp;text=rfc3265:%20SIP%20Specific%20Event%20Notification" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/&amp;t=rfc3265:%20SIP%20Specific%20Event%20Notification" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=rfc3265:%20SIP%20Specific%20Event%20Notification&amp;body=https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/&amp;title=rfc3265:%20SIP%20Specific%20Event%20Notification" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=rfc3265:%20SIP%20Specific%20Event%20Notification%20https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/&amp;title=rfc3265:%20SIP%20Specific%20Event%20Notification" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/sip/authentication_authorization/">Authentication vs Authorization</a></li>
+      
+      <li><a href="/blog/sip/algo/sip_algorithm/">SIP 相关算法总结</a></li>
+      
+      <li><a href="/blog/sip/algo/sm2/">SM2</a></li>
+      
+      <li><a href="/blog/sip/algo/sm3/">SM3 密码杂凑算法</a></li>
+      
+      <li><a href="/blog/sip/algo/sm4/">SM4 分组密码算法</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

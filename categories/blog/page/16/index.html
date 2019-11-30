@@ -353,91 +353,89 @@
   
   
   <div>
-    <h2><a href="/blog/docker/container_life/">容器生命周期管理命令</a></h2>
+    <h2><a href="/blog/cplusplus/raii/">RAII 资源获取即初始化</a></h2>
     <div class="article-style">
       
-      创建容器 启动/停止/重启容器 杀掉容器 删除容器 创建容器 创建一个新的容器并运行一个命令。 docker run [OPTIONS] IMAGE [COMMAND] [ARG...] OPTIONS 说明： -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR
+      概念 使用 RAII 例子 标准库 注解 参考 概念 资源获取即初始化（Resource Acquisition Is Initialization），或称 RAII，是一种 C++ 编程技术，它将必
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/git_scenario/">常见场景</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_redis/">redis 环境搭建</a></h2>
     <div class="article-style">
       
-      1 恢复之前删除的文件 2 将 dev 分支快速合并到 master 分支 3 将基于 server 分支的 client 分支的提交和 server 的提交快速合并到 master 分支 4 从所有提交中删除某文件 5 将 dev 新提交的代
+      1 安装 redis-server 2 命令 2.1.1 关于 key 的命令 2.1.2 关于 hash 的命令 3 开启远程访问并加密访问 4 参考 1 安装 redis-server sudo apt-get install redis-server 2 命令 # 查看 redis 的版本 redis-server -v # 重启 redis 服务 sudo service redis-server restart # 进入 redis
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/markdown/problem/">常见问题</a></h2>
+    <h2><a href="/blog/rest/quickstart/">reStructuredText 入门</a></h2>
     <div class="article-style">
       
-      显示反引号 用两个反引号`
+      原文 reStructuredText 入门 ====================== :作者: kiki :日期: 2019/11/6 翻译 原文__。 __ http://docutils.sourceforge.net/docs/user/rst/quickstart.html :作者: Richard Jones :修订: 5801 :版权: 此文档放置在公共域。 .. contents:: 目录 下面的文本包含看似 “(快速参考_
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/others/developers_best_practices/">开发人员最佳实践</a></h2>
+    <h2><a href="/blog/sip/rfc2976_the_sip_info_method_reading/">rfc2976: The SIP INFO Method</a></h2>
     <div class="article-style">
       
-      坚持阅读现存软件源码 进入下一阶段之前完成文档：设计方法、要诀和技巧、特殊函数/命令/指令、学习的教训、特殊场景、调试方法、最好的实践、任何对
+      INFO 消息的目的是沿着 SIP 信令通路携带应用层信息。INFO 不用来改变 SIP 呼叫的状态，也不改变 SIP 初始化的会话的状态 信息可以放在 INFO 消息的头或者作为消息体
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/coolshell/%E5%BC%80%E5%8F%91%E5%9B%A2%E9%98%9F%E7%9A%84%E6%95%88%E7%8E%87/">开发团队的效率</a></h2>
+    <h2><a href="/blog/sip/rfc3261_sip_reading/">rfc3261: SIP</a></h2>
     <div class="article-style">
       
-      原文 几种典型的开发方式 软件开发中的“锁” 技术能力上的锁：需要不同的语言开发一个项目，每人只会一种语言 负责模块上的锁：不同的人负责不同的模块 时
+      请求的消息头 回复的消息头 消息 处理应答 Invite 客户事务 应答代码 请求的消息头 举例：以 Alice 向 Bob 发起会话为例 INVITE sip:bob@biloxi.com SIP/2.0 Via: SIP/2.0/UDP pc33.atlanta.com;branch=z9hG4bK776asdhds Max-Forwards: 70 To: Bob &lt;sip:bob@biloxi.com&gt; From: Alice &lt;sip:alice@atlanta.com&gt;;tag=1928301774 Call-ID: a84b4c76e66710@pc33.atlanta.com CSeq: 314159 INVITE Contact: &lt;sip:alice@pc33.atlanta.com&gt; Content-Type: application/sdp Content-Length:
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/exception/">异常</a></h2>
+    <h2><a href="/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/">rfc3264: An Offer/Answer Model with the SDP</a></h2>
     <div class="article-style">
       
-      为什么使用异常 C++ 使用异常 使用异常的反对观点 替代方案：通过判断或函数返回值检查错误 使用 try/catch/throw 而不是条件判断和返回错误码来改善软件质量 异常便于传递错
+      answer/offer 协议操作 生成初始 offer 生成 answer offerer 处理 answer 修改会话 表明能力 answer/offer agent：一个 agent 是 offer/answer 交换中的一个协议实现。offer/answer 交换包括两种代理：o
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_exception/">异常处理</a></h2>
+    <h2><a href="/blog/sip/rfc3265_sip_specific_event_notification_reading/">rfc3265: SIP Specific Event Notification</a></h2>
     <div class="article-style">
       
-      defer 使用 defer 栈 panic 使用 recover 使用 Go 不支持 try..catch..finally 这种异常。使用多值返回来返回错误 在极端情况下才用异常（如除数为 0），异常处理使用了 defer，panic，r
+      介绍 节点行为 订阅者 通知者 通知者 NOTIFY 行为 订阅者 NOTIFY 行为 事件包 介绍 网络中的实体可以订阅网络中的资源或不同资源的呼叫状态或呼叫，当这些状态改变的时候，
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/course/interesting_links/">感兴趣的链接</a></h2>
+    <h2><a href="/blog/sip/rfc4566_sdp_reading/">rfc4566: SDP</a></h2>
     <div class="article-style">
       
-      课程链接 Distributed Systems 教程链接 Code your own blockchain with golang
+      术语 描述 会议 一个多媒体会议是一个集合，这个集合包含两个或更多的通信用户以及用于通信的软件 会话 一个多媒体会话是一个集合，这个集合包含发送者和接
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/array_decay/">数组退化问题</a></h2>
+    <h2><a href="/blog/sip/rfc6665_sip_specific_event_notification_reading/">rfc6665: SIP Specific Event Notification</a></h2>
     <div class="article-style">
-      
-      数组退化 类型和纬度丢失就是数组退化。通常发生在通过值或指针传递数组。这种情况下，数组发送的是它的首地址，因此数组的大小不是原始大小，而是首地
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/django_cms/using/create_page/">新建一个页面</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_sed/">sed</a></h2>
     <div class="article-style">
       
-      创建第一个页面 发布一个页面 再创建一个页面 修改页面配置 页面高级设置 结构和内容模式 增加一个插件 创建第一个页面 django CMS 的 Create Page 向导会打开一个新的对话框，
+      批量替换 在一个文件中替换字符串 sed -i &quot;s/original_str/replace_str/g&quot; filename可查找filename中的original_str替换成replace_str filen
       
     </div>
   </div>

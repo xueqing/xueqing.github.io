@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WebRTC | kiki</title>
+    <link>https://xueqing.github.io/blog/webrtc/</link>
+      <atom:link href="https://xueqing.github.io/blog/webrtc/index.xml" rel="self" type="application/rss+xml" />
+    <description>WebRTC</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>WebRTC</title>
+      <link>https://xueqing.github.io/blog/webrtc/</link>
+    </image>
+    
+    <item>
+      <title>licode</title>
+      <link>https://xueqing.github.io/blog/webrtc/licode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/webrtc/licode/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;room: 一个 room 的 user 和 client 可以通过 Licode 共享 stream&lt;/li&gt;
+&lt;li&gt;Server APP 通过 Nuve API 创建 room，user 通过 Erizo 连接到 room&lt;/li&gt;
+&lt;li&gt;通过 Erizo Controller 控制 rooms，通过 Erizo API 控制 stream&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Client 的类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Erizo.Stream/Licode Event&lt;/td&gt;
+&lt;td&gt;表示库中一般的事件，被其他类继承&lt;/td&gt;
+&lt;td&gt;room-connected 等&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Erizo.Room/Room Event&lt;/td&gt;
+&lt;td&gt;表示和 room 连接相关的事件&lt;/td&gt;
+&lt;td&gt;room-connected/room-error/room-disconnected&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Erizo.Events/Stream Event&lt;/td&gt;
+&lt;td&gt;表示一个 room 内的 stream 相关的事件&lt;/td&gt;
+&lt;td&gt;access-accepted/access-denied/stream-added/stream-removed/stream-data/stream-attributes/update/bandwidth-alert/stream-failed/stream-ended&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Server 的类&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Room&lt;/td&gt;
+&lt;td&gt;表示一个视频会议 room&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Token&lt;/td&gt;
+&lt;td&gt;添加一个新的参与者到一个视频会议 room 的 key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;User&lt;/td&gt;
+&lt;td&gt;一个 user 可以发布和订阅一个视频会议 room 的 stream&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WebRTC 学习</title>
+      <link>https://xueqing.github.io/blog/webrtc/webrtc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/webrtc/webrtc/</guid>
+      <description>
+
+&lt;h2 id=&#34;简述&#34;&gt;简述&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WebRTC，即网络实时通信(Web Real Time Communication)。最初是为了解决浏览器上视频通话提出，即两个浏览器直接进行视频和音频通信，而不经过服务器。现在还可以传输文字和其他数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;apis&#34;&gt;APIS&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;三个主要任务
+
+&lt;ul&gt;
+&lt;li&gt;获得音频和视频&lt;/li&gt;
+&lt;li&gt;音频和视频通信&lt;/li&gt;
+&lt;li&gt;任意数据通信&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;三个 JS APIs
+
+&lt;ul&gt;
+&lt;li&gt;MediaStream(也叫 getUserMedia)&lt;/li&gt;
+&lt;li&gt;RTCPeerConnection&lt;/li&gt;
+&lt;li&gt;RTCDataChannel&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;mediastream&#34;&gt;MediaStream&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;访问音频或/和视频流&lt;/li&gt;
+&lt;li&gt;可以包含多个 track(轨)
+
+&lt;ul&gt;
+&lt;li&gt;数据流对象&lt;code&gt;stream&lt;/code&gt;包含方法获取音轨和视轨&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stream.getAudioTracks&lt;/code&gt;返回数组，成员是数据流包含的音轨。使用的声音源的数量决定音轨的数量&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stream.getVideoTracks&lt;/code&gt;返回数组，成员是数据流包含的视轨。使用的摄像头的数量决定视轨的数量&lt;/li&gt;
+&lt;li&gt;每个音轨和视轨有两个属性：&lt;code&gt;kind&lt;/code&gt;表示种类，即&lt;code&gt;video/audio&lt;/code&gt;；&lt;code&gt;label&lt;/code&gt;表示唯一的标识&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;通过&lt;code&gt;navigator.getUserMedia()&lt;/code&gt;获得一个 MediaStream&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var constraints = {video : true};
+
+function successCallback(stream) {
+// 返回文档中匹配指定 CSS 选择器的一个元素。
+var video = document.querySelector(&amp;quot;video&amp;quot;);
+// 生成能在 video 中使用 src 属性播放的 URL
+video.src = window.URL.createObjectURL(stream);
+}
+
+function errorCallback(error) {
+console.log(&amp;quot;navigator.getUserMedia error: &amp;quot;, error);
+}
+
+// 第一个参数：一个约束对象，表示要获取哪些多媒体设备。此处表示获取视频
+// 第二个参数：回调函数，在获取多媒体设备成功时调用，传递给它一个 Stream 对象
+// 第三个参数：回调函数，在获取多媒体设备失败时调用，传递给它一个 Error 对象
+navigator.getUserMedia(constraints, successCallback, errorCallback);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果网页使用了&lt;code&gt;getUserMedia&lt;/code&gt;方法，浏览器会询问用户，是否同意浏览器调用麦克风或摄像头：用户同意则调用回调函数&lt;code&gt;successCallback&lt;/code&gt;，否则调用&lt;code&gt;errorCallback&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;errorCallback&lt;/code&gt;接收一个&lt;code&gt;Error&lt;/code&gt;对象，&lt;code&gt;Error&lt;/code&gt;对象的&lt;code&gt;code&lt;/code&gt;属性取值说明错误类型&lt;/li&gt;
+&lt;li&gt;PERMISSION_DENIED：用户拒绝调用设备&lt;/li&gt;
+&lt;li&gt;NOT_SUPPORTED_ERROR：浏览器不支持硬件设备&lt;/li&gt;
+&lt;li&gt;MANDATORY_UNSATISFIED_ERROR：无法发现指定的硬件设备&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;约束对象-constraints&#34;&gt;约束对象&lt;code&gt;Constraints&lt;/code&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;控制 MediaStream 的内容，包括媒体类型、分辨率、帧率&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;video&lt;/td&gt;
+&lt;td&gt;是否接受视频流&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;audio&lt;/td&gt;
+&lt;td&gt;是否接受音频流&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minWidth&lt;/td&gt;
+&lt;td&gt;视频流的最小宽度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxWidth&lt;/td&gt;
+&lt;td&gt;视频流的最大宽度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minHeight&lt;/td&gt;
+&lt;td&gt;视频流的最小高度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxHeight&lt;/td&gt;
+&lt;td&gt;视频流的最大高度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minAspectRatio&lt;/td&gt;
+&lt;td&gt;视频流的最小宽高比&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxAspectRatio&lt;/td&gt;
+&lt;td&gt;视频流的最大宽高比&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;minFramerate&lt;/td&gt;
+&lt;td&gt;视频流的最小帧速率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;maxFrameRate&lt;/td&gt;
+&lt;td&gt;视频流的最大帧速率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;  video: {
+    mandatory: {
+      minWidth: 640,
+      minHeight: 360
+    },
+    optional [{
+      minWidth: 1280,
+      minHeight: 720
+    }]
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;获取音频&#34;&gt;获取音频&lt;/h4&gt;
+
+&lt;p&gt;使用&lt;code&gt;getUserMedia&lt;/code&gt;+&lt;code&gt;Web Audio&lt;/code&gt;获取音频&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// 获取音频输入成功的回调函数
+function gotStream(stream) {
+  var audioContext = new webkitAudioContext();
+  // 为输入流创建一个 AudioNode
+  var mediaStreamSource = audioContext.createMediaStreamSource(stream);
+  // 连接到目的地或其他节点以处理
+  mediaStreamSource.connect(audioContext.destination);
+}
+
+navigator.webkitGetUserMedia({audio:true}, gotStream);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;rtcpeerconnection&#34;&gt;RTCPeerConnection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;点到点(peer to peer)音频和视频通信，包括信号处理、多媒体编解码处理、端到端通信、安全性、带宽管理等&lt;/li&gt;
+&lt;li&gt;不同客户端直接的音频、视频传递不用通过服务器中转。但是，两个客户端需要通过服务器建立联系
+
+&lt;ul&gt;
+&lt;li&gt;服务器为 WebRTC 提供 4 个方面的支持&lt;/li&gt;
+&lt;li&gt;用户发现以及通信&lt;/li&gt;
+&lt;li&gt;信令传输&lt;/li&gt;
+&lt;li&gt;NAT/防火墙穿越&lt;/li&gt;
+&lt;li&gt;点对点通信建立失败时作为中转服务器
+&lt;img src=&#34;https://xueqing.github.io/blog/webrtc/images/webrtcArchitecture.png&#34; alt=&#34;WebRTC 架构&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;RTCPeerConnection&lt;/code&gt;例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// 创建 RTCPeerConnection 实例
+pc = new RTCPeerConnection(null);
+// 如果检测到媒体流连接到本地，调用此函数
+pc.onaddstream = gotRemoteStream;
+// 向 RTCPeerConnection 中加入需要发送的流
+pc.addStream(localStream);
+// 作为发送方，创建并发送一个 offer 信令
+pc.createOffer(gotOffer);
+
+// 发送 offer 的函数，发送本地 session 描述
+function gotOffer(desc) {
+pc.setLocalDescription(desc);
+sendOffer(desc);
+}
+
+// 得到 answer 之后，保存远端的 session 描述
+function gotAnswer(desc) {
+pc.setRemoteDescription(desc);
+}
+
+function gotRemoteStream(e) {
+attachMediaStream(remoteVideo, e.stream);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;rtcdataconnection&#34;&gt;RTCDataConnection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持点到点交换任意数据，包括和 WebSockets 一样的 API、超低延迟、高吞吐、可靠或不可靠、安全性&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API 例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var pc = new webkitRTCPeerConnection(servers,
+{optional: [{RtpDataChannels: true}]});
+
+pc.ondatachannel = function(event) {
+receiveChannel = event.channel;
+receiveChannel.onmessage = function(event) {
+document.querySelector(&amp;quot;div#receiver&amp;quot;).innerHTML = event.data;
+};
+};
+
+sendChannel = pc.createDataChannel(&amp;quot;sendDataChannel&amp;quot;, {reliable: false});
+
+document.querySelector(&amp;quot;button#send&amp;quot;).onlick = function() {
+var data = document.querySelector(&amp;quot;textarea#send&amp;quot;).value;
+sendChannel.send(data);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;服务器和协议&#34;&gt;服务器和协议&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WebRTC 使用 RTCPeerConnection 在浏览器(即 peers)之间传递流数据，但仍然需要服务器来为我们传递信令(signaling)来建立这个信道&lt;/li&gt;
+&lt;li&gt;WebRTC 没有定义信令的方法和协议，信令并不是 RTCPeerConnection API 的一部分&lt;/li&gt;
+&lt;li&gt;开发者可以选择采用任意的消息协议(SIP/XMPP)和任意的双工通信通道&lt;/li&gt;
+&lt;li&gt;信令用于交换三种消息
+
+&lt;ul&gt;
+&lt;li&gt;会话控制消息：初始化或关闭通信，报告错误&lt;/li&gt;
+&lt;li&gt;网络配置：告诉外部世界我的电脑的 IP 地址和端口&lt;/li&gt;
+&lt;li&gt;媒体能力：我的浏览器可以处理的编解码和分辨率，以及浏览器想要通讯的媒体格式
+&lt;img src=&#34;https://xueqing.github.io/blog/webrtc/images/jsep.png&#34; alt=&#34;信号图解&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;nat和防火墙穿越&#34;&gt;NAT和防火墙穿越&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;STUN
+
+&lt;ul&gt;
+&lt;li&gt;告诉我我的公共 IP 地址是什么&lt;/li&gt;
+&lt;li&gt;简单的服务器，容易穿越&lt;/li&gt;
+&lt;li&gt;点到点的数据流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;TURN(Traversal Using Delay NAT，中继 NAT 实现的穿透)
+
+&lt;ul&gt;
+&lt;li&gt;如果点到点通讯失败，提供一个云回退&lt;/li&gt;
+&lt;li&gt;数据通过服务器发送，使用服务器的带宽&lt;/li&gt;
+&lt;li&gt;确保所有环境的呼叫工作&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ICE(Interactive Connectivity Establishment，交互式连接建立)
+
+&lt;ul&gt;
+&lt;li&gt;一个点到点连接的框架，可以整个各种 NAT 穿越技术&lt;/li&gt;
+&lt;li&gt;尝试为每个呼叫找到最好的路径&lt;/li&gt;
+&lt;li&gt;大部分的呼叫可以使用 STUN，少部分使用 TURN，即中继的呼叫&lt;/li&gt;
+&lt;li&gt;优先使用 STUN，尝试建立一个基于 UDP 的连接，如果失败则尝试 TCP(先尝试 HTTP，再尝试 HTTPS)，仍然失败则使用一个中级的 TURN 服务器&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;js-框架&#34;&gt;JS 框架&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;视频聊天
+
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/andyet/SimpleWebRTC&#34; alt=&#34;SimpleWebRTC&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/priologic/easyrtc&#34; alt=&#34;easyRTC&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/webRTC-io/webRTC.io&#34; alt=&#34;webRTC.io&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;点到点数据传输
+
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&#34;https://peerjs.com/&#34; alt=&#34;PeerJS&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/peer5/sharefest&#34; alt=&#34;Sharefest&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.html5rocks.com/en/tutorials/webrtc/basics/&#34; target=&#34;_blank&#34;&gt;Getting Started with WebRTC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

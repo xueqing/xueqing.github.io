@@ -608,6 +608,1075 @@
     </item>
     
     <item>
+      <title>软件架构和设计教程</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/readme/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://www.tutorialspoint.com/software_architecture_design/index.htm&#34; target=&#34;_blank&#34;&gt;原网站&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件架构：指软件系统较大的结构，处理的是多个软件进程合作执行任务&lt;/li&gt;
+&lt;li&gt;软件设计：指较小的结构，处理的是一个软件进程内部的设计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;有用的书&#34;&gt;有用的书&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Software-Architecture-Practice-3rd-Engineering/dp/0321815734/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Architecture in Practice (3rd Edition) (SEI Series in Software Engineering)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Beyond-Software-Architecture-Sustaining-Solutions/dp/0201775948/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Beyond Software Architecture: Creating and Sustaining Winning Solutions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Software-Systems-Architecture-Stakeholders-Perspectives/dp/032171833X/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives (2nd Edition)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Software-Architecture-Foundations-Theory-Practice/dp/0470167742/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Architecture: Foundations, Theory, and Practice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Software-Architecture-Practice-2nd-Bass/dp/0321154959/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Architecture in Practice (2nd Edition)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1 介绍</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/1-introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/1-introduction/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84&#34;&gt;1.1 软件架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e8%bd%af%e4%bb%b6%e8%ae%be%e8%ae%a1&#34;&gt;1.2 软件设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-%e6%9e%b6%e6%9e%84%e7%9b%ae%e6%a0%87&#34;&gt;1.3 架构目标&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e7%9a%84%e8%a7%92%e8%89%b2&#34;&gt;1.4 软件架构的角色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-%e8%b4%a8%e9%87%8f%e5%8f%82%e6%95%b0&#34;&gt;1.5 质量参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#16-%e8%b4%a8%e9%87%8f%e6%83%85%e6%99%af&#34;&gt;1.6 质量情景&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;软件架构和设计有关的元素如下图
+&lt;img src=&#34;ref/software_architecture_types.jpg&#34; alt=&#34;软件架构类型&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;1-1-软件架构&#34;&gt;1.1 软件架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件架构描述了一个系统的蓝图&lt;/li&gt;
+&lt;li&gt;定义了一个结构化的解决方案来满足所有的技术和操作需求，同时优化一些常见的质量参数(比如性能、安全性)&lt;/li&gt;
+&lt;li&gt;包含一系列和软件开发组织有关的重要决策，而且每个决定对于最终产品的质量、可维护性、性能有重要的影响。决策包括
+
+&lt;ul&gt;
+&lt;li&gt;组成系统的结构化元素和元素接口的选取&lt;/li&gt;
+&lt;li&gt;上述元素之间合作的行为&lt;/li&gt;
+&lt;li&gt;将上述结构化、指定行为的元素组成一个大的子系统&lt;/li&gt;
+&lt;li&gt;和商业目标一致的架构决策&lt;/li&gt;
+&lt;li&gt;指导组织的架构风格&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-2-软件设计&#34;&gt;1.2 软件设计&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件设计提供了一个设计计划，此计划描述了一个系统的元素，以及元素之间如何组合并一起工作来满足系统的需求&lt;/li&gt;
+&lt;li&gt;设计计划的目标包括
+
+&lt;ul&gt;
+&lt;li&gt;商定系统需求，设置对客户、市场和管理人事的期望&lt;/li&gt;
+&lt;li&gt;作为开发过程中的一个蓝图&lt;/li&gt;
+&lt;li&gt;指导执行任务，包括详细设计、编码、集成、测试&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;软件设计在详细设计、编码、继承和测试之前，在领域分析、需求分析和风险分析之后
+&lt;img src=&#34;ref/software_design.jpg&#34; alt=&#34;软件设计&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-3-架构目标&#34;&gt;1.3 架构目标&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;架构目标
+
+&lt;ul&gt;
+&lt;li&gt;主要目标是识别影响应用结构的需求&lt;/li&gt;
+&lt;li&gt;降低和创建技术解决方案有关的商业风险，并且连接商业和技术需求&lt;/li&gt;
+&lt;li&gt;展示系统结构，但是隐藏实现细节&lt;/li&gt;
+&lt;li&gt;实现所有的用例(use-case)和情景&lt;/li&gt;
+&lt;li&gt;设法满足不同利益共享者的需求&lt;/li&gt;
+&lt;li&gt;简化所有者的目标，改善组织的市场定位&lt;/li&gt;
+&lt;li&gt;改善系统提供的质量和功能&lt;/li&gt;
+&lt;li&gt;改善外部对于组织或系统的信心&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;软件架构仍然是软件工程领域刚出现的准则。因此有一些限制
+
+&lt;ul&gt;
+&lt;li&gt;缺少工具和标准化的方式呈现架构&lt;/li&gt;
+&lt;li&gt;缺少分析方法来预测架构是否会落实实现需求&lt;/li&gt;
+&lt;li&gt;缺少对从架构设计到软件设计重要性的认知&lt;/li&gt;
+&lt;li&gt;缺少对软件架角色和利益共享者之间缺乏沟通的理解&lt;/li&gt;
+&lt;li&gt;缺少对设计流程、设计经验和设计评估的理解&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-4-软件架构的角色&#34;&gt;1.4 软件架构的角色&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;软件架构提供了解决方案，技术团队可以用来创建和设计整个应用&lt;/li&gt;
+&lt;li&gt;相关的专业知识包括
+
+&lt;ul&gt;
+&lt;li&gt;设计：软件设计的知识、方法和途径；领导开发团队；审查和权衡设计建议&lt;/li&gt;
+&lt;li&gt;领域：帮助确认需求，确保完整性和一致性&lt;/li&gt;
+&lt;li&gt;技术：熟悉已有技术，整合选择编程语言、框架、平台和数据库等&lt;/li&gt;
+&lt;li&gt;方法论：在软件开发生命周期可采用的软件开发方法，选择合适的方法帮助整个团队&lt;/li&gt;
+&lt;li&gt;隐藏的角色：促进团队成员间的技术工作，强化团队的信任关系；分享知识，有很多经验的信息专家；保护团队免受外界干预和分心&lt;/li&gt;
+&lt;li&gt;交付的产品：&lt;/li&gt;
+&lt;li&gt;一个清楚、完整、一致且可达到的功能目标&lt;/li&gt;
+&lt;li&gt;对于系统的一个功能性描述，至少有两个层面的分解&lt;/li&gt;
+&lt;li&gt;对于该系统的一些概念&lt;/li&gt;
+&lt;li&gt;系统的设计层面，至少有两层分解&lt;/li&gt;
+&lt;li&gt;对于时间、操作人员属性、实现和操作计划的标注&lt;/li&gt;
+&lt;li&gt;一个文件或流程，用于确保功能性的分解，以及接口的形式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-5-质量参数&#34;&gt;1.5 质量参数&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;质量参数可分为
+
+&lt;ul&gt;
+&lt;li&gt;静态质量参数：反映了系统和组织的结构，与架构、设计和源码直接相关&lt;/li&gt;
+&lt;li&gt;对终端用户不可见，但是影响了开发和维护成本&lt;/li&gt;
+&lt;li&gt;比如模块化性、可测试性、可维护性&lt;/li&gt;
+&lt;li&gt;动态质量参数：反映了系统执行期间的行为&lt;/li&gt;
+&lt;li&gt;与系统的架构、设计、源码、配置、部署参数、环境和平台直接相关&lt;/li&gt;
+&lt;li&gt;对于终端用户可见，且存在于运行时&lt;/li&gt;
+&lt;li&gt;比如吞吐率、健壮性、可伸缩性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-6-质量情景&#34;&gt;1.6 质量情景&lt;/h2&gt;
+
+&lt;p&gt;一个软件架构必须有的公共的质量参数&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;设计质量
+
+&lt;ul&gt;
+&lt;li&gt;概念完整性：定义整个设计的一致性和条理性，包括组件或模块的设计方式&lt;/li&gt;
+&lt;li&gt;可维护性：在一定程度上可修改&lt;/li&gt;
+&lt;li&gt;可复用性：组件或紫刺探对其他应用可用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;运行时质量
+
+&lt;ul&gt;
+&lt;li&gt;互用性：一个或多个系统与外部系统通过通信和交换信息正确操作，外部系统由外部组成来写或运行&lt;/li&gt;
+&lt;li&gt;易管理性：系统管理员容易管理系统&lt;/li&gt;
+&lt;li&gt;可靠性：系统维持操作的时间&lt;/li&gt;
+&lt;li&gt;可伸缩性：可以不影响系统性能时解决负载增加的问题，或是易于扩大规模&lt;/li&gt;
+&lt;li&gt;安全性：可以阻止设计之外的恶意或者偶然的使用&lt;/li&gt;
+&lt;li&gt;性能：表明在给定的时间间隔，系统对于所有动作的反应&lt;/li&gt;
+&lt;li&gt;可用性：定义系统正常工作的时间比例&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;系统质量
+
+&lt;ul&gt;
+&lt;li&gt;可支持性：当工作不正确时，可以提供有用的信息便于定位和解决问题&lt;/li&gt;
+&lt;li&gt;可测试性：容易为系统和系统组件创建测试标准&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用户质量
+
+&lt;ul&gt;
+&lt;li&gt;易用性：定义应用如何较好地满足用户和消费者的需求&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;架构质量
+
+&lt;ul&gt;
+&lt;li&gt;正确性：系统满足所有需求&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;非运行时质量
+
+&lt;ul&gt;
+&lt;li&gt;可移植性：使得系统可以在不同的电脑环境运行&lt;/li&gt;
+&lt;li&gt;完整性：使得单独开发的系统组件一起正常工作&lt;/li&gt;
+&lt;li&gt;易修改性：软件系统易修改&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;商业质量参数
+
+&lt;ul&gt;
+&lt;li&gt;花费和日程表：系统的花费，考虑市场时间、期望的工程时间、已有项目的利用&lt;/li&gt;
+&lt;li&gt;市场性：系统的使用，考虑到市场竞争&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2 重要原则</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e6%9e%b6%e6%9e%84%e9%a3%8e%e6%a0%bc&#34;&gt;2.1 架构风格&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e5%85%ac%e5%85%b1%e7%9a%84%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1&#34;&gt;2.2 公共的架构设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-%e6%9e%b6%e6%9e%84%e7%b1%bb%e5%9e%8b&#34;&gt;2.3 架构类型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#24-%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1%e6%b5%81%e7%a8%8b&#34;&gt;2.4 架构设计流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#25-%e9%87%8d%e8%a6%81%e7%9a%84%e6%9e%b6%e6%9e%84%e5%8e%9f%e5%88%99&#34;&gt;2.5 重要的架构原则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#26-%e9%87%8d%e8%a6%81%e7%9a%84%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99&#34;&gt;2.6 重要的设计原则&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-架构风格&#34;&gt;2.1 架构风格&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;架构风格(architectural style)，也叫架构模式(architectural pattern)，为一组系统定义了抽象的框架&lt;/li&gt;
+&lt;li&gt;架构风格内容包括
+
+&lt;ul&gt;
+&lt;li&gt;提供组件和连接者的词汇表，以及它们如何联合的规则&lt;/li&gt;
+&lt;li&gt;通过给出常见问题的解决方案改善划分，允许设计重用&lt;/li&gt;
+&lt;li&gt;描述一种特别的方式来配置一组组件(一个具有定义良好的接口、可重用、可替换的模块)和连接者(模块之间的通信链接)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;每种风格描述了一个系统分类，包括
+
+&lt;ul&gt;
+&lt;li&gt;一组组件类型，用来执行系统要求的功能&lt;/li&gt;
+&lt;li&gt;一组连接者(子例程调用，远程过程调用，数据流和套接字)使得不同的组件通信、协调、合作&lt;/li&gt;
+&lt;li&gt;语义限制，定义组件如何整合成系统&lt;/li&gt;
+&lt;li&gt;组件的布局拓扑图，表明它们运行时的相互关系&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-2-公共的架构设计&#34;&gt;2.2 公共的架构设计&lt;/h2&gt;
+
+&lt;p&gt;架构风格根据主要的聚焦点可以分为&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通信
+
+&lt;ul&gt;
+&lt;li&gt;消息总线：规定软件系统的使用，通过一个或多个通信通道可以接受和发送消息&lt;/li&gt;
+&lt;li&gt;服务导向架构：定义应用服务使用约定和消息暴露和消费功能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;部署
+
+&lt;ul&gt;
+&lt;li&gt;客户端/服务端：将系统分为客户端和服务端，客户端向服务端发送请求&lt;/li&gt;
+&lt;li&gt;3/N 层式：将功能分为独立的部分，每个部分成为一层，分布在不同的物理机上&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;领域
+
+&lt;ul&gt;
+&lt;li&gt;领域驱动设计：聚焦于模块化一个业务领域，基于该领域的实体定义领域目标&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;结构
+
+&lt;ul&gt;
+&lt;li&gt;基于组件：将应用设计成可复用的功能或逻辑组件，组件具有定义良好的通信接口&lt;/li&gt;
+&lt;li&gt;分层：将应用的问题分成重叠的组(层)&lt;/li&gt;
+&lt;li&gt;面向对象：基于应用或系统的责任分成对象，每个对象包含数据以及和该对象有关的行为&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-3-架构类型&#34;&gt;2.3 架构类型&lt;/h2&gt;
+
+&lt;p&gt;从企业的角度来看有一下几种架构&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;业务架构：定义企业内业务、管理、组织和主要业务流程的策略，集中于业务流程的分析和设计&lt;/li&gt;
+&lt;li&gt;应用(软件)架构：作为单个应用系统的蓝图,系统的相互作用和系统对组织业务流程的的关系&lt;/li&gt;
+&lt;li&gt;信息架构：定义逻辑和物理的数据资源和数据管理资源&lt;/li&gt;
+&lt;li&gt;信息技术(IT)架构：定义硬件和软件的基石，它们组成了组织的整个信息系统&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-4-架构设计流程&#34;&gt;2.4 架构设计流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;架构设计流程致力于分解系统为不同的组件，以及组件直接相互作用以满足功能性和非功能性的需求&lt;/li&gt;
+&lt;li&gt;架构设计的输入是
+
+&lt;ul&gt;
+&lt;li&gt;通过分析人物得到的需求&lt;/li&gt;
+&lt;li&gt;硬件架构(系统架构配置硬件架构，软件架构反过来为系统架构提供需求)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;架构设计的输出是一个架构描述&lt;/li&gt;
+&lt;li&gt;架构设计流程包括
+
+&lt;ul&gt;
+&lt;li&gt;理解问题：许多软件项目和产品是失败的，因为它们没有真正解决一个有效的商业问题，或者说对于投资没有一个可识别的回报&lt;/li&gt;
+&lt;li&gt;确认设计元素和它们的关系&lt;/li&gt;
+&lt;li&gt;为定义系统的边界上下文设定一个基线&lt;/li&gt;
+&lt;li&gt;基于功能将系统分解成主要的组件。分解可以模型化，使用设计结构矩阵(DSM, Design structure matrix)，它展示了设计元素之间的依赖，不指定元素的粒度&lt;/li&gt;
+&lt;li&gt;评估架构设计&lt;/li&gt;
+&lt;li&gt;评估每个质量参数收集定量的数据和测量，从而评估设计&lt;/li&gt;
+&lt;li&gt;如果满足每个质量参数的标准，则软件设计流程完成&lt;/li&gt;
+&lt;li&gt;否则进入下个阶段，即转换架构设计&lt;/li&gt;
+&lt;li&gt;转换架构设计&lt;/li&gt;
+&lt;li&gt;修改架构直到满足质量参数需求&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-5-重要的架构原则&#34;&gt;2.5 重要的架构原则&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;为了改变而构建，而不是为了持续而构建：随着时间发展应用可能需要改变来满足新需求或挑战&lt;/li&gt;
+&lt;li&gt;降低风险和模型以便于分析：使用决策工具，可视化、模型化系统来捕获需求，设计决策&lt;/li&gt;
+&lt;li&gt;使用模型和可视化作为通信和协作工具：和利益共享者高效的沟通和共享设计&lt;/li&gt;
+&lt;li&gt;使用增量迭代的方法：以基本架构开始，然后通过迭代测试逐步形成候选的架构，改善架构&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-6-重要的设计原则&#34;&gt;2.6 重要的设计原则&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;关注点分类：确保组件功能之间没有重叠；高内聚，低耦合&lt;/li&gt;
+&lt;li&gt;单一责任原则：系统的每个模块有专门的功能&lt;/li&gt;
+&lt;li&gt;最少知识原则：每个组件或对象不应知道其他组件的内部细节，可以避免依赖性，提高可维护性&lt;/li&gt;
+&lt;li&gt;最小化提前大型设计：当应用需求不明确时，尽量减少大型设计。如果可能需要修改需求，那么避免为整个系统添加大的设计
+
+&lt;ul&gt;
+&lt;li&gt;BDUF(Big Design Up front)，一种软件开发方法，即程序实现开始之前，程序设计时完全的、完美的、常应用域瀑布模型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;不要重复功能：重复功能的代码不易修改，清晰度降低，且增加了潜在的不一致性&lt;/li&gt;
+&lt;li&gt;重用功能时使用复合而不是继承：继承增加了父类和子类的依赖性，不利于单独使用子类&lt;/li&gt;
+&lt;li&gt;确定组件并且整合到逻辑层：将某个关注点相关的组件组合到一个逻辑层&lt;/li&gt;
+&lt;li&gt;定义层之间的通信协议&lt;/li&gt;
+&lt;li&gt;定义层的数据格式：不同的组件通过数据格式交互，确保层内的数据格式是一样的&lt;/li&gt;
+&lt;li&gt;系统服务组件应是抽象的：有关安全性、通信或系统服务(比如日志、分析和配置)的代码再各个组件应该是抽象的。不要将其与业务逻辑混合&lt;/li&gt;
+&lt;li&gt;设计异常和异常处理机制：提前定义异常，帮助组件管理错误和不希望的情形&lt;/li&gt;
+&lt;li&gt;命名规范：提前定义命名规范。以便用户理解系统，也便于团队成员检验其他人的代码，增强可维护性&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3 架构模型</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/3-architecture-models/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/3-architecture-models/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#3-%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B&#34;&gt;3 架构模型&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80&#34;&gt;3.1 统一建模语言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-%E6%9E%B6%E6%9E%84%E8%A7%86%E5%9B%BE%E6%A8%A1%E5%9E%8B&#34;&gt;3.2 架构视图模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#33-%E6%9E%B6%E6%9E%84%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80&#34;&gt;3.3 架构描述语言&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;定义一个软件架构的方式包括&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;统一建模语言(UML, unified modeling language)：面向对象的解决方案，用于软件建模和设计&lt;/li&gt;
+&lt;li&gt;架构视图模型(architecture view model)，也叫 4+1 视图模型(4+1 view model)：展示软件应用的功能性和非功能性需求&lt;/li&gt;
+&lt;li&gt;架构描述语言(ADL, architecture description language)：正式地从语义上定义软件架构&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-1-统一建模语言&#34;&gt;3.1 统一建模语言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;作为软件需求分析和设计文档的标准，是开发软件的基础&lt;/li&gt;
+&lt;li&gt;有两种示意图
+
+&lt;ul&gt;
+&lt;li&gt;结构图：描述系统的静态特点。静态部分可用类、接口、对象、组件和节点表示。结构图可分为&lt;/li&gt;
+&lt;li&gt;类图：表示类之间的静态关系&lt;/li&gt;
+&lt;li&gt;对象图：表示一组对象运行时关系，也描述了系统的静态视图&lt;/li&gt;
+&lt;li&gt;组件图：描述系统所有组件，组件的相互关系、交互和接口&lt;/li&gt;
+&lt;li&gt;部署图：一组节点和节点的关系。这些节点是部署组件的物理实体&lt;/li&gt;
+&lt;li&gt;包图：描述包的结构和组织。包括一个包内的类和包内的包&lt;/li&gt;
+&lt;li&gt;复合结构图：描述组件内部的结构，包括所有的类、组件的接口&lt;/li&gt;
+&lt;li&gt;动作/行为图：捕获系统的动态特点，包括系统改变/移动的部分。动作图分为&lt;/li&gt;
+&lt;li&gt;用例图：描述功能之间的关系，以及它们内部/外部的控制器/行动者&lt;/li&gt;
+&lt;li&gt;序列图：可视化系统内完成专门功能的调用顺序&lt;/li&gt;
+&lt;li&gt;通信图：和序列图一样，区别在于通信图关注对象角色&lt;/li&gt;
+&lt;li&gt;状态图：表示系统的时间驱动状态变化。主要是类、接口的状态变化&lt;/li&gt;
+&lt;li&gt;活动图：描述系统的控制流，包括活动和连接。流可以是顺序的、并发的、分支的&lt;/li&gt;
+&lt;li&gt;交互图：包含活动图和序列图，提供系统和业务流程的控制流的总览&lt;/li&gt;
+&lt;li&gt;时序图：描述状态、条件和事件消息的变化&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-2-架构视图模型&#34;&gt;3.2 架构视图模型&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模型：对软件架构完整的、基础的、简化的描述，包括从一个角度或视角的多个视图&lt;/li&gt;
+&lt;li&gt;视图：表示一组相关的关注点的整个系统。用于从不同的利益共享者(比如终端用户、开发者、项目管理者和测试者)描述系统&lt;/li&gt;
+&lt;li&gt;4+1 视图模型：是一个强调系统不同的特点和关注点的多视图模型。标准化软件设计文档，使得设计被所有的利益共享者更好理解&lt;/li&gt;
+&lt;li&gt;提供 4 个基本的视图
+
+&lt;ul&gt;
+&lt;li&gt;逻辑/概念视图：描述设计的对象模型&lt;/li&gt;
+&lt;li&gt;进程视图：描述系统的活动，捕获设计的并发和同步特点&lt;/li&gt;
+&lt;li&gt;物理视图：描述软件到硬件的映射，也反映了分布式特点&lt;/li&gt;
+&lt;li&gt;开发视图：描述软件在开发环境下的静态组织或结构&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;1 个额外视图：场景视图/用例视图
+
+&lt;ul&gt;
+&lt;li&gt;为软件系统的终端用户和客户设计&lt;/li&gt;
+&lt;li&gt;和其他 4 个视图一起展现架构&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;4+1 视图的关系如下
+&lt;img src=&#34;ref/four_plus_one_view_model.jpg&#34; alt=&#34;4+1视图&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;3-3-架构描述语言&#34;&gt;3.3 架构描述语言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一种正式的规范语言，描述了软件特点(比如进程、线程、数据、子程序)和硬件组件(比如处理器、设备、总线和内存)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4 面向对象泛型</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/4-object-oriented-paradigm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/4-object-oriented-paradigm/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%B3%9B%E5%9E%8B&#34;&gt;4 面向对象泛型&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%B3%9B%E5%9E%8B%E4%BB%8B%E7%BB%8D&#34;&gt;4.1 面向对象泛型介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90&#34;&gt;4.2 面向对象分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1&#34;&gt;4.3 面向对象设计&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-1-面向对象泛型介绍&#34;&gt;4.1 面向对象泛型介绍&lt;/h2&gt;
+
+&lt;p&gt;面向对象系统的基础概念和术语包括&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对象：在面向对象环境中，对象是真实的元素，在物理(比如一个客户、一辆车)或概念(比如一个项目、一个进程)上是存在的
+
+&lt;ul&gt;
+&lt;li&gt;每个对象都有&lt;/li&gt;
+&lt;li&gt;身份：与系统中其他对象区分&lt;/li&gt;
+&lt;li&gt;状态：决定一个对象的特点属性，已经持有的属性的值&lt;/li&gt;
+&lt;li&gt;行为：表示一个对象执行的外部可见的行为，和对象的状态变化相关&lt;/li&gt;
+&lt;li&gt;对象可以根据应用的需求被模型化&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;类：类表示拥有相同的特点属性(表现相同的行为)的一组对象
+
+&lt;ul&gt;
+&lt;li&gt;创建一个类的一个对象作为成员称作实例化。因此，对象是类的一个实例&lt;/li&gt;
+&lt;li&gt;一个类包括&lt;/li&gt;
+&lt;li&gt;一组属性：对象从类实例化得到的属性
+
+&lt;ul&gt;
+&lt;li&gt;一般来说，一个类的不同对象在这些属性上有一些不同&lt;/li&gt;
+&lt;li&gt;属性常表示成类的数据&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一组操作：描绘该类的对象的行为
+
+&lt;ul&gt;
+&lt;li&gt;操作常表示成类的函数或方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;封装：封装是在类中将属性和方法绑定在一起的过程
+
+&lt;ul&gt;
+&lt;li&gt;通过封装，类可以向外部隐藏内部的细节&lt;/li&gt;
+&lt;li&gt;类只允许外部通过接口访问类内的元素&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多态：多态暗示操作的方式不同，取决于操作针对的实例
+
+&lt;ul&gt;
+&lt;li&gt;多态使得内部结构不同的对象可以向外部提供统一的接口&lt;/li&gt;
+&lt;li&gt;多态主要通过继承实现&lt;/li&gt;
+&lt;li&gt;关系：系统包括动态(行为)指标和静态(逻辑)指标&lt;/li&gt;
+&lt;li&gt;动态指标描述对象之间的关系(比如消息传递)&lt;/li&gt;
+&lt;li&gt;静态指标描述类之间的关系(比如聚合、关联、继承)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;消息传递：系统内的对象彼此使用消息传递通信
+
+&lt;ul&gt;
+&lt;li&gt;一个对象如果想要另一个对象执行一个方法，必须给该对象发送一个消息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;复合或聚合：复合或聚合表示类间的关系，指一个类可以通过其他类对象的组合生成
+
+&lt;ul&gt;
+&lt;li&gt;聚合指的是 part-of 或 has-a 关系&lt;/li&gt;
+&lt;li&gt;一个聚合类由一个或多个其他的对象组成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;关联：关联是拥有共同的结构和行为的一组链接(link)。关联描述了一个或多个类的对象之间的关系
+
+&lt;ul&gt;
+&lt;li&gt;一个链接(link)可以定义成一个关联的一个实体&lt;/li&gt;
+&lt;li&gt;关联的度表示参与到一个连接的类的数目。度可以是单元、二元或三元的&lt;/li&gt;
+&lt;li&gt;一个单元关系连接同一个类内的对象&lt;/li&gt;
+&lt;li&gt;一个二元关系连接两个类的对象&lt;/li&gt;
+&lt;li&gt;一个三元关系连接三个或多个类的对象&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;继承：继承机制允许基于已有的类创建类，创建的类可以扩展或重定义能力
+
+&lt;ul&gt;
+&lt;li&gt;已有的类称作基类/父类/超类(super-class)，新类成为衍生类/子类/亚类(subclass)&lt;/li&gt;
+&lt;li&gt;亚类可以继承或衍生超类提供的属性和方法&lt;/li&gt;
+&lt;li&gt;亚类也可以添加自己的属性和方法，且方法可能会改变超类的方法&lt;/li&gt;
+&lt;li&gt;继承定义了 is-a 的关系&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-2-面向对象分析&#34;&gt;4.2 面向对象分析&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OO(object-oriented，面向对象)分析的目的是理解系统的应用领域和特定的需求&lt;/li&gt;
+&lt;li&gt;OO 分析的输出是系统的需求规格文档、逻辑结构的初始分析和可行性&lt;/li&gt;
+&lt;li&gt;OO 分析常用的分析技术包括
+
+&lt;ul&gt;
+&lt;li&gt;对象建模：开发软件系统对象的静态结构。对象建模的步骤&lt;/li&gt;
+&lt;li&gt;标识对象，组合成类&lt;/li&gt;
+&lt;li&gt;标识对象间的关系&lt;/li&gt;
+&lt;li&gt;创建一个用户对象模型图&lt;/li&gt;
+&lt;li&gt;定义一个用户对象的属性&lt;/li&gt;
+&lt;li&gt;定义类上应该执行的操作&lt;/li&gt;
+&lt;li&gt;动态建模：动态建模的目的是检验系统的时间和外部变化&lt;/li&gt;
+&lt;li&gt;动态建模可以定义为“描述一个单独的对象如何响应事件的一种方式，事件可以是其他对象触发的内部事件，或者外部世界触发的外部事件”&lt;/li&gt;
+&lt;li&gt;动态建模的步骤
+
+&lt;ul&gt;
+&lt;li&gt;标识每个对象的状态&lt;/li&gt;
+&lt;li&gt;标识事件，分析行为的适用性&lt;/li&gt;
+&lt;li&gt;构建动态模型图，包括状态转换图&lt;/li&gt;
+&lt;li&gt;表示对象属性的每个状态&lt;/li&gt;
+&lt;li&gt;验证画的状态转换图&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;功能建模：功能模型展示了对象内部执行的流程，以及对象在方法之间移动时数据如何变化&lt;/li&gt;
+&lt;li&gt;功能建模详细说明了对象建模操作和动态建模行为的意义&lt;/li&gt;
+&lt;li&gt;功能建模和传统的结构化分析的数据流图对应&lt;/li&gt;
+&lt;li&gt;功能建模的步骤
+
+&lt;ul&gt;
+&lt;li&gt;标识所有的输入和输出&lt;/li&gt;
+&lt;li&gt;构建数据流图，展示功能依赖性&lt;/li&gt;
+&lt;li&gt;说明每个函数的目的&lt;/li&gt;
+&lt;li&gt;标识约束&lt;/li&gt;
+&lt;li&gt;具体说明优化标准&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-3-面向对象设计&#34;&gt;4.3 面向对象设计&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;面向对象设计(OOD, object-oriented design)阶段，面向对象分析中的技术独立性概念被映射到实现类，约束被标识，接口被设计，生成解决方案域的模型&lt;/li&gt;
+&lt;li&gt;OOD 的主要目的是开发系统的结构化架构&lt;/li&gt;
+&lt;li&gt;OOD 的步骤
+
+&lt;ul&gt;
+&lt;li&gt;定义系统的上下文&lt;/li&gt;
+&lt;li&gt;设计系统架构&lt;/li&gt;
+&lt;li&gt;标识系统的对象&lt;/li&gt;
+&lt;li&gt;构造设计模型&lt;/li&gt;
+&lt;li&gt;规范对象接口&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;OOD 总结为两个步骤
+
+&lt;ul&gt;
+&lt;li&gt;概要设计：也叫高层设计，定义系统所需所有类，详细描述每个类的功能&lt;/li&gt;
+&lt;li&gt;使用类图描述类间的关系&lt;/li&gt;
+&lt;li&gt;交互图展示事件流&lt;/li&gt;
+&lt;li&gt;详细设计：也叫低层设计，基于交互图给每个类赋予属性和操作&lt;/li&gt;
+&lt;li&gt;状态图描述设计进一步的细节&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;需要遵循下面的设计原则
+
+&lt;ul&gt;
+&lt;li&gt;解耦原理：低耦合，可以通过引入新的类或继承消除耦合&lt;/li&gt;
+&lt;li&gt;确保内聚：高内聚，一个内聚的类执行一组紧密相关的功能&lt;/li&gt;
+&lt;li&gt;开放封闭原则：系统应该可以扩展满足新的需求&lt;/li&gt;
+&lt;li&gt;系统已有的实现和代码不应该被修改以扩展系统&lt;/li&gt;
+&lt;li&gt;下面是指导方针
+
+&lt;ul&gt;
+&lt;li&gt;对于每一个具体类，应该维护独立的接口和实现&lt;/li&gt;
+&lt;li&gt;在多线程环境，保持属性是私有的&lt;/li&gt;
+&lt;li&gt;最小化全局变量和类变量&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>5 数据流结构</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/5-data-flow-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/5-data-flow-architecture/</guid>
+      <description>&lt;p&gt;模型之间的执行有三种类型&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;批量顺序
+
+&lt;ul&gt;
+&lt;li&gt;数据流携带批量的数据作为一个整体，从一个子系统到另外一个子系统&lt;/li&gt;
+&lt;li&gt;模块之间的通信可通过临时文件执行，并由后续的子系统删除&lt;/li&gt;
+&lt;li&gt;对于数据是批量的应用可行，每个子系统读相关的输入文件，然后写相关的输出文件&lt;/li&gt;
+&lt;li&gt;此架构典型的应用包括业务数据处理，比如银行和公用事业账单&lt;/li&gt;
+&lt;li&gt;优点：提供子系统简单的分割，每个子系统可以是一个独立的程序，作用于输入数据，生成输出数据&lt;/li&gt;
+&lt;li&gt;缺点：高延迟，低吞吐；不停并发和交互接口；需要外部控制实现&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;管道和过滤或非顺序的流水线模式
+
+&lt;ul&gt;
+&lt;li&gt;过滤器：一个过滤器是一个独立的数据流转换器或流传感器。在内部转换输入数据流，然后通过管道写转换的数据流传给下一个过滤器处理&lt;/li&gt;
+&lt;li&gt;主动过滤器：让连接的管道拉入数据，然后推出转换的数据&lt;/li&gt;
+&lt;li&gt;被动过滤器：让连接的管道推入数据，然后拉出转换的数据，必须提供读写机制&lt;/li&gt;
+&lt;li&gt;优点：并行，高吞吐；可复用，简化系统维护；易修改，低耦合；灵活度，支持顺序和并行执行&lt;/li&gt;
+&lt;li&gt;缺点：对动态交互不合适；过滤器直接数据转换的负载；不支持过滤器合作交互解决问题；难以动态配置&lt;/li&gt;
+&lt;li&gt;管道：无状态，存在于过滤器之间，可以携带二进制或字符流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;流程控制
+
+&lt;ul&gt;
+&lt;li&gt;处理单元：改变处理控制变量&lt;/li&gt;
+&lt;li&gt;控制单元：计算改变数量。必须包含以下元素&lt;/li&gt;
+&lt;li&gt;控制变量、输入变量、操纵变量、处理定义、敏感元件、设定点、控制算法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>6 以数据为中心的架构</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/6-data-centered-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/6-data-centered-architecture/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;组件包括
+
+&lt;ul&gt;
+&lt;li&gt;中心数据结构/数据存储器/数据仓库：负责提供长久的数据存储，表示当前的状态&lt;/li&gt;
+&lt;li&gt;数据访问器/一系列独立的组件：操作中心数据结构存储，执行计算，存回结果&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>7 层次化架构</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/7-hierarchical-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/7-hierarchical-architecture/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#71-%e4%b8%bb%e5%ad%90%e4%be%8b%e7%a8%8b%e6%9e%b6%e6%9e%84&#34;&gt;7.1 主子例程架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#72-%e4%b8%bb%e4%bb%8e%e5%bc%8f%e6%9e%b6%e6%9e%84&#34;&gt;7.2 主从式架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#73-%e8%99%9a%e6%8b%9f%e6%9c%ba%e6%9e%b6%e6%9e%84&#34;&gt;7.3 虚拟机架构&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#74-%e5%88%86%e5%b1%82%e5%bc%8f%e6%9e%b6%e6%9e%84&#34;&gt;7.4 分层式架构&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将整个系统视为层次结构，即将软件系统分为不同层次的逻辑模块或子系统&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;分类：主-子例程、主从式、虚拟机、分层式&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-1-主子例程架构&#34;&gt;7.1 主子例程架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;目的是复用模块，自由开发各自的模块或子例程&lt;/li&gt;
+&lt;li&gt;将数据作为参数传递给子例程：值传递/引用传递&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/main_subroutine.jpg&#34; alt=&#34;主-子例程架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;优点：易基于层次改进分解系统；可用于 OOD 的子系统&lt;/li&gt;
+&lt;li&gt;缺点：因包含全局共享数据而易受攻击；高耦合导致不易修改&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-2-主从式架构&#34;&gt;7.2 主从式架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;应用分治的思想，提供系统稳定系和容错性&lt;/li&gt;
+&lt;li&gt;架构向主设备提供相同的服务，主设备根据选择策略从架构选取结果&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/master_slave.jpg&#34; alt=&#34;主从式架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;实现步骤：
+
+&lt;ul&gt;
+&lt;li&gt;指定计算任务如何分解成一系列等价的子任务，然后指定所需子服务处理子任务&lt;/li&gt;
+&lt;li&gt;指定如何根据所得子任务的结果计算整个系统最后的结果&lt;/li&gt;
+&lt;li&gt;为第一个阶段的子服务定义接口。将由从设备实现，由主设备分配子任务&lt;/li&gt;
+&lt;li&gt;根据上述接口实现子服务&lt;/li&gt;
+&lt;li&gt;根据前三步实现主服务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;应用：适用于可靠性比较重要的软件，广泛应用于并行和分布式计算领域&lt;/li&gt;
+&lt;li&gt;优点：快速计算，方便扩展；从设备可重复，提供了稳健性；从设备实现可不同以最小化语义错误&lt;/li&gt;
+&lt;li&gt;缺点：通信负载；不是所有问题可分割；难以实现，不易跨平台&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-3-虚拟机架构&#34;&gt;7.3 虚拟机架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个虚拟机基于已有系统创建，提供一个虚拟的抽象、一系列属性和操作&lt;/li&gt;
+&lt;li&gt;在虚拟机架构中，主设备使用从设备相同的子服务，执行例如划分工作、调用从设备、联合结果等工作&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/virtual_machine_architecture.jpg&#34; alt=&#34;虚拟机架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;应用：适用于以下领域
+
+&lt;ul&gt;
+&lt;li&gt;如果没有直接的解决方案，通过仿真或翻译解决问题&lt;/li&gt;
+&lt;li&gt;样例程序，包括微程序解释，XML 处理，脚本命令语言执行，基于规则系统的执行，Smalltalk 和 Java 解释器类型的编程语言&lt;/li&gt;
+&lt;li&gt;常见的例子包括解释器、基于规则的系统、句法 shell、命令语言处理器&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：可移植性，机器平台独立性；简化软件开发；灵活性；仿真灾难性的工作模型；引入运行时修改&lt;/li&gt;
+&lt;li&gt;缺点：解释器执行慢；性能代价，因为执行中有多余的计算&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-4-分层式架构&#34;&gt;7.4 分层式架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每一层在系统中有自己单独的责任
+
+&lt;ul&gt;
+&lt;li&gt;每一层包含一组相关的类，被封装成一个包，一个部署组件，或者作为一组子例程&lt;/li&gt;
+&lt;li&gt;每一层为上层提供服务，并作为下层的客户端，即调用下一层的服务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;应用：
+
+&lt;ul&gt;
+&lt;li&gt;适用于包含明显的服务类的应用，可以分成层级式&lt;/li&gt;
+&lt;li&gt;应用可被分成特定应用和特定平台的部分&lt;/li&gt;
+&lt;li&gt;应用可清晰地分成内核服务、关键服务、用户接口服务等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：基于高层次的抽象；一层修改至多影响相邻两层；接口和实现分类；基于组件技术开发，支持即插即用；每一层可单独部署，可移植；基于任务自上而下分解；相同层的不同实现可互换&lt;/li&gt;
+&lt;li&gt;缺点：许多应用或系统不易分解成层级式；多层传递会降低运行时性能；数据在每层传递的负载会降低性能；层内通信可能会死锁，到底高耦合；异常和错误不易传送到所有的调用层&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>8 面向交互的架构</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/8-interaction-oriented-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/8-interaction-oriented-architecture/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#81-mvc&#34;&gt;8.1 MVC&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#82-pac&#34;&gt;8.2 PAC&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;目的：将数据层、业务数据处理和用户操作分离&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;包括三个部分：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数据模块：提供数据抽象和业务逻辑&lt;/li&gt;
+&lt;li&gt;控制模块：识别控制流和系统配置行为&lt;/li&gt;
+&lt;li&gt;视图展示模块：负责输出数据的视觉和听觉展示，也为用户输入提供接口&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;包括两种：模型-视图-控制器(MVC, model-view-control)和显示-抽象-控制器(PAC, presentation-abstraction-control)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;8-1-mvc&#34;&gt;8.1 MVC&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;模型：封装底层数据和业务逻辑&lt;/li&gt;
+&lt;li&gt;控制器：响应用户操作，指导应用流程
+
+&lt;ul&gt;
+&lt;li&gt;接收输入并转换成给模型或视图的命令&lt;/li&gt;
+&lt;li&gt;作为相关命令、视图和输入设备的接口&lt;/li&gt;
+&lt;li&gt;可发送命令给模型，更新模型的状态&lt;/li&gt;
+&lt;li&gt;也可发送命令给相关的视图，改变视图的展示&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;视图：格式化模型的数据并展示给用户&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/mvc_component.jpg&#34; alt=&#34;MVC&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;可分为
+
+&lt;ul&gt;
+&lt;li&gt;MVC-I&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/mvc_1_architecture.jpg&#34; alt=&#34;MVC-I&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;模型模块通知控制器-视图模块数据的变化，随之改变对应的图形化数据展示&lt;/li&gt;
+&lt;li&gt;模型模块提供所有的数据和域服务&lt;/li&gt;
+&lt;li&gt;二者的连接可以是订阅-通知式的，即控制器视图订阅模型，模型将变化通知给控制器-视图&lt;/li&gt;
+&lt;li&gt;MVC-II&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/mvc_2_architecture.jpg&#34; alt=&#34;MVC-II&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;视图层展示数据&lt;/li&gt;
+&lt;li&gt;控制器接收输入请求，验证输入数据，初始化模型、视图以及二者的连接，分发任务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;应用：适用于交互式应用&lt;/li&gt;
+&lt;li&gt;优点
+
+&lt;ul&gt;
+&lt;li&gt;有很多 MVC 的开发框架包&lt;/li&gt;
+&lt;li&gt;用同一个数据模型去同步多个视图&lt;/li&gt;
+&lt;li&gt;容易添加和修改接口视图&lt;/li&gt;
+&lt;li&gt;应用开发分为图像专家、编程专家、数据库开发专家&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;缺点
+
+&lt;ul&gt;
+&lt;li&gt;不适用面向代理的应用&lt;/li&gt;
+&lt;li&gt;多个控制器和视图操作统一数据模型，导致数据修改代价增大&lt;/li&gt;
+&lt;li&gt;视图和控制器在某些情况下不易划分&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;8-2-pac&#34;&gt;8.2 PAC&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PAC 将系统划分成多个合作代理的层级。每个代理包含三个组件
+
+&lt;ul&gt;
+&lt;li&gt;展示组件：格式化数据并展示给用户&lt;/li&gt;
+&lt;li&gt;抽象组件：取回并处理数据&lt;/li&gt;
+&lt;li&gt;控制器组件：处理组件之间的控制流或通信等任务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/pac_design.jpg&#34; alt=&#34;PAC&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;展示组件和抽象组件只能通过控制器组件通信&lt;/li&gt;
+&lt;li&gt;多代理的 PAC
+
+&lt;ul&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/multiple_agent_in_pac.jpg&#34; alt=&#34;多代理的 PAC&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;每个代理有自己特别指定的工作&lt;/li&gt;
+&lt;li&gt;顶层代理提供核心数据和业务逻辑&lt;/li&gt;
+&lt;li&gt;底层代理定义特定的数据和展示&lt;/li&gt;
+&lt;li&gt;中间代理作为底层代理的协调者&lt;/li&gt;
+&lt;li&gt;某些中间代理不需要交互展示，不需要展示组件&lt;/li&gt;
+&lt;li&gt;每个代理需要控制器组件与其他代理通信&lt;/li&gt;
+&lt;li&gt;应用&lt;/li&gt;
+&lt;li&gt;交互系统中，系统可分成层级的合作代理时，较有效&lt;/li&gt;
+&lt;li&gt;代理直接的耦合松散，因为代理修改不影响其他代理时，较有效&lt;/li&gt;
+&lt;li&gt;分布式系统，每个代理有自己的数据和交互接口处理函数时，较有效&lt;/li&gt;
+&lt;li&gt;有大量 GUI 组件，每个 GUI 组件保存自己当前的数据和交互接口，与其他组件进行通信时，较有效&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：支持多任务，多视图；支持代理复用，延伸线好；易添加和修改已有的代理；支持并发，多个代理可在不同的线程或设备或机器上并发运行&lt;/li&gt;
+&lt;li&gt;缺点：展示组件和抽象组件的控制桥的负载，代理控制器控制组件之间的通信负载；不易确定代理数目；每个代理完全划分展示和抽闲组件会增加开发复杂性&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>9 分布式架构</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/9-distributed-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/9-distributed-architecture/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#91-%e5%ae%a2%e6%88%b7%e7%ab%af%e6%9c%8d%e5%8a%a1%e7%ab%af%e6%9e%b6%e6%9e%84&#34;&gt;9.1 客户端服务端架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#92-%e5%a4%9a%e5%b1%82%e6%9e%b6%e6%9e%84&#34;&gt;9.2 多层架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#93-%e4%bb%a3%e7%90%86broker%e6%9e%b6%e6%9e%84&#34;&gt;9.3 代理(Broker)架构&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#94-%e9%9d%a2%e5%90%91%e6%9c%8d%e5%8a%a1%e7%9a%84%e6%9e%b6%e6%9e%84&#34;&gt;9.4 面向服务的架构&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;中间件是分布式架构的基础结构。如图&lt;img src=&#34;ref/concepts_distributed_architecture.jpg&#34; alt=&#34;中间件&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;分布式架构侧重于透明性、可靠性、可用性&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;关于透明性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;访问：隐藏访问资源的方式和数据平台的差异&lt;/li&gt;
+&lt;li&gt;位置：隐藏资源的位置&lt;/li&gt;
+&lt;li&gt;技术：对用户隐藏不同的技术，比如编程语言，操作系统&lt;/li&gt;
+&lt;li&gt;迁移/重定位：隐藏使用时可能被移动到另一个位置的资源&lt;/li&gt;
+&lt;li&gt;重复：隐藏可能复制在其他地方的资源&lt;/li&gt;
+&lt;li&gt;并发：隐藏可能与其他用户共享的资源&lt;/li&gt;
+&lt;li&gt;错误：对用户隐藏资源的错误和复原&lt;/li&gt;
+&lt;li&gt;一致性：隐藏资源或软件是在内存或磁盘&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;优点：资源共享、开放性、并发、易扩展、容错性&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;缺点：复杂度、安全性降低、不易管理、不可预测&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;9-1-客户端服务端架构&#34;&gt;9.1 客户端服务端架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/two_tier_client_server_architecture.jpg&#34; alt=&#34;客户端-服务端架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;服务端提供服务，客户端使用这些服务&lt;/li&gt;
+&lt;li&gt;服务端不需要知道客户端，客户端需要知道服务端的身份&lt;/li&gt;
+&lt;li&gt;优点：分离用户接口展示和业务逻辑处理；服务组件复用，可能并发；简化设计和开发；易迁移或整合已有应用到分布式环境；多客户端访问一个高性能的服务可充分利用资源&lt;/li&gt;
+&lt;li&gt;缺点：缺少异构架构处理需求改变；安全问题；服务的可用性和扩展性降低&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;9-2-多层架构&#34;&gt;9.2 多层架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/n_tier_architecture.jpg&#34; alt=&#34;多层架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;一般分为三层：展示层、应用层(也叫业务逻辑层、逻辑层、中间层)和数据层
+
+&lt;ul&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/data_tier.jpg&#34; alt=&#34;三层架构&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：易管理、性能好；可复用，易扩展；多线程支持，降低网络负载；易维护，灵活性高&lt;/li&gt;
+&lt;li&gt;缺点：不易测试，缺少测试工具；可靠性和可用性对服务要求更高&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;9-3-代理-broker-架构&#34;&gt;9.3 代理(Broker)架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;中间件架构，在分布式计算中使用，协调注册的服务端和客户端之间的通信&lt;/li&gt;
+&lt;li&gt;对象之间通信使用中间件系统，叫做对象请求代理(系统总线)
+
+&lt;ul&gt;
+&lt;li&gt;客户端和服务端不会直接交互。它们各自直接连接自己的代理，和 mediator-broker 通信&lt;/li&gt;
+&lt;li&gt;服务端通过注册和发布接口到 broker 提供服务，客户端可以通过 broker 静态或动态查找请求服务&lt;/li&gt;
+&lt;li&gt;通用对象请求代理架构CORBA(CORBA, Common Object Request Broker Architecture)是一个实现的较好的例子&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;组件包括
+
+&lt;ul&gt;
+&lt;li&gt;broker：负责协调通信，比如转发和分发结果和异常&lt;/li&gt;
+&lt;li&gt;协商服务请求，定位一个合适的服务端并发送请求，发送回复给客户端&lt;/li&gt;
+&lt;li&gt;维护服务端的注册信息，包括它们的功能、服务和定位信息&lt;/li&gt;
+&lt;li&gt;给客户端发送请求和服务端发送回复提供 API&lt;/li&gt;
+&lt;li&gt;stub：静态编译阶段生成，部署在客户端，作为客户端的代理&lt;/li&gt;
+&lt;li&gt;作为客户端和 broker 的协调者&lt;/li&gt;
+&lt;li&gt;在协议层隐藏进程间通信(IPC, inter-process communication)&lt;/li&gt;
+&lt;li&gt;整合参数值，分割服务端返回的结果&lt;/li&gt;
+&lt;li&gt;skeleton：服务端接口编译生成，部署在服务端，作为服务端的代理&lt;/li&gt;
+&lt;li&gt;封装了底层特定系统的网络函数，提供高级的 API 来协调服务端和 broker&lt;/li&gt;
+&lt;li&gt;接收请求，解包请求，分割方法参数，调用合适的服务，发送结果，发送给客户端&lt;/li&gt;
+&lt;li&gt;bridge：基于不同的通信协议连接两个不同的网络，协调不同的 broker&lt;/li&gt;
+&lt;li&gt;可选组件，隐藏两个 broker 互相操作的实现细节&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/broker_model.jpg&#34; alt=&#34;代理架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;CORBA 是针对对象请求代理的国际化标准——一个管理分布式对象通信的中间件
+
+&lt;ul&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/corba_architecture.jpg&#34; alt=&#34;CORBA&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;9-4-面向服务的架构&#34;&gt;9.4 面向服务的架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如图&lt;img src=&#34;ref/soa.jpg&#34; alt=&#34;面向服务的架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;面向服务的架构(SOA, service-oriented architecture)是一个客户端/服务端设计，支持业务驱动
+
+&lt;ul&gt;
+&lt;li&gt;应用包含软件服务端和软件服务消费者&lt;/li&gt;
+&lt;li&gt;服务之间的连接通过通用的基于消息的协议(比如 SOAP 网络服务协议)，可以在服务之间发送请求和回复&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;特点：分布式部署；可组合性；互用性；复用性&lt;/li&gt;
+&lt;li&gt;SOA 操作如图&lt;img src=&#34;ref/soa_operations.jpg&#34; alt=&#34;SOA 操作&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;优点：
+
+&lt;ul&gt;
+&lt;li&gt;低耦合，可以充分利用已有的服务资源，无关平台和技术限制&lt;/li&gt;
+&lt;li&gt;无状态，每个服务组件和其他服务相互独立&lt;/li&gt;
+&lt;li&gt;只要不改变接口，修改服务的实现不影响其他服务&lt;/li&gt;
+&lt;li&gt;客户端和服务端可以访问其他服务，无关平台、技术、生产商、语言实现&lt;/li&gt;
+&lt;li&gt;资产和服务的复用性，只要知道公共接口就可以使用&lt;/li&gt;
+&lt;li&gt;在时间和花费上更有效&lt;/li&gt;
+&lt;li&gt;提高了可扩展性，为系统提高标准连接&lt;/li&gt;
+&lt;li&gt;易整合，改善了内部互操作性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>10 基于组件的架构</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/10-component-based-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/10-component-based-architecture/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;目标：确保组件复用性&lt;/li&gt;
+&lt;li&gt;致力于分解设计成单个功能或逻辑组件，表示定义良好的通信接口，包括方法、时间和属性&lt;/li&gt;
+&lt;li&gt;提高更高级别的抽象，将问题分解成子问题，每个子问题一个组件&lt;/li&gt;
+&lt;li&gt;特点：复用性、可替换、没有特定上下文、易扩展、封装性、独立性&lt;/li&gt;
+&lt;li&gt;优点：易部署、减少花费、易开发、复用性、降低技术复杂度、可靠性、系统易维护、易升级、独立性&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>11 用户界面</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/11-user-interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/11-user-interface/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;图形化用户界面，也叫 WIMP 界面。因为使用了
+
+&lt;ul&gt;
+&lt;li&gt;window：窗口，屏幕上的一个矩形区域&lt;/li&gt;
+&lt;li&gt;icon：图标，一个图片或符号用于表示软件应用或硬件设备&lt;/li&gt;
+&lt;li&gt;menu：菜单，用户可选择的一系列选项&lt;/li&gt;
+&lt;li&gt;pointer：指示物，一个符号(比如箭头)，当用户移动鼠标时在屏幕上移动，帮助用户选择对象&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用户界面设计
+
+&lt;ul&gt;
+&lt;li&gt;分析用户界面，了解 4 个元素：用户、任务、内容、工作环境&lt;/li&gt;
+&lt;li&gt;从用户而不是机器的能力和局限设计&lt;/li&gt;
+&lt;li&gt;将任务分成用户和机器级别的&lt;/li&gt;
+&lt;li&gt;一般分成以下几步&lt;/li&gt;
+&lt;li&gt;定义用户界面对象和行为/操作&lt;/li&gt;
+&lt;li&gt;定义事件(用户行为)导致用户界面改变的状态&lt;/li&gt;
+&lt;li&gt;详细说明用户如何根据界面提供的信息解释系统状态&lt;/li&gt;
+&lt;li&gt;描述终端中户看到每个界面状态&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;开发流程：
+
+&lt;ul&gt;
+&lt;li&gt;接口分析：分析用户、任务、内容、工作环境，定义需要做的任务&lt;/li&gt;
+&lt;li&gt;接口设计：定义一系列接口对象、行为、屏幕表示&lt;/li&gt;
+&lt;li&gt;接口构造：先有产品原型支持评估使用情形，然后使用开发工具完善&lt;/li&gt;
+&lt;li&gt;接口验证：致力于验证以下方面&lt;/li&gt;
+&lt;li&gt;接口的能力&lt;/li&gt;
+&lt;li&gt;执行每个用户任务的正确性&lt;/li&gt;
+&lt;li&gt;满足所有任务的改变&lt;/li&gt;
+&lt;li&gt;满足所有通用的需求&lt;/li&gt;
+&lt;li&gt;接口的易用性和易学性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>12 架构技术</title>
+      <link>https://xueqing.github.io/translation/software_architecture_tutorial/12-architecture-techniques/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/translation/software_architecture_tutorial/12-architecture-techniques/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;迭代增量式方法：通过一次或多次重复生成候选的解决方案。分为 5 步
+
+&lt;ul&gt;
+&lt;li&gt;确认架构目标：确认一开始的架构目标，确认架构消费者的目标，确认限制&lt;/li&gt;
+&lt;li&gt;关键情节&lt;/li&gt;
+&lt;li&gt;一个情节是一个扩展性的，覆盖描述用户和系统的一个交互&lt;/li&gt;
+&lt;li&gt;给每个情节确定优先级，在用户、商业和系统目标之间权衡&lt;/li&gt;
+&lt;li&gt;应用概述：将架构与现实世界的限制和决定关联，包括下面的活动&lt;/li&gt;
+&lt;li&gt;确认应用类型：移动端、web 端、互联网应用等&lt;/li&gt;
+&lt;li&gt;确认部署限制：选择合适的部署拓扑，解决应用和基础设施之间的冲突&lt;/li&gt;
+&lt;li&gt;确认重要的架构设计类型：客户端/服务端、分层、消息-总线、领域驱动等&lt;/li&gt;
+&lt;li&gt;确认相关的技术：根据开发的应用类型、倾向的应用部署拓扑和架构类型确认相关技术&lt;/li&gt;
+&lt;li&gt;关键问题或关键热点：关键热点是经常制造错误的区域&lt;/li&gt;
+&lt;li&gt;候选的解决方案：根据应用概述和关键问题创建和细化架构&lt;/li&gt;
+&lt;li&gt;候选的架构包括：应用类型、部署架构、架构类型、技术选型、指令参数和横切关注点&lt;/li&gt;
+&lt;li&gt;根据架构目标和关键情节验证候选的解决方案&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;架构概况：
+
+&lt;ul&gt;
+&lt;li&gt;在项目的关键阶段经常检查架构，响应其他重要架构的改变&lt;/li&gt;
+&lt;li&gt;主要目的是确定基础架构和候选架构的灵活性&lt;/li&gt;
+&lt;li&gt;将功能需求和之类属性与建议的技术方案关联&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;交流架构设计
+
+&lt;ul&gt;
+&lt;li&gt;完成架构设计之后，必须和其他的利益共享者交流设计，包括开发团队、系统管理员、操作员、商业所有者，及其他利益集团&lt;/li&gt;
+&lt;li&gt;有下面几个方法向其他人描述架构&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;统一建模语言&#34; target=&#34;_blank&#34;&gt;统一建模语言&lt;/a&gt;：功能需求视图、静态结构视图、动态行为视图&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#架构视图模型&#34;&gt;4+1 模型&lt;/a&gt;：逻辑视图、进程视图、物理视图、开发视图、场景视图/用例视图&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#架构描述语言&#34;&gt;架构描述语言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;敏捷建模
+
+&lt;ul&gt;
+&lt;li&gt;模型足够简单，易于理解，足够准确、详细和已知&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;IEEE 1471：是体系结构描述的推荐规范，用于软件密集型系统，保证架构描述的内容&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>1 入门</title>
       <link>https://xueqing.github.io/translation/agile/tutorial/1-primer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

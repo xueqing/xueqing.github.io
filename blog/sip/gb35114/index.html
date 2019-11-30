@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="研读 GB35114 前端设备分级 视频监控安全管理平台 设备接入认证 信令 运算 密钥种类 数字证书类型 SIP 服务器认证 FDWSF 的单向身份认证 SIP 服务器与 FDWSF 的双向身份认证 管理平台">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/sip/gb35114/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/sip/gb35114/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/sip/gb35114/">
+  <meta property="og:title" content="研读 GB35114 | kiki">
+  <meta property="og:description" content="研读 GB35114 前端设备分级 视频监控安全管理平台 设备接入认证 信令 运算 密钥种类 数字证书类型 SIP 服务器认证 FDWSF 的单向身份认证 SIP 服务器与 FDWSF 的双向身份认证 管理平台"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>研读 GB35114 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>研读 GB35114</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%E7%A0%94%E8%AF%BB-GB35114">研读 GB35114</a>
+
+<ul>
+<li><a href="#%E5%89%8D%E7%AB%AF%E8%AE%BE%E5%A4%87%E5%88%86%E7%BA%A7">前端设备分级</a></li>
+<li><a href="#%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0">视频监控安全管理平台</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%85%A5%E8%AE%A4%E8%AF%81">设备接入认证</a></li>
+<li><a href="#%E4%BF%A1%E4%BB%A4">信令</a></li>
+<li><a href="#%E8%BF%90%E7%AE%97">运算</a></li>
+<li><a href="#%E5%AF%86%E9%92%A5%E7%A7%8D%E7%B1%BB">密钥种类</a></li>
+<li><a href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E7%B1%BB%E5%9E%8B">数字证书类型</a></li>
+<li><a href="#SIP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%A4%E8%AF%81-FDWSF-%E7%9A%84%E5%8D%95%E5%90%91%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81">SIP 服务器认证 FDWSF 的单向身份认证</a></li>
+<li><a href="#SIP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E-FDWSF-%E7%9A%84%E5%8F%8C%E5%90%91%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81">SIP 服务器与 FDWSF 的双向身份认证</a></li>
+<li><a href="#%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E9%97%B4%E8%AE%A4%E8%AF%81%E7%BD%91%E5%85%B3-1-%E5%90%91%E7%BD%91%E5%85%B3-2-%E5%8F%91%E8%B5%B7%E8%AE%A4%E8%AF%81">管理平台间认证(网关 1 向网关 2 发起认证)</a></li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E4%BF%A1%E4%BB%A4%E8%AE%A4%E8%AF%81">控制信令认证</a></li>
+<li><a href="#%E5%AF%86%E9%92%A5%E4%B8%8E%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86">密钥与证书管理</a></li>
+<li><a href="#%E6%96%B0%E5%A2%9E%E5%8D%8F%E8%AE%AE%E8%8E%B7%E5%8F%96%E5%AF%86%E9%92%A5%E4%B8%8E%E8%AF%81%E4%B9%A6">新增协议获取密钥与证书</a></li>
+</ul></li>
+</ul>
+
+<h2 id="前端设备分级">前端设备分级</h2>
+
+<ul>
+<li>FDWSF(具有安全功能的前端设备) 的安全能力分为三个等级</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>目标</th>
+<th>关联标准</th>
+<th>加密算法</th>
+<th>A 级</th>
+<th>B 级</th>
+<th>C 级</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>基于数字证书与管理平台双向身份认证能力</td>
+<td>身份真实</td>
+<td>GBT/28181 (SVAC)</td>
+<td>SM2, SM3</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>对视频数据签名的能力</td>
+<td>视频真实(来源真实, 内容真实, 未被篡改)</td>
+<td>GBT/25724 (SVAC)</td>
+<td>SM2, SM3</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+
+<tr>
+<td>视频内容加密</td>
+<td>防止泄露</td>
+<td>GBT/25724 (SVAC)</td>
+<td>SM1/SM4, SM3</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="视频监控安全管理平台">视频监控安全管理平台</h2>
+
+<ul>
+<li>对 FDWSF 的基本信息、属性信息以及 FDWSF 的 ID、其密码模块 ID 与设备证书的对应关系作管理</li>
+<li>对所有接入的 FDWSF 进行单向或双向设备身份认证</li>
+<li>平台互联互通时应进行管理平台间的双向身份认证</li>
+</ul>
+
+<h2 id="设备接入认证">设备接入认证</h2>
+
+<ul>
+<li>平台需要:
+
+<ul>
+<li>解析 FDWSF 支持的算法</li>
+<li>生成随机数的算法</li>
+<li>校验签名的时效性</li>
+<li>获取 FDWSF 的公钥</li>
+<li>获取管理平台的私钥</li>
+<li>可设置 Date 比对有效时间范围</li>
+</ul></li>
+</ul>
+
+<h2 id="信令">信令</h2>
+
+<ul>
+<li>除注册信令, 其他信令作摘要</li>
+<li>增加设备控制请求: 前端签名控制、前端加密控制, 都是有应答的请求</li>
+<li>增加通知信令: FDWSF 的 VKEK 改变时, SIP 服务器通知媒体流接收者新的 VKEK 密文和版本号</li>
+<li>第三方呼叫控制中, 媒体流接收者需要在 Invite 请求中添加 Monitor-User-Identity 表明用户身份</li>
+<li>在 Invite 的回复中, SIP 服务器在 SDP 中添加媒体流发送者的的 VKEK 密文和版本号</li>
+<li>导出加密视频: 解密视频数据, 生成新的 VEK 进行加密, 保存 VETK 和播放权限到安全芯片</li>
+</ul>
+
+<h2 id="运算">运算</h2>
+
+<ul>
+<li>算法包括非对称算法、对称算法、杂凑算法和随机数生成算法</li>
+<li>参考<a href="./sip_algorithm.md">算法在国标中的应用</a></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>算法</th>
+<th>国标应用</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>非对称密码算法</td>
+<td>SM2</td>
+<td>用于用户身份认证、数字签名、密钥协商</td>
+<td>密钥 256 比特</td>
+</tr>
+
+<tr>
+<td>对称密码算法</td>
+<td>SM1、SM4_OFB</td>
+<td>用于视频数据的加密保护</td>
+<td>SM4 密钥 128 比特</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td>SM4_ECB</td>
+<td>用于密钥协商数据的加密保护</td>
+<td>SM4 密钥 128 比特</td>
+</tr>
+
+<tr>
+<td>密码杂凑算法</td>
+<td>SM3</td>
+<td>用于完整性校验</td>
+<td>输出 256 比特</td>
+</tr>
+
+<tr>
+<td>随机数生成算法</td>
+<td></td>
+<td>生成随机数，<strong>应能通过 GM/T 0005-2012 中规定的方法进行检测</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>VEK 是 128 比特</li>
+<li>IV (采用 OFB 模式) 是 128 比特</li>
+</ul>
+
+<h3 id="密钥种类">密钥种类</h3>
+
+<ul>
+<li>具有安全功能的前端设备、用户终端、中心信令控制服务器、路由网关、媒体服务器都持有各自的: 非对称密钥和对称密钥
+
+<ul>
+<li>非对称密钥</li>
+<li>管理平台内功能实体的签名公私钥和加密公私钥</li>
+<li>FDWSF 的签名公私钥</li>
+<li>具有安全功能的用户终端签名公私钥</li>
+<li>对称密钥：视频加密密钥、视频密钥加密密钥、视频主密钥</li>
+</ul></li>
+</ul>
+
+<p>| 密钥名称 | 密钥简称 | 算法 | 备注 |
+  | &mdash; | &mdash; | &mdash; | &mdash; |
+  | 视频加密密钥 | VEK | SM4 | 加密视频流 |
+  | 视频密钥加密密钥 | VKEK | SM4 | 加密保护 VEK |
+  | 视频主密钥 | VEMK | SM4 | 分散得到 VKEK |</p>
+
+<h3 id="数字证书类型">数字证书类型</h3>
+
+<ul>
+<li>基于非对称密码算法</li>
+<li>包括用户证书、前端设备证书、服务器设备证书和管理平台证书</li>
+<li>支持 GM/T 0015-2012 基于 SM2 密码算法的数字证书格式规范</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用途</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>签名密钥</td>
+<td>签名密钥为 SM2 非对称密钥对中的私钥，主要用于数据签名</td>
+<td>系统内所有安全实体均拥有自己的签名密钥，且由自身的密码设备生成该密钥</td>
+</tr>
+
+<tr>
+<td>加密密钥</td>
+<td>加密密钥为 SM2 非对称密钥对中的公钥，主要用于对数据进行加密</td>
+<td>仅服务器实体具有。由密钥管理中心产生并负责安全管理</td>
+</tr>
+
+<tr>
+<td>签名证书</td>
+<td>由 CA 颁发给申请实体，内含申请实体的公钥和申请信息。签名证书主要用于对申请实体的签名进行验证</td>
+<td>系统内所有安全实体均拥有自己的签名证书</td>
+</tr>
+
+<tr>
+<td>加密证书</td>
+<td>由 CA 颁发给申请实体，内含 CA 分配给申请实体的公钥、私钥和申请信息。外部实体使用申请实体加密证书中的公钥加密数据信息，申请实体利用加密证书中的私钥解密，从而做到加密通讯</td>
+<td>仅服务器实体具有</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>签名证书和加密证书一起保存在用户的证书载体中</li>
+</ul>
+
+<h3 id="sip-服务器认证-fdwsf-的单向身份认证">SIP 服务器认证 FDWSF 的单向身份认证</h3>
+
+<ul>
+<li>FDWSF 收到 401, 发送请求: 使用 FDWSF 的私钥对 (R2 + R1 + SIP_Server_ID) 做签名运算
+
+<ul>
+<li>R2: FDWSF 产生的随机数</li>
+<li>R1: 第一次 register, SIP 服务器在 401 返回的随机数</li>
+<li>SIP_Server_ID: SIP 服务器的设备 ID</li>
+<li>签名: SM2 椭圆曲线密码算法</li>
+</ul></li>
+<li>管理平台回复:
+
+<ul>
+<li>使用 FDWSF 证书校验签名, 使用 FDWSF 公钥解密, 验证各个参数</li>
+<li>使用 FDWSF 的公钥对 VKEK 加密经 Base64 编码后得到 crypt_key</li>
+<li>加密: SM4 分组密码算法 ECB 模式</li>
+</ul></li>
+</ul>
+
+<h3 id="sip-服务器与-fdwsf-的双向身份认证">SIP 服务器与 FDWSF 的双向身份认证</h3>
+
+<ul>
+<li>FDWSF 收到 401, 请求: 同上</li>
+<li>管理平台回复:同上
+
+<ul>
+<li>用管理平台私钥对 (R1 + R2 + device_id + crypt_key) 做签名运算</li>
+<li>R1: 第一次 register, SIP 服务器在 401 返回的随机数</li>
+<li>R2: FDWSF 产生的随机数</li>
+<li>device_id: FDWSF 的 ID</li>
+<li>签名: SM2 椭圆曲线密码算法</li>
+</ul></li>
+<li>FDWSF 收到管理平台 200 回复
+
+<ul>
+<li>用 SIP 服务器证书校验签名, 使用管理平台公钥解密, 验证各个参数</li>
+<li>用 FDWSF 私钥解密 crypt_key, 获得 VKEK 的值</li>
+</ul></li>
+</ul>
+
+<h3 id="管理平台间认证-网关-1-向网关-2-发起认证">管理平台间认证(网关 1 向网关 2 发起认证)</h3>
+
+<ul>
+<li>网关 1 收到 401, 发送请求: 使用网关 1 的私钥对 (R2 + R1 + 网关_2_ID) 做签名运算
+
+<ul>
+<li>R2: 网关 1 产生的随机数</li>
+<li>R1: 第一次 register, 网关 2 在 401 返回的随机数</li>
+<li>网关_2_ID: 网关 2 的 ID</li>
+<li>签名: SM2 椭圆曲线密码算法</li>
+</ul></li>
+<li>网关 2 回复:
+
+<ul>
+<li>使用网关 1 的公钥对 VKEK 加密经 Base64 编码后得到 crypt_key_1</li>
+<li>使用网关 1 的公钥对 VEMK 和 VEMK 版本号加密经 Base64 编码后得到 crypt_key_2</li>
+<li>加密: SM4 分组密码算法 ECB 模式</li>
+<li>用网关 2 私钥对 (R1 + R2 + 网关_1_ID + crypt_key_1 + crypt_key_2) 做签名运算</li>
+<li>R1: 第一次 register, 网关 2 在 401 返回的随机数</li>
+<li>R2: 网关 1 产生的随机数</li>
+<li>网关_1_ID: 网关 1 的 ID</li>
+<li>签名: SM2 椭圆曲线密码算法</li>
+</ul></li>
+<li>网关 1 收到 200 回复
+
+<ul>
+<li>用网关 2 证书校验签名, 使用网关 2 公钥解密, 验证各个参数</li>
+<li>用网关 1 私钥解密 crypt_key_1, 获得 VKEK 的值</li>
+<li>用网关 1 私钥解密 crypt_key_2, 获得 VEMK 和 VEMK 版本号</li>
+</ul></li>
+</ul>
+
+<h3 id="控制信令认证">控制信令认证</h3>
+
+<ul>
+<li>对注册信令以外的消息作带密钥的杂凑</li>
+<li>发起消息之前计算 nonce
+
+<ul>
+<li>对 (METHOD + From + To + CallID + Date + VKEK + 消息体) 做杂凑运算经 Base64 编码得到的值</li>
+</ul></li>
+<li>收到消息之后计算并校验摘要
+
+<ul>
+<li>对 (METHOD + From + To + CallID + Date + VKEK + 消息体) 做杂凑运算经 Base64 编码得到的值</li>
+<li>对比收到的 nonce 和计算的结果</li>
+</ul></li>
+</ul>
+
+<h2 id="密钥与证书管理">密钥与证书管理</h2>
+
+<ul>
+<li>FDWSF持有：
+
+<ul>
+<li>签名私钥(SM2)</li>
+<li>加密私钥(SM4_ECB)</li>
+<li>对称密码，和加密公钥相同</li>
+<li>管理平台签名证书(包含管理平台签名公钥)</li>
+<li>管理平台加密证书(包含管理平台加密公钥)</li>
+</ul></li>
+<li>管理平台持有：
+
+<ul>
+<li>签名私钥(SM2)</li>
+<li>加密私钥(SM4_ECB)</li>
+<li>对称密码，和加密公钥相同</li>
+<li>前端设备签名证书(包含设备签名公钥)</li>
+<li>前端设备加密证书(包含设备加密公钥)</li>
+</ul></li>
+</ul>
+
+<h3 id="新增协议获取密钥与证书">新增协议获取密钥与证书</h3>
+
+<ul>
+<li>请求签名公私钥(SM2)
+
+<ul>
+<li><code>GetSM2SignKeyPair(std::string &amp;pubKey, std:;string &amp;priKey);</code></li>
+</ul></li>
+<li>请求签名证书(SM2)
+
+<ul>
+<li><code>GetSM2SignCert(std::string &amp;pubKey, std::string &amp;cert);</code></li>
+</ul></li>
+<li>请求加密公私钥(对称加密 SM4)
+
+<ul>
+<li><code>GetSymmCipherKeyPair(std::string &amp;key);</code></li>
+</ul></li>
+<li>请求加密证书(对称加密 SM4)
+
+<ul>
+<li><code>GetSymmCipherCert(std::string &amp;key, std::string &amp;cert);</code></li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sip/">sip</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/sip/gb35114/&amp;text=%e7%a0%94%e8%af%bb%20GB35114" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/sip/gb35114/&amp;t=%e7%a0%94%e8%af%bb%20GB35114" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e7%a0%94%e8%af%bb%20GB35114&amp;body=https://xueqing.github.io/blog/sip/gb35114/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/sip/gb35114/&amp;title=%e7%a0%94%e8%af%bb%20GB35114" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e7%a0%94%e8%af%bb%20GB35114%20https://xueqing.github.io/blog/sip/gb35114/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/sip/gb35114/&amp;title=%e7%a0%94%e8%af%bb%20GB35114" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/sip/authentication_authorization/">Authentication vs Authorization</a></li>
+      
+      <li><a href="/blog/sip/algo/sip_algorithm/">SIP 相关算法总结</a></li>
+      
+      <li><a href="/blog/sip/algo/sm2/">SM2</a></li>
+      
+      <li><a href="/blog/sip/algo/sm3/">SM3 密码杂凑算法</a></li>
+      
+      <li><a href="/blog/sip/algo/sm4/">SM4 分组密码算法</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

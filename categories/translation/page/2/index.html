@@ -353,91 +353,91 @@
   
   
   <div>
-    <h2><a href="/translation/agile/tutorial/5-definition-of-done/">5 完成标准</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/4-object-oriented-paradigm/">4 面向对象泛型</a></h2>
     <div class="article-style">
       
-      5.1 用户故事 5.2 迭代 5.3 发布 5.1 用户故事 一个用户故事是由用户几句日常语言表叔的需求，应该在一个迭代中完成 用户故事完成时 检查了所有相关代码 通过所有单元
+      4 面向对象泛型 4.1 面向对象泛型介绍 4.2 面向对象分析 4.3 面向对象设计 4.1 面向对象泛型介绍 面向对象系统的基础概念和术语包括 对象：在面向对象环境中，对象是
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/agile/tutorial/6-release-planning/">6 发布计划</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/5-data-flow-architecture/">5 数据流结构</a></h2>
     <div class="article-style">
       
-      6.1 参与者 6.2 计划的先决条件- 6.3 需要的材料 6.4 计划数据 6.5 输出 6.6 日程 发布计划的目的是创建一个计划，来增量交付产品。每 2~3 个月做一次。 6.1 参与者 流程管理员
+      模型之间的执行有三种类型 批量顺序 数据流携带批量的数据作为一个整体，从一个子系统到另外一个子系统 模块之间的通信可通过临时文件执行，并由后续的子
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/agile/tutorial/7-iteration-planning/">7 迭代计划</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/6-data-centered-architecture/">6 以数据为中心的架构</a></h2>
     <div class="article-style">
       
-      7.1 参与者 7.2 计划的先决条件 7.3 计划流程 7.4 速度计算 7.5 任务容量 7.6 计划步骤 迭代计划的目的是为了完成优先级高的产品需求列表项。承诺是基于迭代时间和团队速
+      组件包括 中心数据结构/数据存储器/数据仓库：负责提供长久的数据存储，表示当前的状态 数据访问器/一系列独立的组件：操作中心数据结构存储，执行计
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/agile/tutorial/8-product-backlog/">8 产品需求列表</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/7-hierarchical-architecture/">7 层次化架构</a></h2>
     <div class="article-style">
       
-      8.1 产品需求列表的重要性 8.2 产品需求列表的特点 一个产品需求列表是将要做的条目的列表。条目具有特性描述，被排好序 在理想的场景中，条目应划分成用户故
+      7.1 主子例程架构 7.2 主从式架构 7.3 虚拟机架构 7.4 分层式架构 将整个系统视为层次结构，即将软件系统分为不同层次的逻辑模块或子系统 分类：主-子例程、主从式
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/agile/tutorial/9-useful-terms/">9 有用的术语</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/8-interaction-oriented-architecture/">8 面向交互的架构</a></h2>
     <div class="article-style">
       
-      验收标准 Acceptance Criteria：由产品负责人或客户设置的条件，为了验收一个特性时有效的且和他们的需求一致 列表修整 Backlog Grooming：一个持续的过
+      8.1 MVC 8.2 PAC 目的：将数据层、业务数据处理和用户操作分离 包括三个部分： 数据模块：提供数据抽象和业务逻辑 控制模块：识别控制流和系统配置行为 视图展示模
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/equivalent_binary_trees/">Equivalent Binary Trees</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/9-distributed-architecture/">9 分布式架构</a></h2>
     <div class="article-style">
       
-      /* Exercise: Equivalent Binary Trees 1. Implement the Walk function. 2. Test the Walk function. The function tree.New(k) constructs a randomly-structured (but always sorted) binary tree holding the values k, 2k, 3k, ..., 10k. Create a new channel ch and kick off the walker: go Walk(tree.New(1), ch) Then read and print 10 values from the channel. It should be the numbers 1, 2, 3, ..., 10. 3. Implement the Same function using Walk to determine whether t1 and t2 store the same values.
+      9.1 客户端服务端架构 9.2 多层架构 9.3 代理(Broker)架构 9.4 面向服务的架构 中间件是分布式架构的基础结构。如图 分布式架构侧重于透明性、可靠性、可用
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/errors/">Errors</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/10-component-based-architecture/">10 基于组件的架构</a></h2>
     <div class="article-style">
       
-      /* Exercise: Errors Copy your Sqrt function from the earlier exercise and modify it to return an error value. Sqrt should return a non-nil error value when given a negative number, as it doesn't support complex numbers. Create a new type type ErrNegativeSqrt float64 and make it an error by giving it a func (e ErrNegativeSqrt) Error() string method such that ErrNegativeSqrt(-2).Error() returns &quot;cannot Sqrt negative number: -2&quot;. Note: A
+      目标：确保组件复用性 致力于分解设计成单个功能或逻辑组件，表示定义良好的通信接口，包括方法、时间和属性 提高更高级别的抽象，将问题分解成子问题，
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/hls/event_playlist_construction/">Event playlist 构造</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/11-user-interface/">11 用户界面</a></h2>
     <div class="article-style">
       
-      原文 概述 示例 EXTM3U EXT-X-PLAYLIST-TYPE EXT-X-TARGETDURATION EXT-X-VERSION EXT-X-MEDIA-SEQUENCE EXTINF 更新 playlist 文件 概述 通过 EXT-X-PLAYLIST-TYPE 标记的值设为 EVENT 指定一个 event playlist。它起初没有 EXT-X-ENDLIST 标签，表示当新的媒体文件可访问时将会被加到
+      图形化用户界面，也叫 WIMP 界面。因为使用了 window：窗口，屏幕上的一个矩形区域 icon：图标，一个图片或符号用于表示软件应用或硬件设备 men
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/gotour/fibonacci_closure/">Fibonacci closure</a></h2>
+    <h2><a href="/translation/software_architecture_tutorial/12-architecture-techniques/">12 架构技术</a></h2>
     <div class="article-style">
       
-      /* Exercise: Fibonacci closure Let's have some fun with functions. Implement a fibonacci function that returns a function (a closure) that returns successive fibonacci numbers (0, 1, 1, 2, 3, 5, ...). */ package main import &quot;fmt&quot; func fibonacci() func() int { before, val := 0, 1 return func() int { ret := before before, val = val, before + val return ret } } func main() { f := fibonacci() for i := 0; i &lt; 10; i++ { fmt.
+      迭代增量式方法：通过一次或多次重复生成候选的解决方案。分为 5 步 确认架构目标：确认一开始的架构目标，确认架构消费者的目标，确认限制 关键情节 一个
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/translation/go-doc/golangpkg/fmt/">fmt 包</a></h2>
+    <h2><a href="/translation/agile/tutorial/1-primer/">1 入门</a></h2>
     <div class="article-style">
       
-      参考 Golang 官网文档 学习。 导入语句：import &quot;fmt&quot; 概述 fmt 包用类似于 C 的 printf 和 scanf 的函数实现了格式化的 I/O。格式 “verbs” 衍生自 C 但是更简单。 打印
+      1.1 敏捷中的角色 1.1.1 Scrum Master 流程管理员 1.1.2 Product Owner 产品负责人 1.2 跨职能团队 1.3 敏捷团队如何计划工作 1.4 用户故事 user story 1.4.1 用户故事和任务的关系 1.5 故事何时完成 1.5.1 验收标准
       
     </div>
   </div>

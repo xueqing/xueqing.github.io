@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="6 体系结构设计 6.1 体系结构设计决策 6.2 体系结构视图 6.3 体系结构模式 6.4 应用体系结构 必要性：开发过程的早期应当涉及建立整体的系统体系结构 体系结构的增量">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/">
+  <meta property="og:title" content="6 体系结构设计 | kiki">
+  <meta property="og:description" content="6 体系结构设计 6.1 体系结构设计决策 6.2 体系结构视图 6.3 体系结构模式 6.4 应用体系结构 必要性：开发过程的早期应当涉及建立整体的系统体系结构 体系结构的增量"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>6 体系结构设计 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>6 体系结构设计</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><p><a href="#6-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1">6 体系结构设计</a></p>
+
+<ul>
+<li><a href="#61-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%86%B3%E7%AD%96">6.1 体系结构设计决策</a></li>
+<li><a href="#62-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%A7%86%E5%9B%BE">6.2 体系结构视图</a></li>
+<li><a href="#63-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F">6.3 体系结构模式</a></li>
+<li><a href="#64-%E5%BA%94%E7%94%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84">6.4 应用体系结构</a></li>
+</ul></li>
+
+<li><p>必要性：开发过程的早期应当涉及建立整体的系统体系结构</p>
+
+<ul>
+<li>体系结构的增量式开发并不总是成功的</li>
+<li>重构一个系统体系结构可能是非常昂贵的</li>
+</ul></li>
+
+<li><p>方块图：系统体系结构经常用方块图建模</p>
+
+<ul>
+<li>方块：代表一个组件</li>
+<li>方块中的方块：表示所代表的组件又被分解成一些子组件</li>
+<li>箭头：表示所示方向有数据和控制信号从一个组件流到另一个组件</li>
+</ul></li>
+</ul>
+
+<h2 id="6-1-体系结构设计决策">6.1 体系结构设计决策</h2>
+
+<p>非功能性系统需求主要有</p>
+
+<ol>
+<li>性能：定位组件的关键操作，部署到同一个平台，减少通信次数</li>
+<li>信息安全性：采用分层结构，重要资源放在内层，每层采用严格的信息安全有效性验证</li>
+<li>安全性：安全相关的操作集中在一个或少数几个组件，降低成本和减少安全有效性验证</li>
+<li>可用性：采用冗余组件以便更新替换和更新组件</li>
+<li>可维护性：使用小粒度的自包含组件以便于更换。分离数据的生产者和消费者，避免数据共享</li>
+</ol>
+
+<h2 id="6-2-体系结构视图">6.2 体系结构视图</h2>
+
+<ul>
+<li>4+1 视图：
+
+<ul>
+<li>逻辑视图：显示系统中对象和对象类的抽象，将系统需求和实体关联</li>
+<li>进程视图：显示运行时系统如何组织为一组交互的进程。对非功能系统特征的判断很有效</li>
+<li>开发视图：显示软件如何为了开发而被分解，即将软件分解成可由单独的开发人员或开发团队实现的组件。对软件管理者和程序员有用</li>
+<li>物理视图：显示了系统硬件和软件组件如何分布在处理器上。对系统工程师规划系统部署有用</li>
+<li>概念视图：系统的抽象视图，可作为把高层次需求分解为详细描述的基础</li>
+</ul></li>
+<li>UML：在详细地文档化一个体系结构或使用模型驱动开发时使用</li>
+<li>ADL：基本要素是组件和连接器，为特定领域涉及，或许可作为模型驱动开发的基础</li>
+</ul>
+
+<h2 id="6-3-体系结构模式">6.3 体系结构模式</h2>
+
+<ul>
+<li>模式的思想：作为一种表示、共享和复用软件系统知识的方法</li>
+</ul>
+
+<p>名称 | 描述 | 实例 | 使用时机 | 优点 | 缺点
+&mdash; | &mdash; | &mdash; | &mdash; | &mdash; | &mdash; | &mdash;
+分层体系结构 | 将系统组织成分层结构，每层包含一组相关功能。每层提供服务给紧邻的上一层，因此最底层有可能是整个系统核心服务 | 存在于不同图书馆的共享版权文档的系统分层模型 | 在已有系统的基础上构建新设施使用；开发团队是分散的小团队，每个小团队负责一层功能；系统存在多层信息安全性需求 | 允许在接口不变时更换整层；每层可提供冗余服务以增加系统可靠性 | 很难分离各层，高层可能必须与低层交互；服务在每层被处理会降低性能
+容器体系结构 | 系统所有数据在一个中央容器中管理，可被所有系统组件访问；组件不能直接交互，只通过容器交互 | 指挥和控制系统、CAD 系统和软件的交互开发环境 | 系统生成的大量数据需要持久保存；数据驱动系统中，每当容器中收入数据时触发一个工作或工具 | 组件是独立的，无需知道其他组件的存在；一个组件的变更可传播到所有的组件；所有数据得到一致的管理，因为数据存在同一个地方 | 容器是单点故障，容器会影响整个系统；所有通过容器进行通信会低效；容器分布到多个计算机会困难
+客户机-服务器体系结构 | 系统功能以服务的形态存在，每个服务来自某个单独的服务器。客户机是使用服务和访问服务器的用户 | 电影和视频资料库 | 需要从很多地方访问共享数据；服务器可以复制，适用于系统负载经常变化 | 服务器可分布到网络上。一般性的功能可被所有客户机使用，但不需要被所有服务实现 | 每个服务是单点故障，不能阻止拒绝服务供给或服务器失败；依赖于网络和系统导致性能无法预知；服务器属于不同的机构时不易管理
+管道和过滤器体系结构 | 每个处理组件(过滤器)是分类的，执行某个类型的数据转换。数据流从一个组件流向另一个组件 | 票据处理系统 | 数据处理应用(批处理和事务处理)，一些不同的阶段处理输入数据，并产生响应的输出 | 易于理解并支持变换的复用；工作流风格与很多业务处理体系结构很匹配；通过变换的方式进行进化；可实现为顺序或并发系统 | 通信变换期间所传输的数据格式必须协调好；每个变换必须解析它的输入并写成约定的格式输出；增加了系统负荷，因为不能复用使用不兼容数据结构的函数变换</p>
+
+<h2 id="6-4-应用体系结构">6.4 应用体系结构</h2>
+
+<p>常见的应用类型的体系结构</p>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+<th>场景</th>
+<th>适用的体系结构</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>事务处理应用</td>
+<td>以数据库为中心，处理来自用户对信息的请求并更新数据库的数据，都是交互式系统</td>
+<td>交互式银行系统、电子商务系统、信息系统和预订系统</td>
+<td>管道和过滤器</td>
+</tr>
+
+<tr>
+<td>语言处理系统</td>
+<td>用户意图用形式化语言来表达的系统，语言处理系统将这种语言处理成一种内部格式，然后解释这种内部表示</td>
+<td>编译器</td>
+<td>容器和管道过滤器的复合模型</td>
+</tr>
+
+<tr>
+<td>信息系统</td>
+<td>所有涉及与共享数据库交互的系统都可看成基于事务的信息系统。信息系统允许对一个大信息库进行适当的访问</td>
+<td>基于 web 的系统</td>
+<td>分层</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sa/">sa</a>
+  
+  <a class="badge badge-light" href="/tags/engineer/">engineer</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/&amp;text=6%20%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/&amp;t=6%20%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=6%20%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1&amp;body=https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/&amp;title=6%20%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=6%20%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1%20https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/software_architecture/software_engineering/6-architectural-design/&amp;title=6%20%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/software_architecture/software_engineering/1-introduction/">1 概述</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/2-software-process/">2 软件过程</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/22-project-management/">22 项目管理</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/23-project-planning/">23 项目规划</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/24-quality-management/">24 质量管理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

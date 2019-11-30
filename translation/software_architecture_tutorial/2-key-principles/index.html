@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="2.1 架构风格 2.2 公共的架构设计 2.3 架构类型 2.4 架构设计流程 2.5 重要的架构原则 2.6 重要的设计原则 2.1 架构风格 架构风格(architectural style)">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/">
+  <meta property="og:title" content="2 重要原则 | kiki">
+  <meta property="og:description" content="2.1 架构风格 2.2 公共的架构设计 2.3 架构类型 2.4 架构设计流程 2.5 重要的架构原则 2.6 重要的设计原则 2.1 架构风格 架构风格(architectural style)"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>2 重要原则 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>2 重要原则</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/translation/">translation</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#21-%e6%9e%b6%e6%9e%84%e9%a3%8e%e6%a0%bc">2.1 架构风格</a></li>
+<li><a href="#22-%e5%85%ac%e5%85%b1%e7%9a%84%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1">2.2 公共的架构设计</a></li>
+<li><a href="#23-%e6%9e%b6%e6%9e%84%e7%b1%bb%e5%9e%8b">2.3 架构类型</a></li>
+<li><a href="#24-%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1%e6%b5%81%e7%a8%8b">2.4 架构设计流程</a></li>
+<li><a href="#25-%e9%87%8d%e8%a6%81%e7%9a%84%e6%9e%b6%e6%9e%84%e5%8e%9f%e5%88%99">2.5 重要的架构原则</a></li>
+<li><a href="#26-%e9%87%8d%e8%a6%81%e7%9a%84%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99">2.6 重要的设计原则</a></li>
+</ul>
+
+<h2 id="2-1-架构风格">2.1 架构风格</h2>
+
+<ul>
+<li>架构风格(architectural style)，也叫架构模式(architectural pattern)，为一组系统定义了抽象的框架</li>
+<li>架构风格内容包括
+
+<ul>
+<li>提供组件和连接者的词汇表，以及它们如何联合的规则</li>
+<li>通过给出常见问题的解决方案改善划分，允许设计重用</li>
+<li>描述一种特别的方式来配置一组组件(一个具有定义良好的接口、可重用、可替换的模块)和连接者(模块之间的通信链接)</li>
+</ul></li>
+<li>每种风格描述了一个系统分类，包括
+
+<ul>
+<li>一组组件类型，用来执行系统要求的功能</li>
+<li>一组连接者(子例程调用，远程过程调用，数据流和套接字)使得不同的组件通信、协调、合作</li>
+<li>语义限制，定义组件如何整合成系统</li>
+<li>组件的布局拓扑图，表明它们运行时的相互关系</li>
+</ul></li>
+</ul>
+
+<h2 id="2-2-公共的架构设计">2.2 公共的架构设计</h2>
+
+<p>架构风格根据主要的聚焦点可以分为</p>
+
+<ul>
+<li>通信
+
+<ul>
+<li>消息总线：规定软件系统的使用，通过一个或多个通信通道可以接受和发送消息</li>
+<li>服务导向架构：定义应用服务使用约定和消息暴露和消费功能</li>
+</ul></li>
+<li>部署
+
+<ul>
+<li>客户端/服务端：将系统分为客户端和服务端，客户端向服务端发送请求</li>
+<li>3/N 层式：将功能分为独立的部分，每个部分成为一层，分布在不同的物理机上</li>
+</ul></li>
+<li>领域
+
+<ul>
+<li>领域驱动设计：聚焦于模块化一个业务领域，基于该领域的实体定义领域目标</li>
+</ul></li>
+<li>结构
+
+<ul>
+<li>基于组件：将应用设计成可复用的功能或逻辑组件，组件具有定义良好的通信接口</li>
+<li>分层：将应用的问题分成重叠的组(层)</li>
+<li>面向对象：基于应用或系统的责任分成对象，每个对象包含数据以及和该对象有关的行为</li>
+</ul></li>
+</ul>
+
+<h2 id="2-3-架构类型">2.3 架构类型</h2>
+
+<p>从企业的角度来看有一下几种架构</p>
+
+<ul>
+<li>业务架构：定义企业内业务、管理、组织和主要业务流程的策略，集中于业务流程的分析和设计</li>
+<li>应用(软件)架构：作为单个应用系统的蓝图,系统的相互作用和系统对组织业务流程的的关系</li>
+<li>信息架构：定义逻辑和物理的数据资源和数据管理资源</li>
+<li>信息技术(IT)架构：定义硬件和软件的基石，它们组成了组织的整个信息系统</li>
+</ul>
+
+<h2 id="2-4-架构设计流程">2.4 架构设计流程</h2>
+
+<ul>
+<li>架构设计流程致力于分解系统为不同的组件，以及组件直接相互作用以满足功能性和非功能性的需求</li>
+<li>架构设计的输入是
+
+<ul>
+<li>通过分析人物得到的需求</li>
+<li>硬件架构(系统架构配置硬件架构，软件架构反过来为系统架构提供需求)</li>
+</ul></li>
+<li>架构设计的输出是一个架构描述</li>
+<li>架构设计流程包括
+
+<ul>
+<li>理解问题：许多软件项目和产品是失败的，因为它们没有真正解决一个有效的商业问题，或者说对于投资没有一个可识别的回报</li>
+<li>确认设计元素和它们的关系</li>
+<li>为定义系统的边界上下文设定一个基线</li>
+<li>基于功能将系统分解成主要的组件。分解可以模型化，使用设计结构矩阵(DSM, Design structure matrix)，它展示了设计元素之间的依赖，不指定元素的粒度</li>
+<li>评估架构设计</li>
+<li>评估每个质量参数收集定量的数据和测量，从而评估设计</li>
+<li>如果满足每个质量参数的标准，则软件设计流程完成</li>
+<li>否则进入下个阶段，即转换架构设计</li>
+<li>转换架构设计</li>
+<li>修改架构直到满足质量参数需求</li>
+</ul></li>
+</ul>
+
+<h2 id="2-5-重要的架构原则">2.5 重要的架构原则</h2>
+
+<ul>
+<li>为了改变而构建，而不是为了持续而构建：随着时间发展应用可能需要改变来满足新需求或挑战</li>
+<li>降低风险和模型以便于分析：使用决策工具，可视化、模型化系统来捕获需求，设计决策</li>
+<li>使用模型和可视化作为通信和协作工具：和利益共享者高效的沟通和共享设计</li>
+<li>使用增量迭代的方法：以基本架构开始，然后通过迭代测试逐步形成候选的架构，改善架构</li>
+</ul>
+
+<h2 id="2-6-重要的设计原则">2.6 重要的设计原则</h2>
+
+<ul>
+<li>关注点分类：确保组件功能之间没有重叠；高内聚，低耦合</li>
+<li>单一责任原则：系统的每个模块有专门的功能</li>
+<li>最少知识原则：每个组件或对象不应知道其他组件的内部细节，可以避免依赖性，提高可维护性</li>
+<li>最小化提前大型设计：当应用需求不明确时，尽量减少大型设计。如果可能需要修改需求，那么避免为整个系统添加大的设计
+
+<ul>
+<li>BDUF(Big Design Up front)，一种软件开发方法，即程序实现开始之前，程序设计时完全的、完美的、常应用域瀑布模型</li>
+</ul></li>
+<li>不要重复功能：重复功能的代码不易修改，清晰度降低，且增加了潜在的不一致性</li>
+<li>重用功能时使用复合而不是继承：继承增加了父类和子类的依赖性，不利于单独使用子类</li>
+<li>确定组件并且整合到逻辑层：将某个关注点相关的组件组合到一个逻辑层</li>
+<li>定义层之间的通信协议</li>
+<li>定义层的数据格式：不同的组件通过数据格式交互，确保层内的数据格式是一样的</li>
+<li>系统服务组件应是抽象的：有关安全性、通信或系统服务(比如日志、分析和配置)的代码再各个组件应该是抽象的。不要将其与业务逻辑混合</li>
+<li>设计异常和异常处理机制：提前定义异常，帮助组件管理错误和不希望的情形</li>
+<li>命名规范：提前定义命名规范。以便用户理解系统，也便于团队成员检验其他人的代码，增强可维护性</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sa/">sa</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/&amp;text=2%20%e9%87%8d%e8%a6%81%e5%8e%9f%e5%88%99" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/&amp;t=2%20%e9%87%8d%e8%a6%81%e5%8e%9f%e5%88%99" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=2%20%e9%87%8d%e8%a6%81%e5%8e%9f%e5%88%99&amp;body=https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/&amp;title=2%20%e9%87%8d%e8%a6%81%e5%8e%9f%e5%88%99" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=2%20%e9%87%8d%e8%a6%81%e5%8e%9f%e5%88%99%20https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/translation/software_architecture_tutorial/2-key-principles/&amp;title=2%20%e9%87%8d%e8%a6%81%e5%8e%9f%e5%88%99" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/translation/software_architecture_tutorial/1-introduction/">1 介绍</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/1-introduction/">1 概述</a></li>
+      
+      <li><a href="/translation/software_architecture_tutorial/10-component-based-architecture/">10 基于组件的架构</a></li>
+      
+      <li><a href="/translation/software_architecture_tutorial/11-user-interface/">11 用户界面</a></li>
+      
+      <li><a href="/translation/software_architecture_tutorial/12-architecture-techniques/">12 架构技术</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

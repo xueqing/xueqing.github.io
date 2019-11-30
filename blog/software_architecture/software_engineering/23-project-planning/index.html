@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="23.1 软件报价 23.2 计划驱动的开发 23.3 项目进度安排 23.4 敏捷规划 23.5 估算技术 项目计划：在项目开始建立，用于向项目开发团队和客户说明工作如何开展，以及帮助估计">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/">
+  <meta property="og:title" content="23 项目规划 | kiki">
+  <meta property="og:description" content="23.1 软件报价 23.2 计划驱动的开发 23.3 项目进度安排 23.4 敏捷规划 23.5 估算技术 项目计划：在项目开始建立，用于向项目开发团队和客户说明工作如何开展，以及帮助估计"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>23 项目规划 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>23 项目规划</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#231-%e8%bd%af%e4%bb%b6%e6%8a%a5%e4%bb%b7">23.1 软件报价</a></li>
+<li><a href="#232-%e8%ae%a1%e5%88%92%e9%a9%b1%e5%8a%a8%e7%9a%84%e5%bc%80%e5%8f%91">23.2 计划驱动的开发</a></li>
+<li><a href="#233-%e9%a1%b9%e7%9b%ae%e8%bf%9b%e5%ba%a6%e5%ae%89%e6%8e%92">23.3 项目进度安排</a></li>
+<li><a href="#234-%e6%95%8f%e6%8d%b7%e8%a7%84%e5%88%92">23.4 敏捷规划</a></li>
+
+<li><p><a href="#235-%e4%bc%b0%e7%ae%97%e6%8a%80%e6%9c%af">23.5 估算技术</a></p></li>
+
+<li><p>项目计划：在项目开始建立，用于向项目开发团队和客户说明工作如何开展，以及帮助估计项目进展</p></li>
+
+<li><p>软件开发项目总成本包括</p>
+
+<ul>
+<li>工作量成本(支付给软件开发人员的费用)</li>
+<li>包括维护在内的硬件和软件费用</li>
+<li>差旅费和培训费用</li>
+</ul></li>
+
+<li><p>开发过程中，为每个软件版本制定一个非正式的项目计划和工作量成本估计，应该让团队所有成员都参与到规划过程中</p></li>
+</ul>
+
+<h2 id="23-1-软件报价">23.1 软件报价</h2>
+
+<p>影响软件报价的因素</p>
+
+<table>
+<thead>
+<tr>
+<th>因素</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>市场机遇</td>
+<td>开发机构可能为进入一个新的软件市场而提出一个低的报价。在一个项目上的低回报可能会换来今今后更大收益的机会，而且获得的经验可有助于开发新产品</td>
+</tr>
+
+<tr>
+<td>成本估算的不确定性</td>
+<td>如果机构对成本估算不太确定，可能增加应急开支项，使得提出的报价超出了一般收益</td>
+</tr>
+
+<tr>
+<td>合同条款</td>
+<td>客户可能愿意开发者保留对源代码的版权，并在其他项目中使用。这样付出的价钱会比将软件源代码交给客户时少些</td>
+</tr>
+
+<tr>
+<td>需求易变性</td>
+<td>如果需求可能会发生改变，机构会降低它的价格以得到合同，在合同签订后，需求的改变将带来高的要价</td>
+</tr>
+
+<tr>
+<td>财务状况</td>
+<td>处于财务困难中的开发者可能会降低报价来得到一份合同。比正常情况下少赚一些甚至亏一点也比没有项目好。在困难时期现金流比利润更重要</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="23-2-计划驱动的开发">23.2 计划驱动的开发</h2>
+
+<ul>
+<li>计划驱动的开发，或者叫做基于计划的开发，是一种给开发过程制定详细的计划的软件工程方法</li>
+<li>项目计划完整地记录：要完成的工作，谁将执行此项工作，开发进度安排，以及项目的成果是什么</li>
+
+<li><p>计划驱动开发基于工程项目管理技术，可看做管理大型软件开发项目的传统方法</p></li>
+
+<li><p>项目计划书应包括的部分</p></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>引言</td>
+<td>简要论述项目的目标，并列出影响项目管理的种种约束条件，如预算、时间的限制等</td>
+</tr>
+
+<tr>
+<td>项目组织</td>
+<td>阐述开发团队的组织方式、人员构成及其分工</td>
+</tr>
+
+<tr>
+<td>风险分析</td>
+<td>分析项目可能存在的风险，以及这些风险发生的可能性，并提出降低风险的策略</td>
+</tr>
+
+<tr>
+<td>硬件和软件资源需求</td>
+<td>介绍完成开发所需的硬件和支持软件。如果需要购买硬件，应注明估算的价格和交付的时间</td>
+</tr>
+
+<tr>
+<td>工作分解</td>
+<td>把项目分解成一系列的活动，指定项目里程碑和可交付的文档。里程碑是项目的关键阶段，借此可以评估过程，可交付文档是能够交付给客户的工作产品</td>
+</tr>
+
+<tr>
+<td>项目进度安排</td>
+<td>描述项目中各活动之间的依赖关系。到达每个里程碑预期所需的时间以及人员在活动中的分配</td>
+</tr>
+
+<tr>
+<td>监控和报告机制</td>
+<td>说明要提交哪些管理报告、什么时候提交，以及使用什么样的项目监控机制</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>项目辅助计划的例子</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>计划</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>质量计划</td>
+<td>描述在项目中所要使用的质量过程和标准</td>
+</tr>
+
+<tr>
+<td>有效性验证计划</td>
+<td>描述系统有效性验证所采用的方法、资源和进度安排</td>
+</tr>
+
+<tr>
+<td>配置管理计划</td>
+<td>描述所要采用的配置管理过程和结果</td>
+</tr>
+
+<tr>
+<td>维护计划</td>
+<td>预测维护需求、成本以及工作量</td>
+</tr>
+
+<tr>
+<td>员工发展计划</td>
+<td>描述如何发展项目人员的技能和经验</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="23-3-项目进度安排">23.3 项目进度安排</h2>
+
+<ul>
+<li>项目进度安排：决定如何组织工作，将其分割成单独的一个个任务，并且何时以何种方式完成各项任务
+
+<ul>
+<li>估算需要用于完成每个任务的时间、需要的成本以及完成这些既定任务的人员</li>
+<li>估算完成每项任务所需的资源，比如服务器所需磁盘资源、需在专门硬件上占用的时间以及项目人员的差旅费预算</li>
+</ul></li>
+<li>项目启动阶段创建一个初始项目进度安排，在后续的开发规划过程中修改完善
+
+<ul>
+<li>初始进度安排计划如何给项目分配人员，检查项目进展是否符合合同承诺</li>
+<li>计划驱动开发：开始阶段创建完整的进度安排，随着项目进行而修改</li>
+<li>敏捷过程：必须有一个总的进度安排，确定何时完成项目的各个主要阶段。再使用迭代的方法规划各个阶段</li>
+</ul></li>
+<li>注意并行的任务：不同的员工研发不同的不见</li>
+<li>进度安排表示方法
+
+<ul>
+<li>条形图：基于日历时间，表示每项活动的负责人，预计所用时间，以及该项活动预计的开始和结束时间。也叫甘特图</li>
+<li>活动网络图：表示构成项目的不同活动之间的依赖关系</li>
+</ul></li>
+<li>项目活动是基本的规划单元，包括
+
+<ul>
+<li>以天或者月计算的工期</li>
+<li>工作量估计，反映完成工作所需的人日或人月数</li>
+<li>活动完成的期限</li>
+<li>定义好的终点，表示完成一项活动的明确结果。可以是一份文档，举行评审会，或是所有测试的成功完成等</li>
+</ul></li>
+</ul>
+
+<h2 id="23-4-敏捷规划">23.4 敏捷规划</h2>
+
+<p>极限编程的规划过程</p>
+
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>情节识别</td>
+<td>用户情节反映了系统应包含的特征。项目启动时，开发团队和客户尝试定义一系列情景，使其可以覆盖最终系统的所有功能</td>
+</tr>
+
+<tr>
+<td>初始估计</td>
+<td>项目组阅读并讨论情景，按照实现这些情景所需时间将情形排序。此过程也会将大情景拆分成小情景</td>
+</tr>
+
+<tr>
+<td>版本规划</td>
+<td>包括选择和完善上述情景。这些情景反映出了在系统的发布版本中应实现的功能以及实现这些情景的顺序。然后选择发布日期，检查情景以判断工作量估计是否满足发布日期。不满足的话，增加或删除清单上的一些情景</td>
+</tr>
+
+<tr>
+<td>迭代规划</td>
+<td>迭代开发第一步。选择迭代过程要实现的情景，情景个数反映了交付一次迭代的时间和项目组的进度</td>
+</tr>
+
+<tr>
+<td>任务规划</td>
+<td>迭代开发第二步。是一个更详细的规划阶段，将情景拆分成各个开发任务。每项任务大概是 4-16 小时。列出本次迭代所有的任务，开发者申请自己要完成的任务</td>
+</tr>
+
+<tr>
+<td>迭代完成</td>
+<td>迭代交付日期到达时，即使未实现所有情景，也宣告完成迭代。迭代完成，考虑已实现的情景，增加工作量，重新规划下一个系统版本。即重复迭代规划和任务规划过程</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>注意</strong>
+
+<ul>
+<li>每个开发者根据自己的速度申请任务，申请的任务量不能多于其在规定时间内能完成的任务量</li>
+<li>如果不能按时完成工作，减少工作量，而不是延长进度安排</li>
+</ul></li>
+<li>上述分配任务方法的好处
+
+<ul>
+<li>整个项目组对迭代过程中要完成的任务有一个整体认识。因此他们能够理解项目组其他成员的工作内容已经确定任务依赖关系后应和谁交流</li>
+<li>每个开发者选择要完成的任务，而不是由项目管理者分配任务。这样开发者对自己选择的任务有一种拥有感，可能激发他们更好地完成任务</li>
+</ul></li>
+</ul>
+
+<h2 id="23-5-估算技术">23.5 估算技术</h2>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>基于经验的技术</td>
+<td>使用管理者之前项目和应用领域的经验估算要求的未来工作量，即管理者主观给出所需要的工作量的一个估计</td>
+</tr>
+
+<tr>
+<td>算法成本建模</td>
+<td>使用一个公式方法计算项目的工作量，它基于对产品属性(如规模)和过程特点(如参与员工的经验)的估计</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/sa/">sa</a>
+  
+  <a class="badge badge-light" href="/tags/engineer/">engineer</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/&amp;text=23%20%e9%a1%b9%e7%9b%ae%e8%a7%84%e5%88%92" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/&amp;t=23%20%e9%a1%b9%e7%9b%ae%e8%a7%84%e5%88%92" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=23%20%e9%a1%b9%e7%9b%ae%e8%a7%84%e5%88%92&amp;body=https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/&amp;title=23%20%e9%a1%b9%e7%9b%ae%e8%a7%84%e5%88%92" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=23%20%e9%a1%b9%e7%9b%ae%e8%a7%84%e5%88%92%20https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/software_architecture/software_engineering/23-project-planning/&amp;title=23%20%e9%a1%b9%e7%9b%ae%e8%a7%84%e5%88%92" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/software_architecture/software_engineering/1-introduction/">1 概述</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/2-software-process/">2 软件过程</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/22-project-management/">22 项目管理</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/24-quality-management/">24 质量管理</a></li>
+      
+      <li><a href="/blog/software_architecture/software_engineering/25-configuration-management/">25 配置管理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

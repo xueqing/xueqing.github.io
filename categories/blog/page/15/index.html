@@ -353,91 +353,91 @@
   
   
   <div>
-    <h2><a href="/blog/p2p/dht/">分布式原理</a></h2>
+    <h2><a href="/blog/go/traps/mod_workspace/">module 不要在 vscode 工作区打开工程</a></h2>
     <div class="article-style">
       
-      Bittorrent协议 中心化原理 去中心化原理 DHT/kademlia NAT IPFS/libp2p 去中心化流媒体应用livepeer Bittorrent协议 比特流（BitTorrent）
+      旧行为 vs 基于模块的行为 在 GOPATH 之外工作 VSCode 对模块的支持 保存文件时不再自动导入 相关链接 旧行为 vs 基于模块的行为 模块在 Go1.11 开始，因此按照设计旧行为会默认保
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/docker/python_img/">制作 Python 运行环境镜像</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_mongodb/">mongodb 环境搭建</a></h2>
     <div class="article-style">
       
-      拉取基础镜像 编写 Dockerfile 制作镜像 更新镜像 安装 Sphinx + ReadTheDocs 支持 方法 1：进入镜像内部更新镜像 方法 2：编写新的 Dockerfile 推送镜像 推送到官方仓库 Docker Hub 推送到私有仓库 xxx 拉取
+      mongodb 环境搭建 1 apt 安装 2 命令 2.1 启动 MongoDB 2.2 查看状态 MongoDB 2.3 重新启动 MongoDB 2.4 停止 MongoDB 3 卸载 MongoDB 4 设置开机自启动 5 开启远程访问 6 故障问题 1 apt 安装 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 echo &quot;deb [
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/git/git_fast_import/">制造历史</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_mysql/">mysql</a></h2>
     <div class="article-style">
       
-      git fast-import git fast-export git fast-import git fast-import支持从一个特定格式的文本读入，从头创建 git 历史记录 可用这个命令很快写一个脚本运行一次，一次迁移整个项目 写一
+      1 ubuntu 安装和配置 mysql 2 mysql命令 1 ubuntu 安装和配置 mysql 执行sudo apt-get insall mysql-server mysql-client 修改配置运行远程连接 sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf 注释或删除bind-address = 127.0.0.1 修改数据
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/reentrant/">可重入性</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_nodejs/">Node.js 环境搭建</a></h2>
     <div class="article-style">
       
-      常见的线程不安全函数和对应的 unix 下的线程安全函数 保持跨越多个调用状态的函数 rand，对应 rand_r strtok，对应 strtok_r 返回指向静态变量的指针的函数 as
+      1 版本要求 2 提供以下四种方式安装(PS: 建议第四种方式安装) 2.1 调用官网脚本自动安装 2.2 使用二进制包文件 2.2.1 设置文件路径 2.2.2 建立软连接 2.3 apt 安装 3 查看
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/traps/package_var/">同一包不同源文件变量声明时不要带包名</a></h2>
+    <h2><a href="/blog/o2o/o2o/">O2O</a></h2>
     <div class="article-style">
       
-      同一个包 pkgname 有多个源文件，比如 A.go、B.go。A.go 中声明了变量 var1，B.go 使用此变量直接写 var1，如果使用 pkgname.var1 会报错，找不到定义
+      概念 发展历程 核心技术 应用价值 经营模式 主要难题 盈利模式 平衡模式 概念 O2O(online to offline, 在线离线/线上到线下)，指将线下的商务机会与互联网结合，让互联网称为线
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/coolshell/%E5%A4%9A%E4%BA%9B%E6%97%B6%E9%97%B4%E8%83%BD%E5%B0%91%E5%86%99%E4%BA%9B%E4%BB%A3%E7%A0%81/">多些时间能少写些代码</a></h2>
+    <h2><a href="/blog/ubuntu/openssl_version_mismatch/">OpenSSL 版本不兼容</a></h2>
     <div class="article-style">
       
-      原文 软件的精髓在于设计 时间和空间的取舍、TCP/UDP 通信、同步异步、数据冗余 重要 多和客户讨论需求和未来可能的变化：避免边开发边加需求 调查实
+      # git 命令失败 ssh: /usr/local/lib/libcrypto.so.1.0.0: no version information available (required by ssh) ssh: /usr/local/lib/libcrypto.so.1.0.0: no version information available (required by ssh) OpenSSL version mismatch. Built against 1000207f, you have 1000103f # ssh 可执行文件链接库 ldd /usr/bin/ssh /usr/bin/ssh: /usr/local/lib/libcrypto.so.1.0.0: no version information available (required by /usr/bin/ssh) /usr/bin/ssh: /usr/local/lib/libcrypto.so.1.0.0: no version information available (required by /usr/bin/ssh) linux-vdso.so.1 =&gt; (0x00007fff3fdc1000) libselinux.so.1 =&gt; /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f30e3f81000)
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/p2p/libp2p/">学习 libp2p</a></h2>
+    <h2><a href="/blog/p2p/p2p%E5%8F%8Adht/">P2P 中 DHT 网络介绍</a></h2>
     <div class="article-style">
       
-      介绍 愿景 目标 网络堆栈技术现状分析 客户端-服务端（C/S）模型 按解决方案对网络分类 目前的缺点 要求 匿名传输 多种多路复用（multi-multip
+      分布式哈希表 DHT Kademlia Kademlia: A Peer-to-Peer Information System Based on the XOR Metric 论文阅读 异或度量 节点状态 KAD 协议 路由表 有效的 key re-publishing 优化 DHT 中 KAD 的应用 P2P(peer-to-peer) 技术的应用：文件分享、即时通信、协同处理
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/docker/install/">安装</a></h2>
+    <h2><a href="/blog/shell/perl/perl%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/">perl 脚本解析 xml 文件</a></h2>
     <div class="article-style">
       
-      环境：ubuntu16.04 # 安装 docker sudo apt-get install docker.io # 启动 docker sudo /etc/init.d/docker start # 创建 docker 用户组 sudo groupadd docker # 应用用户 kiki 加入 docker 用户组 sudo usermod -aG docker kiki # 重启 docker 服务 sudo /etc/init.d/docker restart # 切换或者
+      1 使用模块 XML::Simple。XML::Simple 能够解析一个 XML 文件并在以一个 Perl 哈希引用返回数据。在这个哈希中，来自原始 XML 文件的元素作
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_install/">安装 go</a></h2>
+    <h2><a href="/blog/qt/qtcreator/">QtCreator 一些基本的配置参数说明</a></h2>
     <div class="article-style">
       
-      Linux 安装和使用 go 安装 设置工作目录 GOPATH 测试安装 安装其他版本 Windows 安装和使用 go MacOS 安装和使用 go 卸载旧版本 命令 vscode 使用 go 配置代理 Linux 安装和使用 go 安装 下载安装包 选
+      QtCreator pro 文件参数 QtCreator 帮助文档 QtCreator 使用 QtCreator pro 文件参数 参数 含义 TARGET 应用程序名.默认是跟工程文件名一样 (根据不同的平台后缀名会自动添加) TEMPLATE 模板变量指定生成 makefile (app:
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/docker/container/">容器操作</a></h2>
+    <h2><a href="/blog/ubuntu/ubuntu_mq/">RabbitMQ 环境搭建</a></h2>
     <div class="article-style">
       
-      列出容器 连接容器 获取容器日志 列出容器 docker ps [OPTIONS] OPTIONS 说明： -a: 显示所有的容器，包括未运行的 -f: 根据条件过滤显示的内容 &ndash;format: 指定返回值的模板文件 -l: 显示最近创建
+      1 安装依赖 2 安装 RabbitMQ 3 启用 RabbitMQ 管理控制台 3.1 创建用户并设置角色 4 RabbitMQ 服务命令 5 修改服务配置文件 1 安装依赖 # 添加 erlang 源到 apt 仓库 wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb sudo dpkg -i erlang-solutions_1.0_all.deb # 更新安装 sudo apt-get
       
     </div>
   </div>

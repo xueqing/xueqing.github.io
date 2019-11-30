@@ -1192,5 +1192,73 @@ EOF
 </description>
     </item>
     
+    <item>
+      <title>命令行创建文件</title>
+      <link>https://xueqing.github.io/blog/ubuntu/shell_new_file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/ubuntu/shell_new_file/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#cat&#34;&gt;cat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#touch&#34;&gt;touch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a0%87%e5%87%86%e9%87%8d%e5%ae%9a%e5%90%91%e7%ac%a6%e5%8f%b7&#34;&gt;标准重定向符号 &amp;gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#echoprintf&#34;&gt;echo/printf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#nano&#34;&gt;nano&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vivim&#34;&gt;vi/vim&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cat&#34;&gt;cat&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;cat&lt;/code&gt; 可用于创建文件。输入回车后，光标移到到下一行，可以开始输入文本。完成之后使用 Ctrl+D 退出，并返回到提示符&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cat &amp;gt; file_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;cat&lt;/code&gt; 也可以查看文件内容。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cat file_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;touch&#34;&gt;touch&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;touch&lt;/code&gt; 支持一条命令创建多个文件，且不支持立刻输入文本。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;touch file1 file2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;标准重定向符号&#34;&gt;标准重定向符号 &amp;gt;&lt;/h2&gt;
+
+&lt;p&gt;标准重定向符号通常用于重定向一个命令的输出到一个新文件。如果没有前置的命令，命令只创建一个新文件。类似于 &lt;code&gt;touch&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;与 &lt;code&gt;touch&lt;/code&gt; 不同，&lt;code&gt;&amp;gt;&lt;/code&gt; 只能一次创建一个文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&amp;gt; file_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;echo-printf&#34;&gt;echo/printf&lt;/h2&gt;
+
+&lt;p&gt;使用 &lt;code&gt;echo/printf&lt;/code&gt; 命令输入文本到指定文件，文件不存在则会被创建。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;echo &#39;hello&#39; &amp;gt; file1
+printf &amp;quot;world\nI&#39;m kiki&amp;quot; &amp;gt; file2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;nano&#34;&gt;nano&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;nano&lt;/code&gt; 是 GNU 项目的文本编辑器。输入回车之后可以开始输入文本。按照命令提示退出编辑界面。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;nano file_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;vi-vim&#34;&gt;vi/vim&lt;/h2&gt;
+
+&lt;p&gt;使用 &lt;code&gt;vi/vim&lt;/code&gt; 文本编辑器。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;vi file_name
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

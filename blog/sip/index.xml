@@ -1,0 +1,3706 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SIP 信令 | kiki</title>
+    <link>https://xueqing.github.io/blog/sip/</link>
+      <atom:link href="https://xueqing.github.io/blog/sip/index.xml" rel="self" type="application/rss+xml" />
+    <description>SIP 信令</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>SIP 信令</title>
+      <link>https://xueqing.github.io/blog/sip/</link>
+    </image>
+    
+    <item>
+      <title>Authentication vs Authorization</title>
+      <link>https://xueqing.github.io/blog/sip/authentication_authorization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/authentication_authorization/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-authentication-%e8%af%81%e6%98%8e%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81&#34;&gt;1 Authentication 证明，身份验证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-authorization-%e6%8e%88%e6%9d%83&#34;&gt;2 Authorization 授权&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-encryption-%e5%8a%a0%e5%af%86&#34;&gt;3 Encryption 加密&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%e5%8f%82%e8%80%83&#34;&gt;4 参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-authentication-证明-身份验证&#34;&gt;1 Authentication 证明，身份验证&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;服务器使用身份验证：当服务器需要知道谁在访问信息或网站&lt;/li&gt;
+&lt;li&gt;客户端使用身份验证：当客户端需要知道服务器是其所声明的系统&lt;/li&gt;
+&lt;li&gt;在身份验证中，用户或极端及需要向服务器或客户端证明它的身份&lt;/li&gt;
+&lt;li&gt;通常，服务器的身份验证需要用户名和密码。其他的身份验证方式可以通过卡片、视网膜扫描、语音识别、指纹等&lt;/li&gt;
+&lt;li&gt;通常，客户端的身份验证是服务器给客户端一个证书，且证书中第三方可信机构声明服务器是客户端所期望的实体&lt;/li&gt;
+&lt;li&gt;身份认证不判断个人可以做的任务或者个人可以看到的文件。身份认证只是识别和认证个人或系统&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-authorization-授权&#34;&gt;2 Authorization 授权&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;授权是服务器确定客户端是否有权限使用一个资源或访问一个文件的过程&lt;/li&gt;
+&lt;li&gt;授权通常和身份认证一起，以便于服务器识别正在请求访问的客户端身份&lt;/li&gt;
+&lt;li&gt;授权要求的身份认证类型可能不同：某些情况可能需要密码，某些情况可能不需要密码&lt;/li&gt;
+&lt;li&gt;在某些情况下，没有授权：任何用户可以使用一个资源或访问一个文件。网络上大部分网页不要求任何身份认证或授权&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-encryption-加密&#34;&gt;3 Encryption 加密&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;加密包括转换数据的过程，以使得没有解密密钥的人不可读&lt;/li&gt;
+&lt;li&gt;SSH 和 SSL 协议通常用户加密流程&lt;/li&gt;
+&lt;li&gt;SSL 业务中，客户端(浏览器)和服务器(web 服务)之间所有的数据在发送到对方之前都会加密&lt;/li&gt;
+&lt;li&gt;SSH 会话中，客户端和服务器之间的数据都会加密&lt;/li&gt;
+&lt;li&gt;通过加密客户端和服务器之间的交互数据，使得网络传输过程中被拦截的风险降低&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-参考&#34;&gt;4 参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bu.edu/tech/about/security-resources/bestpractice/auth/&#34; target=&#34;_blank&#34;&gt;Understanding Authentication, Authorization, and Encryption&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>rfc2976: The SIP INFO Method</title>
+      <link>https://xueqing.github.io/blog/sip/rfc2976_the_sip_info_method_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/rfc2976_the_sip_info_method_reading/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;INFO 消息的目的是沿着 SIP 信令通路携带应用层信息。INFO 不用来改变 SIP 呼叫的状态，也不改变 SIP 初始化的会话的状态&lt;/li&gt;
+&lt;li&gt;信息可以放在 INFO 消息的头或者作为消息体的一部分&lt;/li&gt;
+&lt;li&gt;如果找不到对应的会话，UAS 必须回复 481&lt;/li&gt;
+&lt;li&gt;如果接收 INFO 请求的服务可以理解消息体，但是没有处理规则，应当回复 200，可以将消息体展示给用户&lt;/li&gt;
+&lt;li&gt;如果接收 INFO 请求的服务不能理解消息体，也没有处理规则，应当回复 415&lt;/li&gt;
+&lt;li&gt;INFO 请求可以被取消。收到 CANCEL 一个 INFO 的请求，UAS 如果还没有回复 INFO，应当返回 487，并不再处理对应的 INFO 请求&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>rfc3261: SIP</title>
+      <link>https://xueqing.github.io/blog/sip/rfc3261_sip_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/rfc3261_sip_reading/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%af%b7%e6%b1%82%e7%9a%84%e6%b6%88%e6%81%af%e5%a4%b4&#34;&gt;请求的消息头&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%9b%9e%e5%a4%8d%e7%9a%84%e6%b6%88%e6%81%af%e5%a4%b4&#34;&gt;回复的消息头&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%b6%88%e6%81%af&#34;&gt;消息&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a4%84%e7%90%86%e5%ba%94%e7%ad%94&#34;&gt;处理应答&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#invite-%e5%ae%a2%e6%88%b7%e4%ba%8b%e5%8a%a1&#34;&gt;Invite 客户事务&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ba%94%e7%ad%94%e4%bb%a3%e7%a0%81&#34;&gt;应答代码&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;请求的消息头&#34;&gt;请求的消息头&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;举例：以 Alice 向 Bob 发起会话为例&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;INVITE sip:bob@biloxi.com SIP/2.0
+Via: SIP/2.0/UDP pc33.atlanta.com;branch=z9hG4bK776asdhds
+Max-Forwards: 70
+To: Bob &amp;lt;sip:bob@biloxi.com&amp;gt;
+From: Alice &amp;lt;sip:alice@atlanta.com&amp;gt;;tag=1928301774
+Call-ID: a84b4c76e66710@pc33.atlanta.com
+CSeq: 314159 INVITE
+Contact: &amp;lt;sip:alice@pc33.atlanta.com&amp;gt;
+Content-Type: application/sdp
+Content-Length: 142
+(Alice’s SDP not shown)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Method name&lt;/td&gt;
+&lt;td&gt;位于第一行(INVITE sip:bob@biloxi.com SIP/2.0)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Via&lt;/td&gt;
+&lt;td&gt;描述当前请求经历的路径，表示了应答所应当经过的路径。包含请求发起者期待收到回复的地址(pc33.atlanta.com)。包含一个 branch 参数标识会话(branch=z9hG4bK776asdhds)，&lt;strong&gt;branch 必须以 &amp;ldquo;z9hG4bK&amp;rdquo; 开头&lt;/strong&gt;。缩写是 v&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;To&lt;/td&gt;
+&lt;td&gt;包含一个展示名(Bob)和一个 SIP 或 SIPS URI(sip:bob@biloxi.com)，标识请求原本要发送的目的地。缩写是 t&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;From&lt;/td&gt;
+&lt;td&gt;包含一个展示名(Alice)和一个 SIP 或 SIPS URI(sip:alice@atlanta.com)，指示请求的发起者。也包含一个 tag 参数，包含一个随机的字符串。用于身份目的。简写是 f&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Call-ID&lt;/td&gt;
+&lt;td&gt;包含此会话的一个全局唯一标识符，由一个随机字符串和这个 softphone 的主机名或 IP 地址联合生成&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CSeq&lt;/td&gt;
+&lt;td&gt;Command Sequence，包含一个整数和一个方法名。在一个会话中，每一个新的请求，CSeq 会加 1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Contact&lt;/td&gt;
+&lt;td&gt;包含一个 SIP 或 SIPS URI，表示直接路由到此请求发起者，通常是一个 FQDN(fully qualified domain name) 上的一个用户名。如果没有注册域名，可以使用 IP 地址&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Max-Forwards&lt;/td&gt;
+&lt;td&gt;限制一个请求到达目的地的转发次数。每跳一次数目减 1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Content-Type&lt;/td&gt;
+&lt;td&gt;描述请求的消息体，简写是 c&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Content-Length&lt;/td&gt;
+&lt;td&gt;请求的消息体的十进制字节数，简写是 I&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To tag，From tag 和 Call-ID 完全定义了一个端到端的 SIP 关系，称为一个会话&lt;/li&gt;
+&lt;li&gt;Via 告诉其它元素回复发送到哪里；Contact 告诉其它元素未来的请求发送到哪里&lt;/li&gt;
+&lt;li&gt;回复和请求包含一样的 To，From，Call-ID，CSeq，Via 的 branch&lt;/li&gt;
+&lt;li&gt;代理服务：atlanta.com SIP server 是一个代理服务。代理服务接收 SIP 请求，代表请求者转发请求
+
+&lt;ul&gt;
+&lt;li&gt;100 (Trying)：表示代理服务已经收到请求，正在代表请求者路由请求到目的地&lt;/li&gt;
+&lt;li&gt;代理服务器路由之前，会在 Via 加上或者删掉自己的地址信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其他头域&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Route&lt;/td&gt;
+&lt;td&gt;用于强制一个请求经过一个 proxy 路由列表，保证正确路由&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Record-Route&lt;/td&gt;
+&lt;td&gt;proxy 在请求中增加的，包含解析代理主机名或 IP 地址的 URI，用于强制会话中的后续请求经过本 proxy&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Content-Encoding&lt;/td&gt;
+&lt;td&gt;如果消息正文通过某种形式的编码，如压缩等，必须在此头域指明，简写是 e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Content-Language&lt;/td&gt;
+&lt;td&gt;消息正文的语言&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Content-Disposition&lt;/td&gt;
+&lt;td&gt;指明消息体部分并非可选的消息体，描述消息体，或者消息的多个部分，或者消息体的一部分应被 UAC 或 UAS 怎样解释&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Supported&lt;/td&gt;
+&lt;td&gt;包含了一个 option tag 的列表，列举了 UAC 或 UAS 支持的 SIP 扩展，必须是 RFCs 的标准扩展。缩写是 k&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Require&lt;/td&gt;
+&lt;td&gt;说明处理本特定请求需要什么样的 option tags，以便 UAS 可以处理 UAC 的特定请求&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Proxy-Require&lt;/td&gt;
+&lt;td&gt;说明需要 proxy 支持什么样的 option tag 扩展&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Unsupported&lt;/td&gt;
+&lt;td&gt;UAS 回复中，表明不支持的扩展&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Accept&lt;/td&gt;
+&lt;td&gt;UAS 指明支持的媒体类别&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Accept-Encoding&lt;/td&gt;
+&lt;td&gt;UAS 指明支持的编码方法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Accept-Language&lt;/td&gt;
+&lt;td&gt;UAS 指明支持的语言&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Allow&lt;/td&gt;
+&lt;td&gt;UAS 列举支持的方法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;expires&lt;/td&gt;
+&lt;td&gt;有效时间，以秒为单位的整数，非法值视为 3600&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Retry-After&lt;/td&gt;
+&lt;td&gt;可用于 500 或 503 应答，标识大约服务还会处于不可用状态多久；在 404,413,480,486,600,603 应答标识何时被叫方会恢复正常，以秒为单位&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Warning&lt;/td&gt;
+&lt;td&gt;UAS 回复中，表明拒绝服务的原因，包括一个 3 位的警告代码，主机名和警告正文&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;In-Reply-To&lt;/td&gt;
+&lt;td&gt;列举了本次呼叫相关的或者返回的 Call-ID&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Min-Expires&lt;/td&gt;
+&lt;td&gt;包含了一个服务器所支持的内部状态(soft-state)的最小的刷新时间间隔，包括被注册服务器所注册的 Contact 头域&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Organization&lt;/td&gt;
+&lt;td&gt;包含了发出请求或者应答的 SIP 节点所属的组织名字。可以用于让客户端软件过滤呼叫&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Priority&lt;/td&gt;
+&lt;td&gt;标识了客户端请求的紧急程度，描述了 SIP 应当处理人工或者 UA 发过来的请求的优先级&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Proxy-Authenticate&lt;/td&gt;
+&lt;td&gt;认证使用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Proxy-Authorization&lt;/td&gt;
+&lt;td&gt;允许客户端向一个要求认证的 proxy 证明自己(或证明它的使用者)的身份&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;WWW-Authenticate&lt;/td&gt;
+&lt;td&gt;包含了认证信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Server&lt;/td&gt;
+&lt;td&gt;包含了关于 UAS 处理请求所使用的软件信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Subject&lt;/td&gt;
+&lt;td&gt;提供了呼叫的一个概览，允许呼叫不用分析会话描述就可以大致过滤。缩写是 s&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Timestamp&lt;/td&gt;
+&lt;td&gt;描述了 UAC 发送请求到 UAS 的时间戳&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;User-Agent&lt;/td&gt;
+&lt;td&gt;包含了发起请求的 UAC 信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;回复的消息头&#34;&gt;回复的消息头&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;举例：以 Bob 回复 Alice 为例&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;SIP/2.0 200 OK
+Via: SIP/2.0/UDP server10.biloxi.com
+    ;branch=z9hG4bKnashds8;received=192.0.2.3
+Via: SIP/2.0/UDP bigbox3.site3.atlanta.com
+    ;branch=z9hG4bK77ef4c2312983.1;received=192.0.2.2
+Via: SIP/2.0/UDP pc33.atlanta.com
+    ;branch=z9hG4bK776asdhds ;received=192.0.2.1
+To: Bob &amp;lt;sip:bob@biloxi.com&amp;gt;;tag=a6c85cf
+From: Alice &amp;lt;sip:alice@atlanta.com&amp;gt;;tag=1928301774
+Call-ID: a84b4c76e66710@pc33.atlanta.com
+CSeq: 314159 INVITE
+Contact: &amp;lt;sip:bob@192.0.2.4&amp;gt;
+Content-Type: application/sdp
+Content-Length: 131
+(Bob’s SDP not shown)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;响应码和原因短语&lt;/td&gt;
+&lt;td&gt;位于第一行，如 200 和 OK&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Via&lt;/td&gt;
+&lt;td&gt;和请求相同，多的两个是二者的代理服务分别添加的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;To&lt;/td&gt;
+&lt;td&gt;和请求相同，添加了 tag 参数，会话双方在未来的通讯中会用这两个 tag&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;From&lt;/td&gt;
+&lt;td&gt;和请求相同&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Call-ID&lt;/td&gt;
+&lt;td&gt;和请求相同&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CSeq&lt;/td&gt;
+&lt;td&gt;和请求相同&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Contact&lt;/td&gt;
+&lt;td&gt;包含回复一方可以直接到达的 URI&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Content-Type&lt;/td&gt;
+&lt;td&gt;描述回复的消息正文，包括消息的媒体类别&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Content-Length&lt;/td&gt;
+&lt;td&gt;回复的消息正文的十进制字节数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;消息&#34;&gt;消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SIP 协议基于文本，使用 utf-8 字符集&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每个消息包括一个起始行，一个或多个头域，一个空行标识头域的结束，一个可选的消息体&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CRLF：carriage-return(回车) line-feed(换行)&lt;/li&gt;
+&lt;li&gt;SP: space，空格&lt;/li&gt;
+&lt;li&gt;请求的开始行是 Request-Line&lt;/li&gt;
+&lt;li&gt;回复的开始行是 Status-Line&lt;/li&gt;
+&lt;li&gt;客户端不要求检查或显示 reason-phrase&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HCOLON = *(SP/HTAB) &amp;quot;:&amp;quot; SWS&lt;/code&gt;允许在冒号之前有空白，但是不允许有行分隔符，并且允许在冒号之后有空白，或者行分隔符&lt;/li&gt;
+&lt;li&gt;推荐冒号之前无空格，冒号之后有一个空格&lt;/li&gt;
+&lt;li&gt;HTAB 水平制表符，即 Tab 键&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LWS = [*WSP CRLF] 1*WSP&lt;/code&gt; 线性空白&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SWS = [LWS]&lt;/code&gt; 线性空白可选&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;不同的 header-name 的顺序是无关的，但是建议将代理处理流程相关的域放在前面；相同的 header-name 的顺序是有关的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;generic-message  =  start-line
+                *message-header
+                CRLF
+                [ message-body ]
+start-line       =  Request-Line / Status-Line
+Request-Line     =  Method SP Request-URI SP SIP-Version CRLF
+Status-Line      =  SIP-Version SP Status-Code SP Reason-Phrase CRLF
+message-header   =  &amp;quot;header-name&amp;quot; HCOLON header-value *(COMMA header-value)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;处理应答&#34;&gt;处理应答&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;UAC 对于不能识别的最终响应，必须将其视为对应的 x00 类的响应代码，且 UAC 必须能够处理所有的 x00 响应代码&lt;/li&gt;
+&lt;li&gt;UAC 必须能够处理 100 和 183 (会话进行) 响应&lt;/li&gt;
+&lt;li&gt;在应答中，有不止一个 Via 头域值存在，UAC 应该丢弃这个消息。包含超过一个 Via 头域值的消息是因为被错误的路由或者消息被破坏&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;invite-客户事务&#34;&gt;Invite 客户事务&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;T1：是一个估计的循环时间（round-trip time，RTT），缺省设置为 500ms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;应答代码&#34;&gt;应答代码&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;临时应答 1xx：标志了对方服务器正在处理请求，还没有决定最后应答。如果服务需要 200ms 以上才可产生最终应答，应发送一个 1xx 应答。1xx 不是可靠传输的，不会导致客户端发送 ACK。可以包含消息体，描述会话&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;应答码&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 Trying&lt;/td&gt;
+&lt;td&gt;表示下一个节点的服务器以及接收到请求且还未执行这个请求。和其他临时应答的不同点在于，它永远不会被有状态 proxy 转发到上行流&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;180 Ringing&lt;/td&gt;
+&lt;td&gt;UA 收到 Invite 请求并尝试提示客户&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;181 Call is Being Forwarded&lt;/td&gt;
+&lt;td&gt;表示呼叫正在转发到另一个目的地集合&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;182 Queued&lt;/td&gt;
+&lt;td&gt;当呼叫的对方暂时不能接收呼叫，且服务器决定将呼叫排队等候，而不是拒绝呼叫&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;183 Session Progress&lt;/td&gt;
+&lt;td&gt;用于提示建立对话的进度信息。Reason-Phrase (表达原因的句子)、头域或消息体可用于提示呼叫进度的更详细的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;成功信息 2xx：表示请求是成功的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;应答码&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;200 OK&lt;/td&gt;
+&lt;td&gt;请求已经处理成功。应答的信息取决于请求的方法&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;转发请求 3xx： 用于提示用户的新位置信息，或为了满足呼叫转发的可选服务地点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;应答码&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;300 Multiple Choices&lt;/td&gt;
+&lt;td&gt;请求的地址有多个选择，每个选择都有自己的地址，用户或 UA 可选择合适的通讯终端，并且转发请求到这个地址&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;301 Moved Permanently&lt;/td&gt;
+&lt;td&gt;不能在 Request-URI 指定的地址找到用户，请求的客户端应使用 Contact 头域所指出的新地址重新尝试&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;302 Moved Temporarily&lt;/td&gt;
+&lt;td&gt;请求方应把请求重新发到这个 Contact 所指出的新地址&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;305 Use Proxy&lt;/td&gt;
+&lt;td&gt;请求的资源必须通过 Contact 头域中指出的 proxy 来访问。接收到这个应答的对象应通过这个 proxy 重新发送这个请求&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;380 Alternative Service&lt;/td&gt;
+&lt;td&gt;呼叫不成功，但是可以尝试可选的服务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;请求失败 4xx：定义了特定服务响应的请求失败的情况&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;应答码&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;400 Bad Request&lt;/td&gt;
+&lt;td&gt;请求语法错误。Reason-Phrase 应当标识这个详细的语法错误&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;401 Unauthorized&lt;/td&gt;
+&lt;td&gt;请求需要用户认证，应答是由 UAS 和 注册服务器产生的，407 是 proxy 服务器产生的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;402 Payment Required&lt;/td&gt;
+&lt;td&gt;预留，之后使用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;403 Forbidden&lt;/td&gt;
+&lt;td&gt;服务器支持这个请求，但是拒绝执行请求。增加验证信息是没有必要的，并且请求不应该被重试&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;404 Not Found&lt;/td&gt;
+&lt;td&gt;用户在 Request-URI 指定的域不存在。当 Request-URI 的 domain 和 接收这个请求的 domain 不匹配时，也会产生这个应答&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;405 Method Not Found&lt;/td&gt;
+&lt;td&gt;服务器支持 Request-Line 的方法，但是这个 Request-URI 的地址不允许使用这个方法。应答应包含一个 Allow 头域，包含了指定地址允许的方法列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;406 Not Acceptable&lt;/td&gt;
+&lt;td&gt;请求的资源只能产生回复实体包含的内容不被请求的 Accept 域接收&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;407 Proxy Authentication Required&lt;/td&gt;
+&lt;td&gt;标志了客户端应首先在 proxy 上通过认证&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;408 Request Timeout&lt;/td&gt;
+&lt;td&gt;在一段时间内，服务器不能产生一个终结应答。客户端可稍后不更改请求内容重试请求&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;410 Gone&lt;/td&gt;
+&lt;td&gt;请求的资源在服务器上已经不存在了，且不知道应把请求转发到哪里&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;413 Request Entity Too Large&lt;/td&gt;
+&lt;td&gt;请求实体超过了服务器期望或可以处理的大小&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;414 Request-URI Too Long&lt;/td&gt;
+&lt;td&gt;Request-URI 超过了服务器可以处理的长度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;415 Unsupported Media Type&lt;/td&gt;
+&lt;td&gt;服务器不支持请求的消息体格式，服务器必须根据内容的故障类型返回一个 Accept，Accept-Encoding 或 Accept-Language&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;416 Unsupported URI Scheme&lt;/td&gt;
+&lt;td&gt;服务器不支持 Request-URI 的 URI 方案&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;420 Bad Extension&lt;/td&gt;
+&lt;td&gt;服务器不知道请求的 Proxy-Require 或 Require 指出的协议扩展。在应答的 Unsupported 头域中列出不支持的扩展&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;421 Extension Required&lt;/td&gt;
+&lt;td&gt;UAS 需要特定的扩展来处理请求，但是请求的 Supported 头域没有列出。应答的 Require 头域应列出所需扩展&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;423 Interval Too Brief&lt;/td&gt;
+&lt;td&gt;请求设置的资源刷新时间(或有效时间)过短而被服务器拒绝。比如注册服务器拒绝 Contact 头域中有效期过短的注册请求&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;480 Temporarily Unavailable&lt;/td&gt;
+&lt;td&gt;请求到达被叫方，但被叫方当前不可用。应增加一个 Retry-After 告诉呼叫方多久可以重试呼叫，Reason-Phrase 应当有详细信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;481 Call/Transaction Does Not Exist&lt;/td&gt;
+&lt;td&gt;UAS 收到请求，但是没有和现存的对话或事务匹配&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;482 Loop Detected&lt;/td&gt;
+&lt;td&gt;服务器检测到循环&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;483 Too Many Hops&lt;/td&gt;
+&lt;td&gt;请求的 Max-Forwards 头域是 0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;484 Address Incomplete&lt;/td&gt;
+&lt;td&gt;Request-URI 不完整，Reason-Phrase 应当有附加信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;485 Ambiguous&lt;/td&gt;
+&lt;td&gt;Request-URI 是不明确的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;486 Busy Here&lt;/td&gt;
+&lt;td&gt;成功联系到被叫方的终端系统，但是被叫方在当前终端不能接听，应增加一个 Retry-After 告诉呼叫方多久可以重试呼叫。其它终端(如电话、邮箱)可能有效。如果知道没有其他终端系统可以接受呼叫，返回 600&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;487 Request Terminated&lt;/td&gt;
+&lt;td&gt;请求被 BYE 或 CANCEL 终止&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;488 Not Acceptable Here&lt;/td&gt;
+&lt;td&gt;和 606 相同，但只应用于 Request-URI 所指出的特定资源不能接受，在其它地方请求可能可以接受&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;491 Request Pending&lt;/td&gt;
+&lt;td&gt;同一对话中，UAS 收到的请求有一个依赖的请求正在处理&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;493 Undecipherable&lt;/td&gt;
+&lt;td&gt;UAS 收到的请求包含了一个加密的 MIME，且不知道或没有提供合适的解密密钥&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;服务错误 5xx：服务器本身故障的时候给出的失败应答&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;应答码&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;500 Server Internal Error&lt;/td&gt;
+&lt;td&gt;服务器遇到未知的情况，不能继续处理请求&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;501 Not Implemented&lt;/td&gt;
+&lt;td&gt;服务器没有实现相关请求功能&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;502 Bad Gateway&lt;/td&gt;
+&lt;td&gt;服务器作为 gateway 或 proxy，从下行服务器收到一个非法应答&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;503 Service Unavailable&lt;/td&gt;
+&lt;td&gt;由于临时过载或服务器管理导致的服务器暂时不可用。可增加一个 Retry-After 告诉呼叫方多久可以继续呼叫&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;504 Server Time-out&lt;/td&gt;
+&lt;td&gt;服务器在一个外部服务器上没有收到及时的应答。如果从上行服务器收到的请求中 Expires 超时，则返回 408&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;505 Version Not Supported&lt;/td&gt;
+&lt;td&gt;服务器不支持对应的 SIP 版本&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;513 Message Too Large&lt;/td&gt;
+&lt;td&gt;消息长度超过服务器可以处理的长度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全局错误 6xx：服务给特定用户有一个最终的信息，并不只是在 Request-URI 的特定实例有最终信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;应答码&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;600 Busy Everywhere&lt;/td&gt;
+&lt;td&gt;成功连到到被叫方的终端系统，但是被叫方处于忙的状态，不打算接听电话。可增加一个 Retry-After 告诉呼叫方多久可以继续呼叫&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;603 Decline&lt;/td&gt;
+&lt;td&gt;成功访问到被叫方的设备，但是用户明确的不行应答。可增加一个 Retry-After 告诉呼叫方多久可以继续呼叫&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;604 Does Not Exist Anywhere&lt;/td&gt;
+&lt;td&gt;Request-URI 中的用户信息验证失败&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;606 Not Acceptable&lt;/td&gt;
+&lt;td&gt;成功联系到 UA，但是会话描述的一部分(如请求的媒体、带宽或地址类型)不被接受&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>rfc3264: An Offer/Answer Model with the SDP</title>
+      <link>https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/rfc3264_an_offer_answer_model_with_the_sdp_reading/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#answeroffer&#34;&gt;answer/offer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8d%8f%e8%ae%ae%e6%93%8d%e4%bd%9c&#34;&gt;协议操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%94%9f%e6%88%90%e5%88%9d%e5%a7%8b-offer&#34;&gt;生成初始 offer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%94%9f%e6%88%90-answer&#34;&gt;生成 answer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#offerer-%e5%a4%84%e7%90%86-answer&#34;&gt;offerer 处理 answer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bf%ae%e6%94%b9%e4%bc%9a%e8%af%9d&#34;&gt;修改会话&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%a1%a8%e6%98%8e%e8%83%bd%e5%8a%9b&#34;&gt;表明能力&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;answer-offer&#34;&gt;answer/offer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;agent：一个 agent 是 offer/answer 交换中的一个协议实现。offer/answer 交换包括两种代理：offerer 和 answerer&lt;/li&gt;
+&lt;li&gt;offerer：会话一方，创建或者修改一个会话。发送的 SDP 消息包含了 offerer 希望使用的媒体流和编解码器的集合，以及 offerer 接收媒体流希望使用的地址和端口&lt;/li&gt;
+&lt;li&gt;offer：offerer 发送的 SDP 消息&lt;/li&gt;
+&lt;li&gt;answerer：会话的另一方参与者。answerer 为接收到的 offer 生成一个回复的 SDP 消息。消息对应 offer 每个流有一个媒体流，指出这个流是否被接收，以及使用的编解码器和 answerer 接收媒体流希望使用的地址和端口&lt;/li&gt;
+&lt;li&gt;answer：answerer 发送的用于回复 offer 的 SDP 消息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;协议操作&#34;&gt;协议操作&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在任何时候，代理可以生成一个新的 offer 来更新会话。但是
+
+&lt;ul&gt;
+&lt;li&gt;answerer 不能在收到一个 offer 之后，回复或者拒绝之前生成一个新的 offer&lt;/li&gt;
+&lt;li&gt;offerer 不能发送一个 offer 之后，在收到回复或拒绝之前生成一个新的 offer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;“glare”：一个代理在发送一个 offer 之后，还没有回复这个 offer 就收到一个新的 offer
+
+&lt;ul&gt;
+&lt;li&gt;上层协议应该解决这种冲突&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;生成初始-offer&#34;&gt;生成初始 offer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;忽视 e 和 p 字段&lt;/li&gt;
+&lt;li&gt;没有 m 字段表示 offerer 希望通讯，但是通过后续的修改 offer 来增加会话的流信息&lt;/li&gt;
+&lt;li&gt;单播流
+
+&lt;ul&gt;
+&lt;li&gt;sendonly：offerer 只想发送媒体流&lt;/li&gt;
+&lt;li&gt;inactive：offerer 希望通讯，但是不希望发送或接收媒体流&lt;/li&gt;
+&lt;li&gt;sendrecv：offerer 想发送和接收媒体流，这个是默认选项&lt;/li&gt;
+&lt;li&gt;recvonly：offerer 只想接收媒体流&lt;/li&gt;
+&lt;li&gt;RTCP 仍然会在 sendonly/inactive/recvonly 流中发送。媒体流的方向性不影响 RTCP 的使用&lt;/li&gt;
+&lt;li&gt;sendrecv/recvonly：offer 中的地址和端口表示 offerer 想要接收媒体流的信息&lt;/li&gt;
+&lt;li&gt;sendonly：offer 中的地址和端口表示 offerer 想要接收 RTCP 包的信息
+
+&lt;ul&gt;
+&lt;li&gt;如果没有明确说明 RTCP 的地址和端口，RTCP 包将会发送到比指定的端口大 1 的端口&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;offer 中的地址和端口和 offerer 发送媒体流的地址和端口无关&lt;/li&gt;
+&lt;li&gt;offer 中的端口为 0 表示提供流但是不会使用流，比如回复中的端口为 0 表示拒绝流，或者设置端口为 0 终止已存在的流&lt;/li&gt;
+&lt;li&gt;如果 SDP 中包含多个媒体格式(应当按照倾向顺序排列)，表示 answerer 在会话中间可能会修改格式为媒体格式列表中的任一一个，同时不会发送一个新的 offer&lt;/li&gt;
+&lt;li&gt;带宽为 0 不被建议，表示不应当发送任何媒体流，包括 RTP 的 RTCP 信息&lt;/li&gt;
+&lt;li&gt;offer 中不同类型的媒体流信息表示 offerer 同时希望使用的流；相同类型的媒体流信息表示 offerer 希望同时发送和/或接收指定类型的多个媒体流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多播流
+
+&lt;ul&gt;
+&lt;li&gt;sendonly：只想发送媒体流&lt;/li&gt;
+&lt;li&gt;recvonly：只想接收媒体流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;生成-answer&#34;&gt;生成 answer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于 offer 中的每一个 “m=”，answer 中必须有对应的 “m=”。这便于基于顺序匹配流&lt;/li&gt;
+&lt;li&gt;answer 的 “t=” 必须和 offer 的相等&lt;/li&gt;
+&lt;li&gt;如果拒绝一个流，可以将对应的流的端口设置为 0，其他的格式信息被忽略&lt;/li&gt;
+&lt;li&gt;单播流
+
+&lt;ul&gt;
+&lt;li&gt;offer 的流为 sendonly，对应的流必须是 recvonly/sendrecv&lt;/li&gt;
+&lt;li&gt;offer 的流为 recvonly，对应的流必须是 sendonly/sendrecv&lt;/li&gt;
+&lt;li&gt;offer 的流为 sendrecv(没有的话默认为 sendrecv)，对应的流必须是 sendonly/recvonly/sendrecv/inactive&lt;/li&gt;
+&lt;li&gt;offer 的流为 inactive，对应的流必须是 inactive&lt;/li&gt;
+&lt;li&gt;answer 中标记流为 recvonly，“m=” 中必须包含 offer 中至少一个媒体格式&lt;/li&gt;
+&lt;li&gt;answer 中标记流为 sendonly，“m=” 中必须包含 offer 中至少一个媒体格式&lt;/li&gt;
+&lt;li&gt;answer 中标记流为 sendrecv，“m=” 中必须包含 offer 中至少一个媒体格式&lt;/li&gt;
+&lt;li&gt;answer 中标记流为 inactive&lt;/li&gt;
+&lt;li&gt;offer 的流为 sendonly，媒体格式按照 recvonly 构造&lt;/li&gt;
+&lt;li&gt;offer 的流为 recvonly，媒体格式按照 sendonly 构造&lt;/li&gt;
+&lt;li&gt;offer 的流为 sendrecv，媒体格式按照 sendrecv 构造&lt;/li&gt;
+&lt;li&gt;offer 的流为 inactive，媒体格式按照 sendrecv 构造&lt;/li&gt;
+&lt;li&gt;尽量按照 offer 的优先顺序排列媒体格式&lt;/li&gt;
+&lt;li&gt;如果对于提供的媒体没有通用的媒体格式，answer 将设置端口为 0 来拒绝该媒体流&lt;/li&gt;
+&lt;li&gt;如果对于所有的流都没有通用的格式，整个会话被拒绝&lt;/li&gt;
+&lt;li&gt;answerer 发送媒体流的格式应该是 offer 中最优先且在 answer 中列举的媒体格式。对于 RTP，即使和 answer 不同，也必须使用 offer 中指定的负载类型&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;多播流
+
+&lt;ul&gt;
+&lt;li&gt;多播 offer 的 answer 通常涉及修改一个流的某些方面&lt;/li&gt;
+&lt;li&gt;如果接受多播流，answer 的地址和端口信息必须和 offer 中的对应，且流的方向信息必须和 offer 的一致&lt;/li&gt;
+&lt;li&gt;answer 中的媒体格式必须和 offer 中的相同或者是 offer 的一个子集。移除一个格式表示 answerer 不支持该格式&lt;/li&gt;
+&lt;li&gt;如果 offer 中有 ptime 和带宽属性，answer 必须和其一样。否则，answer 可以添加一个非 0 的 ptime 属性
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;offerer-处理-answer&#34;&gt;offerer 处理 answer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果 answer 是 sendrecv/recvonly，offerer 收到 answer 时可以发送媒体流
+
+&lt;ul&gt;
+&lt;li&gt;offerer 必须使用 answer 中列举的媒体格式发送，且&lt;strong&gt;应该(不是必须)&lt;/strong&gt;使用 answer 中第一个媒体格式&lt;/li&gt;
+&lt;li&gt;offerer 应该根据 answer 中的 ptime 和带宽来发送媒体&lt;/li&gt;
+&lt;li&gt;offerer 可以立即停止监听 offer 中列举但是 answer 中未显示的媒体格式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;修改会话&#34;&gt;修改会话&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在会话期间，任意一方可以发起一个新的 offer 来修改会话属性&lt;/li&gt;
+&lt;li&gt;先前的 SDP：包括 offer 或 answer 中提供的 SDP&lt;/li&gt;
+&lt;li&gt;新 offer 的 SDP 的 “o=” 必须和先前的 SDP 一样，版本号加 1
+
+&lt;ul&gt;
+&lt;li&gt;新 offer 的 SDP 和先前的 SDP 一致的话，answerer 必须可以处理，可以返回和之前处理过程相同的 SDP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;新 offer 的 SDP 的媒体属性必须和之前的 SDP 的每个媒体对应，即 offer 中的媒体数目不会减少。之前的 SDP 删除的媒体流不能在新的 SDP 中移除，可以不显示流的属性&lt;/li&gt;
+&lt;li&gt;添加一个媒体流
+
+&lt;ul&gt;
+&lt;li&gt;可以复用之前拒绝的媒体流的位置，即端口设置为 0 的媒体&lt;/li&gt;
+&lt;li&gt;在已有的媒体下面添加新的媒体描述&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;移除一个媒体流
+
+&lt;ul&gt;
+&lt;li&gt;将媒体所在位置的端口设置为 0，可以忽视之前的其他属性，只留下媒体格式&lt;/li&gt;
+&lt;li&gt;可以释放与其相关的资源&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;修改一个媒体流
+
+&lt;ul&gt;
+&lt;li&gt;修改地址，端口或协议&lt;/li&gt;
+&lt;li&gt;offerer 一发送 offer，就必须为接收旧的和新的端口做准备。直到收到 answer 和媒体到达新的端口，offerer 才可以停止监听旧端口。此举避免在传送过程中丢掉媒体数据&lt;/li&gt;
+&lt;li&gt;answerer 对端口修改的处理和 offerer&lt;/li&gt;
+&lt;li&gt;如果提供的流被拒绝，收到拒绝的时候就可以停止监听&lt;/li&gt;
+&lt;li&gt;修改地址类比修改端口，不过更新的是连接，而不是端口&lt;/li&gt;
+&lt;li&gt;修改协议和修改端口一样处理&lt;/li&gt;
+&lt;li&gt;修改媒体格式集&lt;/li&gt;
+&lt;li&gt;修改媒体类型：比起添加新媒体，建议修改媒体类型&lt;/li&gt;
+&lt;li&gt;修改属性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;暂停一个单播流
+
+&lt;ul&gt;
+&lt;li&gt;之前标记为 sendrecv 的流，应改成 sendonly&lt;/li&gt;
+&lt;li&gt;之前标记为 recvonly 的流，应改成 inactive&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;表明能力&#34;&gt;表明能力&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;代理构造一个用于表明媒体能力的 SDP
+
+&lt;ul&gt;
+&lt;li&gt;必须是有效的，忽视 e 和 p 字段&lt;/li&gt;
+&lt;li&gt;关于时间属性&lt;code&gt;t= 0 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;代理支持的每个媒体类型必须有对应的媒体描述&lt;/li&gt;
+&lt;li&gt;o 字段的会话 ID 必须是唯一的&lt;/li&gt;
+&lt;li&gt;端口是 0(确保不会建立媒体流)，连接地址是任意的&lt;/li&gt;
+&lt;li&gt;“m=” 的传输表明媒体类型的传输&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>rfc3265: SIP Specific Event Notification</title>
+      <link>https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/rfc3265_sip_specific_event_notification_reading/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bb%8b%e7%bb%8d&#34;&gt;介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%8a%82%e7%82%b9%e8%a1%8c%e4%b8%ba&#34;&gt;节点行为&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%ae%a2%e9%98%85%e8%80%85&#34;&gt;订阅者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%80%9a%e7%9f%a5%e8%80%85&#34;&gt;通知者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%80%9a%e7%9f%a5%e8%80%85-notify-%e8%a1%8c%e4%b8%ba&#34;&gt;通知者 NOTIFY 行为&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%ae%a2%e9%98%85%e8%80%85-notify-%e8%a1%8c%e4%b8%ba&#34;&gt;订阅者 NOTIFY 行为&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%ba%8b%e4%bb%b6%e5%8c%85&#34;&gt;事件包&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;网络中的实体可以订阅网络中的资源或不同资源的呼叫状态或呼叫，当这些状态改变的时候，这些实体可以发送通知&lt;/li&gt;
+&lt;li&gt;订阅是有时效性的，必须通过后续的 SUBSCRIBE 消息刷新&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;节点行为&#34;&gt;节点行为&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SUBSCRIBE 方法是一个用来请求远端节点的当前状态和后续状态变化的请求方法&lt;/li&gt;
+&lt;li&gt;SUBSCRIBE 请求有 “Expires” 头域显示请求有效期，之后通过新的 SUBSCRIBE 请求来刷新有效期
+
+&lt;ul&gt;
+&lt;li&gt;SUBSCRIBE 回复的 200 中也必须包含一个 “Expires” 头域，必须比请求的有效期长&lt;/li&gt;
+&lt;li&gt;“Contact” 头域中的 “expires” 和订阅的有效期无关&lt;/li&gt;
+&lt;li&gt;当 SUBSCRIBE 请求的 “Expires” 值为 0，表示取消订阅一个事件。成功的取消订阅也会触发一个 NOTIFY 消息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;订阅者&#34;&gt;订阅者&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;订阅者必须在 SUBSCRIBE 请求包含有且仅有一个 “Event” 头域，表示订阅的事件或事件类&lt;/li&gt;
+&lt;li&gt;订阅者想要订阅一个资源的一个指定的状态，构造并发送一个 SUBSCRIBE 请求
+
+&lt;ul&gt;
+&lt;li&gt;200 回复表示接受订阅请求，用户被鉴权订阅请求的资源&lt;/li&gt;
+&lt;li&gt;“Expires” 头域，必须比请求的有效期短，定义了这个订阅的实际有效期&lt;/li&gt;
+&lt;li&gt;202 回复表示理解订阅请求，但是用户未被授权&lt;/li&gt;
+&lt;li&gt;489 回复表示不理解订阅消息的 “Event” 头域指定的事件或事件类&lt;/li&gt;
+&lt;li&gt;423 回复表示过期时间太短，即过期时间大于 0，小于 1 小时，且小于通知者配置的最小时间。回复的头域应包含 “Min-Expires” 头域指明最小时间&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;刷新订阅：发送一个 SUBSCRIBE 请求，“Event” 头域的 “id” (如果存在)必须和之前的订阅请求一致
+
+&lt;ul&gt;
+&lt;li&gt;481 回复表示订阅被终止，订阅者不会收到通知。如果订阅者仍希望订阅这个状态，必须重新发送一个和之前的订阅无关的初始化订阅请求&lt;/li&gt;
+&lt;li&gt;其它的非 481 的回复，订阅仍被认为是有效的，但是通常是网络问题或者通知者的问题，订阅者不会接收到 NOTIFY 消息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;通知者&#34;&gt;通知者&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通知者需要保存订阅的事件包的名称， “Event” 头域以及 “id” 参数(如果存在)&lt;/li&gt;
+&lt;li&gt;通知者接收或者刷新一个订阅，即发送一个 200 回复之后，必须立即发送一个 NOTIFY 消息告知订阅者当前的状态
+
+&lt;ul&gt;
+&lt;li&gt;如果当前资源的状态对于处理的订阅请求没有意义，NOTIFY 的消息体可以为空或者 “neutral”&lt;/li&gt;
+&lt;li&gt;通知者对订阅者身份的认证，是通过一个 401 回复还不是 407 回复，即通知者在接受订阅和通知事件的时候是作为一个用户代理存在的&lt;/li&gt;
+&lt;li&gt;代理节点通常使用 407 来认证身份&lt;/li&gt;
+&lt;li&gt;认证失败，通知者返回 “403 Forbidden” 或 “603 Decline”&lt;/li&gt;
+&lt;li&gt;如果通知者通过交互的方式决定是否允许一个订阅，应立即给出一个 “202 Accept” 应答&lt;/li&gt;
+&lt;li&gt;如果通知者延迟认证，且认证失败，应构造一个 NOTIFY 消息，包含 “Subscription-State” 头域，且该头域包含一个 “terminated” 值及一个原因短语 “rejected”&lt;/li&gt;
+&lt;li&gt;如果通知者过期未收到更新订阅消息，应该移除订阅，发送一个 NOTIFY 消息，包含 “Subscription-State” 头域，且该头域包含一个 “terminated” 值及一个原因短语 “reason=timeout”&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果不支持 PINT，且 SUBSCRIBE 请求不包含 “Accept-Event” 头域，通知者返回 “489 Vad Event”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;通知者-notify-行为&#34;&gt;通知者 NOTIFY 行为&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果收到 NOTIFY 消息的节点没有订阅，回复 481&lt;/li&gt;
+&lt;li&gt;发送一个 NOTIFY 请求，“Event” 头域的 “id” (如果存在)必须和之前的订阅请求一致&lt;/li&gt;
+&lt;li&gt;如果 NOTIFY 的回复超时，或者回复是非 200，则 NOTIFY 请求失败，通知者移除对应的订阅&lt;/li&gt;
+&lt;li&gt;如果 NOTIFY 请求的回复是 481，通知者移除对应的订阅，表示无论是什么情况，取消对应的订阅&lt;/li&gt;
+&lt;li&gt;NOTIFY 请求必须包含 “Subscription-State” 头域，取值范围是 “active/pending/terminated”
+
+&lt;ul&gt;
+&lt;li&gt;当取值 “active/pending”，NOTIFY 的 “Subscription-State” 头域应该包含一个 “expires” 参数&lt;/li&gt;
+&lt;li&gt;active：表示接受订阅，且订阅通过认证&lt;/li&gt;
+&lt;li&gt;如果有 “expires”  参数，订阅者应该当做认证订阅的时长，并且根据时长调整认证&lt;/li&gt;
+&lt;li&gt;“reason” 和 “retry-after” 参数无意义&lt;/li&gt;
+&lt;li&gt;pending：表示收到订阅，但是当前的策略信息不足以决定接受或者拒绝这个订阅&lt;/li&gt;
+&lt;li&gt;如果有 “expires”  参数，订阅者应该当做认证订阅的时长，并且根据时长调整认证&lt;/li&gt;
+&lt;li&gt;“reason” 和 “retry-after” 参数无意义&lt;/li&gt;
+&lt;li&gt;terminated：表示订阅不是 active&lt;/li&gt;
+&lt;li&gt;“Subscription-State” 头域可以包含一个 “retry-after” 参数
+
+&lt;ul&gt;
+&lt;li&gt;表示多久之后订阅者可以尝试重新订阅。如果没有 “retry-after” 参数，可以在任意时刻尝试重新订阅&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;“expires” 参数无意义&lt;/li&gt;
+&lt;li&gt;“Subscription-State” 头域应该包含一个 “reason” 参数。取值应该是下面的范围
+
+&lt;ul&gt;
+&lt;li&gt;deactivated：终止订阅，但是订阅者应该立即用新的订阅重试。比如允许节点之间的订阅迁移。“retry-after” 参数无意义&lt;/li&gt;
+&lt;li&gt;rejected：认证策略的变化而终止订阅。订阅者不应该重新订阅。“retry-after” 参数无意义&lt;/li&gt;
+&lt;li&gt;timeout：过期之前未刷新而终止订阅。订阅者可以立即重试订阅。“retry-after” 参数无意义&lt;/li&gt;
+&lt;li&gt;noresource：监视的资源状态不存在而终止订阅。订阅者不应该重试订阅。“retry-after” 参数无意义&lt;/li&gt;
+&lt;li&gt;probation：终止订阅，但是订阅者应该在一段时间之后重试。如果指定 “retry-after” 参数，则至少等待指定的时间之后重试订阅&lt;/li&gt;
+&lt;li&gt;giveup：通知者不能获得认证信息而终止订阅。如果指定 “retry-after” 参数，则至少等待指定的时间之后重试订阅；否则应立即重试订阅，但是很可能变成 “pending” 状态&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果订阅者认为通知式可接受的，应立即回复 200。一般，通知的回复不会包含消息体。但是如果 NOTIFY 请求包含 “Accept” 头域，回复可以包含消息体&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;订阅者-notify-行为&#34;&gt;订阅者 NOTIFY 行为&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;关于订阅的回复：回复和 SUBSCRIBE 请求包含相同的 “Call-ID”、“CSeq” 和“From” 头域的 “tag” 参数&lt;/li&gt;
+&lt;li&gt;判断 NOTIFY 和订阅是否一致：
+
+&lt;ul&gt;
+&lt;li&gt;NOTIFY 请求和 SUBSCRIBE 请求的有相同的 “Call-ID”，前者的 “To” 头域的 “tag” 参数和后者的 “From” 头域的 “tag” 参数相同&lt;/li&gt;
+&lt;li&gt;NOTIFY 请求和 SUBSCRIBE 请求的 “Event” 头域相同&lt;/li&gt;
+&lt;li&gt;“Event” 类型相同，且如果一方的 “Event” 头域有 “id”，二者必须都有且相同&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果订阅者不支持 NOTIFY 的 “Event” 头域，返回 “489 Bad Event”&lt;/li&gt;
+&lt;li&gt;订阅者发送一个“Expires” 值为 0 的 SUBSCRIBE 请求，表示取消订阅一个事件
+
+&lt;ul&gt;
+&lt;li&gt;只有收到一个 “Subscription-State” 为 “terminated” 的 NOTIFY 消息才认为是订阅被取消或终止，“reason” 参数是 “timeout”&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;事件包&#34;&gt;事件包&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传递事件包的两种机制
+
+&lt;ul&gt;
+&lt;li&gt;传递完整状态信息：事件包需要传递的状态信息比较小，或者仅仅传递当前状态对于特定的事件类型不是足够的&lt;/li&gt;
+&lt;li&gt;增量传递信息：需要传递的状态比较大，可以使用包含增量状态的 NOTIFY 消息传递状态&lt;/li&gt;
+&lt;li&gt;立即给 SUBSCRIBE 请求的 NOTIFY 消息包含全部的状态信息。后续由于状态变化传递的 NOTIFY 消息只包含改变的状态。订阅者将资源状态合并到已知的当前状态&lt;/li&gt;
+&lt;li&gt;支持增量传递的事件包必须包含一个版本号，每次 NOTIFY 通信时加 1，此版本号在消息体，而不是 SIP 头&lt;/li&gt;
+&lt;li&gt;第一个 NOTIFY 的版本号应该和上次最后一个 NOTIFY 的版本号响应，即第一个 NOTIFY 不增加版本号&lt;/li&gt;
+&lt;li&gt;如果到达的 NOTIFY 的版本号增加大于 1，说明订阅者错过了一个增量。应当忽视这个 NOTIFY 消息，保存版本号用户检测消息丢失。然后重新发送一个 SUBSCRIBE 强制 NOTIFY 包含一个完整的状态&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;出于安全性考虑，通知者受到 SUBSCRIBE 请求，不应返回具体的 220/4xx/6xx 而暴露敏感的策略信息，而是统一返回 202。202 表示理解订阅请求，但是用户未被授权。可在后续的 NOTIFY 中表示接受或拒绝该订阅&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>rfc4566: SDP</title>
+      <link>https://xueqing.github.io/blog/sip/rfc4566_sdp_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/rfc4566_sdp_reading/</guid>
+      <description>&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;会议&lt;/td&gt;
+&lt;td&gt;一个多媒体会议是一个集合，这个集合包含两个或更多的通信用户以及用于通信的软件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;会话&lt;/td&gt;
+&lt;td&gt;一个多媒体会话是一个集合，这个集合包含发送者和接受者，以及他们之间所通信的媒体流。多媒体会议是多媒体会话的一个例子&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;会话描述&lt;/td&gt;
+&lt;td&gt;定义良好的格式，用于传送足够的信息来发现和参与一个多媒体会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;两个目的&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通讯一个会话的存在性&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;传递足够的信息使能连接和参加到存在的会阿虎&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;v=  (protocol version)
+o=  (owner/creator and session identifier)
+s=  (session name)
+i=* (session information)
+u=* (URI of description)
+e=* (email address)
+p=* (phone number)
+c=* (connection information - not required if included in all media)
+b=* (bandwidth information)
+One or more time descriptions (see below)
+z=* (time zone adjustments)
+k=* (encryption key)
+a=* (zero or more session attribute lines)
+Zero or more media descriptions (see below)
+
+# Time description
+t=  (time the session is active) (t=&amp;lt;start time&amp;gt;  &amp;lt;stop time&amp;gt;)
+r=* (zero or more repeat times) (r=&amp;lt;repeat interval&amp;gt; &amp;lt;active duration&amp;gt; &amp;lt;list of offsets from start-time&amp;gt;)
+
+# Media description
+m=  (media name and transport address) (m=&amp;lt;media&amp;gt; &amp;lt;port&amp;gt;/&amp;lt;number of ports&amp;gt; &amp;lt;transport&amp;gt; &amp;lt;fmt list&amp;gt;)
+i=* (media title)
+c=* (connection information - optional if included at session-level)
+b=* (bandwidth information)
+k=* (encryption key)
+a=* (zero or more media attribute lines)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;不能解析的属性可以忽略&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;a=* (zero or more session attribute lines)&lt;/code&gt;非标准格式的名字以&lt;code&gt;X-&lt;/code&gt;为前缀，但是不推荐使用&lt;code&gt;X-&lt;/code&gt;前缀的参数&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;m=&amp;lt;media&amp;gt; &amp;lt;port&amp;gt;/&amp;lt;number of ports&amp;gt; &amp;lt;transport&amp;gt; &amp;lt;fmt list&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;media 可以是 audio/video/application/text/message (data/control 弃用)&lt;/li&gt;
+&lt;li&gt;port 1024~65535 (udp 限制)，偶数 (RTP 兼容性，大一位的奇数是 RTCP 端口)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;检验 sdp 的信息和媒体流的链路信息是否一致(包括接收地址端口和发送地址端口)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>rfc6665: SIP Specific Event Notification</title>
+      <link>https://xueqing.github.io/blog/sip/rfc6665_sip_specific_event_notification_reading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/rfc6665_sip_specific_event_notification_reading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>关于 SIP 协议第三方呼叫控制</title>
+      <link>https://xueqing.github.io/blog/sip/sip_3pcc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/sip_3pcc/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%e5%bc%95%e8%a8%80&#34;&gt;1 引言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-%e7%ac%ac%e4%b8%89%e6%96%b9%e5%91%bc%e5%8f%ab%e6%8e%a7%e5%88%b6&#34;&gt;2 第三方呼叫控制&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e6%b5%81%e7%a8%8b-i&#34;&gt;2.1 流程 I&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e6%b5%81%e7%a8%8b-ii&#34;&gt;2.2 流程 II&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-%e6%b5%81%e7%a8%8b-iii&#34;&gt;2.3 流程 III&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#24-%e6%b5%81%e7%a8%8b-iv&#34;&gt;2.4 流程 IV&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#25-%e6%b5%81%e7%a8%8b%e6%80%bb%e7%bb%93&#34;&gt;2.5 流程总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-%e5%ba%94%e7%94%a8&#34;&gt;3 应用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%e6%80%bb%e7%bb%93&#34;&gt;4 总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-引言&#34;&gt;1 引言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SIP 协议：IETF 提出的会话初始协议，是在 IP 网进行多媒体通信的应用层控制协议，用于发起、建立和释放会话&lt;/li&gt;
+&lt;li&gt;SDP 协议：会话描述协议，用来描述与媒体流相关的参数以及与会话相关的信息，其中包括对会话的描述以及媒体类型、数据发送到的端口、传输协议(如 RTP)以及媒体格式(如 RTP 载荷格式)的描述&lt;/li&gt;
+&lt;li&gt;在传统的电话网环境中，第三方呼叫控制(3pcc, third party call control)允许一个实体(称之为控制器 controller)建立并管理另外两方或多方之间的通信关系&lt;/li&gt;
+&lt;li&gt;3pcc 常用语运营商业务(运营商需要创建一个呼叫连接两个用户)和会议
+
+&lt;ul&gt;
+&lt;li&gt;在 PSTN(public switched telephone network，公共交换电话网) 网中，第三方呼叫控制通常用于会议、接线业务(接线员创建一个连接另外双方的呼叫)&lt;/li&gt;
+&lt;li&gt;使用 SIP 协议可借助第三方呼叫控制完成业务，例如点击拨号、通话过程中放音等&lt;/li&gt;
+&lt;li&gt;RFC3264 中定义了一种提供/应答模式，使两个实体之间可以使用 SDP 的提供/应答(offer/answer)模式进行会话协商&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-第三方呼叫控制&#34;&gt;2 第三方呼叫控制&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SIP 消息可携带 SDP 消息体。3pcc 的关键在于控制器如何在会话双方之间使用 SDP 消息协商即将建立的会话&lt;/li&gt;
+&lt;li&gt;根据 SIP 协议的机制，有以下 4 中方法实现 3pcc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-1-流程-i&#34;&gt;2.1 流程 I&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://xueqing.github.io/blog/sip/images/process-1.jpeg&#34; alt=&#34;流程&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程图中的 offer 和 answer 都是 SDP 消息&lt;/li&gt;
+&lt;li&gt;流程包括以下几步
+
+&lt;ul&gt;
+&lt;li&gt;控制器-&amp;gt;A： 发送一个 INVITE，没有 SDP&lt;/li&gt;
+&lt;li&gt;A-&amp;gt;控制器：A 电话振铃应答之后，200 OK 响应中包含一个 offer1，携带用户 A 所希望建立会话的媒体类型、媒体格式、传输协议以及接收媒体流的端口和 IP 地址&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;B：发送一个 INVITE，包含来自 A 的 offer1&lt;/li&gt;
+&lt;li&gt;B-&amp;gt;控制器：B 振铃应答之后，产生对 offer1 的应答 answer1&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;B：发送 ACK 作为应答&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 ACK 作为应答， 包含 answer1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：简单，不需要控制器产生 SDP，不必考虑控制器自身对媒体类型的要求&lt;/li&gt;
+&lt;li&gt;缺点：超时问题。如果 B 不能立即响应，控制器无法马上给 A 发送 ACK，有可能导致 A 定时(64*T1 秒)重发 200 OK
+
+&lt;ul&gt;
+&lt;li&gt;根据 RFC 3261，走时之后没有收到 ACK，呼叫失败&lt;/li&gt;
+&lt;li&gt;此流程只能用于 B 可以立即响应 INVITE 请求&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-2-流程-ii&#34;&gt;2.2 流程 II&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://xueqing.github.io/blog/sip/images/process-2.jpeg&#34; alt=&#34;流程&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程图中的“黑洞” SDP 指包含的连接地址是一个无效的连接地址(如 rtp.invalid 或 0.0.0.0)，即想建立一个空的流媒体，因为实际上并没有媒体或 RTP 包从 A 流出&lt;/li&gt;
+&lt;li&gt;流程包括以下几步
+
+&lt;ul&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 INVITE，包含 SDP1，用来创建一个空的媒体流&lt;/li&gt;
+&lt;li&gt;A-&amp;gt;控制器：A 振铃并产生应答，包含 SDP2，其中包含的是有效的连接地址，但此时仍没有媒体流向控制器&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;B：发送 INVITE，携带 SDP2 作为对 B 的 offer&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 ACK 作为应答&lt;/li&gt;
+&lt;li&gt;B-&amp;gt;控制器：B 振铃并产生应答，200 OK 中包含 SDP3，是对 SDP2 的应答&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;B：发送 ACK 作为应答&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 re-INVITE，包含 SDP3 作为 offer&lt;/li&gt;
+&lt;li&gt;A-&amp;gt;控制器：假设用户 A 不想改变原来的会话属性，在 200 OK 响应中包含的应答仍是 SDP2&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 ACK 作为应答&lt;/li&gt;
+&lt;li&gt;A-&amp;gt;B：流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：本流程所有的最终响应都可立即确认，不会有因超时而导致呼叫失败的问题&lt;/li&gt;
+&lt;li&gt;缺点：
+
+&lt;ul&gt;
+&lt;li&gt;控制器必须预先知道本次呼叫所要使用的媒体类型，来创建初始的“黑洞” SDP&lt;/li&gt;
+&lt;li&gt;“黑洞” SDP是一种扩展机制，并不能确保所有的 UA 支持这种机制，以及如果收到这样的地址做何反应&lt;/li&gt;
+&lt;li&gt;流程完成的前提是假设用户 A 对 re-INVITE 的响应中仍然包含 SDP2&lt;/li&gt;
+&lt;li&gt;如果不是 SDP2，控制器还需向 B 再发送 re-INVITE，然后又可能从 B 得到另一个不同的 SDP，然后还需向 A 发送 re-INVITE，等等，可能形成一个无限循环的会话协商&lt;/li&gt;
+&lt;li&gt;可采用一个智能 UA，要求其固定的返回 SDP2，或采用一个智能的控制器能够分析收到的 SDP 确定是否需要发送 re-INVITE。但是简单起见，应尽量避免控制器了解 SDP 的具体内容，所以本流程根本不可用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-3-流程-iii&#34;&gt;2.3 流程 III&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://xueqing.github.io/blog/sip/images/process-3.jpeg&#34; alt=&#34;流程&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程包括以下几步
+
+&lt;ul&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 INVITE，没有 SDP&lt;/li&gt;
+&lt;li&gt;A-&amp;gt;控制器：A 振铃应答，200 OK 响应中包含一个 offer1&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：在 ACK 消息中产生一个“黑洞” SDP 应答&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;B：发送 INVITE，没有 SDP&lt;/li&gt;
+&lt;li&gt;B-&amp;gt;控制器：B 振铃应答，200 OK 响应中包含一个提供 offer2&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 re-INVITE，基于 offer2&lt;/li&gt;
+&lt;li&gt;offer2 可能需要稍作修改来满足媒体要求。例如如果 offer1 包含一个音频和一个视频行，而 offer2 只有一个音频行，控制器需要在 offer2 中增加一个视频行构成 offer2&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;A-&amp;gt;控制器：A 振铃应答，200 OK 响应中包含 answer2&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;由于是一个 re-INVITE，通常能立即收到应答&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;B：发送 ACK，基于 answer2&amp;rsquo;，可能修改为 answer2，作为 offer2 的应答&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 ACK 作为应答&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：
+
+&lt;ul&gt;
+&lt;li&gt;操作通常没有超时，没有多余的重发(如果 re-INVITE 没有很快回复，所以还可能发生超时)&lt;/li&gt;
+&lt;li&gt;不需要控制器猜测参与者将要使用的媒体信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;缺点
+
+&lt;ul&gt;
+&lt;li&gt;控制器需要处理 SDP&lt;/li&gt;
+&lt;li&gt;必须接收 SDP，生成另外一个 SDP，媒体信息相同，但是连接地址是无效的&lt;/li&gt;
+&lt;li&gt;需要保存之前的 SDP 信息，以便之后处理 SDP 信息，使之与保存的 SDP 匹配&lt;/li&gt;
+&lt;li&gt;B 的 offer2 可能没有 A 的 offer1 中的解码器或媒体。控制器需要检测这种条件，终止流程&lt;/li&gt;
+&lt;li&gt;导致处理流程更加复杂&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-4-流程-iv&#34;&gt;2.4 流程 IV&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://xueqing.github.io/blog/sip/images/process-4.jpeg&#34; alt=&#34;流程&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程包括以下几步
+
+&lt;ul&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 INVITE，SDP 中没有媒体信息&lt;/li&gt;
+&lt;li&gt;A-&amp;gt;控制器：A 振铃应答，200 OK 中的 SDP 也没有媒体信息&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;A：发送 ACK 应答&lt;/li&gt;
+&lt;li&gt;控制器-&amp;gt;B：发送 INVITE，没有 SDP&lt;/li&gt;
+&lt;li&gt;下面的步骤和流程 III 相同，但是，修改 offer2 为 offer2&amp;rsquo; 以及修改 answer2 为 answer2&amp;rsquo; 更加简单&lt;/li&gt;
+&lt;li&gt;不需要处理媒体信息&lt;/li&gt;
+&lt;li&gt;只需要修改原始行，使得 offer2&amp;rsquo; 的原始行基于 offer1 的值是有效的(版本加 1，其他参数不变)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;优点：降低了复杂度&lt;/li&gt;
+&lt;li&gt;缺点：
+
+&lt;ul&gt;
+&lt;li&gt;A 需要振铃应答，但此时没有任何媒体建立。这意味着 A 不能基于它自己的媒体信息拒绝或接受呼叫&lt;/li&gt;
+&lt;li&gt;A 和 B 将会在不知道是否有兼容的媒体之前就应答了呼叫(如产生 2000 响应)&lt;/li&gt;
+&lt;li&gt;如果没有相同的媒体，调用会通过之后的 BYE 终止。但是，用户已经响铃，造成了骚扰，并可能产生计费事件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-5-流程总结&#34;&gt;2.5 流程总结&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流程 I 最简单且最有效。如果控制器预先知道 B 是自动应答的能够立即响应(如 B 是媒体服务器、会议服务器、消息服务器等)，使用流程 I
+
+&lt;ul&gt;
+&lt;li&gt;大多数情况下，3pcc 建立的通信中会有一方是自动设备，因此这个流程会很常用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果通信双方都是真实的人，或者是未知类型的实体，可使用流程 IV 来实现 3pcc
+
+&lt;ul&gt;
+&lt;li&gt;流程 III 也可使用，但是不会提供额外的好处&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一般不应该使用流程 II，因为可能有无限的循环&lt;/li&gt;
+&lt;li&gt;使用 III 和 IV 对控制器的智能性要求比较高&lt;/li&gt;
+&lt;li&gt;在多数情况下，包括建议的流程，A 在 B 完成呼叫的过程中，会听到一段时间的静默。这样不太理想。可以考虑在完成呼叫的时候，将 A 连接到一个 music-on-hold 资源上&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-应用&#34;&gt;3 应用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SIP 协议的突出优点在于灵活的多媒体会话的控制功能，配合使用 3pcc 可比传统电话网更加灵活方便的实现各种补充业务和新业务&lt;/li&gt;
+&lt;li&gt;3pcc 应用广泛，例如可方便对信令的控制，易于实现点击拨号、早期媒体放音、通话过程中播放语音通知的业务等
+
+&lt;ul&gt;
+&lt;li&gt;点击拨号业务是最典型的 3pcc 的应用实例。用户浏览网站时，可直接点击网页上的链接地址，使用 HTTP 启动控制器对客服代表和 SIP 用户直接的第三方呼叫控制。然后控制器就可使用上述 4 种方法在两者之间建立媒体通话&lt;/li&gt;
+&lt;li&gt;播放过程中播放语音通知，可使用控制器将媒体服务器跟正在通话的用户之间连接起来，播放通知&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-总结&#34;&gt;4 总结&lt;/h2&gt;
+
+&lt;p&gt;3pcc 在多方通信中(如会议)的应用广泛，SIP 协议的 3pcc 功能应用灵活，使用一个控制器可将多个用户联系起来进行通信，方便管理&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>数字证书</title>
+      <link>https://xueqing.github.io/blog/sip/certificate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/certificate/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%ac%e9%92%a5%e5%9f%ba%e7%a1%80%e8%ae%be%e6%96%bd-pki&#34;&gt;公钥基础设施 PKI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#x509&#34;&gt;X.509&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#x509-%e8%af%81%e4%b9%a6&#34;&gt;X.509 证书&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ca-%e7%94%a8%e6%88%b7%e8%af%81%e4%b9%a6&#34;&gt;CA 用户证书&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%af%81%e4%b9%a6%e6%92%a4%e9%94%80&#34;&gt;证书撤销&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;公钥基础设施-pki&#34;&gt;公钥基础设施 PKI&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PKI 系统: 由硬件、软件、人、策略和程序构成的一整套体系&lt;/li&gt;
+&lt;li&gt;功能: 用来创建，管理，存储，分发和撤销建立在非对称密码算法之上的数字证书&lt;/li&gt;
+&lt;li&gt;目的: 用来安全、便捷、高效地获得公钥&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;PKIX(Public Key Infrastructure X.509) 模型的关键元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;端实体: 必备元素。可以是一个终端用户、设备(如应用服务器、路由器等)，或是其他可以在一个公钥数字证书作用范围中被认证的实体。终端实体支持 PKI 相关的设备&lt;/li&gt;
+&lt;li&gt;签证机构 CA: 证书和证书撤销列表的发行人，常常在其上运行着一个或多个注册机构，同时还承担一些管理任务&lt;/li&gt;
+&lt;li&gt;注册机构 RA: 可选元素。可承担一些签证机构的管理任务。一般来说都是和端实体的注册相关的任务，也可支持一些其他的管理任务&lt;/li&gt;
+&lt;li&gt;证书撤销列表发布点: 可选元素。签证机构可通过它来发布证书撤销列表&lt;/li&gt;
+&lt;li&gt;证书存取库: 必备元素。提供了存取数字证书和证书撤销列表的方法，可以被终端用户检索&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;x-509&#34;&gt;X.509&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;X.509 是基于公钥密码体制和数字签名的服务&lt;/li&gt;
+&lt;li&gt;标准中并未规定使用某个特定的算法，但是推荐使用 RSA&lt;/li&gt;
+&lt;li&gt;其数字签名需要用的 Hash 函数，但是没有规定具体的 Hash 算法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;x-509-证书&#34;&gt;X.509 证书&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;X.509 的核心是与每个用户相关的公钥证书&lt;/li&gt;
+&lt;li&gt;证书由一些可信的签证机构(CA)创建并被 CA 或用户放入目录服务器中&lt;/li&gt;
+&lt;li&gt;目录服务器为用户获得证书提供一种简单的存取方式，本身不创建公钥和证书&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;X.509 证书包含三个文件&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;key: 服务器上的私钥文件，用于对发送给客户端数据的加密，以及对从客户端收到的数据的解密&lt;/li&gt;
+&lt;li&gt;csr: 证书签名请求文件，用于提交给证书签证机构 CA 对证书签名&lt;/li&gt;
+&lt;li&gt;crt: 由证书签证机构 CA 签名后的证书，或是开发者自签名的证书，包含证书持有人的信息，持有人的公钥，以及签署者的签名等信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;ca-用户证书&#34;&gt;CA 用户证书&lt;/h3&gt;
+
+&lt;p&gt;CA 生成的用户证书的特点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;任何可以访问 CA 公钥的用户均可获得证书中的用户公钥&lt;/li&gt;
+&lt;li&gt;只有 CA 可以修改证书&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;证书不可伪造，因此可将证书存放在目录中而不需要对目录进行特别保护&lt;/p&gt;
+
+&lt;h3 id=&#34;证书撤销&#34;&gt;证书撤销&lt;/h3&gt;
+
+&lt;p&gt;提前撤回证书的原因有&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户私钥被认为不安全&lt;/li&gt;
+&lt;li&gt;用户不再信任该 CA。原因包括主体名已改变、证书已被废弃或证书没有按照 CA 的规则发行&lt;/li&gt;
+&lt;li&gt;CA 证书被认为不安全&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;CRL: 证书撤销表。包含所有被 CA 撤销还未到期的证书，包括发给用户和其他 CA 的证书&lt;/p&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jonllen.com/jonllen/work/170.aspx&#34; target=&#34;_blank&#34;&gt;数字证书的有效性验证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jonllen.com/jonllen/work/162.aspx&#34; target=&#34;_blank&#34;&gt;国密算法SM2证书制作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jonllen.com/jonllen/work/164.aspx&#34; target=&#34;_blank&#34;&gt;SM2非对称算法加解密&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jonllen.com/jonllen/work/174.aspx&#34; target=&#34;_blank&#34;&gt;SM2国密算法证书解析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/JeffreySun/archive/2010/06/24/1627247.html&#34; target=&#34;_blank&#34;&gt;数字证书原理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>术语和缩略语</title>
+      <link>https://xueqing.github.io/blog/sip/terminology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/terminology/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-93872-1995&#34;&gt;GB/T 9387.2-1995&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-162621-2006&#34;&gt;GB/T 16262.1-2006&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-162642-2008&#34;&gt;GB/T 16264.2-2008&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-162648-2005&#34;&gt;GB/T 16264.8-2005&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-179691-2000&#34;&gt;GB/T 17969.1-2000&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-19713-2005&#34;&gt;GB/T 19713-2005&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-19714-2005&#34;&gt;GB/T 19714-2005&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-25056-2010&#34;&gt;GB/T 25056-2010&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-25059-2010&#34;&gt;GB/T 25059-2010&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gbt-25060-2010&#34;&gt;GB/T 25060-2010&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0006-2012&#34;&gt;GM/T 0006-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0009-2012&#34;&gt;GM/T 0009-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0010-2012&#34;&gt;GM/T 0010-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0011-2012&#34;&gt;GM/T 0011-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0014-2012&#34;&gt;GM/T 0014-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0015-2012&#34;&gt;GM/T 0015-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0016-2012&#34;&gt;GM/T 0016-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0018-2012&#34;&gt;GM/T 0018-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0020-2012&#34;&gt;GM/T 0020-2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gmt-0034-2012&#34;&gt;GM/T 0034-2012&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;gb-t-9387-2-1995&#34;&gt;GB/T 9387.2-1995&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;服务数据单元&lt;/td&gt;
+&lt;td&gt;service data unit&lt;/td&gt;
+&lt;td&gt;SDU&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;安全管理信息库&lt;/td&gt;
+&lt;td&gt;security management information base&lt;/td&gt;
+&lt;td&gt;SMIB&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;管理信息库&lt;/td&gt;
+&lt;td&gt;management information base&lt;/td&gt;
+&lt;td&gt;MIB&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;访问控制&lt;/td&gt;
+&lt;td&gt;access control&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;防止对资源的未授权使用，包括防止以未授权方式使用某一资源&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;访问控制表&lt;/td&gt;
+&lt;td&gt;access control list&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;带有访问权限的实体表，这些访问权是授予它们访问某一资源的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可确认性&lt;/td&gt;
+&lt;td&gt;accountability&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;一种性质，确保一个实体的作用可以被独一无二地跟踪到该实体&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主动威胁&lt;/td&gt;
+&lt;td&gt;active threat&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;这种威胁是对系统的状态进行故意的非授权的改变&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;安全审计&lt;/td&gt;
+&lt;td&gt;security audit&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;安全审计跟踪&lt;/td&gt;
+&lt;td&gt;security audit trail&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;鉴别&lt;/td&gt;
+&lt;td&gt;authentication&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;鉴别信息&lt;/td&gt;
+&lt;td&gt;authentication information&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;用以建立身份有效性的信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;鉴别交换&lt;/td&gt;
+&lt;td&gt;authentication exchange&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;通过信息交换来保证实体身份的一种机制&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;授权&lt;/td&gt;
+&lt;td&gt;authorization&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;授予权限，包括袁旭基于访问权的访问&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可用性&lt;/td&gt;
+&lt;td&gt;availability&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;根据授权实体的请求可被访问与使用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;权利&lt;/td&gt;
+&lt;td&gt;capability&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;作为资源标识符使用的权标，拥有它便拥有对该资源的访问权&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;信道&lt;/td&gt;
+&lt;td&gt;channel&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;信息传送通路&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密文&lt;/td&gt;
+&lt;td&gt;cipher-text&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;经加密处理而产生的数据，其语义内容是不可用的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;明文&lt;/td&gt;
+&lt;td&gt;clear-text&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;可理解的数据，其语义内容是可用的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;机密性&lt;/td&gt;
+&lt;td&gt;confidentiality&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;这一性质使信息不泄露给非授权的个人、实体或进程，不为其所用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;凭证&lt;/td&gt;
+&lt;td&gt;credentials&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;用来为一个实体建立所需身份而传送的数据&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密码学&lt;/td&gt;
+&lt;td&gt;cryptography&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;学科包含了对数据进行变换的原理、手段和方法，其目的是隐藏数据的内容&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;数据原发鉴别&lt;/td&gt;
+&lt;td&gt;data origin authentication&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;确认接收到的数据的来源是所要求的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;解密&lt;/td&gt;
+&lt;td&gt;decipherment&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;与一个可逆的加密过程相对应的反过程&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;加密&lt;/td&gt;
+&lt;td&gt;encipherment&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;对数据进行密码变换以产生密文&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密钥&lt;/td&gt;
+&lt;td&gt;key&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;控制加密与解密操作的一序列符号&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;口令&lt;/td&gt;
+&lt;td&gt;password&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;机密的鉴别信息，通常由一串字符组成&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对等实体鉴别&lt;/td&gt;
+&lt;td&gt;peer-entity authentication&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;确认有关的对等实体是所需的实体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gb-t-16262-1-2006&#34;&gt;GB/T 16262.1-2006&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;基本多文种平面&lt;/td&gt;
+&lt;td&gt;basic multilingual plane&lt;/td&gt;
+&lt;td&gt;BMP&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gb-t-16264-2-2008&#34;&gt;GB/T 16264.2-2008&lt;/h2&gt;
+
+&lt;p&gt;| 术语 | 定义 | 缩写 | 详细信息
+| &amp;ndash; | &amp;mdash; | &amp;mdash; | &amp;mdash;
+| 访问控制决策功能 | access control decision function | ACDF | - |
+| 访问控制信息 | access control information | ACI | - |
+| 访问控制内部区 | access control inner area | ACIA | - |
+| 访问控制特定区 | access control specific area | ACSA | - |
+| 公共目录管理区 | administration directory management domain | ADMD | - |
+| 属性值断言 | attribute value assertion | AVA | - |
+| 目录访问控制域 | directory access control domain | DACD | - |
+| 目录访问协议 | directory access protocol | DAP | - |
+| 目录信息映像协议 | directory information shadowing protocol | DISP | - |
+| 目录管理域 | directory management domain | DMD | - |
+| 域管理组织 | domain management organization | DMO | - |
+| 目录操作绑定管理协议 | directory operational binding management protocol | DSA | - |
+| 目录系统协议 | directory system protocol | DSP | - |
+| 目录信息库 | directory information base | DIB | - |
+| 目录系统代理 | directory system agent | DSA | - |
+| SA 特定条目 | DSA-specific entry | DSE | - |
+| 目录用户代理 | directory user agent | DUA | - |
+| 分等级操作绑定 | hierarchical operational binding | HOB | - |
+| 非特定分等级操作绑定 | non-specific hierarchical operational binding | NHOB | - |
+| 专用目录管理域 | private directory management domain | PRDMD | - |
+| 影像 DSE | shadowed DSE | SDSE | - |&lt;/p&gt;
+
+&lt;h2 id=&#34;gb-t-16264-8-2005&#34;&gt;GB/T 16264.8-2005&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;属性授权机构&lt;/td&gt;
+&lt;td&gt;attribute authority&lt;/td&gt;
+&lt;td&gt;AA&lt;/td&gt;
+&lt;td&gt;通过发布属性证书来分配特权的证书认证机构&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;属性授权机构撤销列表&lt;/td&gt;
+&lt;td&gt;attribute authority revocation list&lt;/td&gt;
+&lt;td&gt;AARL&lt;/td&gt;
+&lt;td&gt;一种包含发布给属性授权机构的证书索引的撤销列表，发布机构认为这些证书已不再有效&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;属性证书撤销列表&lt;/td&gt;
+&lt;td&gt;attribute certificate revocation list&lt;/td&gt;
+&lt;td&gt;ACRL&lt;/td&gt;
+&lt;td&gt;标识由发布机构已发布的、不再有效的属性证书的索引表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;属性证书&lt;/td&gt;
+&lt;td&gt;attribute certificate&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;AA 进行数字前面的数据结构，把持有者的身份信息与一些属性值绑定&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;鉴别令牌&lt;/td&gt;
+&lt;td&gt;authentication token&lt;/td&gt;
+&lt;td&gt;token&lt;/td&gt;
+&lt;td&gt;在强鉴别交换期间传送的一种信息，可用于鉴别其发送者&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;机构&lt;/td&gt;
+&lt;td&gt;authority&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;负责证书发布的实体，包括证书认证机构(发布公钥证书)和属性授权机构(发布属性证书)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;机构证书&lt;/td&gt;
+&lt;td&gt;authority certificate&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;发布给机构的证书&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基础 CRL&lt;/td&gt;
+&lt;td&gt;base CRL&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;一种 CRL，用于产生增量 CRL 的基础&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;间接 CRL&lt;/td&gt;
+&lt;td&gt;indirect CRL&lt;/td&gt;
+&lt;td&gt;ICRL&lt;/td&gt;
+&lt;td&gt;撤销列表，至少包含不是发布此 CRL 的其他机构发布的证书撤销信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;终端实体&lt;/td&gt;
+&lt;td&gt;end entity&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;不以签署证书为目的而使用其私钥的证书主体或依赖(证书)方&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;终端实体属性 CRL&lt;/td&gt;
+&lt;td&gt;end-entity attribute certificate revocation list&lt;/td&gt;
+&lt;td&gt;EARL&lt;/td&gt;
+&lt;td&gt;撤销列表，包含一系列向持有者发布的属性证书，持有者不是 AA，且这些属性证书对证书发布者不再有效&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;终端实体公钥 CRL&lt;/td&gt;
+&lt;td&gt;end-entity public-key certificate revocation list&lt;/td&gt;
+&lt;td&gt;EPRL&lt;/td&gt;
+&lt;td&gt;撤销列表，包含发布给非 CA 的主体的公钥证书列表，证书发布者认为这些证书不再有效&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书使用系统&lt;/td&gt;
+&lt;td&gt;certificate using system&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;证书用户使用的、本部分定义的哪些功能实现&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书源授权机构&lt;/td&gt;
+&lt;td&gt;source of authority&lt;/td&gt;
+&lt;td&gt;SOA&lt;/td&gt;
+&lt;td&gt;为资源的特定权限验证者所信任的，位于顶层的分配特定权限的属性授权机构&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;强鉴别&lt;/td&gt;
+&lt;td&gt;strong authentication&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;使用由密码技术生产的凭证进行的鉴别&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;特定权限管理基础设施&lt;/td&gt;
+&lt;td&gt;privilege management infrastructure&lt;/td&gt;
+&lt;td&gt;PMI&lt;/td&gt;
+&lt;td&gt;支持授权服务的综合基础设施，与公钥基础设施有着密切的联系&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gb-t-17969-1-2000&#34;&gt;GB/T 17969.1-2000&lt;/h2&gt;
+
+&lt;p&gt;| 术语 | 定义 | 缩写 | 详细信息 |
+| &amp;ndash; | &amp;mdash; | &amp;mdash; | &amp;mdash; |
+| 文卷传送、访问和管理 | file transfer access and management | FTAM | - |
+| 国际标准化轮廓 | international standard profile | ISP | - |
+| 开放系统互连 | open system interconnection | OSI | - |
+| 开放系统互连环境 | open system interconnection environment | OSIE | - |
+| 协议控制规范 | protocol control information ??? | PCI | - |
+| 相关可辨别名称 | relative distinguished name | RDN | - |&lt;/p&gt;
+
+&lt;h2 id=&#34;gb-t-19713-2005&#34;&gt;GB/T 19713-2005&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;证书序列号&lt;/td&gt;
+&lt;td&gt;certificate serial number&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;在一个 CA 所签发的证书中用于唯一标识数字证书的一个整数，此整数值与该 CA 所颁发的证书一一对应&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;请求者&lt;/td&gt;
+&lt;td&gt;requester&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;申请在线证书状态查询服务的主体&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;响应者&lt;/td&gt;
+&lt;td&gt;responder&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;提供在线证书状态查询服务的主体&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书认证机构&lt;/td&gt;
+&lt;td&gt;certificate authority&lt;/td&gt;
+&lt;td&gt;CA&lt;/td&gt;
+&lt;td&gt;对数字证书进行全生命周期管理的实体，也称为电子认证服务机构或认证中心&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书认证机构群体&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;CAs&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书撤销列表&lt;/td&gt;
+&lt;td&gt;certificate revocation list&lt;/td&gt;
+&lt;td&gt;CRL&lt;/td&gt;
+&lt;td&gt;由 CA 签发并发布的被撤销证书的列表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;超文本传输协议&lt;/td&gt;
+&lt;td&gt;hypertext transfer protocol&lt;/td&gt;
+&lt;td&gt;HTTP&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;在线证书状态查询协议&lt;/td&gt;
+&lt;td&gt;online certificate status protocol&lt;/td&gt;
+&lt;td&gt;OCSP&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;简明在线证书状态查询协议&lt;/td&gt;
+&lt;td&gt;simple online certificate status protocol&lt;/td&gt;
+&lt;td&gt;SOCSP&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对象标识符&lt;/td&gt;
+&lt;td&gt;object identifier&lt;/td&gt;
+&lt;td&gt;OID&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;公钥基础设施&lt;/td&gt;
+&lt;td&gt;public key infrastructure&lt;/td&gt;
+&lt;td&gt;PKI&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gb-t-19714-2005&#34;&gt;GB/T 19714-2005&lt;/h2&gt;
+
+&lt;p&gt;| 术语 | 定义 | 缩写 | 详细信息 |
+| &amp;ndash; | &amp;mdash; | &amp;mdash; | &amp;mdash; |
+| 抽象语法记法 | abstract syntax notation 1 | ASN.1 | 用来组织复杂数据对象的表示法 |
+| 公钥证书 | public key certificate | - | 用户的公钥连同其他信息，并由发布该证书的证书认证机构的私钥进行加密使其不可伪造 |
+| 证书持有者 | certificate holder | - | 有效证书的主体对应的实体 |
+| 证书用户 | certificate user | - | 需要确切地指导另一实体的公开密钥的某一实体 |
+| 证书认证路径 | certification path | - | 在 DIT 中对象证书的一个有序序列。路径初始点是最初待验证对象的公钥，可通过路径获得最终的顶点的公钥 |
+| 认证业务说明 | certification practice statement | CPS | CA 发放证书时遵循的业务说明 |
+| 交叉证书 | cross-certificate | - | 两个 CA 间为交叉认证所互相签发的电子证书 |
+| 发证 | certify | - | 颁发一个证书的行为 |
+| 可辨别编码规则 | distinguished encoding rules | DER | 对 ASN.1 进行编码的规则 |
+| 数字签名 | digital signature | - | 允许接收者验证签名人的身份和数据完整性的数据单元 |
+| 目录服务 | directory service | DS | 分布在网络中的各种节点或服务器提供的分布式数据库服务 |
+| 散列函数 | hash function | - | 哈希函数，将值从一个大的定义域映射到一个较小值域的函数 |
+| 散列码 | hash code | - | 散列函数的输出比特串 |
+| 消息认证码 | message authentication code | MAC | 通过密码技术由消息产生的认证数据 |
+| 消息摘要 | message digest | - | 散列一个消息后得到的固定长度数据 |
+| 个人安全环境 | personal security environment | PSE | 证书及私钥的终端实体的安全本地存储 |
+| 拥有证明 | proof of possession | POP | 终端实体用以证明自己拥有(即能够使用)与为之申请证书的公钥相对应的私钥 |
+| 资料库 | repository | - | 存储证书和 CRL 等信息，并提供无需验证的信息检索服务的数据库 |
+| 自颁发证书 | self-issued certificate | - | 证书的主体和颁发者相同的 CA 证书 |
+| 公钥加密标准 | public-key cryptography standards | PKCS | - |&lt;/p&gt;
+
+&lt;h2 id=&#34;gb-t-25056-2010&#34;&gt;GB/T 25056-2010&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;证书验证&lt;/td&gt;
+&lt;td&gt;certificate validation&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;确定定数在指定的时间内是否有效的过程，包括有效期验证、签名验证和证书状态验证&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;安全超文本传输协议&lt;/td&gt;
+&lt;td&gt;secure hypertext transfer protocol&lt;/td&gt;
+&lt;td&gt;HTTPS&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gb-t-25059-2010&#34;&gt;GB/T 25059-2010&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;带加密的散列消息验证码&lt;/td&gt;
+&lt;td&gt;hash message authentication code&lt;/td&gt;
+&lt;td&gt;HMAC&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;简单邮件发送协议&lt;/td&gt;
+&lt;td&gt;simple mail transfer protocol&lt;/td&gt;
+&lt;td&gt;SMTP&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;安全套接口层协议&lt;/td&gt;
+&lt;td&gt;secure socket layer protocol&lt;/td&gt;
+&lt;td&gt;SSL&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;传输层安全协议&lt;/td&gt;
+&lt;td&gt;transport layer security protocol&lt;/td&gt;
+&lt;td&gt;TLS&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gb-t-25060-2010&#34;&gt;GB/T 25060-2010&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;数字信封&lt;/td&gt;
+&lt;td&gt;digital envelope&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;附加到消息中的数据，它允许消息的预期接收方验证改消息内容的完整性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0006-2012&#34;&gt;GM/T 0006-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;BASE64&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;将 16 进制数据转换为可见字符的编码规则&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密码分组链接模式&lt;/td&gt;
+&lt;td&gt;cipher block chaining&lt;/td&gt;
+&lt;td&gt;CBC&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;电码本模式&lt;/td&gt;
+&lt;td&gt;electronic code book&lt;/td&gt;
+&lt;td&gt;ECB&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密文反馈模式&lt;/td&gt;
+&lt;td&gt;cipher-text feedback&lt;/td&gt;
+&lt;td&gt;CFB&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;输出反馈模式&lt;/td&gt;
+&lt;td&gt;output feedback&lt;/td&gt;
+&lt;td&gt;OFB&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0009-2012&#34;&gt;GM/T 0009-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SM3 算法&lt;/td&gt;
+&lt;td&gt;SM3 algorithm&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;一种杂凑算法，输出长度为 &lt;strong&gt;256 比特&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0010-2012&#34;&gt;GM/T 0010-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;算法标识&lt;/td&gt;
+&lt;td&gt;algorithm identifier&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;用于标明算法机制的数字化信息&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;椭圆曲线密码算法&lt;/td&gt;
+&lt;td&gt;elliptic curve cryptography&lt;/td&gt;
+&lt;td&gt;ECC&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;用户标识&lt;/td&gt;
+&lt;td&gt;identity&lt;/td&gt;
+&lt;td&gt;ID&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0011-2012&#34;&gt;GM/T 0011-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;可信计算平台&lt;/td&gt;
+&lt;td&gt;trusted computing platform&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;构建在计算系统中，用于实现可信计算功能的支撑系统&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可信计算密码支撑平台&lt;/td&gt;
+&lt;td&gt;cryptographic support platform for trusted computing&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;为可信计算平台自身的完整性、身份可信性和数据安全性提供密码支持，产品形态主要表现为 TCM 和 TSM&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可信密码模块&lt;/td&gt;
+&lt;td&gt;trusted cryptography module&lt;/td&gt;
+&lt;td&gt;TCM&lt;/td&gt;
+&lt;td&gt;可信计算平台的硬件模块，为可信计算平台提供密码运算功能，具有受保护的存储空间&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;TCM 服务模块&lt;/td&gt;
+&lt;td&gt;TCM service module&lt;/td&gt;
+&lt;td&gt;TSM&lt;/td&gt;
+&lt;td&gt;可信计算密码支撑平台内部的软件模块，对平台外部提供访问 TCM 的软件接口&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密码模块密钥&lt;/td&gt;
+&lt;td&gt;TCM endorsement key&lt;/td&gt;
+&lt;td&gt;EK&lt;/td&gt;
+&lt;td&gt;TCM 的初始密钥&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;非易失性&lt;/td&gt;
+&lt;td&gt;non-volatility&lt;/td&gt;
+&lt;td&gt;NV&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;完整性度量&lt;/td&gt;
+&lt;td&gt;integrity measurement&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;使用密码杂凑算法对被度量对象计算其杂凑值的过程&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;完整性度量值&lt;/td&gt;
+&lt;td&gt;integrity measurement value&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;部件被度量后得到的杂凑值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;平台配置寄存器&lt;/td&gt;
+&lt;td&gt;platform configuration register&lt;/td&gt;
+&lt;td&gt;PCR&lt;/td&gt;
+&lt;td&gt;TCM 内部用于存储平台完整性度量值的存储单元&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;平台身份密钥&lt;/td&gt;
+&lt;td&gt;platform identity key&lt;/td&gt;
+&lt;td&gt;PIK&lt;/td&gt;
+&lt;td&gt;TCM 的身份密钥&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;平台加密密钥&lt;/td&gt;
+&lt;td&gt;platform encryption key&lt;/td&gt;
+&lt;td&gt;PEK&lt;/td&gt;
+&lt;td&gt;TCM 中与平台身份密钥关联的加密密钥&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;存储主密钥&lt;/td&gt;
+&lt;td&gt;storage master key&lt;/td&gt;
+&lt;td&gt;SMK&lt;/td&gt;
+&lt;td&gt;用于保护平台身份密钥和用户密钥的主密钥&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0014-2012&#34;&gt;GM/T 0014-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CA 撤销列表&lt;/td&gt;
+&lt;td&gt;certificate authority revocation list&lt;/td&gt;
+&lt;td&gt;CARL&lt;/td&gt;
+&lt;td&gt;标记已被撤销的 CA 的公钥证书列表，表示这些证书已经无效&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书认证系统&lt;/td&gt;
+&lt;td&gt;certificate authentication system&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;对生存周期内的数字证书进行全过程管理(签发、发布、更新、撤销)的安全系统&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密钥管理系统&lt;/td&gt;
+&lt;td&gt;key management&lt;/td&gt;
+&lt;td&gt;KM&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;待签名的(证书)&lt;/td&gt;
+&lt;td&gt;to be signed&lt;/td&gt;
+&lt;td&gt;TBS&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PKCS 1 RSA 加密&lt;/td&gt;
+&lt;td&gt;PKCS #1 RSA cryptography standard&lt;/td&gt;
+&lt;td&gt;PKCS #1&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PKCS 7 密文消息语法&lt;/td&gt;
+&lt;td&gt;PKCS #7 cryptographic message syntax standard&lt;/td&gt;
+&lt;td&gt;PKCS #7&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;任务序列号&lt;/td&gt;
+&lt;td&gt;task no&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0015-2012&#34;&gt;GM/T 0015-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;数字证书&lt;/td&gt;
+&lt;td&gt;digital certificate&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;由国家认可的，具有权威性、可信性和公正性的第三方 CA 进行数字签名的一个可信的数字化文件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CA 证书&lt;/td&gt;
+&lt;td&gt;CA certificate&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;一个 CA 给另一个 CA 签发的证书，CA 也可以为自己签发证书，即自签名的证书&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;终端实体证书&lt;/td&gt;
+&lt;td&gt;entity certificate&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;也称为用户证书，是由数字证书认证机构签发的个人证书、机构证书、设备证书等&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;目录信息树&lt;/td&gt;
+&lt;td&gt;directory information tree&lt;/td&gt;
+&lt;td&gt;DIT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;版本&lt;/td&gt;
+&lt;td&gt;version&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;序列号&lt;/td&gt;
+&lt;td&gt;serial number&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;签名算法&lt;/td&gt;
+&lt;td&gt;signature algorithm&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;颁发者&lt;/td&gt;
+&lt;td&gt;issuer&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可辨别名称&lt;/td&gt;
+&lt;td&gt;distinguished name&lt;/td&gt;
+&lt;td&gt;DN&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;有效期&lt;/td&gt;
+&lt;td&gt;validity&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;世界时间&lt;/td&gt;
+&lt;td&gt;UTC time&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;格林威治标准时间(coordinated universal time)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;通用时间&lt;/td&gt;
+&lt;td&gt;generalized time&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主体&lt;/td&gt;
+&lt;td&gt;subject&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主体公钥信息&lt;/td&gt;
+&lt;td&gt;subject public key information&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;颁发者唯一标识符&lt;/td&gt;
+&lt;td&gt;issuer unique ID&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主体唯一标识符&lt;/td&gt;
+&lt;td&gt;subject unique ID&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;扩展项&lt;/td&gt;
+&lt;td&gt;extensions&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;颁发机构密钥标识符&lt;/td&gt;
+&lt;td&gt;authority key identifier&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主体密钥标识符&lt;/td&gt;
+&lt;td&gt;subject key identifier&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密钥用法&lt;/td&gt;
+&lt;td&gt;key usage&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密钥扩展用途&lt;/td&gt;
+&lt;td&gt;ext key usage&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;私有密钥使用期&lt;/td&gt;
+&lt;td&gt;private key usage period&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书策略&lt;/td&gt;
+&lt;td&gt;certificate policies&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;一个指定的规则集合，它指出证书对于具有普通安全需求的一个特定团体和(或)具体应用类的适用性&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;策略映射&lt;/td&gt;
+&lt;td&gt;policy mappings&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主体替换名称&lt;/td&gt;
+&lt;td&gt;subject alt name&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;颁发者替换名称&lt;/td&gt;
+&lt;td&gt;issuer alt name&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主体目录属性&lt;/td&gt;
+&lt;td&gt;subject directory attributes&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基本限制&lt;/td&gt;
+&lt;td&gt;basic constraints&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;名称限制&lt;/td&gt;
+&lt;td&gt;name constraints&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;策略限制&lt;/td&gt;
+&lt;td&gt;policy constraints&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书撤销列表分发点&lt;/td&gt;
+&lt;td&gt;CRL distribution points&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;一个目录条目或其他的证书撤销列表发布源&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;限制所有策略&lt;/td&gt;
+&lt;td&gt;inhibit any policy&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;最新证书撤销列表&lt;/td&gt;
+&lt;td&gt;freshest CRL&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;个人身份标识码&lt;/td&gt;
+&lt;td&gt;identify code&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;个人社会保险号&lt;/td&gt;
+&lt;td&gt;insurance number&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;企业工商注册号&lt;/td&gt;
+&lt;td&gt;IC registration number&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;企业组织机构代码&lt;/td&gt;
+&lt;td&gt;organization code&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;企业税号&lt;/td&gt;
+&lt;td&gt;taxation number&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;专用因特网扩展&lt;/td&gt;
+&lt;td&gt;private internet extensions id-pkix&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;机构信息访问&lt;/td&gt;
+&lt;td&gt;authority information access&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;主体信息访问&lt;/td&gt;
+&lt;td&gt;subject information access&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;生效日期&lt;/td&gt;
+&lt;td&gt;this update&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;下次更新日期&lt;/td&gt;
+&lt;td&gt;next update&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;被撤销的证书列表&lt;/td&gt;
+&lt;td&gt;revoked certificates&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;颁发机构密钥标识符&lt;/td&gt;
+&lt;td&gt;authority key identifier&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;颁发者替换名称&lt;/td&gt;
+&lt;td&gt;issuer alt name&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书撤销列表号&lt;/td&gt;
+&lt;td&gt;CRL number&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;增量证书撤销列表指示&lt;/td&gt;
+&lt;td&gt;delta CRL indicator&lt;/td&gt;
+&lt;td&gt;dCRL&lt;/td&gt;
+&lt;td&gt;一个部分的 CRL，只包括那些在基础证书撤销列表确认后注销状态改变的证书的条目&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;颁发分发点&lt;/td&gt;
+&lt;td&gt;issuing distribution point&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书撤销列表条目&lt;/td&gt;
+&lt;td&gt;CRL entry&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;撤销时间&lt;/td&gt;
+&lt;td&gt;invalidity date&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书颁发者&lt;/td&gt;
+&lt;td&gt;certificate issuer&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;统一资源标识符&lt;/td&gt;
+&lt;td&gt;uniform resource identifier&lt;/td&gt;
+&lt;td&gt;URI&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0016-2012&#34;&gt;GM/T 0016-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PKCS #5&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;PKCS 第 5 部分，描述一种利用从口令派生出来的安全密钥加密字符串的方法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;个人身份识别码&lt;/td&gt;
+&lt;td&gt;personal identification code&lt;/td&gt;
+&lt;td&gt;PIN&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0018-2012&#34;&gt;GM/T 0018-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;内部加密密钥&lt;/td&gt;
+&lt;td&gt;internal public key&lt;/td&gt;
+&lt;td&gt;IPK&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;内部加密私钥&lt;/td&gt;
+&lt;td&gt;internal private key&lt;/td&gt;
+&lt;td&gt;ISK&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;外部加密密钥&lt;/td&gt;
+&lt;td&gt;external public key&lt;/td&gt;
+&lt;td&gt;EPK&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密钥加密密钥&lt;/td&gt;
+&lt;td&gt;key encrypt key&lt;/td&gt;
+&lt;td&gt;KEK&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0020-2012&#34;&gt;GM/T 0020-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;应用程序接口&lt;/td&gt;
+&lt;td&gt;application program interface&lt;/td&gt;
+&lt;td&gt;API&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;通用名&lt;/td&gt;
+&lt;td&gt;common name&lt;/td&gt;
+&lt;td&gt;CN&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;加密服务提供者&lt;/td&gt;
+&lt;td&gt;cryptographic service provider&lt;/td&gt;
+&lt;td&gt;CSP&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gm-t-0034-2012&#34;&gt;GM/T 0034-2012&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;详细信息&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;认证机构证书&lt;/td&gt;
+&lt;td&gt;authority certificate&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;签发给证书认证机构的证书&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;数字证书&lt;/td&gt;
+&lt;td&gt;digital certificate&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;也称公钥证书，由 CA 签名的包含公钥拥有者信息、公钥、签发者信息、有效期以及扩展信息的一种数据结构&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;完全的证书撤销列表&lt;/td&gt;
+&lt;td&gt;full CRL&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;在给定的范围内，包含所有已经被注销证书的 CRL&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;私钥&lt;/td&gt;
+&lt;td&gt;private key&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;非对称密码算中只能由拥有者使用的不公开密钥&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;公钥&lt;/td&gt;
+&lt;td&gt;public key&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;非对称密码算中可以公开的密钥&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;证书注册机构&lt;/td&gt;
+&lt;td&gt;registration authority&lt;/td&gt;
+&lt;td&gt;RA&lt;/td&gt;
+&lt;td&gt;受理数字证书的申请、更新、恢复和注销等业务的实体&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;依赖方&lt;/td&gt;
+&lt;td&gt;relying party&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;使用证书中的数据进行决策的用户或代理&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;安全策略&lt;/td&gt;
+&lt;td&gt;security policy&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;由 CA 发布的用于约束安全服务以及设施的使用和提供方式的规则集合&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;SM2 算法&lt;/td&gt;
+&lt;td&gt;SM2 algorithm&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;一种椭圆曲线公钥密码算法，密钥长度为 &lt;strong&gt;256 比特&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;信任&lt;/td&gt;
+&lt;td&gt;trust&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;通常说一个实体信任另一个实体表示后者将完全按照前者的规定进行相关的活动&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密钥管理中心&lt;/td&gt;
+&lt;td&gt;key management center&lt;/td&gt;
+&lt;td&gt;KMC&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;轻量级目录访问协议&lt;/td&gt;
+&lt;td&gt;lightweight directory access protocol&lt;/td&gt;
+&lt;td&gt;LDAP&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>研读 GB35114</title>
+      <link>https://xueqing.github.io/blog/sip/gb35114/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/gb35114/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%A0%94%E8%AF%BB-GB35114&#34;&gt;研读 GB35114&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%89%8D%E7%AB%AF%E8%AE%BE%E5%A4%87%E5%88%86%E7%BA%A7&#34;&gt;前端设备分级&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0&#34;&gt;视频监控安全管理平台&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%85%A5%E8%AE%A4%E8%AF%81&#34;&gt;设备接入认证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E4%BF%A1%E4%BB%A4&#34;&gt;信令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E8%BF%90%E7%AE%97&#34;&gt;运算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%AF%86%E9%92%A5%E7%A7%8D%E7%B1%BB&#34;&gt;密钥种类&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E7%B1%BB%E5%9E%8B&#34;&gt;数字证书类型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#SIP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%A4%E8%AF%81-FDWSF-%E7%9A%84%E5%8D%95%E5%90%91%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81&#34;&gt;SIP 服务器认证 FDWSF 的单向身份认证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#SIP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E-FDWSF-%E7%9A%84%E5%8F%8C%E5%90%91%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81&#34;&gt;SIP 服务器与 FDWSF 的双向身份认证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E9%97%B4%E8%AE%A4%E8%AF%81%E7%BD%91%E5%85%B3-1-%E5%90%91%E7%BD%91%E5%85%B3-2-%E5%8F%91%E8%B5%B7%E8%AE%A4%E8%AF%81&#34;&gt;管理平台间认证(网关 1 向网关 2 发起认证)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%8E%A7%E5%88%B6%E4%BF%A1%E4%BB%A4%E8%AE%A4%E8%AF%81&#34;&gt;控制信令认证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%AF%86%E9%92%A5%E4%B8%8E%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86&#34;&gt;密钥与证书管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%96%B0%E5%A2%9E%E5%8D%8F%E8%AE%AE%E8%8E%B7%E5%8F%96%E5%AF%86%E9%92%A5%E4%B8%8E%E8%AF%81%E4%B9%A6&#34;&gt;新增协议获取密钥与证书&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;前端设备分级&#34;&gt;前端设备分级&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FDWSF(具有安全功能的前端设备) 的安全能力分为三个等级&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;能力&lt;/th&gt;
+&lt;th&gt;目标&lt;/th&gt;
+&lt;th&gt;关联标准&lt;/th&gt;
+&lt;th&gt;加密算法&lt;/th&gt;
+&lt;th&gt;A 级&lt;/th&gt;
+&lt;th&gt;B 级&lt;/th&gt;
+&lt;th&gt;C 级&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;基于数字证书与管理平台双向身份认证能力&lt;/td&gt;
+&lt;td&gt;身份真实&lt;/td&gt;
+&lt;td&gt;GBT/28181 (SVAC)&lt;/td&gt;
+&lt;td&gt;SM2, SM3&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对视频数据签名的能力&lt;/td&gt;
+&lt;td&gt;视频真实(来源真实, 内容真实, 未被篡改)&lt;/td&gt;
+&lt;td&gt;GBT/25724 (SVAC)&lt;/td&gt;
+&lt;td&gt;SM2, SM3&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;视频内容加密&lt;/td&gt;
+&lt;td&gt;防止泄露&lt;/td&gt;
+&lt;td&gt;GBT/25724 (SVAC)&lt;/td&gt;
+&lt;td&gt;SM1/SM4, SM3&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;视频监控安全管理平台&#34;&gt;视频监控安全管理平台&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对 FDWSF 的基本信息、属性信息以及 FDWSF 的 ID、其密码模块 ID 与设备证书的对应关系作管理&lt;/li&gt;
+&lt;li&gt;对所有接入的 FDWSF 进行单向或双向设备身份认证&lt;/li&gt;
+&lt;li&gt;平台互联互通时应进行管理平台间的双向身份认证&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;设备接入认证&#34;&gt;设备接入认证&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;平台需要:
+
+&lt;ul&gt;
+&lt;li&gt;解析 FDWSF 支持的算法&lt;/li&gt;
+&lt;li&gt;生成随机数的算法&lt;/li&gt;
+&lt;li&gt;校验签名的时效性&lt;/li&gt;
+&lt;li&gt;获取 FDWSF 的公钥&lt;/li&gt;
+&lt;li&gt;获取管理平台的私钥&lt;/li&gt;
+&lt;li&gt;可设置 Date 比对有效时间范围&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;信令&#34;&gt;信令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;除注册信令, 其他信令作摘要&lt;/li&gt;
+&lt;li&gt;增加设备控制请求: 前端签名控制、前端加密控制, 都是有应答的请求&lt;/li&gt;
+&lt;li&gt;增加通知信令: FDWSF 的 VKEK 改变时, SIP 服务器通知媒体流接收者新的 VKEK 密文和版本号&lt;/li&gt;
+&lt;li&gt;第三方呼叫控制中, 媒体流接收者需要在 Invite 请求中添加 Monitor-User-Identity 表明用户身份&lt;/li&gt;
+&lt;li&gt;在 Invite 的回复中, SIP 服务器在 SDP 中添加媒体流发送者的的 VKEK 密文和版本号&lt;/li&gt;
+&lt;li&gt;导出加密视频: 解密视频数据, 生成新的 VEK 进行加密, 保存 VETK 和播放权限到安全芯片&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;运算&#34;&gt;运算&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;算法包括非对称算法、对称算法、杂凑算法和随机数生成算法&lt;/li&gt;
+&lt;li&gt;参考&lt;a href=&#34;./sip_algorithm.md&#34;&gt;算法在国标中的应用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分类&lt;/th&gt;
+&lt;th&gt;算法&lt;/th&gt;
+&lt;th&gt;国标应用&lt;/th&gt;
+&lt;th&gt;长度&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;非对称密码算法&lt;/td&gt;
+&lt;td&gt;SM2&lt;/td&gt;
+&lt;td&gt;用于用户身份认证、数字签名、密钥协商&lt;/td&gt;
+&lt;td&gt;密钥 256 比特&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对称密码算法&lt;/td&gt;
+&lt;td&gt;SM1、SM4_OFB&lt;/td&gt;
+&lt;td&gt;用于视频数据的加密保护&lt;/td&gt;
+&lt;td&gt;SM4 密钥 128 比特&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;SM4_ECB&lt;/td&gt;
+&lt;td&gt;用于密钥协商数据的加密保护&lt;/td&gt;
+&lt;td&gt;SM4 密钥 128 比特&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;密码杂凑算法&lt;/td&gt;
+&lt;td&gt;SM3&lt;/td&gt;
+&lt;td&gt;用于完整性校验&lt;/td&gt;
+&lt;td&gt;输出 256 比特&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;随机数生成算法&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;生成随机数，&lt;strong&gt;应能通过 GM/T 0005-2012 中规定的方法进行检测&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VEK 是 128 比特&lt;/li&gt;
+&lt;li&gt;IV (采用 OFB 模式) 是 128 比特&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;密钥种类&#34;&gt;密钥种类&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;具有安全功能的前端设备、用户终端、中心信令控制服务器、路由网关、媒体服务器都持有各自的: 非对称密钥和对称密钥
+
+&lt;ul&gt;
+&lt;li&gt;非对称密钥&lt;/li&gt;
+&lt;li&gt;管理平台内功能实体的签名公私钥和加密公私钥&lt;/li&gt;
+&lt;li&gt;FDWSF 的签名公私钥&lt;/li&gt;
+&lt;li&gt;具有安全功能的用户终端签名公私钥&lt;/li&gt;
+&lt;li&gt;对称密钥：视频加密密钥、视频密钥加密密钥、视频主密钥&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;| 密钥名称 | 密钥简称 | 算法 | 备注 |
+  | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; |
+  | 视频加密密钥 | VEK | SM4 | 加密视频流 |
+  | 视频密钥加密密钥 | VKEK | SM4 | 加密保护 VEK |
+  | 视频主密钥 | VEMK | SM4 | 分散得到 VKEK |&lt;/p&gt;
+
+&lt;h3 id=&#34;数字证书类型&#34;&gt;数字证书类型&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基于非对称密码算法&lt;/li&gt;
+&lt;li&gt;包括用户证书、前端设备证书、服务器设备证书和管理平台证书&lt;/li&gt;
+&lt;li&gt;支持 GM/T 0015-2012 基于 SM2 密码算法的数字证书格式规范&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;签名密钥&lt;/td&gt;
+&lt;td&gt;签名密钥为 SM2 非对称密钥对中的私钥，主要用于数据签名&lt;/td&gt;
+&lt;td&gt;系统内所有安全实体均拥有自己的签名密钥，且由自身的密码设备生成该密钥&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;加密密钥&lt;/td&gt;
+&lt;td&gt;加密密钥为 SM2 非对称密钥对中的公钥，主要用于对数据进行加密&lt;/td&gt;
+&lt;td&gt;仅服务器实体具有。由密钥管理中心产生并负责安全管理&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;签名证书&lt;/td&gt;
+&lt;td&gt;由 CA 颁发给申请实体，内含申请实体的公钥和申请信息。签名证书主要用于对申请实体的签名进行验证&lt;/td&gt;
+&lt;td&gt;系统内所有安全实体均拥有自己的签名证书&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;加密证书&lt;/td&gt;
+&lt;td&gt;由 CA 颁发给申请实体，内含 CA 分配给申请实体的公钥、私钥和申请信息。外部实体使用申请实体加密证书中的公钥加密数据信息，申请实体利用加密证书中的私钥解密，从而做到加密通讯&lt;/td&gt;
+&lt;td&gt;仅服务器实体具有&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;签名证书和加密证书一起保存在用户的证书载体中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sip-服务器认证-fdwsf-的单向身份认证&#34;&gt;SIP 服务器认证 FDWSF 的单向身份认证&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FDWSF 收到 401, 发送请求: 使用 FDWSF 的私钥对 (R2 + R1 + SIP_Server_ID) 做签名运算
+
+&lt;ul&gt;
+&lt;li&gt;R2: FDWSF 产生的随机数&lt;/li&gt;
+&lt;li&gt;R1: 第一次 register, SIP 服务器在 401 返回的随机数&lt;/li&gt;
+&lt;li&gt;SIP_Server_ID: SIP 服务器的设备 ID&lt;/li&gt;
+&lt;li&gt;签名: SM2 椭圆曲线密码算法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;管理平台回复:
+
+&lt;ul&gt;
+&lt;li&gt;使用 FDWSF 证书校验签名, 使用 FDWSF 公钥解密, 验证各个参数&lt;/li&gt;
+&lt;li&gt;使用 FDWSF 的公钥对 VKEK 加密经 Base64 编码后得到 crypt_key&lt;/li&gt;
+&lt;li&gt;加密: SM4 分组密码算法 ECB 模式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sip-服务器与-fdwsf-的双向身份认证&#34;&gt;SIP 服务器与 FDWSF 的双向身份认证&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FDWSF 收到 401, 请求: 同上&lt;/li&gt;
+&lt;li&gt;管理平台回复:同上
+
+&lt;ul&gt;
+&lt;li&gt;用管理平台私钥对 (R1 + R2 + device_id + crypt_key) 做签名运算&lt;/li&gt;
+&lt;li&gt;R1: 第一次 register, SIP 服务器在 401 返回的随机数&lt;/li&gt;
+&lt;li&gt;R2: FDWSF 产生的随机数&lt;/li&gt;
+&lt;li&gt;device_id: FDWSF 的 ID&lt;/li&gt;
+&lt;li&gt;签名: SM2 椭圆曲线密码算法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;FDWSF 收到管理平台 200 回复
+
+&lt;ul&gt;
+&lt;li&gt;用 SIP 服务器证书校验签名, 使用管理平台公钥解密, 验证各个参数&lt;/li&gt;
+&lt;li&gt;用 FDWSF 私钥解密 crypt_key, 获得 VKEK 的值&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;管理平台间认证-网关-1-向网关-2-发起认证&#34;&gt;管理平台间认证(网关 1 向网关 2 发起认证)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;网关 1 收到 401, 发送请求: 使用网关 1 的私钥对 (R2 + R1 + 网关_2_ID) 做签名运算
+
+&lt;ul&gt;
+&lt;li&gt;R2: 网关 1 产生的随机数&lt;/li&gt;
+&lt;li&gt;R1: 第一次 register, 网关 2 在 401 返回的随机数&lt;/li&gt;
+&lt;li&gt;网关_2_ID: 网关 2 的 ID&lt;/li&gt;
+&lt;li&gt;签名: SM2 椭圆曲线密码算法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;网关 2 回复:
+
+&lt;ul&gt;
+&lt;li&gt;使用网关 1 的公钥对 VKEK 加密经 Base64 编码后得到 crypt_key_1&lt;/li&gt;
+&lt;li&gt;使用网关 1 的公钥对 VEMK 和 VEMK 版本号加密经 Base64 编码后得到 crypt_key_2&lt;/li&gt;
+&lt;li&gt;加密: SM4 分组密码算法 ECB 模式&lt;/li&gt;
+&lt;li&gt;用网关 2 私钥对 (R1 + R2 + 网关_1_ID + crypt_key_1 + crypt_key_2) 做签名运算&lt;/li&gt;
+&lt;li&gt;R1: 第一次 register, 网关 2 在 401 返回的随机数&lt;/li&gt;
+&lt;li&gt;R2: 网关 1 产生的随机数&lt;/li&gt;
+&lt;li&gt;网关_1_ID: 网关 1 的 ID&lt;/li&gt;
+&lt;li&gt;签名: SM2 椭圆曲线密码算法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;网关 1 收到 200 回复
+
+&lt;ul&gt;
+&lt;li&gt;用网关 2 证书校验签名, 使用网关 2 公钥解密, 验证各个参数&lt;/li&gt;
+&lt;li&gt;用网关 1 私钥解密 crypt_key_1, 获得 VKEK 的值&lt;/li&gt;
+&lt;li&gt;用网关 1 私钥解密 crypt_key_2, 获得 VEMK 和 VEMK 版本号&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;控制信令认证&#34;&gt;控制信令认证&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对注册信令以外的消息作带密钥的杂凑&lt;/li&gt;
+&lt;li&gt;发起消息之前计算 nonce
+
+&lt;ul&gt;
+&lt;li&gt;对 (METHOD + From + To + CallID + Date + VKEK + 消息体) 做杂凑运算经 Base64 编码得到的值&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;收到消息之后计算并校验摘要
+
+&lt;ul&gt;
+&lt;li&gt;对 (METHOD + From + To + CallID + Date + VKEK + 消息体) 做杂凑运算经 Base64 编码得到的值&lt;/li&gt;
+&lt;li&gt;对比收到的 nonce 和计算的结果&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;密钥与证书管理&#34;&gt;密钥与证书管理&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FDWSF持有：
+
+&lt;ul&gt;
+&lt;li&gt;签名私钥(SM2)&lt;/li&gt;
+&lt;li&gt;加密私钥(SM4_ECB)&lt;/li&gt;
+&lt;li&gt;对称密码，和加密公钥相同&lt;/li&gt;
+&lt;li&gt;管理平台签名证书(包含管理平台签名公钥)&lt;/li&gt;
+&lt;li&gt;管理平台加密证书(包含管理平台加密公钥)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;管理平台持有：
+
+&lt;ul&gt;
+&lt;li&gt;签名私钥(SM2)&lt;/li&gt;
+&lt;li&gt;加密私钥(SM4_ECB)&lt;/li&gt;
+&lt;li&gt;对称密码，和加密公钥相同&lt;/li&gt;
+&lt;li&gt;前端设备签名证书(包含设备签名公钥)&lt;/li&gt;
+&lt;li&gt;前端设备加密证书(包含设备加密公钥)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;新增协议获取密钥与证书&#34;&gt;新增协议获取密钥与证书&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;请求签名公私钥(SM2)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GetSM2SignKeyPair(std::string &amp;amp;pubKey, std:;string &amp;amp;priKey);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;请求签名证书(SM2)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GetSM2SignCert(std::string &amp;amp;pubKey, std::string &amp;amp;cert);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;请求加密公私钥(对称加密 SM4)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GetSymmCipherKeyPair(std::string &amp;amp;key);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;请求加密证书(对称加密 SM4)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GetSymmCipherCert(std::string &amp;amp;key, std::string &amp;amp;cert);&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>访问控制</title>
+      <link>https://xueqing.github.io/blog/sip/access_control/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/sip/access_control/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%e6%8f%8f%e8%bf%b0&#34;&gt;1 描述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%ae%89%e5%85%a8&#34;&gt;2 计算机安全&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6%e6%a8%a1%e5%9e%8b&#34;&gt;3 访问控制模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%e5%9f%ba%e4%ba%8e%e8%a7%92%e8%89%b2%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6-vs-%e5%9f%ba%e4%ba%8e%e5%b1%9e%e6%80%a7%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6&#34;&gt;4 基于角色的访问控制 vs 基于属性的访问控制&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e5%9f%ba%e4%ba%8e%e8%a7%92%e8%89%b2%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6&#34;&gt;4.1 基于角色的访问控制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e5%9f%ba%e4%ba%8e%e5%b1%9e%e6%80%a7%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6&#34;&gt;4.2 基于属性的访问控制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e9%80%89%e6%8b%a9%e5%9f%ba%e4%ba%8e%e5%b1%9e%e6%80%a7%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6%e5%9f%ba%e4%ba%8e%e8%a7%92%e8%89%b2%e7%9a%84%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6&#34;&gt;4.3 选择基于属性的访问控制/基于角色的访问控制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#431-rbac-%e7%9a%84%e4%bc%98%e7%bc%ba%e7%82%b9&#34;&gt;4.3.1 RBAC 的优缺点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#432-abac-%e7%9a%84%e4%bc%98%e7%bc%ba%e7%82%b9&#34;&gt;4.3.2 ABAC 的优缺点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#433-%e6%80%bb%e7%bb%93&#34;&gt;4.3.3 总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-%e5%8f%82%e8%80%83&#34;&gt;5 参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-描述&#34;&gt;1 描述&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在物理安全和信息安全领域，访问控制(Access Control, AC)是对一个地方或其他资源的一个选择性限制访问。访问的含义可能是消费、进入或者使用。授权访问一个资源叫做鉴权(authorization)&lt;/li&gt;
+&lt;li&gt;锁和登录凭证是访问控制两种类似的机制&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-计算机安全&#34;&gt;2 计算机安全&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在计算机安全领域，通常的访问控制包括身份认证、授权和审计。一个更狭义的访问控制值包含访问批准，即系统决定允许或拒绝一个已认证的主体的访问请求，基于该主体被授权访问的内容&lt;/li&gt;
+&lt;li&gt;身份认证和访问控制通常合并成一个操作，以便于基于成功的身份认证，或基于一个匿名的访问令牌批准访问。身份认证方法和令牌包括密码、生物扫描、物理钥匙、电子钥匙和设备、隐藏路径、社会障碍、人类和自动系统的监控&lt;/li&gt;
+&lt;li&gt;在所有的访问控制模型中，可以对系统执行操作的实体称为主体，访问需要控制的资源实体称作对象。主体和对象应当做软件实体，而不是人类用户：所有的人类用户只能通过他们控制的软件实体影响系统&lt;/li&gt;
+&lt;li&gt;从 2014 年起，访问控制模型趋于两类
+
+&lt;ul&gt;
+&lt;li&gt;基于能力的模型(capability-based model)：对一个对象持有不可伪造的引用或能力提供了对该对象的访问(差不多类似于持有一个房子的钥匙批准访问该房子)。通过一个安全的通道传递这个能力给另一个组来传递访问权限&lt;/li&gt;
+&lt;li&gt;基于 ACL(Access control lists) 的模型(ACL-based model)：主体访问一个对象取决于主体的身份是否出现在跟对象相关的列表(差不多类似于一个私人派对的门卫会检查 ID 看是否在客人名单上)。通过编辑列表传递访问权限。(不同的 ACL 系统对于谁或者什么负责编辑列表以及如何编辑列表有不同的惯例)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;基于能力和基于 ACL 的模型都有机制允许将访问权限授予一组主体的所有成员&lt;/li&gt;
+&lt;li&gt;访问控制系统提供基本的服务，包括售授权(authorization)、身份识别和认证(identification and authentication, I&amp;amp;A)、访问批准(access approval)和问责(accountability)
+
+&lt;ul&gt;
+&lt;li&gt;授权：指定一个主体可以做的&lt;/li&gt;
+&lt;li&gt;身份识别和认证：确保只有合法的主体可以登录系统&lt;/li&gt;
+&lt;li&gt;访问批准：基于授权策略，介个用户可以访问的资源，在操作中授权访问&lt;/li&gt;
+&lt;li&gt;问责：识别一个主体(或与一个用户相关的所有主体)做过的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-访问控制模型&#34;&gt;3 访问控制模型&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;访问控制模型&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;基于属性的访问控制(Attribute-based access control, ABAC)&lt;/td&gt;
+&lt;td&gt;通过使用策略评估属性(用户属性、资源属性和环境条件)授予访问权限&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;自主访问控制(Discretionary access control, DAC)&lt;/td&gt;
+&lt;td&gt;由数据所有者确定谁可以访问指定的资源&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基于历史的访问控制(History-based access control, HBAC)&lt;/td&gt;
+&lt;td&gt;根据请求组的历史活动(行为、请求时间间隔、请求内容等)实时评估授予或取消访问权限。比如，当请求间隔超过一秒一个时，可以授予或取消对服务或数据源的访问权限&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基于身份的访问控制(Identity-based access control, IBAC)&lt;/td&gt;
+&lt;td&gt;网络管理员使用此模型可基于个人需求更加有效地管理活动和访问&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;强制访问控制(Mandatory access control, MAC)&lt;/td&gt;
+&lt;td&gt;用户没有太多自由确定谁可以访问他们的文件。由系统对用户创建的对象进行统一的强制性控制&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基于组织的访问控制(Organization-based access control, OrBAC)&lt;/td&gt;
+&lt;td&gt;允许策略设计者定义一个与实现无关的安全策略&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基于角色的访问控制(Role-based access control, RBAC)&lt;/td&gt;
+&lt;td&gt;根据工作标题允许访问。RBAC 在提供对对象的访问时很大程度上忽略了自由。例如，一个人类资源专家不应该允许创建网络账户，此角色应该保留给网络管理员&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基于规则的访问控制(Rule-based access control, RAC)&lt;/td&gt;
+&lt;td&gt;大部分基于上下文。比如只允许学生在一天的一部分时间段使用实验室&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;基于责任的访问控制(Responsibility based access control)&lt;/td&gt;
+&lt;td&gt;基于分配给一个演员或业务角色的责任访问信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;4-基于角色的访问控制-vs-基于属性的访问控制&#34;&gt;4 基于角色的访问控制 vs 基于属性的访问控制&lt;/h2&gt;
+
+&lt;h3 id=&#34;4-1-基于角色的访问控制&#34;&gt;4.1 基于角色的访问控制&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RBAC 是基于定义组织内的雇佣角色和对应特权的访问控制方法。模型的思想是每个雇员被分配一个角色。每个角色有一组权限和限制。一个雇员只有他们在系统中的角色有相关权限才可以访问对象和执行操作&lt;/li&gt;
+&lt;li&gt;例如：一个公司的会计应允许访问财务信息，但是不应访问客户联系信息或信用卡数据&lt;/li&gt;
+&lt;li&gt;一个用户可被分配一个或多个角色。当有新雇员时，很容易给他们分配一个角色。当有人离开公司，也不需要修改角色参数或中心策略&lt;/li&gt;
+&lt;li&gt;几个主要的组成部分
+
+&lt;ul&gt;
+&lt;li&gt;用户：可以访问系统的个人(有 UID)&lt;/li&gt;
+&lt;li&gt;角色：命名的工作职能(表明授权级别)&lt;/li&gt;
+&lt;li&gt;权限：等于访问权利&lt;/li&gt;
+&lt;li&gt;会话：用户和角色直接的映射，表明用户在一个工作时间上下文被分配的角色&lt;/li&gt;
+&lt;li&gt;对象：需要权限访问的系统资源&lt;/li&gt;
+&lt;li&gt;操作：在受保护的网络的任何操作&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;基本规则
+
+&lt;ul&gt;
+&lt;li&gt;只有一个主体被分配了对象，此用户才可以执行一个操作&lt;/li&gt;
+&lt;li&gt;身份识别和认证不属于操作&lt;/li&gt;
+&lt;li&gt;所有的用户行为通过操作完成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;RBAC 的实现有 4 个等级
+
+&lt;ul&gt;
+&lt;li&gt;扁平的 RBAC：实现 RBAC 模型的基本功能。为所有的用户和权限分配角色。用户通过获得角色取得权限。可以根据公司需求有足够多的角色和权限。可分配一个用户多个角色，也可分配一个角色给多个用户&lt;/li&gt;
+&lt;li&gt;分层的 RBAC：在角色结构内实现分层。分层建立了角色之间的关系。高等级角色的用户拥有低等级角色用户的权限。高等级用户可将低等级角色分配给他的下属&lt;/li&gt;
+&lt;li&gt;受限的 RBAC：给安全系统增加了职责分离(SOD, separation of duties)。当一个单一的职责分布在几个雇员时，SOD 是一个众所周知的安全实践。这个对于大中型企业是十分重要的。职责分离保证没有工作会给系统引入虚假的改变，且这些改变没有人可以审计或修正&lt;/li&gt;
+&lt;li&gt;对称的 RBAC：支持权限-角色审查和用户-角色审查。它允许识别分配给已有角色的权限(反之亦然)。比如，通过识别一个终止雇员的权限，管理员可以撤回该雇员的权限，然后重新分配角色给其他用户，而权限是相同的或者不同的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;难点在于定义角色。需要考虑一个用户完成任务需要的所有权限及该角色的层级。如果赋予一个角色太多权限，会破坏最小权限原则，导致权限误用&lt;/li&gt;
+&lt;li&gt;RBAC 通常应用在小型和中型企业。这些组织通常是简单的工作流、有限的角色和比较简单的等级，使得可以有效地确定和描述用户角色&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-2-基于属性的访问控制&#34;&gt;4.2 基于属性的访问控制&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ABAC 由 RBAC 演变而来。模型基于为系统内的元素创建一系列属性。中心策略定义了执行任何操所需的用户和对象属性的组合&lt;/li&gt;
+&lt;li&gt;主要的组件包括
+
+&lt;ul&gt;
+&lt;li&gt;属性：网络中所有元素的特点。一个属性可以是&lt;/li&gt;
+&lt;li&gt;用户特点：雇佣者位置，部门，IP 地址，许可级别等&lt;/li&gt;
+&lt;li&gt;对象特点：类型，创建者，敏感度，所需的许可级别等&lt;/li&gt;
+&lt;li&gt;行为类型：读，写，编辑，拷贝，粘贴等&lt;/li&gt;
+&lt;li&gt;环境特点：时间，星期，位置等&lt;/li&gt;
+&lt;li&gt;主体：网络中可执行操作的所有用户或资源。为一个主体分配属性以定义它的许可级别&lt;/li&gt;
+&lt;li&gt;对象：网络中存储的所有数据。为对象分配属性以描述和识别它们&lt;/li&gt;
+&lt;li&gt;操作：网络中任何主体执行的行为&lt;/li&gt;
+&lt;li&gt;策略：允许或限制信息检索系统中的所有行为的一系列规则。规则是基于所有元素(用户、资源、环境)的属性的“If/Then”语句&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ABAC 适用于各种大小的奇特，但是更多应用域大型组织。ABAC 的部署和配置阶段比 RBAC 需要更多时间和经理，因为安全管理员需要定义系统的所有属性。一开始，需要为每个系统组件手动分配属性&lt;/li&gt;
+&lt;li&gt;与 RBAC 相比，ABAC 是一个更加细粒度的访问控制模型&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-3-选择基于属性的访问控制-基于角色的访问控制&#34;&gt;4.3 选择基于属性的访问控制/基于角色的访问控制&lt;/h3&gt;
+
+&lt;h4 id=&#34;4-3-1-rbac-的优缺点&#34;&gt;4.3.1 RBAC 的优缺点&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;优点
+
+&lt;ul&gt;
+&lt;li&gt;主要的优点是公司不需要授予或废除个人的访问权限，而是基于角色将用户绑定到一起&lt;/li&gt;
+&lt;li&gt;为小中型公司创建一系列角色不是很难&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;缺点
+
+&lt;ul&gt;
+&lt;li&gt;为大公司创建一系列角色是困难的&lt;/li&gt;
+&lt;li&gt;在用户开始工作之前，不能使用系统未知的参数创建规则&lt;/li&gt;
+&lt;li&gt;权限只能分配给用户角色，而不包括对象和操作&lt;/li&gt;
+&lt;li&gt;可以限制系统内对一些行为的访问，但是不是限制对一些数据的访问&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-3-2-abac-的优缺点&#34;&gt;4.3.2 ABAC 的优缺点&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;优点
+
+&lt;ul&gt;
+&lt;li&gt;主要优点是基于每个系统组件的属性而不是用户的角色授权。因此，可以描述任何复杂度的业务规则。当需要限制一些数据是工作时间段内可访问的，可以通过简单的策略实现&lt;/li&gt;
+&lt;li&gt;可以评估授权系统还未创建的主体和资源属性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;缺点
+
+&lt;ul&gt;
+&lt;li&gt;因为需要指定和维护策略，所以系统配置是困难的&lt;/li&gt;
+&lt;li&gt;几乎不可能确定所有给定的雇佣角色承担的风险&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-3-3-总结&#34;&gt;4.3.3 总结&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;特点&lt;/th&gt;
+&lt;th&gt;RBAC&lt;/th&gt;
+&lt;th&gt;ABAC&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;灵活性&lt;/td&gt;
+&lt;td&gt;Y(适用于小中型组织)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;可扩展性&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;简单性&lt;/td&gt;
+&lt;td&gt;易于为小公司建立角色和权限，但是对于大公司难以维护&lt;/td&gt;
+&lt;td&gt;开始的时候难以创建所有策略，易于维护和支持&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对简单规则的支持&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对复杂规则的支持&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;对包含动态参数的规则的支持&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;自定义用户权限&lt;/td&gt;
+&lt;td&gt;-(每个自定义都需要创建一个新角色)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;粒度&lt;/td&gt;
+&lt;td&gt;低&lt;/td&gt;
+&lt;td&gt;高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;结合 RBAC 和 ABAC：公司在开始通常实现一个扁平的 RBAC。这个模型易于设置和维护。随着组织成长以及管理更多敏感数据，公司意识到需要更加复杂的访问控制系统。RBAC 和 ABAC 可以一起使用，其中 RBAC 负责粗粒度的工作，ABAC 实现细粒度的部分&lt;/li&gt;
+&lt;li&gt;这个模型也称作 RBAC-A。有三个方法处理角色和属性之间的关系
+
+&lt;ul&gt;
+&lt;li&gt;以属性为中心：一个角色称为其中一个用户属性的名字。它类似一个工作标题。这个模型中的角色属性用于标记一个中心位置所需的一系列属性&lt;/li&gt;
+&lt;li&gt;以角色为中心：增加属性以限制角色。这个模型中的属性可以减少用户可得的权限。这个方式可以增加数据的安全性&lt;/li&gt;
+&lt;li&gt;动态角色：属性(例如一天的时间)可用于决定主体的角色。这种情况下，一个用户的角色可以由动态属性完全确定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-参考&#34;&gt;5 参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Access_control&#34; target=&#34;_blank&#34;&gt;Access control wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ekransystem.com/en/blog/rbac-vs-abac&#34; target=&#34;_blank&#34;&gt;Role-based Access Control vs Attribute-based Access Control: How to Choose&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
