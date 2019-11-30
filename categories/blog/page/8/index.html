@@ -353,91 +353,91 @@
   
   
   <div>
-    <h2><a href="/blog/go/basic/go_type_casting/">go 类型转换</a></h2>
+    <h2><a href="/blog/git/git_rm/">git rm 移除文件</a></h2>
     <div class="article-style">
       
-      类型声明 type 声明定义一个新的命名类型，它和某个已有类型使用同样的底层类型。命名；类型提供了一种方式来区分底层类型的不同或不兼容使用，这样就不会
+      # 从工作目录中删除指定的文件并存入暂存区 git rm file1 # 删除之前修改过并且已经放到暂存区域的文件, --forced, 用于防止误删还没有添加到快照的数据 git rm -f file1 # 从 git
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_structure/">go 结构</a></h2>
+    <h2><a href="/blog/git/git_status/">git status 跟踪状态</a></h2>
     <div class="article-style">
       
-      package pkg_name定义包名，即程序属于哪个包，每个 go 文件第一行 package main表示一个可独立执行的程序 每个 go 的应用程序必须包含一个 main 包 import pkg_n
+      # 查看哪些文件处于什么状态 git status # 得到一种更为紧凑的格式输出, --short git status -s git status --ignored
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_struct/">go 结构体</a></h2>
+    <h2><a href="/blog/git/git_submodule/">git submodule</a></h2>
     <div class="article-style">
       
-      定义结构体 访问结构体成员变量 定义结构体 struct 是域的集合 定义结构体需要使用 type 和 struct 关键字 package main import &quot;fmt&quot; type vertex struct { X int Y int } func main() { fmt.Println(vertex{1, 2}) } 声明结构体变量：结构体
+      git submodule 应用场景 问题 高级命令 git将submodule有关的信息保存在两个地方： .gitmodules在仓库中，有版本控制，修改之后会同步到其他
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_range/">go 范围</a></h2>
+    <h2><a href="/blog/git/git_tag/">git tag 标签</a></h2>
     <div class="article-style">
       
-      range 关键字用于 for 循环中迭代数组 array、切片 slice、通道 channel 或 集合 map 的元素 在数组和切片中返回元素的索引和索引对应的值的拷贝，在集合中返回 key-value
+      标签不能像分支一样来回移动. 分为轻量标签（lightweight）与附注标签（annotated） 轻量标签：很像一个不会改变的分支, 只是一个
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_operator/">go 运算符</a></h2>
+    <h2><a href="/blog/git/git_branch/">git 分支</a></h2>
     <div class="article-style">
       
-      算术运算符: +, -, *, /, %, ++, &ndash; 关系运算符: ==, !=, &gt;, &lt;, &gt;=, &lt;= 逻辑运算符: &amp;&amp;, ||, ! 位运算符: &amp;, |, ^(异或), &lt;&lt;, &gt;&gt; 赋值运算符: =, +=, -=, *=, /=, %=, &lt;&lt;=, &gt;&gt;=, &amp;=, |=, ^= 其他运算
+      HEAD git branch git checkout 合并分支 拉取分支 删除远程仓库分支 分支引用 HEAD HEAD：一个指针, 指向当前所在的本地分支 HEAD 分支随着提交操作自动向前移动 检出时 HEAD 随之移动
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_recursive/">go 递归函数</a></h2>
+    <h2><a href="/blog/git/git_alias/">git 别名管理</a></h2>
     <div class="article-style">
       
-      定义 func myRecursion() { //myRecursion() }
+      使用git config为命令设置别名 输入 git cpick commit-id 就可以引用某次提交 git config --global alias.cpick cherry-pick git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status 使用git config新建
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_error_handling/">go 错误处理</a></h2>
+    <h2><a href="/blog/git/account_ssh/">github 账户管理</a></h2>
     <div class="article-style">
       
-      go 使用 error 值表示错误状态，通过内置的错误接口提供了非常简单的错误处理机制 error 是一个接口类型，定义 type error interface { Error() string } 可在编码中通过实现 error 接口类型生成错
+      添加 SSH ke 到 github 账户 检查 .ssh 文件夹是否有密钥 ls ~/.ssh/ 没有的话生成密钥 ssh-keygen -t rsa -C &quot;your_email@example.com&quot; 添加 SSH key 到 ssh-agent # 后台启动 ssh-agent eval $(ssh-agent -s) # 添加 key ssh-add ~/.ssh/id_rsa 在 github 的个人设置中添加一个 ssh-key 也可
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/cplusplus/hash_map/">hash map</a></h2>
+    <h2><a href="/blog/gitlab/gitlab/">gitlab 踩坑</a></h2>
     <div class="article-style">
       
-      class hash_map { hash_map() {set_load(); v.reserve(max_load*b.size());} // 表“太满”(如 75% 满)时性能会恶化 void set_load(float m=0.7, float g=1.6) {max_load=m; grow=g;} // 查找 mapped_type&amp; operator[] (const key_type&amp; k) { // 先计算散列值，查找表索引 size_type i = hash(k) % b.size(); // 找到之后遍历散列链匹配
+      cache 使用 gitlab 的 CI/CD 时，将项目的 runner 设置为 group-runner 若同一个 pipeline 中的 stage 之间共享的 cache 依赖于同一个 runner，所以要保证同一个 pipeline 使用的是一个 runner 可以定义基类的 job
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/hls/hls/">HLS 学习</a></h2>
+    <h2><a href="/blog/go/basic/go_mutex/">go 互斥锁</a></h2>
     <div class="article-style">
       
-      HLS 概述 一些概念 media playlist master playlist HLS 协议简介 输入视频或音频 服务器组件 文件切片器 媒体片段文件 索引文件(Playlists) 分布式组件 客户端软件 会话模式 内容
+      sync.Mutex sync.Mutex 互斥：保证每次只有一个 goroutine 可以访问一个共享的变量 go 标准库提供 sync.Mutex 互斥锁类型及两个方法： Lock 和 Unlock 在代码前调用 Lock，在代码后调用 Unlock 保证这段代码
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/traps/json_struct/">json 解析时用到的结构体标签</a></h2>
+    <h2><a href="/blog/go/basic/go_function/">go 函数</a></h2>
     <div class="article-style">
       
-      1 只有导出的结构体成员对外部程序 (json) 可见 2 结构体必须解析的字段(required 标签) 2.1 结构体标签 2.2 json 解析嵌套域 2.3 json 编码时会对指针解引用，使用
+      函数 function 函数用法 函数值 匿名函数 可变函数 variadic function 方法 vs 函数 方法的值接收者 vs 函数的值参数 方法的指针接收者和函数的指针参数 函数 function 函数是基本的代码块，用于
       
     </div>
   </div>

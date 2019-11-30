@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="原文 reStructuredText 入门 ====================== :作者: kiki :日期: 2019/11/6 翻译 原文__。 __ http://docutils.sourceforge.net/docs/user/rst/quickstart.html :作者: Richard Jones :修订: 5801 :版权: 此文档放置在公共域。 .. contents:: 目录 下面的文本包含看似 “(快速参考_">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/rest/quickstart/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/rest/quickstart/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/rest/quickstart/">
+  <meta property="og:title" content="reStructuredText 入门 | kiki">
+  <meta property="og:description" content="原文 reStructuredText 入门 ====================== :作者: kiki :日期: 2019/11/6 翻译 原文__。 __ http://docutils.sourceforge.net/docs/user/rst/quickstart.html :作者: Richard Jones :修订: 5801 :版权: 此文档放置在公共域。 .. contents:: 目录 下面的文本包含看似 “(快速参考_"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>reStructuredText 入门 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>reStructuredText 入门</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p><a href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html" target="_blank">原文</a></p>
+
+<pre><code class="language-rst">reStructuredText 入门
+======================
+
+:作者: kiki
+:日期: 2019/11/6
+
+翻译 原文__。
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickstart.html
+
+:作者: Richard Jones
+:修订: 5801
+:版权: 此文档放置在公共域。
+
+.. contents:: 目录
+
+下面的文本包含看似 “(快速参考__)” 的链接。这些是指向 `快速学习 reStructuredText`_ 用户手册的相对链接。如果这些链接不生效，请参考 主快速参考_ 文档。
+
+__
+.. _快速学习 reStructuredText: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+.. _主快速参考: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+
+.. Note:: 此文档是对 reStructuredText 的一个非正式介绍。下面的章节 `下一步是什么?`_ 包含一些进一步的资源的链接，包含一个正式的参考。
+
+结构
+-----
+
+一开始，让我说一下“结构化的文本”可能有一点用词不当。它更像使用一些一致模式的“松散的文本”。这些模式被一个 HTML 转换器解释生成“非常结构化的文本”，且能被 web 浏览器使用。
+
+识别的最基本模式是 **段落** (快速参考__)。段落是使用空行(一个就足够)分隔的文本块。段落必须有相同的缩进——也就是说，同一段落的行左边是对齐的。开始缩进的段落会生成缩进的引用段。比如::
+
+  这是一个段落。它非常
+  短。
+
+    这一段会生成一个缩进的文本块，通常用来引用其他文本。
+
+  这是另一个段落。
+
+生成:
+
+
+  这是一个段落。它非常短。
+
+    这一段会生成一个缩进的文本块，通常用来引用其他文本。
+
+  这是另一个段落。
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#paragraphs
+
+文本风格
+--------
+
+(快速参考__)
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#inline-markup
+
+在段落和其他文本体内，你可以增加标记文本：使用 “``*斜体*``” 表示 *斜体*；使用 “``**粗体**``” 表示 **粗体**。这叫做“内联标记”。
+
+如果你想使一些内容显示为固定空格的字面量，使用 “````双反引号````”。注意双反引号内部不支持进一步标记——因此星号 “``*``” 等不会被解释。
+
+如果你发现 你想要在文本中使用其中一个“特殊的”字符，它通常是可以的—— reStructuredText 非常智能。比如，这个单独的星号 * 处理的很好，正如这个等式的星号：5*6=30。如果你想要 \*被星号包围的* 文本 **不要** 显示为斜体，那么你需要指明这个星号不是特殊的。你通过在星号之前放置一个反斜线实现，比如 “``\*``” (快速参考__)，或者通过使用双反斜线(内联标记)包围它，像这样::
+
+  ``*``
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#escaping
+
+.. Tip:: 将内联标记视作 (括号) 的一种形式，并按相同的方式使用它：在被标记的文本前后立即使用。内联标记本身(使用空格包围)或在一个单词中间的内联标记不会被解释。查看 标记规范__ 获取更多细节。
+
+__ http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#inline-markup
+
+列表
+----
+
+列表项有三种主要形式：**枚举的**、**符号的** 和 **定义**。在所有列表情形中，你可以有任意多的段落、子列表等，只要段落或其他内容和该列表项的第一行文本左对齐。
+
+列表必须总是以新段落开始——也就是说，它们必须出现在一个空行之后。
+
+**枚举** 列表(数字、字母或罗马数字；快速参考__)。
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#enumerated-lists
+
+  开始一行，一个数字或字母，跟一个英文句号 “.”，或者右括号 “)”，或者使用括号 “()” 包围——选择你喜欢的。下面所有的格式都可以识别::
+
+    1. 数组
+
+    A. 大写字母
+       且它可以跨很多行
+
+       也可以有两个段落
+
+    a. 小写字母
+
+      3. 用一个不同的数字开始一个子列表
+      4. 但是确保数字是正确的顺序
+
+    I. 大写罗马数字
+
+    i. 小写罗马数字
+
+    (1) 又是数字
+
+    1) 又是数字
+
+  生成(注意：不同的枚举列表风格并不总是被每种 web 浏览器支持，因此你可能不会得到下面这样完全的效果)：
+
+    1. 数组
+
+    A. 大写字母
+       且它可以跨很多行
+
+       也可以有两个段落
+
+    a. 小写字母
+
+      3. 用一个不同的数字开始一个子列表
+      4. 但是确保数字是正确的顺序
+
+    I. 大写罗马数字
+
+    i. 小写罗马数字
+
+    (1) 又是数字
+
+    1) 又是数字
+
+**符号** 列表(快速参考__)
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#bullet-lists
+
+  正如枚举列表，使用一个符号字符—— “-”、“+” 或 “*”::
+
+    * 使用 “*” 的一个符号
+
+      - 使用 “-” 的一个子列表
+
+        + 另外一个子列表
+
+      - 另一个项目
+  
+  导致:
+
+    * 使用 “*” 的一个符号
+
+      - 使用 “-” 的一个子列表
+
+        + 另外一个子列表
+
+      - 另一个项目
+
+**定义** 列表(快速参考__)
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#definition-lists
+
+  和其他两个列表不同，定义列表由术语和术语的定义组成。一个定义列表的格式如下::
+
+    什么
+      定义列表关联一个术语和一个定义。
+
+    *如何*
+      这个术语是一个单行短于，且定义是一个或多个
+      段落或文档元素，相对术语进行缩进。
+      空行不允许出现在术语和定义中间。
+  
+  生成:
+
+    什么
+      定义列表关联一个术语和一个定义。
+
+    *如何*
+      这个术语是一个单行短语，且定义是一个或多个
+      段落或文档元素，相对术语进行缩进。
+      空行不允许出现在术语和定义中间。
+
+预格式化(代码示例)
+------------------
+
+(快速参考__)
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#literal-blocks
+
+只想要包含一个预格式化的、永远不会被摆弄的文本块，使用 “``::``” 结束前一段。当文本和被预格式化块的前一段落缩进相同时，预格式化块结束。比如::
+
+  一个例子::
+  
+      空格、换行、空行和所有类型的标记
+        (比如 *这个* 或 \这个) 按照字面块保留。
+    看这，我已经减少了一个缩进等级
+    (但是不够远)
+  
+  没有其他例子
+
+生成:
+
+  一个例子::
+  
+      空格、换行、空行和所有类型的标记
+        (比如 *这个* 或 \这个) 按照字面块保留。
+    看这，我已经减少了一个缩进等级
+    (但是不够远)
+  
+  没有其他例子
+
+注意如果一个段落只包含 “``::``” ，那么它在输出时被删除::
+
+  ::
+
+    这是一个预格式化文本，且
+    最后的 &quot;::&quot; 段被移除
+
+生成:
+
+  ::
+
+    这是一个预格式化文本，且
+    最后的 &quot;::&quot; 段被移除
+
+章节
+----
+
+(快速参考__)
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#section-structure
+
+想要将较长的文本分为整洁，你使用 **章节标题**。有一个单行的文本(一个或多个单词)带有修饰符：只有下换线，或者一个下划线和一个上划线一起，用破折号 “``-----``”、等号“``=====``”、波形号“``~~~~~``” 或任一你喜欢的非字母表字符 ``= - ` : ' &quot; ~ ^ _ * + # &lt; &gt;``。一个只有下划线的修饰符和使用同一字符的上划线加下划线修饰符不同。下划线/上划线必须不短于标题文本。一致起见，因为所有使用同一个修饰符风格标记的章节被认为是同一等级::
+
+  章 1 标题
+  ===========
+
+  节 1.1 标题
+  -----------
+
+  子节 1.1.1 标题
+  ~~~~~~~~~~~~~~~
+
+  节 1.2 标题
+  -----------
+
+  章 2 标题
+  ==========
+
+这会生成下面的结构，用一个简单的伪 XML 示意::
+
+  &lt;节&gt;
+    &lt;标题&gt;
+      章 1 标题
+    &lt;节&gt;
+      &lt;标题&gt;
+        节 1.1 标题
+      &lt;节&gt;
+        &lt;标题&gt;
+          子节 1.1.1 标题
+    &lt;节&gt;
+      &lt;标题&gt;
+        节 1.2 标题
+
+  &lt;节&gt;
+    &lt;标题&gt;
+      章 2 标题
+
+(伪 XML 使用缩进表示嵌套，且没有结束标记。不可能像其他例子一样展示实际的处理输出，因为章节不能再块引用中存在。对于一个抽象的自理，比较这个文档的源文本章节结构和处理的输出。)
+
+注意章节标题可当做链接目标使用，只需要使用它们的名字。要链接到 列表_ 标题，我写入 “``列表_``”。如果标题中有一个空格，我们需要使用 “```列 表`_``” 引用标题。
+
+文档标题/子标题
+~~~~~~~~~~~~~~~
+
+整个文档的标题和其他章节标题不同，且可能被不同地格式化(比如，HTML 默认显示为一个居中的标题)。
+
+想要在 reStructuredText 中指明文档标题，在文档开头使用一个唯一的修饰符风格。需要指明文档的子标题，在文档标题之后立即使用另外一种唯一的修饰符风格。比如::
+
+  ========
+  文档标题
+  ========
+  ------
+  子标题
+  ------
+
+  章节标题
+  ========
+
+  ...
+
+注意上述的 “文档标题” 和 “章节标题” 都是要等号标记，但是是不同且不相关的风格。可出于美学插入上划线和下划线文本标题(而不是只有下划线)。
+
+图像
+-----
+
+(快速参考__)
+
+__ http://docutils.sourceforge.net/docs/user/rst/quickref.html#directives
+
+想要在你的文档中包含一个图像，你使用 ``图像`` 指令__。比如::
+
+  .. image:: images/biohazard.png
+
+生成:
+
+  .. image:: images/biohazard.png
+
+``images/biohazard.png`` 部分 指示你希望出现在文本中的图像的文件名。对于图像(格式、大小等)没有限制。如果图像要出现在 HTML 中且你希望提供足够多的信息，你可以::
+
+  .. image:: images/biohazard.png
+    :height: 100
+    :width: 200
+    :scale: 50
+    :alt: 可选文本
+
+查看完整的 图像指令文档__ 获取更多信息
+
+__ http://docutils.sourceforge.net/docs/ref/rst/directives.html
+__ http://docutils.sourceforge.net/docs/ref/rst/directives.html#images
+
+下一步是什么?
+-------------
+
+这篇入门介绍了 reStructuredText 最常见的特性，但是还有很多要探索。`快速学习 reStructuredText`_ 用户手册是下一步学习的好地方。获取完整的细节，去查看 `reStructuredText 标记规范`_ [#]_。
+
+关于 Docutils 或 reStructuredText 有疑问或者需要帮助的用户应该提交一个信息到 `Docutils 用户`_ 邮件列表。
+
+.. [#] 如果相关链接不生效，尝试主文档: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html。
+
+.. _reStructuredText 标记规范: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
+.. _Docutils 用户: http://docutils.sourceforge.net/docs/user/mailing-lists.html#docutils-users
+</code></pre>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/rest/">rest</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/rest/quickstart/&amp;text=reStructuredText%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/rest/quickstart/&amp;t=reStructuredText%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=reStructuredText%20%e5%85%a5%e9%97%a8&amp;body=https://xueqing.github.io/blog/rest/quickstart/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/rest/quickstart/&amp;title=reStructuredText%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=reStructuredText%20%e5%85%a5%e9%97%a8%20https://xueqing.github.io/blog/rest/quickstart/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/rest/quickstart/&amp;title=reStructuredText%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

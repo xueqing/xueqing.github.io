@@ -29,6 +29,22 @@
     </item>
     
     <item>
+      <title>bash</title>
+      <link>https://xueqing.github.io/tags/bash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>booklist</title>
+      <link>https://xueqing.github.io/tags/booklist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/booklist/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>c&#43;&#43;</title>
       <link>https://xueqing.github.io/tags/c&#43;&#43;/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -69,6 +85,22 @@
     </item>
     
     <item>
+      <title>dependence</title>
+      <link>https://xueqing.github.io/tags/dependence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/dependence/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>develop</title>
+      <link>https://xueqing.github.io/tags/develop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/develop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>django</title>
       <link>https://xueqing.github.io/tags/django/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -85,10 +117,26 @@
     </item>
     
     <item>
+      <title>expect</title>
+      <link>https://xueqing.github.io/tags/expect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/expect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ffmpeg</title>
       <link>https://xueqing.github.io/tags/ffmpeg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://xueqing.github.io/tags/ffmpeg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>food</title>
+      <link>https://xueqing.github.io/tags/food/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/food/</guid>
       <description></description>
     </item>
     
@@ -173,10 +221,122 @@
     </item>
     
     <item>
+      <title>kindle</title>
+      <link>https://xueqing.github.io/tags/kindle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/kindle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>krishnamurti</title>
+      <link>https://xueqing.github.io/tags/krishnamurti/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/krishnamurti/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>life</title>
+      <link>https://xueqing.github.io/tags/life/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://xueqing.github.io/tags/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logstash</title>
+      <link>https://xueqing.github.io/tags/logstash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/logstash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>o2o</title>
+      <link>https://xueqing.github.io/tags/o2o/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/o2o/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>p2p</title>
+      <link>https://xueqing.github.io/tags/p2p/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/p2p/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>perl</title>
+      <link>https://xueqing.github.io/tags/perl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/perl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>qt</title>
+      <link>https://xueqing.github.io/tags/qt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/qt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rest</title>
+      <link>https://xueqing.github.io/tags/rest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/rest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://xueqing.github.io/tags/shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sphinx</title>
+      <link>https://xueqing.github.io/tags/sphinx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/sphinx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>STL</title>
       <link>https://xueqing.github.io/tags/stl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://xueqing.github.io/tags/stl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>uac</title>
+      <link>https://xueqing.github.io/tags/uac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/uac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>women</title>
+      <link>https://xueqing.github.io/tags/women/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/tags/women/</guid>
       <description></description>
     </item>
     

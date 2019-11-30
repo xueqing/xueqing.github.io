@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="6.1 前言 6.2 产品分类 6.3 模块功能 6.4 业务流程 6.1 前言 支付产品模块是按照支付场景来为业务方提供支付服务 支付产品模块一般位于支付网关之后，支付渠道之前。根">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/">
+  <meta property="og:title" content="6 支付产品服务设计 | kiki">
+  <meta property="og:description" content="6.1 前言 6.2 产品分类 6.3 模块功能 6.4 业务流程 6.1 前言 支付产品模块是按照支付场景来为业务方提供支付服务 支付产品模块一般位于支付网关之后，支付渠道之前。根"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>6 支付产品服务设计 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>6 支付产品服务设计</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#61-%e5%89%8d%e8%a8%80">6.1 前言</a></li>
+<li><a href="#62-%e4%ba%a7%e5%93%81%e5%88%86%e7%b1%bb">6.2 产品分类</a></li>
+<li><a href="#63-%e6%a8%a1%e5%9d%97%e5%8a%9f%e8%83%bd">6.3 模块功能</a></li>
+<li><a href="#64-%e4%b8%9a%e5%8a%a1%e6%b5%81%e7%a8%8b">6.4 业务流程</a></li>
+</ul>
+
+<h2 id="6-1-前言">6.1 前言</h2>
+
+<ul>
+<li>支付产品模块是按照支付场景来为业务方提供支付服务</li>
+<li>支付产品模块一般位于支付网关之后，支付渠道之前。根据支付能力将不同的支付渠道封装成统一的接口，通过支付网关来对外提供服务。</li>
+<li>从微服务的角度，支付产品本身也是一个代理模式的微服务，它通过支付网关响应业务方请求，进行一些统一处理后，分发到不同的支付渠道去执行，最后将执行结果做处理后，通过支付网关再回传给业务方</li>
+<li>支付产品在支付系统参考下图架构图中的位置
+<img src="ref/pay_system_arch.jpg" alt="支付系统架构图" /></li>
+<li>也有设计是将支付产品模块与支付网关合并到一起的</li>
+</ul>
+
+<h2 id="6-2-产品分类">6.2 产品分类</h2>
+
+<ul>
+<li>支付产品：由支付系统对支付渠道进行封装而对业务方提供的支付能力</li>
+<li>在不同的公司，由于接入渠道和应用的差异，支付产品分类略有不同</li>
+<li>综合支付场景和流程，支付产品可以分为如下几类
+<img src="ref/pay_product.jpg" alt="支付产品分类" /></li>
+</ul>
+
+<p>| 支付产品 | 操作 | 优点 | 不足 | 实现方式 |
+  | &mdash; | &mdash; | &mdash; | &mdash; | &mdash; |
+  | 快捷支付 | 用户在完成绑卡之后，在支付的时候，不需要再输入卡或者身份信息，仅需要输入支付密码就可以完成支付。对于小额度的支付，甚至可以开通小额免密，直接完成支付 | 不会打断用户的体验，是目前主要的在线支付方式 | -  | 一般是封装银行或者第三方支付平台提供的快捷支付接口或者代付接口 |
+  | 网银支付 | 用户在支付的时候，需要跳转到银行网银页面来完成支付。在网银页面，需要输入用户的卡号和身份信息 | - | 会中断用户当前的体验，一般仅用于 PC Web 上的支付 | 封装银行提供的网银支付 |
+  | 协议支付 | 也称代收或者代扣，代收指渠道授权商户可以从用户的银行账户中扣款 | 一般用于定期扣款 |  不用于日常消费(如水电煤气、有线电视费) | 封装银行、第三方支付提供的代扣或者快捷接口 |
+  | 平台支付 | 使用微信、支付宝等第三方支付平台来完成支付 | 由于微信、支付宝已经被大量使用，用户也产生对这些平台的信任，平台支付往往是电商公司的主要支付方式 | 使用时，一般需要用户预先安装支付平台系统(手机)，注册并登录到第三方支付平台，并且已经在该平台上完成绑卡等操作 | - |
+  | 外卡支付 | 国内不少支付渠道都能支持外卡支付(如支付宝全球购) | 支持海外支付 | - | 直接对接 Paypal，也是目前用的最多的外卡支付渠道 |
+  | 话费支付 | - | 对于有包月小额类型的支付，可使用手机话费支付 | - | 目前有一些平台可以支持话费支付(如虹软、联动优势) |
+  | 虚币支付 | 不少公司会有自己的虚拟币(如京豆、Q 币)。这些虚币也可以作为一种支付方式 | - | - | - |
+  | 账户支付 | 也称为余额支付、零钱支付等。指为用户建立本地账户，之后可以使用这个账户来完成支付 | 支持充值 | - | - |
+  | 信用支付 | (如京东白条，蚂蚁花呗)指使用信用账户进行透支，类似信用卡支付 | - | - | - |
+  | 代付 | 和代扣相反，代付是平台将钱打给用户 | - | - | - |</p>
+
+<h2 id="6-3-模块功能">6.3 模块功能</h2>
+
+<ul>
+<li>支付产品根据其支付能力，对外提供不同的功能。整体上来说，一般支付产品需要提供如下接口
+<img src="ref/pay_product_func.jpg" alt="支付产品功能" /></li>
+</ul>
+
+<p>| 接口 | 功能描述 | 备注 |
+  | &mdash; | &mdash; | &mdash; |
+  | 签约 | 在快捷支付、代扣等产品中，用户在使用前，需要先完成签约 | 签约可在渠道侧进行，一般第三方支付采用这种方式，当电商需要接入时，让第三方给授权。银行和银联的签约一般在电商侧进行，电商侧负责收集用户的信息，调用银行和银联的接口进行签约。签约后，后续的支付行为使用签约号进行，无需再输入个人信息 |
+  | 解约 | 取消签约关系 | 和签约对应 |
+  | 支付 | 不同产品中支付行为不一样 | 快捷支付在电商服务器上发起，请求渠道进行支付；网银支付是跳转到银行支付网关进行; 账户支付、虚币支付，是在本地进行 |
+  | 撤销 | 取消当天在渠道侧未结算的交易 | 有些渠道区分撤销和退款(如银联、农行)，有些渠道则不作区分 |
+  | 退款 | 仅针对已经结算的交易 | 有些渠道区分撤销和退款(如银联、农行)，有些渠道则不作区分 |
+  | 查询签约状态 | 对于需要签约的交易，可以通过此接口查询签约状态 | - |
+  | 查询订单状态 | 通过此接口查询支付清单状态以及退款的订单状态 | - |
+  | 预授权 | 预授权交易用于受理方向持卡人的发卡方确认交易许可 | 受理方将预估的消费金额作为预授权金额，发送给持卡人的发卡方 |
+  | 预授权撤销 | 对已成功的预授权交易，在结算前使用预授权撤销交易，通知发卡方取消付款承诺 | 预授权撤销交易必须是对原始预授权交易或追加预授权交易最终承兑金额的全额撤销 |
+  | 预授权完成交易 | 对已批准的预授权交易，用预授权完成做支付结算 | - |
+  | 预授权完成撤销 | 预授权完成撤销交易必须是对原始预授权完成交易的全额撤销 | 预授权完成撤销后的预授权仍然有效 |
+  | 对账 | 通过 FTP 或 HTTP 方式提供对账文件供商户侧对账 | - |
+  | 余额查询 | 查询商户的交易账户余额，避免由于余额不足导致交易失败 | 注意不是客户的余额。不是所有的银行或者第三方支付都提供这个接口 |</p>
+
+<h2 id="6-4-业务流程">6.4 业务流程</h2>
+
+<ul>
+<li>上述操作，除对账、查单外，每个操作实现的主流程，一般会包括参数校验、支付路由、生成订单、风险评估、调用渠道服务、更新订单和发送消息这 7 步</li>
+<li>对于一些比较复杂的服务，还会涉及到异步同通知处理的步骤
+<img src="ref/business_process.jpg" alt="业务流程" /></li>
+<li>1 执行参数校验：所有的支付操作，都需要对输入执行参数校验，避免接口受到攻击
+
+<ul>
+<li>验证输入参数中各字段的有效性验证：如用户 ID、商户 ID、价格、返回地址等</li>
+<li>验证账户状态：交易主体、交易对手等账户的状态是处于可交易的状态</li>
+<li>验证订单：如果涉及到预单，还需要验证订单号的有效性，订单状态是未支付。为了避免用户缓存某个 URL 地址，还需要校验下单时间和支付时间是否超过预定的间隔</li>
+<li>验证签名：签名也是为了防止支付接口被伪造。一般签名是使用分发给商户的 key 来对输入参数拼接成的字符串做 MD5 Hash 或 RSA 加密，然后作为一个参数随其他参数一起提交到服务器端。如支付网关设计所介绍，签名验证也可以在网关中统一完成</li>
+</ul></li>
+<li>2 根据支付路由寻找合适的支付服务：根据用户选择的支付方式确定用来完成该操作的合适的支付渠道
+
+<ul>
+<li>用户指定的支付方式不一定是最终的执行支付的渠道。比如用户选择通过工行信用卡来执行支付，但是我们没有实现和工行的对接，而是可以通过第三方支付，比如支付宝、微信支付、易宝支付，或银联完成</li>
+<li>选择合适的支付渠道，通过支付路由实现。支付路由会综合考虑收费、渠道的可用性等因素来选择最优方案</li>
+</ul></li>
+<li>3 评估交易风险：检查本次交易是否有风险。风控接口返回三种结果：阻断交易、增强验证和放行交易
+
+<ul>
+<li>阻断交易：说明该交易是高风险的，需要终止，不执行第 5 个步骤</li>
+<li>增强验证：说明该交易有一定的风险，需要确认下是不是用户本人在操作。这可以通过发送短信验证码或者其他可以验证用户身份的方式来做校验，验证通过后，可以继续执行该交易</li>
+<li>放行交易，即本次交易是安全的，可以继续往下走</li>
+</ul></li>
+<li>4 生成交易订单：将订单信息持久化到数据库中
+
+<ul>
+<li>当访问压力大的时候，数据库写入会成为一个瓶颈</li>
+</ul></li>
+<li>5 调用支付渠道提供的服务：所有的支付服务都需要第三方通道来完成执行
+
+<ul>
+<li>一般银行渠道的调用比较简单，可以直接返回结果</li>
+<li>一些第三方支付，如支付宝，微信支付等，会通过异步接口来告知支付结果</li>
+</ul></li>
+<li>6 更新订单：对于同步返回的结果，需要在主线程中更新订单的状态，标记是支付成功还是失败。对于异步返回的渠道，需要在异步程序中处理</li>
+<li>7 发送消息：通过消息来通知相关系统关于订单的变更
+
+<ul>
+<li>风控、信用 BI 等，都需要依赖这数据做准实时计算</li>
+</ul></li>
+<li>8 异步通知
+
+<ul>
+<li>上述流程，其中涉及到调用远程接口，其延迟不可控。如果调用方一直阻塞等待，很容易超时</li>
+<li>引入异步通知机制，可以让调用方在主线程中尽快返回，通过异步线程来得到支付结果</li>
+<li>对于通过异步来获取支付结果的渠道接口，也需要对应的在异步通知中将结果返回给调用方</li>
+<li>异步通知需要调用方提供一个回调地址，一般以 HTTP 或 HTTPS 的方式。这就有技术风险，如果调用失败，还需要重试。而重试不能过于频繁，需要逐步拉大每一次重试的时间间隔</li>
+<li>在异步处理程序中，订单根据处理结果变更状态后，也要发消息通知相关系统</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/o2o/">o2o</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/&amp;text=6%20%e6%94%af%e4%bb%98%e4%ba%a7%e5%93%81%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/&amp;t=6%20%e6%94%af%e4%bb%98%e4%ba%a7%e5%93%81%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=6%20%e6%94%af%e4%bb%98%e4%ba%a7%e5%93%81%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1&amp;body=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/&amp;title=6%20%e6%94%af%e4%bb%98%e4%ba%a7%e5%93%81%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=6%20%e6%94%af%e4%bb%98%e4%ba%a7%e5%93%81%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1%20https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/&amp;title=6%20%e6%94%af%e4%bb%98%e4%ba%a7%e5%93%81%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/">1 基本概念和入门</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/">1 支付系统的账户模型</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/2_%E5%AF%B9%E8%B4%A6%E5%A4%84%E7%90%86/">2 对账处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/2_%E6%B8%A0%E9%81%93%E4%BE%A7%E5%A4%84%E7%90%86/">2 渠道侧处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/3_%E7%94%B5%E5%95%86%E4%BE%A7%E5%A4%84%E7%90%86/">3 电商侧处理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

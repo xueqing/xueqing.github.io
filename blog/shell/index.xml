@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shell 命令和脚本 | kiki</title>
+    <link>https://xueqing.github.io/blog/shell/</link>
+      <atom:link href="https://xueqing.github.io/blog/shell/index.xml" rel="self" type="application/rss+xml" />
+    <description>shell 命令和脚本</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>shell 命令和脚本</title>
+      <link>https://xueqing.github.io/blog/shell/</link>
+    </image>
+    
+    <item>
+      <title>expect 脚本</title>
+      <link>https://xueqing.github.io/blog/shell/expect_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/shell/expect_shell/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;expect 是用来进行自动化控制和测试的工具，可以执行交互式的脚本&lt;/li&gt;
+&lt;li&gt;在执行脚本过程中，一些交互式的过程可能需要用户输入等信息，这种情况下课使用 expect 脚本&lt;/li&gt;
+&lt;li&gt;基本命令
+
+&lt;ul&gt;
+&lt;li&gt;send：向进程发送字符串，用于模拟用户的输入，一定要加 \r 回车&lt;/li&gt;
+&lt;li&gt;expect：从进程接收字符串&lt;/li&gt;
+&lt;li&gt;spawn：启动进程，spawn 启动的进程的输出可被 expect 捕获&lt;/li&gt;
+&lt;li&gt;interact：用户交互&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;下面的脚本可将文件 scp 远程拷贝到某台机器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/usr/bin/expect
+set timeout 100                     ## 设置超时时间， -1 可无限等待
+set filename [lindex $argv 0]       ## 接收输入参数，保存文件名
+set machineURL [lindex $argv 1]     ## 接收输入参数，保存远程机器的上传的 URL，包括用户名，IP 地址和路径
+set machinePWD [lindex $argv 2]     ## 接收输入参数，保存远程机器的密码
+spawn scp $filename $machineURL     ## 执行 scp 命令
+expect {
+&amp;quot;yes/no&amp;quot; { send &amp;quot;yes\r&amp;quot;; exp_continue}  ## 如果出现&amp;quot;yes/no&amp;quot;，则输入&amp;quot;yes&amp;quot;，然后继续这个循环
+&amp;quot;password:&amp;quot; { send &amp;quot;$machinePWD\r&amp;quot; }    ## 如果出现&amp;quot;password:&amp;quot;，则输入保存的密码，然后退出这个循环，继续往下
+}
+expect 100%                         ## 出现 100% 表明上传成功
+expect eof                          ## 等待结束标记，由 spawn 启动的命令在结束时回产生一个 eof 标记
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; expect 不能正确解释 shell 的 glob 模式，所以执行类似 &lt;code&gt;spawn scp -r /home/user/dir1/ cluster_server:&lt;/code&gt; 的命令会出错。解决方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;spawn bash -c &amp;quot;scp -r /home/user/dir1/* cluster_server:&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>shell 脚本</title>
+      <link>https://xueqing.github.io/blog/shell/shell_script/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/shell/shell_script/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%9c%a8-shell-%e8%84%9a%e6%9c%ac%e4%b8%ad%e8%b0%83%e7%94%a8%e5%8f%a6%e4%b8%80%e4%b8%aa%e8%84%9a%e6%9c%ac&#34;&gt;在 shell 脚本中调用另一个脚本&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-%e5%91%bd%e4%bb%a4%e8%a1%8c%e9%80%89%e9%a1%b9%e8%a7%a3%e6%9e%90&#34;&gt;shell 命令行选项解析&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#getopts&#34;&gt;getopts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getopt&#34;&gt;getopt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-%e8%8e%b7%e5%8f%96%e8%84%9a%e6%9c%ac%e7%9a%84%e8%bf%9b%e7%a8%8b-id&#34;&gt;shell 获取脚本的进程 ID&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-%e8%84%9a%e6%9c%ac%e8%8e%b7%e5%8f%96%e5%bd%93%e5%89%8d%e6%97%b6%e9%97%b4&#34;&gt;shell 脚本获取当前时间&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-%e6%89%a7%e8%a1%8c%e5%a4%9a%e4%b8%aa%e5%91%bd%e4%bb%a4%e7%9a%84%e6%96%b9%e6%b3%95&#34;&gt;shell 执行多个命令的方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-test-%e5%91%bd%e4%bb%a4&#34;&gt;shell test 命令&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%95%b0%e5%80%bc%e6%b5%8b%e8%af%95&#34;&gt;数值测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%b5%8b%e8%af%95&#34;&gt;字符串测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%87%e4%bb%b6%e6%b5%8b%e8%af%95&#34;&gt;文件测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e8%bf%9e%e6%8e%a5%e6%b5%8b%e8%af%95%e6%9d%a1%e4%bb%b6&#34;&gt;连接测试条件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-%e5%8f%98%e9%87%8f&#34;&gt;shell 变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-%e8%84%9a%e6%9c%ac%e4%b8%8a%e4%bc%a0-ftp&#34;&gt;shell 脚本上传 ftp&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%8a%e4%bc%a0%e5%8d%95%e4%b8%aa%e6%96%87%e4%bb%b6%e8%84%9a%e6%9c%ac&#34;&gt;上传单个文件脚本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-if&#34;&gt;shell if&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-%e6%93%8d%e4%bd%9c%e7%ac%a6&#34;&gt;shell 操作符&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ae%97%e6%9c%af%e6%93%8d%e4%bd%9c%e7%ac%a6&#34;&gt;算术操作符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%85%b3%e7%b3%bb%e6%93%8d%e4%bd%9c%e7%ac%a6&#34;&gt;关系操作符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b8%83%e5%b0%94%e6%93%8d%e4%bd%9c%e7%ac%a6&#34;&gt;布尔操作符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#string-%e6%93%8d%e4%bd%9c%e7%ac%a6&#34;&gt;string 操作符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%96%87%e4%bb%b6%e6%b5%8b%e8%af%95%e8%bf%90%e7%ae%97%e7%ac%a6&#34;&gt;文件测试运算符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#c-shell-%e6%93%8d%e4%bd%9c%e7%ac%a6&#34;&gt;C Shell 操作符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#korn-shell-%e6%93%8d%e4%bd%9c%e7%ac%a6&#34;&gt;Korn Shell 操作符&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%88%aa%e5%8f%96&#34;&gt;字符串截取&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#here-document&#34;&gt;here document&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%82%e8%80%83%e7%bd%91%e7%ab%99&#34;&gt;参考网站&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;在-shell-脚本中调用另一个脚本&#34;&gt;在 shell 脚本中调用另一个脚本&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fork：直接调用&lt;code&gt;script_path/filename.sh&lt;/code&gt;(有可执行权限)或者&lt;code&gt;sh script_path/filename.sh&lt;/code&gt;(没有可执行权限)
+
+&lt;ul&gt;
+&lt;li&gt;运行时终端会新开一个子 shell 执行脚本，子 shell 执行的时候，父 shell 仍在。子 shell 执行完毕返回父 shell，但是父 shell 不能继承子 shell 的环境变量。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;exec：&lt;code&gt;exec script_path/filename.sh&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;exec 不需要新开一个子 shell 来执行被调用的脚本，而是在同一个 shell 执行。但是父脚本中&lt;code&gt;exec&lt;/code&gt;行之后的内容不会被执行。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;source：&lt;code&gt;source script_path/filename.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;source 不需要新开一个子 shell 来执行被调用的脚本，而是在同一个 shell 执行。即父脚本可以获取和使用子脚本中声明的变量和环境变量。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
+A=1
+
+echo &amp;quot;before exec/source/fork: PID for parent.sh = $$&amp;quot;
+
+export A
+echo &amp;quot;In parent.sh: var A=$A&amp;quot;
+
+case $1 in
+--exec)
+    echo -e &amp;quot;==&amp;gt; using exec..\n&amp;quot;
+    exec ./child.sh
+    ;;
+--source)
+    echo -e &amp;quot;==&amp;gt; using source...\n&amp;quot;
+    source ./child.sh
+    ;;
+*)
+    echo -e &amp;quot;==&amp;gt; using fork by default...\n&amp;quot;
+    ./child.sh
+    ;;
+esac
+
+echo &amp;quot;after exec/source/fork: PID for parent.sh = $$&amp;quot;
+echo -e &amp;quot;In parent.sh: var A=$A&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
+
+echo &amp;quot;PID for child.sh = $$&amp;quot;
+echo &amp;quot;In child.sh: get var A=$A from parent.sh&amp;quot;
+
+A=2
+export A
+echo -e &amp;quot;In child.sh: var A=$A\n&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-命令行选项解析&#34;&gt;shell 命令行选项解析&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;getopts&lt;/code&gt;是 shell 内建命令，&lt;code&gt;getopt&lt;/code&gt;是一个独立外部工具&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopts&lt;/code&gt;语法简单，&lt;code&gt;getopt&lt;/code&gt;语法较复杂&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopts&lt;/code&gt;不支持长参数(如 -dir, &amp;ndash;dir)，&lt;code&gt;getopt&lt;/code&gt;支持&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopts&lt;/code&gt;不会重排所有参数顺序，&lt;code&gt;getopt&lt;/code&gt;会重排参数顺序&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopts&lt;/code&gt;是为了代替&lt;code&gt;getopt&lt;/code&gt;较快捷的执行参数分析工作&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;getopts&#34;&gt;getopts&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;语法&lt;code&gt;getopts optstring name [args]&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;optstring&lt;/code&gt;代表可使用的选项列表，每个字母代码一个选项&lt;/li&gt;
+&lt;li&gt;带&lt;code&gt;:&lt;/code&gt;意味着除了定义之外，还会带一个参数作为选项的值&lt;/li&gt;
+&lt;li&gt;不带&lt;code&gt;:&lt;/code&gt;是一个开关型选项，不需要指定参数的值&lt;/li&gt;
+&lt;li&gt;命令行中包含了没有在&lt;code&gt;getopts&lt;/code&gt;列表中的选项会有警告，在&lt;code&gt;optstring&lt;/code&gt;前加上&lt;code&gt;:&lt;/code&gt;可以消除警告&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopts&lt;/code&gt;中有个相对固定的常量&lt;code&gt;OPTARG&lt;/code&gt;和&lt;code&gt;OPTIND&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OPTARG&lt;/code&gt;代表当前选项的值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OPTIND&lt;/code&gt;代表当前选项在参数列表中的位置&lt;/li&gt;
+&lt;li&gt;出现不认识的选项参数为&lt;code&gt;?&lt;/code&gt;，&lt;code&gt;case&lt;/code&gt;中最后一个&lt;code&gt;?&lt;/code&gt;用于处理这种情况，因此选项中不应包含&lt;code&gt;?&lt;/code&gt;和&lt;code&gt;,&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopts&lt;/code&gt;解析完参数后，可以使用&lt;code&gt;shift&lt;/code&gt;把选项参数进行移位操作，左边的参数就丢失了&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;shift $(($OPTIND-1))&lt;/code&gt;，参数从 1 开始编号，处理一个开关型选项&lt;code&gt;OPTIND&lt;/code&gt;加 1，处理一个带值的选项参数&lt;code&gt;OPTIND&lt;/code&gt;加 2&lt;/li&gt;
+&lt;li&gt;选项参数的格式是&lt;code&gt;-d val&lt;/code&gt;，中间需要一个空格&lt;/li&gt;
+&lt;li&gt;选项参数必须放在其他参数前面，因为遇到非&lt;code&gt;-&lt;/code&gt;开头的参数或者选项参数结束标记&lt;code&gt;--&lt;/code&gt;就终止了&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;中间遇到非选项的命令行参数，后面的选项参数取不到&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
+
+# echo &amp;quot;usage: ./`basename $0` [-d dir_name] [-f file_name] [-c commit_id] [-s service_name] [-N]&amp;quot;
+# echo &amp;quot;initial index $OPTIND&amp;quot;
+while getopts &#39;d:f:c:s:N&#39; opt;
+do
+case ${opt} in
+    d)
+        echo &amp;quot;directory name: $OPTARG&amp;quot;
+        ;;
+    f)
+        echo &amp;quot;file name: $OPTARG&amp;quot;
+        ;;
+    c)
+        echo &amp;quot;commit id: $OPTARG&amp;quot;
+        ;;
+    s)
+        echo &amp;quot;service name: $OPTARG&amp;quot;
+        ;;
+    N)
+        echo &amp;quot;use new rep url&amp;quot;
+        ;;
+    ?)
+        echo &amp;quot;usage: ./`basename $0` [-d dir_name] [-f file_name] [-c commit_id] [-s service_name] [-N]&amp;quot;
+        exit 1;
+        ;;
+esac
+echo &amp;quot;opt is $opt, arg is $OPTARG, index is $OPTIND&amp;quot;
+done
+
+echo &amp;quot;After process arguments: OPTIND=$OPTIND&amp;quot;
+echo &amp;quot;Remove processed arguments: number=$(($OPTIND-1))&amp;quot;
+shift $(($OPTIND-1))
+echo &amp;quot;Arguments index: OPTIND=$OPTIND&amp;quot;
+echo &amp;quot;Remaing arguments: $@&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;getopt&#34;&gt;getopt&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;语法支持三种
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;getopt optstring parameters&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopt [options] [--] optstring parameters&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getopt [options] -o|--options optstring [options] [--] parameters&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-o&lt;/code&gt;表示短选项，两个冒号表示该选项有一个可选参数，可选参数必须紧贴选项，中间没有空格&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-l|--longoptions&lt;/code&gt;表示长选项&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;$@&amp;quot;&lt;/code&gt;将命令行参数展开分别的单词&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt;出错时打印的信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-获取脚本的进程-id&#34;&gt;shell 获取脚本的进程 ID&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参数&lt;code&gt;$$&lt;/code&gt;获取进程 ID&lt;/li&gt;
+&lt;li&gt;参数&lt;code&gt;$PID&lt;/code&gt;获取父 shell 的进程 ID&lt;/li&gt;
+&lt;li&gt;参数&lt;code&gt;$UID&lt;/code&gt;获取执行当前的当前用户 ID&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-脚本获取当前时间&#34;&gt;shell 脚本获取当前时间&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;获取当前时间&lt;code&gt;date +%Y%m%d&lt;/code&gt;或&lt;code&gt;date +%F&lt;/code&gt;或&lt;code&gt;date +%y%m%d&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Y 年，如 2018&lt;/li&gt;
+&lt;li&gt;y 年的最后两位，如 2018 显示 18&lt;/li&gt;
+&lt;li&gt;m 月(01..12)&lt;/li&gt;
+&lt;li&gt;d 每个月第几天(01..31)&lt;/li&gt;
+&lt;li&gt;F 完整的日志(%Y-%m-%d)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;输出另外一个时区的时间&lt;code&gt;env TZ=timezone date&lt;/code&gt;或&lt;code&gt;env TZ=timezone date  +%Y%m%d&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;timezone 是指定的时区，比如&lt;code&gt;America/Los_Angeles&lt;/code&gt;或&lt;code&gt;Asia/Shanghai&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;starttime=`date +%s`
+sleep 10 #sleep 10 sec
+endtime=`date +%s`
+difftime=$(( endtime - starttime ))
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-执行多个命令的方法&#34;&gt;shell 执行多个命令的方法&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;|&lt;/code&gt;：命令之间用&lt;code&gt;|&lt;/code&gt;隔开，将前一个命令的标准输出(stdout)作为下一个命令的标准输入
+
+&lt;ul&gt;
+&lt;li&gt;标准错误(stderr)仍在默认的地方&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;|&amp;amp;&lt;/code&gt;：命令之间用&lt;code&gt;|&amp;amp;&lt;/code&gt;隔开，将前一个命令的标准输出和标准错误都作为下一个命令的标准输入
+
+&lt;ul&gt;
+&lt;li&gt;bash 版本不小于 4&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;;&lt;/code&gt;：命令之间用&lt;code&gt;;&lt;/code&gt;隔开，各命令执行结果不影响，即各个命令都会执行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;：命令之间用&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;隔开，只有前面的命令执行成功，才会执行后面的命令，保证执行过程都是成功的&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;||&lt;/code&gt;：命令之间用&lt;code&gt;||&lt;/code&gt;隔开，只有前面的命令执行失败，才会执行后面的命令，直到执行成功&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可用于捕获子 shell 的错误码，比如&lt;code&gt;output=&amp;quot;$( (cd &amp;quot;$FOLDER&amp;quot;; eval &amp;quot;$@&amp;quot;) 2&amp;gt;&amp;amp;1 )&amp;quot; || errcode=&amp;quot;$?&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;重要的命令失败时退出自定义错误码，比如&lt;code&gt;output=&amp;quot;$( (cd &amp;quot;$FOLDER&amp;quot;; eval &amp;quot;$@&amp;quot;) 2&amp;gt;&amp;amp;1 )&amp;quot; || exit 12&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以定义函数在&lt;code&gt;||&lt;/code&gt;之后调用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;handle_error() { #do staff }
+output=&amp;quot;$( (cd &amp;quot;$FOLDER&amp;quot;; eval &amp;quot;$@&amp;quot;) 2&amp;gt;&amp;amp;1 )&amp;quot; || handle_error
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-test-命令&#34;&gt;shell test 命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;test 命令用于检查某个条件是否成立，可以进行数值、字符和文件三个方面的测试&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;数值测试&#34;&gt;数值测试&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;运算符：-eq，-ne，-gt，-ge，-lt，-le&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;n1=1
+n2=2
+test $[n1] -eq $[n2] &amp;amp;&amp;amp; echo &#39;两个数相等！&#39;
+test $[n1] -eq $[n2] || echo &#39;两个数不相等！&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;[]&lt;/code&gt;内执行基本的算术运算&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;n1=1
+n2=2
+n3=$[n1+n2]
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;字符串测试&#34;&gt;字符串测试&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;运算符： =，!=， -z(字符串长度是否为0)， -n(字符串长度是否不为0)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;s1=&amp;quot;s1&amp;quot;
+s2=&amp;quot;s2&amp;quot;
+test $s1 = $s2 &amp;amp;&amp;amp; echo &#39;两个字符串相等！&#39;
+test $s1 = $s2 || echo &#39;两个字符串不相等！&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;文件测试&#34;&gt;文件测试&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;运算符：-e，-r，-w，-x，-s，-d，-f，-c，-b&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-r/w/x&lt;/code&gt;：如果文件存在且可读/可写/可执行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-s&lt;/code&gt;：如果文件存在且至少有一个字符&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-f/c/b&lt;/code&gt;：如果文件存在且是普通文件/字符型特殊文件/块特殊文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;test -e filename &amp;amp;&amp;amp; echo &amp;quot;文件已存在！&amp;quot;
+test -e filename || echo &amp;quot;文件不存在！&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;连接测试条件&#34;&gt;连接测试条件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可用逻辑操作符将测试条件连接起来：与(-a)，huo(-o)，非(!)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;test -e filename -o -e anotherfile &amp;amp;&amp;amp; echo &amp;quot;至少存在一个文件！&amp;quot;
+test -e filename -o -e anotherfile || echo &amp;quot;两个文件都不存在！&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-变量&#34;&gt;shell 变量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;定义变量是变量名和等号之间不能有空格&lt;/li&gt;
+&lt;li&gt;使用时在前面加上&lt;code&gt;$&lt;/code&gt;即可&lt;/li&gt;
+&lt;li&gt;删除变量：&lt;code&gt;unset $VAR&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置变量只读：&lt;code&gt;readonly $VAR&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;测试变量是否定义&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;if (set -u; : $VAR) ; then echo &amp;quot;set&amp;quot; ; else echo &amp;quot;unset&amp;quot; ; fi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set -u&lt;/code&gt;用于设置 shell 选项，u 是 nounset， 表示当使用未定义的变量时，输出错误并强制退出&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:&lt;/code&gt; 是不做任何事只是展开参数，单不会试图去执行&lt;/li&gt;
+&lt;li&gt;没有&lt;code&gt;:&lt;/code&gt;则将变量解释成 shell 命令，并试图去执行&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;-z&lt;/code&gt;或&lt;code&gt;-n&lt;/code&gt;判断&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-z&lt;/code&gt;：字符串长度是否为0&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-n&lt;/code&gt;：字符串长度是否不为0&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;echo &amp;quot;********************************set KK&amp;quot;
+export KK=&amp;quot;kiki&amp;quot;
+echo KK=$KK
+if [ -z $KK ] ; then echo &amp;quot;unset&amp;quot; ; else echo &amp;quot;set&amp;quot; ; fi
+if ( set -u; : $KK ) ; then echo &amp;quot;set&amp;quot; ; else echo &amp;quot;unset&amp;quot; ; fi
+echo KK=$KK
+
+echo &amp;quot;********************************unset KK&amp;quot;
+unset KK
+echo KK=$KK
+if [ -z $KK ] ; then echo &amp;quot;unset&amp;quot; ; else echo &amp;quot;set&amp;quot; ; fi
+if ( set -u; : $KK ) ; then echo &amp;quot;set&amp;quot; ; else echo &amp;quot;unset&amp;quot; ; fi
+echo KK=$KK
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-脚本上传-ftp&#34;&gt;shell 脚本上传 ftp&lt;/h2&gt;
+
+&lt;h3 id=&#34;上传单个文件脚本&#34;&gt;上传单个文件脚本&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
+FILENAME=$1
+ftp -n -p&amp;lt;&amp;lt;!
+## ftp server ip
+open ftpIp
+## ftp username and password
+user ftpUser ftpPwd
+## transfer type
+binary
+## upload path
+cd /VDMSSoftware/cppci
+## interactive mode
+prompt
+## upload filename
+put $FILENAME
+close
+## close connection
+bye
+!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传输文件类型包括：
+
+&lt;ul&gt;
+&lt;li&gt;ascii：默认值。网络 ASCII&lt;/li&gt;
+&lt;li&gt;binary：二进制映像，需要使用二进制方式的文件类型包括 ISO 文件、可执行文件、压缩文件、图片等。此方式比 ascii 更有效&lt;/li&gt;
+&lt;li&gt;ebcdic：&lt;/li&gt;
+&lt;li&gt;image：&lt;/li&gt;
+&lt;li&gt;local M：本地类型。M 参数定义每个计算机字位的十进制数&lt;/li&gt;
+&lt;li&gt;tenex：&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;交互式提示：使用 mget 或 mput 时，&lt;code&gt;prompt&lt;/code&gt;命令让 ftp 在文件传输前进行提示，防止覆盖已有的文件。若发出 prompt 命令时已经启动了提示，ftp 将关掉提示，此时再传输所有的文件则不会有任何提示&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-if&#34;&gt;shell if&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;shell 支持 3 中 if 语句&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;if...fi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if...else...fi&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;if...elif...else...fi&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;if [ $useEncryption != &amp;quot;false&amp;quot; ] &amp;amp;&amp;amp; [ $softEncryption != &amp;quot;false&amp;quot; ]
+then
+# do sth
+elif [ $useEncryption != &amp;quot;false&amp;quot; ] &amp;amp;&amp;amp; [ $softEncryption == &amp;quot;false&amp;quot; ]
+then
+# do sth
+elif [ $useEncryption == &amp;quot;false&amp;quot; ] &amp;amp;&amp;amp; [ $softEncryption != &amp;quot;false&amp;quot; ]
+then
+# do sth
+elif [ $useEncryption == &amp;quot;false&amp;quot; ] &amp;amp;&amp;amp; [ $softEncryption == &amp;quot;false&amp;quot; ] # or else
+then
+# do sth
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-操作符&#34;&gt;shell 操作符&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;讨论 Bourne shell（默认的 shell） 支持的操作符&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;算术操作符&#34;&gt;算术操作符&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bourne shell 不支持运算符，但是可以使用&lt;code&gt;awk&lt;/code&gt;或者&lt;code&gt;expr&lt;/code&gt;外部程序，例如&lt;code&gt;res=`expr  2 + 2`; echo $res&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;运算符和表达式之间必须有空格&lt;/li&gt;
+&lt;li&gt;Bourne shell 支持的算术运算符包括：（假如&lt;code&gt;a=10; b=20&lt;/code&gt;）
+
+&lt;ul&gt;
+&lt;li&gt;加法&lt;code&gt;+&lt;/code&gt;，例如&lt;code&gt;expr $a + $b&lt;/code&gt;，结果是 30&lt;/li&gt;
+&lt;li&gt;减法&lt;code&gt;-&lt;/code&gt;，例如&lt;code&gt;expr $a - $b&lt;/code&gt;，结果是 -10&lt;/li&gt;
+&lt;li&gt;乘法&lt;code&gt;*&lt;/code&gt;，例如&lt;code&gt;expr $a \* $b&lt;/code&gt;，结果是 200&lt;/li&gt;
+&lt;li&gt;除法&lt;code&gt;/&lt;/code&gt;，例如&lt;code&gt;expr $b / $a&lt;/code&gt;，结果是 2&lt;/li&gt;
+&lt;li&gt;取模&lt;code&gt;%&lt;/code&gt;，例如&lt;code&gt;expr $a % $b&lt;/code&gt;，结果是 0&lt;/li&gt;
+&lt;li&gt;赋值&lt;code&gt;=&lt;/code&gt;，例如&lt;code&gt;a = $b&lt;/code&gt;，结果是 a 被赋值 20&lt;/li&gt;
+&lt;li&gt;等于&lt;code&gt;==&lt;/code&gt;，例如&lt;code&gt;[$a == $b]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;不等于&lt;code&gt;！=&lt;/code&gt;，例如&lt;code&gt;[$a != $b]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;条件表达式必须在方括号中，且两端有空格隔开&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;关系操作符&#34;&gt;关系操作符&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;只对数值生效，string 作为操作数是无效的，例如对&lt;code&gt;10&lt;/code&gt;和&lt;code&gt;20&lt;/code&gt;或者&lt;code&gt;&amp;quot;10&amp;quot;&lt;/code&gt;和&lt;code&gt;&amp;quot;10&amp;quot;&lt;/code&gt;生效，但是对&lt;code&gt;ten&lt;/code&gt;和&lt;code&gt;twenty&lt;/code&gt;无效
+
+&lt;ul&gt;
+&lt;li&gt;无效的 string 是指 string 中包含非数字的字符&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Bourne shell 支持的关系型操作符包括：（假如&lt;code&gt;a=10; b=20&lt;/code&gt;）
+
+&lt;ul&gt;
+&lt;li&gt;等于&lt;code&gt;-eq&lt;/code&gt;，例如&lt;code&gt;[ $a -eq $b ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;不等于&lt;code&gt;-ne&lt;/code&gt;，例如&lt;code&gt;[ $a -ne $b ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;大于&lt;code&gt;-gt&lt;/code&gt;，例如&lt;code&gt;[ $a -gt $b ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;小于&lt;code&gt;-lt&lt;/code&gt;，例如&lt;code&gt;[ $a -lt $b ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;大于等于&lt;code&gt;-ge&lt;/code&gt;，例如&lt;code&gt;[ $a -ge $b ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;小于等于&lt;code&gt;-le&lt;/code&gt;，例如&lt;code&gt;[ $a -le $b ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;条件表达式必须在方括号内，且两端有空格分开&lt;/li&gt;
+&lt;li&gt;其他 shell 可能支持的操作
+
+&lt;ul&gt;
+&lt;li&gt;等于&lt;code&gt;==&lt;/code&gt;，例如&lt;code&gt;(( $a == $b ))&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;不等于&lt;code&gt;!=&lt;/code&gt;，例如&lt;code&gt;[ $a != $b ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;大于&lt;code&gt;&amp;gt;&lt;/code&gt;，例如&lt;code&gt;(( $a &amp;gt; $b ))&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;小于&lt;code&gt;&amp;lt;&lt;/code&gt;，例如&lt;code&gt;(( $a &amp;lt; $b ))&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;大于等于&lt;code&gt;&amp;gt;=&lt;/code&gt;，例如&lt;code&gt;(( $a &amp;gt;= $b ))&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;小于等于&lt;code&gt;&amp;lt;=&lt;/code&gt;，例如&lt;code&gt;(( $a &amp;lt;= $b ))&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;布尔操作符&#34;&gt;布尔操作符&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bourne shell 支持的布尔操作符包括：（假如&lt;code&gt;a=10; b=20&lt;/code&gt;）
+
+&lt;ul&gt;
+&lt;li&gt;逻辑取否&lt;code&gt;!&lt;/code&gt;，例如&lt;code&gt;[ ! false ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;逻辑或&lt;code&gt;-o&lt;/code&gt;，例如&lt;code&gt;[ $a -lt 20 -o $b -gt 100 ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;逻辑与&lt;code&gt;-a&lt;/code&gt;，例如&lt;code&gt;[ $a -lt 20 -a $b -gt 100 ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;string-操作符&#34;&gt;string 操作符&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bourne shell 支持的字符串操作符包括：（假如&lt;code&gt;a=&amp;quot;abc&amp;quot;; b=&amp;quot;efg&amp;quot;&lt;/code&gt;）
+
+&lt;ul&gt;
+&lt;li&gt;等于&lt;code&gt;=&lt;/code&gt;，例如&lt;code&gt;[ $a = $b ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;不等于&lt;code&gt;!=&lt;/code&gt;，例如&lt;code&gt;[ $a != $b ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;字符串为 null，即长度为 0 &lt;code&gt;-z&lt;/code&gt;，例如&lt;code&gt;[ -z $a ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-z&lt;/code&gt;的字符串可以不被双引号引用&lt;/li&gt;
+&lt;li&gt;字符串不为 null，即长度不为 0 &lt;code&gt;-n&lt;/code&gt;，例如&lt;code&gt;[ -n $a ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt;的字符串建议用双引号引用，不加双引号可以使用&lt;code&gt;! -z&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;字符串是否不是空串&lt;code&gt;str&lt;/code&gt;，例如&lt;code&gt;[ $a ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;其他 shell 可能支持的操作
+
+&lt;ul&gt;
+&lt;li&gt;大于&lt;code&gt;&amp;gt;&lt;/code&gt;，例如&lt;code&gt;[[ $a &amp;gt; $b ]]&lt;/code&gt;或&lt;code&gt;[ $a \&amp;gt; $b ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;小于&lt;code&gt;&amp;lt;&lt;/code&gt;，例如&lt;code&gt;[[ $a &amp;lt; $b ]]&lt;/code&gt;或&lt;code&gt;[ $a \&amp;lt; $b ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;文件测试运算符&#34;&gt;文件测试运算符&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;假设文件&lt;code&gt;test&lt;/code&gt;的大小是 100 Bytes，且有读写和可执行权限，&lt;code&gt;file=&amp;quot;test&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-b file&lt;/code&gt;是否是块文件，例如&lt;code&gt;[ -b $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-c file&lt;/code&gt;是否是字符文件，例如&lt;code&gt;[ -c $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-d file&lt;/code&gt;是否是文件夹，例如&lt;code&gt;[ -d $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-f file&lt;/code&gt;是否是普通文件（不是块/字符文件，也不是文件夹），例如&lt;code&gt;[ -f $file ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-g file&lt;/code&gt;是否设置了group ID 位，即 SGID，例如&lt;code&gt;[ -g $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-k file&lt;/code&gt;是否设置了 sticky 位，例如&lt;code&gt;[ -k $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p file&lt;/code&gt;是否是一个命名的管道，例如&lt;code&gt;[ -p $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-t file&lt;/code&gt;文件描述符是否打开且和一个终端相关，例如&lt;code&gt;[ -t $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-u file&lt;/code&gt;是否设置了 user ID 位，即 SUID，例如&lt;code&gt;[ -u $file ]&lt;/code&gt;，结果是 false&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-r file&lt;/code&gt;是否可读，例如&lt;code&gt;[ -r $file ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-w file&lt;/code&gt;是否可写，例如&lt;code&gt;[ -w $file ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-x file&lt;/code&gt;是否可执行，例如&lt;code&gt;[ -x $file ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-s file&lt;/code&gt;文件大小是否大于 0，例如&lt;code&gt;[ -s $file ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-e file&lt;/code&gt;文件是否存在，如果是一个存在的文件夹也返回 true，例如&lt;code&gt;[ -e $file ]&lt;/code&gt;，结果是 true&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;c-shell-操作符-https-www-tutorialspoint-com-unix-unix-c-shell-operators-htm&#34;&gt;&lt;a href=&#34;https://www.tutorialspoint.com/unix/unix-c-shell-operators.htm&#34; target=&#34;_blank&#34;&gt;C Shell 操作符&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&#34;korn-shell-操作符-https-www-tutorialspoint-com-unix-unix-korn-shell-operators-htm&#34;&gt;&lt;a href=&#34;https://www.tutorialspoint.com/unix/unix-korn-shell-operators.htm&#34; target=&#34;_blank&#34;&gt;Korn Shell 操作符&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h2 id=&#34;字符串截取&#34;&gt;字符串截取&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;按指定长度截取&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;${str:n1:n2}&lt;/code&gt;从左边第 n1+1 个字符串开始，长度为 n2&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;${str:0-n1:n2}&lt;/code&gt;从右边第 n1 个字符串开始，长度为 n2&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;${str:n1}&lt;/code&gt;从左边第 n1+1 个字符串开始到最后&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;var=&amp;quot;aa1c10e139bf750b3335e896f366665cfa40d95f&amp;quot;
+
+echo ${var:1:3}   #a1c
+echo ${var:0-1:3} #f
+echo ${var:0-4:3} #d95
+echo ${var:1}     #a1c10e139bf750b3335e896f366665cfa40d95f
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;here-document&#34;&gt;here document&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;here document 是一种重定向方式，基本形式如下&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;将两个 delimiter 直接的内容传递给 cmd 作为输入参数&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;gt;&lt;/code&gt;是终端产生的提示输入信息的标识符&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cmd &amp;lt;&amp;lt; delimiter
+here document content
+delimiter
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;例如在终端向一个文件写入多行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cat &amp;lt;&amp;lt; EOF &amp;gt; output.sh
+echo &amp;quot;hello&amp;quot;
+echo &amp;quot;world&amp;quot;
+EOF
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;内容可以包括普通字符，也可以使用变量&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;执行脚本&lt;code&gt;sh output.sh haha&lt;/code&gt;，&lt;code&gt;$1&lt;/code&gt;被替换为&lt;code&gt;haha&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;不想展开变量，则在起始的 delimiter 前后添加引号实现&lt;code&gt;cat &amp;lt;&amp;lt; &amp;quot;EOF&amp;quot; &amp;gt; output.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cat &amp;lt;&amp;lt; EOF &amp;gt; output.sh
+echo &amp;quot;hello&amp;quot;
+echo $1
+EOF
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用&lt;code&gt;&amp;lt;&amp;lt;-&lt;/code&gt;而不是&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;，可以将 here document 的内容每行前面的制表符删掉，便于编写的时候将内容部分缩进&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考网站&#34;&gt;参考网站&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/bash/manual/bash.html&#34; target=&#34;_blank&#34;&gt;Bash Reference Manual&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

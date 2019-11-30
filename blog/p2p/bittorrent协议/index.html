@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="原文 约定 重要概念 BitTorrent DHT 协议 概述 路由表 BitTorrent 协议扩展 种子文件扩展 KRPC 协议 DHT 查询 Bittorrent DHT 几个重要过程 种子制作 启动过程 刷新路由表 约定 peers vs 客户端（client）">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/">
+  <meta property="og:title" content="BitTorrent 协议 | kiki">
+  <meta property="og:description" content="原文 约定 重要概念 BitTorrent DHT 协议 概述 路由表 BitTorrent 协议扩展 种子文件扩展 KRPC 协议 DHT 查询 Bittorrent DHT 几个重要过程 种子制作 启动过程 刷新路由表 约定 peers vs 客户端（client）"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>BitTorrent 协议 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>BitTorrent 协议</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<p><a href="http://www.bittorrent.org/beps/bep_0005.html" target="_blank">原文</a></p>
+
+<ul>
+<li><a href="#%e7%ba%a6%e5%ae%9a">约定</a></li>
+<li><a href="#%e9%87%8d%e8%a6%81%e6%a6%82%e5%bf%b5">重要概念</a></li>
+<li><a href="#bittorrent-dht-%e5%8d%8f%e8%ae%ae">BitTorrent DHT 协议</a>
+
+<ul>
+<li><a href="#%e6%a6%82%e8%bf%b0">概述</a></li>
+<li><a href="#%e8%b7%af%e7%94%b1%e8%a1%a8">路由表</a></li>
+<li><a href="#bittorrent-%e5%8d%8f%e8%ae%ae%e6%89%a9%e5%b1%95">BitTorrent 协议扩展</a></li>
+<li><a href="#%e7%a7%8d%e5%ad%90%e6%96%87%e4%bb%b6%e6%89%a9%e5%b1%95">种子文件扩展</a></li>
+<li><a href="#krpc-%e5%8d%8f%e8%ae%ae">KRPC 协议</a></li>
+<li><a href="#dht-%e6%9f%a5%e8%af%a2">DHT 查询</a></li>
+</ul></li>
+<li><a href="#bittorrent-dht-%e5%87%a0%e4%b8%aa%e9%87%8d%e8%a6%81%e8%bf%87%e7%a8%8b">Bittorrent DHT 几个重要过程</a>
+
+<ul>
+<li><a href="#%e7%a7%8d%e5%ad%90%e5%88%b6%e4%bd%9c">种子制作</a></li>
+<li><a href="#%e5%90%af%e5%8a%a8%e8%bf%87%e7%a8%8b">启动过程</a></li>
+<li><a href="#%e5%88%b7%e6%96%b0%e8%b7%af%e7%94%b1%e8%a1%a8">刷新路由表</a></li>
+</ul></li>
+</ul>
+
+<h2 id="约定">约定</h2>
+
+<ul>
+<li>peers vs 客户端（client）：
+
+<ul>
+<li>一个 peer 可以是任何参与下载的 BitTorrent 客户端</li>
+<li>客户端也是一个 peer</li>
+</ul></li>
+<li>片（piece） vs 块（block）：
+
+<ul>
+<li>片指在元信息文件中描述的一部分已下载的数据，可通过 sha-1 hash 验证</li>
+<li>块是客户端向 peer 请求的一部分数据。两块或更多块可以组成一个完整的可被验证的片</li>
+</ul></li>
+<li>B 编码（Bencoding）：B 编码是一种以简洁的格式描述和组织数据的方法，支持字节串、整数、lists 和 dictionaries
+
+<ul>
+<li>字节串：</li>
+<li>字节串没有开始和结束分隔符</li>
+<li>编码方式<code>&lt;以十进制 ASCII 编码的串长度&gt;:&lt;串数据&gt;</code></li>
+<li>如：<code>4:spam</code>表示字节串&rdquo;spam&rdquo;</li>
+<li>整数：</li>
+<li>编码方式<code>i&lt;以十进制 ASCII 编码的整数&gt;e</code></li>
+<li><code>i</code>和<code>e</code>分别是开始和结束分隔符</li>
+<li>如<code>i0e</code>，<code>i-1e</code>；<code>i01e</code>是无效的</li>
+<li>lists：</li>
+<li>编码方式<code>l&lt;B 编码值&gt;e</code></li>
+<li><code>l</code>是小写的<code>L</code>，是开始分隔符；<code>e</code>是结束分隔符</li>
+<li>lists 可以包含任何 B 编码的类型，包括整数、串、dictionaries 和其他的 lists</li>
+<li>如<code>l4:spam4:eggse</code>表示含义两个串的 lists：[&ldquo;spam&rdquo;, &ldquo;eggs&rdquo;]</li>
+<li>dictionaries：</li>
+<li>编码方式<code>d&lt;B 编码串&gt;&lt;B 编码元素&gt;e</code></li>
+<li><code>d</code>和<code>e</code>分别是开始和结束分隔符</li>
+<li>键 key 必须被 B 编码为串
+
+<ul>
+<li>串必须以排序的方式出现（以原始串排序，而不是字母数字顺序）</li>
+<li>串采用二进制比较方式，而不是特定于某种文化的自然比较（不是中文或英文的排序方式）</li>
+</ul></li>
+<li>值 value 可以是任何 B 编码的类型，包括整数、串、lists 和其他的 dictionaries</li>
+<li>如 <code>d3:cow3:moo4:spam4:eggse</code>表示 dictionaries {&ldquo;cow&rdquo;=&gt;&ldquo;moo&rdquo;, &ldquo;spam&rdquo;=&gt;&ldquo;eggs&rdquo;}</li>
+<li>如 <code>d4:spaml1:a1:bee</code>表示 dictionaries {&ldquo;spam&rdquo;=&gt;[&ldquo;a&rdquo;, &ldquo;b&rdquo;]}</li>
+</ul></li>
+</ul>
+
+<h2 id="重要概念">重要概念</h2>
+
+<ul>
+<li>元信息文件结构（Metainfo file structure）：所有数据以 B 编码方式编码</li>
+<li>元信息文件：一个 B 编码的 dictionary
+
+<ul>
+<li>元信息文件包含的键 key 如下，其中字符串类型的值均以 UTF-8 编码</li>
+<li>info：dictionary 类型，，值描述了种子文件。该 dictionary 可能是
+
+<ul>
+<li>没有目录结构的单文件，即种子文件只包含一个文件</li>
+<li>有目录文件的多文件</li>
+</ul></li>
+<li>announce：string 类型，值是 tracker 的 announce URL</li>
+<li>announce-list： [lists/string] 类型，可选，对正式规范的一个扩展，提供向后兼容性</li>
+<li>creation date：整数类型，是 unix 时间戳，可选，值是种子文件的创建时间</li>
+<li>comment：string 类型，可选，值是种子文件制作者的评论</li>
+<li>create by：string 类型，可选，值是只做种子文件的程序的名称和版本</li>
+<li>encoding：string 类型，可选，用于生成分片（当info dictionary 过大时，需要对其分片）</li>
+<li>元信息文件包含的值 value</li>
+<li>info dictionary，即 info 对应的值，其单文件和多文件模式公共的键 可以 如下：
+
+<ul>
+<li>piece length：整数类型，值是每个 piece 的字节数</li>
+<li>一般是 2 的整数次方，根据种子文件数据的总大小来选择 piece 的大小</li>
+<li>piece 过小使得种子文件过大，piece 过大则降低下载效率</li>
+<li>以前的 piece 大小是种子文件不超过 50-75KB，目前保持为 256KB，512KB 或 1MB</li>
+<li>除了最后一块，其他块大小相同，piece 的数量取决于  total_length/piece_size</li>
+<li>多文件模式的 piece 可能跨越文件边界</li>
+<li>pieces：string 类型，值由每个 piece的 20 字节 sha1 散列值连接而成，每个 piece 包含一个唯一的 sha1 散列值</li>
+<li>private：整数类型，可选，值 为 0 或者 1，可不设置，表示是否有外部的 peer 源</li>
+<li>值为 1：客户端必须广播自己的存在，通过元信息文件中显式描述的 trackers 得到其他的 peers</li>
+<li>不设置或值为 0：客户端可以通过其他方式得到其他的 peers</li>
+</ul></li>
+<li>单文件模式（Single file mode）的 info dictionary 包含的键：
+
+<ul>
+<li>name：string 类型，文件名，建议使用</li>
+<li>length：整数类型，文件所占字节数</li>
+<li>md5sum：string 类型，可选，相当于文件 MD5 和的 32 个字符的 16 进制字符串， BT 不使用这个键</li>
+</ul></li>
+<li>多文件模式（Multiple file mode）的 info dictionary 包含的键：
+
+<ul>
+<li>name：string 类型，存储文件的目录名，建议使用，utf-8</li>
+<li>name.files：[dictionaries] 每个文件对应一个 dictionary，list 中每个 dictionary 包含的键包括：</li>
+<li>length：整数类型，文件所占字节数</li>
+<li>md5sum：string 类型，可选，相当于文件 MD5 和的 32 个字符的 16 进制字符串， BT 不使用这个键</li>
+<li>path：包含单个或多个元素的 list，元素合成在一起表示文件路径或文件名，utf-8
+
+<ul>
+<li>list 中每个元素对应一个目录名或文件名（最后一个元素对应文件名）</li>
+<li>如<code>dir1/dir2/file.txt</code>会被编码成 B 编码的字符串 list <code>l4:dir14:dir28:file.txte</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>tracker：响应 HTTP GET 请求的 HTTP/HTTPS 服务
+
+<ul>
+<li>请求包含来自客户端的度量信息，这些信息能够帮助 tracker 全面统计种子文件</li>
+<li>响应包含一个 peers 列表</li>
+</ul></li>
+</ul>
+
+<h2 id="bittorrent-dht-协议">BitTorrent DHT 协议</h2>
+
+<h3 id="概述">概述</h3>
+
+<ul>
+<li>peer：在一个 TCP 端口上监听的客户端/服务端，实现了 BitTorrent 协议</li>
+<li>节点：一个在 UDP 端口上监听的客户端/服务端，实现了 DHT 协议
+
+<ul>
+<li>DHT 由节点组成，存储了 peer 的位置</li>
+<li>BitTorrent 客户端包含一个 DHT 节点，该节点用来联系 DHT 中其他节点，从而得到 peer 的位置，进而通过 BitTorrent 协议下载</li>
+</ul></li>
+<li>节点为种子文件寻找 peer 时，返回值包含一个不透明的值，称之为令牌 token。如果一个节点 announce 它控制的 peer 正在下载一个种子，必须在回复中加上被请求方之前在 get_peers 回复中发送的 token
+
+<ul>
+<li>当节点试图 announce 一个种子时，被请求的节点会核对 token 和请求节点的 IP 地址。这可以防止恶意的主机登记其他主机的种子</li>
+<li>token 只能由请求查询的节点返回给之前发送此 token 给它的节点</li>
+<li>token 必须在发布的一段时间内被接收，即有时效性。BitTorrent 使用 SHA1 哈希 IP 地址，后面跟上一个 secret（5 分钟改变一次），token 在 10 分钟之内是可接受的</li>
+</ul></li>
+</ul>
+
+<h3 id="路由表">路由表</h3>
+
+<ul>
+<li>每个节点维护一个路由表保存已知的好节点，用来作为在 DHT 请求的起始点。路由表中的节点是在向其他节点请求过程中，被请求的节点回复的</li>
+<li>一个好的节点是在过去 15 分钟回复过某个请求的节点，或者增加回复过请求而且在过去 15 分钟发送过请求的节点
+
+<ul>
+<li>当节点 15 分钟没有活跃，则成为可疑的节点</li>
+<li>当节点连续不能回复时，节点变为坏的</li>
+<li>和状态未知的节点相比，已知的好节点有更高的优先级</li>
+</ul></li>
+<li>目前每个 k-bucket 中可疑保存 8 个节点，即 k=8</li>
+<li>k-bucket 节点的更新
+
+<ul>
+<li>当得到一个新的好节点时</li>
+<li>如果已有节点都是好的，则丢弃新的节点</li>
+<li>如果已知有坏节点，则用新节点替换坏节点</li>
+<li>如果有可疑的节点，则试图 ping 该节点
+
+<ul>
+<li>收到回复，则 ping 下一个可疑节点，直到遇到未回复的节点或者所有节点都是好的</li>
+<li>可疑节点没有回复建议再发一次，仍然没有回复则丢弃，用新节点替换</li>
+</ul></li>
+</ul></li>
+<li>每个 bucket 持有一个 last changed 属性，标记内容的新鲜度
+
+<ul>
+<li>ping 一个节点并且收到回复，插入一个新节点，替换一个节点都会更新 bucket 的属性</li>
+<li>15 分支没有更新的 bucket 应当被刷新</li>
+<li>在 bucket 中随机选取一个 ID，执行一个 find_node 操作</li>
+</ul></li>
+<li>当在路由表中插入第一个节点并启动时，节点应该尝试一个 find_node 操作，参数是它本身，以更新 DHT 中此节点临近的节点</li>
+<li>路由表应保存在客户端软件</li>
+</ul>
+
+<h3 id="bittorrent-协议扩展">BitTorrent 协议扩展</h3>
+
+<ul>
+<li>BitTorrent 协议扩展用于交换 peer 之间的 UDP 端口数</li>
+<li>客户端可以通过正常的下载种子文件自动更新路由表
+
+<ul>
+<li>新安装的客户端下载一个没有 tracker 的种子，一开始路由表也没有节点，需要从种子文件获得联系信息</li>
+</ul></li>
+<li>支持 DHT 的 peers 在 BitTorrent 的握手协议中设置预留的 8-byte 的最后一位为 1，收到握手的 peer 表明远端的 peer 支持 DHT 协议，应该发送 PORT 消息
+
+<ul>
+<li>消息一 0x09 字节开头，有两个字节的 payload，包含了该 DHT peer 使用的网络字节序的 UDP 端口</li>
+<li>收到 PORT 消息的 peer 应该尝试用收到的端口和 IP 地址 ping 这个节点。如果收到回复，该节点应该插入这个新的联系方式到它的路由表</li>
+</ul></li>
+</ul>
+
+<h3 id="种子文件扩展">种子文件扩展</h3>
+
+<ul>
+<li>一个没有 tracker 的种子 dictionary 没有 announce 键
+
+<ul>
+<li>取而代之的是 nodes 键，这个键设为客户端路由表中 k 个最近的节点</li>
+<li>也可以设置为已知的好的节点，比如种子文件的创建者</li>
+</ul></li>
+<li>不要自动加入<code>router.bittorrent.com</code>到种子文件或者自动加入此节点到客户端路由表
+
+<ul>
+<li>一开始节点不在 DHT 网络中，可以向<code>router.bittorrent.com:6881</code>或<code>dht.transmissionbt.com:6881</code>等发送 find_node 请求</li>
+</ul></li>
+</ul>
+
+<h3 id="krpc-协议">KRPC 协议</h3>
+
+<ul>
+<li>KRPC 协议是一个简单的 RPC 结构，由 bencode 编码的 dictionaries 组成，通过 UDP 发送</li>
+<li>发出去一个单独的查询包然后回复一个单独的包，消息不会重试</li>
+<li>有三种消息类型
+
+<ul>
+<li>查询 query，有四种查询：ping，find_node，get_peers，announce_peer</li>
+<li>回复 response，</li>
+<li>错误 error，</li>
+</ul></li>
+<li>一个 KRPC 消息是一个单独的 dictionary，有三个共同的键以及和消息类型相关的附加键
+
+<ul>
+<li>t：string 类型，表示会话 transaction ID，由查询节点生成，回复的时候携带，因此回复可能和同一节点的多个查询相关</li>
+<li>会话 ID 应当被编码成二进制的段字符串，比如 2 个字节可以覆盖 2^16 个请求</li>
+<li>y：单字符类型，描述消息类型，q-query，r-response，e-error</li>
+<li>v：字符串类型，表示客户端版本，2 个字符表示客户端注册标识符，2 个字符表示版本标记</li>
+<li>不是所有实现有包含 v 键</li>
+</ul></li>
+<li>联系信息编码 contact encoding
+
+<ul>
+<li>peers 的联系信息被编码为 6 字节的字符串，又被称为“Compact IP-address/port info”</li>
+<li>4 字节的 IP 地址，网络字节序</li>
+<li>2 字节的端口，网络字节序</li>
+<li>节点的联系信息被编码为 26 字节的字符串，又被称为“Compact node info”</li>
+<li>20 字节的 Node ID，网络字节序</li>
+<li>6 字节的 “Compact IP-address/port info”</li>
+</ul></li>
+<li>查询 query 消息字典
+
+<ul>
+<li>y：q</li>
+<li>q：string 类型，包含 query 的 method 名称</li>
+<li>a：dictionary 类型，包含参数名字和值</li>
+</ul></li>
+<li>回复 response 消息字典
+
+<ul>
+<li>y：r</li>
+<li>r：dictionary 类型，包含返回值名字和值</li>
+<li>当查询正确执行完成之后才会发送回复消息</li>
+</ul></li>
+<li>错误 error 消息字典
+
+<ul>
+<li>y：e</li>
+<li>e：list 类型</li>
+<li>第一个元素是一个整数代表错误码
+
+<ul>
+<li>201：generic 错误</li>
+<li>202：server 错误</li>
+<li>203：protocol 错误，比如 malformed packet，无效参数，bad token</li>
+<li>204：未知的 method</li>
+</ul></li>
+<li>第二个元素是一个 string 包含错误消息</li>
+<li>当一个查询不能完成的时候发送错误消息</li>
+<li>比如<code>generic error={&quot;t&quot;:&quot;aa&quot;, &quot;y&quot;:&quot;e&quot;, &quot;e&quot;:[201, &quot;A Generic Error Occured&quot;]}</code></li>
+<li>bencode 编码是<code>d1:eli201e23:A Generic Error Occurred1:t2:aa1:y1:ee</code></li>
+</ul></li>
+</ul>
+
+<h3 id="dht-查询">DHT 查询</h3>
+
+<ul>
+<li>所有的查询都有一个 id 的键，表示查询节点的 Node ID，所有的回复有一个 id 的键，表示回复节点的 Node ID</li>
+
+<li><p>ping：<code>&quot;q&quot;=&quot;ping&quot;</code></p>
+
+<ul>
+<li>id：string 类型，20 字节，指的发送者的节点 ID，网络字节序</li>
+
+<li><p>回复的键只有 id 表示回复者的节点 ID</p>
+
+<pre><code class="language-json">ping query:{&quot;t&quot;:&quot;aa&quot;, &quot;y&quot;:&quot;q&quot;, &quot;q&quot;:&quot;ping&quot;, &quot;a&quot;:{&quot;id&quot;:&quot;querying_node_id&quot;}}
+{&quot;bencoded&quot;: &quot;d1:ad2:id14:querying_node_ide1:q4:ping1:t2:aa1:y1:qe&quot;}
+response:{&quot;t&quot;:&quot;aa&quot;, &quot;y&quot;:&quot;r&quot;, &quot;r&quot;:{&quot;id&quot;:&quot;queried_nodes_id&quot;}
+{&quot;bencoded&quot;: &quot;d1:rd2:id16:queried_node_ide1:t2:aa1:y1:re&quot;}
+</code></pre></li>
+</ul></li>
+
+<li><p>find_node：<code>&quot;q&quot;=&quot;find_node&quot;</code></p>
+
+<ul>
+<li>指定节点 ID，查询节点的联系信息</li>
+<li>id：查询节点的 ID</li>
+<li>target：查询者要查询的节点 ID</li>
+<li>回复的键</li>
+<li>id：接收者的节点 ID</li>
+<li>nodes：string 类型，包含目的节点的紧密（compact）信息或者接收者路由表中 k 个最近最好的节点信息</li>
+</ul></li>
+
+<li><p>get_peers：<code>&quot;q&quot;=&quot;get_peers&quot;</code></p>
+
+<ul>
+<li>请求与种子文件的 info_hash 相关</li>
+<li>id：查询节点的 ID</li>
+<li>info_hash：种子文件的 info_hash 值</li>
+<li>回复的键：接收者有 info_hash 的 peers 则返回 values，否则返回 nodes</li>
+<li>id：接收者的节点 ID</li>
+<li>token：用于后续的 announce_peer 查询，是一个短的二进制字符串</li>
+<li>values：list of string 类型，每个字符串包含一个紧密（compact）格式的 peer 信息</li>
+<li>nodes：接收节点路由表最接近 info_hash 的 k 个节点信息</li>
+</ul></li>
+
+<li><p>announce_peer：<code>&quot;q&quot;=&quot;announce_peer&quot;</code></p>
+
+<ul>
+<li>宣布一个控制请求节点的 peer 正在某个端口下载一个种子文件</li>
+<li>id：查询请求节点的 ID</li>
+<li>info_hash：种子文件的 info_hash</li>
+<li>port：整数类型，表示在哪个端口下载</li>
+<li>token：之前的一个“get_peers”回复中的 token</li>
+<li>被请求的节点必须验证 token 之前发送的节点 IP 地址与请求节点相同，然后被请求的节点保存这个请求节点的 IP 地址和提供的端口到它自己的 peer 联系信息</li>
+<li>implied_port：可选，0 或者 1，如果存在且不为 0，port 参数值应该忽略，而且 UDP 包的源端口应作为 peer 的端口</li>
+<li>这对于 NAT 之后的 peer 有用，因为 peer 不知道自己外部端口，但是支持 uTP，接收同一 DHT 端口的连接</li>
+</ul></li>
+
+<li><p>总结：DHT 是一个 hash 表，发送 KRPC 的 find_node 或 get_peers 消息，就是对表执行 get(key) 操作，发送 announce_peer 消息，就是对表执行 set(key,val) 操作</p></li>
+</ul>
+
+<h2 id="bittorrent-dht-几个重要过程">Bittorrent DHT 几个重要过程</h2>
+
+<h3 id="种子制作">种子制作</h3>
+
+<ul>
+<li>use_tracker 设置为 false，则不会产生 announce tracker 字段</li>
+<li>读取本地路由表文件，从中找到 k 个离 info_hash 最近的节点，作为 nodes 字段</li>
+</ul>
+
+<h3 id="启动过程">启动过程</h3>
+
+<ul>
+<li>从路由表文件装载之前保存的路由表 k-bucket 信息，初始化内存路由表信息</li>
+<li>强制刷新路由表的每一个 k-bucket，刷新过世是随机产生一个 id 进行 find_node 操作</li>
+</ul>
+
+<h3 id="刷新路由表">刷新路由表</h3>
+
+<ul>
+<li>启动的时候强制刷新</li>
+<li>每 15 分钟如果 k-bucket 中信息没有更新，则刷新一次，即 refreshTable</li>
+<li>每 5 分钟进行一次 checkPoint 操作，把当前的路由表保存到 routing_table 文件
+
+<ul>
+<li>routing_table 文件格式<code>{'id':node_id, 'host':node_host, 'port':node_port, 'age':int(node_age)}</code></li>
+</ul></li>
+<li>每个路由表的 k-bucket 有一个 last changed 属性，具体描述参考上面的<code>BitTorrent DHT 协议</code>-&gt;<code>路由表</code></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/p2p/">p2p</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/&amp;text=BitTorrent%20%e5%8d%8f%e8%ae%ae" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/&amp;t=BitTorrent%20%e5%8d%8f%e8%ae%ae" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=BitTorrent%20%e5%8d%8f%e8%ae%ae&amp;body=https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/&amp;title=BitTorrent%20%e5%8d%8f%e8%ae%ae" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=BitTorrent%20%e5%8d%8f%e8%ae%ae%20https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/&amp;title=BitTorrent%20%e5%8d%8f%e8%ae%ae" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/p2p/ipfs/">IPFS 入门</a></li>
+      
+      <li><a href="/blog/p2p/p2p%E5%8F%8Adht/">P2P 中 DHT 网络介绍</a></li>
+      
+      <li><a href="/blog/p2p/torrent/">torrent 文件</a></li>
+      
+      <li><a href="/blog/p2p/dht/">分布式原理</a></li>
+      
+      <li><a href="/blog/p2p/libp2p/">学习 libp2p</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

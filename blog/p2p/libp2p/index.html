@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="介绍 愿景 目标 网络堆栈技术现状分析 客户端-服务端（C/S）模型 按解决方案对网络分类 目前的缺点 要求 匿名传输 多种多路复用（multi-multip">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/p2p/libp2p/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/p2p/libp2p/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/p2p/libp2p/">
+  <meta property="og:title" content="学习 libp2p | kiki">
+  <meta property="og:description" content="介绍 愿景 目标 网络堆栈技术现状分析 客户端-服务端（C/S）模型 按解决方案对网络分类 目前的缺点 要求 匿名传输 多种多路复用（multi-multip"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>学习 libp2p | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>学习 libp2p</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e4%bb%8b%e7%bb%8d">介绍</a>
+
+<ul>
+<li><a href="#%e6%84%bf%e6%99%af">愿景</a></li>
+<li><a href="#%e7%9b%ae%e6%a0%87">目标</a></li>
+</ul></li>
+<li><a href="#%e7%bd%91%e7%bb%9c%e5%a0%86%e6%a0%88%e6%8a%80%e6%9c%af%e7%8e%b0%e7%8a%b6%e5%88%86%e6%9e%90">网络堆栈技术现状分析</a>
+
+<ul>
+<li><a href="#%e5%ae%a2%e6%88%b7%e7%ab%af-%e6%9c%8d%e5%8a%a1%e7%ab%afcs%e6%a8%a1%e5%9e%8b">客户端-服务端（C/S）模型</a></li>
+<li><a href="#%e6%8c%89%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88%e5%af%b9%e7%bd%91%e7%bb%9c%e5%88%86%e7%b1%bb">按解决方案对网络分类</a></li>
+<li><a href="#%e7%9b%ae%e5%89%8d%e7%9a%84%e7%bc%ba%e7%82%b9">目前的缺点</a></li>
+</ul></li>
+<li><a href="#%e8%a6%81%e6%b1%82">要求</a>
+
+<ul>
+<li><a href="#%e5%8c%bf%e5%90%8d%e4%bc%a0%e8%be%93">匿名传输</a></li>
+<li><a href="#%e5%a4%9a%e7%a7%8d%e5%a4%9a%e8%b7%af%e5%a4%8d%e7%94%a8multi-multiplexing">多种多路复用（multi-multiplexing）</a></li>
+<li><a href="#%e5%8a%a0%e5%af%86">加密</a></li>
+<li><a href="#nat-%e9%81%8d%e5%8e%86traversal">NAT 遍历（traversal）</a></li>
+<li><a href="#%e4%b8%ad%e7%bb%a7relay">中继（relay）</a></li>
+<li><a href="#%e5%90%af%e7%94%a8%e5%a4%9a%e4%b8%aa%e7%bd%91%e7%bb%9c%e6%8b%93%e6%89%91">启用多个网络拓扑</a></li>
+<li><a href="#%e8%b5%84%e6%ba%90%e5%8f%91%e7%8e%b0">资源发现</a></li>
+<li><a href="#%e6%b6%88%e6%81%af">消息</a></li>
+<li><a href="#%e5%91%bd%e5%90%8d">命名</a></li>
+</ul></li>
+<li><a href="#%e6%9e%b6%e6%9e%84">架构</a>
+
+<ul>
+<li><a href="#%e8%8a%82%e7%82%b9%e8%b7%af%e7%94%b1">节点路由</a></li>
+<li><a href="#%e9%9b%86%e7%be%a4">集群</a></li>
+<li><a href="#%e5%88%86%e5%b8%83%e5%bc%8f%e8%ae%b0%e5%bd%95%e5%ad%98%e5%82%a8">分布式记录存储</a></li>
+<li><a href="#%e5%8f%91%e7%8e%b0">发现</a></li>
+<li><a href="#mdns-discovery">mDNS-discovery</a></li>
+<li><a href="#random-walk">random-walk</a></li>
+<li><a href="#bootstrap-list">bootstrap-list</a></li>
+<li><a href="#%e6%b6%88%e6%81%af-%e6%9e%b6%e6%9e%84">消息-架构</a></li>
+<li><a href="#%e5%8f%91%e5%b8%83%e8%ae%a2%e9%98%85">发布订阅</a></li>
+<li><a href="#%e5%91%bd%e5%90%8d-%e6%9e%b6%e6%9e%84">命名-架构</a></li>
+<li><a href="#iprs">IPRS</a></li>
+<li><a href="#ipns">IPNS</a></li>
+</ul></li>
+<li><a href="#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">数据结构</a></li>
+<li><a href="#%e6%8e%a5%e5%8f%a3">接口</a></li>
+<li><a href="#%e7%89%b9%e6%80%a7">特性</a>
+
+<ul>
+<li><a href="#%e9%80%9a%e4%bf%a1%e6%a8%a1%e5%9e%8b-%e6%b5%81">通信模型-流</a></li>
+<li><a href="#%e7%ab%af%e5%8f%a3-%e5%8f%97%e9%99%90%e5%85%a5%e5%8f%a3">端口-受限入口</a></li>
+<li><a href="#%e4%bc%a0%e8%be%93%e5%8d%8f%e8%ae%ae">传输协议</a></li>
+<li><a href="#%e9%9d%9e-ip-%e7%bd%91%e7%bb%9c">非 IP 网络</a></li>
+<li><a href="#%e7%bd%91%e7%ba%bf">网线</a></li>
+</ul></li>
+<li><a href="#%e5%ae%9e%e7%8e%b0">实现</a></li>
+<li><a href="#%e5%8f%82%e8%80%83">参考</a></li>
+</ul>
+
+<h2 id="介绍">介绍</h2>
+
+<p>解决兼容性问题：分布式文件系统运行的网络配置、网络性能、设备不同</p>
+
+<h3 id="愿景">愿景</h3>
+
+<p>建立分布式系统，由开发者决定在网络中的交互，以及支持的配置和扩展性</p>
+
+<h3 id="目标">目标</h3>
+
+<ul>
+<li>支持多种协议：
+
+<ul>
+<li>传输：TCP，UDP，STCP，UDT，uTP，QUIC，SSH 等</li>
+<li>认证的传输：TLS，DTLS，CurveCPU，SSH</li>
+</ul></li>
+<li>有效使用套接字（连接复用 connection reuse）</li>
+<li>支持 peer 之间的通讯可以通过一个套接字复用（multiplex）（避免握手的负载）</li>
+<li>支持 peer 之间通过协商过程，使用不同的协议或者不同的版本</li>
+<li>向后兼容</li>
+<li>在现有系统上运行</li>
+<li>使用现有网络技术的所有能力</li>
+<li>有 NAT 穿墙（raversal）</li>
+<li>支持连接中继（relay）</li>
+<li>支持加密的通道（channel）</li>
+<li>有效使用底层传输（如 native stream muxing，native auth）</li>
+</ul>
+
+<h2 id="网络堆栈技术现状分析">网络堆栈技术现状分析</h2>
+
+<p>分析网络栈可用的协议和架构</p>
+
+<h3 id="客户端-服务端-c-s-模型">客户端-服务端（C/S）模型</h3>
+
+<ul>
+<li>C/S 模型表明通道两端承担不同的角色，支持不同的服务，或者具有不同的能力</li>
+<li>C/S 应用成为趋势的原因
+
+<ul>
+<li>数据中心的带宽比相互连接的客户端之间的带宽高很多</li>
+<li>数据中心的资源更便宜，因为利用充分以及存储量大（bulk stocking）</li>
+<li>开发者和系统管理更容易拥有对应用的较好的细粒度控制</li>
+<li>减少了要处理的异构系统的数目（数字仍然很大）</li>
+<li>像 NAT 的系统使得客户端机器很难找到彼此并且互相通信，迫使开发者解决这些问题</li>
+<li>协议开始设计的前提是开发者会开发一个C/S应用</li>
+</ul></li>
+<li>libp2p 在拨号者-监听者（dialer-listener）交互上前进了一步
+
+<ul>
+<li>不明确 dialer 和 listener 各自的功能以及可以执行的操作</li>
+<li>dialer 和 listener 可以独立地执行请求</li>
+</ul></li>
+</ul>
+
+<h3 id="按解决方案对网络分类">按解决方案对网络分类</h3>
+
+<ul>
+<li>传统的 7 层 OSI 模型不适用于 libp2p，OSI 模型按照通讯功能划分
+
+<ul>
+<li>物理层 Physical Layer：通过物理介质传输比特流</li>
+<li>数据链路层 Data Link Layer：将比特组合成字节，再将字节组合成帧，使用链路层地址访问介质，并进行差错检测</li>
+<li>逻辑链路控制子层 LLC：定义一些字段使上层协议可以共享数据链路层，不是必须的</li>
+<li>媒体访问控制子层 MAC：处理 CSMA/CD 算法、数据出错校验、成帧等</li>
+<li>网络层 Network Layer：通过 IP 寻址建立两个节点之间的连接</li>
+<li>传输层 Transport Layer：建立主机端到端的链接，为上层协议提供端到端的可靠和透明的数据传输服务，包括处理差错控制和流量控制等</li>
+<li>会话层 Session Layer：负责建立、管理和终止表示层实体之间的通话会。由不同设备中的应用程序之间的服务请求和响应组成</li>
+<li>表示层 Presentation Layer：提供各种用于应用层数据的编码和转换功能，确保一个系统的应用层发送的数据能被另一个系统的应用层识别</li>
+<li>应用层 Application Layer：为计算机用户提供应用接口，也为用户直接提供各种网络服务</li>
+</ul></li>
+<li>libp2p 根据角色将协议分类
+
+<ul>
+<li>建立物理链路：Ethernet，Wi-Fi，Bluetooth，USB</li>
+<li>寻址一个机器或程序：IPv4，IPv6，隐藏的寻址（无 SDP）</li>
+<li>发现其他 peer 或服务：ARP，DHCP，DNS，Onion</li>
+<li>通过网络路由消息：RIP(1,2)，OSPF，BGP，PPP，Tor，I2P，cjdns</li>
+<li>传输：TCP，UDP，UDT，QUIC，WebRTC 数据通道</li>
+<li>商定应用通讯的语义：RMI，Remoting，RPC，HTTP</li>
+</ul></li>
+</ul>
+
+<h3 id="目前的缺点">目前的缺点</h3>
+
+<ul>
+<li>大量的协议和解决方案使得让一个应用支持多种传输或通过多种传输并可用比较困难
+
+<ul>
+<li>如浏览器应用缺少 TCP/UDP 栈</li>
+</ul></li>
+<li>一个 peer 不能在不同传输 announce 自己，使得其他的 peer 确信是同一个 peer</li>
+</ul>
+
+<h2 id="要求">要求</h2>
+
+<h3 id="匿名传输">匿名传输</h3>
+
+<ul>
+<li>为了推理可能的传输，libp2p 使用多地址（multiaddr），一种自描述的地址格式
+
+<ul>
+<li>libp2p 可以在系统的任何地方将地址视为不透明的，支持网络层的不同传输协议</li>
+<li>libp2p 的地址格式是 ipfs-addr，以 IPFS 的节点 ID 结尾的多地址</li>
+</ul></li>
+<li>目前，没有不可靠的实现存在。即定义和使用不可靠的传输协议接口未被定义</li>
+</ul>
+
+<h3 id="多种多路复用-multi-multiplexing">多种多路复用（multi-multiplexing）</h3>
+
+<ul>
+<li>libp2p 收集了多种协议，为了保留资源，是的建立连接更容易，libp2p 可以在一个端口（TCP 或 UDP，取决于使用的传输）上执行所有的操作</li>
+<li>libp2p 可以通过一个端到端的连接复用多种协议。这个复用包括可靠的流和不可靠的数据包</li>
+<li>libp2p 网络层提供的多路复用包括
+
+<ul>
+<li>可以复用多个监听网络接口</li>
+<li>可以复用多个传输协议</li>
+<li>每个 peer 可以复用多个连接</li>
+<li>可以复用多个客户端协议</li>
+<li>每个协议，每个连接可以复用多个流</li>
+<li>具有流控制（backpressure，fairness）</li>
+<li>用不同的短暂的 key 为每个连接加密</li>
+</ul></li>
+</ul>
+
+<h3 id="加密">加密</h3>
+
+<ul>
+<li>libp2p 中的通讯是三种状态
+
+<ul>
+<li>加密的</li>
+<li>签名的（未加密）</li>
+<li>清楚的（未加密，未签名）</li>
+</ul></li>
+<li>对于一些性能要求高的数据中心，加密是不可行的。建议
+
+<ul>
+<li>实现默认为所有的通讯加密</li>
+<li>实现是审核的（audited）</li>
+<li>除非绝对必须，用户通常只操作加密的通讯</li>
+</ul></li>
+</ul>
+
+<h3 id="nat-遍历-traversal">NAT 遍历（traversal）</h3>
+
+<ul>
+<li>NAT（Network Address Translation，网络地址转换）在互联网普遍存在
+
+<ul>
+<li>大部分消费者设备在很多层的 NAT 后面</li>
+<li>大多数数据中心节点尝尝处于安全或虚拟化原因也在 NAT 后面</li>
+<li>在基于容器的部署阶段，这个现象更加普遍</li>
+</ul></li>
+<li>IPFS 的实现应该提高一种方式来遍历 NAT，否则操作会受影响，即使是在真实 IP 地址运行的节点也要实现 NAT 遍历，因为节点可能需要和 NAT 之后的节点建立连接</li>
+<li>libp2p 使用 ICE-like 的协议实现完全的 NAT 遍历
+
+<ul>
+<li>不是真的 ICE，因为 IPFS 网络可能为了 hole-punching 或者中继通讯通过 IPFS 协议中继通讯</li>
+</ul></li>
+<li>建议使用一些现有的 NAT 遍历库来实现：libnice，libwebrtc，natty</li>
+</ul>
+
+<h3 id="中继-relay">中继（relay）</h3>
+
+<ul>
+<li>由于对称的 NAT，容器和 VM NAT，以及其他的 impossible-to-bypass 的 NAT，libp2p 必须中继通讯以建立完整的连接图</li>
+<li>因此，实现必须支持中继，虽然可能是可选的，而且可能被终端用户拒绝</li>
+<li>连接中继应该作为传输实现，以便于传给上层</li>
+</ul>
+
+<h3 id="启用多个网络拓扑">启用多个网络拓扑</h3>
+
+<ul>
+<li>P2P 的拓扑分为：
+
+<ul>
+<li>unstructed 无结构的：网络是完全随机的，或者不确定的</li>
+<li>structed 结构化的：有一种隐式的方式来识别网络节点</li>
+<li>hybrid 混合的：无结构和结构化的拓扑混合</li>
+<li>centralized 中心化的：中心化的拓扑是 web 应用框架中最常见的，它要求一个或一些指定的服务在已知的静态位置一直存在</li>
+</ul></li>
+<li>libp2p 必须执行不同的路由机制和 peer 的发现，以便建立路由表</li>
+</ul>
+
+<h3 id="资源发现">资源发现</h3>
+
+<ul>
+<li>libp2p 通过记录（records）解决王路内部的资源发现问题
+
+<ul>
+<li>一个 record 是一个数据单元，可以按位签名，加时间戳或/和使用其他方法给它一个时效性</li>
+<li>这些 records 持有信息包括网络中的位置、资源的有效性等</li>
+</ul></li>
+<li>资源可以是数字，存储，CPU 周期和其他类型的服务</li>
+<li>libp2p 不能限制资源的位置，但是提供方式简单的发现网络中的资源或者使用一个 side channel</li>
+</ul>
+
+<h3 id="消息">消息</h3>
+
+<ul>
+<li>有效的消息协议提供方法来发送消息，使得延迟最小，且/或支持庞大复杂的拓扑以便于分布式</li>
+<li>libp2p 结合 Multicast 和 PubSub 来实现这些需求</li>
+</ul>
+
+<h3 id="命名">命名</h3>
+
+<ul>
+<li>网络变化和应用可以使用网络以使得对于拓扑是匿名的，命名用于解决这个问题</li>
+</ul>
+
+<h2 id="架构">架构</h2>
+
+<ul>
+<li>libp2p 包括多个子系统。这些子系统可以遵循统一的接口建立在其他子系统之上
+
+<ul>
+<li>Peer Routing：节点路由。这个机制决定使用哪些节点来路由指定的消息。路由可以是递归的、迭代的，甚至是广播或多播的模式</li>
+<li>Swarm：集群。处理 libp2p2 中和打开流相关的部分，包括多传输过程中的协议复用，流复用，NAT 遍历，连接中继</li>
+<li>Distributed Record Store：分布式记录存储。存储和分发记录的系统。记录是指被其他吸烟使用的小的条目，用于发送信号，建立链路，announce 节点或内容等。和网络中的 DNS 类似</li>
+<li>Discovery：发现。发现和识别网络中的其他节点</li>
+</ul></li>
+</ul>
+
+<h3 id="节点路由">节点路由</h3>
+
+<ul>
+<li>子系统暴露了一个接口来识别一个消息应该被路由到 DHT 中的哪些节点：接收一个 key，返回一个或多个 PeerInfo 对象
+
+<ul>
+<li>kad-routing：基于 Kademlia DHT，实现了 Kademlia 路由表，每个节点持有一个 k-bucket 的集合。每个k-bucket 包含几个 PeerInfo 对象</li>
+<li>mDNS-routing：使用 mDNS 探测和识别，当局域网内的节点有一个指定的 key 或者节点容易出现</li>
+</ul></li>
+</ul>
+
+<h3 id="集群">集群</h3>
+
+<ul>
+<li>Stream Muxer：必须实现 <a href="https://github.com/libp2p/interface-stream-muxer" target="_blank">interface-stream-muxer</a> 中的接口</li>
+<li>Protocol Muxer：在应用层被处理而不是传统的端口层（不同的服务或协议监听不同的端口）。使得我们支持多种协议在一个套接字被复用，节约了多端口 NAT 遍历的花费
+
+<ul>
+<li>协议复用通过 <a href="https://github.com/multiformats/multistream-select" target="_blank">multistream</a> 完成，一个协议和不同的流协商使用 <a href="https://github.com/multiformats/multicodec" target="_blank">multicodec</a></li>
+</ul></li>
+<li>Transport：传输</li>
+<li>Crypto：加密</li>
+<li>Identify：鉴别是 Swarm 之上的一些协议，是 Connection Handler。使得节点之间可以互换监听者地址(listenAddrs)和观察者(observeAddrs)地址。因为每个开放的套接字会实现 REUSEPORT，另一个节点的 ObserveAddr 可以使得第三个节点连接进来，因为端口已经是开放的，可以在 NAT 上重定向到开放的端口</li>
+<li>Relay：中继，参考 <a href="https://github.com/libp2p/specs/tree/master/relay" target="_blank">Circuit Relay</a></li>
+</ul>
+
+<h3 id="分布式记录存储">分布式记录存储</h3>
+
+<ul>
+<li>Record</li>
+<li>abstract-record-store</li>
+<li>kad-record-store</li>
+<li>mDNS-record-store</li>
+<li>s3-record-store</li>
+</ul>
+
+<h3 id="发现">发现</h3>
+
+<p>发现和识别网络中的其他节点</p>
+
+<h4 id="mdns-discovery">mDNS-discovery</h4>
+
+<ul>
+<li>mDNS-discovery 是局域网内使用 mDNS 的一个发现协议。它发射一个 mDNS 信号来发现是否有更多可用的节点。局域网内的节点对于 peer-to-peer 是非常有用的，因为链路延迟更低</li>
+<li>mDNS-discovery 是一个独立的协议，不依靠 libp2p2 中的其他协议。可以不依赖其他底层架构在局域网内生成可用的节点</li>
+<li>mDNS-discovery 可为每个服务配置，也可以在私有网络配置</li>
+<li>原始的 mDNS 会暴露本地 IP 地址，正在设法加密 mDNS-discovery 信号，使得局域网内其他节点不能识别正在使用的服务
+
+<ul>
+<li>不建议将 mDNS-discovery 应用到隐私敏感的应用或者未知到路由协议</li>
+</ul></li>
+</ul>
+
+<h4 id="random-walk">random-walk</h4>
+
+<ul>
+<li>random-walk 是应用于 DHT （或其他有路由表的协议）的发现协议。它生成随机的 DHt 请求以快速了解大量的节点</li>
+<li>这个会在一开始的时候花费一些负载，但是可以使得 DHT （或其他协议）更快聚合</li>
+</ul>
+
+<h4 id="bootstrap-list">bootstrap-list</h4>
+
+<ul>
+<li>bootstrap-list 是用本地存储来缓存网络中的高稳定（或信任的）节点的发现协议
+
+<ul>
+<li>列表应当被存储在对于本地节点来说是长期的本地存储</li>
+<li>在大部分情况下应该是可以用户配置的</li>
+</ul></li>
+</ul>
+
+<h3 id="消息-架构">消息-架构</h3>
+
+<h4 id="发布订阅">发布订阅</h4>
+
+<ul>
+<li>PubSub 参考 <a href="https://github.com/libp2p/specs/tree/master/pubsub" target="_blank">pubsub</a> 和 <a href="https://github.com/libp2p/specs/tree/master/pubsub/gossipsub" target="_blank">pubsub/gossippub</a></li>
+</ul>
+
+<h3 id="命名-架构">命名-架构</h3>
+
+<h4 id="iprs">IPRS</h4>
+
+<p>参考 <a href="https://github.com/libp2p/specs/blob/master/IPRS.md" target="_blank">IPRS spec</a></p>
+
+<h4 id="ipns">IPNS</h4>
+
+<h2 id="数据结构">数据结构</h2>
+
+<p>网络协议处理的数据结构包括</p>
+
+<ul>
+<li>PrivateKey：节点的私钥</li>
+<li>PublicKey：节点的公钥</li>
+<li>PeerId：节点公钥的一个哈希</li>
+<li>PeerInfo：一个对象，包含节点的 PeerId 和已知的多地址</li>
+<li>Transport：用于和其他 peer 建立连接的传输，必须实现 <a href="https://github.com/libp2p/interface-transport" target="_blank">interface-transport</a></li>
+<li>Connection：两个 node 之间的一个 point-to-point 链路，必须实现 <a href="https://github.com/libp2p/interface-connection" target="_blank">interface-connection</a></li>
+<li>Muxed-Stream：一个双向（duplex）的消息通道</li>
+<li>Stream-Muxer：流复用器，必须实现 <a href="https://github.com/libp2p/interface-stream-muxer" target="_blank">interface-stream-muxer</a></li>
+<li>Record：LPLD（IPFS Linked Data）描述的对象，实现 <a href="https://github.com/libp2p/specs/blob/master/IPRS.md" target="_blank">IPRS</a></li>
+<li>multiaddr：自描述的网络地址，参考 <a href="https://github.com/multiformats/multiaddr" target="_blank">multiaddr</a></li>
+<li>multicodec：自描述的编码类型，参考 <a href="https://github.com/multiformats/multicodec" target="_blank">multicodec</a></li>
+<li>multihash：自描述的哈希，参考 <a href="https://github.com/multiformats/multihash" target="_blank">multihash</a></li>
+</ul>
+
+<h2 id="接口">接口</h2>
+
+<ul>
+<li>libp2p</li>
+<li>传输</li>
+<li>链接</li>
+<li>流多路复用器</li>
+<li>集群</li>
+<li>节点发现</li>
+<li>节点路由</li>
+<li>内容路由
+
+<ul>
+<li>接口-分布式记录存储</li>
+</ul></li>
+<li>libp2p 接口和 UX</li>
+</ul>
+
+<h2 id="特性">特性</h2>
+
+<h3 id="通信模型-流">通信模型-流</h3>
+
+<h3 id="端口-受限入口">端口-受限入口</h3>
+
+<h3 id="传输协议">传输协议</h3>
+
+<h3 id="非-ip-网络">非 IP 网络</h3>
+
+<h3 id="网线">网线</h3>
+
+<ul>
+<li>协议复用-同一个流上运行多个协议
+
+<ul>
+<li>多流-自描述协议流，为协议定义一个协议头</li>
+<li>多流选择器-自描述协议流选择器</li>
+<li>允许列举和选择其他协议。协议复用有一个注册协议的列表，监听一个协议，然后包装或升级连接来描述注册的协议</li>
+<li>直接利用了多流，可以交替多个协议，检查远端可能使用的协议</li>
+<li>流复用-通过一个网线运行多个独立流</li>
+<li>将多个流复用或合并成一个单独的流</li>
+</ul></li>
+<li>便携式编码-使用便携的序列格式
+
+<ul>
+<li>目前使用 protobuf，候选的还有 capnp，bson，ubjson</li>
+</ul></li>
+<li>安全通信-使用加密算法建立安全和隐私（像 TLS）</li>
+<li>协议多解码（multicodecs）</li>
+</ul>
+
+<h2 id="实现">实现</h2>
+
+<h2 id="参考">参考</h2>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/p2p/">p2p</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/p2p/libp2p/&amp;text=%e5%ad%a6%e4%b9%a0%20libp2p" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/p2p/libp2p/&amp;t=%e5%ad%a6%e4%b9%a0%20libp2p" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%ad%a6%e4%b9%a0%20libp2p&amp;body=https://xueqing.github.io/blog/p2p/libp2p/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/p2p/libp2p/&amp;title=%e5%ad%a6%e4%b9%a0%20libp2p" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e5%ad%a6%e4%b9%a0%20libp2p%20https://xueqing.github.io/blog/p2p/libp2p/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/p2p/libp2p/&amp;title=%e5%ad%a6%e4%b9%a0%20libp2p" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/">BitTorrent 协议</a></li>
+      
+      <li><a href="/blog/p2p/ipfs/">IPFS 入门</a></li>
+      
+      <li><a href="/blog/p2p/p2p%E5%8F%8Adht/">P2P 中 DHT 网络介绍</a></li>
+      
+      <li><a href="/blog/p2p/torrent/">torrent 文件</a></li>
+      
+      <li><a href="/blog/p2p/dht/">分布式原理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

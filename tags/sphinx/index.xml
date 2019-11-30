@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sphinx | kiki</title>
+    <link>https://xueqing.github.io/tags/sphinx/</link>
+      <atom:link href="https://xueqing.github.io/tags/sphinx/index.xml" rel="self" type="application/rss+xml" />
+    <description>sphinx</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>sphinx</title>
+      <link>https://xueqing.github.io/tags/sphinx/</link>
+    </image>
+    
+    <item>
+      <title>Sphinx 安装和配置</title>
+      <link>https://xueqing.github.io/blog/others/sphinx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/others/sphinx/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 安装 chocolatey，类似于 OS X 的 Homebrew
+# 管理员打开 powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))
+# 测试 choco，在终端输入 choco 或 choco -?
+choco -? # 查看帮助文档
+# 安装 python
+choco install python
+# 安装 setuptools 和 pip
+python -m ensurepip --default-pip
+# 如果上述命令不生效，使用源码安装
+## 下载 [get-pip.py](https://bootstrap.pypa.io/get-pip.py)
+## 使用源码安装和升级 pip。且会确定 setuptools 和 wheel 的环境
+python get-pip.py [--prefix=/usr/local/]
+# 更新 pip/setuptools/wheel
+python -m pip install -U pip setuptools wheel
+# 查看可执行文件路径。可能需要将可执行文件路径加入系统 PATH
+python -m site --user-base
+## Unix：修改 ~/.profile，添加 BIN_DIR/bin，执行 source 生效
+## windows：添加 BIN_DIR/../Scripts，执行 source 生效
+# 创建虚拟环境 python3 -m venv &amp;lt;DIR&amp;gt;
+python3 -m venv for_sphinx
+# 激活虚拟环境
+## Unix：source &amp;lt;DIR&amp;gt;/bin/activate
+source for_sphinx/bin/activate
+## windows：&amp;lt;DIR&amp;gt;\Scripts\activate
+for_sphinx\Scripts\activate
+# 取消激活
+deactivate
+# 删除一个虚拟环境，只需要删除对应目录
+rm -rf for_sphinx
+# 安装 pipenv，是 Python 项目的依赖管理器。方便管理多个虚拟环境
+pip install --user pipenv
+# 使用 pipenv 安装包 pipenv install package_name
+# 运行 pipenv run python filename.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://chocolatey.org/install&#34; target=&#34;_blank&#34;&gt;Installing Chocolatey&lt;/a&gt;
+&lt;a href=&#34;https://packaging.python.org/tutorials/installing-packages/&#34; target=&#34;_blank&#34;&gt;Installing Packages&lt;/a&gt;
+&lt;a href=&#34;https://packaging.python.org/tutorials/managing-dependencies/#managing-application-dependencies&#34; target=&#34;_blank&#34;&gt;Managing Application Dependencies&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

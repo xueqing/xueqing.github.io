@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="4.1 前言 4.2 绑卡场景 4.3 绑卡流程 4.4 卡 bin 4.5 短信和身份验证 4.6 绑卡接口 4.7 银联绑卡 4.8 实名认证 4.1 前言 用户绑卡和快捷支付有关 绑卡是将用户卡信息提供给电商，以后">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/">
+  <meta property="og:title" content="4 绑卡、签约和身份验证 | kiki">
+  <meta property="og:description" content="4.1 前言 4.2 绑卡场景 4.3 绑卡流程 4.4 卡 bin 4.5 短信和身份验证 4.6 绑卡接口 4.7 银联绑卡 4.8 实名认证 4.1 前言 用户绑卡和快捷支付有关 绑卡是将用户卡信息提供给电商，以后"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>4 绑卡、签约和身份验证 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>4 绑卡、签约和身份验证</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#41-%e5%89%8d%e8%a8%80">4.1 前言</a></li>
+<li><a href="#42-%e7%bb%91%e5%8d%a1%e5%9c%ba%e6%99%af">4.2 绑卡场景</a></li>
+<li><a href="#43-%e7%bb%91%e5%8d%a1%e6%b5%81%e7%a8%8b">4.3 绑卡流程</a></li>
+<li><a href="#44-%e5%8d%a1-bin">4.4 卡 bin</a></li>
+<li><a href="#45-%e7%9f%ad%e4%bf%a1%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81">4.5 短信和身份验证</a></li>
+<li><a href="#46-%e7%bb%91%e5%8d%a1%e6%8e%a5%e5%8f%a3">4.6 绑卡接口</a></li>
+<li><a href="#47-%e9%93%b6%e8%81%94%e7%bb%91%e5%8d%a1">4.7 银联绑卡</a></li>
+<li><a href="#48-%e5%ae%9e%e5%90%8d%e8%ae%a4%e8%af%81">4.8 实名认证</a></li>
+</ul>
+
+<h2 id="4-1-前言">4.1 前言</h2>
+
+<ul>
+<li>用户绑卡和快捷支付有关
+
+<ul>
+<li>绑卡是将用户卡信息提供给电商，以后电商就用这个信息去银行完成支付</li>
+<li>绑卡实际上是一个授权，让用户允许商家自动从他的账户上扣除资金。所以绑卡也叫签约，用户和银行、商家的三方签订的支付合约</li>
+</ul></li>
+<li>绑卡对用户和商户来说都存在巨大风险</li>
+<li>用户绑卡是为了提升用户体验，让用户花钱更容易。其次，提升支付成功率
+
+<ul>
+<li>使用网银支付成功率在 20% 左右，银联直联成功率一般在 50% 左右，银行卡直联可以提升到 70% 左右</li>
+</ul></li>
+<li>我们知道对接银行包括直接对接银行接口和通过银联来间接对接。这两种情况下绑卡处理也不同</li>
+</ul>
+
+<h2 id="4-2-绑卡场景">4.2 绑卡场景</h2>
+
+<ul>
+<li>直观的，电商网站会在用户后台提供一个绑卡的入口，让用户直接绑卡</li>
+<li>要点
+
+<ul>
+<li>只能绑自己的卡，这主要从安全角度考虑</li>
+<li>需要用户在银行侧预留的手机号进行短信验证。但不是所有银行都需要。这个时候，为了统一处理，可以考虑自己发验证短信</li>
+</ul></li>
+<li>更多的场景是用户在支付中绑卡。也就是提交订单后，发现没有银行卡了，就开始绑卡。和纯绑卡流程不同的是，最后一步绑卡成功后，一般都同时完成支付。有些渠道会提供绑卡并支付的接口，减少交互次数</li>
+</ul>
+
+<h2 id="4-3-绑卡流程">4.3 绑卡流程</h2>
+
+<ul>
+<li>比较简单的银联直联绑卡。为了保证卡的安全，绑卡有这些前置需求
+
+<ul>
+<li>用户必须已经绑定了手机号。该手机号用于修改支付密码</li>
+<li>用户需设置了支付密码。支付密码不同于登录密码</li>
+</ul></li>
+<li>针对用户不同状态，绑卡流程上有区别。绑卡是安全操作，要求用户必须登录到系统中。为了避免和服务器端的交互被劫持，所有操作必须在安全链接中进行，即使用 HTTPS。当用户开始绑卡时，执行如下流程
+
+<ul>
+<li>1 检查用户是否有手机号。没有则进入设置手机号流程</li>
+<li>2 检查用户是否设置支付密码。如果已经设置，则需要用户输入密码。确认后开始绑卡。否则，也是先进去绑卡后设置密码</li>
+<li>3 用户输入卡号，系统根据卡号判断卡的发卡行，并显示给用户。有些实现，如微信支付，会提供扫卡识码功能</li>
+<li>4 用户输入银行预留手机。对于没有绑过卡的用户，需要用户提供真实姓名和身份证号。对于信用卡，还需要输入 cv 码和有效期。这一步，卡的信息都收集全了</li>
+<li>5 调用银行绑卡验证接口进行绑卡。这里有一个四要素验证的概念。由于国内要求实名制，所有银行卡都是实名办理的，所以银行可以验证姓名、身份证号、银行卡号和手机号是不是一致的，如果没问题，则会发短信到手机上</li>
+<li>6 用户输入短信验证码并确认绑卡，服务器端将用户实名信息以及短信验证码组合形成报文，发送给银行执行签约操作。银行侧签约成功后，返回签约号给商户</li>
+</ul></li>
+</ul>
+
+<h2 id="4-4-卡-bin">4.4 卡 bin</h2>
+
+<ul>
+<li>根据卡号判断发卡行需要卡 bin
+
+<ul>
+<li>BIN 号即银行标识代码的英文缩写</li>
+<li>BIN 由 6 位数字表示，出现在卡号的前 6 位，由国际标准化组织(ISO)分配给各从事跨行转接交换的银行卡组织</li>
+<li>银行卡的卡号是标识发卡机构和持卡人信息的号码，由以下三部分组成：发卡行标识代码(BIN号)、发卡行自定义位、校验码</li>
+</ul></li>
+<li>目前，国内的银行卡按照数字打头的不同分别归属于不同的银行卡组织
+
+<ul>
+<li>以 4 字打头的银行卡属于 VISA 卡组织</li>
+<li>以 5 字打头的属于 MASTER CARD 卡组织</li>
+<li>以 9/62/60 打头的属于中国银联，而 <sup>62</sup>&frasl;<sub>60</sub> 打头的银联卡是符合国际标准的银联标准卡，可在国外使用，这也是中国银联近几年来主要发行的银行卡片</li>
+</ul></li>
+<li>大部分银行卡号前 6 位即可确定发卡行和卡类型，但也有非标卡需要 6-10 位才可判断出来</li>
+<li>需要维护一个卡 bin 库</li>
+</ul>
+
+<h2 id="4-5-短信和身份验证">4.5 短信和身份验证</h2>
+
+<ul>
+<li>一般绑卡操作第 5 步需要银行下发短信验证码。短信验证的接口，不同银行不一样。有些银行是短信和身份验证一起做了；有些银行是可以配置身份验证是否同时发短信</li>
+<li>此类接口一般包含如下内容：
+
+<ul>
+<li>版本号：当前接口的版本号</li>
+<li>编码方式：默认都是 UTF-8，指传输的内容的编码方式</li>
+<li>签名和签名方法：生成报文的签名。不是所有的字段都需要放到签名中，文档中会说明哪些字段需要签名</li>
+<li>签名算法：生成签名的算法，RSA、RSA128、MD5 等</li>
+<li>商户代码：在渠道侧注册的商户号</li>
+<li>商户订单号：即发送给渠道的订单号</li>
+<li>发送时间：该请求送出的时间</li>
+<li>账号和账号类型：银行卡、存折、IC 卡等支持的账号类型以及对应的账号</li>
+<li>卡的加密信息：如信用卡的 CVN2、有效期等</li>
+<li>开户行信息：开户行所在地以及名称。大部分不需要</li>
+<li>身份证件类型和身份证号：可用于实名验证的证件，指身份证、军官证、护照、回乡证、台胞证、警官证、士兵证等。不同银行可以支持的证件类型不一样，这也不是问题。大部分是身份证</li>
+<li>姓名：真实姓名，必须和身份证一致</li>
+<li>手机号：在所在银行注册的手机号</li>
+</ul></li>
+<li>系统会返回上述数据的验证结果。如果验证通过，则会发短信。但这不是所有的渠道都是这样。哪些字段会参与验证、需不需要发短信，需要注意看接口文档</li>
+</ul>
+
+<h2 id="4-6-绑卡接口">4.6 绑卡接口</h2>
+
+<ul>
+<li>绑卡接口和发短信接口类似，还需要将用户的卡号、身份证等信息传递过去</li>
+<li>绑卡成功后，会返回一个签约号。这个签约号是后续调用支付、解约等接口所必须的</li>
+<li>银行都不支持重复绑卡：大部分银行(如农业、浦发、建行)对绑卡签约接口调用，会首先验证身份信息，如果验证不通过，则不执行后续操作。验证通过后，再检查这个卡在该商户下是否已经绑过了，如果没有绑过，则执行绑卡，否则会提示卡已经绑定过了，不能重复签约。但工行首先验证这个卡是不是已经绑过了，如果已经绑卡，则不继续验证身份信息</li>
+</ul>
+
+<h2 id="4-7-银联绑卡">4.7 银联绑卡</h2>
+
+<ul>
+<li>银联直联绑卡：和银行绑卡类似，但是得注意验证接口，仅验证卡号和姓名，不验证身份证号和手机号。这导致第 5 步无法正常进行。银联只有到第 6 步执行绑卡时才做身份验证。所以在处理上，还需要做一些调整，来确保和银行的流程的一致
+
+<ul>
+<li>一种处理方法是，对银联在第 5 步就开始调用银联接口执行绑卡操作，但在本地标记为预绑卡状态；商户侧发送短信验证码，验证通过后，才将状态设置为绑卡成功</li>
+</ul></li>
+<li>银联网银绑卡：用户在电商页面上输入卡号，然后被导航到银联页面上去完成绑卡操作，成功后，银联返回一个 token 作为签约号，用于支持后续操作。问题在于用户可以在银联页面上绑定一个别人的卡，而电商侧是无法知道这个卡的情况的。所以尽量不要用这种方式</li>
+</ul>
+
+<h2 id="4-8-实名认证">4.8 实名认证</h2>
+
+<ul>
+<li>绑卡操作有个不错的副产品，就是实名认证。常说的二要素，三要素，四要素认证，可以通过这个操作完成
+
+<ul>
+<li>二要素：指姓名和身份证号</li>
+<li>三要素：加上银行卡号</li>
+<li>四要素：加上手机号</li>
+</ul></li>
+<li>看起来，似乎银行都应该支持四要素验证，但大部分银行接口仅支持三要素，毕竟手机号还是非常容易变</li>
+<li>实名认证，也就是二要素认证，是应用最多的认证</li>
+<li>国内唯一的库是在公安部，由 NCIIC 负责对外提供接口。可以提供如下功能：
+
+<ul>
+<li>简项核查：返回“一致”“不一致”“库中无此号”</li>
+<li>返照核查：返回“一致+网纹照片”“不一致”“库中无此号”</li>
+<li>人像核查：返回“同一人”“不同人”“库中无此号”</li>
+</ul></li>
+<li>官方接口收费是 5 元/条。市面上主要的第三方服务提供商有国政通(简项、返照)、诺证通(简项)、IDface(三接口)等。收费一般和访问量有关，量大从优
+
+<ul>
+<li>简项核查：0.5~2.0 元</li>
+<li>返照核查：0.8~2.1 元</li>
+<li>人像核查：2.0~8.0 元不等</li>
+</ul></li>
+<li>注意：涉密人员是没法查到相关信息的</li>
+<li>性能上，XX 通一般在 200ms 内即可返回结果，普通商用没问题。有些公司还会额外提供四要素接口，以 XX 通为例，它号称支持大部分银行卡的四要素认证。但是实现上是实时请求银行的接口，这就导致接口延迟非常高，1 秒以上的占大部分，甚至 10 秒以上的都不少见，基本无法商用。这种情况下，还不如直接上银联</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/o2o/">o2o</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/&amp;text=4%20%e7%bb%91%e5%8d%a1%e3%80%81%e7%ad%be%e7%ba%a6%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/&amp;t=4%20%e7%bb%91%e5%8d%a1%e3%80%81%e7%ad%be%e7%ba%a6%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=4%20%e7%bb%91%e5%8d%a1%e3%80%81%e7%ad%be%e7%ba%a6%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81&amp;body=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/&amp;title=4%20%e7%bb%91%e5%8d%a1%e3%80%81%e7%ad%be%e7%ba%a6%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=4%20%e7%bb%91%e5%8d%a1%e3%80%81%e7%ad%be%e7%ba%a6%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81%20https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/&amp;title=4%20%e7%bb%91%e5%8d%a1%e3%80%81%e7%ad%be%e7%ba%a6%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/">1 基本概念和入门</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/">1 支付系统的账户模型</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/2_%E5%AF%B9%E8%B4%A6%E5%A4%84%E7%90%86/">2 对账处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/2_%E6%B8%A0%E9%81%93%E4%BE%A7%E5%A4%84%E7%90%86/">2 渠道侧处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/3_%E7%94%B5%E5%95%86%E4%BE%A7%E5%A4%84%E7%90%86/">3 电商侧处理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

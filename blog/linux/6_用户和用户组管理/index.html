@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="6.1 简介 6.2 Linux 系统用户账号的管理 6.2.1 useradd 添加新的用户账号 6.2.2 userdel 已有的用户账号 6.2.3 usermod 修改已有用户帐号 6.2.4 passwd 指定和修改用户口令 6.3 Linux系统用户组的管理 6.3.1 groupadd">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/">
+  <meta property="og:title" content="6 用户和用户组管理 | kiki">
+  <meta property="og:description" content="6.1 简介 6.2 Linux 系统用户账号的管理 6.2.1 useradd 添加新的用户账号 6.2.2 userdel 已有的用户账号 6.2.3 usermod 修改已有用户帐号 6.2.4 passwd 指定和修改用户口令 6.3 Linux系统用户组的管理 6.3.1 groupadd"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>6 用户和用户组管理 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>6 用户和用户组管理</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#61-%e7%ae%80%e4%bb%8b">6.1 简介</a></li>
+<li><a href="#62-linux-%e7%b3%bb%e7%bb%9f%e7%94%a8%e6%88%b7%e8%b4%a6%e5%8f%b7%e7%9a%84%e7%ae%a1%e7%90%86">6.2 Linux 系统用户账号的管理</a>
+
+<ul>
+<li><a href="#621-useradd-%e6%b7%bb%e5%8a%a0%e6%96%b0%e7%9a%84%e7%94%a8%e6%88%b7%e8%b4%a6%e5%8f%b7">6.2.1 useradd 添加新的用户账号</a></li>
+<li><a href="#622-userdel-%e5%b7%b2%e6%9c%89%e7%9a%84%e7%94%a8%e6%88%b7%e8%b4%a6%e5%8f%b7">6.2.2 userdel 已有的用户账号</a></li>
+<li><a href="#623-usermod-%e4%bf%ae%e6%94%b9%e5%b7%b2%e6%9c%89%e7%94%a8%e6%88%b7%e5%b8%90%e5%8f%b7">6.2.3 usermod 修改已有用户帐号</a></li>
+<li><a href="#624-passwd-%e6%8c%87%e5%ae%9a%e5%92%8c%e4%bf%ae%e6%94%b9%e7%94%a8%e6%88%b7%e5%8f%a3%e4%bb%a4">6.2.4 passwd 指定和修改用户口令</a></li>
+</ul></li>
+<li><a href="#63-linux%e7%b3%bb%e7%bb%9f%e7%94%a8%e6%88%b7%e7%bb%84%e7%9a%84%e7%ae%a1%e7%90%86">6.3 Linux系统用户组的管理</a>
+
+<ul>
+<li><a href="#631-groupadd-%e5%a2%9e%e5%8a%a0%e4%b8%80%e4%b8%aa%e6%96%b0%e7%9a%84%e7%94%a8%e6%88%b7%e7%bb%84">6.3.1 groupadd 增加一个新的用户组</a></li>
+<li><a href="#632-groupdel-%e5%88%a0%e9%99%a4%e4%b8%80%e4%b8%aa%e5%b7%b2%e6%9c%89%e7%9a%84%e7%94%a8%e6%88%b7%e7%bb%84">6.3.2 groupdel 删除一个已有的用户组</a></li>
+<li><a href="#633-groupmod-%e4%bf%ae%e6%94%b9%e7%94%a8%e6%88%b7%e7%bb%84%e7%9a%84%e5%b1%9e%e6%80%a7">6.3.3 groupmod 修改用户组的属性</a></li>
+<li><a href="#634-newgrp-%e5%88%87%e6%8d%a2%e7%94%a8%e6%88%b7%e7%bb%84">6.3.4 newgrp 切换用户组</a></li>
+</ul></li>
+<li><a href="#64-%e4%b8%8e%e7%94%a8%e6%88%b7%e8%b4%a6%e5%8f%b7%e6%9c%89%e5%85%b3%e7%9a%84%e7%b3%bb%e7%bb%9f%e6%96%87%e4%bb%b6">6.4 与用户账号有关的系统文件</a>
+
+<ul>
+<li><a href="#641-etcpasswd-%e6%98%af%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86%e5%b7%a5%e4%bd%9c%e6%b6%89%e5%8f%8a%e7%9a%84%e6%9c%80%e9%87%8d%e8%a6%81%e7%9a%84%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6">6.4.1 /etc/passwd 是用户管理工作涉及的最重要的一个文件</a></li>
+<li><a href="#642-%e6%8b%a5%e6%9c%89%e5%b8%90%e6%88%b7%e6%96%87%e4%bb%b6">6.4.2 拥有帐户文件</a></li>
+<li><a href="#6421-etcshadow-%e6%96%87%e4%bb%b6">6.4.2.1 /etc/shadow 文件</a></li>
+<li><a href="#6422-etcshadow-vs-etcpasswd">6.4.2.2 /etc/shadow vs /etc/passwd</a></li>
+<li><a href="#6423-etcgroup-%e6%96%87%e4%bb%b6">6.4.2.3 /etc/group 文件</a></li>
+</ul></li>
+<li><a href="#65-%e6%b7%bb%e5%8a%a0%e6%89%b9%e9%87%8f%e7%94%a8%e6%88%b7">6.5 添加批量用户</a>
+
+<ul>
+<li><a href="#651-%e7%bc%96%e8%be%91%e4%b8%80%e4%b8%aa%e6%96%87%e6%9c%ac%e7%94%a8%e6%88%b7%e6%96%87%e4%bb%b6">6.5.1 编辑一个文本用户文件</a></li>
+<li><a href="#652-%e4%bb%a5-root-%e8%ba%ab%e4%bb%bd%e6%89%a7%e8%a1%8c%e5%91%bd%e4%bb%a4-usrsbinnewusers">6.5.2 以 root 身份执行命令 /usr/sbin/newusers</a></li>
+<li><a href="#653-%e6%89%a7%e8%a1%8c%e5%91%bd%e4%bb%a4-usrsbinpwunconv">6.5.3 执行命令 /usr/sbin/pwunconv</a></li>
+<li><a href="#654-%e7%bc%96%e8%be%91%e6%af%8f%e4%b8%aa%e7%94%a8%e6%88%b7%e7%9a%84%e5%af%86%e7%a0%81%e5%af%b9%e7%85%a7%e6%96%87%e4%bb%b6">6.5.4 编辑每个用户的密码对照文件</a></li>
+<li><a href="#655-%e4%bb%a5-root-%e8%ba%ab%e4%bb%bd%e6%89%a7%e8%a1%8c%e5%91%bd%e4%bb%a4-usrsbinchpasswd">6.5.5 以 root 身份执行命令 /usr/sbin/chpasswd</a></li>
+<li><a href="#656-%e7%a1%ae%e5%ae%9a%e5%af%86%e7%a0%81%e7%bb%8f%e7%bc%96%e7%a0%81%e5%86%99%e5%85%a5-etcpasswd-%e7%9a%84%e5%af%86%e7%a0%81%e6%a0%8f%e5%90%8e">6.5.6 确定密码经编码写入 /etc/passwd 的密码栏后</a></li>
+</ul></li>
+</ul>
+
+<h2 id="6-1-简介">6.1 简介</h2>
+
+<ul>
+<li>Linux系统是一个多用户多任务的分时操作系统，任何一个要使用系统资源的用户，都必须首先向系统管理员申请一个账号，然后以这个账号的身份进入系统</li>
+<li>用户的账号一方面可以帮助系统管理员对使用系统的用户进行跟踪，并控制他们对系统资源的访问；另一方面也可以帮助用户组织文件，并为用户提供安全性保护</li>
+<li>每个用户账号都拥有一个唯一的用户名和各自的口令</li>
+<li>用户在登录时键入正确的用户名和口令后，就能够进入系统和自己的主目录</li>
+<li>实现用户账号的管理，要完成的工作主要有如下几个方面
+
+<ul>
+<li>用户账号的添加、删除与修改</li>
+<li>用户口令的管理</li>
+<li>用户组的管理</li>
+</ul></li>
+</ul>
+
+<h2 id="6-2-linux-系统用户账号的管理">6.2 Linux 系统用户账号的管理</h2>
+
+<ul>
+<li>用户账号的管理工作主要涉及到用户账号的添加、修改和删除
+
+<ul>
+<li>添加用户账号就是在系统中创建一个新账号，然后为新账号分配用户号、用户组、主目录和登录Shell等资源</li>
+<li>刚添加的账号是被锁定的，无法使用</li>
+</ul></li>
+</ul>
+
+<h3 id="6-2-1-useradd-添加新的用户账号">6.2.1 useradd 添加新的用户账号</h3>
+
+<ul>
+<li>语法 <code>useradd 选项 用户名</code></li>
+<li>选项
+
+<ul>
+<li>-c comment 指定一段注释性描述</li>
+<li>-d 目录 指定用户主目录，如果此目录不存在，则同时使用 -m 选项，可以创建主目录</li>
+<li>-g 用户组 指定用户所属的用户组</li>
+<li>-G 用户组，用户组 指定用户所属的附加组</li>
+<li>-s Shell文件 指定用户的登录Shell</li>
+<li>-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号</li>
+</ul></li>
+
+<li><p>用户名：指定新账号的登录名</p>
+
+<pre><code class="language-sh"># 创建了一个用户sam，其中-d和-m选项用来为登录名sam产生一个主目录/usr/sam(/usr为默认的用户主目录所在的父目录)
+useradd –d /usr/sam -m sam
+# 新建了一个用户gem，该用户的登录Shell是 /bin/sh，它属于group用户组，同时又属于adm和root用户组，其中group用户组是其主组
+useradd -s /bin/sh -g group –G adm,root gem
+# 可能新建组
+groupadd group
+groupadd adm
+</code></pre></li>
+
+<li><p>增加用户账号就是在<code>/etc/passwd</code>为新用户增加一条记录，同时更新其他系统文件如<code>/etc/shadow</code>，<code>/etc/group</code>等</p></li>
+
+<li><p>Linux提供了集成的系统管理工具<code>userconf</code>，它可以用来对用户账号进行统一管理</p></li>
+</ul>
+
+<h3 id="6-2-2-userdel-已有的用户账号">6.2.2 userdel 已有的用户账号</h3>
+
+<ul>
+<li>如果一个用户的账号不再使用，可以从系统中删除</li>
+<li>删除用户账号就是要将<code>/etc/passwd</code>等系统文件中的该用户记录删除，必要时还删除用户的主目录</li>
+<li>语法 <code>userdel 选项 用户名</code></li>
+
+<li><p>选项</p>
+
+<ul>
+<li><p>-r 是把用户的主目录一起删除</p>
+
+<pre><code class="language-sh"># 删除用户sam在系统文件中(主要是/etc/passwd, /etc/shadow, /etc/group等)的记录，同时删除用户的主目录
+userdel -r sam
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="6-2-3-usermod-修改已有用户帐号">6.2.3 usermod 修改已有用户帐号</h3>
+
+<ul>
+<li>修改用户账号就是根据实际情况更改用户的有关属性，如用户号、主目录、用户组、登录Shell等</li>
+<li>语法 <code>usermod 选项 用户名</code></li>
+
+<li><p>选项</p>
+
+<ul>
+<li>-c, -d, -m, -g, -G, -s, -u及-o等，意义与useradd命令中的选项一样，可以为用户指定新的资源值</li>
+
+<li><p>有些系统可以使用选项：<code>-l 新用户名</code>。这个选项指定一个新的账号，即将原来的用户名改为新的用户名</p>
+
+<pre><code class="language-sh"># 此命令将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer
+usermod -s /bin/ksh -d /home/z –g developer sam
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="6-2-4-passwd-指定和修改用户口令">6.2.4 passwd 指定和修改用户口令</h3>
+
+<ul>
+<li>用户管理的一项重要内容是用户口令的管理。用户账号刚创建时没有口令，但是被系统锁定，无法使用，必须为其指定口令后才可以使用，即使是指定空口令</li>
+<li>超级用户可以为自己和其他用户指定口令，普通用户只能用它修改自己的口令</li>
+<li>语法 <code>passwd 选项 用户名</code></li>
+<li>选项
+
+<ul>
+<li>-l 锁定口令，即禁用账号</li>
+<li>-u 口令解锁</li>
+<li>-d 使账号无口令</li>
+<li>-f 强迫用户下次登录时修改口令</li>
+</ul></li>
+
+<li><p>默认用户名，则修改当前用户的口令</p>
+
+<pre><code class="language-sh"># 假设当前用户是sam，修改该用户自己的口令
+$ passwd
+Old password:******
+New password:*******
+Re-enter new password:*******
+# 如果是超级用户，可以用下列形式指定任何用户的口令
+# passwd sam
+New password:*******
+Re-enter new password:*******
+# 将用户sam的口令删除，这样用户sam下一次登录时，系统就不再询问口令
+passwd -d sam
+# 锁定某一用户，使其不能登录
+passwd -l sam
+</code></pre></li>
+
+<li><p>普通用户修改自己的口令时，passwd 命令会先询问原口令，验证后再要求用户输入两遍新口令，如果两次输入的口令一致，则将这个口令指定给用户；而超级用户为用户指定口令时，就不需要知道原口令</p></li>
+
+<li><p>为了系统安全起见，用户应该选择比较复杂的口令，例如最好使用 8 位长的口令，口令中包含有大写、小写字母和数字，并且应该与姓名、生日等不相同</p></li>
+</ul>
+
+<h2 id="6-3-linux系统用户组的管理">6.3 Linux系统用户组的管理</h2>
+
+<ul>
+<li>每个用户都有一个用户组，系统可以对一个用户组中的所有用户进行集中管理</li>
+<li>不同 Linux 系统对用户组的规定有所不同，如Linux下的用户属于与它同名的用户组，这个用户组在创建用户时同时创建</li>
+<li>用户组的管理涉及用户组的添加、删除和修改。组的增加、删除和修改实际上就是对<code>/etc/group</code>文件的更新</li>
+</ul>
+
+<h3 id="6-3-1-groupadd-增加一个新的用户组">6.3.1 groupadd 增加一个新的用户组</h3>
+
+<ul>
+<li>格式 <code>groupadd 选项 用户组</code></li>
+
+<li><p>选项</p>
+
+<ul>
+<li>-g GID 指定新用户组的组标识号(GID)</li>
+
+<li><p>-o 一般与-g选项同时使用，表示新用户组的GID可以与系统已有用户组的GID相同</p>
+
+<pre><code class="language-sh"># 系统中增加一个新组group1，新组的组标识号是在当前已有的最大组标识号的基础上加1
+groupadd group1
+# 系统中增加一个新组group2，同时指定新组的组标识号是101
+groupadd -g 101 group2
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="6-3-2-groupdel-删除一个已有的用户组">6.3.2 groupdel 删除一个已有的用户组</h3>
+
+<ul>
+<li><p>格式 <code>groupdel 用户组</code></p>
+
+<pre><code class="language-sh"># 从系统中删除组group1
+groupdel group1
+</code></pre></li>
+</ul>
+
+<h3 id="6-3-3-groupmod-修改用户组的属性">6.3.3 groupmod 修改用户组的属性</h3>
+
+<ul>
+<li>格式 <code>groupmod 选项 用户组</code></li>
+
+<li><p>选项</p>
+
+<ul>
+<li>-g GID 为用户组指定新的组标识号。</li>
+<li>-o 与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同</li>
+
+<li><p>-n 新用户组 将用户组的名字改为新名字</p>
+
+<pre><code class="language-sh"># 将组group2的组标识号修改为102
+groupmod -g 102 group2
+# 将组group2的标识号改为10000，组名修改为group3
+groupmod –g 10000 -n group3 group2
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="6-3-4-newgrp-切换用户组">6.3.4 newgrp 切换用户组</h3>
+
+<ul>
+<li>如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限</li>
+
+<li><p>用户可以在登录后，使用<code>newgrp 目的用户组</code>切换到其他用户组</p>
+
+<pre><code class="language-sh"># 将当前用户切换到root用户组，前提条件是root用户组确实是该用户的主组或附加组。类似于用户账号的管理，用户组的管理也可以通过集成的系统管理工具来完成
+newgrp root
+</code></pre></li>
+</ul>
+
+<h2 id="6-4-与用户账号有关的系统文件">6.4 与用户账号有关的系统文件</h2>
+
+<ul>
+<li>完成用户管理的工作有许多种方法，但是每一种方法实际上都是对有关的系统文件进行修改</li>
+<li>与用户和用户组相关的信息都存放在一些系统文件中，这些文件包括/etc/passwd, /etc/shadow, /etc/group等</li>
+</ul>
+
+<h3 id="6-4-1-etc-passwd-是用户管理工作涉及的最重要的一个文件">6.4.1 /etc/passwd 是用户管理工作涉及的最重要的一个文件</h3>
+
+<ul>
+<li>Linux 系统中每个用户在<code>/etc/passwd</code>文件中有一个对应的记录行，它记录了这个用户的一些基本属性</li>
+
+<li><p>这个文件对所有用户都是可读的。它的内容类似下面的例子</p>
+
+<pre><code class="language-sh">cat /etc/passwd
+
+root❌0:0:Superuser:/:
+daemon❌1:1:System daemons:/etc:
+bin❌2:2:Owner of system commands:/bin:
+sys❌3:3:Owner of system files:/usr/sys:
+adm❌4:4:System accounting:/usr/adm:
+uucp❌5:5:UUCP administrator:/usr/lib/uucp:
+auth❌7:21:Authentication administrator:/tcb/files/auth:
+cron❌9:16:Cron daemon:/usr/spool/cron:
+listen❌37:4:Network daemon:/usr/net/nls:
+lp❌71:18:Printer administrator:/usr/spool/lp:
+sam❌200:50:Sam san:/usr/sam:/bin/sh
+</code></pre></li>
+
+<li><p>可以看到，/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段</p>
+
+<ul>
+<li>格式<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell</code></li>
+<li><strong>用户名</strong>：代表用户账号的字符串</li>
+<li>通常长度不超过8个字符，且由大小写字母和/或数字组成。登录名中不能有冒号(:)，因为冒号在这里是分隔符</li>
+<li>为了兼容起见，登录名中最好不要包含点字符(.)，并且不使用连字符(-)和加号(+)打头</li>
+<li><strong>口令</strong>：一些系统中，存放着加密后的用户口令字</li>
+<li>这个字段存放的只是用户口令的加密串，不是明文，但是由于/etc/passwd文件对所有用户都可读，所以这仍是一个安全隐患</li>
+<li>现在许多 Linux 系统(如SVR4)都使用了 shadow 技术，把真正的加密后的用户口令字存放到<code>/etc/shadow</code>文件中，而在<code>/etc/passwd</code>文件的口令字段中只存放一个特殊的字符，例如“x”或者“*”</li>
+<li><strong>用户标识号</strong>：一个整数，系统内部用它来标识用户</li>
+<li>一般情况下与用户名一一对应</li>
+<li>如果几个用户名对应的用户标识号是一样的，系统内部将把它们视为同一个用户，但是它们可以有不同的口令、不同的主目录以及不同的登录Shell等</li>
+<li>通常用户标识号的取值范围是0～65535
+
+<ul>
+<li>0是超级用户root的标识号</li>
+<li>1～99由系统保留，作为管理账号</li>
+<li>普通用户的标识号从100开始。在Linux系统中，这个界限是500。</li>
+</ul></li>
+<li><strong>组标识号</strong>：记录用户所属的用户组。对应着<code>/etc/group</code>文件中的一条记录</li>
+<li><strong>注释性描述</strong>：记录用户的一些个人情况</li>
+<li>例如用户的真实姓名、电话、地址等，这个字段并没有什么实际的用途</li>
+<li>在不同的Linux 系统中，这个字段的格式并没有统一。在许多Linux系统中，这个字段存放的是一段任意的注释性描述文字，用做finger命令的输出</li>
+<li><strong>主目录</strong>：用户的起始工作目录</li>
+<li>是用户在登录到系统之后所处的目录</li>
+<li>大多数系统中，各用户的主目录被组织在同一个特定目录下，而用户主目录的名称就是该用户的登录名</li>
+<li>各用户对自己的主目录有读、写、执行(搜索)权限，其他用户对此目录的访问权限则根据具体情况设置</li>
+<li><strong>登录Shell</strong>：用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序</li>
+<li>Shell是用户与Linux系统之间的接口。Linux的Shell有许多种，每种都有不同的特点。常用的有sh(Bourne Shell), csh(C Shell), ksh(Korn Shell), tcsh(TENEX/TOPS-20 type C Shell), bash(Bourne Again Shell)等</li>
+<li>系统管理员可以根据系统情况和用户习惯为用户指定某个Shell。如果不指定Shell，那么系统使用sh为默认的登录Shell，即这个字段的值为/bin/sh</li>
+<li>用户的登录Shell也可以指定为某个特定的程序(此程序不是一个命令解释器)</li>
+<li>利用这一特点，我们可以限制用户只能运行指定的应用程序，在该应用程序运行结束后，用户就自动退出了系统。有些Linux 系统要求只有那些在系统中登记了的程序才能出现在这个字段中</li>
+<li>系统中有一类用户称为<strong>伪用户</strong>(pseudo users)</li>
+<li>这些用户在<code>/etc/passwd</code>文件中也占有一条记录，但是不能登录，因为它们的登录Shell为空。它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求</li>
+<li>常见的伪用户如下所示</li>
+</ul>
+
+<p>| 伪用户 | 含义 |
+  | bin | 拥有可执行的用户命令文件 |
+  | sys | 拥有系统文件 |
+  | adm | 拥有帐户文件 |
+  | uucp | UUCP使用 |
+  | lp | lp或lpd子系统使用 |
+  | nobody | NFS使用 |</p></li>
+</ul>
+
+<h3 id="6-4-2-拥有帐户文件">6.4.2 拥有帐户文件</h3>
+
+<h4 id="6-4-2-1-etc-shadow-文件">6.4.2.1 /etc/shadow 文件</h4>
+
+<ul>
+<li>除了上面列出的伪用户外，还有许多标准的伪用户，如audit, cron, mail, usenet等，它们也都各自为相关的进程和文件所需要</li>
+<li>由于<code>/etc/passwd</code>文件是所有用户都可读的，如果用户的密码太简单或规律比较明显，一台普通的计算机就能够很容易地将它破解，因此对安全性要求较高的Linux系统都把加密后的口令字分离出来，单独存放在一个文件中，这个文件是/etc/shadow文件</li>
+<li>有超级用户才拥有该文件读权限，这就保证了用户密码的安全性</li>
+</ul>
+
+<h4 id="6-4-2-2-etc-shadow-vs-etc-passwd">6.4.2.2 /etc/shadow vs /etc/passwd</h4>
+
+<ul>
+<li><code>/etc/shadow</code>中的记录行与<code>/etc/passwd</code>一一对应，它由<code>pwconv</code>命令根据<code>/etc/passwd</code>中的数据自动产生</li>
+<li>文件格式与<code>/etc/passwd</code>类似，由若干个字段组成，字段之间用&rdquo;:&ldquo;隔开</li>
+<li>字段有 <code>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志</code>
+
+<ul>
+<li><strong>登录名</strong>：与<code>/etc/passwd</code>文件中的登录名相一致的用户账号</li>
+<li><strong>口令</strong>：存放的是加密后的用户口令字，长度为13个字符。如果为空，则对应用户没有口令，登录时不需要口令；如果含有不属于集合{ ./0-9A-Za-z }中的字符，则对应的用户不能登录</li>
+<li><strong>最后一次修改时间</strong>：表示从某个时刻起，到用户最后一次修改口令时的天数。时间起点对不同的系统可能不一样。例如在SCO Linux 中，这个时间起点是1970年1月1日</li>
+<li><strong>最小时间间隔</strong>：指两次修改口令之间所需的最小天数</li>
+<li><strong>最大时间间隔</strong>：指口令保持有效的最大天数</li>
+<li><strong>警告时间</strong>：表示从系统开始警告用户到用户密码正式失效之间的天数</li>
+<li><strong>不活动时间</strong>：表示用户没有登录活动但账号仍能保持有效的最大天数</li>
+<li><strong>失效时间</strong>：是一个绝对天数，如果使用了这个字段，那么就给出相应账号的生存期。期满后，该账号就不再是一个合法的账号，也就不能再用来登录了</li>
+</ul></li>
+
+<li><p>下面是<code>/etc/shadow</code>的一个例子：</p>
+
+<pre><code class="language-sh">cat /etc/shadow
+
+root:Dnakfw28zf38w:8764:0:168:7:::
+daemon:*::0:0::::
+bin:*::0:0::::
+sys:*::0:0::::
+adm:*::0:0::::
+uucp:*::0:0::::
+nuucp:*::0:0::::
+auth:*::0:0::::
+cron:*::0:0::::
+listen:*::0:0::::
+lp:*::0:0::::
+sam:EkdiSECLWPdSa:9740:0:0::::
+</code></pre></li>
+</ul>
+
+<h4 id="6-4-2-3-etc-group-文件">6.4.2.3 /etc/group 文件</h4>
+
+<ul>
+<li>将用户分组是 Linux 系统中对用户进行管理及控制访问权限的一种手段
+
+<ul>
+<li>每个用户都属于某个用户组；一个组中可以有多个用户，一个用户也可以属于不同的组</li>
+<li>当一个用户同时是多个组中的成员时，在<code>/etc/passwd</code>文件中记录的是用户所属的主组，也就是登录时所属的默认组，而其他组称为附加组</li>
+<li>用户要访问属于附加组的文件时，必须首先使用<code>newgrp</code>命令使自己成为所要访问的组中的成员</li>
+</ul></li>
+<li>用户组的所有信息都存放在<code>/etc/group</code>文件中。此文件的格式也类似于<code>/etc/passwd</code>文件，由冒号(:)隔开若干个字段</li>
+<li>字段有 <code>组名:口令:组标识号:组内用户列表</code>
+
+<ul>
+<li><strong>组名</strong>：用户组的名称，由字母或数字构成。与<code>/etc/passwd</code>中的登录名一样，组名不应重复</li>
+<li><strong>口令</strong>：字段存放的是用户组加密后的口令字。一般 Linux 系统的用户组都没有口令，即这个字段一般为空，或者是*</li>
+<li><strong>组标识号</strong>：与用户标识号类似，也是一个整数，被系统内部用来标识组</li>
+<li><strong>组内用户列表</strong>：属于这个组的所有用户的列表，不同用户之间用逗号(,)分隔。这个用户组可能是用户的主组，也可能是附加组</li>
+</ul></li>
+
+<li><p><code>/etc/group</code>文件的一个例子</p>
+
+<pre><code class="language-sh">cat /etc/group
+root::0:root
+bin::2:root,bin
+sys::3:root,uucp
+adm::4:root,adm
+daemon::5:root,daemon
+lp::7:root,lp
+users::20:root,sam
+</code></pre></li>
+</ul>
+
+<h2 id="6-5-添加批量用户">6.5 添加批量用户</h2>
+
+<ul>
+<li>Linux 系统提供了创建大量用户的工具，可以立即创建大量用户，方法如下</li>
+</ul>
+
+<h3 id="6-5-1-编辑一个文本用户文件">6.5.1 编辑一个文本用户文件</h3>
+
+<ul>
+<li>每一列按照<code>/etc/passwd</code>密码文件的格式书写，要注意每个用户的用户名、UID、宿主目录都不可以相同，其中密码栏可以留做空白或输入x号</li>
+
+<li><p>一个范例文件<code>user.txt</code></p>
+
+<pre><code class="language-txt">user001::600:100:user:/home/user001:/bin/bash
+user002::601:100:user:/home/user002:/bin/bash
+user003::602:100:user:/home/user003:/bin/bash
+user004::603:100:user:/home/user004:/bin/bash
+user005::604:100:user:/home/user005:/bin/bash
+user006::605:100:user:/home/user006:/bin/bash
+</code></pre></li>
+</ul>
+
+<h3 id="6-5-2-以-root-身份执行命令-usr-sbin-newusers">6.5.2 以 root 身份执行命令 /usr/sbin/newusers</h3>
+
+<pre><code class="language-sh"># 从刚创建的用户文件 user.txt 中导入数据，创建用户
+newusers &lt; user.txt
+# 执行命令 vipw 或 vi /etc/passwd 检查 /etc/passwd 文件是否已经出现这些用户的数据，并且用户的宿主目录是否已经创建
+</code></pre>
+
+<h3 id="6-5-3-执行命令-usr-sbin-pwunconv">6.5.3 执行命令 /usr/sbin/pwunconv</h3>
+
+<pre><code class="language-sh"># 将 /etc/shadow 产生的 shadow 密码解码，然后回写到 /etc/passwd 中，并将 /etc/shadow 的 shadow 密码栏删掉
+# 这是为了方便下一步的密码转换工作，即先取消 shadow password 功能
+pwunconv
+</code></pre>
+
+<h3 id="6-5-4-编辑每个用户的密码对照文件">6.5.4 编辑每个用户的密码对照文件</h3>
+
+<ul>
+<li><p>范例文件<code>passwd.txt</code>内容</p>
+
+<pre><code class="language-txt">user001:密码
+user002:密码
+user003:密码
+user004:密码
+user005:密码
+user006:密码
+</code></pre></li>
+</ul>
+
+<h3 id="6-5-5-以-root-身份执行命令-usr-sbin-chpasswd">6.5.5 以 root 身份执行命令 /usr/sbin/chpasswd</h3>
+
+<pre><code class="language-sh"># 创建用户密码，chpasswd 会将经过 /usr/bin/passwd 命令编码过的密码写入 /etc/passwd 的密码栏
+chpasswd &lt; passwd.txt
+</code></pre>
+
+<h3 id="6-5-6-确定密码经编码写入-etc-passwd-的密码栏后">6.5.6 确定密码经编码写入 /etc/passwd 的密码栏后</h3>
+
+<pre><code class="language-sh"># 执行命令 /usr/sbin/pwconv 将密码编码为 shadow password，并将结果写入 /etc/shadow
+pwconv
+</code></pre>
+
+<ul>
+<li>这样就完成了大量用户的创建了，之后可以到<code>/home</code>下检查这些用户宿主目录的权限设置是否都正确，并登录验证用户密码是否正确</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/linux/">linux</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/&amp;text=6%20%e7%94%a8%e6%88%b7%e5%92%8c%e7%94%a8%e6%88%b7%e7%bb%84%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/&amp;t=6%20%e7%94%a8%e6%88%b7%e5%92%8c%e7%94%a8%e6%88%b7%e7%bb%84%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=6%20%e7%94%a8%e6%88%b7%e5%92%8c%e7%94%a8%e6%88%b7%e7%bb%84%e7%ae%a1%e7%90%86&amp;body=https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/&amp;title=6%20%e7%94%a8%e6%88%b7%e5%92%8c%e7%94%a8%e6%88%b7%e7%bb%84%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=6%20%e7%94%a8%e6%88%b7%e5%92%8c%e7%94%a8%e6%88%b7%e7%bb%84%e7%ae%a1%e7%90%86%20https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/&amp;title=6%20%e7%94%a8%e6%88%b7%e5%92%8c%e7%94%a8%e6%88%b7%e7%bb%84%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/linux/0_%E5%AE%89%E8%A3%85/">0 安装</a></li>
+      
+      <li><a href="/blog/linux/1_%E7%AE%80%E4%BB%8B/">1 简介</a></li>
+      
+      <li><a href="/blog/linux/2_%E5%90%AF%E5%8A%A8/">2 Linux 系统启动过程</a></li>
+      
+      <li><a href="/blog/linux/3_%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">3 系统目录结构</a></li>
+      
+      <li><a href="/blog/linux/4_%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7/">4 文件基本属性</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

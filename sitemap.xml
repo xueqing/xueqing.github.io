@@ -59,6 +59,18 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/reading/%E6%8E%A8%E8%8D%90%E7%9A%84%E4%B9%A6/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/readme/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/authors/</loc>
     <lastmod>2019-11-10T16:22:30+08:00</lastmod>
   </url>
@@ -113,6 +125,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/database/memcached/1_intro/</loc>
   </url>
   
@@ -125,7 +141,23 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/django_cms/tutorial/1_install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/1_%E7%AE%80%E4%BB%8B/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/2_%E5%90%AF%E5%8A%A8/</loc>
   </url>
   
   <url>
@@ -137,7 +169,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/2_%E5%AF%B9%E8%B4%A6%E5%A4%84%E7%90%86/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/django_cms/tutorial/2_template_palceholder/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/2_%E6%B8%A0%E9%81%93%E4%BE%A7%E5%A4%84%E7%90%86/</loc>
   </url>
   
   <url>
@@ -149,6 +189,18 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/3_%E7%94%B5%E5%95%86%E4%BE%A7%E5%A4%84%E7%90%86/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/3_%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/3_%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%94%AF%E4%BB%98/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/django_cms/tutorial/3_integrate_app/</loc>
   </url>
   
@@ -157,7 +209,19 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/linux/4_%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/4-daily-standup/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/4_%E8%B4%A6%E6%88%B7%E5%92%8C%E8%B4%A6%E5%8A%A1%E5%A4%84%E7%90%86/</loc>
   </url>
   
   <url>
@@ -165,7 +229,31 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/5_%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/5_%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/6-release-planning/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/6_%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</loc>
   </url>
   
   <url>
@@ -174,6 +262,10 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/agile/tutorial/8-product-backlog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/8_%E6%89%93%E5%8C%85%E5%92%8C%E5%8E%8B%E7%BC%A9/</loc>
   </url>
   
   <url>
@@ -190,6 +282,30 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/cplusplus/smart_ptr/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/b2b_b2c_c2c_o2o_p2p_p2c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/bash/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/shell/bash/bash_shell/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/shell/bash/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/booklist/</loc>
   </url>
   
   <url>
@@ -253,6 +369,14 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/dependence/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/develop/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/django/</loc>
   </url>
   
@@ -293,6 +417,14 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/expect/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/shell/expect_shell/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/tags/ffmpeg/</loc>
   </url>
   
@@ -310,6 +442,10 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/golangpkg/fmt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/food/</loc>
   </url>
   
   <url>
@@ -657,7 +793,27 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/p2p/ipfs/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/go/traps/json_struct/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/kindle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/kindle/kindle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/kindle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/krishnamurti/</loc>
   </url>
   
   <url>
@@ -665,7 +821,27 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/life/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/linux/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/linux/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/hls/live_playlist_sliding_window_construction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/logstash/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/others/logstash/</loc>
   </url>
   
   <url>
@@ -689,7 +865,51 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/o2o/o2o/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/o2o/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/p2p/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/p2p/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/perl/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/shell/perl/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/shell/perl/perl%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/publication_types/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/qt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/qt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/qt/qtcreator/</loc>
   </url>
   
   <url>
@@ -705,11 +925,39 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/categories/reading/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/database/redis/</loc>
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/rest/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/rest/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/rest/quickstart/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/rot_reader/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/shell/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/shell/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/shell/shell_script/</loc>
   </url>
   
   <url>
@@ -718,6 +966,14 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/slices/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/sphinx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/others/sphinx/</loc>
   </url>
   
   <url>
@@ -745,11 +1001,23 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/p2p/torrent/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/gotour/</loc>
   </url>
   
   <url>
     <loc>https://xueqing.github.io/categories/translation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/tags/uac/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/others/uac_virtualization/</loc>
   </url>
   
   <url>
@@ -773,7 +1041,15 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/tags/women/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/cplusplus/binary_compatible_cpp_interface/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E7%9B%88%E5%88%A9/</loc>
   </url>
   
   <url>
@@ -813,6 +1089,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/qt/qt_gl/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/cplusplus/extren_c/</loc>
   </url>
   
@@ -822,6 +1102,10 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/cplusplus/inline/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/p2p/dht/</loc>
   </url>
   
   <url>
@@ -861,6 +1145,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/p2p/libp2p/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/wiki/learn_testing/</loc>
   </url>
   
@@ -885,6 +1173,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/reading/%E5%B0%8F%E6%A3%AE%E6%9E%97/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/git/git_scenario/</loc>
   </url>
   
@@ -894,6 +1186,10 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/golangdoc/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/others/developers_best_practices/</loc>
   </url>
   
   <url>
@@ -910,6 +1206,18 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/course/interesting_links/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/</loc>
   </url>
   
   <url>
@@ -937,6 +1245,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/o2o/%E6%9C%8D%E5%8A%A1%E8%B4%B9%E5%92%8C%E4%BD%A3%E9%87%91/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/blog/docker/image_cmd/</loc>
   </url>
   
@@ -946,6 +1258,10 @@
   
   <url>
     <loc>https://xueqing.github.io/translation/go-doc/command/test_flag/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/reading/%E7%94%9F%E5%91%BD%E7%9A%84%E7%AC%94%E8%AE%B0/</loc>
   </url>
   
   <url>
@@ -985,6 +1301,10 @@
   </url>
   
   <url>
+    <loc>https://xueqing.github.io/blog/others/</loc>
+  </url>
+  
+  <url>
     <loc>https://xueqing.github.io/translation/go-doc/command/remote_import_path/</loc>
   </url>
   
@@ -994,6 +1314,10 @@
   
   <url>
     <loc>https://xueqing.github.io/blog/coolshell/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xueqing.github.io/reading/%E9%86%92%E6%9D%A5%E7%9A%84%E5%A5%B3%E6%80%A7/</loc>
   </url>
   
   <url>

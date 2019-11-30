@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="在 shell 脚本中调用另一个脚本 shell 命令行选项解析 getopts getopt shell 获取脚本的进程 ID shell 脚本获取当前时间 shell 执行多个命令的方法 shell test 命令 数值测试 字符串测试 文件测试 连接测">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/shell/shell_script/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/shell/shell_script/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/shell/shell_script/">
+  <meta property="og:title" content="shell 脚本 | kiki">
+  <meta property="og:description" content="在 shell 脚本中调用另一个脚本 shell 命令行选项解析 getopts getopt shell 获取脚本的进程 ID shell 脚本获取当前时间 shell 执行多个命令的方法 shell test 命令 数值测试 字符串测试 文件测试 连接测"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>shell 脚本 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>shell 脚本</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e5%9c%a8-shell-%e8%84%9a%e6%9c%ac%e4%b8%ad%e8%b0%83%e7%94%a8%e5%8f%a6%e4%b8%80%e4%b8%aa%e8%84%9a%e6%9c%ac">在 shell 脚本中调用另一个脚本</a></li>
+<li><a href="#shell-%e5%91%bd%e4%bb%a4%e8%a1%8c%e9%80%89%e9%a1%b9%e8%a7%a3%e6%9e%90">shell 命令行选项解析</a>
+
+<ul>
+<li><a href="#getopts">getopts</a></li>
+<li><a href="#getopt">getopt</a></li>
+</ul></li>
+<li><a href="#shell-%e8%8e%b7%e5%8f%96%e8%84%9a%e6%9c%ac%e7%9a%84%e8%bf%9b%e7%a8%8b-id">shell 获取脚本的进程 ID</a></li>
+<li><a href="#shell-%e8%84%9a%e6%9c%ac%e8%8e%b7%e5%8f%96%e5%bd%93%e5%89%8d%e6%97%b6%e9%97%b4">shell 脚本获取当前时间</a></li>
+<li><a href="#shell-%e6%89%a7%e8%a1%8c%e5%a4%9a%e4%b8%aa%e5%91%bd%e4%bb%a4%e7%9a%84%e6%96%b9%e6%b3%95">shell 执行多个命令的方法</a></li>
+<li><a href="#shell-test-%e5%91%bd%e4%bb%a4">shell test 命令</a>
+
+<ul>
+<li><a href="#%e6%95%b0%e5%80%bc%e6%b5%8b%e8%af%95">数值测试</a></li>
+<li><a href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%b5%8b%e8%af%95">字符串测试</a></li>
+<li><a href="#%e6%96%87%e4%bb%b6%e6%b5%8b%e8%af%95">文件测试</a></li>
+<li><a href="#%e8%bf%9e%e6%8e%a5%e6%b5%8b%e8%af%95%e6%9d%a1%e4%bb%b6">连接测试条件</a></li>
+</ul></li>
+<li><a href="#shell-%e5%8f%98%e9%87%8f">shell 变量</a></li>
+<li><a href="#shell-%e8%84%9a%e6%9c%ac%e4%b8%8a%e4%bc%a0-ftp">shell 脚本上传 ftp</a>
+
+<ul>
+<li><a href="#%e4%b8%8a%e4%bc%a0%e5%8d%95%e4%b8%aa%e6%96%87%e4%bb%b6%e8%84%9a%e6%9c%ac">上传单个文件脚本</a></li>
+</ul></li>
+<li><a href="#shell-if">shell if</a></li>
+<li><a href="#shell-%e6%93%8d%e4%bd%9c%e7%ac%a6">shell 操作符</a>
+
+<ul>
+<li><a href="#%e7%ae%97%e6%9c%af%e6%93%8d%e4%bd%9c%e7%ac%a6">算术操作符</a></li>
+<li><a href="#%e5%85%b3%e7%b3%bb%e6%93%8d%e4%bd%9c%e7%ac%a6">关系操作符</a></li>
+<li><a href="#%e5%b8%83%e5%b0%94%e6%93%8d%e4%bd%9c%e7%ac%a6">布尔操作符</a></li>
+<li><a href="#string-%e6%93%8d%e4%bd%9c%e7%ac%a6">string 操作符</a></li>
+<li><a href="#%e6%96%87%e4%bb%b6%e6%b5%8b%e8%af%95%e8%bf%90%e7%ae%97%e7%ac%a6">文件测试运算符</a></li>
+<li><a href="#c-shell-%e6%93%8d%e4%bd%9c%e7%ac%a6">C Shell 操作符</a></li>
+<li><a href="#korn-shell-%e6%93%8d%e4%bd%9c%e7%ac%a6">Korn Shell 操作符</a></li>
+</ul></li>
+<li><a href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%88%aa%e5%8f%96">字符串截取</a></li>
+<li><a href="#here-document">here document</a></li>
+<li><a href="#%e5%8f%82%e8%80%83%e7%bd%91%e7%ab%99">参考网站</a></li>
+</ul>
+
+<h2 id="在-shell-脚本中调用另一个脚本">在 shell 脚本中调用另一个脚本</h2>
+
+<ul>
+<li>fork：直接调用<code>script_path/filename.sh</code>(有可执行权限)或者<code>sh script_path/filename.sh</code>(没有可执行权限)
+
+<ul>
+<li>运行时终端会新开一个子 shell 执行脚本，子 shell 执行的时候，父 shell 仍在。子 shell 执行完毕返回父 shell，但是父 shell 不能继承子 shell 的环境变量。</li>
+</ul></li>
+<li>exec：<code>exec script_path/filename.sh</code>
+
+<ul>
+<li>exec 不需要新开一个子 shell 来执行被调用的脚本，而是在同一个 shell 执行。但是父脚本中<code>exec</code>行之后的内容不会被执行。</li>
+</ul></li>
+
+<li><p>source：<code>source script_path/filename.sh</code></p>
+
+<ul>
+<li><p>source 不需要新开一个子 shell 来执行被调用的脚本，而是在同一个 shell 执行。即父脚本可以获取和使用子脚本中声明的变量和环境变量。</p>
+
+<pre><code class="language-sh">#!/bin/bash
+A=1
+
+echo &quot;before exec/source/fork: PID for parent.sh = $$&quot;
+
+export A
+echo &quot;In parent.sh: var A=$A&quot;
+
+case $1 in
+--exec)
+    echo -e &quot;==&gt; using exec..\n&quot;
+    exec ./child.sh
+    ;;
+--source)
+    echo -e &quot;==&gt; using source...\n&quot;
+    source ./child.sh
+    ;;
+*)
+    echo -e &quot;==&gt; using fork by default...\n&quot;
+    ./child.sh
+    ;;
+esac
+
+echo &quot;after exec/source/fork: PID for parent.sh = $$&quot;
+echo -e &quot;In parent.sh: var A=$A&quot;
+</code></pre>
+
+<pre><code class="language-sh">#!/bin/bash
+
+echo &quot;PID for child.sh = $$&quot;
+echo &quot;In child.sh: get var A=$A from parent.sh&quot;
+
+A=2
+export A
+echo -e &quot;In child.sh: var A=$A\n&quot;
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="shell-命令行选项解析">shell 命令行选项解析</h2>
+
+<ul>
+<li><code>getopts</code>是 shell 内建命令，<code>getopt</code>是一个独立外部工具</li>
+<li><code>getopts</code>语法简单，<code>getopt</code>语法较复杂</li>
+<li><code>getopts</code>不支持长参数(如 -dir, &ndash;dir)，<code>getopt</code>支持</li>
+<li><code>getopts</code>不会重排所有参数顺序，<code>getopt</code>会重排参数顺序</li>
+<li><code>getopts</code>是为了代替<code>getopt</code>较快捷的执行参数分析工作</li>
+</ul>
+
+<h3 id="getopts">getopts</h3>
+
+<ul>
+<li><p>语法<code>getopts optstring name [args]</code></p>
+
+<ul>
+<li><code>optstring</code>代表可使用的选项列表，每个字母代码一个选项</li>
+<li>带<code>:</code>意味着除了定义之外，还会带一个参数作为选项的值</li>
+<li>不带<code>:</code>是一个开关型选项，不需要指定参数的值</li>
+<li>命令行中包含了没有在<code>getopts</code>列表中的选项会有警告，在<code>optstring</code>前加上<code>:</code>可以消除警告</li>
+<li><code>getopts</code>中有个相对固定的常量<code>OPTARG</code>和<code>OPTIND</code></li>
+<li><code>OPTARG</code>代表当前选项的值</li>
+<li><code>OPTIND</code>代表当前选项在参数列表中的位置</li>
+<li>出现不认识的选项参数为<code>?</code>，<code>case</code>中最后一个<code>?</code>用于处理这种情况，因此选项中不应包含<code>?</code>和<code>,</code></li>
+<li><code>getopts</code>解析完参数后，可以使用<code>shift</code>把选项参数进行移位操作，左边的参数就丢失了</li>
+<li><code>shift $(($OPTIND-1))</code>，参数从 1 开始编号，处理一个开关型选项<code>OPTIND</code>加 1，处理一个带值的选项参数<code>OPTIND</code>加 2</li>
+<li>选项参数的格式是<code>-d val</code>，中间需要一个空格</li>
+<li>选项参数必须放在其他参数前面，因为遇到非<code>-</code>开头的参数或者选项参数结束标记<code>--</code>就终止了</li>
+
+<li><p>中间遇到非选项的命令行参数，后面的选项参数取不到</p>
+
+<pre><code class="language-sh">#!/bin/bash
+
+# echo &quot;usage: ./`basename $0` [-d dir_name] [-f file_name] [-c commit_id] [-s service_name] [-N]&quot;
+# echo &quot;initial index $OPTIND&quot;
+while getopts 'd:f:c:s:N' opt;
+do
+case ${opt} in
+    d)
+        echo &quot;directory name: $OPTARG&quot;
+        ;;
+    f)
+        echo &quot;file name: $OPTARG&quot;
+        ;;
+    c)
+        echo &quot;commit id: $OPTARG&quot;
+        ;;
+    s)
+        echo &quot;service name: $OPTARG&quot;
+        ;;
+    N)
+        echo &quot;use new rep url&quot;
+        ;;
+    ?)
+        echo &quot;usage: ./`basename $0` [-d dir_name] [-f file_name] [-c commit_id] [-s service_name] [-N]&quot;
+        exit 1;
+        ;;
+esac
+echo &quot;opt is $opt, arg is $OPTARG, index is $OPTIND&quot;
+done
+
+echo &quot;After process arguments: OPTIND=$OPTIND&quot;
+echo &quot;Remove processed arguments: number=$(($OPTIND-1))&quot;
+shift $(($OPTIND-1))
+echo &quot;Arguments index: OPTIND=$OPTIND&quot;
+echo &quot;Remaing arguments: $@&quot;
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="getopt">getopt</h3>
+
+<ul>
+<li>语法支持三种
+
+<ul>
+<li><code>getopt optstring parameters</code></li>
+<li><code>getopt [options] [--] optstring parameters</code></li>
+<li><code>getopt [options] -o|--options optstring [options] [--] parameters</code></li>
+<li><code>-o</code>表示短选项，两个冒号表示该选项有一个可选参数，可选参数必须紧贴选项，中间没有空格</li>
+<li><code>-l|--longoptions</code>表示长选项</li>
+<li><code>&quot;$@&quot;</code>将命令行参数展开分别的单词</li>
+<li><code>-n</code>出错时打印的信息</li>
+</ul></li>
+</ul>
+
+<h2 id="shell-获取脚本的进程-id">shell 获取脚本的进程 ID</h2>
+
+<ul>
+<li>参数<code>$$</code>获取进程 ID</li>
+<li>参数<code>$PID</code>获取父 shell 的进程 ID</li>
+<li>参数<code>$UID</code>获取执行当前的当前用户 ID</li>
+</ul>
+
+<h2 id="shell-脚本获取当前时间">shell 脚本获取当前时间</h2>
+
+<ul>
+<li>获取当前时间<code>date +%Y%m%d</code>或<code>date +%F</code>或<code>date +%y%m%d</code>
+
+<ul>
+<li>Y 年，如 2018</li>
+<li>y 年的最后两位，如 2018 显示 18</li>
+<li>m 月(01..12)</li>
+<li>d 每个月第几天(01..31)</li>
+<li>F 完整的日志(%Y-%m-%d)</li>
+</ul></li>
+
+<li><p>输出另外一个时区的时间<code>env TZ=timezone date</code>或<code>env TZ=timezone date  +%Y%m%d</code></p>
+
+<ul>
+<li><p>timezone 是指定的时区，比如<code>America/Los_Angeles</code>或<code>Asia/Shanghai</code></p>
+
+<pre><code class="language-shell">starttime=`date +%s`
+sleep 10 #sleep 10 sec
+endtime=`date +%s`
+difftime=$(( endtime - starttime ))
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="shell-执行多个命令的方法">shell 执行多个命令的方法</h2>
+
+<ul>
+<li><code>|</code>：命令之间用<code>|</code>隔开，将前一个命令的标准输出(stdout)作为下一个命令的标准输入
+
+<ul>
+<li>标准错误(stderr)仍在默认的地方</li>
+</ul></li>
+<li><code>|&amp;</code>：命令之间用<code>|&amp;</code>隔开，将前一个命令的标准输出和标准错误都作为下一个命令的标准输入
+
+<ul>
+<li>bash 版本不小于 4</li>
+</ul></li>
+<li><code>;</code>：命令之间用<code>;</code>隔开，各命令执行结果不影响，即各个命令都会执行</li>
+<li><code>&amp;&amp;</code>：命令之间用<code>&amp;&amp;</code>隔开，只有前面的命令执行成功，才会执行后面的命令，保证执行过程都是成功的</li>
+
+<li><p><code>||</code>：命令之间用<code>||</code>隔开，只有前面的命令执行失败，才会执行后面的命令，直到执行成功</p>
+
+<ul>
+<li>可用于捕获子 shell 的错误码，比如<code>output=&quot;$( (cd &quot;$FOLDER&quot;; eval &quot;$@&quot;) 2&gt;&amp;1 )&quot; || errcode=&quot;$?&quot;</code></li>
+<li>重要的命令失败时退出自定义错误码，比如<code>output=&quot;$( (cd &quot;$FOLDER&quot;; eval &quot;$@&quot;) 2&gt;&amp;1 )&quot; || exit 12</code></li>
+
+<li><p>可以定义函数在<code>||</code>之后调用</p>
+
+<pre><code class="language-sh">handle_error() { #do staff }
+output=&quot;$( (cd &quot;$FOLDER&quot;; eval &quot;$@&quot;) 2&gt;&amp;1 )&quot; || handle_error
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="shell-test-命令">shell test 命令</h2>
+
+<ul>
+<li>test 命令用于检查某个条件是否成立，可以进行数值、字符和文件三个方面的测试</li>
+</ul>
+
+<h3 id="数值测试">数值测试</h3>
+
+<ul>
+<li><p>运算符：-eq，-ne，-gt，-ge，-lt，-le</p>
+
+<pre><code class="language-sh">n1=1
+n2=2
+test $[n1] -eq $[n2] &amp;&amp; echo '两个数相等！'
+test $[n1] -eq $[n2] || echo '两个数不相等！'
+</code></pre></li>
+
+<li><p><code>[]</code>内执行基本的算术运算</p>
+
+<pre><code class="language-sh">n1=1
+n2=2
+n3=$[n1+n2]
+</code></pre></li>
+</ul>
+
+<h3 id="字符串测试">字符串测试</h3>
+
+<ul>
+<li><p>运算符： =，!=， -z(字符串长度是否为0)， -n(字符串长度是否不为0)</p>
+
+<pre><code class="language-sh">s1=&quot;s1&quot;
+s2=&quot;s2&quot;
+test $s1 = $s2 &amp;&amp; echo '两个字符串相等！'
+test $s1 = $s2 || echo '两个字符串不相等！'
+</code></pre></li>
+</ul>
+
+<h3 id="文件测试">文件测试</h3>
+
+<ul>
+<li><p>运算符：-e，-r，-w，-x，-s，-d，-f，-c，-b</p>
+
+<ul>
+<li><code>-r/w/x</code>：如果文件存在且可读/可写/可执行</li>
+<li><code>-s</code>：如果文件存在且至少有一个字符</li>
+
+<li><p><code>-f/c/b</code>：如果文件存在且是普通文件/字符型特殊文件/块特殊文件</p>
+
+<pre><code class="language-sh">test -e filename &amp;&amp; echo &quot;文件已存在！&quot;
+test -e filename || echo &quot;文件不存在！&quot;
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="连接测试条件">连接测试条件</h3>
+
+<ul>
+<li><p>可用逻辑操作符将测试条件连接起来：与(-a)，huo(-o)，非(!)</p>
+
+<pre><code class="language-sh">test -e filename -o -e anotherfile &amp;&amp; echo &quot;至少存在一个文件！&quot;
+test -e filename -o -e anotherfile || echo &quot;两个文件都不存在！&quot;
+</code></pre></li>
+</ul>
+
+<h2 id="shell-变量">shell 变量</h2>
+
+<ul>
+<li>定义变量是变量名和等号之间不能有空格</li>
+<li>使用时在前面加上<code>$</code>即可</li>
+<li>删除变量：<code>unset $VAR</code></li>
+<li>设置变量只读：<code>readonly $VAR</code></li>
+
+<li><p>测试变量是否定义</p>
+
+<ul>
+<li><code>if (set -u; : $VAR) ; then echo &quot;set&quot; ; else echo &quot;unset&quot; ; fi</code></li>
+<li><code>set -u</code>用于设置 shell 选项，u 是 nounset， 表示当使用未定义的变量时，输出错误并强制退出</li>
+<li><code>:</code> 是不做任何事只是展开参数，单不会试图去执行</li>
+<li>没有<code>:</code>则将变量解释成 shell 命令，并试图去执行</li>
+<li>使用<code>-z</code>或<code>-n</code>判断</li>
+<li><code>-z</code>：字符串长度是否为0</li>
+
+<li><p><code>-n</code>：字符串长度是否不为0</p>
+
+<pre><code class="language-sh">echo &quot;********************************set KK&quot;
+export KK=&quot;kiki&quot;
+echo KK=$KK
+if [ -z $KK ] ; then echo &quot;unset&quot; ; else echo &quot;set&quot; ; fi
+if ( set -u; : $KK ) ; then echo &quot;set&quot; ; else echo &quot;unset&quot; ; fi
+echo KK=$KK
+
+echo &quot;********************************unset KK&quot;
+unset KK
+echo KK=$KK
+if [ -z $KK ] ; then echo &quot;unset&quot; ; else echo &quot;set&quot; ; fi
+if ( set -u; : $KK ) ; then echo &quot;set&quot; ; else echo &quot;unset&quot; ; fi
+echo KK=$KK
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="shell-脚本上传-ftp">shell 脚本上传 ftp</h2>
+
+<h3 id="上传单个文件脚本">上传单个文件脚本</h3>
+
+<pre><code class="language-sh">#!/bin/bash
+FILENAME=$1
+ftp -n -p&lt;&lt;!
+## ftp server ip
+open ftpIp
+## ftp username and password
+user ftpUser ftpPwd
+## transfer type
+binary
+## upload path
+cd /VDMSSoftware/cppci
+## interactive mode
+prompt
+## upload filename
+put $FILENAME
+close
+## close connection
+bye
+!
+</code></pre>
+
+<ul>
+<li>传输文件类型包括：
+
+<ul>
+<li>ascii：默认值。网络 ASCII</li>
+<li>binary：二进制映像，需要使用二进制方式的文件类型包括 ISO 文件、可执行文件、压缩文件、图片等。此方式比 ascii 更有效</li>
+<li>ebcdic：</li>
+<li>image：</li>
+<li>local M：本地类型。M 参数定义每个计算机字位的十进制数</li>
+<li>tenex：</li>
+</ul></li>
+<li>交互式提示：使用 mget 或 mput 时，<code>prompt</code>命令让 ftp 在文件传输前进行提示，防止覆盖已有的文件。若发出 prompt 命令时已经启动了提示，ftp 将关掉提示，此时再传输所有的文件则不会有任何提示</li>
+</ul>
+
+<h2 id="shell-if">shell if</h2>
+
+<ul>
+<li><p>shell 支持 3 中 if 语句</p>
+
+<ul>
+<li><code>if...fi</code></li>
+<li><code>if...else...fi</code></li>
+
+<li><p><code>if...elif...else...fi</code></p>
+
+<pre><code class="language-shell">if [ $useEncryption != &quot;false&quot; ] &amp;&amp; [ $softEncryption != &quot;false&quot; ]
+then
+# do sth
+elif [ $useEncryption != &quot;false&quot; ] &amp;&amp; [ $softEncryption == &quot;false&quot; ]
+then
+# do sth
+elif [ $useEncryption == &quot;false&quot; ] &amp;&amp; [ $softEncryption != &quot;false&quot; ]
+then
+# do sth
+elif [ $useEncryption == &quot;false&quot; ] &amp;&amp; [ $softEncryption == &quot;false&quot; ] # or else
+then
+# do sth
+fi
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="shell-操作符">shell 操作符</h2>
+
+<ul>
+<li>讨论 Bourne shell（默认的 shell） 支持的操作符</li>
+</ul>
+
+<h3 id="算术操作符">算术操作符</h3>
+
+<ul>
+<li>Bourne shell 不支持运算符，但是可以使用<code>awk</code>或者<code>expr</code>外部程序，例如<code>res=`expr  2 + 2`; echo $res</code></li>
+<li>运算符和表达式之间必须有空格</li>
+<li>Bourne shell 支持的算术运算符包括：（假如<code>a=10; b=20</code>）
+
+<ul>
+<li>加法<code>+</code>，例如<code>expr $a + $b</code>，结果是 30</li>
+<li>减法<code>-</code>，例如<code>expr $a - $b</code>，结果是 -10</li>
+<li>乘法<code>*</code>，例如<code>expr $a \* $b</code>，结果是 200</li>
+<li>除法<code>/</code>，例如<code>expr $b / $a</code>，结果是 2</li>
+<li>取模<code>%</code>，例如<code>expr $a % $b</code>，结果是 0</li>
+<li>赋值<code>=</code>，例如<code>a = $b</code>，结果是 a 被赋值 20</li>
+<li>等于<code>==</code>，例如<code>[$a == $b]</code>，结果是 false</li>
+<li>不等于<code>！=</code>，例如<code>[$a != $b]</code>，结果是 true</li>
+</ul></li>
+<li>条件表达式必须在方括号中，且两端有空格隔开</li>
+</ul>
+
+<h3 id="关系操作符">关系操作符</h3>
+
+<ul>
+<li>只对数值生效，string 作为操作数是无效的，例如对<code>10</code>和<code>20</code>或者<code>&quot;10&quot;</code>和<code>&quot;10&quot;</code>生效，但是对<code>ten</code>和<code>twenty</code>无效
+
+<ul>
+<li>无效的 string 是指 string 中包含非数字的字符</li>
+</ul></li>
+<li>Bourne shell 支持的关系型操作符包括：（假如<code>a=10; b=20</code>）
+
+<ul>
+<li>等于<code>-eq</code>，例如<code>[ $a -eq $b ]</code>，结果是 false</li>
+<li>不等于<code>-ne</code>，例如<code>[ $a -ne $b ]</code>，结果是 true</li>
+<li>大于<code>-gt</code>，例如<code>[ $a -gt $b ]</code>，结果是 false</li>
+<li>小于<code>-lt</code>，例如<code>[ $a -lt $b ]</code>，结果是 true</li>
+<li>大于等于<code>-ge</code>，例如<code>[ $a -ge $b ]</code>，结果是 false</li>
+<li>小于等于<code>-le</code>，例如<code>[ $a -le $b ]</code>，结果是 true</li>
+</ul></li>
+<li>条件表达式必须在方括号内，且两端有空格分开</li>
+<li>其他 shell 可能支持的操作
+
+<ul>
+<li>等于<code>==</code>，例如<code>(( $a == $b ))</code>，结果是 false</li>
+<li>不等于<code>!=</code>，例如<code>[ $a != $b ]</code>，结果是 true</li>
+<li>大于<code>&gt;</code>，例如<code>(( $a &gt; $b ))</code>，结果是 false</li>
+<li>小于<code>&lt;</code>，例如<code>(( $a &lt; $b ))</code>，结果是 true</li>
+<li>大于等于<code>&gt;=</code>，例如<code>(( $a &gt;= $b ))</code>，结果是 false</li>
+<li>小于等于<code>&lt;=</code>，例如<code>(( $a &lt;= $b ))</code>，结果是 true</li>
+</ul></li>
+</ul>
+
+<h3 id="布尔操作符">布尔操作符</h3>
+
+<ul>
+<li>Bourne shell 支持的布尔操作符包括：（假如<code>a=10; b=20</code>）
+
+<ul>
+<li>逻辑取否<code>!</code>，例如<code>[ ! false ]</code>，结果是 true</li>
+<li>逻辑或<code>-o</code>，例如<code>[ $a -lt 20 -o $b -gt 100 ]</code>，结果是 true</li>
+<li>逻辑与<code>-a</code>，例如<code>[ $a -lt 20 -a $b -gt 100 ]</code>，结果是 false</li>
+</ul></li>
+</ul>
+
+<h3 id="string-操作符">string 操作符</h3>
+
+<ul>
+<li>Bourne shell 支持的字符串操作符包括：（假如<code>a=&quot;abc&quot;; b=&quot;efg&quot;</code>）
+
+<ul>
+<li>等于<code>=</code>，例如<code>[ $a = $b ]</code>，结果是 false</li>
+<li>不等于<code>!=</code>，例如<code>[ $a != $b ]</code>，结果是 true</li>
+<li>字符串为 null，即长度为 0 <code>-z</code>，例如<code>[ -z $a ]</code>，结果是 false</li>
+<li><code>-z</code>的字符串可以不被双引号引用</li>
+<li>字符串不为 null，即长度不为 0 <code>-n</code>，例如<code>[ -n $a ]</code>，结果是 true</li>
+<li><code>-n</code>的字符串建议用双引号引用，不加双引号可以使用<code>! -z</code></li>
+<li>字符串是否不是空串<code>str</code>，例如<code>[ $a ]</code>，结果是 true</li>
+</ul></li>
+<li>其他 shell 可能支持的操作
+
+<ul>
+<li>大于<code>&gt;</code>，例如<code>[[ $a &gt; $b ]]</code>或<code>[ $a \&gt; $b ]</code>，结果是 false</li>
+<li>小于<code>&lt;</code>，例如<code>[[ $a &lt; $b ]]</code>或<code>[ $a \&lt; $b ]</code>，结果是 true</li>
+</ul></li>
+</ul>
+
+<h3 id="文件测试运算符">文件测试运算符</h3>
+
+<ul>
+<li>假设文件<code>test</code>的大小是 100 Bytes，且有读写和可执行权限，<code>file=&quot;test&quot;</code></li>
+<li><code>-b file</code>是否是块文件，例如<code>[ -b $file ]</code>，结果是 false</li>
+<li><code>-c file</code>是否是字符文件，例如<code>[ -c $file ]</code>，结果是 false</li>
+<li><code>-d file</code>是否是文件夹，例如<code>[ -d $file ]</code>，结果是 false</li>
+<li><code>-f file</code>是否是普通文件（不是块/字符文件，也不是文件夹），例如<code>[ -f $file ]</code>，结果是 true</li>
+<li><code>-g file</code>是否设置了group ID 位，即 SGID，例如<code>[ -g $file ]</code>，结果是 false</li>
+<li><code>-k file</code>是否设置了 sticky 位，例如<code>[ -k $file ]</code>，结果是 false</li>
+<li><code>-p file</code>是否是一个命名的管道，例如<code>[ -p $file ]</code>，结果是 false</li>
+<li><code>-t file</code>文件描述符是否打开且和一个终端相关，例如<code>[ -t $file ]</code>，结果是 false</li>
+<li><code>-u file</code>是否设置了 user ID 位，即 SUID，例如<code>[ -u $file ]</code>，结果是 false</li>
+<li><code>-r file</code>是否可读，例如<code>[ -r $file ]</code>，结果是 true</li>
+<li><code>-w file</code>是否可写，例如<code>[ -w $file ]</code>，结果是 true</li>
+<li><code>-x file</code>是否可执行，例如<code>[ -x $file ]</code>，结果是 true</li>
+<li><code>-s file</code>文件大小是否大于 0，例如<code>[ -s $file ]</code>，结果是 true</li>
+<li><code>-e file</code>文件是否存在，如果是一个存在的文件夹也返回 true，例如<code>[ -e $file ]</code>，结果是 true</li>
+</ul>
+
+<h3 id="c-shell-操作符-https-www-tutorialspoint-com-unix-unix-c-shell-operators-htm"><a href="https://www.tutorialspoint.com/unix/unix-c-shell-operators.htm" target="_blank">C Shell 操作符</a></h3>
+
+<h3 id="korn-shell-操作符-https-www-tutorialspoint-com-unix-unix-korn-shell-operators-htm"><a href="https://www.tutorialspoint.com/unix/unix-korn-shell-operators.htm" target="_blank">Korn Shell 操作符</a></h3>
+
+<h2 id="字符串截取">字符串截取</h2>
+
+<ul>
+<li><p>按指定长度截取</p>
+
+<ul>
+<li><code>${str:n1:n2}</code>从左边第 n1+1 个字符串开始，长度为 n2</li>
+<li><code>${str:0-n1:n2}</code>从右边第 n1 个字符串开始，长度为 n2</li>
+
+<li><p><code>${str:n1}</code>从左边第 n1+1 个字符串开始到最后</p>
+
+<pre><code class="language-shell">var=&quot;aa1c10e139bf750b3335e896f366665cfa40d95f&quot;
+
+echo ${var:1:3}   #a1c
+echo ${var:0-1:3} #f
+echo ${var:0-4:3} #d95
+echo ${var:1}     #a1c10e139bf750b3335e896f366665cfa40d95f
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="here-document">here document</h2>
+
+<ul>
+<li><p>here document 是一种重定向方式，基本形式如下</p>
+
+<ul>
+<li>将两个 delimiter 直接的内容传递给 cmd 作为输入参数</li>
+
+<li><p><code>&gt;</code>是终端产生的提示输入信息的标识符</p>
+
+<pre><code class="language-shell">cmd &lt;&lt; delimiter
+here document content
+delimiter
+</code></pre></li>
+</ul></li>
+
+<li><p>例如在终端向一个文件写入多行</p>
+
+<pre><code class="language-shell">cat &lt;&lt; EOF &gt; output.sh
+echo &quot;hello&quot;
+echo &quot;world&quot;
+EOF
+</code></pre></li>
+
+<li><p>内容可以包括普通字符，也可以使用变量</p>
+
+<ul>
+<li>执行脚本<code>sh output.sh haha</code>，<code>$1</code>被替换为<code>haha</code></li>
+
+<li><p>不想展开变量，则在起始的 delimiter 前后添加引号实现<code>cat &lt;&lt; &quot;EOF&quot; &gt; output.sh</code></p>
+
+<pre><code class="language-shell">cat &lt;&lt; EOF &gt; output.sh
+echo &quot;hello&quot;
+echo $1
+EOF
+</code></pre></li>
+</ul></li>
+
+<li><p>使用<code>&lt;&lt;-</code>而不是<code>&lt;&lt;</code>，可以将 here document 的内容每行前面的制表符删掉，便于编写的时候将内容部分缩进</p></li>
+</ul>
+
+<h2 id="参考网站">参考网站</h2>
+
+<ul>
+<li><a href="https://www.gnu.org/software/bash/manual/bash.html" target="_blank">Bash Reference Manual</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/shell/">shell</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/shell/shell_script/&amp;text=shell%20%e8%84%9a%e6%9c%ac" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/shell/shell_script/&amp;t=shell%20%e8%84%9a%e6%9c%ac" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=shell%20%e8%84%9a%e6%9c%ac&amp;body=https://xueqing.github.io/blog/shell/shell_script/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/shell/shell_script/&amp;title=shell%20%e8%84%9a%e6%9c%ac" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=shell%20%e8%84%9a%e6%9c%ac%20https://xueqing.github.io/blog/shell/shell_script/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/shell/shell_script/&amp;title=shell%20%e8%84%9a%e6%9c%ac" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/shell/bash/bash_shell/">bash</a></li>
+      
+      <li><a href="/blog/shell/expect_shell/">expect 脚本</a></li>
+      
+      <li><a href="/blog/shell/perl/perl%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/">perl 脚本解析 xml 文件</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

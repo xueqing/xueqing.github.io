@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="7.1 磁盘管理命令 7.1.1 df 7.1.2 du 7.1.3 fdisk 7.1.4 mkfs 7.2 磁盘检验 7.3 磁盘挂载与卸除 7.4 使用文件系统组织磁盘存储和数据管理的必要性 7.1 磁盘管理命令 Linux 磁盘管理好坏直接关系到整">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+  <meta property="og:title" content="7 磁盘管理 | kiki">
+  <meta property="og:description" content="7.1 磁盘管理命令 7.1.1 df 7.1.2 du 7.1.3 fdisk 7.1.4 mkfs 7.2 磁盘检验 7.3 磁盘挂载与卸除 7.4 使用文件系统组织磁盘存储和数据管理的必要性 7.1 磁盘管理命令 Linux 磁盘管理好坏直接关系到整"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>7 磁盘管理 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>7 磁盘管理</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#71-%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86%e5%91%bd%e4%bb%a4">7.1 磁盘管理命令</a>
+
+<ul>
+<li><a href="#711-df">7.1.1 df</a></li>
+<li><a href="#712-du">7.1.2 du</a></li>
+<li><a href="#713-fdisk">7.1.3 fdisk</a></li>
+<li><a href="#714-mkfs">7.1.4 mkfs</a></li>
+</ul></li>
+<li><a href="#72-%e7%a3%81%e7%9b%98%e6%a3%80%e9%aa%8c">7.2 磁盘检验</a></li>
+<li><a href="#73-%e7%a3%81%e7%9b%98%e6%8c%82%e8%bd%bd%e4%b8%8e%e5%8d%b8%e9%99%a4">7.3 磁盘挂载与卸除</a></li>
+<li><a href="#74-%e4%bd%bf%e7%94%a8%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f%e7%bb%84%e7%bb%87%e7%a3%81%e7%9b%98%e5%ad%98%e5%82%a8%e5%92%8c%e6%95%b0%e6%8d%ae%e7%ae%a1%e7%90%86%e7%9a%84%e5%bf%85%e8%a6%81%e6%80%a7">7.4 使用文件系统组织磁盘存储和数据管理的必要性</a></li>
+</ul>
+
+<h2 id="7-1-磁盘管理命令">7.1 磁盘管理命令</h2>
+
+<ul>
+<li>Linux 磁盘管理好坏直接关系到整个系统的性能问题</li>
+<li>Linux 磁盘管理常用三个命令为df、du和fdisk
+
+<ul>
+<li>df：列出文件系统的整体磁盘使用量</li>
+<li>du：检查磁盘空间使用量</li>
+<li>fdisk：用于磁盘分区</li>
+<li>mkfs：磁盘格式化</li>
+</ul></li>
+</ul>
+
+<h3 id="7-1-1-df">7.1.1 df</h3>
+
+<ul>
+<li>df：检查文件系统的磁盘空间占用情况</li>
+<li>可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息</li>
+<li>语法 <code>df [-ahikHTm] [目录或文件名]</code></li>
+
+<li><p>选项与参数</p>
+
+<ul>
+<li>-a：列出所有的文件系统，包括系统特有的 /proc 等文件系统</li>
+<li>-k：以 KBytes 的容量显示各文件系统</li>
+<li>-m：以 MBytes 的容量显示各文件系统</li>
+<li>-h：以人们较易阅读的 GBytes, MBytes, KBytes 等格式自行显示</li>
+<li>-H：以 M=1000K 取代 M=1024K 的进位方式</li>
+<li>-T：显示文件系统类型, 连同该 partition 的 filesystem 名称(如 ext3)也列出</li>
+
+<li><p>-i：不用硬盘容量，而以 inode 的数量来显示</p>
+
+<pre><code class="language-sh"># 将系统内所有的文件系统列出来！
+[root@www ~]# df
+Filesystem      1K-blocks      Used Available Use% Mounted on
+/dev/hdc2         9920624   3823112   5585444  41% /
+/dev/hdc3         4956316    141376   4559108   4% /home
+/dev/hdc1          101086     11126     84741  12% /boot
+tmpfs              371332         0    371332   0% /dev/shm
+# 没有加任何选项，默认将系统内所有(不含特殊内存内的文件系统与 swap)以 1 Kbytes 容量列出来
+# 将容量结果以易读的容量格式显示出来
+[root@www ~]# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/hdc2             9.5G  3.7G  5.4G  41% /
+/dev/hdc3             4.8G  139M  4.4G   4% /home
+/dev/hdc1              99M   11M   83M  12% /boot
+tmpfs                 363M     0  363M   0% /dev/shm
+# 将系统内的所有特殊文件格式及名称都列出来
+[root@www ~]# df -aT
+Filesystem    Type 1K-blocks    Used Available Use% Mounted on
+/dev/hdc2     ext3   9920624 3823112   5585444  41% /
+proc          proc         0       0         0   -  /proc
+sysfs        sysfs         0       0         0   -  /sys
+devpts      devpts         0       0         0   -  /dev/pts
+/dev/hdc3     ext3   4956316  141376   4559108   4% /home
+/dev/hdc1     ext3    101086   11126     84741  12% /boot
+tmpfs        tmpfs    371332       0    371332   0% /dev/shm
+none   binfmt_misc         0       0         0   -  /proc/sys/fs/binfmt_misc
+sunrpc  rpc_pipefs         0       0         0   -  /var/lib/nfs/rpc_pipefs
+# 将 /etc 下的可用的磁盘容量以易读的容量格式显示
+[root@www ~]# df -h /etc
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/hdc2             9.5G  3.7G  5.4G  41% /
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="7-1-2-du">7.1.2 du</h3>
+
+<ul>
+<li>du：查看使用空间</li>
+<li>与 df 命令不同：du 命令是对文件和目录磁盘使用的空间的查看，df 检查文件系统的磁盘空间占用情况</li>
+<li>与 df 不一样的是，du 会直接到文件系统内去搜寻所有的文件数据</li>
+<li>语法 <code>du [-ahskm] 文件或目录名称</code></li>
+
+<li><p>选项与参数</p>
+
+<ul>
+<li>-a：列出所有的文件与目录容量，因为默认仅统计目录底下的文件量而已</li>
+<li>-h：以人们较易读的容量格式 (G/M) 显示</li>
+<li>-s：列出总量而已，而不列出每个各别的目录占用容量</li>
+<li>-S：不包括子目录下的总计，与 -s 有点差别</li>
+<li>-k：以 KBytes 列出容量显示</li>
+
+<li><p>-m：以 MBytes 列出容量显示</p>
+
+<pre><code class="language-sh"># 列出当前目录下的所有文件容量，包括隐藏文件的目录
+# 当前目录(.)所占用的总量
+[root@www ~]# du
+8       ./test4
+8       ./test2
+12      ./.gconfd
+220     .
+# 没有加任何选项时，du 会分析当前所在目录的文件与目录所占用的硬盘空间
+# 将文件的容量也列出来
+[root@www ~]# du -a
+12      ./install.log.syslog
+8       ./.bash_logout
+8       ./test4
+8       ./test2
+12      ./.gconfd
+220     .
+# 检查根目录下每个目录所占用的容量
+# 通配符 * 代表每个目录
+[root@www ~]# du -sm /*
+7       /bin
+6       /boot
+0       /proc
+1       /tmp
+3859    /usr
+77      /var
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="7-1-3-fdisk">7.1.3 fdisk</h3>
+
+<ul>
+<li>fdisk：磁盘分区表操作工具</li>
+<li>语法 <code>fdisk [-l] 装置名称</code></li>
+
+<li><p>选项与参数</p>
+
+<ul>
+<li>-l：输出后面接的装置所有的分区内容</li>
+
+<li><p>若仅有<code>fdisk -l</code>时， 系统将会把整个系统内能够搜寻到的装置的分区均列出来</p>
+
+<pre><code class="language-sh"># 列出所有分区信息
+[root@AY120919111755c246621 tmp]# fdisk -l
+
+Disk /dev/xvda: 21.5 GB, 21474836480 bytes
+255 heads, 63 sectors/track, 2610 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+Device Boot      Start         End      Blocks   Id  System
+/dev/xvda1   *           1        2550    20480000   83  Linux
+/dev/xvda2            2550        2611      490496   82  Linux swap / Solaris
+
+Disk /dev/xvdb: 21.5 GB, 21474836480 bytes
+255 heads, 63 sectors/track, 2610 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x56f40944
+
+Device Boot      Start         End      Blocks   Id  System
+/dev/xvdb2               1        2610    20964793+  83  Linux
+
+# 找出系统中的根目录所在磁盘，并查阅该硬盘内的相关信息。重点在找出磁盘文件名
+[root@www ~]# df /
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/hdc2              9920624   3823168   5585388  41% /
+# 不要加上数字
+[root@www ~]# fdisk /dev/hdc
+The number of cylinders for this disk is set to 5005.
+There is nothing wrong with that, but this is larger than 1024,
+and could in certain setups cause problems with:
+1) software that runs at boot time (e.g., old versions of LILO)
+2) booting and partitioning software from other OSs
+(e.g., DOS FDISK, OS/2 FDISK)
+
+# 输入 m 后，就会看到命令介绍
+Command (m for help):
+# 离开 fdisk 时按下 q，那么所有动作都不会生效。相反的， 按下 w 就是动作生效
+# 使用 p 可以列出目前这颗磁盘的分割表信息，这个信息的上半部显示整体磁盘的状态
+Command (m for help): p
+
+# 这个磁盘的文件名与容量
+Disk /dev/hdc: 41.1 GB, 41174138880 bytes
+# 磁头、扇区与磁柱大小
+255 heads, 63 sectors/track, 5005 cylinders
+# 每个磁柱的大小
+Units = cylinders of 16065 * 512 = 8225280 bytes
+
+# 装置文件名 启动区否 开始磁柱    结束磁柱  1K大小容量 磁盘分区槽内的系统
+Device Boot      Start         End      Blocks   Id  System
+/dev/hdc1   *           1          13      104391   83  Linux
+/dev/hdc2              14        1288    10241437+  83  Linux
+/dev/hdc3            1289        1925     5116702+  83  Linux
+/dev/hdc4            1926        5005    24740100    5  Extended
+/dev/hdc5            1926        2052     1020096   82  Linux swap / Solaris
+
+# 想要不储存离开按下 q
+Command (m for help): q
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h3 id="7-1-4-mkfs">7.1.4 mkfs</h3>
+
+<ul>
+<li>磁盘分割完毕后自然就是要进行文件系统的格式化</li>
+<li>语法 <code>mkfs [-t 文件系统格式] 装置文件名</code></li>
+
+<li><p>选项与参数</p>
+
+<ul>
+<li><p>-t：可以接文件系统格式，如 ext3, ext2, vfat 等(系统有支持才会生效)</p>
+
+<pre><code class="language-sh"># 查看 mkfs 支持的文件格式
+# 按下两个[tab]，会发现 mkfs 支持的文件格式
+[root@www ~]# mkfs[tab][tab]
+mkfs         mkfs.cramfs  mkfs.ext2    mkfs.ext3    mkfs.msdos   mkfs.vfat
+# 将分区 /dev/hdc6(可指定你自己的分区)格式化为 ext3 文件系统
+[root@www ~]# mkfs -t ext3 /dev/hdc6
+mke2fs 1.39 (29-May-2006)
+# 指的是分割槽的名称(label)
+Filesystem label=
+OS type: Linux
+# block 的大小配置为 4K
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+# 由此配置决定的inode/block数量
+251392 inodes, 502023 blocks
+25101 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=515899392
+16 block groups
+32768 blocks per group, 32768 fragments per group
+15712 inodes per group
+Superblock backups stored on blocks:
+32768, 98304, 163840, 229376, 294912
+
+Writing inode tables: done
+# 有日志记录
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 34 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+# 这样就创建起来 Ext3 文件系统了
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="7-2-磁盘检验">7.2 磁盘检验</h2>
+
+<ul>
+<li>fsck（file system check）用来检查和维护不一致的文件系统</li>
+<li>若系统掉电或磁盘发生问题，可利用fsck命令对文件系统进行检查</li>
+<li>语法 <code>fsck [-t 文件系统] [-ACay] 装置名称</code></li>
+
+<li><p>选项与参数</p>
+
+<ul>
+<li>-t: 给定档案系统的型式，若在 /etc/fstab 中已有定义或 kernel 本身已支援的则不需加上此参数</li>
+<li>-s: 依序一个一个地执行 fsck 的指令来检查</li>
+<li>-A: 对/etc/fstab 中所有列出来的分区（partition）做检查</li>
+<li>-C: 显示完整的检查进度</li>
+<li>-d: 打印出 e2fsck 的 debug 结果</li>
+<li>-p: 同时有 -A 条件时，同时有多个 fsck 的检查一起执行</li>
+<li>-R: 同时有 -A 条件时，省略 / 不检查</li>
+<li>-V: 详细显示模式</li>
+<li>-a: 如果检查有错则自动修复</li>
+<li>-r: 如果检查有错则由使用者回答是否修复</li>
+
+<li><p>-y: 指定检测每个文件自动输入yes，在不确定哪些是不正常的时候，可以执行<code>fsck -y</code>全部检查修复</p>
+
+<pre><code class="language-sh"># 查看系统有多少文件系统支持的 fsck 命令
+[root@www ~]# fsck[tab][tab]
+fsck         fsck.cramfs  fsck.ext2    fsck.ext3    fsck.msdos   fsck.vfat
+# 强制检测 /dev/hdc6 分区
+[root@www ~]# fsck -C -f -t ext3 /dev/hdc6
+fsck 1.39 (29-May-2006)
+e2fsck 1.39 (29-May-2006)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+vbird_logical: 11/251968 files (9.1% non-contiguous), 36926/1004046 blocks
+# 如果没有 -f，则由于这个文件系统不曾出现问题，检查的经过非常快速
+# 若加上 -f 强制检查，才会一项一项的显示过程
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="7-3-磁盘挂载与卸除">7.3 磁盘挂载与卸除</h2>
+
+<ul>
+<li>Linux 的磁盘挂载使用 mount 命令，卸载使用 umount 命令</li>
+
+<li><p>磁盘挂载语法 <code>mount [-t 文件系统] [-L Label名] [-o 额外选项] [-n] 装置文件名 挂载点</code></p>
+
+<pre><code class="language-sh"># 用默认方式，将刚刚创建的 /dev/hdc6 挂载到 /mnt/hdc6 上面
+[root@www ~]# mkdir /mnt/hdc6
+[root@www ~]# mount /dev/hdc6 /mnt/hdc6
+[root@www ~]# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/hdc6              1976312     42072   1833836   3% /mnt/hdc6
+</code></pre></li>
+
+<li><p>磁盘卸载命令 umount 语法 <code>umount [-fn] 装置文件名或挂载点</code></p></li>
+
+<li><p>选项与参数</p>
+
+<ul>
+<li>-f：强制卸除。可用在类似网络文件系统(NFS)无法读取到的情况下</li>
+
+<li><p>-n：不升级 /etc/mtab 情况下卸除</p>
+
+<pre><code class="language-sh"># 卸载/dev/hdc6
+[root@www ~]# umount /dev/hdc6
+</code></pre></li>
+</ul></li>
+</ul>
+
+<h2 id="7-4-使用文件系统组织磁盘存储和数据管理的必要性">7.4 使用文件系统组织磁盘存储和数据管理的必要性</h2>
+
+<ul>
+<li>使用文件系统是和使用裸设备相对而言的。裸设备是一种没有格式化的磁盘或磁盘分区，也就是让操作系统或者程序直接操作磁盘设备</li>
+<li>文件系统是操作系统和磁盘之间的一个桥梁，因此对磁盘的任何写操作，都要经过文件系统，然后才到磁盘</li>
+<li>通过文件系统的方式来组织磁盘存储和数据管理。优点
+
+<ul>
+<li>数据的读取、管理操作变得简单：文件系统给用户提供了一个简单的操作界面，用户可以通过对文件系统的简单操作，实现对磁盘的管理。虽然 Linux 系统下也可以直接使用裸设备，但是在读取性能上，裸设备并不比文件系统能高出多少，同时还造成了管理与维护的麻烦，普通用户是无法接受的</li>
+<li>磁盘分区管理灵活：在文件系统下提供了很多的磁盘分区管理工具(如 LVM)，通过这些工具可以灵活地对磁盘分区进行大小的修改，而在裸设备下，必须预先规划好磁盘空间，可能造成空间的不足或者浪费</li>
+<li>支持数据容错机制，数据安全能得到保障：一个好的文件系统提供了对于数据读取和写入的各种容错和保护机制，很好地保障了数据的安全，而裸设备没有这种灵活的管理机制，对于数据安全只能通过手工的备份方式来实现</li>
+</ul></li>
+<li>缺点：在大量写操作下，文件系统本身也会产生开销，例如对元数据的维护、文件系统缓存等，这个桥梁就成了一个障碍。不过，现在很多类型的文件系统都在做写入性能的改进，因而相对于文件系统提供的这些优点，缺点基本可以忽略</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/linux/">linux</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/&amp;text=7%20%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/&amp;t=7%20%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=7%20%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86&amp;body=https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/&amp;title=7%20%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=7%20%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86%20https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/linux/7_%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/&amp;title=7%20%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/linux/0_%E5%AE%89%E8%A3%85/">0 安装</a></li>
+      
+      <li><a href="/blog/linux/1_%E7%AE%80%E4%BB%8B/">1 简介</a></li>
+      
+      <li><a href="/blog/linux/2_%E5%90%AF%E5%8A%A8/">2 Linux 系统启动过程</a></li>
+      
+      <li><a href="/blog/linux/3_%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">3 系统目录结构</a></li>
+      
+      <li><a href="/blog/linux/4_%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7/">4 文件基本属性</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="7.1 支付的典型架构 7.1.1 支付宝 7.1.2 京东金融 7.1.3 去哪儿 7.1.4 美团 7.2 参考架构 7.2.1 支撑系统 7.2.2 支付核心系统 7.2.3 支付服务系统 7.3 支付应用 7.4 参考链接 7.1 支付的典型架构 每个公司">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/">
+  <meta property="og:title" content="7 支付系统的整体架构 | kiki">
+  <meta property="og:description" content="7.1 支付的典型架构 7.1.1 支付宝 7.1.2 京东金融 7.1.3 去哪儿 7.1.4 美团 7.2 参考架构 7.2.1 支撑系统 7.2.2 支付核心系统 7.2.3 支付服务系统 7.3 支付应用 7.4 参考链接 7.1 支付的典型架构 每个公司"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>7 支付系统的整体架构 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>7 支付系统的整体架构</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#71-%e6%94%af%e4%bb%98%e7%9a%84%e5%85%b8%e5%9e%8b%e6%9e%b6%e6%9e%84">7.1 支付的典型架构</a>
+
+<ul>
+<li><a href="#711-%e6%94%af%e4%bb%98%e5%ae%9d">7.1.1 支付宝</a></li>
+<li><a href="#712-%e4%ba%ac%e4%b8%9c%e9%87%91%e8%9e%8d">7.1.2 京东金融</a></li>
+<li><a href="#713-%e5%8e%bb%e5%93%aa%e5%84%bf">7.1.3 去哪儿</a></li>
+<li><a href="#714-%e7%be%8e%e5%9b%a2">7.1.4 美团</a></li>
+</ul></li>
+<li><a href="#72-%e5%8f%82%e8%80%83%e6%9e%b6%e6%9e%84">7.2 参考架构</a>
+
+<ul>
+<li><a href="#721-%e6%94%af%e6%92%91%e7%b3%bb%e7%bb%9f">7.2.1 支撑系统</a></li>
+<li><a href="#722-%e6%94%af%e4%bb%98%e6%a0%b8%e5%bf%83%e7%b3%bb%e7%bb%9f">7.2.2 支付核心系统</a></li>
+<li><a href="#723-%e6%94%af%e4%bb%98%e6%9c%8d%e5%8a%a1%e7%b3%bb%e7%bb%9f">7.2.3 支付服务系统</a></li>
+</ul></li>
+<li><a href="#73-%e6%94%af%e4%bb%98%e5%ba%94%e7%94%a8">7.3 支付应用</a></li>
+<li><a href="#74-%e5%8f%82%e8%80%83%e9%93%be%e6%8e%a5">7.4 参考链接</a></li>
+</ul>
+
+<h2 id="7-1-支付的典型架构">7.1 支付的典型架构</h2>
+
+<ul>
+<li>每个公司根据其业务和公司发展的不同阶段，所设计的支付系统也不同</li>
+</ul>
+
+<h3 id="7-1-1-支付宝">7.1.1 支付宝</h3>
+
+<ul>
+<li><p>支付宝的支付系统整体架构设计如下
+<img src="ref/alipay_arch.jpg" alt="支付宝的支付系统整体架构设计" /></p></li>
+
+<li><p>这个整体架构上并没有与众不同之处。在模块划分上，这个图显示的是最顶层的划分，也无法告知更多细节</p></li>
+
+<li><p>但支付宝架构强点在两个方面</p>
+
+<ul>
+<li>账务处理：分为内外两个子系统，外部子系统是单边账，内部子系统走复式记账。不少支付平台是从这里得到启发来搞定的对账系统</li>
+<li>柔性事务处理：利用消息机制来实现跨系统的事务处理，避免数据库锁导致的性能问题</li>
+</ul></li>
+</ul>
+
+<h3 id="7-1-2-京东金融">7.1.2 京东金融</h3>
+
+<ul>
+<li>京东金融是在网银在线的基础上发展起来的。网银在线的原班技术人员有不少来自易宝公司，在京东收购之后，又引入了支付宝的人才。因而从架构上受这两个公司的影响很大</li>
+<li>京东支付平台总体架构设计如下
+<img src="ref/jdpay_arch.jpg" alt="京东支付平台总体架构设计" /></li>
+</ul>
+
+<h3 id="7-1-3-去哪儿">7.1.3 去哪儿</h3>
+
+<ul>
+<li>去哪儿公司的支付产品架构如下
+<img src="ref/qunapay_arch.jpg" alt="去哪儿公司的支付产品架构" /></li>
+</ul>
+
+<h3 id="7-1-4-美团">7.1.4 美团</h3>
+
+<ul>
+<li>美团的支付平台规划架构如下：这是2015年的文档。2016年美团才拿到支付牌照
+<img src="ref/meituanpay_arch.jpg" alt="美团的支付平台规划架构" /></li>
+</ul>
+
+<h2 id="7-2-参考架构">7.2 参考架构</h2>
+
+<ul>
+<li>一般来说，支付系统典型架构会包含如下模块
+<img src="ref/pay_system_typical_arch.jpg" alt="支付系统典型架构" /></li>
+<li>支付系统从架构上来说，分为三层：
+
+<ul>
+<li>支撑层: 用来支持核心系统的基础软件包和基础设施，包括运维监控系统、日志分析系统等</li>
+<li>核心层：支付系统的核心模块，内部又分为支付核心模块以及支付服务模块</li>
+<li>产品层：通过核心层提供的服务组合起来，最终对用户、商户、运营管理人员提供的系统</li>
+</ul></li>
+</ul>
+
+<h3 id="7-2-1-支撑系统">7.2.1 支撑系统</h3>
+
+<ul>
+<li>支撑系统是一个公司提供给支付系统运行的基础设施。主要包括如下子系统
+
+<ul>
+<li>运维监控：支付系统在运行过程中不可避免的会受到各种内部和外部的干扰，光纤被挖断、黑客攻击、数据库被误删、上线系统中有 bug 等。运维人员必须在第一时间内对这些意外事件作出响应，又不能够一天 24 小时盯着。这就需要一个运维监控系统来协助完成</li>
+<li>日志分析：日志是支付系统统计分析、运维监控的重要依据。公司需要提供基础设施来支持日志统一收集和分析</li>
+<li>短信平台：短信在支付系统中有重要作用，包括身份验证、安全登录、找回密码，及报警监控</li>
+<li>安全机制：安全是支付的生命线。SSL、证书系统、防刷接口等，都是支付的必要设施</li>
+<li>统计报表：支付数据的可视化展示，是公司进行决策的基础</li>
+</ul></li>
+<li>远程连接管理、分布式计算、消息机制、全文检索、文件传输、数据存储、机器学习等，都是构建大型系统所必须的基础软件，这里不再一一详细介绍</li>
+</ul>
+
+<h3 id="7-2-2-支付核心系统">7.2.2 支付核心系统</h3>
+
+<ul>
+<li>支付核心系统指用户执行支付的核心流程，包括
+
+<ul>
+<li>1 用户从支付应用启动支付流程</li>
+<li>2 支付应用根据应用和用户选择的支付工具调用对应的支付产品执行支付</li>
+<li>3 支付路由根据支付工具、渠道费率、接口稳定性等因素选择合适的支付渠道来落地支付</li>
+<li>4 支付渠道调用银行、第三方支付等渠道提供的接口来执行支付操作，最终落地资金转移</li>
+</ul></li>
+</ul>
+
+<h3 id="7-2-3-支付服务系统">7.2.3 支付服务系统</h3>
+
+<ul>
+<li>支持支付核心系统所提供的功能。服务系统又分为基础服务系统、资金系统、风控和信用系统
+
+<ul>
+<li>基础服务系统：提供支撑线上支付系统运行的基础业务功能</li>
+<li>客户信息管理：对用户、商户的实名身份、基本信息、协议的管理</li>
+<li>卡券管理：对优惠券、代金券、折扣券的制作、发放、使用流程的管理</li>
+<li>支付通道管理: 通道接口、配置参数、费用、限额以及 QOS 的管理</li>
+<li>账户和账务系统：管理账户信息以及交易流水、记账凭证等。这里的账务一般指对接线上系统的账务，采用单边账的记账方式。内部账记录在会计核算系统中</li>
+<li>订单系统：一般订单系统可独立于业务系统实现。这里的订单主要指支付订单</li>
+<li>资金系统：围绕财务会计而产生的后台资金核实、调度和管理的系统，包括</li>
+<li>会计核算：提供会计科目、内部账务、试算平衡、日切、流水登记、核算和归档</li>
+<li>资金管理：管理公司在各个支付渠道的头寸，在余额不足时进行打款。对第三方支付公司，还需要对备付金进行管理</li>
+<li>清算分润：对于有分润需求的业务，还需要提供清分清算、对账处理和计费分润功能</li>
+<li>风控系统：支付系统必备的基础功能，所有的支付行为必须做风险评估并采取对应的措施</li>
+<li>信用系统：在风控基础上发展的高级功能，京东白条，蚂蚁花呗等都是成功的案例</li>
+</ul></li>
+</ul>
+
+<h2 id="7-3-支付应用">7.3 支付应用</h2>
+
+<ul>
+<li>支撑系统、核心系统和服务系统，在每个公司的架构上应该是大同小异的，都是必不可少的模块</li>
+<li>支付应用是每个公司根据自己的业务来构建的，各不相同。总的来说，可以按照使用对象分为针对最终用户的应用、针对商户的应用、针对运营人员的运营管理、BI 和风控后台</li>
+</ul>
+
+<h2 id="7-4-参考链接">7.4 参考链接</h2>
+
+<ul>
+<li><a href="http://www.woshipm.com/pmd/160822.html" target="_blank">最全最强解析：支付宝钱包系统架构内部剖析（架构图）</a></li>
+<li><a href="http://www.360doc.com/content/16/0724/20/19476362_578094252.shtml" target="_blank">京东：支付平台总体架构设计图</a></li>
+<li><a href="https://wenku.baidu.com/view/7daa609d376baf1ffd4fad09.html" target="_blank">美团支付平台产品规划</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/o2o/">o2o</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/&amp;text=7%20%e6%94%af%e4%bb%98%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%95%b4%e4%bd%93%e6%9e%b6%e6%9e%84" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/&amp;t=7%20%e6%94%af%e4%bb%98%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%95%b4%e4%bd%93%e6%9e%b6%e6%9e%84" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=7%20%e6%94%af%e4%bb%98%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%95%b4%e4%bd%93%e6%9e%b6%e6%9e%84&amp;body=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/&amp;title=7%20%e6%94%af%e4%bb%98%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%95%b4%e4%bd%93%e6%9e%b6%e6%9e%84" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=7%20%e6%94%af%e4%bb%98%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%95%b4%e4%bd%93%e6%9e%b6%e6%9e%84%20https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/&amp;title=7%20%e6%94%af%e4%bb%98%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%95%b4%e4%bd%93%e6%9e%b6%e6%9e%84" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/">1 基本概念和入门</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/">1 支付系统的账户模型</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/2_%E5%AF%B9%E8%B4%A6%E5%A4%84%E7%90%86/">2 对账处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/2_%E6%B8%A0%E9%81%93%E4%BE%A7%E5%A4%84%E7%90%86/">2 渠道侧处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/3_%E7%94%B5%E5%95%86%E4%BE%A7%E5%A4%84%E7%90%86/">3 电商侧处理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

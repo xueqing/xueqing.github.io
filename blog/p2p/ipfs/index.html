@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="IPFS 的优点 IPNS（去中心化命名系统） IPFS HTTP 网关 IPFS vs SC（Sia coin） 不可靠（Unreliable） VS 可靠（Reliable） 总结 IPFS(InterPlanetary File Sya">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/p2p/ipfs/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/p2p/ipfs/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/p2p/ipfs/">
+  <meta property="og:title" content="IPFS 入门 | kiki">
+  <meta property="og:description" content="IPFS 的优点 IPNS（去中心化命名系统） IPFS HTTP 网关 IPFS vs SC（Sia coin） 不可靠（Unreliable） VS 可靠（Reliable） 总结 IPFS(InterPlanetary File Sya"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>IPFS 入门 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>IPFS 入门</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#ipfs-%e7%9a%84%e4%bc%98%e7%82%b9">IPFS 的优点</a></li>
+<li><a href="#ipns%e5%8e%bb%e4%b8%ad%e5%bf%83%e5%8c%96%e5%91%bd%e5%90%8d%e7%b3%bb%e7%bb%9f">IPNS（去中心化命名系统）</a></li>
+<li><a href="#ipfs-http-%e7%bd%91%e5%85%b3">IPFS HTTP 网关</a></li>
+<li><a href="#ipfs-vs-scsia-coin">IPFS vs SC（Sia coin）</a></li>
+<li><a href="#%e4%b8%8d%e5%8f%af%e9%9d%a0unreliable-vs-%e5%8f%af%e9%9d%a0reliable">不可靠（Unreliable） VS 可靠（Reliable）</a></li>
+
+<li><p><a href="#%e6%80%bb%e7%bb%93">总结</a></p></li>
+
+<li><p>IPFS(InterPlanetary File Syatem，星际文件系统)是一个面向全球的、点对点的分布式版本文件系统，目标是为了补充甚至取代目前通知互联网的 HTTP（超文本传输协议），将所有具有相同文件系统的计算机设备连接在一起</p>
+
+<ul>
+<li>永久的、去中心化保存、共享文件</li>
+<li>内容可寻址：通过文件内容生成唯一哈希值来标识文件。相同内容的文件在系统中只存在一份，节约存储空间</li>
+<li>版本化：可追溯文件修改历史</li>
+<li>点对点超媒体分布式： P2P 保存各种类型的数据</li>
+</ul></li>
+
+<li><p>原理用基于内容的地址替代基于域名的地址，也就是用户寻找的不是某个地址而是存储在某个地方的内容，不需要验证发送者的身份，而只需要验证内容的哈希，这样可以让网页的速度更快、更安全、更健壮、更持久。</p></li>
+
+<li><p>HTTP 的问题：互联网的数据交互模式使用的是 B/S 和 C/S 模式，即客户-服务器、浏览器-服务器模式</p>
+
+<ul>
+<li>鼓励高度集中化：PFS 将 web 去中心化，可以降低极少数强大组织的延展性，提高所有站点的自由度和独立性，同时降低了由于服务器中断造成数据丢失的风险</li>
+<li>低效：HTTP 协议从一台服务器一次只能下载一个文件，IPFS 可代替总是从数据中心获取内容的 HTTP，减少数据传输的费用</li>
+<li>过度依赖于 Internet 主干网：Internet 主干网并不健全，易被攻击，同时一些重要的光纤线路被切断时服务容易遭受影响</li>
+<li>服务器成本昂贵： HTTP 需要大量的重心服务器保存数据</li>
+<li>历史文件被删除：网页平均使用寿命为 100 天，大量网站文件不能长期保存。重要的文件也会因操作不当而在互联网消失</li>
+<li>中心化的网络限制了发展：中心化的网络易被控制，限制了互联网的良性发展</li>
+</ul></li>
+</ul>
+
+<h2 id="ipfs-的优点">IPFS 的优点</h2>
+
+<ul>
+<li>IPFS 用户搜索的是内容。通过浏览器搜索文件时，先找到服务器的位置（IP 地址），然后使用路径名称在服务器查找文件
+
+<ul>
+<li>只有文件所有者可以判断是否是用户要找的文件</li>
+<li>必须保证托管这不会通过移除文件或者关闭服务器而对文件做任何更改</li>
+</ul></li>
+<li>当文件被添加到 IPFS 节点，得到一个加密哈希名字，是从文件内容计算得到，通过加密保证哈希只表示文件内容，文件内容修改，哈希都会不一样</li>
+<li>向 IPFS 分布式网络询问哈希时，通过使用一个分布式哈希表，可以快速找到拥有数据的节点，从而检索该数据，并使用哈希验证是否正确</li>
+<li>IPFS 是通用的，存储限制少。服务的文件可大可小。大的文件会自动切割为小块，是节点可以从数百台服务器同步下载</li>
+<li>IPFS 网络是细粒度、<a href="https://www.inetdaemon.com/tutorials/basic_concepts/communication/reliable_vs_unreliable.shtml" target="_blank">不可靠</a>、分布式、易联合的内容分发网络（CDN，Content Delivery Network）
+
+<ul>
+<li>IPFS 是静态 web 网站</li>
+<li>(不可靠和可靠的区别)</li>
+</ul></li>
+<li>IPFS 文件可以是特殊的目录对象，允许用户使用人类可读的文件名，透明地链接到其他哈希
+
+<ul>
+<li>用户可以通过默认方式加载目录中的 index.html，这也是标准的 HTTP 服务器采用的方式</li>
+<li>使用目录对象，IPFS 可允许用户采用完全相同的方式生成静态网站</li>
+</ul></li>
+<li>IPFS 通过网络删除具有相同哈希值的文件，通过计算可以判断哪些文件是冗余重复的</li>
+<li>每个网络节点只存储感兴趣的内容，以及一些索引信息，记录节点存储的内容</li>
+<li>提供文件的历史版本控制器，且让多节点使用保存不同版本的文件</li>
+<li>通过使用代币（FileCoin）的激励作用，让各节点有动力去存储数据。代币一个由加密货币驱动的存储网络。矿工通过为网络提供开放的硬盘空间获得代币，用户则用代币来支付在去中心化网卡中存储加密文件的费用</li>
+</ul>
+
+<h2 id="ipns-去中心化命名系统">IPNS（去中心化命名系统）</h2>
+
+<ul>
+<li>使用 IPNS，每个文件可以被协作命名为易读的名字</li>
+<li>IPNS 允许用户使用一个私钥来对 IPFS 哈希附加一个引用，使用一个公钥哈希（pubkeyhash）表示用户网站的最新版本</li>
+<li>如果链接不起作用，可以通过更改 pubkeyhash 指向的内容更新网站</li>
+</ul>
+
+<h2 id="ipfs-http-网关">IPFS HTTP 网关</h2>
+
+<p>通过一个 HTTP 网关，IPFS 可以实现从 HTTP 到 IPFS 的过渡。浏览器可以在完全实现 IPFS 之前，允许当前的浏览器访问 IPFS</p>
+
+<h2 id="ipfs-vs-sc-sia-coin">IPFS vs SC（Sia coin）</h2>
+
+<ul>
+<li>SC 是一条去中心化存储的公链，通过代币购买存储空间，将文件备份在互联网的多个节点上，提高文件的安全性</li>
+<li>IPFS 是一个底层的互联网协议，跟 HTTP 一样是交换信息。IPFS 实现的是互联网各个节点的文件读取、分享、交换</li>
+</ul>
+
+<h2 id="不可靠-unreliable-vs-可靠-reliable">不可靠（Unreliable） VS 可靠（Reliable）</h2>
+
+<ul>
+<li>可靠的：运行在可靠的协议的终端会一起工作检查传输的数据，以确保正确性和数据完整性
+
+<ul>
+<li>一个可靠的系统会建立一个连接并且验证所有传输的数据被控制是有序的，按照正确的顺序被接收并且是完好无损的</li>
+<li>可靠的协议对于丢失数据，易出错的物理介质工作比较好</li>
+<li>差错校验，排序和验证机制需要数据包的多余负载，增加了传输数据的总带宽</li>
+<li>TCP（Transmision Control Protocol）是典型的可靠协议，数据包平均增加 42-63 字节</li>
+<li>对于一个 Telnet 连接，单独传送每个击键，这样是非常低效的，因为传输一个有用的字节信息需要传输 64 个字节的数据包</li>
+</ul></li>
+<li>不可靠的
+
+<ul>
+<li>不可靠的协议不会建立连接，不检查数据是否被接收，也不会提供数据来恢复错误或丢失的数据</li>
+<li>不可靠的协议对于较少丢失数据和不易出错的物理介质工作较好</li>
+<li>UDP（User Datagram Protocol）是不可靠的协议，不会检查数据到达终端或者是完好无损的</li>
+<li>相比 TCP，UDP 增加了很小的数据负载，因此在高质量的物理介质上传输更快</li>
+</ul></li>
+</ul>
+
+<h2 id="总结-https-github-com-ipfs-ipfs-quick-summary"><a href="https://github.com/ipfs/ipfs#quick-summary" target="_blank">总结</a></h2>
+
+<ul>
+<li>IPFS 协议：定义了基于内容寻址的文件系统；协调内容分发；合并了 Kademlia + BitTorrent + Git</li>
+<li>IPFS 文件系统：有目录和文件；可挂载的文件系统（通过 FUSE）</li>
+<li>IPFS 网络：像网络一样查看文件</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/p2p/">p2p</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/p2p/ipfs/&amp;text=IPFS%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/p2p/ipfs/&amp;t=IPFS%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=IPFS%20%e5%85%a5%e9%97%a8&amp;body=https://xueqing.github.io/blog/p2p/ipfs/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/p2p/ipfs/&amp;title=IPFS%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=IPFS%20%e5%85%a5%e9%97%a8%20https://xueqing.github.io/blog/p2p/ipfs/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/p2p/ipfs/&amp;title=IPFS%20%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/">BitTorrent 协议</a></li>
+      
+      <li><a href="/blog/p2p/p2p%E5%8F%8Adht/">P2P 中 DHT 网络介绍</a></li>
+      
+      <li><a href="/blog/p2p/torrent/">torrent 文件</a></li>
+      
+      <li><a href="/blog/p2p/dht/">分布式原理</a></li>
+      
+      <li><a href="/blog/p2p/libp2p/">学习 libp2p</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

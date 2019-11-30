@@ -353,19 +353,91 @@
   
   
   <div>
-    <h2><a href="/blog/git/git_reset/">重设状态</a></h2>
+    <h2><a href="/blog/others/sphinx/">Sphinx 安装和配置</a></h2>
     <div class="article-style">
       
-      将当前分支的 HEAD 重设到指定的状态 语法 git reset [&lt;mode&gt;] [-q] [&lt;commit&gt;] mode 包括--soft | --mixed [N] | --hard | --merge | --keep 设置当前分支的 HEAD 到 &lt;commit&gt; mixed 是默认模式 reset 之前，git 会保存原本的 HEAD
+      # 安装 chocolatey，类似于 OS X 的 Homebrew # 管理员打开 powershell Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) # 测试 choco，在终端输入 choco 或 choco -? choco -? # 查看帮助文档 # 安装 python choco install python
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/docker/image_rep_cmd/">镜像仓库命令</a></h2>
+    <h2><a href="/blog/cplusplus/stl/">STL</a></h2>
     <div class="article-style">
       
-      登录/退出 拉取镜像 上传镜像 登录/退出 # 登陆到一个 Docker 镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub docker login [OPTIONS] [SERVER] # 登出一个 Docker 镜像仓库，如果未指
+      介绍 算法 头文件 algorithm 排序 搜索 重要的 STL 算法 未加工算法 加工算法 有用的 Array 算法 划分操作 头文件 valarray 容器 顺序容器 array vector deque forward_list list 容器适配器 stack queue priority_queue 关联容器 set multiset map multimap 无序
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/stl_push_emplace/">STL 的 push 和 emplace</a></h2>
+    <div class="article-style">
+      
+      前言 std::queue::emplace std::deque::emplace_back std::allocator_traits::construct std::allocator std::deque::allocator std::queue::push std::deque::push_back std::vector 的 emplace_back 和 push_back 产生时间 类型的构造函数不止 1 个 效率 std::map 的 emplace 和 insert 其他参考 前言 下面的说明以 STL 的 queue 为实例，其他 STL 还有 push_back/emplace_back 等，各自的影响不尽
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/string/">string</a></h2>
+    <div class="article-style">
+      
+      find vs find_first_of find 函数原型 // c++11 string (1) size_t find (const string&amp; str, size_t pos = 0) const noexcept; c-string (2) size_t find (const char* s, size_t pos = 0) const; buffer (3) size_t find (const char* s, size_t pos, size_type n) const; character (4) size_t find (char c, size_t pos = 0) const noexcept; find_first_of 函数原型 // c++11 string (1) size_t find_first_of
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/p2p/torrent/">torrent 文件</a></h2>
+    <div class="article-style">
+      
+      BT BT 下载 种子市场 torrent 文件（种子文件）是被下载文件的“索引”。本质上是文本文件，主要包含 Tracker 信息和文件信息 Tracker 信息：BT 下载中需要用到的 Tracker 服务器的地
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/others/uac_virtualization/">UAC 虚拟化</a></h2>
+    <div class="article-style">
+      
+      前言 Windows 7 上的 UAC 虚拟化 UAC 虚拟化的现象 思考 总结 参考 前言 在早期的 Windows 版本(XP,NTY,95 等)，通常由管理员安装应用。这些应用可以自由地读写系统文
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/using/">using 关键字</a></h2>
+    <div class="article-style">
+      
+      1 对命名空间的 using 指令 命名空间 using 指令 2 对命名空间成员的 using 声明 3 对类成员的 using 声明 4 类型别名与别名模板声明 参考 1 对命名空间的 using 指令 命名空间 命名空间
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/cplusplus/vector_resize_reserve/">vector 的 resize 和 reserve</a></h2>
+    <div class="article-style">
+      
+      resize 原型 void resize (size_type n); void resize (size_type n, const value_type&amp; val); resize 方法(传递参数来构造是一样的)调整容器大小使得包含 n 个元素 如果当前大小大于 n，会从尾部删除多余的元素 如果当前大
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/go/basic/go_waitgroup/">WaitGroup 和 worker pool</a></h2>
+    <div class="article-style">
+      
+      WaitGroup worker pool WaitGroup WaitGroup 用于等待一个集合的 goroutine 执行完毕。 WaitGroup 是一个结构体，内部使用了一个计数器，使用 Add 可以增加计数，使用 Done 可以减少计数。当计数为 0 的时候，Wa
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/blog/o2o/%E7%9B%88%E5%88%A9/">互联网盈利模式</a></h2>
+    <div class="article-style">
+      
+      简介 广告 增值服务 佣金 O2O 闭环 O2O 行业的普遍困境 闭环：走出困境的关键 如何构造闭环 O2O 分销 活动预热 引爆活动 保持活跃，二次刺激 缴税 简介 互联网企业通过广告
       
     </div>
   </div>
@@ -377,6 +449,8 @@
     
     <li class="page-item"><a class="page-link" href="/categories/blog/page/12/">&laquo;</a></li>
     
+    
+    <li class="page-item"><a class="page-link" href="/categories/blog/page/14/">&raquo;</a></li>
     
   </ul>
 </nav>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>logstash | kiki</title>
+    <link>https://xueqing.github.io/tags/logstash/</link>
+      <atom:link href="https://xueqing.github.io/tags/logstash/index.xml" rel="self" type="application/rss+xml" />
+    <description>logstash</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>logstash</title>
+      <link>https://xueqing.github.io/tags/logstash/</link>
+    </image>
+    
+    <item>
+      <title>logstash 配置文件学习</title>
+      <link>https://xueqing.github.io/blog/others/logstash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/others/logstash/</guid>
+      <description>
+
+&lt;h2 id=&#34;配置文件举例&#34;&gt;配置文件举例&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;默认位置是 &lt;code&gt;/usr/local/logstash/config/logstash-sample.conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;匹配需求描述&#34;&gt;匹配需求描述&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;先需要统计后台服务的日志, 主要有下面 4 类&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;日志类型&lt;/th&gt;
+&lt;th&gt;格式&lt;/th&gt;
+&lt;th&gt;举例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;服务器日志&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[localtime][log_level][module_name] {event_info}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[2019-07-25 09:26:57.315][debug ][EasyRedis] {Connect Redis success}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;设备认证日志&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[localtime][log_level][module_name][dev_name][dev_id][dev_ip] {event_info}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[2019-07-25 09:26:07.317][warn  ][GbsipServerService][cam1][34020000001320000001][192.168.10.199] {ON}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;用户认证日志&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[localtime][log_level][module_name][user_id][user_ip] {event_info}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[2019-07-25 09:26:14.049][warn  ][GbsipClientService][34020000001110000001][192.168.1.160] {online}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;用户操作日志&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[localtime][log_level][module_name][user_id][user_ip][dev_id] {event_info}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[2019-07-25 09:38:31.630][trace ][GbsipClientService][34020000001110000001][192.168.1.160][34020000001320000001] {Bye}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;现在的需求包括
+
+&lt;ul&gt;
+&lt;li&gt;1 过滤掉不符合上述 4 类格式的日志&lt;/li&gt;
+&lt;li&gt;2 可以一键搜索上述 4 种日志, 即查看所有满足要求的日志&lt;/li&gt;
+&lt;li&gt;3 可以一键搜索上述任意一种日志&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;实现方法
+
+&lt;ul&gt;
+&lt;li&gt;统一日志格式 &lt;code&gt;[type][localtime][log_level][module_name][user_id][user_ip][dev_name][dev_id][dev_ip] {event_info}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;缺少的字段为空&lt;/li&gt;
+&lt;li&gt;filter 的正则匹配表达式为 &lt;code&gt;\[%{DATA:localtime}\]\[%{DATA:log_level}\]\[%{DATA:module_name}\]\[%{NUMBER:type}\]\[%{DATA:user_id}\]\[%{DATA:user_ip}\]\[%{DATA:dev_name}\]\[%{DATA:dev_id}\]\[%{DATA:dev_ip}\]\ \{%{DATA:event_info}\}&lt;/code&gt;, 可用于分割日志&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;统一后日志举例&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;[2019-07-25 09:26:57.315][debug ][EasyRedis][1][][][][][] {Connect Redis success}
+[2019-07-25 09:26:07.317][warn  ][GbsipServerService][2][][][cam1][34020000001320000001][192.168.10.199] {ON}
+[2019-07-25 09:26:14.049][warn  ][GbsipClientService][3][34020000001110000001][192.168.1.160][][][] {online}
+[2019-07-25 09:38:31.630][trace ][GbsipClientService][4][34020000001110000001][192.168.1.160][][34020000001320000001][] {Bye}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;日志收集架构&#34;&gt;日志收集架构&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.elastic.co/products/beats/filebeat&#34; target=&#34;_blank&#34;&gt;filebeat&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;轻量级日志收集工具, 用于搜集文件数据, 比 logstash 占用资源更少&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;filebeat.yml&lt;/code&gt; 中会配置指定的监听文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.elastic.co/products/logstash&#34; target=&#34;_blank&#34;&gt;logstash&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用于日志收集, 具有 filter 功能, 可以过滤分析日志, 然后发送到消息队列&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.elastic.co/products/kibana&#34; target=&#34;_blank&#34;&gt;kibana&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;供前端的页面再进行搜索和图表可视化, 调用Elasticsearch的接口返回的数据进行可视化&lt;/li&gt;
+&lt;li&gt;用 Kibana 来搜索、查看, 并和存储在 ElasticSearch 索引中的数据进行交互&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.elastic.co/&#34; target=&#34;_blank&#34;&gt;ElasticSearch&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;搜索服务器, 提供了一个分布式多用户能力的全文搜索引擎, 基于 RESTful web 接口&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;完整配置文件&#34;&gt;完整配置文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-conf&#34;&gt;# Sample Logstash configuration for creating a simple
+# Beats -&amp;gt; Logstash -&amp;gt; Elasticsearch pipeline.
+
+input {
+  # 从日志文件中获取信息, 使用 filebeat 推送日志到 logstash
+  beats {
+    port =&amp;gt; 5044
+  }
+}
+
+filter {
+  # 如果搜索不到 &amp;quot;] {&amp;quot; 关键字, 丢弃该消息
+  # 其他日志内容均保证不含 &amp;quot;] {&amp;quot; 关键字
+  if &amp;quot;] {&amp;quot; not in [message] {
+    # drop 可以跳过某些不想统计的日志信息, 当某条日志信息符合 if 规则时
+    # 该条信息则不会在 out 中出现, logstash 将直接进行下一条日志的解析
+    drop { }
+  } else {
+    grok {
+      # 自定义正则匹配
+      match =&amp;gt; {&amp;quot;message&amp;quot; =&amp;gt; &amp;quot;\[%{DATA:localtime}\]\[%{DATA:log_level}\]%{DATA:c1}\[%{DATA:c2}\[%{DATA:module_name}\]\[%{NUMBER:type}\]\[%{DATA:user_id}\]\[%{DATA:user_ip}\]\[%{DATA:dev_name}\]\[%{DATA:dev_id}\]\[%{DATA:dev_ip}\]\ \{%{DATA:event_info}\}&amp;quot;}
+    }
+
+    # 匹配服务器日志成功
+    if &amp;quot;[1]&amp;quot; in [message] {
+      # mutate 是做转换用的
+      mutate {
+          # 添加字段 _log_info_, 便于搜索所有日志
+          add_field =&amp;gt; {
+            &amp;quot;_log_info_&amp;quot; =&amp;gt; &amp;quot;%{event_info}&amp;quot;
+          }
+          # 添加字段 _serv_log_, 便于搜索服务器日志
+          add_field =&amp;gt; {
+            &amp;quot;_serv_log_&amp;quot; =&amp;gt; &amp;quot;%{event_info}&amp;quot;
+          }
+      }
+    }
+    # 匹配设备认证日志成功
+    if &amp;quot;[2]&amp;quot; in [message] {
+      mutate {
+          add_field =&amp;gt; {
+            &amp;quot;_log_info_&amp;quot; =&amp;gt; &amp;quot;[%{dev_name}] [%{dev_id}] [%{dev_ip}] %{event_info}&amp;quot;
+          }
+          # 添加字段 _dev_log_, 便于搜索服务器日志
+          add_field =&amp;gt; {
+            &amp;quot;_dev_log_&amp;quot; =&amp;gt; &amp;quot;[%{dev_name}] [%{dev_id}] [%{dev_ip}] %{event_info}&amp;quot;
+          }
+      }
+    }
+    # 匹配用户认证日志成功
+    if &amp;quot;[3]&amp;quot; in [message] {
+      mutate {
+          add_field =&amp;gt; {
+            &amp;quot;_log_info_&amp;quot; =&amp;gt; &amp;quot;[%{user_id}] [%{user_ip}] %{event_info}&amp;quot;
+          }
+          # 添加字段 _user_log_, 便于搜索服务器日志
+          add_field =&amp;gt; {
+            &amp;quot;_user_log_&amp;quot; =&amp;gt; &amp;quot;[%{user_id}] [%{user_ip}] %{event_info}&amp;quot;
+          }
+      }
+    }
+    # 匹配用户操作日志成功
+    if &amp;quot;[4]&amp;quot; in [message] {
+      mutate {
+          add_field =&amp;gt; {
+            &amp;quot;_log_info_&amp;quot; =&amp;gt; &amp;quot;[%{user_id}] [%{user_ip}] [%{dev_id}] %{event_info}&amp;quot;
+          }
+          # 添加字段 _user_dev_log_, 便于搜索服务器日志
+          add_field =&amp;gt; {
+            &amp;quot;_user_dev_log_&amp;quot; =&amp;gt; &amp;quot;[%{user_id}] [%{user_ip}] [%{dev_id}] %{event_info}&amp;quot;
+          }
+      }
+    }
+  }
+}
+
+output {
+  # 将输出保存到 elasticsearch
+  elasticsearch {
+    hosts =&amp;gt; [&amp;quot;http://192.168.1.240:9200&amp;quot;]
+    index =&amp;gt; &amp;quot;%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

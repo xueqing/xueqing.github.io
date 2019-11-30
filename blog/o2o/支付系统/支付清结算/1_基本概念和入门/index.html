@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="1.1 支付流程 1.2 交易流水 1.3 会计主体 1.4 会计要素 1.5 会计科目 1.6 会计账户 1.7 记账凭证 1.8 会计分录和记账 1.9 更多问题 1.1 支付流程 先说个比较简单的支付场景，用户(小">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/">
+  <meta property="og:title" content="1 基本概念和入门 | kiki">
+  <meta property="og:description" content="1.1 支付流程 1.2 交易流水 1.3 会计主体 1.4 会计要素 1.5 会计科目 1.6 会计账户 1.7 记账凭证 1.8 会计分录和记账 1.9 更多问题 1.1 支付流程 先说个比较简单的支付场景，用户(小"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>1 基本概念和入门 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>1 基本概念和入门</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#11-%e6%94%af%e4%bb%98%e6%b5%81%e7%a8%8b">1.1 支付流程</a></li>
+<li><a href="#12-%e4%ba%a4%e6%98%93%e6%b5%81%e6%b0%b4">1.2 交易流水</a></li>
+<li><a href="#13-%e4%bc%9a%e8%ae%a1%e4%b8%bb%e4%bd%93">1.3 会计主体</a></li>
+<li><a href="#14-%e4%bc%9a%e8%ae%a1%e8%a6%81%e7%b4%a0">1.4 会计要素</a></li>
+<li><a href="#15-%e4%bc%9a%e8%ae%a1%e7%a7%91%e7%9b%ae">1.5 会计科目</a></li>
+<li><a href="#16-%e4%bc%9a%e8%ae%a1%e8%b4%a6%e6%88%b7">1.6 会计账户</a></li>
+<li><a href="#17-%e8%ae%b0%e8%b4%a6%e5%87%ad%e8%af%81">1.7 记账凭证</a></li>
+<li><a href="#18-%e4%bc%9a%e8%ae%a1%e5%88%86%e5%bd%95%e5%92%8c%e8%ae%b0%e8%b4%a6">1.8 会计分录和记账</a></li>
+<li><a href="#19-%e6%9b%b4%e5%a4%9a%e9%97%ae%e9%a2%98">1.9 更多问题</a></li>
+</ul>
+
+<h2 id="1-1-支付流程">1.1 支付流程</h2>
+
+<ul>
+<li>先说个比较简单的支付场景，用户(小明)用绑定的银行卡(工行)购买某电商公司(老熊公司)的产品。小明需要先在老熊公司网站上完成银行卡绑定的操作。绑卡以后，就可使用这个卡来购买商品。首先是挑选商品和下单，其后是执行支付。下单之前的流程不做介绍，从支付开始说明支付过程中的清结算问题</li>
+<li>为了简化，先从比较简单的同渠道、公司内购买的场景开始。商品也先假定为虚拟产品(如会员卡)。为了实现这个流程，有一些前置的操作需要完成：
+
+<ul>
+<li>老熊公司已对接工行的快捷支付接口。通过这个接口，可实现绑卡(签约)、支付、退款、查单等操作</li>
+<li>老熊公司已按照工行要求，在工行开了备付金账户。老熊公司通过工行接口的所有收款、退款等资金往来，都发生在这个账户</li>
+<li>小明在老熊公司的应用中绑定了自己的一张卡，为了简化处理，小明绑定的也是工行的卡，先省略跨行结算的步骤</li>
+</ul></li>
+<li>用户小明在手机或 PC Web 上购买了 100 元的虚拟产品(如会员卡)。这里先从虚拟物品入手，因为实体物品情况会复杂一点，供应链和物流也是一个大课题，购买实体物品就需要考虑这个问题，而虚拟产品就可暂不考虑。然后小明在网站上执行下单、支付操作</li>
+<li>老熊公司的支付系统收到小明的支付操作请求后，系统首先会校验订单是否有问题，然后调用工行快捷支付接口，从用户的工行卡上扣除 100 元
+
+<ul>
+<li>用户的工行卡的扣款是实时进行的，也就是说，这个操作完成后，小明查看他的工行余额和流水，会有一笔 100 元的交易，并且账户余额也减少了 100 元</li>
+<li>但是这个钱并不是直接进入老熊公司的(结算)账户。工行在第二天凌晨会对前天的交易进行清算和结算。在计算收入的同时，也从中扣除掉通道费用，得到最终应该划拨到结算账户上的金额。在这个例子中假定手续费按支付金额收费，比例为 0.1%。这一笔交易，支付给工行 0.10 元，公司收入 99.9 元</li>
+<li>这里需要注意。有些银行是在扣除手续费后，将前一天的余额全部划拨到结算账户上；有些银行是先全额划拨所有收入到结算账户上，然后扣除手续费</li>
+</ul></li>
+</ul>
+
+<h2 id="1-2-交易流水">1.2 交易流水</h2>
+
+<ul>
+<li>用户执行支付后，系统首先需要记录交易流水，流水的内容包括：
+
+<ul>
+<li>交易主体：即发起本次交易的出款的用户，一般是记录 ID、姓名等信息</li>
+<li>交易账户：即用户购买时使用的出款账户，这是用户在工行的卡，实际账户是建立在工行，但在电商系统中，为了便于结算，为这个账户建立一个代理。这个账户在系统中的 ID 是 10001(数据本身无其他含义)</li>
+<li>交易对手：即出卖虚拟产品的业务部门，一般记录部门的 ID、名称等信息</li>
+<li>结算收益：交易对手能够拿到的金额。这里是<code>支付金额-渠道费用</code>，即 99.9 元</li>
+<li>对手账户：即虚拟产品的收款账户，为了便于结算，公司一般会对每项业务设置独立的结算账户。这个账户在系统中的 ID 是 20001(数据本身无其他含义)</li>
+<li>交易渠道：即工行的快捷支付，还需要记录渠道的 ID，名称等</li>
+<li>渠道结算账号：这也是个代理账号，记录在渠道侧的交易流水。注册在电商侧，是电商自己的账户</li>
+<li>渠道提交时间：请求渠道执行支付的时间</li>
+<li>渠道支付时间：渠道一般会在返回的报文中说明本次交易的执行时间。如果没有，则使用渠道的支付接口返回时间</li>
+<li>渠道费率：渠道的手续费，这里假定工行是按支付金额收费，比例为支付金额的 0.1%</li>
+<li>渠道费用：这里是<code>支付金额*手续费率</code>，即 0.1 元</li>
+<li>发起交易日期：<code>2016年12月12日 13:00:10</code>，即用户提交订单后，虚拟产品业务调用支付系统接口执行支付的时间</li>
+<li>执行交易日期：<code>2016年12月12日 13:00:11</code>，即支付系统接口调用时间</li>
+<li>支付截止日期：必须在此日期前完成支付</li>
+<li>订单信息：在本例子中是会员卡，一般需要记录业务方订单 ID、名称、内容等信息</li>
+<li>订单金额：提交过来的原始订单的金额 100 元</li>
+<li>支付金额：用户实际支付的金额，由于没有使用优惠券、打折卡等，这里支付金额等于订单金额，是 100元</li>
+</ul></li>
+<li>没有使用卡券、没有和合作方分成，这两块内容暂不记录</li>
+<li>交易流水是在完成支付时实时生成的。这个流水信息是后续记账的依据，所以务必在流水中真实记录能收集到的所有的现场信息。这里从下面几个角度来多方位全角度的描述这笔交易
+
+<ul>
+<li>交易主体，即掏钱的小明</li>
+<li>交易对手，即收钱的业务方</li>
+<li>交易渠道，即工行快捷</li>
+<li>交易商品，即会员卡</li>
+</ul></li>
+<li>这里有不少冗余信息。实际上对交易涉及到所有可能会被修改的信息，如用户姓名、商品名称、商品价格，都需要在这里留一个快照，以便后续回溯和审核</li>
+</ul>
+
+<h2 id="1-3-会计主体">1.3 会计主体</h2>
+
+<ul>
+<li>这一笔账是老熊公司的账务，不是工行的账务，也不是小明家的账务。虽然这里会有工行和小明的信息，但记账的目的是为了了解和改进老熊公司的经营状况服务</li>
+<li>老熊公司不是某个大公司的分公司或子公司，它是一家独立核算的、具有独立的资金和经营业务的单位，从会计学角度来说，他是一个独立的会计实体</li>
+</ul>
+
+<h2 id="1-4-会计要素">1.4 会计要素</h2>
+
+<ul>
+<li>从概念上说，所有和钱有关的活动，买会员、用户充值、支付手续费等，都需要记账，这些活动，称之为会计对象</li>
+<li>每个公司都有不同的会计对象，有时候同一类活动，叫法不一样。如果直接用这些活动内容来记账，那就没法比较每个公司的情况。需要有一个记账的标准，让大家分门别类的做记录</li>
+<li>对会计对象做规范化的管理，这就引入会计要素的概念
+
+<ul>
+<li>会计要素是对会计对象进行的基本分类，是会计核算对象的具体化。如果说会计对象是个 Object，则会计要素是定义这个 Object 的 Class</li>
+<li>不同的国家对会计要素有不同的规定</li>
+<li>国际会计准则委员会(IASC)在《编制和呈报财务报表的结构》将会计要素其归类为资产、负债、权益、收益和费用五个要素</li>
+<li>美国财务会计准则委员会(FASB)在《财务会计概念公告》中将会计要素归类为资产、负债、所有者权益(净资产)、业主投资、派给业主款、综合收益、营业收入、费用、利润、损失十个要素</li>
+<li>我国《会计准则》将会计要素归类为资产、负债、所有者权益、收入、费用和利润六个要素。其中资产、负债和所有者权益，是反应公司的财务状况的。它满足如下恒等式：
+&gt; 资产=负债+所有者权益</li>
+</ul></li>
+</ul>
+
+<h2 id="1-5-会计科目">1.5 会计科目</h2>
+
+<ul>
+<li>六大会计要素指明了需要记账的 scope，但毕竟粒度还是太大了。为了更详细地了解公司财务情况，引入会计科目来对会计对象进行第二层次的划分</li>
+<li>使用 IT 的语言来说，会计科目其实就是一个分类体系，用来分门别类地记账</li>
+<li>在实现上，是一个<code>编号+名称</code>，IT 俗称字典表</li>
+<li>从定义上说，会计科目是指一个涵义明确、概念清楚、简明扼要、通俗易懂的标准名称</li>
+<li>会计科目按照经济内容的性质不同，可分为资产类科目、负债类科目、所有者权益类科目、损益类科目，成本类科目，有些金融企业还有资产负债共同类科目。在每一类会计科目下，还可继续细分，详细内容可参考2016年财政部发布的新会计准则。会计科目和要素之间的关系如下
+<img src="/blog/o2o/支付系统/ref/accountant_factor_relation.jpg" alt="会计科目和要素之间的关系" /></li>
+</ul>
+
+<p>| 会计要素 | 所属会计科目 |
+  | &mdash; | &mdash; |
+  | 资产 | 资产 |
+  | 负债 | 负债 |
+  | 所有者权益 | 所有者权益 |
+  | 收入 | 损益 |
+  | 费用 | 损益、成本 |
+  | 利润 | 损益 |
+  | - | 共同 |</p>
+
+<ul>
+<li>会计科目还分为总账科目和明细科目。从IT角度，可认为总账科目是一级分类，而明细科目则是这个一级分类下的二级、三级，甚至更多级别的详细的科目。记账时，会同时记录到总账、明细科目。在电商的支付系统中，一般会设置如下科目</li>
+</ul>
+
+<p>| 会计科目编号 | 会计科目名称 |
+  | &mdash; | &mdash; |
+  | 1002 | 银行存款(资产类) |
+  | 100201 | 业务收款 |
+  | 100201001 | 支付宝收款 |
+  | 100201002 | 工行收款 |
+  | 100201003 | 建行收款 |
+  | 1004 | 服务成本(成本类) |
+  | 100401001 | 支付宝手续费 |
+  | 100401002 | 工行手续费 |
+  | 100401003 | 建行手续费 |
+  | 6001 | 主营业务收入(损益类) |
+  | 6001001 | 会员卡业务 |
+  | 6001002 | 游戏业务 |</p>
+
+<h2 id="1-6-会计账户">1.6 会计账户</h2>
+
+<ul>
+<li>账户：指对会计要素的具体内容所作的科学的分类，包括两方面：账户的名称、账户的用途与结构</li>
+<li>会计科目是设置账户的依据，也是账户的名称。如对银行存款这个会计科目，也会设置一个对应的银行存款账户，用来跟踪公司在银行存款的变动</li>
+<li>在这个案例中，将设置的账户同会计科目。</li>
+</ul>
+
+<h2 id="1-7-记账凭证">1.7 记账凭证</h2>
+
+<ul>
+<li>在以前没有电脑的时候，去买公交卡，公交公司阿姨会认真地记录你买的卡的卡号、买卡人的姓名、卡的面值等信息，运气好的时候还会给个发票。一般来说，阿姨会将购买记录登记到一个账册上，形成记账凭证，并在这里会登记发票号码</li>
+<li>在现在高科技时代，这个凭证还是少不了了。先说明细账，记录内容如下
+<img src="/blog/o2o/支付系统/ref/receiving_voucher.jpg" alt="收款凭证" /></li>
+<li>这里详细记录每一条交易信息，当然，通过计算机系统，可记录更多详情，包括时间、地点等</li>
+</ul>
+
+<h2 id="1-8-会计分录和记账">1.8 会计分录和记账</h2>
+
+<ul>
+<li>大家经常看到的记录应该是这样的
+<img src="/blog/o2o/支付系统/ref/accountant_record.jpg" alt="会计记录" /></li>
+<li>银行存款、服务成本、主营业务收入，属于总账科目</li>
+<li>工行收款、会员卡、工行手续费，属于明细科目</li>
+<li>这里采用的是复式记账法中借贷记账法。对应的账户结构如下：
+<img src="/blog/o2o/支付系统/ref/accountant_struct.jpg" alt="账户结构" /></li>
+
+<li><p>借贷复式记账法的特点是</p>
+
+<ul>
+<li>采用借、贷作为记账符号，建立在会计恒等式基础上，遵循<strong>有借必有贷，借贷必相等</strong>的原则</li>
+<li>账户基本结构是： 左侧为借，右侧为贷</li>
+<li>一般采用如上图所示的 T 行账户的形式来描述</li>
+<li>借贷所代表的增加、减少的含义并不固定，和账户的性质有关</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>借方</th>
+<th>贷方</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>资产增加</td>
+<td>资产减少</td>
+</tr>
+
+<tr>
+<td>权益减少</td>
+<td>权益增加</td>
+</tr>
+
+<tr>
+<td>成本增加</td>
+<td>成本减少</td>
+</tr>
+
+<tr>
+<td>收入减少</td>
+<td>收入增加</td>
+</tr>
+
+<tr>
+<td>费用及支出增加</td>
+<td>费用及支出减少</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+<h2 id="1-9-更多问题">1.9 更多问题</h2>
+
+<ul>
+<li>作为清结算的入门介绍，这里介绍的是最简单的场景，以此来解释清结算相关的概念，特别是会计学一些从IT角度不容易理解的名词。实际上，这个场景还有很多问题：
+
+<ul>
+<li>严格的说，会员卡的收入，还不能立即作为公司主营业务收入。会员卡是预付款项，用户开始使用会员卡，公司需要为这个使用提供服务；用户结束使用会员卡之后，这一笔开支才算是真正落入公司主营业务收入中</li>
+<li>会员卡在使用期间，公司针对会员业务的各种开销，要分摊到这一段期间的会员上。将开销分摊到每张会员卡上，计算其使用成本，最终才能够计算出收益</li>
+<li>用户会员卡购买的款项是立即反映到备付金账户的，但并不是立即到结算账户的，一般是 T+1 结算，也就是第二天银行才会将清算好的资金打到公司结算账户上，这种情况应该如何记账？</li>
+<li>如果支付过程中使用了代金券和优惠券，那又应该如何考虑？</li>
+</ul></li>
+<li>此外，还有退款、充值等场景的清结算，这些问题都将在本系列的文章中详细介绍。本文仅介绍一些相关的概念</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/o2o/">o2o</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/&amp;text=1%20%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e5%92%8c%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/&amp;t=1%20%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e5%92%8c%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=1%20%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e5%92%8c%e5%85%a5%e9%97%a8&amp;body=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/&amp;title=1%20%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e5%92%8c%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=1%20%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e5%92%8c%e5%85%a5%e9%97%a8%20https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/&amp;title=1%20%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e5%92%8c%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/">1 支付系统的账户模型</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/2_%E5%AF%B9%E8%B4%A6%E5%A4%84%E7%90%86/">2 对账处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/2_%E6%B8%A0%E9%81%93%E4%BE%A7%E5%A4%84%E7%90%86/">2 渠道侧处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/3_%E7%94%B5%E5%95%86%E4%BE%A7%E5%A4%84%E7%90%86/">3 电商侧处理</a></li>
+      
+      <li><a href="/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/3_%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%94%AF%E4%BB%98/">3 银行卡支付</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

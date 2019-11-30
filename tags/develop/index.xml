@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>develop | kiki</title>
+    <link>https://xueqing.github.io/tags/develop/</link>
+      <atom:link href="https://xueqing.github.io/tags/develop/index.xml" rel="self" type="application/rss+xml" />
+    <description>develop</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>develop</title>
+      <link>https://xueqing.github.io/tags/develop/</link>
+    </image>
+    
+    <item>
+      <title>开发人员最佳实践</title>
+      <link>https://xueqing.github.io/blog/others/developers_best_practices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/others/developers_best_practices/</guid>
+      <description>
+
+&lt;ol&gt;
+&lt;li&gt;坚持阅读现存软件源码&lt;/li&gt;
+&lt;li&gt;进入下一阶段之前完成文档：设计方法、要诀和技巧、特殊函数/命令/指令、学习的教训、特殊场景、调试方法、最好的实践、任何对未来有帮助的&lt;/li&gt;
+&lt;li&gt;遵循定义好的规范，不要创建规范：文件命名习俗、函数/模块命名习俗、变量命名习俗、历史/缩进/注释、可读性指导、do/don&amp;rsquo;t 列表&lt;/li&gt;
+&lt;li&gt;写的代码应该被评审：不好的代码、不遵循规范、没有考虑性能、历史/缩进/注释不合适、可读性差、未关闭打开的文件、未释放申请的内存、太多全局变量、太多硬编码、不好的错误处理、没有模块化、重复的代码&lt;/li&gt;
+&lt;li&gt;像宗教信仰一样遵循测试&lt;/li&gt;
+&lt;li&gt;保持代码和文件的安全性&lt;/li&gt;
+&lt;li&gt;保持工具和技术是已使用的&lt;/li&gt;
+&lt;li&gt;持续学习&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;有用的书&#34;&gt;有用的书&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Better-Software-Faster-Practices-Prototyping-ebook/dp/B00L2GR7LQ//httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Better Software. Faster!: Best Practices in Virtual Prototyping&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Art-Lean-Software-Development/dp/0596517319/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;The Art of Lean Software Development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Software-Architecture-Practice-3rd-Engineering/dp/0321815734/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Architecture in Practice (3rd Edition) (SEI Series in Software Engineering)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.com/Software-Requirements-Developer-Best-Practices/dp/0735679665/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Requirements (3rd Edition) (Developer Best Practices)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Software-Requirement-Patterns-Developer-Practices/dp/0735623988/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Requirement Patterns (Developer Best Practices)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Software-Engineering-Best-Practices-Successful/dp/007162161X/httpwwwtuto0a-20&#34; target=&#34;_blank&#34;&gt;Software Engineering Best Practices: Lessons from Successful Projects in the Top Companies&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="分布式哈希表 DHT Kademlia Kademlia: A Peer-to-Peer Information System Based on the XOR Metric 论文阅读 异或度量 节点状态 KAD 协议 路由表 有效的 key re-publishing 优化 DHT 中 KAD 的应用 P2P(peer-to-peer) 技术的应用：文件分享、即时通信、协同处理">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/">
+  <meta property="og:title" content="P2P 中 DHT 网络介绍 | kiki">
+  <meta property="og:description" content="分布式哈希表 DHT Kademlia Kademlia: A Peer-to-Peer Information System Based on the XOR Metric 论文阅读 异或度量 节点状态 KAD 协议 路由表 有效的 key re-publishing 优化 DHT 中 KAD 的应用 P2P(peer-to-peer) 技术的应用：文件分享、即时通信、协同处理"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>P2P 中 DHT 网络介绍 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>P2P 中 DHT 网络介绍</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#%e5%88%86%e5%b8%83%e5%bc%8f%e5%93%88%e5%b8%8c%e8%a1%a8-dht">分布式哈希表 DHT</a></li>
+
+<li><p><a href="#kademlia">Kademlia</a></p>
+
+<ul>
+<li><a href="#kademlia-a-peer-to-peer-information-system-based-on-the-xor-metric-%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb">Kademlia: A Peer-to-Peer Information System Based on the XOR Metric 论文阅读</a></li>
+<li><a href="#%e5%bc%82%e6%88%96%e5%ba%a6%e9%87%8f">异或度量</a></li>
+<li><a href="#%e8%8a%82%e7%82%b9%e7%8a%b6%e6%80%81">节点状态</a></li>
+<li><a href="#kad-%e5%8d%8f%e8%ae%ae">KAD 协议</a></li>
+<li><a href="#%e8%b7%af%e7%94%b1%e8%a1%a8">路由表</a></li>
+<li><a href="#%e6%9c%89%e6%95%88%e7%9a%84-key-re-publishing">有效的 key re-publishing</a></li>
+<li><a href="#%e4%bc%98%e5%8c%96">优化</a></li>
+<li><a href="#dht-%e4%b8%ad-kad-%e7%9a%84%e5%ba%94%e7%94%a8">DHT 中 KAD 的应用</a></li>
+</ul></li>
+
+<li><p>P2P(peer-to-peer) 技术的应用：文件分享、即时通信、协同处理、流媒体通信等</p></li>
+
+<li><p>P2P 文件分享网络的发展阶段：</p>
+
+<ul>
+<li>包含 tracker 服务器的网络</li>
+<li>无任何服务器的纯 DHT 网络</li>
+<li>混合型 P2P 网络</li>
+</ul></li>
+</ul>
+
+<h2 id="分布式哈希表-dht">分布式哈希表 DHT</h2>
+
+<ul>
+<li>分布式哈希表(DHT， Distributed Hash Table)，一种分布式存储方法，一类可由键值来唯一标识的信息按照某种约定/协议被分散地存储在多个节点上</li>
+<li>不需要服务器，每个客户端负责一个小范围的路由，并负责存储一小部分数据，从而实现正哥 DHT 网络的寻址和存储</li>
+<li>可以有效地避免“中央集权式”的服务器(如 tracker)的单一故障而带来整个网络瘫痪</li>
+<li>实现 DHT 的算法常用的有 Chord，Pastry，Kademlia
+
+<ul>
+<li>最直接的目标是以最快的速度定位到期望的节点</li>
+<li>计算的是某种逻辑上的距离，因为地理距离的计算很复杂</li>
+</ul></li>
+</ul>
+
+<h2 id="kademlia">Kademlia</h2>
+
+<h3 id="kademlia-a-peer-to-peer-information-system-based-on-the-xor-metric-论文阅读">Kademlia: A Peer-to-Peer Information System Based on the XOR Metric 论文阅读</h3>
+
+<ul>
+<li>特点
+
+<ul>
+<li>最小化节点发送的配置消息：可以通过 key lookup 流程展开配置信息</li>
+<li>节点通过低延迟的路径来路由查询</li>
+<li>KAD 使用并行、异步查询来避免离线节点的超时</li>
+</ul></li>
+</ul>
+
+<h4 id="异或度量">异或度量</h4>
+
+<ul>
+<li>每个 KAD 节点有一个 160 比特长的 ID，节点 ID 是随机值
+
+<ul>
+<li>节点发送的每个消息包含自身的节点 ID，允许接收者记录发送者的存在性</li>
+</ul></li>
+<li>键(Key)也是 160 比特的标识符</li>
+<li>Kademlia 采用简单的异或计算衡量两节点之间的距离，与地理距离无关：<code>d(x,y)=xor(x,y)</code></li>
+<li>具备几何公式的多数特征
+
+<ul>
+<li>节点和本身的异或距离是 0：<code>d(x,x)=0</code></li>
+<li>异或距离是对称的：<code>d(x,y)=d(y,x)</code></li>
+<li>异或距离符合三角不等式：给定三个顶点 A B C，若 AC 之间的异或距离最大，则 AC 之间的异或必小于等于 AB 异或距离和 BC 异或距离之和</li>
+<li><code>d(x,y)+d(y,z)&gt;=d(x,z)</code></li>
+<li>证明：<code>xor(d(x,y), d(y,z))=d(x,z),且 a+b&gt;=xor(a,b)</code></li>
+<li>对于给定的一个距离，距离 A 只存在唯一的一个节点 B，也即单向性，在查找路径上也是单向的，这个和地理距离不同</li>
+<li><code>已知 x 和 dis, 求 y 使得 dis=xor(x,y)：xor(dis,x)=xor(xor(x,y),x)=y</code></li>
+</ul></li>
+</ul>
+
+<h4 id="节点状态">节点状态</h4>
+
+<ul>
+<li>KAD 节点存储其他节点的信息来路由请求消息</li>
+<li>每个节点保存一张三元组<code>&lt;IP_addr, UDP_port, Node_ID&gt;</code>链表，记录距离自身<code>2^i</code>到<code>2^(i+1)</code>的节点，称之为<code>k-bucket</code>(k 桶)
+
+<ul>
+<li>k-bucket 存储策略是<code>least-recently seen eviction</code>：最少最近访问的节点放在链表头，最多最近访问的节点放在链表尾</li>
+<li>关于 k 值
+
+<ul>
+<li>对于较小的 i，k-bucket 可能为空，即不存在合适的距离较近的节点</li>
+<li>对于较大的 i，链表的长度可以增加到 k</li>
+<li>k 是一个系统范围的参数，是指任意 k 个节点在一个小时内不会全部掉线</li>
+</ul></li>
+<li>关于 k-bucket 的更新
+
+<ul>
+<li>当一个 KAD 节点收到其他节点的消息（请求或者回复）时，节点会更新发送者节点 ID 对应的 k-bucket 信息</li>
+<li>如果发送节点已经存在 k-bucket，接收者将其移到链表尾部</li>
+<li>如果发送节点不在 k-bucket</li>
+<li>k-bucket 的元素数目小于 k，接收者将发送节点插入链表尾部</li>
+<li>k-bucket 已满，接收者将会 ping 最近最少访问的节点决定如何做
+
+<ul>
+<li>如果最近最少访问的节点没有回复，接收者将该节点从 k-bucket 移除，并将之前的发送者节点插入链表尾部</li>
+<li>如果收到最近最少访问的节点的回复，接收者将该节点移到链表尾部，并丢弃之前的发送者节点的信息</li>
+</ul></li>
+</ul></li>
+<li>k-bucket 不会将 live 的节点从链表移除
+
+<ul>
+<li>在线时间长的节点更值得信任，即下一段时间保持在线的可能性比新访问的节点更大</li>
+<li>k-bucket 在某种程度上可以抵制 DOS 攻击，因为节点的路由状态不会被新访问的节点刷新，当旧的节点没有离开系统时，k-bucket 不会插入新的节点</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4 id="kad-协议">KAD 协议</h4>
+
+<ul>
+<li>KAD 协议包括四个 RPC
+
+<ul>
+<li>ping：探测一个节点是否在线</li>
+<li>store：指导节点存储一个<code>&lt;key,value&gt;</code>对便于之后的检索</li>
+<li>find_node：取一个 160 比特的 ID 作为参数，发送给 k-bucket 的节点，接收者返回已知的距离目标 ID 最近的节点的三元组<code>&lt;IP_addr, UDP_port, Node_ID&gt;</code></li>
+<li>三元组可以来自一个 k-bucket</li>
+<li>当最近的 k-bucket 不满时，三元组来自多个 k-bucket</li>
+<li>RPC 接收者必须返回 k 个元素，当接收者所有的 k-bucket 加起来不到 k 个 节点，则返回它知道的所有节点</li>
+<li>find_value：类似于 find_node，当 RPC 接收者收到一个关于 key 的 store RPC，则返回存储的 value</li>
+<li>接收者若存储了 key 对应的 value，则返回 value</li>
+<li>否则返回距离 key 最近的 k 个节点的信息</li>
+</ul></li>
+<li>node lookup：每个 KAD 的参与者执行的一个最重要的操作就是对于给定的节点 ID，定位 k 个最近的节点
+
+<ul>
+<li>KAD 使用递归的算法查找节点</li>
+<li>查找的发起者从它最近的非空 k-bucket 中选择 α 个节点(当 bucket 中节点少于 α，则选择已知的最近的 α 个节点)
+
+<ul>
+<li>α 是系统范围的并发参数</li>
+<li>假设发起者是节点 x，x 先计算距离 d=xor(x, ID)</li>
+<li>x 从第 log2(d)个 k-bucket 中选择 α 个节点，不足 α 个节点时，从附近多个 bucket 中选择距离最接近 d 的一共 α 个节点</li>
+</ul></li>
+<li>查找的发起者发送并行、异步的 find_node RPC 到这 α 个节点</li>
+<li>接收者如果发现自己就是 ID，则回答自己是最接近的，否则计算自己和 ID 的距离，从中自己的 k-bucket 中选择 α 个节点返回</li>
+<li>发起者收到接收者回复的 k 个节点，再选择未发送过请求的 α 个节点，再次发送 find_node 请求到这 α 个节点
+
+<ul>
+<li>没有回复的节点直接被移除</li>
+</ul></li>
+<li>当所有的 find_node 不再返回比已知的节点更近的节点，查找的发起者发送重新发送 find_node 给所有最近且未查询过的 k 个节点</li>
+<li>当发起者查询并且收到 k 个最近的节点的回复，查询终止</li>
+</ul></li>
+<li>存储<code>&lt;key,value&gt;</code>对
+
+<ul>
+<li>参与者定位距离 key 最近的 k 个节点，并发送 store RPC</li>
+<li>每个节点间隔一段时间(如 24h)重新发布<code>&lt;key,value&gt;</code>对来保持 alive</li>
+</ul></li>
+<li>查找一个<code>&lt;key,value&gt;</code>对
+
+<ul>
+<li>一个节点先执行 lookup 找到 k 个距离 key 最近的节点 ID</li>
+<li>查找 value 使用 find_value RPC</li>
+<li>当任意节点返回此 value 时，此流程终止</li>
+<li>当查询成功时，发送请求的节点会存储<code>&lt;key,value&gt;</code>对到已知的距离最近且未返回 value 的节点</li>
+<li>由于拓扑的无方向性，查询相同的 key 可能会在找到最近的节点之前找到缓存的条目</li>
+<li>为了避免对常查找的 key 的&rdquo;over-caching&rdquo;，对于所有节点数据库的<code>&lt;key,value&gt;</code>对设置过期时间，过期时间与当前节点和距离 key 最近的节点之间的节点数成指数反比关系，即越远的节点过期时间越短</li>
+<li>数字可以通过当前节点的 bucket  结构推算出来</li>
+</ul></li>
+<li>通常通过请求在节点之间的转发更新 bucket。为了避免某些节点范围不被查询，每个在一小时之内未执行查询节点的节点会更新其所有的 bucket。
+
+<ul>
+<li>刷新意味着从 bucket 中随机选择一个 ID，并且对该 ID 执行一次节点查询</li>
+</ul></li>
+<li>新加入的节点 u 更新自己的 k-bucket
+
+<ul>
+<li>u 选择一个已经加入网络的节点 w 到自己的对应 k-bucket</li>
+<li>u 对自己的节点 ID 执行一次节点查询</li>
+<li>最终，u 更新自己所有的 k-bucket，同时插入自身到其他的一些节点的 k-bucket</li>
+</ul></li>
+</ul>
+
+<h4 id="路由表">路由表</h4>
+
+<ul>
+<li>KAD 的路由表是一个二叉树，叶子节点是 k-bucket
+
+<ul>
+<li>每个 k-bucket 包含和 ID 有一些共同前缀的节点，前缀是 k-bucket 在二叉树中的位置</li>
+<li>每个 k-bucket 覆盖了 ID 空间的某个范围，所有的 k-bucket 刚好覆盖了整个 160 比特的 ID 空间</li>
+</ul></li>
+<li>路由树的节点根据需要动态分布
+
+<ul>
+<li>一开始，一个节点 u 的路由表有一个节点，一个 k-bucket 覆盖整个 ID 空间</li>
+<li>当 u 得到新的联系信息，尝试插入到适合的 k-bucket</li>
+<li>当该 bucket 不满，则插入新的联系信息</li>
+<li>否则，如果 k-bucket 范围包含节点自身，则将 bucket 分为两个 bucket，再尝试插入适合的 bucket</li>
+<li>如果不同范围的 k-bucket 已满，则丢弃新的联系信息</li>
+</ul></li>
+</ul>
+
+<h4 id="有效的-key-re-publishing">有效的 key re-publishing</h4>
+
+<ul>
+<li>之前缓存了<code>&lt;key,value&gt;</code>对的节点可能会掉线，新加入的节点可能比缓存了<code>&lt;key,value&gt;</code>的节点距离 key 更近，因此持有<code>&lt;key,value&gt;</code>的节点需要重复发布</li>
+<li>KAD 每隔一个小时会重复发布所有的<code>&lt;key,value&gt;</code>对，以避免缓存过的节点掉线
+
+<ul>
+<li>re-publishing 过程的优化：</li>
+<li>每个收到 store RPC 的节点会假定消息已经发送到另外 k-1 个最近的节点，所以接收者不会发布这个消息。因此，当 re-publication 的间隔没有完全同步，每个小时，只有一个节点会 republish 指定的<code>&lt;key,value&gt;</code>对</li>
+<li>在 republish 之前避免查找节点。这样，一个节点对所有 k-bucket 的刷新可以分摊到许多的节点的重复发布过程中</li>
+<li>每个节点只会在自己的 ID 比其他节点距离 key 更近的情况下发布 store RPC</li>
+</ul></li>
+</ul>
+
+<h4 id="优化">优化</h4>
+
+<ul>
+<li>采用 LRU  策略维持 k-bucket 的联系信息时，为了避免发送过多的 ping 请求阻塞网络， KAD 增加一个替换缓存(Replacement cache)保存新得到的联系信息，当持有有用的信息才会发送 ping 信息给链表中的节点，如果节点没有回复，则从链表中删除该节点，并从替换缓存中找一个最近最多访问的节点插入链表头</li>
+<li>因为 KAD 使用 UDP，当网络阻塞的时候，网卡会丢掉一些包。 KAD 会锁住没有回复的联系信息，并不会再给这些联系节点发送 RPC</li>
+<li>当一个联系节点连续 5 次没有回复 RPC，其他节点会认为此联系节点是 stale（过时，失去时效），当节点的 k-bucket 不满或者替换缓存为空的时候， KAD 不会从 k-bucket 移除这个联系节点，而是将其置为 stale。这样保证了一个节点自身的网络连接暂时断掉的时候，不会将自身所有的 k-bucket 置为无效。（什么时候再置为有效呢？？？）</li>
+<li>减少查找节点的跳跃数：增加路由表的 size，即每次根据 b 个比特位来查找临近节点发送请求。但是这样会增加维护难度</li>
+</ul>
+
+<h3 id="dht-中-kad-的应用">DHT 中 KAD 的应用</h3>
+
+<ul>
+<li>每个节点的 ID 和种子文件的 info_hash 采用 sha-1 算法，节点和种子(<code>&lt;key,value&gt;</code>)的距离就是节点 ID 和 info_hash 的异或距离</li>
+<li>每个节点按照距离自己的异或远近将所有的节点划分成 160 棵子树，表示其他节点 ID 和自身 ID 的共同前缀的比特数的范围 0-159
+
+<ul>
+<li>每个节点的各个 k-bucket 记录了每个子树中的 k 个节点信息</li>
+</ul></li>
+<li>每个新加入 DHT 网络的节点更新路由表的步骤
+
+<ul>
+<li>如本节点曾经启动过，则从保存的“路由表”文件中直接读取然后刷新“路由表”</li>
+<li>如果节点第一次启动，且节点有“超级节点”，则通过这些“超级节点”来间接地生成自己的“路由表”</li>
+<li>如果节点第一次启动且没有“超级节点”，则路由表生成过程需要推迟到 download 文件过程。节点从获取到的种子文件提取 nodes 字段，通过这些 nodes 字段中的节点来间接生成自己的路由表</li>
+<li>该 nodes 字段是做种子（支持 DHt 网络的种子）的时候生成的</li>
+<li>一般 nodes 字段设置为原始种子的 ip 和 port，或者是做种子的节点离该种子的 info-hash 最近的 k 个节点</li>
+<li>动态建立过程：节点经过初始化后，在下载、上传或无任务过程中收到任何节点发送的消息，都会检查当前的“路由表”并尝试按照一定的规则去建立/刷新路由表</li>
+</ul></li>
+<li>tracker：对每一个分享文件（种子）维护一个 peers 列表，告诉需要下载的询问者 client</li>
+<li>DHT 查找类型包括
+
+<ul>
+<li>find_nodes：是为了建立路由表。节点 x 查找节点 y 的过程</li>
+<li>x 从 xor(x,y) 对应的本地 k-bucket 中得到 k 个比较近的节点</li>
+<li>x 向上面找到的 k 个节点发送消息查找节点 y</li>
+<li>收到请求的节点从自己的 k-bucket 中找到更近的 k 个节点返回给 x</li>
+<li>x 从收到的回复中选择 k 个最近的节点再次发送请求</li>
+<li>当 x 收到的回复的节点中没有更近的节点停止查找
+
+<ul>
+<li>x 最后得到 k 个距离 y 最近的节点</li>
+<li>在此过程中，x 会尝试将得到的节点插到自己的路由表中</li>
+</ul></li>
+<li>get_peers：与 find_nodes 类似，但是查找的参数不是节点 ID，而是 info_hash</li>
+<li>在查找过程中，收到任意<code>&lt;info_hash, peers_list&gt;</code>回复就停止查找</li>
+<li>得到 peers_list之后，节点会试图给每个 peer 主动发起 TCP 的连接，之后开始下载，同时会把自己的 peer 信息发送给 k 个距离自己最近的节点存储 <code>&lt;info_hash, peers_list&gt;</code>信息
+
+<ul>
+<li>k 个节点保存该信息 24 小时，期间没有收到 x 的更新消息则信息失效</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/p2p/">p2p</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/&amp;text=P2P%20%e4%b8%ad%20DHT%20%e7%bd%91%e7%bb%9c%e4%bb%8b%e7%bb%8d" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/&amp;t=P2P%20%e4%b8%ad%20DHT%20%e7%bd%91%e7%bb%9c%e4%bb%8b%e7%bb%8d" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=P2P%20%e4%b8%ad%20DHT%20%e7%bd%91%e7%bb%9c%e4%bb%8b%e7%bb%8d&amp;body=https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/&amp;title=P2P%20%e4%b8%ad%20DHT%20%e7%bd%91%e7%bb%9c%e4%bb%8b%e7%bb%8d" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=P2P%20%e4%b8%ad%20DHT%20%e7%bd%91%e7%bb%9c%e4%bb%8b%e7%bb%8d%20https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/p2p/p2p%E5%8F%8Adht/&amp;title=P2P%20%e4%b8%ad%20DHT%20%e7%bd%91%e7%bb%9c%e4%bb%8b%e7%bb%8d" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/p2p/bittorrent%E5%8D%8F%E8%AE%AE/">BitTorrent 协议</a></li>
+      
+      <li><a href="/blog/p2p/ipfs/">IPFS 入门</a></li>
+      
+      <li><a href="/blog/p2p/torrent/">torrent 文件</a></li>
+      
+      <li><a href="/blog/p2p/dht/">分布式原理</a></li>
+      
+      <li><a href="/blog/p2p/libp2p/">学习 libp2p</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

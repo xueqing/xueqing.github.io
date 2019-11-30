@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="kiki">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="0.1 dd 命令安装 0.1.1 无人值守安装 0.1.2 使用 dd 命令实现硬盘复制 0.1.2.1 dd 命令 0.1.2.2 dd 命令安装步骤 0.2 Linux LiveCD：从 CD 光盘运行 Linux 0.3 远程管理协议 0.3.1 RDP vs RFB 0.3.2 Telnet vs SSH 0.1 dd">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#ff3860">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="kiki">
+  <meta property="og:url" content="https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/">
+  <meta property="og:title" content="0 安装 | kiki">
+  <meta property="og:description" content="0.1 dd 命令安装 0.1.1 无人值守安装 0.1.2 使用 dd 命令实现硬盘复制 0.1.2.1 dd 命令 0.1.2.2 dd 命令安装步骤 0.2 Linux LiveCD：从 CD 光盘运行 Linux 0.3 远程管理协议 0.3.1 RDP vs RFB 0.3.2 Telnet vs SSH 0.1 dd"><meta property="og:image" content="https://xueqing.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://xueqing.github.io/img/icon-192.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>0 安装 | kiki</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">kiki</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>主页</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/blog/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/translation/"><span>翻译</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading/"><span>阅读</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>0 安装</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/kiki/">kiki</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/blog/">blog</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<ul>
+<li><a href="#01-dd-%e5%91%bd%e4%bb%a4%e5%ae%89%e8%a3%85">0.1 dd 命令安装</a>
+
+<ul>
+<li><a href="#011-%e6%97%a0%e4%ba%ba%e5%80%bc%e5%ae%88%e5%ae%89%e8%a3%85">0.1.1 无人值守安装</a></li>
+<li><a href="#012-%e4%bd%bf%e7%94%a8-dd-%e5%91%bd%e4%bb%a4%e5%ae%9e%e7%8e%b0%e7%a1%ac%e7%9b%98%e5%a4%8d%e5%88%b6">0.1.2 使用 dd 命令实现硬盘复制</a></li>
+<li><a href="#0121-dd-%e5%91%bd%e4%bb%a4">0.1.2.1 dd 命令</a></li>
+<li><a href="#0122-dd-%e5%91%bd%e4%bb%a4%e5%ae%89%e8%a3%85%e6%ad%a5%e9%aa%a4">0.1.2.2 dd 命令安装步骤</a></li>
+</ul></li>
+<li><a href="#02-linux-livecd%e4%bb%8e-cd-%e5%85%89%e7%9b%98%e8%bf%90%e8%a1%8c-linux">0.2 Linux LiveCD：从 CD 光盘运行 Linux</a></li>
+<li><a href="#03-%e8%bf%9c%e7%a8%8b%e7%ae%a1%e7%90%86%e5%8d%8f%e8%ae%ae">0.3 远程管理协议</a>
+
+<ul>
+<li><a href="#031-rdp-vs-rfb">0.3.1 RDP vs RFB</a></li>
+<li><a href="#032-telnet-vs-ssh">0.3.2 Telnet vs SSH</a></li>
+</ul></li>
+</ul>
+
+<h2 id="0-1-dd-命令安装">0.1 dd 命令安装</h2>
+
+<h3 id="0-1-1-无人值守安装">0.1.1 无人值守安装</h3>
+
+<ul>
+<li>面对大批量服务器的安装，人们往往热衷于选择“无人值守安装”的方式，而此方式需要对服务器进行过多配置</li>
+<li>无人值守安装(Kickstart)，又称全自动安装，其工作原理是，创建一个名为 ks.cfg 的文件记录 Linux 系统在安装过程中需要人工干预填写的各种参数
+
+<ul>
+<li>当安装过程中出现要填写参数时，安装程序会自行去 ks.cfg 文件中查找合适的参数，如果没找到，还是需要手工干预</li>
+<li>在 ks.cfg 文件涵盖安装过程所有可能需要填写的参数的前提下，安装者只需要告诉安装程序 ks.cfg 文件的位置，就可实现全自动安装</li>
+</ul></li>
+</ul>
+
+<h3 id="0-1-2-使用-dd-命令实现硬盘复制">0.1.2 使用 dd 命令实现硬盘复制</h3>
+
+<ul>
+<li>用 dd 命令实现硬盘复制，间接实现安装 Linux 系统的方法，类似 Windows 下用 GHOST 软件进行硬盘克隆</li>
+</ul>
+
+<h4 id="0-1-2-1-dd-命令">0.1.2.1 dd 命令</h4>
+
+<ul>
+<li>dd 命令用于复制文件。它可以用指定大小的数据块复制一个文件，并在复制的同时进行指定的转换</li>
+<li>简单地理解，dd 命令可用于进行两块硬盘之间的复制(完整复制出一块和原系统盘一样的硬盘)</li>
+<li>格式 <code>dd if=输入文件 of=输出文件 bs=字节数 count=个数</code></li>
+
+<li><p>选项</p>
+
+<ul>
+<li>if=输入文件：指定源文件或源设备</li>
+<li>of=输出文件：指定目标文件或目标设备</li>
+<li>bs=字节数：指定一次输入/输出多少字节，即把这些字节看作一个数据块</li>
+
+<li><p>count=个数：指定输入/输出多少个数据块</p>
+
+<pre><code class="language-sh"># 创建一个 100MB 大小的文件 testfile
+# /dev/zero是一个输入设备，可以使用它来初始化文件，该设备无穷尽地输出 0
+# 可以理解为向 testfile 中不停地写 0，直到写满 100MB
+[root@localhost ~]# dd if=/dev/zero of=/root/testfile bs=1k count=100000
+
+# 把第一块硬盘中的数据复制到第二块硬盘中
+[root@localhost ~]# dd if=/dev/sda of=/dev/sdb
+
+# 把第一块硬盘中的数据复制到 image 文件中
+[root@localhost ~]# dd if=/dev/hda of=/root/image
+</code></pre></li>
+</ul></li>
+
+<li><p>使用 dd 命令复制硬盘，需满足以下两个前提条件</p>
+
+<ul>
+<li>需要批量复制的服务器硬件配置一致。通常，采购服务器都是批量采购的，服务器的配置都是一样的</li>
+<li>复制硬盘的时候，需要手工更换被复制盘。服务器上一般都是 SCSI 硬盘，SCSI 硬盘支持热插拔，而且不需要拆卸机箱，更换被复制盘非常方便</li>
+</ul></li>
+</ul>
+
+<h4 id="0-1-2-2-dd-命令安装步骤">0.1.2.2 dd 命令安装步骤</h4>
+
+<ul>
+<li>使用 dd 命令安装 Linux，实际上就是硬盘之间的完整拷贝，其实现过程如下
+
+<ul>
+<li>把母盘插入服务器的第一个硬盘插口，把被复制盘插入服务器的第二个硬盘插口，注意不要插反</li>
+<li>执行复制命令<code>dd if=/dev/sda of=/dev/sdb</code></li>
+<li>/dev/sda 代表第一块 SCSI 盘，/dev/sdb 代表第二块 SCSI 盘</li>
+<li>这条命令会把第一块硬盘中的数据完整地复制到第二块硬盘中</li>
+</ul></li>
+<li>经过以上两步，即可实现将服务器之间的复制</li>
+<li>此方法的效率：由于复制的速度和服务器的配置及安装软件的多少相关，因此每台服务器的复制时间约为15〜25分钟。选择无人值守安装的方式，也要受到服务器端配置和网络带宽的影响</li>
+<li>硬盘复制也可以多台服务器同时操作</li>
+</ul>
+
+<h2 id="0-2-linux-livecd-从-cd-光盘运行-linux">0.2 Linux LiveCD：从 CD 光盘运行 Linux</h2>
+
+<ul>
+<li>一些 Linux 发行版创建了含有 Linux 样本系统的可引导 CD，称为 Linux LiveCD</li>
+<li>由于单张 CD 容量的限制，这个样本并非完整的 Linux 系统，不过可以自己加入各种软件。结果就是，可以通过 CD 来启动 PC，并且无需在硬盘安装任何东西就能运行 Linux 发行版</li>
+<li>这是一个不弄乱 PC 就体验各种 Linux 发行版的绝妙方法。只需插入 CD 就能引导。所有的 Linux 软件都将直接从 CD 上运行。可以从互联网上下载各种 Linux LiveCD，刻录，体验</li>
+<li>Linux LiveCD 也有一些不足之处
+
+<ul>
+<li>由于要从 CD 上访问所有东西，应用程序会运行得更慢，而如果再搭配上陈旧缓慢的 PC 和光驱，那更是慢上加慢</li>
+<li>由于无法向 CD 写入数据，对 Linux 系统作的任何修改都会在重启后失效</li>
+</ul></li>
+</ul>
+
+<h2 id="0-3-远程管理协议">0.3 远程管理协议</h2>
+
+<ul>
+<li>远程管理，通常指远程管理服务器，而非个人计算机。个人计算机可以随时拿来用，服务器通常放置在机房中，用户无法直接接触到服务器硬件，只能采用远程管理的方式</li>
+<li>远程管理，实际上就是计算机(服务器)之间通过网络进行数据传输(信息交换)的过程，与浏览器需要 HTTP 协议(超文本传输协议)浏览网页一样，远程管理同样需要远程管理协议的支持</li>
+<li>目前，常用的远程管理协议有 4 种</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>描述</th>
+<th>特点</th>
+<th>举例</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>RDP(remote desktop protocol)协议</td>
+<td>远程桌面协议，大部分 Windows 系统都默认支持此协议</td>
+<td>-</td>
+<td>Windows 系统中的远程桌面管理就基于该协议</td>
+</tr>
+
+<tr>
+<td>RFB(Remote FrameBuffer)协议</td>
+<td>图形化远程管理协议</td>
+<td>-</td>
+<td>VNC 远程管理工具就基于此协议</td>
+</tr>
+
+<tr>
+<td>Telnet</td>
+<td>命令行界面远程管理协议，几乎所有操作系统都默认支持此协议</td>
+<td>在进行数据传送时使用明文传输的方式，也就是不对数据进行加密</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>SSH(Secure Shell)协议</td>
+<td>命令行界面远程管理协议，几乎所有操作系统都默认支持此协议</td>
+<td>和 Telnet 不同，该协议在数据传输时会对数据进行加密并压缩，因此使用此协议传输数据既安全速度又快</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="0-3-1-rdp-vs-rfb">0.3.1 RDP vs RFB</h3>
+
+<ul>
+<li>都允许用户通过图形用户界面访问远程系统</li>
+<li>RFB 协议倾向于传输图像，RDP 协议倾向于传输指令
+
+<ul>
+<li>RFB 协议会在服务器端将窗口在显存中画好，然后将图像传给客户端，客户端只需将得到的图像解码显示</li>
+<li>RDP 会将画图的工作交给客户端，服务器端需要根据客户端的显示能力做适当的调整</li>
+</ul></li>
+<li>因此，完成相同的操作，使用 RFB 协议传输的数据量会比 RDP 大，而 RDP 对客户端的要求比 RFB 更苛刻，RFB 适用于瘦客户端，而 RDP 适用于低速网络
+
+<ul>
+<li>瘦客户端是相对于胖客户端而言的，比如，人们使用 QQ 需要下载客户端，这属于“胖客户”</li>
+<li>反之，通过浏览器就可查阅网络上各种资料，无需再下载其他任何软件，这属于“瘦客户”</li>
+<li>简单理解，瘦客户端指的是最大可能减轻客户端的负担，多数工作由服务器端完成；胖客户端则相反</li>
+</ul></li>
+</ul>
+
+<h3 id="0-3-2-telnet-vs-ssh">0.3.2 Telnet vs SSH</h3>
+
+<ul>
+<li>都是命令行远程管理协议，有共同的应用领域，常用于远程访问服务器</li>
+<li>相比 Telnet 协议，SSH 协议在发送数据时会对数据进行加密操作，数据传输更安全</li>
+<li>因此 SSH 协议几乎在所有应用领域代替了 Telnet 协议</li>
+<li>在一些测试、无需加密的场合（如局域网），Telnet协议仍常被使用</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/linux/">linux</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/&amp;text=0%20%e5%ae%89%e8%a3%85" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/&amp;t=0%20%e5%ae%89%e8%a3%85" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=0%20%e5%ae%89%e8%a3%85&amp;body=https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/&amp;title=0%20%e5%ae%89%e8%a3%85" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=0%20%e5%ae%89%e8%a3%85%20https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://xueqing.github.io/blog/linux/0_%E5%AE%89%E8%A3%85/&amp;title=0%20%e5%ae%89%e8%a3%85" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/kiki/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>相关</h3>
+    <ul>
+      
+      <li><a href="/blog/linux/1_%E7%AE%80%E4%BB%8B/">1 简介</a></li>
+      
+      <li><a href="/blog/linux/2_%E5%90%AF%E5%8A%A8/">2 Linux 系统启动过程</a></li>
+      
+      <li><a href="/blog/linux/3_%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">3 系统目录结构</a></li>
+      
+      <li><a href="/blog/linux/4_%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7/">4 文件基本属性</a></li>
+      
+      <li><a href="/blog/linux/5_%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/">5 文件与目录管理</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js" integrity="sha256-vOIuDSYDirTfyr+S2MjFnhOz6Rgiz4ODFAHATG0rFxw=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

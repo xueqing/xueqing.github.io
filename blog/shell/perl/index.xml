@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>perl 命令和脚本 | kiki</title>
+    <link>https://xueqing.github.io/blog/shell/perl/</link>
+      <atom:link href="https://xueqing.github.io/blog/shell/perl/index.xml" rel="self" type="application/rss+xml" />
+    <description>perl 命令和脚本</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>perl 命令和脚本</title>
+      <link>https://xueqing.github.io/blog/shell/perl/</link>
+    </image>
+    
+    <item>
+      <title>perl 脚本解析 xml 文件</title>
+      <link>https://xueqing.github.io/blog/shell/perl/perl%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/shell/perl/perl%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;1 使用模块 XML::Simple。XML::Simple 能够解析一个 XML 文件并在以一个 Perl 哈希引用返回数据。在这个哈希中，来自原始 XML 文件的元素作为键，而它们之间的 CDATA 作为值。一旦XML::Simple 处理完一个 XML 文件，XML 文件的内容就可以使用标准 Perl 数组表示法检索。&lt;/li&gt;
+&lt;li&gt;2 安装步骤，进入命令行执行：
+
+&lt;ul&gt;
+&lt;li&gt;1 &lt;code&gt;perl -MCPAN -e shell&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;2 &lt;code&gt;install XML::Simple&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;3 脚本内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-perl&#34;&gt;#!/usr/bin/perl
+  
+# use module
+use XML::Simple;
+  
+if($#ARGV &amp;lt; 1) {
+print &amp;quot;Usage: ./parsexml.pl filename parseparam\n&amp;quot;;
+exit(0);
+}
+  
+$filename = $ARGV[0];
+$parseparam = $ARGV[1];
+#print &amp;quot;Input param [filename=$filename] [parseparam=$parseparam]\n&amp;quot;;
+  
+# create object
+$xml = new XML::Simple;
+  
+# read XML file
+my $doc = $xml-&amp;gt;XMLin($filename);
+  
+# access XML data
+print &amp;quot;$doc-&amp;gt;{$parseparam}\n&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;4 执行脚本&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 添加可执行权限：&lt;code&gt;chmod +x parsexml.pl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;2 执行：&lt;code&gt;./parsexml.pl filename parseparam&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

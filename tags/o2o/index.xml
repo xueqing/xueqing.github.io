@@ -1,0 +1,2959 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>o2o | kiki</title>
+    <link>https://xueqing.github.io/tags/o2o/</link>
+      <atom:link href="https://xueqing.github.io/tags/o2o/index.xml" rel="self" type="application/rss+xml" />
+    <description>o2o</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://xueqing.github.io/img/icon-192.png</url>
+      <title>o2o</title>
+      <link>https://xueqing.github.io/tags/o2o/</link>
+    </image>
+    
+    <item>
+      <title>支付清结算</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/readme/</guid>
+      <description>
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;1_基本概念和入门.md&#34; target=&#34;_blank&#34;&gt;基本概念和入门&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;2_渠道侧处理.md&#34; target=&#34;_blank&#34;&gt;渠道侧处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;3_电商侧处理.md&#34; target=&#34;_blank&#34;&gt;电商侧处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;4_账户和账务处理.md&#34; target=&#34;_blank&#34;&gt;账户和账务处理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/571712.html&#34; target=&#34;_blank&#34;&gt;支付清结算之基本概念和入门&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/576430.html&#34; target=&#34;_blank&#34;&gt;支付清结算之渠道侧处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/584132.html&#34; target=&#34;_blank&#34;&gt;支付清结算之电商侧处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/585521.html&#34; target=&#34;_blank&#34;&gt;支付清结算之账户和账务处理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>支付系统设计</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/readme/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1&#34;&gt;支付系统设计&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%9B%AE%E5%BD%95&#34;&gt;目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8F%82%E8%80%83&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;1_支付系统的账户模型.md&#34; target=&#34;_blank&#34;&gt;支付系统的账户模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;2_对账处理.md&#34; target=&#34;_blank&#34;&gt;对账处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;3_银行卡支付.md&#34; target=&#34;_blank&#34;&gt;银行卡支付&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;4_绑卡签约和身份验证.md&#34; target=&#34;_blank&#34;&gt;绑卡、签约和身份验证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;5_应用内支付.md&#34; target=&#34;_blank&#34;&gt;应用内支付&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;6_支付产品服务设计.md&#34; target=&#34;_blank&#34;&gt;支付产品服务设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;7_支付系统的整体架构.md&#34; target=&#34;_blank&#34;&gt;支付系统的整体架构&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/459443.html&#34; target=&#34;_blank&#34;&gt;支付系统设计：支付系统的账户模型（一）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/it/459445.html&#34; target=&#34;_blank&#34;&gt;支付系统设计：对账处理（二）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/477150.html&#34; target=&#34;_blank&#34;&gt;支付系统设计：银行卡支付（三）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/478366.html&#34; target=&#34;_blank&#34;&gt;支付系统设计：绑卡、签约和身份验证（四）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/484085.html&#34; target=&#34;_blank&#34;&gt;支付系统设计：应用内支付（五）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/632482.html&#34; target=&#34;_blank&#34;&gt;从产品分类、模块功能和业务流程，了解支付产品服务的设计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/640373.html&#34; target=&#34;_blank&#34;&gt;浅析支付系统的整体架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;其他
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/732301.html&#34; target=&#34;_blank&#34;&gt;支付网关设计概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/450345.html&#34; target=&#34;_blank&#34;&gt;支付网关的设计：核心模块的功能需求、软件架构设计以及注意要点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pd/688629.html&#34; target=&#34;_blank&#34;&gt;支付手续费设计思路&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1 基本概念和入门</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/1_%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E5%85%A5%E9%97%A8/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-%e6%94%af%e4%bb%98%e6%b5%81%e7%a8%8b&#34;&gt;1.1 支付流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e4%ba%a4%e6%98%93%e6%b5%81%e6%b0%b4&#34;&gt;1.2 交易流水&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-%e4%bc%9a%e8%ae%a1%e4%b8%bb%e4%bd%93&#34;&gt;1.3 会计主体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-%e4%bc%9a%e8%ae%a1%e8%a6%81%e7%b4%a0&#34;&gt;1.4 会计要素&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-%e4%bc%9a%e8%ae%a1%e7%a7%91%e7%9b%ae&#34;&gt;1.5 会计科目&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#16-%e4%bc%9a%e8%ae%a1%e8%b4%a6%e6%88%b7&#34;&gt;1.6 会计账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#17-%e8%ae%b0%e8%b4%a6%e5%87%ad%e8%af%81&#34;&gt;1.7 记账凭证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#18-%e4%bc%9a%e8%ae%a1%e5%88%86%e5%bd%95%e5%92%8c%e8%ae%b0%e8%b4%a6&#34;&gt;1.8 会计分录和记账&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#19-%e6%9b%b4%e5%a4%9a%e9%97%ae%e9%a2%98&#34;&gt;1.9 更多问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-1-支付流程&#34;&gt;1.1 支付流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;先说个比较简单的支付场景，用户(小明)用绑定的银行卡(工行)购买某电商公司(老熊公司)的产品。小明需要先在老熊公司网站上完成银行卡绑定的操作。绑卡以后，就可使用这个卡来购买商品。首先是挑选商品和下单，其后是执行支付。下单之前的流程不做介绍，从支付开始说明支付过程中的清结算问题&lt;/li&gt;
+&lt;li&gt;为了简化，先从比较简单的同渠道、公司内购买的场景开始。商品也先假定为虚拟产品(如会员卡)。为了实现这个流程，有一些前置的操作需要完成：
+
+&lt;ul&gt;
+&lt;li&gt;老熊公司已对接工行的快捷支付接口。通过这个接口，可实现绑卡(签约)、支付、退款、查单等操作&lt;/li&gt;
+&lt;li&gt;老熊公司已按照工行要求，在工行开了备付金账户。老熊公司通过工行接口的所有收款、退款等资金往来，都发生在这个账户&lt;/li&gt;
+&lt;li&gt;小明在老熊公司的应用中绑定了自己的一张卡，为了简化处理，小明绑定的也是工行的卡，先省略跨行结算的步骤&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用户小明在手机或 PC Web 上购买了 100 元的虚拟产品(如会员卡)。这里先从虚拟物品入手，因为实体物品情况会复杂一点，供应链和物流也是一个大课题，购买实体物品就需要考虑这个问题，而虚拟产品就可暂不考虑。然后小明在网站上执行下单、支付操作&lt;/li&gt;
+&lt;li&gt;老熊公司的支付系统收到小明的支付操作请求后，系统首先会校验订单是否有问题，然后调用工行快捷支付接口，从用户的工行卡上扣除 100 元
+
+&lt;ul&gt;
+&lt;li&gt;用户的工行卡的扣款是实时进行的，也就是说，这个操作完成后，小明查看他的工行余额和流水，会有一笔 100 元的交易，并且账户余额也减少了 100 元&lt;/li&gt;
+&lt;li&gt;但是这个钱并不是直接进入老熊公司的(结算)账户。工行在第二天凌晨会对前天的交易进行清算和结算。在计算收入的同时，也从中扣除掉通道费用，得到最终应该划拨到结算账户上的金额。在这个例子中假定手续费按支付金额收费，比例为 0.1%。这一笔交易，支付给工行 0.10 元，公司收入 99.9 元&lt;/li&gt;
+&lt;li&gt;这里需要注意。有些银行是在扣除手续费后，将前一天的余额全部划拨到结算账户上；有些银行是先全额划拨所有收入到结算账户上，然后扣除手续费&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-2-交易流水&#34;&gt;1.2 交易流水&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户执行支付后，系统首先需要记录交易流水，流水的内容包括：
+
+&lt;ul&gt;
+&lt;li&gt;交易主体：即发起本次交易的出款的用户，一般是记录 ID、姓名等信息&lt;/li&gt;
+&lt;li&gt;交易账户：即用户购买时使用的出款账户，这是用户在工行的卡，实际账户是建立在工行，但在电商系统中，为了便于结算，为这个账户建立一个代理。这个账户在系统中的 ID 是 10001(数据本身无其他含义)&lt;/li&gt;
+&lt;li&gt;交易对手：即出卖虚拟产品的业务部门，一般记录部门的 ID、名称等信息&lt;/li&gt;
+&lt;li&gt;结算收益：交易对手能够拿到的金额。这里是&lt;code&gt;支付金额-渠道费用&lt;/code&gt;，即 99.9 元&lt;/li&gt;
+&lt;li&gt;对手账户：即虚拟产品的收款账户，为了便于结算，公司一般会对每项业务设置独立的结算账户。这个账户在系统中的 ID 是 20001(数据本身无其他含义)&lt;/li&gt;
+&lt;li&gt;交易渠道：即工行的快捷支付，还需要记录渠道的 ID，名称等&lt;/li&gt;
+&lt;li&gt;渠道结算账号：这也是个代理账号，记录在渠道侧的交易流水。注册在电商侧，是电商自己的账户&lt;/li&gt;
+&lt;li&gt;渠道提交时间：请求渠道执行支付的时间&lt;/li&gt;
+&lt;li&gt;渠道支付时间：渠道一般会在返回的报文中说明本次交易的执行时间。如果没有，则使用渠道的支付接口返回时间&lt;/li&gt;
+&lt;li&gt;渠道费率：渠道的手续费，这里假定工行是按支付金额收费，比例为支付金额的 0.1%&lt;/li&gt;
+&lt;li&gt;渠道费用：这里是&lt;code&gt;支付金额*手续费率&lt;/code&gt;，即 0.1 元&lt;/li&gt;
+&lt;li&gt;发起交易日期：&lt;code&gt;2016年12月12日 13:00:10&lt;/code&gt;，即用户提交订单后，虚拟产品业务调用支付系统接口执行支付的时间&lt;/li&gt;
+&lt;li&gt;执行交易日期：&lt;code&gt;2016年12月12日 13:00:11&lt;/code&gt;，即支付系统接口调用时间&lt;/li&gt;
+&lt;li&gt;支付截止日期：必须在此日期前完成支付&lt;/li&gt;
+&lt;li&gt;订单信息：在本例子中是会员卡，一般需要记录业务方订单 ID、名称、内容等信息&lt;/li&gt;
+&lt;li&gt;订单金额：提交过来的原始订单的金额 100 元&lt;/li&gt;
+&lt;li&gt;支付金额：用户实际支付的金额，由于没有使用优惠券、打折卡等，这里支付金额等于订单金额，是 100元&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;没有使用卡券、没有和合作方分成，这两块内容暂不记录&lt;/li&gt;
+&lt;li&gt;交易流水是在完成支付时实时生成的。这个流水信息是后续记账的依据，所以务必在流水中真实记录能收集到的所有的现场信息。这里从下面几个角度来多方位全角度的描述这笔交易
+
+&lt;ul&gt;
+&lt;li&gt;交易主体，即掏钱的小明&lt;/li&gt;
+&lt;li&gt;交易对手，即收钱的业务方&lt;/li&gt;
+&lt;li&gt;交易渠道，即工行快捷&lt;/li&gt;
+&lt;li&gt;交易商品，即会员卡&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这里有不少冗余信息。实际上对交易涉及到所有可能会被修改的信息，如用户姓名、商品名称、商品价格，都需要在这里留一个快照，以便后续回溯和审核&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-3-会计主体&#34;&gt;1.3 会计主体&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这一笔账是老熊公司的账务，不是工行的账务，也不是小明家的账务。虽然这里会有工行和小明的信息，但记账的目的是为了了解和改进老熊公司的经营状况服务&lt;/li&gt;
+&lt;li&gt;老熊公司不是某个大公司的分公司或子公司，它是一家独立核算的、具有独立的资金和经营业务的单位，从会计学角度来说，他是一个独立的会计实体&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-4-会计要素&#34;&gt;1.4 会计要素&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;从概念上说，所有和钱有关的活动，买会员、用户充值、支付手续费等，都需要记账，这些活动，称之为会计对象&lt;/li&gt;
+&lt;li&gt;每个公司都有不同的会计对象，有时候同一类活动，叫法不一样。如果直接用这些活动内容来记账，那就没法比较每个公司的情况。需要有一个记账的标准，让大家分门别类的做记录&lt;/li&gt;
+&lt;li&gt;对会计对象做规范化的管理，这就引入会计要素的概念
+
+&lt;ul&gt;
+&lt;li&gt;会计要素是对会计对象进行的基本分类，是会计核算对象的具体化。如果说会计对象是个 Object，则会计要素是定义这个 Object 的 Class&lt;/li&gt;
+&lt;li&gt;不同的国家对会计要素有不同的规定&lt;/li&gt;
+&lt;li&gt;国际会计准则委员会(IASC)在《编制和呈报财务报表的结构》将会计要素其归类为资产、负债、权益、收益和费用五个要素&lt;/li&gt;
+&lt;li&gt;美国财务会计准则委员会(FASB)在《财务会计概念公告》中将会计要素归类为资产、负债、所有者权益(净资产)、业主投资、派给业主款、综合收益、营业收入、费用、利润、损失十个要素&lt;/li&gt;
+&lt;li&gt;我国《会计准则》将会计要素归类为资产、负债、所有者权益、收入、费用和利润六个要素。其中资产、负债和所有者权益，是反应公司的财务状况的。它满足如下恒等式：
+&amp;gt; 资产=负债+所有者权益&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-5-会计科目&#34;&gt;1.5 会计科目&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;六大会计要素指明了需要记账的 scope，但毕竟粒度还是太大了。为了更详细地了解公司财务情况，引入会计科目来对会计对象进行第二层次的划分&lt;/li&gt;
+&lt;li&gt;使用 IT 的语言来说，会计科目其实就是一个分类体系，用来分门别类地记账&lt;/li&gt;
+&lt;li&gt;在实现上，是一个&lt;code&gt;编号+名称&lt;/code&gt;，IT 俗称字典表&lt;/li&gt;
+&lt;li&gt;从定义上说，会计科目是指一个涵义明确、概念清楚、简明扼要、通俗易懂的标准名称&lt;/li&gt;
+&lt;li&gt;会计科目按照经济内容的性质不同，可分为资产类科目、负债类科目、所有者权益类科目、损益类科目，成本类科目，有些金融企业还有资产负债共同类科目。在每一类会计科目下，还可继续细分，详细内容可参考2016年财政部发布的新会计准则。会计科目和要素之间的关系如下
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/accountant_factor_relation.jpg&#34; alt=&#34;会计科目和要素之间的关系&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;| 会计要素 | 所属会计科目 |
+  | &amp;mdash; | &amp;mdash; |
+  | 资产 | 资产 |
+  | 负债 | 负债 |
+  | 所有者权益 | 所有者权益 |
+  | 收入 | 损益 |
+  | 费用 | 损益、成本 |
+  | 利润 | 损益 |
+  | - | 共同 |&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;会计科目还分为总账科目和明细科目。从IT角度，可认为总账科目是一级分类，而明细科目则是这个一级分类下的二级、三级，甚至更多级别的详细的科目。记账时，会同时记录到总账、明细科目。在电商的支付系统中，一般会设置如下科目&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;| 会计科目编号 | 会计科目名称 |
+  | &amp;mdash; | &amp;mdash; |
+  | 1002 | 银行存款(资产类) |
+  | 100201 | 业务收款 |
+  | 100201001 | 支付宝收款 |
+  | 100201002 | 工行收款 |
+  | 100201003 | 建行收款 |
+  | 1004 | 服务成本(成本类) |
+  | 100401001 | 支付宝手续费 |
+  | 100401002 | 工行手续费 |
+  | 100401003 | 建行手续费 |
+  | 6001 | 主营业务收入(损益类) |
+  | 6001001 | 会员卡业务 |
+  | 6001002 | 游戏业务 |&lt;/p&gt;
+
+&lt;h2 id=&#34;1-6-会计账户&#34;&gt;1.6 会计账户&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;账户：指对会计要素的具体内容所作的科学的分类，包括两方面：账户的名称、账户的用途与结构&lt;/li&gt;
+&lt;li&gt;会计科目是设置账户的依据，也是账户的名称。如对银行存款这个会计科目，也会设置一个对应的银行存款账户，用来跟踪公司在银行存款的变动&lt;/li&gt;
+&lt;li&gt;在这个案例中，将设置的账户同会计科目。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-7-记账凭证&#34;&gt;1.7 记账凭证&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在以前没有电脑的时候，去买公交卡，公交公司阿姨会认真地记录你买的卡的卡号、买卡人的姓名、卡的面值等信息，运气好的时候还会给个发票。一般来说，阿姨会将购买记录登记到一个账册上，形成记账凭证，并在这里会登记发票号码&lt;/li&gt;
+&lt;li&gt;在现在高科技时代，这个凭证还是少不了了。先说明细账，记录内容如下
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/receiving_voucher.jpg&#34; alt=&#34;收款凭证&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;这里详细记录每一条交易信息，当然，通过计算机系统，可记录更多详情，包括时间、地点等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-8-会计分录和记账&#34;&gt;1.8 会计分录和记账&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大家经常看到的记录应该是这样的
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/accountant_record.jpg&#34; alt=&#34;会计记录&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;银行存款、服务成本、主营业务收入，属于总账科目&lt;/li&gt;
+&lt;li&gt;工行收款、会员卡、工行手续费，属于明细科目&lt;/li&gt;
+&lt;li&gt;这里采用的是复式记账法中借贷记账法。对应的账户结构如下：
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/accountant_struct.jpg&#34; alt=&#34;账户结构&#34; /&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;借贷复式记账法的特点是&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;采用借、贷作为记账符号，建立在会计恒等式基础上，遵循&lt;strong&gt;有借必有贷，借贷必相等&lt;/strong&gt;的原则&lt;/li&gt;
+&lt;li&gt;账户基本结构是： 左侧为借，右侧为贷&lt;/li&gt;
+&lt;li&gt;一般采用如上图所示的 T 行账户的形式来描述&lt;/li&gt;
+&lt;li&gt;借贷所代表的增加、减少的含义并不固定，和账户的性质有关&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;借方&lt;/th&gt;
+&lt;th&gt;贷方&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;资产增加&lt;/td&gt;
+&lt;td&gt;资产减少&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;权益减少&lt;/td&gt;
+&lt;td&gt;权益增加&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;成本增加&lt;/td&gt;
+&lt;td&gt;成本减少&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;收入减少&lt;/td&gt;
+&lt;td&gt;收入增加&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;费用及支出增加&lt;/td&gt;
+&lt;td&gt;费用及支出减少&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-9-更多问题&#34;&gt;1.9 更多问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;作为清结算的入门介绍，这里介绍的是最简单的场景，以此来解释清结算相关的概念，特别是会计学一些从IT角度不容易理解的名词。实际上，这个场景还有很多问题：
+
+&lt;ul&gt;
+&lt;li&gt;严格的说，会员卡的收入，还不能立即作为公司主营业务收入。会员卡是预付款项，用户开始使用会员卡，公司需要为这个使用提供服务；用户结束使用会员卡之后，这一笔开支才算是真正落入公司主营业务收入中&lt;/li&gt;
+&lt;li&gt;会员卡在使用期间，公司针对会员业务的各种开销，要分摊到这一段期间的会员上。将开销分摊到每张会员卡上，计算其使用成本，最终才能够计算出收益&lt;/li&gt;
+&lt;li&gt;用户会员卡购买的款项是立即反映到备付金账户的，但并不是立即到结算账户的，一般是 T+1 结算，也就是第二天银行才会将清算好的资金打到公司结算账户上，这种情况应该如何记账？&lt;/li&gt;
+&lt;li&gt;如果支付过程中使用了代金券和优惠券，那又应该如何考虑？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;此外，还有退款、充值等场景的清结算，这些问题都将在本系列的文章中详细介绍。本文仅介绍一些相关的概念&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1 支付系统的账户模型</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/1_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-%e5%89%8d%e8%a8%80&#34;&gt;1.1 前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-%e6%94%af%e4%bb%98%e8%b4%a6%e6%88%b7%e5%92%8c%e7%99%bb%e5%bd%95%e8%b4%a6%e5%8f%b7&#34;&gt;1.2 支付账户和登录账号&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-%e8%b4%a6%e6%88%b7%e7%9a%84%e8%ae%be%e8%ae%a1%e9%9c%80%e6%b1%82&#34;&gt;1.3 账户的设计需求&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#131-%e4%ba%a4%e6%98%93%e4%b8%8e%e8%b4%a6%e6%88%b7&#34;&gt;1.3.1 交易与账户&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#14-%e8%ae%b0%e8%b4%a6%e4%b8%8e%e8%b4%a6%e6%88%b7&#34;&gt;1.4 记账与账户&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#141-%e5%86%85%e9%83%a8%e8%b4%a6%e6%88%b7%e5%92%8c%e5%a4%96%e9%83%a8%e8%b4%a6%e6%88%b7&#34;&gt;1.4.1 内部账户和外部账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#142-%e6%94%b6%e6%ac%be%e8%b4%a6%e6%88%b7%e5%92%8c%e6%94%b6%e5%8d%95%e8%b4%a6%e6%88%b7&#34;&gt;1.4.2 收款账户和收单账户&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#15-%e8%b4%a6%e6%88%b7%e5%bb%ba%e6%a8%a1&#34;&gt;1.5 账户建模&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#151-%e5%ae%9e%e4%bd%93%e6%a8%a1%e5%9e%8b&#34;&gt;1.5.1 实体模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#152-%e8%b4%a6%e6%88%b7%e6%a8%a1%e5%9e%8b&#34;&gt;1.5.2 账户模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#153-%e4%ba%a4%e6%98%93%e6%a8%a1%e5%9e%8b&#34;&gt;1.5.3 交易模型&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-1-前言&#34;&gt;1.1 前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;账户体系是支付系统的基础，它的设计直接影响整个系统的特性。这里探讨如何针对电子商务系统的支付账户体系设计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-2-支付账户和登录账号&#34;&gt;1.2 支付账户和登录账号&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付账户：指用户在支付系统中用于交易的资金所有者权益的凭证&lt;/li&gt;
+&lt;li&gt;登录账号：指用户在系统中的登录的凭证和个人信息&lt;/li&gt;
+&lt;li&gt;关系
+
+&lt;ul&gt;
+&lt;li&gt;一个用户可有多个登录账户，一个登录账户可有多个支付账户，如零钱账户，储值卡账户等&lt;/li&gt;
+&lt;li&gt;一般来说，支付账户不会在多个登录账户之间共用。如没有特殊说明，下文中的账户，都默认指支付账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-3-账户的设计需求&#34;&gt;1.3 账户的设计需求&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在支付系统中，账户的设置，主要考虑的方面
+
+&lt;ul&gt;
+&lt;li&gt;交易需求：如检查账户是否被锁定、余额是否足够、是否有效等&lt;/li&gt;
+&lt;li&gt;记账需求：按照公司会计需求记录账户上的所有行为，包括支出、充值、转账等&lt;/li&gt;
+&lt;li&gt;对账需求：包括和支付渠道、商户、个人的对账需求，核对交易和账户余额是否正确&lt;/li&gt;
+&lt;li&gt;风控需求：如反洗钱、反欺诈等，都需要依赖于账户体系来提供核心数据&lt;/li&gt;
+&lt;li&gt;信用需求：对用户、资产、商户等主体进行信用评估时，也需要依赖账户体系来提供的核心数据&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这五个需求，按照其设计的优先级，也是从支付、记账、对账、风控来进行。支付系统根据其发展所处的阶段，逐步将新增需求纳入设计中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-3-1-交易与账户&#34;&gt;1.3.1 交易与账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;账户设置，一般从交易开始。交易的实现必须有账户的支持，账户是交易的基本构成元素&lt;/li&gt;
+&lt;li&gt;从支付系统的角度，交易中涉及到的资金流是资金从一个账户流向另一个账户
+
+&lt;ul&gt;
+&lt;li&gt;交易主体：发起交易的一方。可以是个人或机构。资金从该主体所拥有的账户中流出&lt;/li&gt;
+&lt;li&gt;交易对手：接收交易的一方。可以是个人或机构&lt;/li&gt;
+&lt;li&gt;渠道：由于电商系统本身并无清结算的资质，所有资金从交易主体到交易对手的账户的流动，在大部分情况下，并没有经过电商系统，而是由电商系统调用支付渠道提供的接口，由它来完成真正的支付过程。在此过程中，渠道要收取费用&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;所以，在电商系统中，一次交易会涉及到三个账户： 交易主体账户、交易对手账户及支付渠道账户&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-4-记账与账户&#34;&gt;1.4 记账与账户&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;记账：公司的会计需要对每一笔交易都要做详细的记录&lt;/li&gt;
+&lt;li&gt;会计科目：公司每天都产生大量的交易行为，为了方便管理和统计，一个简单的方法是对交易进行分类，比如食品、带宽、办公用品等等。这个分类按照公司的规模和业务复杂度，可以有一级、二级、三级或更多级的结构，这被称之为会计科目&lt;/li&gt;
+&lt;li&gt;记账时，除了交易明细，还需要在每个级别上对交易额进行汇总
+
+&lt;ul&gt;
+&lt;li&gt;一般来说，一级科目上汇总称为总帐科目，而详细记录称为明细科目&lt;/li&gt;
+&lt;li&gt;电商系统中，涉及到的参与方较多，记账也相对复杂，但基本方法类似。电商的参与者可以分为商户、买家和渠道，对这三类参与者，都需要分别建立总帐账户和明细账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-4-1-内部账户和外部账户&#34;&gt;1.4.1 内部账户和外部账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;外部账户：支付系统只能记录账户在本系统的明细以及累计消费额，无法得知账户真正余额
+
+&lt;ul&gt;
+&lt;li&gt;用户使用银行卡支付时，电商支付系统需要和银行对接，从用户银行卡所代表的账户上扣除资金&lt;/li&gt;
+&lt;li&gt;对接了银行、第三方支付等机构的电商支付系统，需要连接到用户在这些机构的账户来执行扣款或者充值操作，这些账户称为外部账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;内部账号：可以知道账号的全部消费明细和余额
+
+&lt;ul&gt;
+&lt;li&gt;零钱：也就是让用户充值到零钱，使用的时候就直接从零钱中扣除。这就需要零钱账号。这是电商系统中自己设立的账号，所以也叫内部账号&lt;/li&gt;
+&lt;li&gt;除了零钱账号，也可以有储值卡账号，信用账号等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-4-2-收款账户和收单账户&#34;&gt;1.4.2 收款账户和收单账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;收款账户：当电商要对接银行时，往往都会被要求开设一个收款账户
+
+&lt;ul&gt;
+&lt;li&gt;用户通过这个银行来支付时，钱就被转到这个账户上。对第三方支付也是一样&lt;/li&gt;
+&lt;li&gt;收款账户是开设在银行或者第三方支付这边的，即渠道侧。一般来说，渠道每天都可以提供这个账户的交易流水供电商对账用。这样在电商这边，渠道就成为一个收单机构&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;收单账号：在电商这边，建立这个收款账户对应的对账用的收单账号，用来记录通过这个渠道进行的各项交易流水
+
+&lt;ul&gt;
+&lt;li&gt;开设一个账号，绑定这个收款账户，就可以查这个账户在渠道侧的流水&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-5-账户建模&#34;&gt;1.5 账户建模&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;账户模型和公司业务密切相关，不同规模、发展阶段不同的公司需要不同的模型&lt;/li&gt;
+&lt;li&gt;账户建模本身包括三大核心模型：实体模型、账户模型和交易模型&lt;/li&gt;
+&lt;li&gt;明细模型：从交易模型中可以衍生出针对各个角色的账户流水，用于支持对账&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-5-1-实体模型&#34;&gt;1.5.1 实体模型&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;实体模型：和用户、商户模型有重叠的地方，这里专门针对支付而设置的各个实体属性&lt;/li&gt;
+&lt;li&gt;一般来说，支付相关的实体模型需要包括如下属性
+
+&lt;ul&gt;
+&lt;li&gt;用户 ID：一般直接映射到登录账户的 ID&lt;/li&gt;
+&lt;li&gt;是否允许执行支付&lt;/li&gt;
+&lt;li&gt;支付密码&lt;/li&gt;
+&lt;li&gt;手机号：用于设置或者重置支付密码&lt;/li&gt;
+&lt;li&gt;邮箱：用于设置或者重置支付密码&lt;/li&gt;
+&lt;li&gt;用户的安全等级：根据业务需要来设置&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-5-2-账户模型&#34;&gt;1.5.2 账户模型&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;根据业务需要，可设置多种账户，如支付账户、预付卡账户、代扣账户、零钱账户、结算账户等&lt;/li&gt;
+&lt;li&gt;从类别上来说，这里的账户一般指总账账户&lt;/li&gt;
+&lt;li&gt;一般来说电商系统中涉及的账户类型有：
+
+&lt;ul&gt;
+&lt;li&gt;虚拟币账号：用户和使用奇点奇豆的商户都需要建立虚拟币账户&lt;/li&gt;
+&lt;li&gt;关于虚拟币：商家先接受虚拟币，如何结算需要和商家定协议&lt;/li&gt;
+&lt;li&gt;代扣账号：用来支持订阅类型的定期代扣&lt;/li&gt;
+&lt;li&gt;零钱账号：即电商的内部账号.用户、商户、清算单位需要建立零钱账户&lt;/li&gt;
+&lt;li&gt;第三方支付账号：用户在第三方支付机构建立的账户&lt;/li&gt;
+&lt;li&gt;银行卡账号：用户的银行卡信息，每个卡对应一个账户&lt;/li&gt;
+&lt;li&gt;结算账号：用来支持和第三方支付公司、银行进行结算用。第三方支付需要为每个商户号建立结算账号；银行需要为借记卡、贷记卡分别建立结算账号(有必要吗？银行卡直连时使用)&lt;/li&gt;
+&lt;li&gt;代扣代缴账户：用来支持代扣税款业务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;对这些账户，需要设置如下属性
+
+&lt;ul&gt;
+&lt;li&gt;基本属性&lt;/li&gt;
+&lt;li&gt;账户号(账户 ID)：一般是系统自动生成。特别注意，要事先约定好账户 ID 的规则。如头三位用来表示账户类型，后几位用来表示账户编号等。务必保证根据账号号能快速确定账户类型，且保证账户号不重复&lt;/li&gt;
+&lt;li&gt;账户名称：一般由用户自己设置的，显示用&lt;/li&gt;
+&lt;li&gt;账户使用的货币类型：注意虽然一张银行卡可以支持多个币种，实际在内部，还是针对每个币种建立独立的子账户。涉及到多币种的账户，也可以采用类似的建模方案&lt;/li&gt;
+&lt;li&gt;会计科目代码：一般是一级会计科目的代码&lt;/li&gt;
+&lt;li&gt;账户控制相关&lt;/li&gt;
+&lt;li&gt;是否允许充值&lt;/li&gt;
+&lt;li&gt;是否允许提现&lt;/li&gt;
+&lt;li&gt;是否允许透支&lt;/li&gt;
+&lt;li&gt;是否允许支付&lt;/li&gt;
+&lt;li&gt;是否允许转账进入&lt;/li&gt;
+&lt;li&gt;是否允许转账转出&lt;/li&gt;
+&lt;li&gt;是否有安全保障&lt;/li&gt;
+&lt;li&gt;是否激活&lt;/li&gt;
+&lt;li&gt;是否冻结&lt;/li&gt;
+&lt;li&gt;资金相关&lt;/li&gt;
+&lt;li&gt;当前账户余额：等于可用余额+冻结余额&lt;/li&gt;
+&lt;li&gt;当前账户可用余额&lt;/li&gt;
+&lt;li&gt;当前账户冻结余额：指账户上暂不能使用的额度。在支付的时候，往往是先冻结，商品出库后，再实际执行扣款&lt;/li&gt;
+&lt;li&gt;银行卡、第三方支付信息&lt;/li&gt;
+&lt;li&gt;第三方实体 ID&lt;/li&gt;
+&lt;li&gt;第三方账号：如银行卡号或在第三方支付的 open_id 等&lt;/li&gt;
+&lt;li&gt;第三方 app_id&lt;/li&gt;
+&lt;li&gt;账号失效日期：该账号什么时候失效&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;注意
+
+&lt;ul&gt;
+&lt;li&gt;有些第三方信息不能保存(如用户的账号密码、信用卡的 CV 号)&lt;/li&gt;
+&lt;li&gt;为了避免账户信息被爬库或者数据库信息意外泄露，一般还需要对敏感字段(如密码)进行加密保存，甚至保存到另外的表中&lt;/li&gt;
+&lt;li&gt;更进一步，为了避免账户信息被意外修改，还可增加一个校验字段，在写入数据时设置该字段，在读取数据时做校验，一旦发现数据有问题，则关闭该账号&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-5-3-交易模型&#34;&gt;1.5.3 交易模型&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;考虑到交易记录将被用于风控和信用分析，能收集到的信息是越全面越好
+
+&lt;ul&gt;
+&lt;li&gt;流水号：每一笔交易的流水号不同。需要根据业务情况详细设计流水号。流水号往往也是对交易表做分表分库的依据&lt;/li&gt;
+&lt;li&gt;交易记录创建时间&lt;/li&gt;
+&lt;li&gt;交易记录最后修改时间&lt;/li&gt;
+&lt;li&gt;会计科目代码&lt;/li&gt;
+&lt;li&gt;关联的订单号，由商户提供&lt;/li&gt;
+&lt;li&gt;订单名称、描述、关联的地址等信息&lt;/li&gt;
+&lt;li&gt;费用信息：包括结算货币类型、原始费用、实际费用等&lt;/li&gt;
+&lt;li&gt;交易主体信息：记录主体 ID、类型、名字、账号、账号类型、使用的 IP 地址、手机号、平台、通知邮箱、当前位置等。这些信息虽可以从主体表中获取，但考虑主体表信息随时会被修改，所以这里需要记录详细的各原始信息&lt;/li&gt;
+&lt;li&gt;交易对手信息：记录对手主体 ID、类型、名字、账号、账号类型、手机号、平台、通知邮箱等&lt;/li&gt;
+&lt;li&gt;交易渠道信息：记录所使用的交易渠道的实体 id、渠道账户、渠道执行支付的时间、渠道侧返回的订单号等。如有错误发生，还需要记录从渠道接收到的错误信息和错误码&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2 对账处理</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/2_%E5%AF%B9%E8%B4%A6%E5%A4%84%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/2_%E5%AF%B9%E8%B4%A6%E5%A4%84%E7%90%86/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e5%89%8d%e8%a8%80&#34;&gt;2.1 前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e5%af%b9%e8%b4%a6%e5%a4%84%e7%90%86%e6%b5%81%e7%a8%8b&#34;&gt;2.2 对账处理流程&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#221-%e6%b8%a0%e9%81%93%e5%af%b9%e8%b4%a6%e5%8d%95%e4%b8%8b%e8%bd%bd&#34;&gt;2.2.1 渠道对账单下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2211-%e7%ac%ac%e4%b8%89%e6%96%b9%e6%94%af%e4%bb%98%e7%9a%84%e5%af%b9%e8%b4%a6%e5%8d%95%e6%83%85%e5%86%b5&#34;&gt;2.2.1.1 第三方支付的对账单情况&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2212-%e9%93%b6%e8%a1%8c%e7%9b%b4%e8%bf%9e%e7%9a%84%e5%af%b9%e8%b4%a6%e6%83%85%e5%86%b5&#34;&gt;2.2.1.2 银行直连的对账情况&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#222-%e6%b8%a0%e9%81%93%e5%af%b9%e8%b4%a6%e5%8d%95%e6%a0%87%e5%87%86%e5%8c%96&#34;&gt;2.2.2 渠道对账单标准化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#223-%e6%9c%ac%e5%9c%b0%e4%ba%a4%e6%98%93%e8%ae%b0%e5%bd%95%e5%87%86%e5%a4%87&#34;&gt;2.2.3 本地交易记录准备&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#224-%e8%bd%a7%e5%b8%90&#34;&gt;2.2.4 轧帐&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#225-%e5%b9%b3%e5%b8%90&#34;&gt;2.2.5 平帐&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-前言&#34;&gt;2.1 前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;轧帐：对账系统的工作，是发现有差异的记录&lt;/li&gt;
+&lt;li&gt;平帐：通过人工或者自动的方式，解决上述差异&lt;/li&gt;
+&lt;li&gt;对电商系统来说，每一笔交易，在所有相关主体侧都要能对得上
+
+&lt;ul&gt;
+&lt;li&gt;交易主体：如发起人是个人，必须能够从个人交易历史记录中找到这笔交易。但大部分人不会保留电子记录，所以一般是提供可以下载的账单或交易记录，让用户自己对去&lt;/li&gt;
+&lt;li&gt;交易对手：一般是商户。商户侧对账处理同用户侧，也仅仅提供对账单&lt;/li&gt;
+&lt;li&gt;交易渠道侧：这是对账的重点，一是核实交易流水，二是核实交易佣金，毕竟是租用人家通道做结算的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;需要对账的记录主要是交易记录和退款记录&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-2-对账处理流程&#34;&gt;2.2 对账处理流程&lt;/h2&gt;
+
+&lt;p&gt;一般来说，对账流程涉及到如下步骤：渠道对账单下载、本地交易记录准备、轧账、平账&lt;/p&gt;
+
+&lt;h3 id=&#34;2-2-1-渠道对账单下载&#34;&gt;2.2.1 渠道对账单下载&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;银行、第三方支付、银联等，基本都会提供对账单下载的功能。不过也有少数工作做不到位或者太到位的银行，只提供账单查询后台，不提供对账单下载功能&lt;/li&gt;
+&lt;li&gt;对开发人员来说，这里有几个坑
+
+&lt;ul&gt;
+&lt;li&gt;对账单格式不一：txt、xml、csv 的都有。为了后续能够统一处理，在账单下载完成后，需要进行标准化处理&lt;/li&gt;
+&lt;li&gt;下载方式不一：HTTP、HTTPS、FTP 的都有。下载程序需要按照渠道的协议来处理&lt;/li&gt;
+&lt;li&gt;下载时间不一：一般是凌晨 1 点后，到中午 12 才能用的也有。如果在预定的时间取不到数据，需要注意重试读取&lt;/li&gt;
+&lt;li&gt;稳定性差：FTP 服务器出问题是常有的事。渠道侧解决方案往往就是重启。所以重试机制是必要的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;技术方面
+
+&lt;ul&gt;
+&lt;li&gt;HTTP(S)：用 apache http client 即可实现连接池和断点续传&lt;/li&gt;
+&lt;li&gt;FTP：可使用 Apache Commons Net API&lt;/li&gt;
+&lt;li&gt;不管是哪一个，都需设置重试次数和连接超时。重试次数和间隔的设置需要小心，重试太频繁，容易把服务器打死；时间间隔太大，又会阻塞后续处理步骤。5～10 分钟是一个合适的重试间隔区间&lt;/li&gt;
+&lt;li&gt;连接超时：指在服务器出现问题时，连接在指定时间内获取不到数据即自动断开&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;2-2-1-1-第三方支付的对账单情况&#34;&gt;2.2.1.1 第三方支付的对账单情况&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;渠道&lt;/th&gt;
+&lt;th&gt;对账周期&lt;/th&gt;
+&lt;th&gt;账单提供方式&lt;/th&gt;
+&lt;th&gt;账单文件格式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;支付宝&lt;/td&gt;
+&lt;td&gt;每天 2:10&lt;/td&gt;
+&lt;td&gt;HTTPS&lt;/td&gt;
+&lt;td&gt;xml&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;支付宝退款&lt;/td&gt;
+&lt;td&gt;每天 3:10&lt;/td&gt;
+&lt;td&gt;HTTPS&lt;/td&gt;
+&lt;td&gt;xml&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;百付宝&lt;/td&gt;
+&lt;td&gt;每天 7:00&lt;/td&gt;
+&lt;td&gt;FTP&lt;/td&gt;
+&lt;td&gt;txt&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;百付宝退款&lt;/td&gt;
+&lt;td&gt;每天 7:00&lt;/td&gt;
+&lt;td&gt;FTP&lt;/td&gt;
+&lt;td&gt;txt&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;微信支付&lt;/td&gt;
+&lt;td&gt;每天 10:30&lt;/td&gt;
+&lt;td&gt;HTTPS&lt;/td&gt;
+&lt;td&gt;txt&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;微信退款&lt;/td&gt;
+&lt;td&gt;每天 10:30&lt;/td&gt;
+&lt;td&gt;HTTPS&lt;/td&gt;
+&lt;td&gt;txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;2-2-1-2-银行直连的对账情况&#34;&gt;2.2.1.2 银行直连的对账情况&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;银行&lt;/th&gt;
+&lt;th&gt;对账形式&lt;/th&gt;
+&lt;th&gt;对账周期&lt;/th&gt;
+&lt;th&gt;打款周期&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;交行&lt;/td&gt;
+&lt;td&gt;接口/商户对账系统&lt;/td&gt;
+&lt;td&gt;日对账&lt;/td&gt;
+&lt;td&gt;日结(T+1)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;建行&lt;/td&gt;
+&lt;td&gt;接口&lt;/td&gt;
+&lt;td&gt;日对账&lt;/td&gt;
+&lt;td&gt;日结(T+1)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;工行&lt;/td&gt;
+&lt;td&gt;登录网银的方式手动下载&lt;/td&gt;
+&lt;td&gt;日对账&lt;/td&gt;
+&lt;td&gt;日结(T+1)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;浦发&lt;/td&gt;
+&lt;td&gt;信用卡-登录自助平台；借记卡-接口&lt;/td&gt;
+&lt;td&gt;日对账&lt;/td&gt;
+&lt;td&gt;日结(T+1)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;农行&lt;/td&gt;
+&lt;td&gt;银行定时推送对账文件&lt;/td&gt;
+&lt;td&gt;日对账&lt;/td&gt;
+&lt;td&gt;日结(T+0)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;中行&lt;/td&gt;
+&lt;td&gt;银行定时推送对账文件&lt;/td&gt;
+&lt;td&gt;日对账&lt;/td&gt;
+&lt;td&gt;日结(T+1)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;招行&lt;/td&gt;
+&lt;td&gt;银行定时推送对账文件&lt;/td&gt;
+&lt;td&gt;日对账&lt;/td&gt;
+&lt;td&gt;日结(T+1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;2-2-2-渠道对账单标准化&#34;&gt;2.2.2 渠道对账单标准化&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;微信的对账单：csv 格式，逗号隔开。包括字段
+
+&lt;ul&gt;
+&lt;li&gt;交易时间：在微信侧的支付完成的时间。这个时间会成为一个陷阱&lt;/li&gt;
+&lt;li&gt;公众账号ID、商户号、子商户号、设备号：这些信息需要做验证，确保是自己的单子&lt;/li&gt;
+&lt;li&gt;微信订单号、商户订单号：对单的核心&lt;/li&gt;
+&lt;li&gt;微信订单号：微信侧产生的订单号，在微信支付接口返回值中有。但是万一收不到这个返回值，那在本地记录中可能就空了&lt;/li&gt;
+&lt;li&gt;商户订单号：我们发送给微信的订单号，一般用这个来做对单依据。两边的数据中都会有这个值&lt;/li&gt;
+&lt;li&gt;用户标识、交易类型、交易状态、付款银行、货币种类、总金额、企业红包金额：对单的核心字段，必须确保双方是一致的&lt;/li&gt;
+&lt;li&gt;商品名称、商户数据包、手续费、费率：可选验证&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;某宝的账单：txt 格式，空格隔开。包括字段
+
+&lt;ul&gt;
+&lt;li&gt;商户订单号、交易流水号、交易时间、支付时间、付款方、交易金额、交易类型、交易状态&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;每个渠道的账单格式不尽相同，在得到账单后，下一步是对账单做标准化处理，这样轧帐以及后续工作可统一处理&lt;/li&gt;
+&lt;li&gt;标准化后的账单数据可以放在文件系统或者数据库中。这取决于交易数据量
+
+&lt;ul&gt;
+&lt;li&gt;每天百万以上的量，使用文件系统比较合适。如 hdfs&lt;/li&gt;
+&lt;li&gt;数据库操作相对比较慢，也浪费资源&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;基于文件系统的标准化涉及如下内容
+
+&lt;ul&gt;
+&lt;li&gt;文件格式标准化：统一使用 csv、json 或 xml 格式。如使用 hadoop 或者 spark 对账，使用 csv 是个不错的选择&lt;/li&gt;
+&lt;li&gt;文件存储统一化：文件目录、文件名都需要遵循统一命名规范&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-2-3-本地交易记录准备&#34;&gt;2.2.3 本地交易记录准备&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;本地交易记录的准备，总的来说有如下方法
+
+&lt;ul&gt;
+&lt;li&gt;直接用原始数据：鉴于大部分系统使用的是 MySQL，也意味着在 MySQL 上做对账&lt;/li&gt;
+&lt;li&gt;对账时需要大量的数据查找工作，必然会影响线上业务&lt;/li&gt;
+&lt;li&gt;在数据规模较大(如超过 100 万)时不太合适&lt;/li&gt;
+&lt;li&gt;使用备库执行对账：既简单，也不影响线上业务。是典型的空间换时间的做法&lt;/li&gt;
+&lt;li&gt;如果业务大到需要分表分库才能处理，那对账数据准备也不一样&lt;/li&gt;
+&lt;li&gt;使用分库不现实，因为分库一般是按照主体 id，而不是渠道 id 来分库，这样对账需要在多个库上进行，会降低效率&lt;/li&gt;
+&lt;li&gt;对分表分库建立从库非常耗费资源。这种情况下，需要同步一份数据到文件系统(hdfs)，或 NoSQL 数据库&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;交易记录是支付系统核心数据，有大量的应用(如信用、风控)都需要交易记录数据。这些应用对交易记录的需求还不完全一致，为了提升性能，交易记录会使用异步的方式来将数据投递给使用方
+
+&lt;ul&gt;
+&lt;li&gt;交易记录在入库时，投递消息到消息系统中&lt;/li&gt;
+&lt;li&gt;使用方监听这个消息，一旦收到新消息，则从交易记录库中查询数据，获取数据并更新到库中&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-2-4-轧帐&#34;&gt;2.2.4 轧帐&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;轧帐：按照客户订单号来比较本地交易记录和渠道交易记录是否一致
+
+&lt;ul&gt;
+&lt;li&gt;从算法角度，是计算两个数组的差异&lt;/li&gt;
+&lt;li&gt;在单机运行时，可采用的算法不少。&lt;/li&gt;
+&lt;li&gt;推荐采用 mapreduce 来轧帐，优势是可以按照订单号将渠道提供的记录和本地记录 shuffle 到同一个reduce 处理上，这样就可以很容易进行数据比对&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;轧帐中最大的坑，莫过于切分点的问题
+
+&lt;ul&gt;
+&lt;li&gt;如以整 0 点为切分点，那存在一个问题，本地 23:59 发起的交易，到了渠道侧，可能会在 00:01 处理，这一笔交易变成第二天的帐了&lt;/li&gt;
+&lt;li&gt;实际处理中，一笔交易在渠道侧处理，花上几分钟都有可能&lt;/li&gt;
+&lt;li&gt;对于切分点附近无法确认的帐，做一个时间窗，在时间窗内的数据，留待第二天对账时继续处理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-2-5-平帐&#34;&gt;2.2.5 平帐&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;发现两边不一致的数据，
+
+&lt;ul&gt;
+&lt;li&gt;数据量不大时：记录起来，人工甄别&lt;/li&gt;
+&lt;li&gt;数据量很大：人工处理成本太高。这个没有统一的处理方法，需要对有问题的数据分析，然后做自动处理。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;针对交易记录的对账的处理，主要有如下情况
+
+&lt;ul&gt;
+&lt;li&gt;本地未支付，支付渠道已支付：这主要是本地未正确接收到渠道下发的异步通知导致。一般处理是将本地状态修改为已支付，并做响应的后续处理，比如通知业务方等&lt;/li&gt;
+&lt;li&gt;本地已支付，支付渠道已支付，但金额不同：需要人工核查&lt;/li&gt;
+&lt;li&gt;本地已支付，但支付渠道中无记录；或本地无记录，支付渠道有记录：在排除跨日因素外，这种情况非常少见，需要了解具体原因后做处理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;针对退款的对账处理，主要有如下情况
+
+&lt;ul&gt;
+&lt;li&gt;本地未退款，支付渠道已退款：以支付渠道为准，修改本地为已退款状态，并触发后续处理&lt;/li&gt;
+&lt;li&gt;本地已退款、支付渠道已退款，但金额不同：需要人工核查&lt;/li&gt;
+&lt;li&gt;本地已退款，但支付渠道无记录；或本地无记录，支付渠道有记录：在排除跨日因素外，这种情况非常少见，需要了解具体原因后做处理&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2 渠道侧处理</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/2_%E6%B8%A0%E9%81%93%E4%BE%A7%E5%A4%84%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/2_%E6%B8%A0%E9%81%93%E4%BE%A7%E5%A4%84%E7%90%86/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#21-%e6%94%af%e4%bb%98&#34;&gt;2.1 支付&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#211-%e9%93%b6%e8%a1%8c%e7%9b%b4%e8%bf%9e&#34;&gt;2.1.1 银行直连&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#212-%e7%ac%ac%e4%b8%89%e6%96%b9%e6%94%af%e4%bb%98%e5%b9%b3%e5%8f%b0&#34;&gt;2.1.2 第三方支付平台&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2121-%e5%a4%87%e4%bb%98%e9%87%91&#34;&gt;2.1.2.1 备付金&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#22-%e5%85%85%e5%80%bc&#34;&gt;2.2 充值&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#23-%e6%8f%90%e7%8e%b0&#34;&gt;2.3 提现&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#231-%e9%93%b6%e4%bc%81%e7%9b%b4%e8%bf%9e&#34;&gt;2.3.1 银企直连&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#232-%e4%bc%81%e4%b8%9a%e7%bd%91%e9%93%b6&#34;&gt;2.3.2 企业网银&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#233-%e7%ac%ac%e4%b8%89%e6%96%b9%e6%94%af%e4%bb%98%e6%b8%a0%e9%81%93&#34;&gt;2.3.3 第三方支付渠道&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-支付&#34;&gt;2.1 支付&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这里的渠道侧，包括银行、第三方支付以及银联&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;举例：小明通过工行在老熊公司买了一张 100 元的会员卡，工行按照支付金额的 0.1% 收取手续费，产生了如下会计分录&lt;/p&gt;
+
+&lt;p&gt;借：银行存款-工行收款 100
+  贷：主营业务收入-会员卡 100
+  借：服务成本-工行手续费 0.1
+  贷：银行存款-工行收款 0.1&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这里详细介绍在支付时的清结算过程，分别从银行直连、第三方支付的角度来说明。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-1-1-银行直连&#34;&gt;2.1.1 银行直连&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;用户通过工行支付的款项，在银行侧并不是直接落地到老熊公司的结算账户上，而是先到一个中间账户上。这就需要了解银行侧的账户和资金处理流程。针对第三方支付和电商直连银行，在银行侧的账户和资金处理流程是不一样的&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;电商公司直连银行，不需要复杂的备付金管理&lt;/li&gt;
+&lt;li&gt;当电商公司(第三方支付公司类似)和工行签约开通支付接口后，工行会为这个接口开设一个结算账户。通过这个接口流转的资金最终会结算到这个账户上。这也是电商公司可以提现的一个账户&lt;/li&gt;
+&lt;li&gt;另外，为了方便资金清算，工行还会为电商公司开设一个收付账户，这个账户是直接对接线上资金处理的，这是工行内部账户，电商公司无法操作这个账户，但是可以看到这个账户的收付情况&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;支付时，资金在工行侧的流转流程&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户提交支付请求，支付系统调用工行快捷支付接口执行支付&lt;/li&gt;
+&lt;li&gt;工行服务器检查用户账户余额和状态，如果余额不足或者状态异常，则停止支付。继续检查电商公司的收款账户的状态。如果状态正常，开始执行支付。资金从用户账户转到收付账户上&lt;/li&gt;
+&lt;li&gt;工行采用 T+1 的结算，将 T 日用户支付的所有款项，扣除退款，扣除手续费等费用后，将剩余资金打入电商结算账户上&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在商户侧，需要调整前期所述的记账流程。用户付费不能直接进入公司存款账户，而是记在应收账款下。需等待银行完成清结算后，才能将商家在该银行所有的收款转到存款中&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;用户付费时，会计分录&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 99.9
+服务成本-工行手续费 0.1
+贷：主营业务收入-会员卡 100&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在电商侧执行日切，将当前的应收账款归集到存款上，在接收到工行对账单后，对这个日切结果也要对账。假定当前收入为 200 万元，手续费为 2 千元，对应的会计分录为&lt;/p&gt;
+
+&lt;p&gt;借：银行存款-工行 1,998,000
+  贷：应收账款-工行收款 1,998,000&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;通过这个会计分录，怎么知道这一笔手续费是谁付的？要知道这只是从会计角度做的记录，在具体存储库的设计时，还需要添加更多的信息，包括交易发生的时间、会员卡号等信息&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;对工行来说，这些资金都是行内流转，不涉及到跨行转账的问题。因此在银行内部的处理也比较简单，一般就是一个内部的信息流，分别将商家账户和用户账户的资金做了增减，并无实际的资金流转&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-1-2-第三方支付平台&#34;&gt;2.1.2 第三方支付平台&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于没有直连的银行，可以通过第三方支付来收款。第三方支付侧的资金处理和银行的类似&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;以支付宝为例，当商家在支付宝开通支付接口后，支付宝为商家建立账户以及商户号。每个业务对应一个商户号。用户提交支付后，支付宝完成收款后，直接进行分润，扣除手续费，将剩余资金转移到商户号上&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-支付宝会员账户收款 99.9
+  服务成本-支付宝会员手续费 0.1
+  贷：主营业务收入-会员卡 100&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这里记为应收账款，因为 T+1 后，支付宝还要将资金按照商户的要求，转移到指定银行账户上。假定这个银行账户为建行的账户，当天的收入为 200 万元，手续费为 2 千元，对应的会计分录为&lt;/p&gt;
+
+&lt;p&gt;借：银行存款-建行 1,998,000
+  贷：应收账款-支付宝会员账户收款 1,998,000&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;那对于这一笔收款，支付宝是如何处理？这就涉及到备付金的问题了&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;2-1-2-1-备付金&#34;&gt;2.1.2.1 备付金&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;关于备付金，建议大家详细阅读《支付机构客户备付金存管办法》全文，对备付金的使用和管理有详细的介绍
+
+&lt;ul&gt;
+&lt;li&gt;当用户在电商网站(如淘宝网)购买商品，下单后，资金并不是立即进入商家的账户上，而是暂存在第三方支付公司&lt;/li&gt;
+&lt;li&gt;当用户确认接收到商品后，资金从第三方支付公司转到商家账户上&lt;/li&gt;
+&lt;li&gt;这个资金被称为备付金，“指支付机构为办理客户委托的支付业务而实际收到的预收待付货币资金”&lt;/li&gt;
+&lt;li&gt;备付金由银行托管，备付金银行分为存管银行和合作银行&lt;/li&gt;
+&lt;li&gt;存管银行只能有一家，负责处理备付金跨行收付，并对支付机构存放在各银行的备付金信息做归集、合并与监督&lt;/li&gt;
+&lt;li&gt;合作银行可以有多家，可以办理针对本银行的备付金存取和监管&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;和备付金相关的账户有三类：
+
+&lt;ul&gt;
+&lt;li&gt;存管账户：可以以现金形式接收客户备付金、以银行转账方式办理客户备付金收取和支取业务的专用存款账户。针对备付金存管银行，可以一个省开设一个存管账户。只有存管账户才能够支持跨行付款&lt;/li&gt;
+&lt;li&gt;收付账户：可以以现金形式或以银行转账方式接收客户备付金、以银行资金内部划转方式办理客户备付金支取业务的专用存款账户。在同一个备付金合作银行只能开设一个收付账户&lt;/li&gt;
+&lt;li&gt;汇缴账户：仅支持同行收款以及退款时原路退回。在备付金存管和合作银行都可以开设。备付金银行应当于每日营业终了前，将备付金汇缴账户内的资金全额划转至支付机构的备付金存管账户或在同一备付金合作银行开立备付金收付账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;有了收付账户，还有必要开设汇缴账户吗？这要看交易规模了，如果规模大，那是有必要的，因为有些地方银行可以给非常低的手续费用，可以省一大笔钱&lt;/li&gt;
+&lt;li&gt;这几个账户都是备付金专用的活期存款账户。汇缴账户到收付账户的划拨，是通过银行自己行内转账进行；收付账户到存管账户，就走人行的大小额、超级网银或者同城系统进行划拨。当然，这些接口一般第三方支付是不能直接访问的，但可以通过银行提供的接口来进行&lt;/li&gt;
+&lt;li&gt;这样在第三方支付公司，用户支付的资金首先进入汇缴账户或者收付账户，日终后，汇缴账户的资金全部汇总到收付账户上&lt;/li&gt;
+&lt;li&gt;在上述小明的例子中，如果小明使用的卡是招行的卡，在有备付金支持的情况下，小明支付的100元是通过招行的内部转账直接进入了支付宝在招行的备付金收付账户或者汇缴账户。这样将跨行转账变成行内资金划拨，可以减少通道费的支出，也使得资金到账更为迅捷。第三方支付备付金的使用和调拨是个专门的话题。这里不再详细展开&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-2-充值&#34;&gt;2.2 充值&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;资金沉淀成为电商公司孜孜以求的目标。用户充值既有利于提升支付体验，特别是对高频小额支付而言；由此也可以形成可观的资金沉淀，这对电商公司来说是个一举多得的好事。但此举是迈向违规的危险第一步&lt;/li&gt;
+&lt;li&gt;接之前的场景，老熊公司在工行开设了一个对公账户，用于收款，这个账户可以用结算账户。先考虑用户小明使用工行卡充值的场景。公司需要为每个用户开设一个账户，用来跟踪账户余额。这个账户有两种处理方式，所谓的虚户和实户
+
+&lt;ul&gt;
+&lt;li&gt;虚户：指客户和商户的资金都存放在电商公司开设的对公账户上，老熊公司内部为每个实体维护一个虚拟账户。当客户给商家支付时，资金直接在虚拟账户上划拨，没有实际的资金流转，只有信息流。由于虚户是开设在电商平台上，所以也叫支付账户。大部分电商公司用的都是这种模式&lt;/li&gt;
+&lt;li&gt;实户：指在银行侧为每个客户和商户在对公账户下开设二级账户。每个账户都是相互独立的。对于少数服务大客户的电商公司来说，使用这种模式也比较方便。相对支付账户，这被称为银行账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这里介绍虚户的情况。使用虚户时，电商需要为客户和商户建立内部账户。这个内部账户，对电商公司来说，需要记录在负债上&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;回到充值的案例：用户使用工行的卡，给自己的账户充值 100 块钱，不考虑手续费【手续费处理方法支付】，会计分录：&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 100
+贷：客户 A 账户 100&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;资金先进入应收账款，因为充值和支付一样，资金也是在清结算完成后才到账的。用户在其他行充值情况应该如何处理？如果电商公司和这个银行有开通支付通道，那就会有对应的对公结算账户，充值款项就会在结算完成后，进入这个账户。如果电商和这个银行没有对接，需要通过其他第三方渠道，如支付宝、微信支付等来完成充值，对应的，资金也会进入第三方渠道。这和支付情况也是类似的。不管用户用哪个卡充值，最终的钱都记录在客户 A 的虚拟账户上&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第三方支付在处理充值时流程和上述是类似的。但是当电商调用第三方支付接口来完成充值时，和银行不一样地方在于，这个充值是实时入账的。虽然银行并不是实时把充值的金额结算到第三方支付的银行账户上的，而是到T+1 完成结算后才会到账。但对第三方支付而言，在银行接口确认成功后，就可以假定 T+1 银行肯定可以把钱结算给自己。因此可以实时把电商在第三方支付的账户的金额增加，也即实时到账&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-3-提现&#34;&gt;2.3 提现&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有充值，一般都需要提现。可提现是一个危险的业务，提供资金逃离电商的途径&lt;/li&gt;
+&lt;li&gt;对充值和支付来说，就算出问题了，钱还在。而提现就麻烦了，一旦出问题，钱都没了。对提现的账户和账务处理尤其谨慎&lt;/li&gt;
+&lt;li&gt;电商提现的主要途径是银企直联、企业网银和第三方支付代付&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-3-1-银企直连&#34;&gt;2.3.1 银企直连&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于商户和客户规模不大的公司，通过将公司内部的 ERP、财务系统等业务系统和银行接口对接，实现银企直连，可以让财务人员直接通过内部业务系统来打款&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-3-2-企业网银&#34;&gt;2.3.2 企业网银&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般银行都提供的企业网银接口，支持同行批量打款(代付)功能。银行将企业对公账户扣款，打到对应的个人账户上。对于个人跨行取现，本质上来说，是将对公账户的资金转账到对私账户上&lt;/li&gt;
+&lt;li&gt;目前银行侧转账需要通过人行的大小额系统和超级网银来进行。人行系统并不直接对企业开放，银行通过企业网银来封装这些接口，批发或者零售给企业使用
+
+&lt;ul&gt;
+&lt;li&gt;行内清算系统：银行内部转账一般通过此系统来进行，不限金额，实时到账，手续费低。对于同行提现，如上述案例，小明需要将零钱提现到工行账户上，老熊公司在工行也开设了用于收付的对公账户，则可以通过工行的行内清算系统，直接 100 元支付给小明&lt;/li&gt;
+&lt;li&gt;小额支付系统：大小额支付系统同属于央行的中国现代化支付系统(CNAPS)。5 万以内的普通贷记业务可以通过央行的小额批量支付系统(BEPS)来进行，这是 7*24 小时运行，批量运行，收集到若干交易后统一打包处理，所以是非实时到账的，费用相对大额来说也比较低。此外，小额支付需要提供联行号，即支行信息，一般绑卡流程不会要求用户提供此类信息&lt;/li&gt;
+&lt;li&gt;大额支付系统：大额实时支付系统(HVPS)每笔交易都实时发送，实时清算的，所以基本上能实时到账，跨行资金零在途。但大额系统运行的时间，仅限于工作日的 8:30~17:00 运行，节假日也不运行。目前对使用大额支付系统进行转账并没有设置最低资金量的要求，也就是一块钱也会给你转过去。但是费用较高，另外大额支付系统也需要支行信息(联行号)&lt;/li&gt;
+&lt;li&gt;超级网银：全称是网上支付跨行清算系统，2013 年 10 月份正式投产运行。超级网银是对大小额支付系统的一个补充，接入机构不再限于银行，第三方支付也可以接入，所以有的第三方支付给商户提供的提现代发功能就是基于超级网银做的。7*24 小时实时到账，单笔上限 5 万元。超级网银并不是所有的银行都支持，目前至少支持172 家主要银行。此外，超级网银交易可以不需要联行号&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;对电商来说，由于不能直接访问央行的这些接口，对接银行，通过银行来访问央行的接口，是主要的提现方式。但不同的银行，针对不同的提现场景，收费不一样。所以在具体实现提现的时候，还需要有提现路由(打款路由)，从费率、支持的额度、到账时间等多个维度来评估和选择提现渠道&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-3-3-第三方支付渠道&#34;&gt;2.3.3 第三方支付渠道&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付宝、微信等第三方支付公司一般也都提供代付服务，可以是通过文件来实现批量代付，也可以通过接口来实现提现
+
+&lt;ul&gt;
+&lt;li&gt;第三方支付与用户提现的银行有合作关系且银行提供实时到账接口，此类银行支持实时到账的提现操作；如果只提供准实时到账接口(例如 2 小时到账)，则此类合作银行只支持准实时到账提现操作(支付宝为 2 小时到账)&lt;/li&gt;
+&lt;li&gt;第三方支付与用户提现的银行无合作关系，只能通过银行小额支付系统定时跑批，此类只支持 2 天内到账。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;不管通过哪个途径来实现，提现的会计分录和充值相反，借记用户的虚拟账户，贷记对公账户存款&lt;/p&gt;
+
+&lt;p&gt;借：客户 A 账户 100
+  贷：银行存款-工行 100&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3 电商侧处理</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/3_%E7%94%B5%E5%95%86%E4%BE%A7%E5%A4%84%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/3_%E7%94%B5%E5%95%86%E4%BE%A7%E5%A4%84%E7%90%86/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-%e6%94%af%e4%bb%98&#34;&gt;3.1 支付&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-%e5%a4%96%e9%83%a8%e7%bb%93%e7%ae%97&#34;&gt;3.2 外部结算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#33-%e4%bf%83%e9%94%80&#34;&gt;3.3 促销&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#331-%e4%bb%a3%e9%87%91%e5%88%b8&#34;&gt;3.3.1 代金券&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#332-%e6%89%93%e6%8a%98%e9%94%80%e5%94%ae&#34;&gt;3.3.2 打折销售&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#333-%e4%b9%b0%e8%b5%a0&#34;&gt;3.3.3 买赠&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#334-%e6%bb%a1%e5%87%8f&#34;&gt;3.3.4 满减&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#335-%e5%ae%9e%e7%89%a9%e8%b4%ad%e4%b9%b0%e4%bb%a5%e5%8f%8a%e7%a8%8e%e5%8a%a1%e9%97%ae%e9%a2%98&#34;&gt;3.3.5 实物购买以及税务问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#336-%e9%80%80%e6%8d%a2%e8%b4%a7&#34;&gt;3.3.6 退换货&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#34-%e5%85%85%e5%80%bc%e4%b8%8e%e6%8f%90%e7%8e%b0&#34;&gt;3.4 充值与提现&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;本文描绘一堆业务对应的会计分录&lt;/p&gt;
+
+&lt;h2 id=&#34;3-1-支付&#34;&gt;3.1 支付&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;继续小明的案例，小明通过工行在老熊公司买了一张 100 元的会员卡，工行按照支付金额的 0.1% 收取手续费，产生了如下会计分录&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 100-100*0.1% = 99.9
+  服务成本-工行手续费 100*0.1% = 0.1
+  贷：主营业务收入-会员卡 100&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在电商侧执行日切，将当前的应收账款归集到存款上，在接收到工行对账单后，对这个日切结果也要对账。假定当前收入为 200 万元，手续费为 2 千元，对应的会计分录为&lt;/p&gt;
+
+&lt;p&gt;借：银行存款-工行 2,000,000-2,000= 1,998,000
+  贷：应收账款-工行收款 1,998,000&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-2-外部结算&#34;&gt;3.2 外部结算&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果小明买的是其他公司(凤凰公司)的会员卡，该卡由老熊公司代理销售，代理价格是 90 元。这个流程会更复杂。买断式的代理，和仅仅支付手续费的代理在记账上略有区别。这里仅提供供参考的版本，具体记账的会计科目需要按照公司的情况来具体处理&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;老熊公司接收到凤凰公司发送过来的 100 张会员卡，每张卡售价是 100 元。这些卡作为预售的代销商品入库，记录到代销商品中。其会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：代销商品-凤凰会员卡 90*100 = 9,000
+  贷：代销商品款-凤凰会员卡 90*100 = 9,000&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;对应的会员卡信息，每张卡的卡号、价格等信息，可以记录到明细表中&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;老熊公司销售出一张会员卡给小明，产生的会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 99.9
+  服务成本-工行手续费 0.1
+  贷：主营业务收入-会员卡 100&lt;/p&gt;
+
+&lt;p&gt;借：主营业务成本-会员卡 90
+  贷：代销商品-凤凰会员卡 90&lt;/p&gt;
+
+&lt;p&gt;借：代销商品款-凤凰会员卡 90
+  贷：应付账款-凤凰会员卡 90&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这里是将收入记录到主营业务收入的科目下，实际情况应该按照公司的会计要求来进行&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;老熊公司当天销售了 10 张卡，银行将当天的收入结算给老熊公司。这个可以单独分录，也可以和银行的其他结算一起分录&lt;/p&gt;
+
+&lt;p&gt;借：银行存款-工行 9,990
+  贷：应收账款-工行收款 9,990&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;老熊公司当天将卡收入结算给凤凰公司，未考虑税费的问题，会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：应付账款-凤凰会员卡 9,000
+  贷：银行存款 9,000&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-3-促销&#34;&gt;3.3 促销&lt;/h2&gt;
+
+&lt;p&gt;常用促销方式包括代金券、折扣券、买赠、满减等，以下简单介绍各个方式的记账&lt;/p&gt;
+
+&lt;h3 id=&#34;3-3-1-代金券&#34;&gt;3.3.1 代金券&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对代金券的财务处理目前没有统一的标准，会计处理方法因公司核算方式不同会有多种，有营销费用、销售折扣、主营业务成本等方式&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在这个案例中，我们假定老熊公司发放了 100 张优惠券，每张价值 10 元。会计分录&lt;/p&gt;
+
+&lt;p&gt;借：营销成本-通用优惠券 1000
+  贷：预计负债-通用优惠券 1000&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;当用户使用优惠券购买商品时，10 元的优惠券，用户实际付款是 90 元，手续费按照 90*0.1% 来计算。会计分录&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 89.91
+  服务成本-工行手续费 0.09
+  预计负债-通用优惠券 10
+  贷：主营业务收入-会员卡 100&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这批优惠券到期后，实际发放了 80 张，还有 20 张需要回收，每张价值还是 10 元，回收时会计分录&lt;/p&gt;
+
+&lt;p&gt;借：预计负债-通用优惠券 200
+  贷：营销成本.通用优惠券 200&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这种方式处理优惠券，是按照使用优惠券之前的价格，也就是 100 元来计算增值税，公司所得税会相应扣减，但处理起来也比较麻烦。还有一种简单的方式是直接在用户消费的时候记账&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 89.91
+  服务成本-工行手续费 0.09
+  贷：主营业务收入-会员卡 90&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以在明细账中记录用户使用的优惠券&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-3-2-打折销售&#34;&gt;3.3.2 打折销售&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;折扣销售时，和普通销售一样处理，金额按照打折后的来计算&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;老熊公司促销，8 折优惠，小明用 80 块钱买了张会员卡，会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 80-0.08 = 79.92
+  服务成本-工行手续费 80*0.1% = 0.08
+  贷：主营业务收入-会员卡 80&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-3-3-买赠&#34;&gt;3.3.3 买赠&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;买赠和打折销售类似，需要按照比例来分摊&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;老熊公司推出买一增一活动，买一张 100 元的会员卡，赠送一张价值 50 元的点播卡。会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 100-0.1 = 99.9
+  服务成本-工行手续费 100*0.1% = 0.1
+  贷：主营业务收入-会员卡 100*100/(100+50) = 66.67
+  主营业务收入-点播卡 50*100/(100+50) = 33.33&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-3-4-满减&#34;&gt;3.3.4 满减&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;满减活动的处理和买赠类似，需要按比例来分摊&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;老熊公司推出满 200 减 50 的活动，小明买了一张 100 元会员卡，1 张 50 元点播卡，1 张 50 元游戏卡。也就是 150 元买了 3 张卡，每张卡的收入按比例来分摊，会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 200-0.2 = 199.8
+  服务成本-工行手续费 200&lt;em&gt;0.1% = 0.2
+  贷：主营业务收入-会员卡 100&lt;/em&gt;(200-50)/200 = 75
+  主营业务收入-点播卡 50&lt;em&gt;(200-50)/200 = 37.5
+  主营业务收入-游戏卡 50&lt;/em&gt;(200-50)/200 = 37.5&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-3-5-实物购买以及税务问题&#34;&gt;3.3.5 实物购买以及税务问题&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;实物购买涉及到送货费用、税费等。送货费用每个公司处理起来差异较大，这里不介绍&lt;/li&gt;
+&lt;li&gt;在税费处理上，一般是在计算业务收入时扣除。实物按照 17% 的增值税来扣减&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如小明在老熊公司买了 100 块钱的卡通熊玩偶，记账如下：&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 99.9
+  服务成本-工行手续费 0.1
+  贷：主营业务收入-卡通熊 &lt;sup&gt;100&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.17 = 85.47元
+  应交税费–应交增值税 &lt;sup&gt;100&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.17*17%=14.53元&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-3-6-退换货&#34;&gt;3.3.6 退换货&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;退货根据销售的不同阶段，采取相应的冲销。在货款到对公账户前退货，则对冲应收账款；如果是货款已经到公司银行账户了，则对冲银行存款&lt;/li&gt;
+&lt;li&gt;换货可以按先退货再购买的方式来记账&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-4-充值与提现&#34;&gt;3.4 充值与提现&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;和支付类似，用户充值也分为两个步骤&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一步是执行充值操作，充值到公司对公账户上，但是资金并不是立即到账的，这个过程的会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：应收账款-工行收款 99.9
+服务成本-工行手续费 0.1
+贷：客户账户-小明 100&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在第二天资金到账后，应收账款变为公司的存款，这个过程同支付&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;提现流程和充值相反，会计分录如下&lt;/p&gt;
+
+&lt;p&gt;借：客户账户-小明 100
+  服务成本-工行手续费 0.1
+  贷：应付账款-工行 100.1&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3 银行卡支付</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/3_%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%94%AF%E4%BB%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/3_%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%94%AF%E4%BB%98/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#31-%e6%94%af%e4%bb%98%e5%92%8c%e4%ba%a4%e6%98%93&#34;&gt;3.1 支付和交易&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#311-%e9%93%b6%e8%a1%8c%e5%8d%a1%e6%94%af%e4%bb%98&#34;&gt;3.1.1 银行卡支付&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3111-%e8%ae%a4%e8%af%81%e6%94%af%e4%bb%98&#34;&gt;3.1.1.1 认证支付&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3112-%e7%bd%91%e9%93%b6%e6%94%af%e4%bb%98&#34;&gt;3.1.1.2 网银支付&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3113-%e5%bf%ab%e6%8d%b7%e6%94%af%e4%bb%98&#34;&gt;3.1.1.3 快捷支付&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#32-%e6%94%af%e4%bb%98%e6%b5%81%e7%a8%8b&#34;&gt;3.2 支付流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#33-%e8%b5%84%e9%87%91%e6%b5%81&#34;&gt;3.3 资金流&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#34-%e9%93%b6%e8%a1%8c-token-%e6%94%af%e4%bb%98&#34;&gt;3.4 银行 Token 支付&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#341-%e5%af%b9%e6%8e%a5%e9%93%b6%e8%a1%8c&#34;&gt;3.4.1 对接银行&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3411-%e4%b8%93%e7%ba%bf%e9%97%ae%e9%a2%98&#34;&gt;3.4.1.1 专线问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3412-%e5%8a%a0%e5%af%86%e9%97%ae%e9%a2%98&#34;&gt;3.4.1.2 加密问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#342-%e5%af%b9%e6%8e%a5%e9%93%b6%e8%81%94&#34;&gt;3.4.2 对接银联&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-1-支付和交易&#34;&gt;3.1 支付和交易&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付和交易，这两个概念在不同公司不一样&lt;/li&gt;
+&lt;li&gt;此处的定义
+
+&lt;ul&gt;
+&lt;li&gt;交易是生成订单；支付是对订单进行付款&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;就支付行为来说，大部分都是单次支付，其次还有转账和退款&lt;/li&gt;
+&lt;li&gt;单次支付是用的最多的支付方式，即一次结清所有款项。把单次支付走通了，其他支付方式也容易处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-1-1-银行卡支付&#34;&gt;3.1.1 银行卡支付&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;银行卡支付：分为线上支付和线下支付
+
+&lt;ul&gt;
+&lt;li&gt;线下支付：通常说的 POS 收单，这里不介绍&lt;/li&gt;
+&lt;li&gt;线上支付&lt;/li&gt;
+&lt;li&gt;按照卡的类别，分为贷记卡支付，也叫motopay、ePOS，即信用卡支付；和借记卡支付&lt;/li&gt;
+&lt;li&gt;按照支付形态，分为认证支付、网银支付、快捷支付
+
+&lt;ul&gt;
+&lt;li&gt;银行卡网银支付要求银行卡必须开通在线支付功能&lt;/li&gt;
+&lt;li&gt;快捷支付不需要开通在线支付功能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;主要利用支付验证要素(卡号、密码、手机号、CVN2、CVV2 等)，结合安全认证(例如短信验证码)，让持卡人完成互联网支付&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-1-1-1-认证支付&#34;&gt;3.1.1.1 认证支付&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;指用户在绑卡时，将卡信息提供给电商。由电商在服务器侧保留用户的账户信息，如身份证号、卡号、手机号。在用户支付时，无需再输入这些内容，最多提供密码或者校验码，就可以完成支付&lt;/li&gt;
+&lt;li&gt;认证支付基本不会打断用户的使用体验，所以也是电商喜欢的支付方式&lt;/li&gt;
+&lt;li&gt;认证支付最大问题是安全性
+
+&lt;ul&gt;
+&lt;li&gt;需要向电商暴露个人信息，一旦被窃取，资金就容易被盗走&lt;/li&gt;
+&lt;li&gt;在手机上执行支付，一旦手机丢失，窃取者就可以轻而易举的使用或者转移资金&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-1-1-2-网银支付&#34;&gt;3.1.1.2 网银支付&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;网银支付更安全&lt;/li&gt;
+&lt;li&gt;网银支付是由银联或者银行提供支付界面，用户必须在页面上输入卡号、密码等验证信息才可以执行支付&lt;/li&gt;
+&lt;li&gt;大部分银行还要求用户使用 U 盾或其它安全硬件&lt;/li&gt;
+&lt;li&gt;安全和易用永远是个矛盾
+
+&lt;ul&gt;
+&lt;li&gt;网银使用会打断用户体验，增加用户使用难度&lt;/li&gt;
+&lt;li&gt;对使用硬件加密的支付，不可能天天带着 U 盘跑&lt;/li&gt;
+&lt;li&gt;网银主要用在 web 端，在手机端嵌入网银页面，还比较难看&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-1-1-3-快捷支付&#34;&gt;3.1.1.3 快捷支付&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;快捷支付和认证支付类似，不同点在于绑卡之后，有些银行接口会返回 token，后续使用 token 作为支付凭证，无需提供卡号信息，电商也不需要本地保留卡号&lt;/li&gt;
+&lt;li&gt;目前主要是银联有提供 token 接口&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-2-支付流程&#34;&gt;3.2 支付流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;举例：比如用户在电商系统中买了 200 块钱的东西，然后通过浦发银行卡做结算，用的是快捷支付。这个过程是
+
+&lt;ul&gt;
+&lt;li&gt;1 用户在交易界面上，提交订单到交易系统中；交易系统确认订单无误后，请求支付系统进行结算。这是在交易系统做的，后面工作就进入支付系统&lt;/li&gt;
+&lt;li&gt;2 用户被引导到收银台页面，让用户确认交易金额，选择支付方式，调用支付系统接口&lt;/li&gt;
+&lt;li&gt;3 支付系统接收到支付请求，验证请求的各个字段是否有问题，确认无误后，调用支付网关执行支付&lt;/li&gt;
+&lt;li&gt;4 支付网关请求浦发银行的快捷支付接口执行支付&lt;/li&gt;
+&lt;li&gt;5 支付网关接收到支付结果报文后，对结果报文做解析，获取结果，并将结果告知交易系统。这可以通过 URL 或 RPC 调用实现&lt;/li&gt;
+&lt;li&gt;6 商城系统收到支付结果后，开始执行后续操作。如果是支付成功，则开始准备出库。这一步在交易系统中处理，这里不做介绍&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;上述过程的差异
+
+&lt;ul&gt;
+&lt;li&gt;网银支付在第 4 步插入一个步骤：将用户导航到网银页面输入支付信息，后续步骤一样&lt;/li&gt;
+&lt;li&gt;在资金流上也是相同&lt;/li&gt;
+&lt;li&gt;在第 5 步获取返回结果上，一般银行直接同步返回，银联是分为同步和异步返回&lt;/li&gt;
+&lt;li&gt;同步告知操作成功或者失败，异步告知扣款成功或者失败&lt;/li&gt;
+&lt;li&gt;同步操作和异步操作都需要调用方提供一个回调的 URL 地址，银联会将参数附加在这个地址上。通过解析这些参数可以得到执行结果&lt;/li&gt;
+&lt;li&gt;异步操作一般有 2-3 秒的延迟，取决于网络以及该交易处理的复杂度&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-3-资金流&#34;&gt;3.3 资金流&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上述支付流程中第 3 步，会触发资金流：资金从用户个人账户上转移到电商公司的账户&lt;/li&gt;
+&lt;li&gt;当然，这一笔交易银行要收手续费。资金是实时到账的，手续费一般是按月结算。有按交易笔数计费的，但大部分按照交易金额来收费&lt;/li&gt;
+&lt;li&gt;同行快捷支付比较简单。如果支付系统没有对接浦发银行，那对浦发卡，就得走其它支付方式：银联或者第三方支付
+
+&lt;ul&gt;
+&lt;li&gt;银联快捷：银联提供的多种接入方式，常说的快捷支付，在银联文档中叫商户侧开通 token 接口。通过这个接口，可以实现同行和跨行资金结算。不管收款行是浦发还是其它行，都可以完成结算。对本地和用户来说体验是一样的。而在银联侧，后台资金流处理不一样。了解这个资金流，有助于在异常情况下，了解资金去向&lt;/li&gt;
+&lt;li&gt;收款行也是浦发银行，银联发报文给浦发，浦发使用内部系统完成两个账户间的转帐，即时完成&lt;/li&gt;
+&lt;li&gt;收款行是他行，比如工行。银联发指令给浦发和工行，分别完成各自账户上资金余额的增减，对个人和电商来说，这笔资金算是落地了。但实际资金流并不是立即发生。银联会在半夜做清结算后处理这笔资金。这个过程是金融机构之间的清结算，一般不需要关注&lt;/li&gt;
+&lt;li&gt;第三方支付：对用户来说，处理的流程和银联一样。但资金流会不一样&lt;/li&gt;
+&lt;li&gt;第三方支付在浦发和工行一般都会有落地的托管资金。发生交易后，一般来说不会产生跨行资金流动。用户在浦发行的钱会被结算到第三方支付在浦发行的托管账户，而在工行的钱，会由第三方支付在工行的账户打到客户账户上。这就降低了跨行资金流动成本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;目前国内主要银行都提供快捷和直联的接口。对电商来说，需要考虑对接哪些银行、怎么对接银行、渠道和第三方支付&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-4-银行-token-支付&#34;&gt;3.4 银行 Token 支付&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般来说，大部分银行提供直联和网银接口，但不需要直接对接所有银行&lt;/li&gt;
+&lt;li&gt;银联和第三方支付也提供直联接口，可以直接对接国内主要银行&lt;/li&gt;
+&lt;li&gt;不是所有银行都被银联支持，这和银联签约的接口有关，需要在对接时咨询银联。如浦发借记卡、邮储银行卡不支持。另外交行、平安(含原深发)、上海银行、浦发、北京银行，上述银行卡需开通银联在线支付业务&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-4-1-对接银行&#34;&gt;3.4.1 对接银行&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大部分银行提供的银行卡支付接口，借记卡支付和贷记卡支付是不一样的。但也有银行(工行和建行)可以用一套接口同时开通借记卡和贷记卡。&lt;/li&gt;
+&lt;li&gt;作为国内最保守的软件团队，和银行对接时务必做好足够的准备。在商务谈判完成、拿到银行的接口文档后，需要考虑两个问题：专线问题、加密问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-4-1-1-专线问题&#34;&gt;3.4.1.1 专线问题&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大部分银行对接需要专线。与银行沟通的时候，注意收集如下信息
+
+&lt;ul&gt;
+&lt;li&gt;专线类型：MSTP 类型或 SDH 类型&lt;/li&gt;
+&lt;li&gt;专线接入点：目前国内主要是联通、电信&lt;/li&gt;
+&lt;li&gt;封装类型：HDLC 或 PPP&lt;/li&gt;
+&lt;li&gt;专线代宽：默认是 2M&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;前置机 IP，需要在银行侧和电商侧进行配置。专线其实是在银行和电商之间建立一个局域网，需要双方分配通讯 IP
+
+&lt;ul&gt;
+&lt;li&gt;这两组 IP 都是 NAT 后的 IP&lt;/li&gt;
+&lt;li&gt;银行分配给我们的是电商真实的前置机 IP 经过最外端的网络防火墙转换后的 IP 段&lt;/li&gt;
+&lt;li&gt;后者也是对方的真实前置机 IP 经过转换后的 IP 段&lt;/li&gt;
+&lt;li&gt;出于安全考虑，双方都不会将真实 IP 暴露出去，所以要 NAT&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;接入地址：即电商这边机房的地址&lt;/li&gt;
+&lt;li&gt;从可靠性角度考虑，一般建议从联通、电信各拉一条线路出来。一旦有一个线路出问题了，也不会导致所有交易被终止&lt;/li&gt;
+&lt;li&gt;不需要专线的银行接口有：浦发、工行、交行信用卡等&lt;/li&gt;
+&lt;li&gt;需要专线的有中行、农行、建行等&lt;/li&gt;
+&lt;li&gt;一般专线需要 1 个月左右的时间，包括银行侧的申请、施工时间&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-4-1-2-加密问题&#34;&gt;3.4.1.2 加密问题&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;部分银行(如中行)前置要求使用加密机。此处加密机的常用功能有三方面
+
+&lt;ul&gt;
+&lt;li&gt;MAC加密(完整性)&lt;/li&gt;
+&lt;li&gt;支付会话/密码加密(安全性)&lt;/li&gt;
+&lt;li&gt;密钥交换加密(防截取)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;对开发来说，加密机的主要作用，是让黑客都无法从内存中看到密码&lt;/li&gt;
+&lt;li&gt;国内对接银行一般就用江南天安的加密机&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-4-2-对接银联&#34;&gt;3.4.2 对接银联&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对接银联比对接银行简单，不需要专线，不需要加密机&lt;/li&gt;
+&lt;li&gt;需要获取 ADSS 认证。银联最近在推 Token 接口，有两套接口
+
+&lt;ul&gt;
+&lt;li&gt;一套是银联侧开通，一套是商户侧开通&lt;/li&gt;
+&lt;li&gt;前者类似网银支付，后者类似快捷支付&lt;/li&gt;
+&lt;li&gt;务必要求接入后者接口&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4 绑卡、签约和身份验证</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/4_%E7%BB%91%E5%8D%A1%E7%AD%BE%E7%BA%A6%E5%92%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e5%89%8d%e8%a8%80&#34;&gt;4.1 前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e7%bb%91%e5%8d%a1%e5%9c%ba%e6%99%af&#34;&gt;4.2 绑卡场景&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e7%bb%91%e5%8d%a1%e6%b5%81%e7%a8%8b&#34;&gt;4.3 绑卡流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#44-%e5%8d%a1-bin&#34;&gt;4.4 卡 bin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#45-%e7%9f%ad%e4%bf%a1%e5%92%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81&#34;&gt;4.5 短信和身份验证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#46-%e7%bb%91%e5%8d%a1%e6%8e%a5%e5%8f%a3&#34;&gt;4.6 绑卡接口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#47-%e9%93%b6%e8%81%94%e7%bb%91%e5%8d%a1&#34;&gt;4.7 银联绑卡&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#48-%e5%ae%9e%e5%90%8d%e8%ae%a4%e8%af%81&#34;&gt;4.8 实名认证&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-1-前言&#34;&gt;4.1 前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户绑卡和快捷支付有关
+
+&lt;ul&gt;
+&lt;li&gt;绑卡是将用户卡信息提供给电商，以后电商就用这个信息去银行完成支付&lt;/li&gt;
+&lt;li&gt;绑卡实际上是一个授权，让用户允许商家自动从他的账户上扣除资金。所以绑卡也叫签约，用户和银行、商家的三方签订的支付合约&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;绑卡对用户和商户来说都存在巨大风险&lt;/li&gt;
+&lt;li&gt;用户绑卡是为了提升用户体验，让用户花钱更容易。其次，提升支付成功率
+
+&lt;ul&gt;
+&lt;li&gt;使用网银支付成功率在 20% 左右，银联直联成功率一般在 50% 左右，银行卡直联可以提升到 70% 左右&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;我们知道对接银行包括直接对接银行接口和通过银联来间接对接。这两种情况下绑卡处理也不同&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-2-绑卡场景&#34;&gt;4.2 绑卡场景&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;直观的，电商网站会在用户后台提供一个绑卡的入口，让用户直接绑卡&lt;/li&gt;
+&lt;li&gt;要点
+
+&lt;ul&gt;
+&lt;li&gt;只能绑自己的卡，这主要从安全角度考虑&lt;/li&gt;
+&lt;li&gt;需要用户在银行侧预留的手机号进行短信验证。但不是所有银行都需要。这个时候，为了统一处理，可以考虑自己发验证短信&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;更多的场景是用户在支付中绑卡。也就是提交订单后，发现没有银行卡了，就开始绑卡。和纯绑卡流程不同的是，最后一步绑卡成功后，一般都同时完成支付。有些渠道会提供绑卡并支付的接口，减少交互次数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-3-绑卡流程&#34;&gt;4.3 绑卡流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;比较简单的银联直联绑卡。为了保证卡的安全，绑卡有这些前置需求
+
+&lt;ul&gt;
+&lt;li&gt;用户必须已经绑定了手机号。该手机号用于修改支付密码&lt;/li&gt;
+&lt;li&gt;用户需设置了支付密码。支付密码不同于登录密码&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;针对用户不同状态，绑卡流程上有区别。绑卡是安全操作，要求用户必须登录到系统中。为了避免和服务器端的交互被劫持，所有操作必须在安全链接中进行，即使用 HTTPS。当用户开始绑卡时，执行如下流程
+
+&lt;ul&gt;
+&lt;li&gt;1 检查用户是否有手机号。没有则进入设置手机号流程&lt;/li&gt;
+&lt;li&gt;2 检查用户是否设置支付密码。如果已经设置，则需要用户输入密码。确认后开始绑卡。否则，也是先进去绑卡后设置密码&lt;/li&gt;
+&lt;li&gt;3 用户输入卡号，系统根据卡号判断卡的发卡行，并显示给用户。有些实现，如微信支付，会提供扫卡识码功能&lt;/li&gt;
+&lt;li&gt;4 用户输入银行预留手机。对于没有绑过卡的用户，需要用户提供真实姓名和身份证号。对于信用卡，还需要输入 cv 码和有效期。这一步，卡的信息都收集全了&lt;/li&gt;
+&lt;li&gt;5 调用银行绑卡验证接口进行绑卡。这里有一个四要素验证的概念。由于国内要求实名制，所有银行卡都是实名办理的，所以银行可以验证姓名、身份证号、银行卡号和手机号是不是一致的，如果没问题，则会发短信到手机上&lt;/li&gt;
+&lt;li&gt;6 用户输入短信验证码并确认绑卡，服务器端将用户实名信息以及短信验证码组合形成报文，发送给银行执行签约操作。银行侧签约成功后，返回签约号给商户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-4-卡-bin&#34;&gt;4.4 卡 bin&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;根据卡号判断发卡行需要卡 bin
+
+&lt;ul&gt;
+&lt;li&gt;BIN 号即银行标识代码的英文缩写&lt;/li&gt;
+&lt;li&gt;BIN 由 6 位数字表示，出现在卡号的前 6 位，由国际标准化组织(ISO)分配给各从事跨行转接交换的银行卡组织&lt;/li&gt;
+&lt;li&gt;银行卡的卡号是标识发卡机构和持卡人信息的号码，由以下三部分组成：发卡行标识代码(BIN号)、发卡行自定义位、校验码&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;目前，国内的银行卡按照数字打头的不同分别归属于不同的银行卡组织
+
+&lt;ul&gt;
+&lt;li&gt;以 4 字打头的银行卡属于 VISA 卡组织&lt;/li&gt;
+&lt;li&gt;以 5 字打头的属于 MASTER CARD 卡组织&lt;/li&gt;
+&lt;li&gt;以 9/62/60 打头的属于中国银联，而 &lt;sup&gt;62&lt;/sup&gt;&amp;frasl;&lt;sub&gt;60&lt;/sub&gt; 打头的银联卡是符合国际标准的银联标准卡，可在国外使用，这也是中国银联近几年来主要发行的银行卡片&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;大部分银行卡号前 6 位即可确定发卡行和卡类型，但也有非标卡需要 6-10 位才可判断出来&lt;/li&gt;
+&lt;li&gt;需要维护一个卡 bin 库&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-5-短信和身份验证&#34;&gt;4.5 短信和身份验证&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般绑卡操作第 5 步需要银行下发短信验证码。短信验证的接口，不同银行不一样。有些银行是短信和身份验证一起做了；有些银行是可以配置身份验证是否同时发短信&lt;/li&gt;
+&lt;li&gt;此类接口一般包含如下内容：
+
+&lt;ul&gt;
+&lt;li&gt;版本号：当前接口的版本号&lt;/li&gt;
+&lt;li&gt;编码方式：默认都是 UTF-8，指传输的内容的编码方式&lt;/li&gt;
+&lt;li&gt;签名和签名方法：生成报文的签名。不是所有的字段都需要放到签名中，文档中会说明哪些字段需要签名&lt;/li&gt;
+&lt;li&gt;签名算法：生成签名的算法，RSA、RSA128、MD5 等&lt;/li&gt;
+&lt;li&gt;商户代码：在渠道侧注册的商户号&lt;/li&gt;
+&lt;li&gt;商户订单号：即发送给渠道的订单号&lt;/li&gt;
+&lt;li&gt;发送时间：该请求送出的时间&lt;/li&gt;
+&lt;li&gt;账号和账号类型：银行卡、存折、IC 卡等支持的账号类型以及对应的账号&lt;/li&gt;
+&lt;li&gt;卡的加密信息：如信用卡的 CVN2、有效期等&lt;/li&gt;
+&lt;li&gt;开户行信息：开户行所在地以及名称。大部分不需要&lt;/li&gt;
+&lt;li&gt;身份证件类型和身份证号：可用于实名验证的证件，指身份证、军官证、护照、回乡证、台胞证、警官证、士兵证等。不同银行可以支持的证件类型不一样，这也不是问题。大部分是身份证&lt;/li&gt;
+&lt;li&gt;姓名：真实姓名，必须和身份证一致&lt;/li&gt;
+&lt;li&gt;手机号：在所在银行注册的手机号&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;系统会返回上述数据的验证结果。如果验证通过，则会发短信。但这不是所有的渠道都是这样。哪些字段会参与验证、需不需要发短信，需要注意看接口文档&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-6-绑卡接口&#34;&gt;4.6 绑卡接口&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;绑卡接口和发短信接口类似，还需要将用户的卡号、身份证等信息传递过去&lt;/li&gt;
+&lt;li&gt;绑卡成功后，会返回一个签约号。这个签约号是后续调用支付、解约等接口所必须的&lt;/li&gt;
+&lt;li&gt;银行都不支持重复绑卡：大部分银行(如农业、浦发、建行)对绑卡签约接口调用，会首先验证身份信息，如果验证不通过，则不执行后续操作。验证通过后，再检查这个卡在该商户下是否已经绑过了，如果没有绑过，则执行绑卡，否则会提示卡已经绑定过了，不能重复签约。但工行首先验证这个卡是不是已经绑过了，如果已经绑卡，则不继续验证身份信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-7-银联绑卡&#34;&gt;4.7 银联绑卡&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;银联直联绑卡：和银行绑卡类似，但是得注意验证接口，仅验证卡号和姓名，不验证身份证号和手机号。这导致第 5 步无法正常进行。银联只有到第 6 步执行绑卡时才做身份验证。所以在处理上，还需要做一些调整，来确保和银行的流程的一致
+
+&lt;ul&gt;
+&lt;li&gt;一种处理方法是，对银联在第 5 步就开始调用银联接口执行绑卡操作，但在本地标记为预绑卡状态；商户侧发送短信验证码，验证通过后，才将状态设置为绑卡成功&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;银联网银绑卡：用户在电商页面上输入卡号，然后被导航到银联页面上去完成绑卡操作，成功后，银联返回一个 token 作为签约号，用于支持后续操作。问题在于用户可以在银联页面上绑定一个别人的卡，而电商侧是无法知道这个卡的情况的。所以尽量不要用这种方式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-8-实名认证&#34;&gt;4.8 实名认证&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;绑卡操作有个不错的副产品，就是实名认证。常说的二要素，三要素，四要素认证，可以通过这个操作完成
+
+&lt;ul&gt;
+&lt;li&gt;二要素：指姓名和身份证号&lt;/li&gt;
+&lt;li&gt;三要素：加上银行卡号&lt;/li&gt;
+&lt;li&gt;四要素：加上手机号&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;看起来，似乎银行都应该支持四要素验证，但大部分银行接口仅支持三要素，毕竟手机号还是非常容易变&lt;/li&gt;
+&lt;li&gt;实名认证，也就是二要素认证，是应用最多的认证&lt;/li&gt;
+&lt;li&gt;国内唯一的库是在公安部，由 NCIIC 负责对外提供接口。可以提供如下功能：
+
+&lt;ul&gt;
+&lt;li&gt;简项核查：返回“一致”“不一致”“库中无此号”&lt;/li&gt;
+&lt;li&gt;返照核查：返回“一致+网纹照片”“不一致”“库中无此号”&lt;/li&gt;
+&lt;li&gt;人像核查：返回“同一人”“不同人”“库中无此号”&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;官方接口收费是 5 元/条。市面上主要的第三方服务提供商有国政通(简项、返照)、诺证通(简项)、IDface(三接口)等。收费一般和访问量有关，量大从优
+
+&lt;ul&gt;
+&lt;li&gt;简项核查：0.5~2.0 元&lt;/li&gt;
+&lt;li&gt;返照核查：0.8~2.1 元&lt;/li&gt;
+&lt;li&gt;人像核查：2.0~8.0 元不等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;注意：涉密人员是没法查到相关信息的&lt;/li&gt;
+&lt;li&gt;性能上，XX 通一般在 200ms 内即可返回结果，普通商用没问题。有些公司还会额外提供四要素接口，以 XX 通为例，它号称支持大部分银行卡的四要素认证。但是实现上是实时请求银行的接口，这就导致接口延迟非常高，1 秒以上的占大部分，甚至 10 秒以上的都不少见，基本无法商用。这种情况下，还不如直接上银联&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4 账户和账务处理</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/4_%E8%B4%A6%E6%88%B7%E5%92%8C%E8%B4%A6%E5%8A%A1%E5%A4%84%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/%E6%94%AF%E4%BB%98%E6%B8%85%E7%BB%93%E7%AE%97/4_%E8%B4%A6%E6%88%B7%E5%92%8C%E8%B4%A6%E5%8A%A1%E5%A4%84%E7%90%86/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#41-%e8%b4%a6%e6%88%b7%e4%bd%93%e7%b3%bb&#34;&gt;4.1 账户体系&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#411-%e8%b5%84%e4%ba%a7%e7%b1%bb%e8%b4%a6%e6%88%b7&#34;&gt;4.1.1 资产类账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#412-%e8%b4%9f%e5%80%ba%e7%b1%bb%e8%b4%a6%e6%88%b7&#34;&gt;4.1.2 负债类账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#413-%e6%89%80%e6%9c%89%e8%80%85%e6%9d%83%e7%9b%8a%e7%b1%bb%e8%b4%a6%e6%88%b7&#34;&gt;4.1.3 所有者权益类账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#414-%e6%8d%9f%e7%9b%8a%e7%b1%bb%e8%b4%a6%e6%88%b7&#34;&gt;4.1.4 损益类账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#415-%e6%88%90%e6%9c%ac%e7%b1%bb%e8%b4%a6%e6%88%b7&#34;&gt;4.1.5 成本类账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#416-%e5%85%b1%e5%90%8c%e7%b1%bb%e8%b4%a6%e6%88%b7&#34;&gt;4.1.6 共同类账户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#417-%e8%b4%a6%e6%88%b7%e4%bd%93%e7%b3%bb&#34;&gt;4.1.7 账户体系&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#42-%e8%b4%a6%e6%88%b7%e7%bb%93%e6%9e%84&#34;&gt;4.2 账户结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#43-%e6%94%af%e4%bb%98%e6%b5%81%e7%a8%8b&#34;&gt;4.3 支付流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#44-%e6%94%af%e4%bb%98%e8%ae%a2%e5%8d%95&#34;&gt;4.4 支付订单&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#45-%e6%94%af%e4%bb%98%e8%ae%b0%e5%bd%95&#34;&gt;4.5 支付记录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#46-%e6%94%af%e4%bb%98%e8%ae%b0%e8%b4%a6&#34;&gt;4.6 支付记账&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#47-%e4%bc%9a%e8%ae%a1%e8%ae%b0%e8%b4%a6&#34;&gt;4.7 会计记账&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#48-%e5%af%b9%e8%b4%a6&#34;&gt;4.8 对账&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#481-%e5%86%85%e9%83%a8%e5%af%b9%e8%b4%a6&#34;&gt;4.8.1 内部对账&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#482-%e6%b8%a0%e9%81%93%e5%af%b9%e8%b4%a6&#34;&gt;4.8.2 渠道对账&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#483-%e8%b4%a6%e8%b4%a6%e6%a0%b8%e5%af%b9&#34;&gt;4.8.3 账账核对&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#484-%e8%b4%a6%e5%ae%9e%e6%a0%b8%e5%af%b9&#34;&gt;4.8.4 账实核对&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#49-%e7%bb%93%e6%9d%9f%e8%af%ad&#34;&gt;4.9 结束语&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-1-账户体系&#34;&gt;4.1 账户体系&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在设计清结算系统前，首先需要完成账户体系的梳理&lt;/li&gt;
+&lt;li&gt;账户是用来记录会计科目所反映的业务内容的工具，它根据会计科目开设&lt;/li&gt;
+&lt;li&gt;账户有多种维度的分类
+
+&lt;ul&gt;
+&lt;li&gt;按照经济内容来说，账户分为资产类账户、负债类账户、所有者权益类账户、损益类账户、成本类账户和共同类账户&lt;/li&gt;
+&lt;li&gt;按照会计周期内期末是否有余额，也分为实账户和虚账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-1-资产类账户&#34;&gt;4.1.1 资产类账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;资产类账户：用来反映资产增加、减少以及增减变动结果的账户&lt;/li&gt;
+&lt;li&gt;和支付系统相关的主要资产类账户有：银行存款、应收账款、预付账款、库存商品、发出商品等&lt;/li&gt;
+&lt;li&gt;资产增加登记在借方，减少登记在贷方，期末有余额的话，一般出现在借方&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在一个会计期间，所有借方金额的累加为“借方本期发生额”，所有贷方金额的累加为“贷方本期发生额”&lt;/p&gt;
+
+&lt;p&gt;资产账户的余额=借方期初余额+借方本期发生额-贷方本期发生额。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为了跟踪在每个银行的存款变更情况，需要对公司在各个银行开通的收款账户设置对应的银行存款账户、应收账款账户。在小明购买会员卡的案例中，资产类账户包括&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;银行存款：这是一个总账账户，记录电商公司在各个银行的总存款&lt;/li&gt;
+&lt;li&gt;应收账款：这是一个总账账户，记录在银行的应收账款，这是虚账户，期末无余额&lt;/li&gt;
+&lt;li&gt;银行存款-工行：这是一个明细账户，对应在工行的对公账户的存款变化&lt;/li&gt;
+&lt;li&gt;应收账款-工行：这是一个明细账户，记录在工行的收款情况，这是虚账户，期末无余额&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-2-负债类账户&#34;&gt;4.1.2 负债类账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;负债类账户：实账户，记账规则跟资产类相反，负债增加记为贷，负债减少记为借，期末如有余额，一般在贷方，表明期末有债务实有额，负债类账户的余额计算&lt;/p&gt;
+
+&lt;p&gt;贷方期末余额=贷方期初余额+贷方本期发生额-借方本期发生额。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;从支付系统的角度，电商公司的自有账户，包括针对个人的账户和针对商户的账户，一般放在负债类账户下&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;此外，应付账款、预收账款、应交税费等，也是负债类账户&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-3-所有者权益类账户&#34;&gt;4.1.3 所有者权益类账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;所有者权益类账户：用来反映所有者权益增加、减少和变动结果的账户&lt;/li&gt;
+&lt;li&gt;记账规则跟负债类账户一致：所有者权益增加记为贷，减少记为借&lt;/li&gt;
+&lt;li&gt;和支付系统有关的所权账户包括：本年利润、利润分配等账户&lt;/li&gt;
+&lt;li&gt;企业取得的收入最终会使得所有者权益增加，因此收入类账户的记账方法跟所有者权益一致：增加记为贷，减少或者转销记为借，通常该账户期末无余额(因为期末收入都会转为所有者权益，如未分配利润等)，属于虚账户&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-4-损益类账户&#34;&gt;4.1.4 损益类账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;损益类账户分为收入类和费用类账户
+
+&lt;ul&gt;
+&lt;li&gt;收入类账户：指各种收入、补贴、投资收益，如主营业务收入、其他业务收入和营业外收入等，增加记为贷，减少记为借&lt;/li&gt;
+&lt;li&gt;费用类账户包括：主营业务成本、其他业务成本、营销费用等。企业在日常经营活动中会发生各种各样的耗费，这些耗费在会计学上称为成本费用，它们是收入的抵减项目，在抵销收入之前，可以视为一种资产，因此成本费用类账户的记账规则跟资产类一样：增加记为借，减少或者转销记为贷&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;按照企业会计制度的规定，损益类账户的科目余额，应该结转入利润分配科目，期末余额为零，为虚账户&lt;/li&gt;
+&lt;li&gt;在本案例中，损益类账户包括
+
+&lt;ul&gt;
+&lt;li&gt;主营业务收入，这是总分类账户&lt;/li&gt;
+&lt;li&gt;主营业务收入-会员卡，针对会员卡业务的收入&lt;/li&gt;
+&lt;li&gt;营销费用，这是总分类账户&lt;/li&gt;
+&lt;li&gt;营销费用-优惠券，用来跟踪优惠券相关的支出&lt;/li&gt;
+&lt;li&gt;渠道费用，这是总分类账户&lt;/li&gt;
+&lt;li&gt;渠道费用-工行： 用来跟踪在工行的渠道费用支出&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-5-成本类账户&#34;&gt;4.1.5 成本类账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有成本核算的企业需要设立的账户，包括生产成本、劳务成本等，本文暂不涉及&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-6-共同类账户&#34;&gt;4.1.6 共同类账户&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这是反映特殊经济业务的账户，本文暂不涉及&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-1-7-账户体系&#34;&gt;4.1.7 账户体系&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/re&#39;f/accountant_system.jpg&#34; alt=&#34;账户体系&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;4-2-账户结构&#34;&gt;4.2 账户结构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;采用复式借贷记账法。对于分户账，或者说明细账，如下示例
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/detailed_record.jpg&#34; alt=&#34;分户账&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;在这个实例中，账户中账务相关的结构包括
+
+&lt;ul&gt;
+&lt;li&gt;账户名称：如上述的“应收账款-工行收款”&lt;/li&gt;
+&lt;li&gt;会计分录： 除了登记借方金额、贷方金额，还需更新账户余额&lt;/li&gt;
+&lt;li&gt;期末借方余额、期末贷方余额、期末余额：按期定时计算。在日切时，计算日发生额和余额。在按月、季度和年作为会计周期时也采用类似的方法处理。 除了日切是必须的，其它时间段的处理是根据财务需要来实现&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;在实现上，账户的各个属性更新时间并不一致，所以在设计账户表的时候，可以按照更新时机来划分表
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/pay_accountant.jpg&#34; alt=&#34;支付账户&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-3-支付流程&#34;&gt;4.3 支付流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;接着之前的小明购买会员卡的案例，不考虑优惠券和卡采购的情况，会计分录：&lt;/p&gt;
+
+&lt;p&gt;借：
+    应收账款-工行收款 100-100*0.1% = 99.9
+    服务成本-工行手续费 100*0.1% = 0.1
+  贷：主营业务收入-会员卡 100&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在线上的实时处理流程如下&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 用户购买会员卡，提交订单，会员卡向订单系统请求生成订单，订单系统向支付系统发出支付请求&lt;/li&gt;
+&lt;li&gt;2 支付系统生成支付记录，并向银行发出请求&lt;/li&gt;
+&lt;li&gt;3 银行实时从小明的银行卡账户上扣款 100 元，通知支付系统小明支付成功&lt;/li&gt;
+&lt;li&gt;4 支付系统账务子系统在自己的账户体系中记录小明的这一笔消费支出，给会员卡业务账户增加对应的资金，通知会员卡系统发送卡给小明&lt;/li&gt;
+&lt;li&gt;5 支付系统发送消息异步通知会计系统进行记账&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这 5 个步骤都是线上的流程，在此过程中，各个子系统之间的交互如下图所示
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/record_process.jpg&#34; alt=&#34;记账流程&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-4-支付订单&#34;&gt;4.4 支付订单&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这个流程中，首先生成的是支付订单。这是一个比较简单的订单，仅涉及到一个商家和一个商品&lt;/li&gt;
+&lt;li&gt;在比较复杂的电商场景中，一个订单会涉及到多个商家、多种商品以及对应的优惠活动。也就是，一个总订单会被拆分为多个子订单&lt;/li&gt;
+&lt;li&gt;而订单中和资金相关的内容，都需要在账户体系中建立对应的科目和账户。在请求支付时，只会将总订单提交支付，拆分子订单是在订单系统中完成的
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/total_account_record.jpg&#34; alt=&#34;总订单&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;针对上述场景，为了简化处理，假定老熊公司当天总共完成了三笔会员卡交易，支付订单如下
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/pay_account_record.jpg&#34; alt=&#34;支付订单&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-5-支付记录&#34;&gt;4.5 支付记录&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在这个流程中，订单系统向支付系统请求支付时，支付系统将产生支付记录(支付订单)&lt;/li&gt;
+&lt;li&gt;支付记录内容比较多，这些数据是后续进行记账的基础
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/pay_record.jpg&#34; alt=&#34;支付记录&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;上述的三个订单，两笔通过工行支付，一笔通过支付宝支付，其产生的支付记录如下，此处省略了其他和记账无关的字段内容
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/pay_record_table.jpg&#34; alt=&#34;支付记录表&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;这里需要注意的几个属性
+
+&lt;ul&gt;
+&lt;li&gt;订单号: 这是总订单号。支付系统不再对订单进行拆分。订单拆分是订单系统的功能&lt;/li&gt;
+&lt;li&gt;支付流水号：在支付记录中，针对每个(总)订单号，会有对应的支付流水号。如果用户使用组合支付，如上述场景，小明使用余额支付了 20 元，使用银行卡支付了剩余的 80 元，那这将产生 2 个支付流水号。为了避免洗钱风险，简化订单处理，包括淘宝在内，现在一般都不再提供组合支付的支持&lt;/li&gt;
+&lt;li&gt;支付方式和支付渠道：用户选择的支付方式和实际执行支付的渠道可以是不一样的。比如用户选择了广发信用卡来支付，但实际上电商公司没有直接对接农行，而是通过支付宝来对接，那对应的支付渠道就是支付宝&lt;/li&gt;
+&lt;li&gt;本条记录在支付成功后，会产生记账凭证和对账凭证&lt;/li&gt;
+&lt;li&gt;这一条记录将产生多条会计分录，记账凭证是关联这些会计分录和支付记录的字段&lt;/li&gt;
+&lt;li&gt;对账凭证是根据对账周期来分配的。在日切后，对账凭证号相应的也会做更新&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;在产生支付记录后，在上述流程的第 5 步通过消息机制来异步触发记账流程。账务系统接收到记账消息后，开始更新账户信息。记账分为两个阶段
+
+&lt;ul&gt;
+&lt;li&gt;支付记账：针对线上的账户实时更新的需求，需要让用户及时看到账户余额和订单状态，账务信息记录到用户和商户上，采用单边账的形式&lt;/li&gt;
+&lt;li&gt;会计记账：采用复式记帐法，满足会计记账需求，记录会计分录和余额，为对账和清结算提供支持&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-6-支付记账&#34;&gt;4.6 支付记账&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付记账是在支付流程中完成的，目的是让用户完成购买后，能够立即看到支付结果和账户余额。为了提升性能，支付记账一般采用单边账的形式，即将会计分录登记在用户侧或者商户侧&lt;/li&gt;
+&lt;li&gt;在上述案例中，第 6 步处理，在服务器上与银行侧同步登记一笔从小明银行卡的支出，并在会员业务账户上登记一笔收入。如果使用的是零钱支付，这一个步骤就很重要，从零钱账户上扣除费用计算余额，添加对应的消费记录，是在一个事务中完成&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-7-会计记账&#34;&gt;4.7 会计记账&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;会计记账采用复式记账，不同业务记账方式也不一样。小明买卡的案例中，需要记录的条目有
+
+&lt;ul&gt;
+&lt;li&gt;在工行收款账户下，登记 99.9 元的借记条目&lt;/li&gt;
+&lt;li&gt;在工行手续费的账户下，登记 0.1 元的借记条目&lt;/li&gt;
+&lt;li&gt;在主营业务收入-会员卡的账户下，登记 100 元的贷记条目&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这 3 条记录是通过事务处理一次生成。当天发生的三笔交易，产生的记账内容如下
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/accountant_content.jpg&#34; alt=&#34;记账内容&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;实际实现上，科目一列，使用账号 ID 来替代。每个账户的本期发生额，可以在另一个表中单独异步计算&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-8-对账&#34;&gt;4.8 对账&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在会计上，对账分三个部分：账证核对、账账核对和账实核对，做到账证相符、账账相符和账实相符&lt;/li&gt;
+&lt;li&gt;在电商支付系统中，需要完成的对账工作包括内部对账、外部对账和资金对账。其中外部对账又分为和支付渠道的对账、和商户的对账以及和用户的对账
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/checking.jpg&#34; alt=&#34;对账&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-8-1-内部对账&#34;&gt;4.8.1 内部对账&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;内部对账的内容包括
+
+&lt;ul&gt;
+&lt;li&gt;核实账户系统中的账务与支付记录的一致性&lt;/li&gt;
+&lt;li&gt;核实会计系统中的账务与支付记录的一致性&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这是后续账账核对和账实核对的基础，也是对外对账的基础。这两个对账任务一般是在后台定时运行(5分钟运行一次)，除非系统有 bug 或者发生故障，内部对账一般不会出现差错。如有差错，也需要人工处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-8-2-渠道对账&#34;&gt;4.8.2 渠道对账&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般银行、第三方支付提供 T+1 的对账单，这是执行渠道对账的依据&lt;/li&gt;
+&lt;li&gt;在上述案例中，支付系统每天拉取工行前一天的对账单，核对交易流水。与此同时，按照从工行获取的对账单，记录资金归集的账务&lt;/li&gt;
+&lt;li&gt;接收到工行对账单后，按照对账单生成凭证
+&lt;img src=&#34;https://xueqing.github.io/blog/o2o/支付系统/ref/voucher.jpg&#34; alt=&#34;凭证&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;注意上述的日期、凭证号，以及借贷关系&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-8-3-账账核对&#34;&gt;4.8.3 账账核对&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;完成渠道对账后，需要进行日结和试算平衡
+
+&lt;ul&gt;
+&lt;li&gt;总分类账各账户本期借方发生额合计与贷方余额合计是否相等&lt;/li&gt;
+&lt;li&gt;总分类账各账户借方余额合计与贷方发生额合计是否相符&lt;/li&gt;
+&lt;li&gt;核对各种明细账及现金、银行存款日记账的本期发生额及期末余额同总分类账中有关账户的余额是否相等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;从科目维度，计算
+
+&lt;ul&gt;
+&lt;li&gt;科目期初余额+科目当日发生额=科目期末余额&lt;/li&gt;
+&lt;li&gt;下级科目余额总和=上级科目余额(科目总分检查)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-8-4-账实核对&#34;&gt;4.8.4 账实核对&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对电商公司来说，最重要的账实核对，是验证银行存款的变化和实际资金流向是一致的。一般是需要登录到银行网银系统中来人工核实&lt;/li&gt;
+&lt;li&gt;如果对接的银行多，银行提供网银对账单，也可以自动进行，查询出入款总额&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-9-结束语&#34;&gt;4.9 结束语&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;本文主要介绍支付清结算中的账户和账务的处理。清结算是一个很专业的话题，这个专业不是计算机专业，而是会计专业。每个公司的账户和账务处理都有自己的要求和特点&lt;/li&gt;
+&lt;li&gt;这一系列文章，主要是从软件开发的角度来协助大家梳理清结算相关的基础知识。具体的账户、账务、会计处理流程，需要和公司会计详细沟通&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>5 应用内支付</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/5_%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/5_%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#51-%e4%b8%ba%e4%bb%80%e4%b9%88%e4%bd%bf%e7%94%a8-iap&#34;&gt;5.1 为什么使用 IAP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#52-iap-%e6%94%af%e4%bb%98%e6%b5%81%e7%a8%8b&#34;&gt;5.2 IAP 支付流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#53-iap-%e8%ae%a2%e9%98%85&#34;&gt;5.3 IAP 订阅&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#531-%e7%bb%ad%e8%b4%b9%e5%91%a8%e6%9c%9f%e7%9a%84%e8%ae%a1%e7%ae%97&#34;&gt;5.3.1 续费周期的计算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#532-%e8%87%aa%e5%8a%a8%e7%bb%ad%e8%b4%b9&#34;&gt;5.3.2 自动续费&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#533-%e5%85%8d%e8%b4%b9%e8%af%95%e7%94%a8&#34;&gt;5.3.3 免费试用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#534-receipt-%e9%aa%8c%e8%af%81&#34;&gt;5.3.4 Receipt 验证&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#54-iap-%e7%a0%b4%e8%a7%a3%e5%92%8c%e9%98%b2%e5%be%a1&#34;&gt;5.4 IAP 破解和防御&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#55-%e4%b8%a4%e5%a5%97%e8%b4%a6%e6%88%b7%e4%bd%93%e7%b3%bb&#34;&gt;5.5 两套账户体系&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#56-%e5%88%86%e6%88%90%e5%ae%9a%e4%bb%b7%e5%92%8c%e5%9b%bd%e9%99%85%e5%8c%96&#34;&gt;5.6 分成，定价和国际化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#57-%e6%9b%b4%e5%a4%9a%e7%9a%84%e5%9d%91&#34;&gt;5.7 更多的坑&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#58-android-iap&#34;&gt;5.8 Android IAP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-1-为什么使用-iap&#34;&gt;5.1 为什么使用 IAP&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;应用内支付(In-App Purchase, IAP)：指使用手机操作系统自带的支付功能支持支付。目前国内主要的应用内支付有 Google Pay、Apple Pay、小米支付、华为支付等。其中 Apple Pay 是典型的一个应用内支付，Android平台的各种支付也一般是沿用 Apple Pay 的设计&lt;/li&gt;
+&lt;li&gt;相对来说，应用内支付的用户体验，和微信支付、支付宝相比，还是有一定差距的.但是为什么要开发应用内支付呢？这个和苹果的 AppStore 的审核政策有关。在官方的 App Store Review Guidelines 中，有如下几条意见：
+
+&lt;ul&gt;
+&lt;li&gt;在 App 内使用非 IAP 的系统来购买内容、功能或服务将被拒绝&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;1.2 Apps utilizing a system other than the In-App Purchase API (IAP) to purchase content, functionality, or services in an App will be rejected.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IAP 购买实物或者应用外的商品或服务将会被拒绝
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;11.3 Apps using IAP to purchase physical goods or goods and services used outside of the App will be rejected.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过 IAP 购买的积分或者其他货币必须只在 App 内使用
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;11.4 Apps that use IAP to purchase credits or other currencies must consume those credits within the App&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;问题：如果要购买的服务，既在 IOS 内使用，也在 Android 等 IOS 系统外使用，那应该是使用规则 11.2 还是规则 11.3 来执行？比如说视频网站，视频既可以在 IOS 上看，也可以在 Android 上看，那是否是需要通过 IAP 来购买？苹果公司在这一点上采取模糊的策略。爱奇艺、腾讯视频，在 IOS 上购买会员，只能用 IAP 支付。这就和苹果公司的审核有关&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-2-iap-支付流程&#34;&gt;5.2 IAP 支付流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般 IAP 支付的开发流程，首先需要一些准备工作，包括
+
+&lt;ul&gt;
+&lt;li&gt;1 在 developer.apple.com 上配置一个 App ID，使用该 ID 生成和安装相应的 Provisioning Profile 文件&lt;/li&gt;
+&lt;li&gt;2 登录到 iTunes Connect，使用 App ID 创建一个新的应用，在该应用中，创建应用内付费项目，设置好价格和 Product ID 以及购买介绍和截图&lt;/li&gt;
+&lt;li&gt;3 添加一个用于在 sandbox 付费的测试用户，填写相关的税务、银行、联系人信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;完成这些准备工作后，既可以进入正式的开发，开发流程如下
+
+&lt;ul&gt;
+&lt;li&gt;1 用户选择要购买的内容并点击购买按钮&lt;/li&gt;
+&lt;li&gt;2 用户通过 AppStore 账户验证&lt;/li&gt;
+&lt;li&gt;3 苹果服务器验证用户请求&lt;/li&gt;
+&lt;li&gt;4 苹果服务器从用户帐号扣款&lt;/li&gt;
+&lt;li&gt;5 苹果向用户返回购买成功信息&lt;/li&gt;
+&lt;li&gt;6 软件接收并显示用户购买信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;上述流程的坑
+
+&lt;ul&gt;
+&lt;li&gt;账号坑：用户访问 AppStore 时使用的是 Apple 的账号，不是应用系统的账号。也就是说，我们并不知道到底是谁在购买这个内容。比如在应用中有两个账号 A 和 B，用 A 账号登录后，上 IAP 买了东西，然后用 B 账号来登录，也上 IAP 买东西，这两次购买用的是同一个 Apple 账号。苹果也不会告诉你，到底是哪个账号付了钱。账号坑在单次购买中还没什么问题，但碰到订阅的情况，得好好处理下&lt;/li&gt;
+&lt;li&gt;从上述流程可以看出，苹果服务器都是和客户端打交道的，这里面似乎没有应用服务器什么事情。只有在客户端接收到苹果返回信息后，才可以把这个信息转发给应用服务器。如果用户一直不打开手机上的应用，那应用服务器就一直收不到通知了。好在后来苹果提供了一个验证功能，应用服务器可以把接收到的返回信息(加密后的字符串)发送给苹果服务器来验证和解密&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-3-iap-订阅&#34;&gt;5.3 IAP 订阅&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IAP Subscription 又是一个大坑，参考&lt;a href=&#34;https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html&#34; target=&#34;_blank&#34;&gt;官方的文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;5-3-1-续费周期的计算&#34;&gt;5.3.1 续费周期的计算&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IAP 主要提供给周期性订阅的音乐、电子书等内容使用&lt;/li&gt;
+&lt;li&gt;一般就按月来计算周期。苹果是以自然月来算权益周期。比如在 1 月 3 号买了权益，到 2 月 3 号，这个权益就过期啦，需要在此之前完成续费。1 月 31 号买的权益，以自然月算，会在 3 月 1 日前到期，如果 2、3 月份都续费了，到 4 月份，也是享受到 4 月 30 日&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;5-3-2-自动续费&#34;&gt;5.3.2 自动续费&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;应用开发应该不需要关心续费的细节。苹果会做自动处理。在权益到期前 10 天，苹果检查用户账户是否可以扣款，商品价格是否有变动。在权益到期前 24 小时，苹果开始扣款，如果失败，会多次重试，直到成功&lt;/li&gt;
+&lt;li&gt;这个重试会延续到用户权益过期后一小段时间，苹果没有说这段时间该算是有权益还是没有，但开发人员需要注意应该如何处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;5-3-3-免费试用&#34;&gt;5.3.3 免费试用&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;免费试用不是强制需求，但这有利于用户判断是否值得购买这个物品&lt;/li&gt;
+&lt;li&gt;免费试用期是在 iTunes connect 中设置。当用户第一次购买这个东西的时候，客户端接收到的 Receipt 中包含免费试用信息。在免费期快到的时候，苹果发起第一次扣款。整个过程和自动续费类似，唯一区别是第一个月是免费的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;5-3-4-receipt-验证&#34;&gt;5.3.4 Receipt 验证&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;客户端接收到 Receipt 之后，需要提交到服务器端进行处理，开通权益&lt;/li&gt;
+&lt;li&gt;Receipt 应该在服务器端处理，这样可以防止越狱后的一些插件，如 IAP Cracker、IAP Free 等伪造交易凭证，欺骗苹果服务器，开通权益&lt;/li&gt;
+&lt;li&gt;还需注意，客户端和服务器端之间需通过 HTTPS 以及参数签名等方式来确保通讯安全。服务器端接收到 Receipt 之后，首先验证请求的有效性，然后将 Receipt 发送到苹果服务器上进行验证和解析。接收到苹果处理结果后，将 Receipt 中的 user_id、product_id、purchase_date、transaction_id 等做验证和处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-4-iap-破解和防御&#34;&gt;5.4 IAP 破解和防御&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;既然 IAP 的验证主要是在苹果服务器端和手机客户端进行，并且是使用域名。这简直是为攻击打开了一扇大门，而不仅仅是漏洞。早期的 IAP 内购解锁工具 IAP cracker 对 IAP 的破解比较简单粗暴。程序中基本都是用 transactionState 判断交易是否成功。&lt;/li&gt;
+&lt;li&gt;transactionState 有四个状态
+
+&lt;ul&gt;
+&lt;li&gt;SKPaymentTransactionStatePurchasing&lt;/li&gt;
+&lt;li&gt;SKPaymentTransactionStatePurchased：表示购买成功&lt;/li&gt;
+&lt;li&gt;SKPaymentTransactionStateFailed&lt;/li&gt;
+&lt;li&gt;SKPaymentTransactionStateRestored&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;只要修改 SKPaymentTransactionStatePurchased 值，如果客户端应用直接根据交易状态来处理业务流程，那就会收到这个假的交易成功信息，接下来用户就能不花钱得到所买的物品。这个过程甚至都不需要接入网络&lt;/li&gt;
+&lt;li&gt;另一个工具 IAP Free 功能更强大，安装使用也复杂很多。它是通过修改 DNS，让客户端访问黑客提供的服务器来取代访问苹果服务器，实现所谓的 MITM 中间人攻击
+
+&lt;ul&gt;
+&lt;li&gt;当用户在客户端触发购买流程时，会被引导到伪装的苹果服务器上，不扣款而直接返回扣款成功收据。用户不需要支付任何资金，客户端能够拿到完整的收据&lt;/li&gt;
+&lt;li&gt;如果是在客户端处理收据验证也没有任何问题。为了避免用户所使用的设备被封，这些软件甚至可以提供伪造 UDID 的功能&lt;/li&gt;
+&lt;li&gt;为此，苹果特别说明，一定要在服务器端验证用户购买信息，验证内容包括收据签名、证书、产家信息等，确保收据无误后，才能授予权益。如果发现有诈，则将用户拉黑&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-5-两套账户体系&#34;&gt;5.5 两套账户体系&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;苹果支付的账户体系是以 Apple id 为基础，它允许用户在多台设备上共用一个账户
+
+&lt;ul&gt;
+&lt;li&gt;一台设备上，一般只有一个激活账户。但对应用系统来说，大部分是允许多个账号登陆的&lt;/li&gt;
+&lt;li&gt;这对续费来说是个问题。用户以账户 A 登录后，发起续费，获得权益。然后以账号 B 登录了，显然，A 的权益不会衍生给 B。过几天 A 开始续费了，续费之后，切换到 B 账号登录，客户端在 B 账号登录时得到续费的收据并发送给应用服务器。这算是 A 的续费请求。在这个 Apple id 发起的续费请求，所有的收据都会有一个相同的原始交易号 original transaction Id。在用户发起订阅时，需要记录这个 id 和账号的关系，每次续费，需要在解析收据后，根据原始交易号从这里获取真正的充值账户，不能从客户端提交的用户 id 作为凭据&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果在账户 B 登录后也发起订阅请求，这个调用将会失败，所以需要阻止用户发起这样的请求。或者设置多个产品副本来让用户购买&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-6-分成-定价和国际化&#34;&gt;5.6 分成，定价和国际化&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 iTunes 中的给的产品定价必须是税前的，苹果和商家的分成也是按税前算&lt;/li&gt;
+&lt;li&gt;商家给出在一个主要销售国家和地区(比如国内的基本就是中国)的价格，即基准价格。在其他地区的销售价格，苹果会自动根据当前的汇率来换算成当地的货币。当然，也可以自己修改设定在这些国家或者地区的当地价格。目前是支持到 155 个国家。还要特别注意版权问题&lt;/li&gt;
+&lt;li&gt;基准价格调整，如果是往高了调整，则在用户下一次续费时，需要用户确认。如果往低了调，那就不需要用户确认，直接扣款了&lt;/li&gt;
+&lt;li&gt;苹果对商家的产品价格体系有分组(Group)的概念，同国内说的价格体系，比如白金会员、黄金会员、贵宾等，在同一个 Group 里面，用户只能选择一个档，比如用户要么是白金要么是黄金会员，不会同时是&lt;/li&gt;
+&lt;li&gt;在同一个 Group 中，如果用户订阅时间超过一年(365 天)，则商家可以得到来自这个用户收益的更多的分成，目前是 85%。这个订阅时间不包括免费试用期。同时可以有 60 天的宽限。也就是说，这一年中，如果用户曾经停止续费，然后又开始继续续费，只要中间不续费的时间不超过 60 天就行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-7-更多的坑&#34;&gt;5.7 更多的坑&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;目前用的是 IOS 10.0 版本，这个版本和 IAP 有关的坑
+
+&lt;ul&gt;
+&lt;li&gt;沙盒环境，没法做取消订阅操作。只能在线上模拟。所以产品设计和开发时，尽量不要依赖取消订阅操作，也应该不依赖于这个操作&lt;/li&gt;
+&lt;li&gt;沙盒环境下，有些 receipt 可能会收不到 transaction id，线上的暂未发现这个问题&lt;/li&gt;
+&lt;li&gt;苹果提供单个收据和列表收据两种格式。推荐使用列表数据，但问题是这个列表收据的长度，苹果也不知道最多会有多少&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;5-8-android-iap&#34;&gt;5.8 Android IAP&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IOS 上用苹果支付是被逼的&lt;/li&gt;
+&lt;li&gt;Android 上用支付宝和微信支付：后者有大量用户基数，接入也很方便，费用比 IAP 便宜&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>6 支付产品服务设计</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/6_%E6%94%AF%E4%BB%98%E4%BA%A7%E5%93%81%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#61-%e5%89%8d%e8%a8%80&#34;&gt;6.1 前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#62-%e4%ba%a7%e5%93%81%e5%88%86%e7%b1%bb&#34;&gt;6.2 产品分类&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#63-%e6%a8%a1%e5%9d%97%e5%8a%9f%e8%83%bd&#34;&gt;6.3 模块功能&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#64-%e4%b8%9a%e5%8a%a1%e6%b5%81%e7%a8%8b&#34;&gt;6.4 业务流程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-1-前言&#34;&gt;6.1 前言&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付产品模块是按照支付场景来为业务方提供支付服务&lt;/li&gt;
+&lt;li&gt;支付产品模块一般位于支付网关之后，支付渠道之前。根据支付能力将不同的支付渠道封装成统一的接口，通过支付网关来对外提供服务。&lt;/li&gt;
+&lt;li&gt;从微服务的角度，支付产品本身也是一个代理模式的微服务，它通过支付网关响应业务方请求，进行一些统一处理后，分发到不同的支付渠道去执行，最后将执行结果做处理后，通过支付网关再回传给业务方&lt;/li&gt;
+&lt;li&gt;支付产品在支付系统参考下图架构图中的位置
+&lt;img src=&#34;ref/pay_system_arch.jpg&#34; alt=&#34;支付系统架构图&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;也有设计是将支付产品模块与支付网关合并到一起的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;6-2-产品分类&#34;&gt;6.2 产品分类&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付产品：由支付系统对支付渠道进行封装而对业务方提供的支付能力&lt;/li&gt;
+&lt;li&gt;在不同的公司，由于接入渠道和应用的差异，支付产品分类略有不同&lt;/li&gt;
+&lt;li&gt;综合支付场景和流程，支付产品可以分为如下几类
+&lt;img src=&#34;ref/pay_product.jpg&#34; alt=&#34;支付产品分类&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;| 支付产品 | 操作 | 优点 | 不足 | 实现方式 |
+  | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; |
+  | 快捷支付 | 用户在完成绑卡之后，在支付的时候，不需要再输入卡或者身份信息，仅需要输入支付密码就可以完成支付。对于小额度的支付，甚至可以开通小额免密，直接完成支付 | 不会打断用户的体验，是目前主要的在线支付方式 | -  | 一般是封装银行或者第三方支付平台提供的快捷支付接口或者代付接口 |
+  | 网银支付 | 用户在支付的时候，需要跳转到银行网银页面来完成支付。在网银页面，需要输入用户的卡号和身份信息 | - | 会中断用户当前的体验，一般仅用于 PC Web 上的支付 | 封装银行提供的网银支付 |
+  | 协议支付 | 也称代收或者代扣，代收指渠道授权商户可以从用户的银行账户中扣款 | 一般用于定期扣款 |  不用于日常消费(如水电煤气、有线电视费) | 封装银行、第三方支付提供的代扣或者快捷接口 |
+  | 平台支付 | 使用微信、支付宝等第三方支付平台来完成支付 | 由于微信、支付宝已经被大量使用，用户也产生对这些平台的信任，平台支付往往是电商公司的主要支付方式 | 使用时，一般需要用户预先安装支付平台系统(手机)，注册并登录到第三方支付平台，并且已经在该平台上完成绑卡等操作 | - |
+  | 外卡支付 | 国内不少支付渠道都能支持外卡支付(如支付宝全球购) | 支持海外支付 | - | 直接对接 Paypal，也是目前用的最多的外卡支付渠道 |
+  | 话费支付 | - | 对于有包月小额类型的支付，可使用手机话费支付 | - | 目前有一些平台可以支持话费支付(如虹软、联动优势) |
+  | 虚币支付 | 不少公司会有自己的虚拟币(如京豆、Q 币)。这些虚币也可以作为一种支付方式 | - | - | - |
+  | 账户支付 | 也称为余额支付、零钱支付等。指为用户建立本地账户，之后可以使用这个账户来完成支付 | 支持充值 | - | - |
+  | 信用支付 | (如京东白条，蚂蚁花呗)指使用信用账户进行透支，类似信用卡支付 | - | - | - |
+  | 代付 | 和代扣相反，代付是平台将钱打给用户 | - | - | - |&lt;/p&gt;
+
+&lt;h2 id=&#34;6-3-模块功能&#34;&gt;6.3 模块功能&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付产品根据其支付能力，对外提供不同的功能。整体上来说，一般支付产品需要提供如下接口
+&lt;img src=&#34;ref/pay_product_func.jpg&#34; alt=&#34;支付产品功能&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;| 接口 | 功能描述 | 备注 |
+  | &amp;mdash; | &amp;mdash; | &amp;mdash; |
+  | 签约 | 在快捷支付、代扣等产品中，用户在使用前，需要先完成签约 | 签约可在渠道侧进行，一般第三方支付采用这种方式，当电商需要接入时，让第三方给授权。银行和银联的签约一般在电商侧进行，电商侧负责收集用户的信息，调用银行和银联的接口进行签约。签约后，后续的支付行为使用签约号进行，无需再输入个人信息 |
+  | 解约 | 取消签约关系 | 和签约对应 |
+  | 支付 | 不同产品中支付行为不一样 | 快捷支付在电商服务器上发起，请求渠道进行支付；网银支付是跳转到银行支付网关进行; 账户支付、虚币支付，是在本地进行 |
+  | 撤销 | 取消当天在渠道侧未结算的交易 | 有些渠道区分撤销和退款(如银联、农行)，有些渠道则不作区分 |
+  | 退款 | 仅针对已经结算的交易 | 有些渠道区分撤销和退款(如银联、农行)，有些渠道则不作区分 |
+  | 查询签约状态 | 对于需要签约的交易，可以通过此接口查询签约状态 | - |
+  | 查询订单状态 | 通过此接口查询支付清单状态以及退款的订单状态 | - |
+  | 预授权 | 预授权交易用于受理方向持卡人的发卡方确认交易许可 | 受理方将预估的消费金额作为预授权金额，发送给持卡人的发卡方 |
+  | 预授权撤销 | 对已成功的预授权交易，在结算前使用预授权撤销交易，通知发卡方取消付款承诺 | 预授权撤销交易必须是对原始预授权交易或追加预授权交易最终承兑金额的全额撤销 |
+  | 预授权完成交易 | 对已批准的预授权交易，用预授权完成做支付结算 | - |
+  | 预授权完成撤销 | 预授权完成撤销交易必须是对原始预授权完成交易的全额撤销 | 预授权完成撤销后的预授权仍然有效 |
+  | 对账 | 通过 FTP 或 HTTP 方式提供对账文件供商户侧对账 | - |
+  | 余额查询 | 查询商户的交易账户余额，避免由于余额不足导致交易失败 | 注意不是客户的余额。不是所有的银行或者第三方支付都提供这个接口 |&lt;/p&gt;
+
+&lt;h2 id=&#34;6-4-业务流程&#34;&gt;6.4 业务流程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上述操作，除对账、查单外，每个操作实现的主流程，一般会包括参数校验、支付路由、生成订单、风险评估、调用渠道服务、更新订单和发送消息这 7 步&lt;/li&gt;
+&lt;li&gt;对于一些比较复杂的服务，还会涉及到异步同通知处理的步骤
+&lt;img src=&#34;ref/business_process.jpg&#34; alt=&#34;业务流程&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;1 执行参数校验：所有的支付操作，都需要对输入执行参数校验，避免接口受到攻击
+
+&lt;ul&gt;
+&lt;li&gt;验证输入参数中各字段的有效性验证：如用户 ID、商户 ID、价格、返回地址等&lt;/li&gt;
+&lt;li&gt;验证账户状态：交易主体、交易对手等账户的状态是处于可交易的状态&lt;/li&gt;
+&lt;li&gt;验证订单：如果涉及到预单，还需要验证订单号的有效性，订单状态是未支付。为了避免用户缓存某个 URL 地址，还需要校验下单时间和支付时间是否超过预定的间隔&lt;/li&gt;
+&lt;li&gt;验证签名：签名也是为了防止支付接口被伪造。一般签名是使用分发给商户的 key 来对输入参数拼接成的字符串做 MD5 Hash 或 RSA 加密，然后作为一个参数随其他参数一起提交到服务器端。如支付网关设计所介绍，签名验证也可以在网关中统一完成&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;2 根据支付路由寻找合适的支付服务：根据用户选择的支付方式确定用来完成该操作的合适的支付渠道
+
+&lt;ul&gt;
+&lt;li&gt;用户指定的支付方式不一定是最终的执行支付的渠道。比如用户选择通过工行信用卡来执行支付，但是我们没有实现和工行的对接，而是可以通过第三方支付，比如支付宝、微信支付、易宝支付，或银联完成&lt;/li&gt;
+&lt;li&gt;选择合适的支付渠道，通过支付路由实现。支付路由会综合考虑收费、渠道的可用性等因素来选择最优方案&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;3 评估交易风险：检查本次交易是否有风险。风控接口返回三种结果：阻断交易、增强验证和放行交易
+
+&lt;ul&gt;
+&lt;li&gt;阻断交易：说明该交易是高风险的，需要终止，不执行第 5 个步骤&lt;/li&gt;
+&lt;li&gt;增强验证：说明该交易有一定的风险，需要确认下是不是用户本人在操作。这可以通过发送短信验证码或者其他可以验证用户身份的方式来做校验，验证通过后，可以继续执行该交易&lt;/li&gt;
+&lt;li&gt;放行交易，即本次交易是安全的，可以继续往下走&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;4 生成交易订单：将订单信息持久化到数据库中
+
+&lt;ul&gt;
+&lt;li&gt;当访问压力大的时候，数据库写入会成为一个瓶颈&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;5 调用支付渠道提供的服务：所有的支付服务都需要第三方通道来完成执行
+
+&lt;ul&gt;
+&lt;li&gt;一般银行渠道的调用比较简单，可以直接返回结果&lt;/li&gt;
+&lt;li&gt;一些第三方支付，如支付宝，微信支付等，会通过异步接口来告知支付结果&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;6 更新订单：对于同步返回的结果，需要在主线程中更新订单的状态，标记是支付成功还是失败。对于异步返回的渠道，需要在异步程序中处理&lt;/li&gt;
+&lt;li&gt;7 发送消息：通过消息来通知相关系统关于订单的变更
+
+&lt;ul&gt;
+&lt;li&gt;风控、信用 BI 等，都需要依赖这数据做准实时计算&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;8 异步通知
+
+&lt;ul&gt;
+&lt;li&gt;上述流程，其中涉及到调用远程接口，其延迟不可控。如果调用方一直阻塞等待，很容易超时&lt;/li&gt;
+&lt;li&gt;引入异步通知机制，可以让调用方在主线程中尽快返回，通过异步线程来得到支付结果&lt;/li&gt;
+&lt;li&gt;对于通过异步来获取支付结果的渠道接口，也需要对应的在异步通知中将结果返回给调用方&lt;/li&gt;
+&lt;li&gt;异步通知需要调用方提供一个回调地址，一般以 HTTP 或 HTTPS 的方式。这就有技术风险，如果调用失败，还需要重试。而重试不能过于频繁，需要逐步拉大每一次重试的时间间隔&lt;/li&gt;
+&lt;li&gt;在异步处理程序中，订单根据处理结果变更状态后，也要发消息通知相关系统&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>7 支付系统的整体架构</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F/7_%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#71-%e6%94%af%e4%bb%98%e7%9a%84%e5%85%b8%e5%9e%8b%e6%9e%b6%e6%9e%84&#34;&gt;7.1 支付的典型架构&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#711-%e6%94%af%e4%bb%98%e5%ae%9d&#34;&gt;7.1.1 支付宝&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#712-%e4%ba%ac%e4%b8%9c%e9%87%91%e8%9e%8d&#34;&gt;7.1.2 京东金融&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#713-%e5%8e%bb%e5%93%aa%e5%84%bf&#34;&gt;7.1.3 去哪儿&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#714-%e7%be%8e%e5%9b%a2&#34;&gt;7.1.4 美团&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#72-%e5%8f%82%e8%80%83%e6%9e%b6%e6%9e%84&#34;&gt;7.2 参考架构&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#721-%e6%94%af%e6%92%91%e7%b3%bb%e7%bb%9f&#34;&gt;7.2.1 支撑系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#722-%e6%94%af%e4%bb%98%e6%a0%b8%e5%bf%83%e7%b3%bb%e7%bb%9f&#34;&gt;7.2.2 支付核心系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#723-%e6%94%af%e4%bb%98%e6%9c%8d%e5%8a%a1%e7%b3%bb%e7%bb%9f&#34;&gt;7.2.3 支付服务系统&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#73-%e6%94%af%e4%bb%98%e5%ba%94%e7%94%a8&#34;&gt;7.3 支付应用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#74-%e5%8f%82%e8%80%83%e9%93%be%e6%8e%a5&#34;&gt;7.4 参考链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-1-支付的典型架构&#34;&gt;7.1 支付的典型架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个公司根据其业务和公司发展的不同阶段，所设计的支付系统也不同&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-1-1-支付宝&#34;&gt;7.1.1 支付宝&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;支付宝的支付系统整体架构设计如下
+&lt;img src=&#34;ref/alipay_arch.jpg&#34; alt=&#34;支付宝的支付系统整体架构设计&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这个整体架构上并没有与众不同之处。在模块划分上，这个图显示的是最顶层的划分，也无法告知更多细节&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;但支付宝架构强点在两个方面&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;账务处理：分为内外两个子系统，外部子系统是单边账，内部子系统走复式记账。不少支付平台是从这里得到启发来搞定的对账系统&lt;/li&gt;
+&lt;li&gt;柔性事务处理：利用消息机制来实现跨系统的事务处理，避免数据库锁导致的性能问题&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-1-2-京东金融&#34;&gt;7.1.2 京东金融&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;京东金融是在网银在线的基础上发展起来的。网银在线的原班技术人员有不少来自易宝公司，在京东收购之后，又引入了支付宝的人才。因而从架构上受这两个公司的影响很大&lt;/li&gt;
+&lt;li&gt;京东支付平台总体架构设计如下
+&lt;img src=&#34;ref/jdpay_arch.jpg&#34; alt=&#34;京东支付平台总体架构设计&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-1-3-去哪儿&#34;&gt;7.1.3 去哪儿&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;去哪儿公司的支付产品架构如下
+&lt;img src=&#34;ref/qunapay_arch.jpg&#34; alt=&#34;去哪儿公司的支付产品架构&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-1-4-美团&#34;&gt;7.1.4 美团&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;美团的支付平台规划架构如下：这是2015年的文档。2016年美团才拿到支付牌照
+&lt;img src=&#34;ref/meituanpay_arch.jpg&#34; alt=&#34;美团的支付平台规划架构&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-2-参考架构&#34;&gt;7.2 参考架构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一般来说，支付系统典型架构会包含如下模块
+&lt;img src=&#34;ref/pay_system_typical_arch.jpg&#34; alt=&#34;支付系统典型架构&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;支付系统从架构上来说，分为三层：
+
+&lt;ul&gt;
+&lt;li&gt;支撑层: 用来支持核心系统的基础软件包和基础设施，包括运维监控系统、日志分析系统等&lt;/li&gt;
+&lt;li&gt;核心层：支付系统的核心模块，内部又分为支付核心模块以及支付服务模块&lt;/li&gt;
+&lt;li&gt;产品层：通过核心层提供的服务组合起来，最终对用户、商户、运营管理人员提供的系统&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-2-1-支撑系统&#34;&gt;7.2.1 支撑系统&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支撑系统是一个公司提供给支付系统运行的基础设施。主要包括如下子系统
+
+&lt;ul&gt;
+&lt;li&gt;运维监控：支付系统在运行过程中不可避免的会受到各种内部和外部的干扰，光纤被挖断、黑客攻击、数据库被误删、上线系统中有 bug 等。运维人员必须在第一时间内对这些意外事件作出响应，又不能够一天 24 小时盯着。这就需要一个运维监控系统来协助完成&lt;/li&gt;
+&lt;li&gt;日志分析：日志是支付系统统计分析、运维监控的重要依据。公司需要提供基础设施来支持日志统一收集和分析&lt;/li&gt;
+&lt;li&gt;短信平台：短信在支付系统中有重要作用，包括身份验证、安全登录、找回密码，及报警监控&lt;/li&gt;
+&lt;li&gt;安全机制：安全是支付的生命线。SSL、证书系统、防刷接口等，都是支付的必要设施&lt;/li&gt;
+&lt;li&gt;统计报表：支付数据的可视化展示，是公司进行决策的基础&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;远程连接管理、分布式计算、消息机制、全文检索、文件传输、数据存储、机器学习等，都是构建大型系统所必须的基础软件，这里不再一一详细介绍&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-2-2-支付核心系统&#34;&gt;7.2.2 支付核心系统&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支付核心系统指用户执行支付的核心流程，包括
+
+&lt;ul&gt;
+&lt;li&gt;1 用户从支付应用启动支付流程&lt;/li&gt;
+&lt;li&gt;2 支付应用根据应用和用户选择的支付工具调用对应的支付产品执行支付&lt;/li&gt;
+&lt;li&gt;3 支付路由根据支付工具、渠道费率、接口稳定性等因素选择合适的支付渠道来落地支付&lt;/li&gt;
+&lt;li&gt;4 支付渠道调用银行、第三方支付等渠道提供的接口来执行支付操作，最终落地资金转移&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;7-2-3-支付服务系统&#34;&gt;7.2.3 支付服务系统&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持支付核心系统所提供的功能。服务系统又分为基础服务系统、资金系统、风控和信用系统
+
+&lt;ul&gt;
+&lt;li&gt;基础服务系统：提供支撑线上支付系统运行的基础业务功能&lt;/li&gt;
+&lt;li&gt;客户信息管理：对用户、商户的实名身份、基本信息、协议的管理&lt;/li&gt;
+&lt;li&gt;卡券管理：对优惠券、代金券、折扣券的制作、发放、使用流程的管理&lt;/li&gt;
+&lt;li&gt;支付通道管理: 通道接口、配置参数、费用、限额以及 QOS 的管理&lt;/li&gt;
+&lt;li&gt;账户和账务系统：管理账户信息以及交易流水、记账凭证等。这里的账务一般指对接线上系统的账务，采用单边账的记账方式。内部账记录在会计核算系统中&lt;/li&gt;
+&lt;li&gt;订单系统：一般订单系统可独立于业务系统实现。这里的订单主要指支付订单&lt;/li&gt;
+&lt;li&gt;资金系统：围绕财务会计而产生的后台资金核实、调度和管理的系统，包括&lt;/li&gt;
+&lt;li&gt;会计核算：提供会计科目、内部账务、试算平衡、日切、流水登记、核算和归档&lt;/li&gt;
+&lt;li&gt;资金管理：管理公司在各个支付渠道的头寸，在余额不足时进行打款。对第三方支付公司，还需要对备付金进行管理&lt;/li&gt;
+&lt;li&gt;清算分润：对于有分润需求的业务，还需要提供清分清算、对账处理和计费分润功能&lt;/li&gt;
+&lt;li&gt;风控系统：支付系统必备的基础功能，所有的支付行为必须做风险评估并采取对应的措施&lt;/li&gt;
+&lt;li&gt;信用系统：在风控基础上发展的高级功能，京东白条，蚂蚁花呗等都是成功的案例&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-3-支付应用&#34;&gt;7.3 支付应用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支撑系统、核心系统和服务系统，在每个公司的架构上应该是大同小异的，都是必不可少的模块&lt;/li&gt;
+&lt;li&gt;支付应用是每个公司根据自己的业务来构建的，各不相同。总的来说，可以按照使用对象分为针对最终用户的应用、针对商户的应用、针对运营人员的运营管理、BI 和风控后台&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;7-4-参考链接&#34;&gt;7.4 参考链接&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/pmd/160822.html&#34; target=&#34;_blank&#34;&gt;最全最强解析：支付宝钱包系统架构内部剖析（架构图）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.360doc.com/content/16/0724/20/19476362_578094252.shtml&#34; target=&#34;_blank&#34;&gt;京东：支付平台总体架构设计图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wenku.baidu.com/view/7daa609d376baf1ffd4fad09.html&#34; target=&#34;_blank&#34;&gt;美团支付平台产品规划&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>B2B vs B2C vs C2C vs O2O vs P2P vs P2C</title>
+      <link>https://xueqing.github.io/blog/o2o/b2b_b2c_c2c_o2o_p2p_p2c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/b2b_b2c_c2c_o2o_p2p_p2c/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#b2b&#34;&gt;B2B&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#b2c&#34;&gt;B2C&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#c2c&#34;&gt;C2C&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#o2o&#34;&gt;O2O&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#p2p&#34;&gt;P2P&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#p2c&#34;&gt;P2C&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#production-to-consumer&#34;&gt;production to consumer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#platform-to-creditassignment&#34;&gt;platform to creditAssignment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#b2b-vs-b2c-vs-c2c-vs-o2o&#34;&gt;B2B vs B2C vs C2C vs O2O&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;b2b&#34;&gt;B2B&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;B2B：business to business，企业对企业的电子商务模式&lt;/li&gt;
+&lt;li&gt;B2B 是企业对企业之间的营销关系。它将企业内部网通过 B2B 网站对客户紧密结合起来，通过网络的快速反应，为客户提供更好的服务，从而促进企业的业务发展&lt;/li&gt;
+&lt;li&gt;B2B 指进行电子商务交易的供需双方都是商家(或企业、公司)，他们使用了互联网的技术或各种商务网络平台，完成商务交易的过程&lt;/li&gt;
+&lt;li&gt;B2B 有 3 个要素
+
+&lt;ul&gt;
+&lt;li&gt;买卖：B2B 网站平台为消费者提供质优价廉的商品，吸引消费者购买的提示促使更多商家入驻&lt;/li&gt;
+&lt;li&gt;合作：与物流公司建立合作关系，为消费者的购买行为提供最终保障。这是 B2B 平台硬性条件之一&lt;/li&gt;
+&lt;li&gt;服务：物流主要是为消费者提供购买服务，从而实现再一次的交易&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;代表网站：阿里巴巴、中国制造网、中国供应商&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;b2c&#34;&gt;B2C&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;B2C：business to customer，商对客，商家对个人&lt;/li&gt;
+&lt;li&gt;B2C 是电子商务的一种模式，也就是通常所说的商业零售，直接面向消费者销售产品和服务
+
+&lt;ul&gt;
+&lt;li&gt;这种形式的电子商务一般以网络零售业为主，主要借助互联网开展在线销售获得&lt;/li&gt;
+&lt;li&gt;B2C 即企业通过互联网为消费者提供一个新型的购物环境——网上商店，消费者在网上购物和支付&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;B2C 电子商务网站有 3 个基本部分
+
+&lt;ul&gt;
+&lt;li&gt;商场网站：为顾客提供在线购物场所&lt;/li&gt;
+&lt;li&gt;配送系统：为客户所购商品进行配送&lt;/li&gt;
+&lt;li&gt;银行及认证系统：负责顾客身份的认证以及货款结算&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;B2C 代表网站
+
+&lt;ul&gt;
+&lt;li&gt;天猫：为人服务做平台&lt;/li&gt;
+&lt;li&gt;京东：自主经营卖产品&lt;/li&gt;
+&lt;li&gt;凡客：自产自销做品牌&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;c2c&#34;&gt;C2C&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;C2C：customer to customer，个人与个人之间的电子商务，是电子商务的专业用语&lt;/li&gt;
+&lt;li&gt;如消费者有一台电脑，通过网络进行交易，出售给另一个消费者&lt;/li&gt;
+&lt;li&gt;代表网站：淘宝网、易趣网、拍拍网&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;o2o&#34;&gt;O2O&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;O2O：online to offline，线上到线下&lt;/li&gt;
+&lt;li&gt;O2O 将线下商务的机会与互联网结合在一起，使互联网称为线下交易的平台&lt;/li&gt;
+&lt;li&gt;线下服务可用线上平台揽客，消费者进而用线上平台筛选服务，还有成交可以在线上结算，很快达到规模&lt;/li&gt;
+&lt;li&gt;特点：推广效果可查，交易可跟踪&lt;/li&gt;
+&lt;li&gt;优势：在于把线上和线下优势完美结合。通过网购导购机，把互联网和实体店完美对接，实现互联网落地；让消费者享受线上优惠价格的同事，可享受线下贴身的服务；O2O 模式还可实现不同商家的联盟&lt;/li&gt;
+&lt;li&gt;O2O 营销模式的核心是在线预付：在线支付不仅是支付本身的完成，是某次消费得以最终形成的唯一标识，更是消费数据唯一可靠的考核标识。对提供线上服务的互联网专业公司来说，只有用户在线上完成支付，自身才可从中获得收益&lt;/li&gt;
+&lt;li&gt;O2O 有 4 种运营模式
+
+&lt;ul&gt;
+&lt;li&gt;online to offline：线上交易到线下消费体验&lt;/li&gt;
+&lt;li&gt;offline to online：线下营销到线上交易&lt;/li&gt;
+&lt;li&gt;offline to online to offline：线下营销到线上交易再到线下消费体验&lt;/li&gt;
+&lt;li&gt;online to offline to online：线上交易或营销到线下消费体验再到线上消费体验&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;代表：保险直购 O2O，苏宁易购 O2O，大众点评 O2O&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;p2p&#34;&gt;P2P&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;P2P：peer to peer，个人对个人&lt;/li&gt;
+&lt;li&gt;P2P 借贷：是一种将非常小额度的资金聚集起来借贷给有资金需求人群的一种民间小额借贷模式
+
+&lt;ul&gt;
+&lt;li&gt;P2P 借贷指个人通过第三方平台(P2P 公司)在收取一定服务费的前提下，向其他个人提供小额借贷的金融模式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;P2P 模式
+
+&lt;ul&gt;
+&lt;li&gt;一种是纯线上模式，是纯粹的 P2P。在这种平台模式进行信息匹配，帮助资金借贷双方更好的进行资金匹配，缺点是这种线上模式不参与担保&lt;/li&gt;
+&lt;li&gt;一种是债权转让模式，平台本身先行放贷，再将债权放到平台进行转让，明显可让企业提高融资端的工作效率，但容易出现资金池，不能让资金充分发挥效益&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;p2c&#34;&gt;P2C&lt;/h2&gt;
+
+&lt;h3 id=&#34;production-to-consumer&#34;&gt;production to consumer&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;P2C：production to consumer，商品和顾客&lt;/li&gt;
+&lt;li&gt;P2C 是产品从生产企业直接送到消费者手中，中间没有任何的交易环节。也叫做生活服务平台&lt;/li&gt;
+&lt;li&gt;具体表现：如果家乐福、沃尔玛、大中电器等零售业巨头进军电子商务，通过互联网开展商务活动&lt;/li&gt;
+&lt;li&gt;P2C 把人们日常生活中一切密切相关的服务信息，如餐饮、房产、交友、家政服务、票务、健康、医疗、保健等聚合到平台，实现服务业的电子商务化&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;platform-to-creditassignment&#34;&gt;platform to creditAssignment&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;P2C：platform to creditAssignment，平台和债权转让&lt;/li&gt;
+&lt;li&gt;是互联网金融新概念。此理论是国内首个 P2C 互联网金融服务，对债权转让企业进行资质审核、实地考察，筛选出具有投资价值的优质债权项目在平台上向投资者公开；并提供在线投资的交易平台，实时为投资者生成具有法律效力的债权转让及服务协议；监督企业的项目经验，管理评估风险，确保投资者资金安全&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;b2b-vs-b2c-vs-c2c-vs-o2o&#34;&gt;B2B vs B2C vs C2C vs O2O&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;模式&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;B2B&lt;/td&gt;
+&lt;td&gt;企业间的&lt;/td&gt;
+&lt;td&gt;是你也成立了公司买我公司的东西，如阿里巴巴&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;B2C&lt;/td&gt;
+&lt;td&gt;商家对个人&lt;/td&gt;
+&lt;td&gt;我成立个公司卖东西，如卓越、当当、京东&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;C2C&lt;/td&gt;
+&lt;td&gt;个人对个人&lt;/td&gt;
+&lt;td&gt;我卖东西你来买，如淘宝小店铺&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;O2O&lt;/td&gt;
+&lt;td&gt;线上和线下结合&lt;/td&gt;
+&lt;td&gt;我成立个公司卖东西，你来买但是需要你自己拿&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;B2C 和 C2C 是在线支付，且运用了物流，购买的商品会通过物流公司送到消费者手中&lt;/li&gt;
+&lt;li&gt;O2O 是在线支付，购买线下的商品、服务，再到线下享受服务&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;不同点&lt;/th&gt;
+&lt;th&gt;B2C&lt;/th&gt;
+&lt;th&gt;O2O&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;侧重性&lt;/td&gt;
+&lt;td&gt;购物(实物商品，如电器，服饰)&lt;/td&gt;
+&lt;td&gt;服务性消费(餐饮、电影、美容、SPA、旅游、健身、租车、租房等)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;涉及点&lt;/td&gt;
+&lt;td&gt;消费者到现场获得服务，涉及客流&lt;/td&gt;
+&lt;td&gt;消费者等货上门，涉及物流&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;库存&lt;/td&gt;
+&lt;td&gt;服务&lt;/td&gt;
+&lt;td&gt;商品&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>O2O</title>
+      <link>https://xueqing.github.io/blog/o2o/o2o/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/o2o/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a6%82%e5%bf%b5&#34;&gt;概念&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%8f%91%e5%b1%95%e5%8e%86%e7%a8%8b&#34;&gt;发展历程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af&#34;&gt;核心技术&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%ba%94%e7%94%a8%e4%bb%b7%e5%80%bc&#34;&gt;应用价值&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bb%8f%e8%90%a5%e6%a8%a1%e5%bc%8f&#34;&gt;经营模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%b8%bb%e8%a6%81%e9%9a%be%e9%a2%98&#34;&gt;主要难题&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%9b%88%e5%88%a9%e6%a8%a1%e5%bc%8f&#34;&gt;盈利模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b9%b3%e8%a1%a1%e6%a8%a1%e5%bc%8f&#34;&gt;平衡模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;O2O(online to offline, 在线离线/线上到线下)，指将线下的商务机会与互联网结合，让互联网称为线下交易的平台&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;发展历程&#34;&gt;发展历程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1.0 阶段：O2O 线上线下初步对接，主要利用线上推广的便捷性将相关用户集中起来，然后把线上流量转到线下。主要领域集中在以美团为代表的线上团购和促销等领域
+
+&lt;ul&gt;
+&lt;li&gt;特点：单向性、粘性较低&lt;/li&gt;
+&lt;li&gt;平台和用户互动较少，基本上以交易的完成未终结点&lt;/li&gt;
+&lt;li&gt;用户更多受价格等因素驱动，购买和消费频率相对较低&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;2.0 阶段：最主要的特色是升级为服务型电商模式，包括商品(服务)、下单、支付等流程。把简单的电商模块转移到更加高频和生活化场景中来
+
+&lt;ul&gt;
+&lt;li&gt;移动终端、微信支付、数据算法等环节的成熟，加上资本的催化，用户数目、使用频率和忠诚度开始上升&lt;/li&gt;
+&lt;li&gt;O2O 开始和用户的日常生活融合&lt;/li&gt;
+&lt;li&gt;由于资本的大量补贴，这其中有很多看似繁荣的需求，如按摩、洗车等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;3.0 阶段：出现明显的分化
+
+&lt;ul&gt;
+&lt;li&gt;一个是真正的垂直细分领域的一些公司开始凸显：如专注于快递物流的速递易，专注于高端餐厅排位的美味不用等，专注于白领快速取餐的速位&lt;/li&gt;
+&lt;li&gt;一个是垂直细分领域的平台化模式发展：由原来的细分领域的解决某个痛点的模式开始横向扩张，覆盖整个行业。如饿了么从早先的外卖到后来开放的蜂鸟系统，开始正式对接第三方团队和众包物流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;核心技术&#34;&gt;核心技术&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;O2O 营销模式的核心是在线支付：通过 O2O 模式，将线下商品及服务进行展示，并提供在线支付“预约消费”，对消费者不仅扩宽了选择余地，消费者还可通过线上对比选择最令人期待的服务，以及依照消费者的区域性享受商家提供的更合适的服务&lt;/li&gt;
+&lt;li&gt;也有一些商家使用比线下支付更为优惠的手段吸引客户在线支付，为消费者节约了不少的支出&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;应用价值&#34;&gt;应用价值&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;O2O 优势在于把线上和线下优势完美结合：通过网购导购机，把互联网和实体店完美对接，实现互联网落地；让消费者享受线上优惠价格的同事，可享受线下贴身的服务；O2O 模式还可实现不同商家的联盟
+
+&lt;ul&gt;
+&lt;li&gt;O2O 模式充分利用了互联网跨地域、无边界、海量信息、海量用户的优势，同时充分挖掘线下资源，进而促成线上用户与线下商品与服务的交易。如团购&lt;/li&gt;
+&lt;li&gt;O2O 模式可对商家的营销效果进行直观的统计和追踪评估，规避了传统营销模式的推广效果的不可预测性。O2O 将线上订单和线下消费结合，所有的消费行为均可准确统计，进而吸引更多的商家，为消费者提供更多优质的产品和服务&lt;/li&gt;
+&lt;li&gt;O2O 在服务中具有价格便宜、购买方便、且能及时获知折扣信息等优势&lt;/li&gt;
+&lt;li&gt;OO 将拓宽电子商务的发展方向，由规模化走向多元化&lt;/li&gt;
+&lt;li&gt;O2O 模式打通了线上线下的信息和体验环节，让线下消费者避免了因信息不对称遭受的“价格蒙蔽”，同时实现线上消费者的“售前体验”&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;整体看 O2O 会达成“三赢”的效果
+
+&lt;ul&gt;
+&lt;li&gt;本地商家&lt;/li&gt;
+&lt;li&gt;O2O 模式要求消费者网站支付，支付信息会成为商家了解消费者购物信息的渠道，方便商家搜集消费者购买数据，进而达到精准营销的目的，更好地维护和拓展用户&lt;/li&gt;
+&lt;li&gt;通过线上资源增加的顾客不会给商家带来太多的成本，反而增加更多利润&lt;/li&gt;
+&lt;li&gt;O2O 模式在一定程度上降低了商家对店铺地理位置的依赖，减少了租金方面的支出&lt;/li&gt;
+&lt;li&gt;消费者&lt;/li&gt;
+&lt;li&gt;O2O 提供丰富、全面、及时的商家折扣信息，能快捷筛选并订购适宜的商品或服务，且价格实惠&lt;/li&gt;
+&lt;li&gt;服务提供商&lt;/li&gt;
+&lt;li&gt;O2O 模式可带来大规模高粘度的消费者，进而可争取更多的商家资源&lt;/li&gt;
+&lt;li&gt;掌握庞大的消费者数据资源，且本地化程度较高的垂直网站借助 O2O 模式，还能为商家提供其他增值服务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;经营模式&#34;&gt;经营模式&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;与传统的消费者在商家直接消费的模式不同，O2O 平台商业模式中，整个消费过程由线上和线下两部分构成
+
+&lt;ul&gt;
+&lt;li&gt;线上：平台为消费者提供消费指南、优惠信息、便利服务(预订、在线支付、地图等)和分享平台&lt;/li&gt;
+&lt;li&gt;线下：商户专注于提供服务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;O2O 模式中消费者的消费流程可分为 5 个阶段
+
+&lt;ul&gt;
+&lt;li&gt;引流：线上拼台作为线下消费决策的入口，可汇聚大量有消费需求的消费者，或引发消费者的线下消费需求。常见的 O2O 平台引流入口包括消费点评类网站(大众点评)、电子地图(百度、高德)、社交类网站或应用(微信、人人)&lt;/li&gt;
+&lt;li&gt;转化：线上平台向消费者提供商铺的详细信息、优惠(团购、优惠券)、便利服务，方便消费者搜索、对比商铺，并最终帮助消费者选择线下商户、完成消费决策&lt;/li&gt;
+&lt;li&gt;消费：消费者利用线上获得的信息到线下商户接受服务、完成消费&lt;/li&gt;
+&lt;li&gt;反馈：消费者将自己的消费体验反馈到线上平台，有助于其他消费者做出消费决策。线上平台通过梳理和分析消费者的反馈，形成更加完整的本地商铺信息群，可吸引更多的消费者使用在线平台&lt;/li&gt;
+&lt;li&gt;存留：线上平台为消费者和本地商户建立沟通渠道，可帮助本地商户维护消费者管理，使消费者重复消费，成为商家的回头客&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;主要难题&#34;&gt;主要难题&lt;/h2&gt;
+
+&lt;h3 id=&#34;盈利模式&#34;&gt;盈利模式&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;O2O 现在多被投资方看好的原因在于它的前景不确定性，也表明其机会成本和沉淀成本的不确定&lt;/li&gt;
+&lt;li&gt;O2O 目前分为垂直血缘行业链和平行优势产业链。两种模式都处于试水阶段
+
+&lt;ul&gt;
+&lt;li&gt;垂直模式是以某个点作为突破口，然后建立从上游到下游的产业链；平行模式是以某个点作为切入点，然后建立闭环生态链，共享信息&lt;/li&gt;
+&lt;li&gt;垂直模式需要强大的资源整合能力，而现在是一个高度分工的社会，协调资源和信息需要强大的人力物力；平行模式需要的是数据处理能力，需要的不仅是公司自身实力的体现，还需要整合社会的配合，比前者更难&lt;/li&gt;
+&lt;li&gt;垂直模式是关爱一个家庭的幸福，平行模式是关爱全人类的幸福&lt;/li&gt;
+&lt;li&gt;上述因素导致 O2O 整体盈利模式未知，但小规模盈利可行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;平衡模式&#34;&gt;平衡模式&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如何与消费者处理好平衡关系，怎么调节服务与体验的关系
+
+&lt;ul&gt;
+&lt;li&gt;外卖多长时间送，临走需要说什么让顾客下次还点自己&lt;/li&gt;
+&lt;li&gt;洗衣上门，是不是可以答应顾客所有要求&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>互联网盈利模式</title>
+      <link>https://xueqing.github.io/blog/o2o/%E7%9B%88%E5%88%A9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E7%9B%88%E5%88%A9/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%ae%80%e4%bb%8b&#34;&gt;简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%b9%bf%e5%91%8a&#34;&gt;广告&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a2%9e%e5%80%bc%e6%9c%8d%e5%8a%a1&#34;&gt;增值服务&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bd%a3%e9%87%91&#34;&gt;佣金&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#o2o-%e9%97%ad%e7%8e%af&#34;&gt;O2O 闭环&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#o2o-%e8%a1%8c%e4%b8%9a%e7%9a%84%e6%99%ae%e9%81%8d%e5%9b%b0%e5%a2%83&#34;&gt;O2O 行业的普遍困境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%97%ad%e7%8e%af%e8%b5%b0%e5%87%ba%e5%9b%b0%e5%a2%83%e7%9a%84%e5%85%b3%e9%94%ae&#34;&gt;闭环：走出困境的关键&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%a6%82%e4%bd%95%e6%9e%84%e9%80%a0%e9%97%ad%e7%8e%af&#34;&gt;如何构造闭环&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#o2o-%e5%88%86%e9%94%80&#34;&gt;O2O 分销&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%b4%bb%e5%8a%a8%e9%a2%84%e7%83%ad&#34;&gt;活动预热&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%bc%95%e7%88%86%e6%b4%bb%e5%8a%a8&#34;&gt;引爆活动&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e4%bf%9d%e6%8c%81%e6%b4%bb%e8%b7%83%e4%ba%8c%e6%ac%a1%e5%88%ba%e6%bf%80&#34;&gt;保持活跃，二次刺激&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e7%bc%b4%e7%a8%8e&#34;&gt;缴税&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;互联网企业通过广告、游戏、电商三大业务获取盈利
+
+&lt;ul&gt;
+&lt;li&gt;对于互联网公司而言，广告既是一种业务也是一种盈利手段，而游戏和电商则更多是一种业务，完全把二者当作盈利模式来定义太笼统也太模糊&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;互联网本身不是实体经济，不参与直接的生产性活动，生产创造价值进而盈利这一简单原始的方式不是互联网企业的盈利模式。互联网企业的价值是在信息、商品的流通中产生的&lt;/li&gt;
+&lt;li&gt;“连接”是互联网发展的主线，人与信息的连接、人与物的连接、人与人的连接，基于连接和整合的发展特点，互联网盈利模式有其独特的一面&lt;/li&gt;
+&lt;li&gt;互联网三大盈利模式总结为：广告、增值服务、佣金&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;广告&#34;&gt;广告&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;广告无处不在，作为互联网免费时代的代价，广告充斥着互联网的每个角落&lt;/li&gt;
+&lt;li&gt;按照呈现载体不同，广告可分为文字广告、图片广告、视频广告等&lt;/li&gt;
+&lt;li&gt;相比传统媒体，互联网产品覆盖面更广，广告形式更丰富，人群定位更精准，因此具有独特的优势&lt;/li&gt;
+&lt;li&gt;互联网广告最主要的两种形式
+
+&lt;ul&gt;
+&lt;li&gt;搜索排名：包括百度搜索、淘宝竞价排名、各大手机应用市场竞价排名等&lt;/li&gt;
+&lt;li&gt;信息流广告：包括微博、头条、抖音、各类新闻产品、朋友圈等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;另外还有传统的首页推荐，开屏广告等形式&lt;/li&gt;
+&lt;li&gt;互联网广告形式多样，各大互联网巨头均拥有各自的广告业务，每年通过广告产生的收益占据了互联网整个行业营收的重要部分&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;增值服务&#34;&gt;增值服务&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过提供增值服务进行收费
+
+&lt;ul&gt;
+&lt;li&gt;产品的基础功能免费，高级功能收费：大多数互联网游戏的盈利模式都属于增值服务。很多游戏可以免费玩，但是你想要更炫酷的皮肤，更强大的技能，游戏内更高的地位，你就得充值&lt;/li&gt;
+&lt;li&gt;基本内容免费，高级内容收费：视频网站的付费视频&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;会员制。包括电商、视频、文学小说还是各类工具型产品。比如亚马逊、爱奇艺、优酷土豆、QQ会员、在线音乐、笔记类应用。通过提供更低的价格、更高级的功能、更好的使用体验、更优质的内容等手段，会员模式已经成为一种流行且有效的增值服务类型&lt;/li&gt;
+&lt;li&gt;淘宝对商家提供各类插件等收费手段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;佣金&#34;&gt;佣金&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大多数互联网巨头都属于平台模式。平台不直接生产创造价值，而是通过连接不同商业群体来整合价值
+
+&lt;ul&gt;
+&lt;li&gt;美团点评、滴滴出行、携程、饿了么等 O2O 巨头，均是通过促成团购、打车、酒旅、外卖等商业交易，并从中提取一定的佣金而盈利&lt;/li&gt;
+&lt;li&gt;佣金、交易提成、交易手续费等说法本质相同&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;支付宝、微信支付这些支付工具，佣金也是其盈利模式&lt;/li&gt;
+&lt;li&gt;佣金似乎是最简单的盈利模式：只要你交易我就躺着挣钱，但是这种模式要求平台具有足够的影响力&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;o2o-闭环&#34;&gt;O2O 闭环&lt;/h2&gt;
+
+&lt;h3 id=&#34;o2o-行业的普遍困境&#34;&gt;O2O 行业的普遍困境&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;优惠券模式(丁丁优惠、大众点评)：用户下载优惠券，在消费时向商家出示，获得优惠。商家也知道该用户来自丁丁优惠。丁丁网收取广告费，看似皆大欢喜。但若丁丁优惠嫌广告费太少，提出向商家收取交易佣金，问题来了：丁丁优惠无法确切知道自己促成了多少单交易。商家可以统计到交易量，但谁会愿意跟人分钱呢&lt;/li&gt;
+&lt;li&gt;外卖模式(美餐网、饿了么)：用户在网上进行订餐，订餐网通过电话、短信等手段向餐厅推送订单。但若订餐平台想和餐厅进行分成，困难重重。光“有效订单数”这一项就很难达成共识&lt;/li&gt;
+&lt;li&gt;今夜特价酒店： 用户在今夜特价上获取到特价酒店信息，到店后，酒店以更大优惠为诱饵劝说用户取消网上订单(避免支付佣金)&lt;/li&gt;
+&lt;li&gt;这些困境的共同点：O2O 平台将用户引流到线下之后，就失去了对流程的掌控&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;闭环-走出困境的关键&#34;&gt;闭环：走出困境的关键&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;闭环用百度百科的定义：O2O 闭环是指两个 O 之间要实现对接和循环。……要将客流引到线下去消费体验，实现交易。但是这样……还没有做到闭环，要做到闭环，就要从线下再返回线上去&lt;/li&gt;
+&lt;li&gt;有了闭环，每一单交易的最终结果会流转到平台，为平台所掌握、记录。而所有这些记录下来的交易(关键在可记录)，就是 O2O 平台的价值所在以及挖掘更大价值的基础
+
+&lt;ul&gt;
+&lt;li&gt;无可争议的具体交易记录，保证了平台对线下商家的议价权&lt;/li&gt;
+&lt;li&gt;积累下来的具体到每一个用户的消费记录，形成大数据基础，对商家可以提供精准营销，对用户可以提供个性化服务，从而进一步促进 O2O 循环&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;只有这样，O2O 才成其为真正的 O2O，而不是沦为单纯的广告平台或者分类信息提供者&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;如何构造闭环&#34;&gt;如何构造闭环&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;比如会员卡、二维码支付等等&lt;/li&gt;
+&lt;li&gt;其实，闭环的核心在于形成对每一单交易的跟踪和记录，形式上不一定要“闭环”。例如最好的闭环其实是在线支付&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最佳解决方案：支付闭环&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;假如用户是在平台进行预支付，那么闭环就天然形成了。因为支付不仅仅是支付本身，它是交易最终形成的唯一标识&lt;/li&gt;
+&lt;li&gt;本地生活服务的团购就是实现了闭环的 O2O。但团购只是 O2O 的冰山一角。大部分的 O2O，在线支付根本行不通。举个极端的例子，打车就没办法预支付。微信支付之所以被看重，某种程度上也是因为它被看成是腾讯打通了 O2O 的最后一环&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;闭环是必须的吗？大众点评在做团购之前，做优惠券也挣了不少广告费。丁丁优惠、各种订餐网也活的好好的。再扯远一点，百度做广告简直跟印钞票似的。但是，作为产业链的上游，如果想要最大化变现自身的价值，往往就得往下游走。假如下游产业无法亲力亲为，那就做闭环。巨头如百度，力推的各种中间页，也可以看成是在做闭环。毕竟 O2O 的价值远不止这点广告费。即便专注于广告的模式，也需要借助闭环才能为每个用户进行更个性化、更精准的广告&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;o2o-分销&#34;&gt;O2O 分销&lt;/h2&gt;
+
+&lt;h3 id=&#34;活动预热&#34;&gt;活动预热&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;要想点燃活动热度，活动开始前的预热工作是必不可少的
+
+&lt;ul&gt;
+&lt;li&gt;精准触达：活动推送。如何将活动消息提前告知用户呢？据统计，一次精准的消息推送能使活动的打开率提高近40%。活动消息推送功能可以帮助平台将活动消息精准触达消费者&lt;/li&gt;
+&lt;li&gt;提升曝光：热门活动场。城市 O2O 设有专门的热门活动场，可提前将参与活动的商品添加入热门活动场，增加活动的曝光度，为活动提前预热。此外，平台还可自定义参与资格，方便会员报名参与活动&lt;/li&gt;
+&lt;li&gt;商品预售。预售的好处之一是拉长战线，增加销售额，平台用预售的活动可以吸引更多人的关注，为活动造成更大的声势。买家提前预购，确保价格优惠。同时也能方便提前配货，根据已经预售的数据信息提前调货，协调库存&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;引爆活动&#34;&gt;引爆活动&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;带来大量客流：拼团。人们对省钱的事情都乐此不疲，只需少赚一点，就可以让新客户N倍裂变增长！在上线拼团活动前期，可以筛选市面上卖得好的，持续力强、口碑好并且大众熟知率高的商品，打造出爆款的稀缺感，从而提高产品销量，缓解商品库存压力&lt;/li&gt;
+&lt;li&gt;提升客单量：满减优惠券。满减优惠券一方面满足了消费者爱占便宜的心理，另一方面满足了完成满减后产生的成就感，快速帮助消费者决策，买到优惠的商品。而对于优惠放利的商家，能快速带来流量
+
+&lt;ul&gt;
+&lt;li&gt;满减优惠券除了提供减现金的直接的功能之外，还可以跟其他功能来配合，实现不同的营销模式，只有想不到没有做不到&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;打造爆款：限时秒杀。限时秒杀的玩法可以说是相当给力了，除了打造爆款效应之外，还能迅速增加店铺的流量、客源，实现低成本获客
+
+&lt;ul&gt;
+&lt;li&gt;那么限时秒杀要怎么玩呢？设定一个时间准时秒杀：准备几个爆款作为秒杀产品，轮流交换。有限的数量、极大的优惠、有限的优惠时间，能时刻吸引客户进店关注活动，为店铺带来流量的同时，提升商品曝光度&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;保持活跃-二次刺激&#34;&gt;保持活跃，二次刺激&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;大促后用户消费会进入一定的疲软期，此时平台业绩会有回落。为了防止落差太大，可以试试以下几个方法：
+
+&lt;ul&gt;
+&lt;li&gt;签到打卡：保持日活跃。签到打卡是相当常见的玩法，具有持续性，以“天”为单位，每天登录APP参与签到的用户，将会获得积分、道具、优惠券等签到奖励&lt;/li&gt;
+&lt;li&gt;签到的操作简单，每天签到每天有奖，物质的刺激能充分调动消费者的积极性，最终培养成每天登录签到的习惯，日活跃因此形成。另外，用户来签到，也会顺便看看商城商品，这样更深层次的活跃度就被提升上来了&lt;/li&gt;
+&lt;li&gt;积分商城：刺激二次消费。会员在下单消费、完成积分任务之后即可轻松获取积分，还可以在积分商城中进行积分兑券、积分兑礼，从而刺激会员二次消费，提升复购率。同时还能将会员引流到店，并产生再次门店消费贡献&lt;/li&gt;
+&lt;li&gt;快速获客：多级分销。一场活动下来必定获得了不少新用户，如何利用这些新用户快速发展种子用户呢？那就试试方维城市O2O的分销玩法吧&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;缴税&#34;&gt;缴税&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>服务费和佣金计算</title>
+      <link>https://xueqing.github.io/blog/o2o/%E6%9C%8D%E5%8A%A1%E8%B4%B9%E5%92%8C%E4%BD%A3%E9%87%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xueqing.github.io/blog/o2o/%E6%9C%8D%E5%8A%A1%E8%B4%B9%E5%92%8C%E4%BD%A3%E9%87%91/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%9C%8D%E5%8A%A1%E8%B4%B9%E5%92%8C%E4%BD%A3%E9%87%91%E8%AE%A1%E7%AE%97&#34;&gt;服务费和佣金计算&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%B7%98%E5%AE%9D%E5%AE%A2%E6%9C%8D%E5%8A%A1%E8%B4%B9%E5%92%8C%E4%BD%A3%E9%87%91&#34;&gt;淘宝客服务费和佣金&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98%E7%9A%84%E5%88%A9%E6%B6%A6%E6%9D%A5%E6%BA%90&#34;&gt;移动支付的利润来源&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%B9%B3%E5%8F%B0%E5%90%88%E4%BD%9C%E5%95%86%E6%88%B7%E7%BB%93%E7%AE%97%E5%8F%8A%E7%BB%93%E7%AE%97%E8%B5%84%E9%87%91%E8%BD%AC%E7%A7%BB%E9%97%AE%E9%A2%98&#34;&gt;平台合作商户结算及结算资金转移问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%A4%96%E5%8D%96%E6%8A%BD%E6%88%90&#34;&gt;外卖抽成&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;淘宝客服务费和佣金&#34;&gt;淘宝客服务费和佣金&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;淘宝客推广方式：按成交扣费&lt;/li&gt;
+&lt;li&gt;佣金：支付给帮商家推广的淘宝客。卖家可设置佣金比例
+
+&lt;ul&gt;
+&lt;li&gt;卖家在用淘宝客推广的时候需要在交易成功后支付一定比例的佣金，佣金是从卖家绑定的支付宝账户直接扣除的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;服务费：阿里巴巴提供平台给淘宝客挣钱，之后会收取淘宝客佣金的 10% 作为技术服务费。服务费需要支付给组织这个活动的团长
+
+&lt;ul&gt;
+&lt;li&gt;营销团长设置的最终佣金：服务费+佣金&lt;/li&gt;
+&lt;li&gt;只有报名团长活动才会有服务费支出&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;关于退款佣金
+
+&lt;ul&gt;
+&lt;li&gt;淘宝客按成交计费，若产生全额退款，不管是确认收货前还是收货后，都不收佣金。部分退款则按实际成交额结算佣金&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;卖家通过支付宝交易并确认收货时，系统自动将应付的佣金从卖家收入中扣除并在第二天计入淘宝客的预期收入账户。每个月 15 号做上一个整月的月结，月结时将收取佣金的 10% 作为技术服务费，结算之后正式转入淘宝客的收入账户。淘宝客需要通过实名认证的支付宝账号，才可以体现到支付宝&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;移动支付的利润来源&#34;&gt;移动支付的利润来源&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;能在市场上销售移动支付终端，必定要获取第三方支付牌照&lt;/li&gt;
+&lt;li&gt;如果客户通过移动支付终端转账或消费 1 万元，就会产生 100 手续费(按 1%扣率计算)，发卡银行和银联收取保底费率 0.77%，发卡银行拿 0.7%，即 70元；银联拿 0.07%，即 7 元&lt;/li&gt;
+&lt;li&gt;剩下的 0.23%，即 23 元，由第三方支付公司和及其旗下的代理商收取；一般第三方支付平台根据代理商下面商户的刷卡量的大小产生分润，能拿到 0.23% 的 40% 至 80%；按最低档算 0.23% 的 40%，即 9.2 元&lt;/li&gt;
+&lt;li&gt;如果 100 个客户每台终端每个月刷卡 3 万元，一年产生分润即 100*30000*12*0.23%*40%=33120；这里只是 100 个客户按最低分成比例一年产生的分润，而且每年都有&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;平台合作商户结算及结算资金转移问题&#34;&gt;平台合作商户结算及结算资金转移问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这里的平台指的是：平台上售卖的产品/服务非平台方所属，售卖所得资金也非平台所属&lt;/li&gt;
+&lt;li&gt;平台自身业务考虑：
+
+&lt;ul&gt;
+&lt;li&gt;平台交易资金留存：平台采取对接银行/第三方支付公司即时到账网关收款接口。用户在平台购买产品后，用户资金进入平台在银行/第三方支付公司开设的帐户，再由平台通过网银或银企直连或委托付款接口/功能将资金结算给商家&lt;/li&gt;
+&lt;li&gt;只做信息撮合：(一些平台会考虑业务纠纷问题，以及从业务合规性考虑毕竟非自营业务涉及资金非平台所属)用户支付后交易资金直接划转到商户帐户。支付公司往往会提供类似分润接口形式的收款接口。用户支付时，平台会通过该接口传送订单信息、收款平台账户等信息，交易完成后资金会直接进入商户对应平台账户&lt;/li&gt;
+&lt;li&gt;模式的不足之处：要求平台商户开设有对应支付平台账户&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;平台对接银行接口
+
+&lt;ul&gt;
+&lt;li&gt;如果平台与银行有较深的合作关系(如与银行联合做营销活动，银行有营销费用补贴等优惠)，或第三方支付的支付接口不能满足业务需求时，平台可自己接银行，提供在线支付、银企直连等功能&lt;/li&gt;
+&lt;li&gt;账户设置：平台在银行开设自己的银行账户&lt;/li&gt;
+&lt;li&gt;平台与银行的对账、结算：平台按照结算周期与银行对账后，银行将结算周期内的资金结算到平台在银行设立的账户上。此处由于是同行交易，因此不存在费用&lt;/li&gt;
+&lt;li&gt;平台与商户的对账、结算：平台按照与商户约定的结算周期进行对账、结算(如果存在类似联盟、分销的情况，可能还包括分账)，此时只是在平台自己的交易、账务系统中做处理，并未完成资金实际的转移&lt;/li&gt;
+&lt;li&gt;一般情况下，由于平台具有话语权，而且考虑到手续费问题，平台与商户不一定按照结算周期结算的，可能会在交易额达到一定额度时候一次性结算&lt;/li&gt;
+&lt;li&gt;平台将结算资金实际转移给商户时，存在几种途径
+
+&lt;ul&gt;
+&lt;li&gt;平台的财务人员通过企业网银同行/跨行转账&lt;/li&gt;
+&lt;li&gt;平台调用银行的银企直连之类的接口完成同行/跨行转账&lt;/li&gt;
+&lt;li&gt;通过其他平台的代付功能(也有叫委托结算)完成代付&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;具体收费只能具体情况谈&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;平台对接第三方支付公司接口
+
+&lt;ul&gt;
+&lt;li&gt;第一种方式由于涉及与银行接口联调以及还需要平台自己处理对商户的清结算、分账、代付等问题，这些并不是平台所擅长的，而且在整体费用上并不具备优势(例如涉及一堆小银行跨行转账)，因此平台会同时接入多家第三方支付，借助第三方支付相对专业化服务来帮助解决&lt;/li&gt;
+&lt;li&gt;账户设置：第三方支付会按照商户接入流程要求平台提供银行结算账户、营业执照等信息，然后在运营系统中开通平台对应的虚拟账户&lt;/li&gt;
+&lt;li&gt;每一笔成功交易产生后，都会汇总到平台在第三方支付的虚拟账户中&lt;/li&gt;
+&lt;li&gt;在银行端，按照央行备付金管理办法，第三方支付会有收付户、汇缴户等类型的账户，用于存放所有合作商户的备付金，但并不区分某一个商户的资金。从资金安全角度来说，备付金管理办法就是为了监管第三方支付对商户资金挪用、洗钱等风险&lt;/li&gt;
+&lt;li&gt;平台与第三方支付平台的对账、结算：第三方支付平台按照结算周期与平台对账、结算，对账结算完成后，第三方支付平台一般提供了诸如代付/委托结算、分账功能，能够将资金代付给商户。另外还提供了诸如对公/对私结算、周末及节假日委托结算、T+0结算、商户自助上传批量代付文件、银行回单等增值服务&lt;/li&gt;
+&lt;li&gt;在具体费用上，如果平台合作商户的结算银行比较分散，则在整体成本上，应该比平台自己接银行具有优势&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;外卖抽成&#34;&gt;外卖抽成&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一二线的外卖市场专送的抽点基本稳定在 20%，三四线专送抽点普遍在 22%~24%&lt;/li&gt;
+&lt;li&gt;美团第一年抽佣约 3%，第二年约 3.8%。饿了么一般为 3.5%&lt;/li&gt;
+&lt;li&gt;饿了么在 18 年 7 月份开始如果采用平台专送的配送方式，代理商最多收商家 25%&lt;/li&gt;
+&lt;li&gt;采用平台专送的配送方式收取 20% 的服务费，是目前一线城市多数商家的收佣标准&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -353,91 +353,87 @@
   
   
   <div>
-    <h2><a href="/blog/go/basic/go_loop/">go 循环语句</a></h2>
+    <h2><a href="/blog/git/git_config/">git config 配置</a></h2>
     <div class="article-style">
       
-      for 循环 &ldquo;while&rdquo; 循环 循环嵌套 循环控制语句 无限循环 for 循环 go 循环只有 for 结构。包含 3 个组件 初始化语句：通常是短变量声明，声明的变量只对 for 循环可见 条件语句：
+      配置 修改配置信息 查看配置信息 修改配置信息 /etc/gitconfig：包含系统上每一个用户及他们仓库的通用配置, 使用--system会从此文
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_pointer/">go 指针</a></h2>
+    <h2><a href="/blog/git/git_diff/">git diff 版本比较</a></h2>
     <div class="article-style">
       
-      指针变量指向一个值的内存地址：不是所有值都有地址，但是所有变量都有地址 每一个聚合类型变量的组成(结构体的成员或数组中的元素)都是变量，都有一
+      diff 插件 git diff diff 插件 可以使用 git difftool 命令来用 Araxis , emerge 或 vimdiff 等软件通过图形化的方式或其它格式输出方式输出 diff 分析结果 使用 git difftool --tool-help 命令查看系统支持哪些 git diff 插件 git
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_interface/">go 接口</a></h2>
+    <h2><a href="/blog/git/git_grep/">git grep</a></h2>
     <div class="article-style">
-      
-      非侵入式设计 接口定义 接口实现 接口值 底层值为 nil 的接口值 接口值为 nil 空接口 类型断言(type assertion) 类型选择(type switch) 接口和类型的关系 一个类型可以实现
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_map/">go 散列表</a></h2>
+    <h2><a href="/blog/git/git_log/">git log</a></h2>
     <div class="article-style">
       
-      map定义和初始化 map 是一种无序的键值对的集合，可以通过 key 快速检索数据，使用 hash 表实现 定义集合 var map_name[key_type]val_type 使用 make 函数map_name := make(map[key_type]val_type) 不初始化 map，
+      语法 常用命令 引用日志 reflog 参考 语法 git log [&lt;options&gt;] [&lt;revision range&gt;] [[--] &lt;path&gt;…​] options 参数 含义 -L &lt;start&gt;,&lt;end&gt;:&lt;file&gt; 查看指定文件的开始行到结束行的提交历史 -L :&lt;funcname&gt;:&lt;file&gt; 查看指定文件
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_data_type/">go 数据类型</a></h2>
+    <h2><a href="/blog/git/git_mv/">git move 移动文件</a></h2>
     <div class="article-style">
       
-      数据类型 数据类型默认初始化值 类型推导 数据类型 数据类型把数据分成所需内存大小不同的数据 布尔型：true 或 false 数字类型： 整型 有符号 int(int, int8, int16, int32, int6
+      # git rm + git add git mv file_from file_to
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_array/">go 数组</a></h2>
+    <h2><a href="/blog/git/git_patch/">git patch 补丁</a></h2>
     <div class="article-style">
       
-      array 数组初始化 多维数组 数组作为函数参数 array 数组是具有相同类型，长度固定，已编号的数据项序列 可通过索引来读写数组元素 声明数组需要指定类型和元素个数
+      普通补丁 正式补丁 git format-patch 参数 用于邮件发送 直接用于 git am 参考 普通补丁 # 发送者生成一个补丁 git diff xxx &gt; my.patch # 接收者在其他地方使用这个补丁 git apply &lt; my.patch 正式补丁 git format-patch
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_method/">go 方法</a></h2>
+    <h2><a href="/blog/git/git_push/">git push 推送数据</a></h2>
     <div class="article-style">
       
-      方法 method 方法的接收者是 struct 方法的接收者是非结构体 指针接收者 vs 值接收者 使用指针接收者 使用值接收者 方法的匿名域 方法 method 方法的接收者是 struct go 没有类，但是可
+      # 将本地的 master 分支推送至 origin 服务器的 dev 分支 git push origin master:dev git push url master
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_decision_making/">go 条件语句</a></h2>
+    <h2><a href="/blog/git/git_rebase/">git rebase 变基</a></h2>
     <div class="article-style">
       
-      if if 语句 if&hellip;else 语句 if 嵌套语句 switch select if if 语句 类似于 for 循环，但是不需要小括号，需要大括号 if x &lt; 0 { return 0 } if 语句可以在执行条件语句之前有一个简短的语句，
+      变基 git rebase git rebase -i 参考 变基 变基和三方合并整合的最终结果指向的快照始终是一样的, 只是提交历史不同 变基是将一系列提交按照原有次序依次应用到另一分支上
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_module/">go 模块</a></h2>
+    <h2><a href="/blog/git/git_remote/">git remote 远程仓库</a></h2>
     <div class="article-style">
       
-      1 快速入门 1.1 新建工程 1.2 每日工作流 2 新概念 2.1 module 模块 2.2 go.mod 2.3 版本选择 2.4 语义导入版本控制 3 如何使用模块 3.1 如何安装和激活模块支持 3.2 定义一个模块 3.3 升级和
+      # 查看指定的每一个远程服务器的简写 git remote # 查看需要读写远程仓库使用的 git 保存的简写与其对应的 URL git remote -v # 查看某一个远程仓库信息 git remote show [remote-name] # 添加一个新
       
     </div>
   </div>
   
   <div>
-    <h2><a href="/blog/go/basic/go_goroutine/">go 程</a></h2>
+    <h2><a href="/blog/git/git_revert/">git revert</a></h2>
     <div class="article-style">
-      
-      goroutine 创建一个 goroutine goroutine 优于线程 goroutine goroutine 是和其他函数或方法并发运行的函数或方法 goroutine 可认为是轻量级的线程，比线程创建代价小 创建一个 goroutine 使用 go 可以开始一个 goro
       
     </div>
   </div>
